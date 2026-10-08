@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.DS_Store
+# raw downloads and Blender work files stay local (large, not served)
+work/
+*.blend
+*.blend1
+node_modules/
