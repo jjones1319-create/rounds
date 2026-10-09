@@ -19,8 +19,12 @@ const Anat = (function () {
   const DICT = buildDictionary();
   const UIA = { tab: "body" };
   const Body = { view: "front", layers: new Set(["bone", "organ"]), sex: "f", sel: null, vb: { x: 0, y: 0, w: 400, h: 920 }, q: "", quiz: null, mode: "2d", sel3: null };
-  const Brain = { view: "lateral", sel: null, terr: false, cn: null };
-  const Heart = { view: "outside", sel: null };
+  const Brain = { view: "lateral", sel: null, terr: false, cn: null, mode: "2d", layers3: new Set(["cortex", "deep", "artery", "nerve"]), sel3: null, side: null, quiz3: null };
+  const Heart = { view: "outside", sel: null, mode: "2d", layers3: new Set(["wall", "valves", "coronary", "veins", "vessels"]), sel3: null, cut: 0, quiz3: null };
+  // 3D or Diagram, per tab, remembered on this device (a convenience: anything unreadable just means Diagram)
+  const MODES_KEY = "rounds.view3d";
+  try { const m = JSON.parse(localStorage.getItem(MODES_KEY) || "{}"); ["body", "brain", "heart"].forEach((k, i) => { if (m[k] === "3d") [Body, Brain, Heart][i].mode = "3d"; }); } catch (_) {}
+  const saveModes = () => { try { localStorage.setItem(MODES_KEY, JSON.stringify({ body: Body.mode, brain: Brain.mode, heart: Heart.mode })); } catch (_) {} };
   const Idx = { q: "", filter: "all" };
   const Quiz = { qs: [], i: 0, score: 0, answered: false };
   let appHooks = {};
@@ -45,7 +49,9 @@ const Anat = (function () {
   }
   function mount() {
     if (UIA.tab === "body") { if (Body.mode === "3d") mount3D(); else mountBody(); }
-    if (UIA.tab === "brain" && Brain.view === "underside") $$(".cnfig .cn").forEach((g) => g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectCN(g.dataset.v); } }));
+    if (UIA.tab === "brain" && Brain.mode === "3d") mountScene3D("brain");
+    if (UIA.tab === "heart" && Heart.mode === "3d") mountScene3D("heart");
+    if (UIA.tab === "brain" && Brain.mode !== "3d" && Brain.view === "underside") $$(".cnfig .cn").forEach((g) => g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectCN(g.dataset.v); } }));
   }
   function rerender(keepScroll) { const y = window.scrollY; appHooks.render(); if (keepScroll) window.scrollTo(0, y); else window.scrollTo(0, 0); }
 
@@ -88,14 +94,14 @@ const Anat = (function () {
   }
 
   /* ---------- 3D body. js/body3d.js loads on first use; each layer's model loads the first time it is switched on. ---------- */
-  let B3 = null, b3Loading = null;
+  let B3 = null, B3M = null, b3Loading = null;   // B3: the Body tab's viewer; B3M: the module (viewer(), supported(), API)
   const LAYERS3 = () => LAYERS.filter((l) => l.k !== "derm");          // no dermatomes in 3D
   const layers3 = () => LAYERS3().map((l) => l.k).filter((k) => Body.layers.has(k));
   const layerName = (k) => (LAYERS.find((l) => l.k === k) || { n: k }).n.toLowerCase();
   const syncChips = () => { $$("[data-act=layer]").forEach((b) => b.setAttribute("aria-pressed", Body.layers.has(b.dataset.v))); const all = $("[data-act=layers-all]"); if (all) all.setAttribute("aria-pressed", (Body.mode === "3d" ? LAYERS3() : LAYERS).every((l) => Body.layers.has(l.k))); };
-  const API3D = 2;   // must equal API in js/body3d.js; a different number means a stale cached viewer
+  const API3D = 3;   // must equal API in js/body3d.js; a different number means a stale cached viewer
   // ?v= is the file's content hash (build.py), so a new page never runs an old cached viewer
-  const load3D = () => b3Loading || (b3Loading = import(`./js/body3d.js?v=${ASSET_V.body3d}`).then((m) => (B3 = m)));
+  const load3D = () => b3Loading || (b3Loading = import(`./js/body3d.js?v=${ASSET_V.body3d}`).then((m) => { B3M = m; if (m.API === API3D) B3 = m.viewer("body"); return m; }));
   const SIDE_WORD = { R: "Right ", L: "Left " };
   const DIGIT = { hand: ["thumb", "index finger", "middle finger", "ring finger", "little finger"], foot: ["great toe", "second toe", "third toe", "fourth toe", "little toe"] };
   const ORD = ["first", "second", "third", "fourth", "fifth"];
@@ -125,7 +131,7 @@ const Anat = (function () {
       if (!m.supported()) { fail("3D needs WebGL 2, which this browser has turned off."); return; }
       if (!el.isConnected) return;
       const colors = Object.fromEntries(LAYERS.map((l) => [l.k, l.c]));
-      return m.attach(el, { onPick: pick3D, onProgress: progress3D, t0: Body.t3, layers: layers3(), colors, versions: ASSET_V }).then(() => {
+      return B3.attach(el, { onPick: pick3D, onProgress: progress3D, t0: Body.t3, layers: layers3(), colors, versions: ASSET_V }).then(() => {
         if (!el.isConnected) return;
         msg.hidden = true; const st = $("#status3d"); if (st) st.hidden = true;
         apply3DPending();
@@ -357,7 +363,8 @@ const Anat = (function () {
     return `<svg class="brainfig ${Brain.sel ? "has-sel" : ""}" viewBox="20 20 320 285" role="img" aria-label="Left side of the brain, lateral view">${g}</svg>`;
   }
   function brainHTML() {
-    let h = `<div class="row" style="margin:14px 0 10px"><button class="btn ghost sm" data-act="rotate-brain">${IC.rotate}${Brain.view === "lateral" ? "Underside" : "Side view"}</button><span class="spacer"></span>${Brain.view === "lateral" ? `<button class="chip" data-act="brain-terr" aria-pressed="${Brain.terr}">Arterial territories</button>` : ""}</div>`;
+    if (Brain.mode === "3d") return modeSeg("brain") + scene3DHTML("brain") + `<button class="btn block" style="margin-top:12px" data-act="cn-quiz">Quiz me on cranial nerves</button>`;
+    let h = modeSeg("brain") + `<div class="row" style="margin:10px 0 10px"><button class="btn ghost sm" data-act="rotate-brain">${IC.rotate}${Brain.view === "lateral" ? "Underside" : "Side view"}</button><span class="spacer"></span>${Brain.view === "lateral" ? `<button class="chip" data-act="brain-terr" aria-pressed="${Brain.terr}">Arterial territories</button>` : ""}</div>`;
     if (Brain.view === "lateral") {
       h += `<div class="fig-wrap brainwrap" id="brainwrap" style="padding:8px">${brainFigure()}</div>
         <div class="scrollx" style="margin-top:12px" role="group" aria-label="Functional areas">${BRAIN.areas.map((a) => `<button class="chip" data-act="brain-pick" data-v="${a.id}" aria-pressed="${Brain.sel === a.id}"><span class="dot" style="background:${a.c}"></span>${esc(a.n.split(" (")[0])}</button>`).join("")}</div>
@@ -433,7 +440,10 @@ const Anat = (function () {
   function cnCard() {
     const c = CN.find((x) => x.num === Brain.cn);
     if (!c) return `<h3 style="margin:0">Pick a nerve</h3><p class="muted" style="margin:6px 0 0">Each card covers where it leaves the skull, what it does, how to test it, what damage looks like, and a board pearl.</p>`;
-    return `<div class="row" style="margin-bottom:4px"><span class="pill type-${c.type}"><span class="tdot"></span>${CN_TYPES[c.type]}</span></div><h3>CN ${c.num}: ${esc(c.name)}</h3>
+    return cnCardFor(c, "");
+  }
+  function cnCardFor(c, extraPills, extra) {
+    return `<div class="row wrap" style="margin-bottom:4px"><span class="pill type-${c.type}"><span class="tdot"></span>${CN_TYPES[c.type]}</span>${extraPills || ""}</div><h3>CN ${c.num}: ${esc(c.name)}</h3>${extra || ""}
       <dl class="kv"><dt>Leaves skull</dt><dd>${esc(c.exit)}</dd><dt>Arises from</dt><dd>${esc(c.from)}</dd><dt>Does</dt><dd>${esc(c.fn)}</dd><dt>Test it</dt><dd>${esc(c.test)}</dd><dt>If damaged</dt><dd>${esc(c.lesion)}</dd></dl>
       <div class="callout"><b>Clinical pearl.</b> ${esc(c.pearl)}</div><p style="margin:8px 0 0"><button class="btn quiet sm" style="padding:0" data-act="dict-go" data-id="cn_${c.num}">Open in the index</button></p>`;
   }
@@ -489,7 +499,8 @@ const Anat = (function () {
     return `<svg class="heartfig ${Heart.sel ? "has-sel" : ""}" viewBox="40 20 230 270" role="img" aria-label="Heart, ${Heart.view} view">${out}${deco}</svg>`;
   }
   function heartHTML() {
-    return `<div class="row" style="margin:14px 0 10px"><button class="btn ghost sm" data-act="rotate-heart">${IC.rotate}${Heart.view === "outside" ? "Open it up" : "Close it"}</button><span class="hint">${Heart.view === "outside" ? "Front of the heart with the coronary arteries." : "Four chambers, valves, and the conduction system."}</span></div>
+    if (Heart.mode === "3d") return modeSeg("heart") + scene3DHTML("heart");
+    return modeSeg("heart") + `<div class="row" style="margin:10px 0 10px"><button class="btn ghost sm" data-act="rotate-heart">${IC.rotate}${Heart.view === "outside" ? "Open it up" : "Close it"}</button><span class="hint">${Heart.view === "outside" ? "Front of the heart with the coronary arteries." : "Four chambers, valves, and the conduction system."}</span></div>
       <div class="fig-wrap" id="heartwrap" style="padding:6px">${heartFigure()}</div>
       <div class="scrollx" style="margin-top:12px" role="group" aria-label="Heart parts">${(Heart.view === "outside" ? HEART.outside : HEART.inside).map((p) => `<button class="chip" data-act="heart-pick" data-v="${p.id}" aria-pressed="${Heart.sel === p.id}"><span class="dot" style="background:${p.c}"></span>${esc(p.n.split(" (")[0])}</button>`).join("")}</div>
       <div class="panel infocard" id="heartcard" style="margin-top:12px" aria-live="polite">${heartCard()}</div>`;
@@ -509,6 +520,161 @@ const Anat = (function () {
     const next = Heart.view === "outside" ? "inside" : "outside"; const wrap = $("#heartwrap");
     if (reduceMotion || !wrap) { Heart.view = next; Heart.sel = null; rerender(true); return; }
     wrap.classList.add("flip-out"); setTimeout(() => { Heart.view = next; Heart.sel = null; rerender(true); const w2 = $("#heartwrap"); if (w2) { w2.classList.add("flip-in"); setTimeout(() => w2.classList.remove("flip-in"), 260); } }, 240);
+  }
+
+  /* ================= 3D BRAIN AND HEART ================= */
+  // Each tab keeps its own 3D state (Brain, Heart); SCENE3D (src/models.js) lists their layers. Card keys are Index ids.
+  const SC3 = { brain: Brain, heart: Heart };
+  const sceneLayers = (sc) => SCENE3D[sc].map((l) => l.k).filter((k) => SC3[sc].layers3.has(k));
+  const sceneV = (sc) => (B3M && B3M.API === API3D ? B3M.viewer(sc) : null);
+  const BRAIN_ITEMS = () => BRAIN.lobes.concat(BRAIN.areas, BRAIN.territories);
+  function itemFor(key) {
+    if (key.startsWith("br_")) { const a = BRAIN_ITEMS().find((x) => "br_" + x.id === key); return a && { n: a.n, d: a.d, p: a.p, kind: BRAIN.territories.includes(a) ? "Arterial territory" : BRAIN.lobes.includes(a) ? "Lobe" : "Functional area" }; }
+    if (key.startsWith("cn_")) { const c = CN.find((x) => "cn_" + x.num === key); return c && { n: `CN ${c.num} (${c.name})`, p: c.pearl, cn: c }; }
+    if (key.startsWith("ht_")) { const h = HEART.outside.concat(HEART.inside).find((x) => "ht_" + x.id === key); return h && { n: h.n, d: h.d, p: h.p }; }
+    return null;
+  }
+  function modeSeg(sc) {
+    const is3 = SC3[sc].mode === "3d";
+    return `<div class="row" style="margin-top:14px"><div class="seg fit" role="group" aria-label="${sc === "brain" ? "Brain" : "Heart"} view"><button data-act="scene-mode" data-scene="${sc}" data-v="3d" aria-pressed="${is3}">3D</button><button data-act="scene-mode" data-scene="${sc}" data-v="2d" aria-pressed="${!is3}">Diagram</button></div>${is3 ? `<span class="hint">${sc === "brain" ? "Real MRI-based brain." : "Septa and conduction system are in Diagram."}</span>` : ""}</div>`;
+  }
+  function scene3DHTML(sc) {
+    const S = SC3[sc], L3 = SCENE3D[sc];
+    const chips = `<div class="scrollx" style="margin-top:12px" role="group" aria-label="Layers"><button class="chip" data-act="s3-all" data-scene="${sc}" aria-pressed="${L3.every((l) => S.layers3.has(l.k))}">All layers</button>${L3.map((l) => `<button class="chip" data-act="s3-layer" data-scene="${sc}" data-v="${l.k}" aria-pressed="${S.layers3.has(l.k)}"><span class="dot" style="background:${l.c}"></span>${l.n}</button>`).join("")}</div>`;
+    const extra = sc === "brain"
+      ? `<div class="row" style="margin-top:10px"><div class="seg fit" role="group" aria-label="Hemisphere"><button data-act="brain-side" data-v="" aria-pressed="${!S.side}">Both</button><button data-act="brain-side" data-v="L" aria-pressed="${S.side === "L"}">Left</button><button data-act="brain-side" data-v="R" aria-pressed="${S.side === "R"}">Right</button></div><span class="hint">One side shows its inner surface.</span></div>`
+      : `<label class="row" style="margin-top:10px"><b class="small">Cut open</b><input type="range" id="heartcut" class="range" min="0" max="90" step="1" value="${S.cut}" aria-label="Cut the heart open from the front"><span class="small muted" id="heartcutv" style="min-width:52px">${S.cut ? S.cut + "%" : "Closed"}</span></label>`;
+    return chips + extra + `
+      <div class="fig-wrap" style="margin-top:10px"><div class="fig fig3d${sc === "brain" ? " wide" : ""}" id="fig3d-${sc}"></div>
+        <div class="zoom"><button data-act="s3-zoom" data-scene="${sc}" data-v="in" aria-label="Zoom in">${IC.plus}</button><button data-act="s3-zoom" data-scene="${sc}" data-v="out" aria-label="Zoom out">${IC.minus}</button><button data-act="s3-zoom" data-scene="${sc}" data-v="fit" aria-label="Show it all">${IC.fit}</button></div>
+        <div class="viewtag">3D</div><div class="status3d" id="status3d-${sc}" aria-live="polite" hidden></div>
+        <div class="fig-note">Drag to turn, pinch to zoom, two fingers to move.</div>
+        <div class="load3d" id="load3d-${sc}" aria-live="polite">Loading the 3D ${sc}…</div></div>
+      <div class="row" style="margin-top:10px"><button class="btn ghost sm" data-act="q3-start" data-scene="${sc}">Name that structure</button><span class="hint">Every card ends with a board pearl.</span></div>
+      <div class="panel infocard" id="card3d-${sc}" style="margin-top:10px" aria-live="polite">${S.quiz3 ? q3Card(sc) : scene3DCard(sc)}</div>`;
+  }
+  function scene3DCard(sc) {
+    const s = SC3[sc].sel3;
+    if (!s || s.pending) return sc === "brain"
+      ? `<h3>Tap any structure</h3><p class="muted" style="margin:6px 0 0">Gyri and sulci, the cerebellum and brainstem, deep structures, the circle of Willis, and the cranial nerves at the skull base. Choose Left or Right to see one hemisphere and its inner (medial) surface. Turn on the skull for context.</p>`
+      : `<h3>Tap any structure</h3><p class="muted" style="margin:6px 0 0">Chambers, valves, papillary muscles, coronary arteries, cardiac veins, and the great vessels. Slide Cut open to look inside from the front.</p>`;
+    const part = partName(s.name), lay = SCENE3D[sc].find((l) => l.k === s.layer) || SCENE3D[sc][0];
+    const sidePill = s.side ? pill(s.side === "L" ? "Left" : "Right") : "";
+    const item = s.key ? itemFor(s.key) : null;
+    const tapped = item && s.tapped && part.toLowerCase() !== item.n.toLowerCase() ? `<p class="small muted" style="margin:6px 0 0">You tapped: ${esc(withSide(s.side, part))}</p>` : "";
+    const link = s.key ? `<p style="margin:8px 0 0"><button class="btn quiet sm" style="padding:0" data-act="dict-go" data-id="${s.key}">Open in the index</button></p>` : "";
+    if (item && item.cn) return cnCardFor(item.cn, sidePill, tapped) + link.replace("margin:8px 0 0", "margin:4px 0 0");
+    if (item) return cardHTML(item.n, pill(item.kind || lay.n, item.kind ? null : lay.c) + sidePill, item.d, item.p, tapped + link);
+    return `<div class="row wrap" style="margin-bottom:6px">${pill(lay.n, lay.c)}</div><h3>${esc(withSide(s.side, part))}</h3><p class="muted" style="margin:8px 0 0">No study card for this one yet.</p>`;
+  }
+  function mountScene3D(sc) {
+    const el = $(`#fig3d-${sc}`), msg = $(`#load3d-${sc}`), S = SC3[sc]; if (!el) return;
+    const fail = (t, reload) => { msg.hidden = false; msg.dataset.failed = "1"; msg.innerHTML = `<div>${esc(t)}<div class="row" style="justify-content:center;margin-top:10px">${reload ? `<button class="btn sm" data-act="reload-app">Reload</button>` : `<button class="btn sm" data-act="body3d-retry">Try again</button>`}<button class="btn ghost sm" data-act="scene-mode" data-scene="${sc}" data-v="2d">Use Diagram</button></div></div>`; };
+    if (location.protocol === "file:") { fail("The 3D view works when the app is opened from its web address."); return; }
+    load3D().then((m) => {
+      if (m.API !== API3D) { b3Loading = null; fail("Rounds was just updated. Reload to finish updating.", true); return; }
+      if (!m.supported()) { fail("3D needs WebGL 2, which this browser has turned off."); return; }
+      if (!el.isConnected) return;
+      const v = m.viewer(sc), colors = Object.fromEntries(SCENE3D[sc].map((l) => [l.k, l.c]));
+      return v.attach(el, { onPick: (i) => pickScene(sc, i), onProgress: (l, b) => progressScene(sc, l, b), t0: S.t3, layers: sceneLayers(sc), colors, versions: ASSET_V }).then(() => {
+        if (!el.isConnected) return;
+        msg.hidden = true; const st = $(`#status3d-${sc}`); if (st) st.hidden = true;
+        if (sc === "brain") v.setSide(S.side); else v.setCut(S.cut ? S.cut / 100 : null);
+        applyScenePending(sc);
+      });
+    }).catch((err) => { console.error(err); if (!B3M) b3Loading = null; if (el.isConnected) fail(`The 3D ${sc} could not load. Check the connection and try again.`); });
+  }
+  function progressScene(sc, layer, bytes) {
+    const msg = $(`#load3d-${sc}`), st = $(`#status3d-${sc}`), v = sceneV(sc);
+    if (msg && msg.dataset.failed) return;
+    if (msg && !msg.hidden) msg.textContent = `Loading the 3D ${sc}… ${((v ? v.stats.bytes : bytes) / 1048576).toFixed(1)} MB`;
+    else if (st) { const l = SCENE3D[sc].find((x) => x.k === layer); st.hidden = false; st.textContent = `Loading ${(l ? l.n : layer).toLowerCase()}… ${(bytes / 1048576).toFixed(1)} MB`; }
+  }
+  function syncSceneChips(sc) {
+    const S = SC3[sc];
+    $$(`[data-act=s3-layer][data-scene=${sc}]`).forEach((b) => b.setAttribute("aria-pressed", S.layers3.has(b.dataset.v)));
+    const all = $(`[data-act=s3-all][data-scene=${sc}]`); if (all) all.setAttribute("aria-pressed", SCENE3D[sc].every((l) => S.layers3.has(l.k)));
+  }
+  function syncSceneLayers(sc) {
+    const v = sceneV(sc); if (!v || !v.isReady()) return;
+    const st = $(`#status3d-${sc}`), want = sceneLayers(sc), missing = want.filter((k) => !v.loaded(k));
+    if (st && missing.length) { st.hidden = false; st.textContent = `Loading ${missing.map((k) => SCENE3D[sc].find((l) => l.k === k).n.toLowerCase()).join(", ")}…`; }
+    v.setLayers(want).then(() => { if (st) st.hidden = true; })
+      .catch((err) => { console.error(err); if (st) { st.hidden = false; st.textContent = "That layer could not load. Check the connection and try again."; } });
+  }
+  function pickScene(sc, info) {
+    const S = SC3[sc], q = S.quiz3;
+    if (q && !q.done) {                              // in the quiz, a tap answers; the asked structure stays highlighted
+      if (!q.answered && info) q3Pick(sc, info.key || "");
+      sceneV(sc).selectKey(q.cur.key, q.cur.side, false);
+      return;
+    }
+    S.sel3 = info ? Object.assign({ tapped: true }, info) : null;
+    const c = $(`#card3d-${sc}`); if (c) c.innerHTML = scene3DCard(sc);
+  }
+  function showInScene(sc, key) {
+    const S = SC3[sc]; S.quiz3 = null; S.sel3 = { key, pending: true };
+    if (appHooks.tab() !== "anatomy" || UIA.tab !== sc) { UIA.tab = sc; appHooks.go("anatomy"); return; }   // mountScene3D applies it
+    applyScenePending(sc);
+  }
+  function fallback2D(key) {                         // no 3D match: show it in the Diagram instead
+    if (key.startsWith("cn_")) { Brain.mode = "2d"; Brain.cn = key.slice(3); Brain.view = "underside"; UIA.tab = "brain"; }
+    else if (key.startsWith("br_")) { const id = key.slice(3); Brain.mode = "2d"; Brain.sel = id; Brain.view = "lateral"; if (BRAIN.territories.some((t) => t.id === id)) Brain.terr = true; UIA.tab = "brain"; }
+    else if (key.startsWith("ht_")) { const id = key.slice(3); Heart.mode = "2d"; Heart.sel = id; Heart.view = HEART.outside.some((h) => h.id === id) ? "outside" : "inside"; UIA.tab = "heart"; }
+    appHooks.go("anatomy");
+  }
+  function applyScenePending(sc) {
+    const S = SC3[sc], s = S.sel3, v = sceneV(sc); if (!s || !s.pending || !v || !v.isReady()) return;
+    const lay = v.layerOf(s.key);
+    if (!lay) { S.sel3 = null; fallback2D(s.key); return; }
+    if (!S.layers3.has(lay)) { S.layers3.add(lay); syncSceneChips(sc); }
+    if (sc === "brain" && S.side) { S.side = null; v.setSide(null); $$("[data-act=brain-side]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === "")); }
+    const st = $(`#status3d-${sc}`); if (st && !v.loaded(lay)) { st.hidden = false; st.textContent = "Loading…"; }
+    v.selectKey(s.key, sc === "brain" ? "L" : "", true).then((ok) => {   // the Diagram shows the left hemisphere
+      if (st) st.hidden = true;
+      if (S.sel3 !== s) return;
+      S.sel3 = ok ? Object.assign({ tapped: false }, v.current()) : null;
+      const c = $(`#card3d-${sc}`); if (c) c.innerHTML = scene3DCard(sc);
+    });
+  }
+  /* "Name that structure" in the 3D brain and heart */
+  function q3Start(sc) {
+    const v = sceneV(sc); if (!v || !v.isReady()) return;
+    const pool = v.quizPool().filter((p) => itemFor(p.key));
+    if (new Set(pool.map((p) => p.key)).size < 4) { appHooks.toast("Turn on a few more layers first."); return; }
+    SC3[sc].quiz3 = { pool, n: 0, score: 0, total: 8, cur: null, answered: false }; q3Next(sc);
+  }
+  function q3Next(sc) {
+    const S = SC3[sc], q = S.quiz3, v = sceneV(sc); if (!q || !v) return;
+    if (q.n >= q.total) { q.done = true; v.clear(); S.sel3 = null; $(`#card3d-${sc}`).innerHTML = q3Card(sc); return; }
+    const o = q.pool[Math.floor(Math.random() * q.pool.length)];
+    const others = shuffle([...new Set(q.pool.map((p) => p.key))].filter((k) => k !== o.key)).slice(0, 3);
+    q.cur = { key: o.key, side: o.side, opts: shuffle([o.key, ...others]) }; q.answered = false; q.n++;
+    v.selectKey(o.key, o.side, true);
+    $(`#card3d-${sc}`).innerHTML = q3Card(sc);
+  }
+  function q3Card(sc) {
+    const q = SC3[sc].quiz3; if (!q) return scene3DCard(sc);
+    if (q.done) return `<h3>${q.score} of ${q.total} named correctly</h3><p class="muted" style="margin:6px 0 10px">Each round draws from the layers you have turned on, so switch layers for a different set.</p><div class="row"><button class="btn sm" data-act="q3-start" data-scene="${sc}">Play again</button><button class="btn ghost sm" data-act="q3-stop" data-scene="${sc}">Done</button></div>`;
+    const c = q.cur;
+    return `<div class="row" style="margin-bottom:6px"><span class="pill">Name that structure</span><span class="muted small">${q.n} of ${q.total}</span><span class="spacer"></span><button class="btn quiet sm" data-act="q3-stop" data-scene="${sc}">Stop</button></div>
+      <p style="margin:0 0 10px">Which structure is highlighted?</p><div class="quiz-opts">${c.opts.map((k) => `<button data-act="q3-pick" data-scene="${sc}" data-key="${k}" ${q.answered ? "disabled" : ""} class="${q.answered ? (k === c.key ? "ok" : k === q.picked ? "bad" : "") : ""}">${esc(itemFor(k).n)}</button>`).join("")}</div>
+      ${q.answered ? `<p style="margin:12px 0 0"><b>${q.picked === c.key ? "Correct." : "Not quite."}</b> ${esc(itemFor(c.key).p)}</p><button class="btn block" style="margin-top:10px" data-act="q3-next" data-scene="${sc}">${q.n < q.total ? "Next" : "See score"}</button>` : ""}`;
+  }
+  function q3Pick(sc, key) { const q = SC3[sc].quiz3; if (!q || q.answered) return; q.answered = true; q.picked = key; if (key === q.cur.key) q.score++; $(`#card3d-${sc}`).innerHTML = q3Card(sc); }
+  function sceneAct(act, t, v) {
+    const sc = t.dataset.scene, S = SC3[sc], view = sceneV(sc);
+    switch (act) {
+      case "scene-mode": if (S.mode !== v) { if (v === "3d" && !S.t3) S.t3 = performance.now(); if (S.quiz3 && view) view.clear(); S.quiz3 = null; S.mode = v; saveModes(); rerender(true); } return true;
+      case "s3-layer": if (S.layers3.has(v)) S.layers3.delete(v); else S.layers3.add(v); syncSceneChips(sc); syncSceneLayers(sc); return true;
+      case "s3-all": { const keys = SCENE3D[sc].map((l) => l.k), all = keys.every((k) => S.layers3.has(k)); S.layers3 = new Set(all ? (sc === "brain" ? ["cortex", "deep", "artery", "nerve"] : ["wall", "valves", "coronary"]) : keys); syncSceneChips(sc); syncSceneLayers(sc); return true; }
+      case "s3-zoom": if (view && view.isReady()) { if (v === "in") view.zoom(1 / 1.5); else if (v === "out") view.zoom(1.5); else view.fit(); } return true;
+      case "q3-start": q3Start(sc); return true;
+      case "q3-pick": q3Pick(sc, t.dataset.key); return true;
+      case "q3-next": q3Next(sc); return true;
+      case "q3-stop": if (view) view.clear(); S.quiz3 = null; S.sel3 = null; $(`#card3d-${sc}`).innerHTML = scene3DCard(sc); return true;
+    }
+    return false;
   }
 
   /* ================= INDEX (dictionary) ================= */
@@ -548,6 +714,9 @@ const Anat = (function () {
     const e = DICT.find((x) => x.id === id); if (!e) return;
     const t = e.target;
     if (t.kind === "body") showOnBody(t.key);
+    else if (t.kind === "cn" && Brain.mode === "3d") showInScene("brain", "cn_" + t.num);
+    else if (t.kind === "brain" && Brain.mode === "3d") showInScene("brain", "br_" + t.id);
+    else if (t.kind === "heart" && Heart.mode === "3d") showInScene("heart", "ht_" + t.id);
     else if (t.kind === "cn") { Brain.cn = t.num; UIA.tab = "brain"; Brain.view = "underside"; appHooks.go("anatomy"); }
     else if (t.kind === "brain") { Brain.sel = t.id; if (BRAIN.territories.some((x) => x.id === t.id)) Brain.terr = true; UIA.tab = "brain"; Brain.view = "lateral"; appHooks.go("anatomy"); }
     else if (t.kind === "heart") { Heart.sel = t.id; Heart.view = t.view; UIA.tab = "heart"; appHooks.go("anatomy"); }
@@ -582,8 +751,10 @@ const Anat = (function () {
       case "sex": Body.sex = v; $$("[data-act=sex]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === v)); if (Body.sel) { const so = ID2S[Body.sel.replace(/-(r|l)$/, "")]; if (so && so.sex && so.sex !== v) { Body.sel = null; $("#infocard").innerHTML = infoCardHTML(); } } applyFigState(); return true;
       case "rotate-body": rotateBody(); return true;
       case "body3d-retry": rerender(true); return true;
+      case "scene-mode": case "s3-layer": case "s3-all": case "s3-zoom": case "q3-start": case "q3-pick": case "q3-next": case "q3-stop": return sceneAct(act, t, v);
+      case "brain-side": { Brain.side = v || null; const view = sceneV("brain"); $$("[data-act=brain-side]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === (v || ""))); if (view && view.isReady()) { view.setSide(Brain.side); view.look(Brain.side === "L" ? [-1, 0.08, 0.1] : [1, 0.08, 0.1]); } return true; }
       case "reload-app": location.reload(); return true;
-      case "body-mode": if (Body.mode !== v) { if (v === "3d" && !Body.t3) Body.t3 = performance.now(); if (Body.quiz && Body.quiz.three && B3) B3.clear(); Body.quiz = null; Body.mode = v; rerender(true); } return true;
+      case "body-mode": if (Body.mode !== v) { if (v === "3d" && !Body.t3) Body.t3 = performance.now(); if (Body.quiz && Body.quiz.three && B3) B3.clear(); Body.quiz = null; Body.mode = v; saveModes(); rerender(true); } return true;
       case "zoom-in": if (Body.mode === "3d") { if (B3 && B3.isReady()) B3.zoom(1 / 1.5); } else animateVB(zoomBy(1 / 1.5)); return true;
       case "zoom-out": if (Body.mode === "3d") { if (B3 && B3.isReady()) B3.zoom(1.5); } else animateVB(zoomBy(1.5)); return true;
       case "zoom-fit": if (Body.mode === "3d") { if (B3 && B3.isReady()) B3.fit(); } else animateVB({ x: 0, y: 0, w: 400, h: 920 }); return true;
@@ -609,6 +780,7 @@ const Anat = (function () {
     return false;
   }
   function input(t) {
+    if (t.id === "heartcut") { Heart.cut = +t.value; const v = sceneV("heart"); if (v && v.isReady()) v.setCut(Heart.cut ? Heart.cut / 100 : null); const o = $("#heartcutv"); if (o) o.textContent = Heart.cut ? Heart.cut + "%" : "Closed"; return true; }
     if (t.id === "bonesearch") { $("#bonelist").innerHTML = boneGroupsHTML(t.value); return true; }
     if (t.id === "idxsearch") { Idx.q = t.value; const list = Idx.q.trim() ? searchDict(Idx.q.trim()) : DICT; $("#idxlist").innerHTML = indexListHTML(Idx.filter === "all" ? list : list.filter((e) => Idx.filter === "derm" ? e.sub === "Dermatome" : Idx.filter === "cn" ? e.sub === "Cranial nerve" : Idx.filter === "body" ? (e.model === "body" && e.sub !== "Dermatome") : (e.model === Idx.filter && e.sub !== "Cranial nerve"))); return true; }
     return false;

@@ -22,6 +22,7 @@ with sync_playwright() as p:
         click("[data-tab=anatomy]")
         for sub in ["body", "brain", "heart", "index", "bones"]: click(f"[data-act=atab][data-v={sub}]"); chk("anatomy/" + sub)
         click("[data-act=atab][data-v=body]"); click("[data-act=body-mode][data-v='3d']"); chk("anatomy/body-3d"); click("[data-act=body-mode][data-v='2d']")
+        for sc in ("brain", "heart"): click(f"[data-act=atab][data-v={sc}]"); click(f"[data-act=scene-mode][data-scene={sc}][data-v='3d']"); chk(f"anatomy/{sc}-3d"); click(f"[data-act=scene-mode][data-scene={sc}][data-v='2d']")
         click("[data-tab=progress]"); chk("progress")
         click("[data-tab=home]"); click("[data-act=quick][data-mode=tutor]"); chk("question runner")
         ctx.close()

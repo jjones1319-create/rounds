@@ -5,6 +5,8 @@ Needs (all under work/, which git ignores):
                                            github.com/Z-Anatomy/Models-of-human-anatomy
   Blender 5.x                              set BLENDER, or unzip the portable build into work/tools/
   work/node: npm i --ignore-scripts three@0.186.1 @gltf-transform/cli@4.5.1
+  work/bp3d/: BodyParts3D partof_BP3D_4.0_obj_99.zip unzipped into obj/, plus partof_element_parts.txt
+              (dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/); only the heart layers need it
 
 Run from the repo root:  py tools/build_models.py [layer ...] [--skip-export]
 """
@@ -22,6 +24,11 @@ LAYERS = {
     "vein":   ("veins",    0.7, 0.002),
     "nerve":  ("nerves",   0.7, 0.002),
     "lymph":  ("lymph",    0.5, 0.002),
+    # Brain and Heart tabs: close-up scenes, so lighter simplification
+    "brain_cortex": ("brain_cortex", 1.0, 0.002), "brain_deep": ("brain_deep", 0.6, 0.002), "brain_artery": ("brain_arteries", 0.8, 0.002),
+    "brain_nerve": ("brain_nerves", 0.8, 0.002), "brain_skull": ("brain_skull", 0.5, 0.002),
+    "heart_wall": ("heart_wall", 0.8, 0.002), "heart_valves": ("heart_valves", 0.8, 0.002), "heart_coronary": ("heart_coronary", 0.8, 0.002),
+    "heart_veins": ("heart_veins", 0.8, 0.002), "heart_vessels": ("heart_vessels", 1.0, 0.002),
 }
 ap = argparse.ArgumentParser()
 ap.add_argument("layers", nargs="*", choices=[[]] + list(LAYERS), help="default: all")

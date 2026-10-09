@@ -1,5 +1,12 @@
 /* Extra content for anatomy v2: new body structures, dermatomes, brain and heart models. */
 LAYERS.push({ k: "derm", n: "Dermatomes", c: "#8FD19E" });
+// 3D layers of the Brain and Heart tabs (keys match data/mesh_map.json scenes; the Body tab uses LAYERS).
+const SCENE3D = {
+  brain: [{ k: "cortex", n: "Cortex", c: "#E7C1B5" }, { k: "deep", n: "Brainstem and deep", c: "#C9A79A" }, { k: "artery", n: "Arteries", c: "#D2352E" },
+          { k: "nerve", n: "Cranial nerves", c: "#E0AE18" }, { k: "skull", n: "Skull", c: "#D9C9A3" }],
+  heart: [{ k: "wall", n: "Heart wall", c: "#A33B32" }, { k: "valves", n: "Valves", c: "#EAD7C3" }, { k: "coronary", n: "Coronary arteries", c: "#D2352E" },
+          { k: "veins", n: "Cardiac veins", c: "#3B66C4" }, { k: "vessels", n: "Great vessels", c: "#B8463F" }],
+};
 
 Object.assign(INFO, {
   occipital: { n: "Occipital bone", L: "bone", d: "Forms the back and base of the skull; contains the foramen magnum (spinal cord) and the hypoglossal canals (CN XII).", p: "The occipital condyles articulate with C1. A fall onto the occiput can cause a contrecoup injury to the frontal lobes." },

@@ -12,6 +12,9 @@ Model files in `models/` are derived from the sources below and are licensed **C
 - Z-Anatomy, the libre 3D atlas of anatomy (Gauthier Kervyn, Marcin Zielinski), CC BY-SA 4.0
   (source: Z-Anatomy.zip at commit bb293be4 of github.com/Z-Anatomy/Models-of-human-anatomy)
 - Cranial nerves may derive from "Cranial Nerves and Foramina", University of Dundee, CAHID, CC BY 4.0
+- Brain cortex: "Brain for Blender" by Anderson Winkler (brainder.org), from a real MRI brain, CC BY-SA 3.0, as placed
+  in Z-Anatomy; adapted here under CC BY-SA 4.0
+- Heart: three valve and papillary parts taken directly from BodyParts3D 4.0 (partof_BP3D_4.0_obj_99.zip)
 
 | File | Contents | From |
 |---|---|---|
@@ -21,13 +24,14 @@ Model files in `models/` are derived from the sources below and are licensed **C
 | `models/arteries.glb`, `models/veins.glb` | 423 and 229 vessels (curves turned into tubes) | Z-Anatomy "Cardiovascular system" |
 | `models/nerves.glb` | 248 meshes: peripheral and cranial nerves, sympathetic trunk, spinal cord | Z-Anatomy "Nervous system" |
 | `models/lymph.glb` | 162 meshes: lymph nodes, thymus, palatine tonsil | Z-Anatomy "Lymphoid organs" |
+| `models/brain_*.glb` | cortex (gyri and sulci), deep brain, arteries, cranial nerves, skull (Brain tab) | Brainder via Z-Anatomy; Z-Anatomy |
+| `models/heart_*.glb` | chambers, valves, coronary arteries, cardiac veins, great vessels (Heart tab) | Z-Anatomy; BodyParts3D |
 
 Not used:
 - Parts that Z-Anatomy bundles under non-commercial terms: the inner ear (University of Dundee, CC BY-NC-SA) and kidney
   (Lissie Cowley, CC BY-NC) models. So the ossicles, cochlea, vestibule, eardrum, auditory tube, cochlear and vestibular
   nerves, renal pelvis and intrarenal vessels are left out, in case they come from those models.
-- The brain: Z-Anatomy credits "Brainder" and "White matter" (University of Washington) without a license, so the
-  cerebrum, cerebellum and brainstem are left out. The app's Brain tab has its own diagram.
+- Z-Anatomy's "White matter of telencephalon", credited to the University of Washington without a license.
 - Z-Anatomy's text definitions (from Wikipedia, CC BY-SA 3.0); the cards are our own.
 See docs/PLAN_3D.md §Licensing and tools/export_layers.py (`NEVER`).
 

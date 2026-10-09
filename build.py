@@ -33,7 +33,7 @@ qb = [{"id":q["id"],"sys":SYS[q["id"]],"discipline":plain(q["discipline"]),"topi
 def vhash(p): return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()[:10]
 mesh_map = json.loads((ROOT / "data/mesh_map.json").read_text(encoding="utf-8"))
 ASSET_V = {"body3d": vhash(ROOT / "js/body3d.js"), "map": vhash(ROOT / "data/mesh_map.json"),
-           **{l["file"]: vhash(ROOT / l["file"]) for l in mesh_map["layers"].values()}}
+           **{l["file"]: vhash(ROOT / l["file"]) for sc in mesh_map["scenes"].values() for l in sc["layers"].values()}}
 
 src = ROOT / "src"
 out = (src / "shell.html").read_text(encoding="utf-8")

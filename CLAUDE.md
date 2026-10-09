@@ -15,11 +15,15 @@ anything public or irreversible (creating the repo, first push, making it public
 - `src/figure.js` 2D body figure (front/back SVG) · `src/content.js` structure cards, cranial nerves, bones, lab values
 - `src/models.js` dermatomes, brain + heart models, `buildDictionary()` · `src/anat.js` anatomy UI module (`Anat`)
 - `questions/questions.py` (Block 1), `questions/questions2.py` (Block 2): question source of truth.
-- 3D (not inlined; served as separate files, loaded only when the Body tab's "3D" is chosen):
-  `js/body3d.js` viewer (ES module) · `vendor/three/` three.js 0.186.1, mapped by the import map in `src/shell.html`
-  · `models/*.glb` one file per layer (skeleton, organs, muscles, arteries, veins, nerves, lymph), each loaded the first
-  time its layer chip is switched on · `data/mesh_map.json` (per layer: model file, card key → Z-Anatomy mesh names).
-  Rebuild models with `py tools/build_models.py [layer]` (needs Blender + glTF-Transform under `work/`; see its docstring).
+- 3D (not inlined; served as separate files, loaded only when a tab's "3D" is chosen; the choice is remembered per device):
+  `js/body3d.js` viewers for the Body, Brain and Heart tabs (`viewer("body"|"brain"|"heart")`, ES module) · `vendor/three/` three.js 0.186.1, mapped by the import map in `src/shell.html`
+  · `models/*.glb` one file per layer (body: skeleton…lymph; brain_*: cortex, deep, arteries, nerves, skull; heart_*: wall,
+  valves, coronary, veins, vessels), each loaded the first time its layer chip is switched on · `data/mesh_map.json`
+  (per scene and layer: model file, card key → mesh names; brain/heart keys are Index ids br_*, cn_*, ht_*).
+  Brain/Heart 3D layer chips: `SCENE3D` in `src/models.js`. The brain has a Left/Right hemisphere control, the heart a
+  "Cut open" slider (a clipping plane).
+  Rebuild models with `py tools/build_models.py [layer]` (needs Blender + glTF-Transform under `work/`, and BodyParts3D
+  under `work/bp3d/` for the heart; see its docstring).
   What each layer takes, and what is never exported for licensing reasons, is in `tools/export_layers.py`.
 - `build.py` stamps `js/body3d.js`, the mesh map and each model with a content hash (`ASSET_V` in `index.html`); the page
   loads `js/body3d.js?v=<hash>` so phones never mix a new page with old cached 3D files. **Rebuild after changing any
@@ -56,9 +60,12 @@ anything public or irreversible (creating the repo, first push, making it public
 - 16 questions (Blocks 1–2). Anatomy: 2D body (front/back, 8 layers incl. dermatomes), brain, heart, 254-entry index.
 - Live at https://jjones1319-create.github.io/rounds/ (Phase 0 done).
 - Phase 1 done: 3D skeleton behind a "3D | Diagram" switch (Diagram stays the default); on her phone: 0.7 s, 56 fps.
-- Phase 2 built: all seven 3D layers (7.8 MB gzipped in total, loaded per layer); 156 of 168 body cards open from a
-  tap; search, Index, Bones and "Name that structure" work in 3D. 3D renders at up to 3x and steps down if fps drops.
-  Gaps: 708 structures (1,242 of 1,863 meshes) show a name-only card; write verified cards for the important ones.
+- Phase 2 done: all seven body 3D layers (7.8 MB gzipped, loaded per layer); 156 of 168 body cards open from a tap;
+  search, Index, Bones and "Name that structure" work in 3D. Renders at up to 3x and steps down if fps drops.
+- Brain and Heart tabs have 3D too (2026-10-09): real-MRI cortex (Brainder via Z-Anatomy), deep brain, circle of Willis,
+  cranial nerves; heart from Z-Anatomy plus BodyParts3D parts. Brain 28/31 and heart 18/28 cards have 3D; the rest
+  (arcuate fasciculus, prefrontal cortex, FEF; septa, conduction system, LA appendage, inside-view chamber cards) use Diagram.
+  Gaps: many structures show a name-only card; write verified cards for the important ones.
 - The live claude.ai version is the reference: behavior there should keep working here.
 
 ## Next work, in order

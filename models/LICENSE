@@ -11,6 +11,12 @@ Attribution
   https://github.com/Z-Anatomy/Models-of-human-anatomy
   Source used: Z-Anatomy.zip -> Startup.blend, commit bb293be456f6d2245191f37752d14ec76894740d
   (Z-Anatomy.zip sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736)
+- "Brain for Blender" by Anderson Winkler, CC BY-SA 3.0 Unported, https://brainder.org/brain-for-blender
+  (cortical surfaces from a real MRI brain, as placed in Z-Anatomy; used in brain_cortex.glb). BY-SA 3.0 lets
+  adaptations be licensed under a later version with the same elements, so these adaptations are CC BY-SA 4.0.
+- BodyParts3D 4.0 "part_of" meshes, downloaded directly: partof_BP3D_4.0_obj_99.zip from
+  https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/ (sha256 9fbc713fffeee924a5a657d9813d84d7eb957bded63adb854931dd5e3eb61c97),
+  for heart parts Z-Anatomy lacks (anterior mitral and tricuspid leaflets, LV anterolateral papillary muscle).
 
 Changes made (all files)
 - Exported from Z-Anatomy's Blender file by tools/export_layers.py: applied modifiers, baked world transforms, removed
@@ -28,10 +34,19 @@ What each file holds
 - nerves.glb    peripheral and cranial nerves, the sympathetic trunk, and the spinal cord (its tracts merged into one mesh).
                 Cranial nerves may derive from "Cranial Nerves and Foramina", University of Dundee, CAHID, CC BY 4.0.
 - lymph.glb     "Lymphoid organs": lymph nodes, thymus and palatine tonsil.
+- brain_cortex.glb  cerebral cortex, gyri and sulci (Brainder surfaces as placed in Z-Anatomy).
+- brain_deep.glb    cerebellum, brainstem, diencephalon, basal ganglia, hippocampus, amygdala, commissures, ventricles, pituitary.
+- brain_arteries.glb, brain_nerves.glb   arteries of the brain and the cranial nerves, trimmed to within 2 cm and 1.5 cm of the
+                    brain surface (so nerves end near the skull base).
+- brain_skull.glb   cranial bones (frontal, parietal, temporal, occipital, sphenoid, ethmoid), trimmed to the brain region.
+- heart_wall.glb, heart_valves.glb, heart_coronary.glb, heart_veins.glb, heart_vessels.glb   the heart: Z-Anatomy chambers,
+                    leaflets, papillary muscles, coronary arteries, cardiac veins and great vessels (trimmed to a box around the
+                    heart), plus the BodyParts3D parts above, moved into Z-Anatomy's space by (+1.5, +96.8, +63.9) mm, an offset
+                    measured from parts both datasets contain (Z-Anatomy's heart is BodyParts3D geometry, moved).
 
 Left out of every file
-- Brain (cerebrum, cerebellum, brainstem, deep nuclei): Z-Anatomy credits "Brainder" and "White matter" (University
-  of Washington) with no license stated, so these are not redistributed here.
+- "White matter of telencephalon": Z-Anatomy credits a "White matter" model to the University of Washington with no
+  license stated, so it is not redistributed here.
 - Inner and middle ear (cochlea, vestibule, eardrum, auditory tube, ossicles, cochlear and vestibular nerves): may come
   from "Anatomy of the Inner Ear",
   University of Dundee, CC BY-NC-SA 4.0.

@@ -46,9 +46,18 @@ if shots: shots.mkdir(parents=True, exist_ok=True)
 # ---- data/mesh_map.json against the model files and the app's cards (no browser needed)
 src = (ROOT / "src/content.js").read_text(encoding="utf-8") + (ROOT / "src/models.js").read_text(encoding="utf-8")
 INFO_LAYER = dict(re.findall(r'^\s*"?([a-z_0-9]+)"?:\s*\{\s*n:\s*"[^"]+",\s*L:\s*"([a-z]+)"', src, re.M))
-MAP = json.loads((ROOT / "data/mesh_map.json").read_text(encoding="utf-8"))["layers"]
+SCENES = json.loads((ROOT / "data/mesh_map.json").read_text(encoding="utf-8"))["scenes"]
+MAP = SCENES["body"]["layers"]
+# brain and heart cards are Index ids: br_<BRAIN item>, cn_<numeral>, ht_<HEART item>
+models_js = (ROOT / "src/models.js").read_text(encoding="utf-8")
+brain_src = models_js[models_js.index("const BRAIN"):models_js.index("const HEART")]
+heart_src = models_js[models_js.index("const HEART"):]
+heart_src = heart_src[:heart_src.index("\n};")]
+SCENE_KEYS = {"brain": {"br_" + i for i in re.findall(r'\{\s*id:\s*"([a-z_]+)"', brain_src)} | {"cn_" + n for n in re.findall(r'num:\s*"([IVX]+)"', src)},
+              "heart": {"ht_" + i for i in re.findall(r'\{\s*id:\s*"([a-z_]+)"', heart_src)}}
 problems, covered = [], set()
-for layer, cfg in MAP.items():
+for scene, layers in SCENES.items():
+  for layer, cfg in layers["layers"].items():
     blob = (ROOT / cfg["file"]).read_bytes(); n = struct.unpack_from("<I", blob, 12)[0]
     nodes = json.loads(blob[20:20 + n])["nodes"]
     have = {(nd["extras"]["n"], nd["extras"]["s"]) for nd in nodes if "mesh" in nd}
@@ -57,20 +66,23 @@ for layer, cfg in MAP.items():
     if size > 15 * 1048576: problems.append(f"{cfg['file']} is {size / 1048576:.1f} MB (limit ~15 MB)")
     for key, lst in cfg["cards"].items():
         covered.add(key)
-        if INFO_LAYER.get(key) != layer: problems.append(f"{key}: card layer {INFO_LAYER.get(key)} != {layer}")
+        if scene == "body" and INFO_LAYER.get(key) != layer: problems.append(f"{key}: card layer {INFO_LAYER.get(key)} != {layer}")
+        if scene != "body" and key not in SCENE_KEYS[scene]: problems.append(f"{scene}/{key}: no such card")
         for nm in lst:
             seen[nm] += 1
             base, side = (nm[:-2], nm[-1].upper()) if re.search(r"\.(l|r)$", nm) else (nm, None)
-            if base not in names or (side and (base, side) not in have): problems.append(f"{layer}/{key}: no mesh '{nm}'")
-    problems += [f"{layer}: '{nm}' is in {c} cards" for nm, c in seen.items() if c > 1]
+            if base not in names or (side and (base, side) not in have): problems.append(f"{scene}/{layer}/{key}: no mesh '{nm}'")
+    problems += [f"{scene}/{layer}: '{nm}' is in {c} cards" for nm, c in seen.items() if c > 1]
 body_cards = {k for k, L in INFO_LAYER.items() if L in MAP}
 # index.html's version stamps must match the files, or browsers may keep stale 3D files (rebuild with build.py)
 import hashlib
 vh = lambda f: hashlib.sha256((ROOT / f).read_bytes().replace(b"\r\n", b"\n")).hexdigest()[:10]
 stamps = json.loads(re.search(r"const ASSET_V = (\{.*?\});", (ROOT / "index.html").read_text(encoding="utf-8")).group(1))
-want = {"body3d": vh("js/body3d.js"), "map": vh("data/mesh_map.json"), **{c["file"]: vh(c["file"]) for c in MAP.values()}}
+want = {"body3d": vh("js/body3d.js"), "map": vh("data/mesh_map.json"), **{c["file"]: vh(c["file"]) for sc in SCENES.values() for c in sc["layers"].values()}}
 check("index.html version stamps are current", stamps == want, ", ".join(k for k in want if stamps.get(k) != want[k]) or "")
-check("mesh map matches models and cards", not problems, "; ".join(problems[:5]) or f"{len(covered)} of {len(body_cards)} body cards have 3D")
+nb = len(covered & body_cards); nbr = len(covered & SCENE_KEYS["brain"]); nh = len(covered & SCENE_KEYS["heart"])
+check("mesh map matches models and cards", not problems, "; ".join(problems[:5]) or
+      f"3D cards: body {nb}/{len(body_cards)}, brain {nbr}/{len(SCENE_KEYS['brain'])}, heart {nh}/{len(SCENE_KEYS['heart'])}")
 
 def open_3d(pg):
     ev = pg.evaluate
@@ -91,7 +103,8 @@ def pressed(pg, layer): return pg.get_attribute(f"[data-act=layer][data-v={layer
 # Her phone: Galaxy S25 Ultra (Chrome: 412 x 891 CSS px, 3.5x; Snapdragon 8 Elite, Adreno 830). No CPU slowdown.
 PHONE = dict(viewport={"width": 412, "height": 891}, device_scale_factor=3.5, has_touch=True, is_mobile=True)
 ARGS = ["--enable-unsafe-swiftshader", "--use-angle=swiftshader", "--ignore-gpu-blocklist"]
-B3 = "(await import('./js/body3d.js?v=' + ASSET_V.body3d))"   # same URL as the app, so the same module instance
+MOD = "(await import('./js/body3d.js?v=' + ASSET_V.body3d))"   # same URL as the app, so the same module instance
+B3 = MOD + ".viewer('body')"
 with sync_playwright() as p:
     b = p.chromium.launch(args=ARGS)
     ctx = b.new_context(**PHONE)
@@ -173,12 +186,85 @@ with sync_playwright() as p:
     ev("document.querySelector('[data-act=atab][data-v=index]').click()"); pg.wait_for_timeout(200)
     pg.fill("#idxsearch", "great saphenous"); pg.wait_for_timeout(200); ev("document.querySelector('#idxlist [data-act=dict-go]').click()"); idle(pg)
     check("Index jumps to a 3D vein", "great saphenous" in pg.inner_text("#infocard").lower() and bool(pg.query_selector("#fig3d canvas")))
+
+    # ---- Brain tab in 3D
+    BV, HV = MOD + ".viewer('brain')", MOD + ".viewer('heart')"
+    def index_go(q):
+        ev("document.querySelector('[data-act=atab][data-v=index]').click()"); pg.wait_for_timeout(200)
+        pg.fill("#idxsearch", q); pg.wait_for_timeout(200); ev("document.querySelector('#idxlist [data-act=dict-go]').click()"); pg.wait_for_timeout(1200)
+    def scene_3d(sc):
+        ev(f"document.querySelector('[data-act=atab][data-v={sc}]').click()"); pg.wait_for_timeout(300)
+        ev(f"document.querySelector('[data-act=scene-mode][data-scene={sc}][data-v=\"3d\"]').click()")
+        pg.wait_for_selector(f"#load3d-{sc}", state="hidden", timeout=120000); pg.wait_for_timeout(400)
+    scene_3d("brain")
+    st = ev(f"async () => {BV}.stats")
+    check("Brain 3D loads cortex, deep brain, arteries and cranial nerves", set(st["layers"]) == {"cortex", "deep", "artery", "nerve"},
+          f"{st['meshes']} meshes, {round(st['triangles'] / 1000)}k triangles")
+    if shots: pg.screenshot(path=str(shots / "3d-brain.png"))
+    pc = ev(f"async () => {BV}.debugProject('Precentral gyrus', 'L')")
+    pg.touchscreen.tap(pc["x"], pc["y"]); pg.wait_for_timeout(400)
+    t = pg.inner_text("#card3d-brain")
+    check("tap the precentral gyrus opens the motor cortex card", "Primary motor cortex" in t and "Left" in t, t.split("\n")[1] if "\n" in t else t)
+    ev("document.querySelector('[data-act=brain-side][data-v=L]').click()"); pg.wait_for_timeout(700)
+    hidden = ev(f"async () => {BV}.debugProject('Precentral gyrus', 'R')") is None
+    cc = ev(f"async () => {BV}.debugProject('Corpus callosum')")
+    check("Left hemisphere only: right side hidden, midline kept", hidden and cc is not None)
+    if shots: pg.screenshot(path=str(shots / "3d-brain-medial.png"))
+    ev("document.querySelector('[data-act=brain-side][data-v=\"\"]').click()"); pg.wait_for_timeout(500)
+    index_go("oculomotor")
+    t = pg.inner_text("#card3d-brain") if pg.query_selector("#card3d-brain") else ""
+    check("Index jumps to a cranial nerve in 3D", "CN III" in t, t.split("\n")[1] if "\n" in t else t)
+    index_go("broca")
+    t = pg.inner_text("#card3d-brain") if pg.query_selector("#card3d-brain") else ""
+    check("Index jumps to Broca area (left hemisphere) in 3D", "Broca area" in t and "Left" in t)
+    index_go("arcuate")
+    check("no 3D match (arcuate fasciculus) falls back to the brain Diagram", bool(pg.query_selector("#brainwrap")) and "Arcuate fasciculus" in pg.inner_text("#braincard"))
+    ev("document.querySelector('[data-act=scene-mode][data-scene=brain][data-v=\"3d\"]').click()"); pg.wait_for_selector("#load3d-brain", state="hidden", timeout=60000); pg.wait_for_timeout(300)
+    ev("document.querySelector('[data-act=q3-start][data-scene=brain]').click()"); pg.wait_for_timeout(800)
+    ev("document.querySelector('[data-act=q3-pick]').click()"); pg.wait_for_timeout(300)
+    t = pg.inner_text("#card3d-brain")
+    check("Name that structure runs in the 3D brain", "Correct." in t or "Not quite." in t)
+    ev("document.querySelector('[data-act=q3-stop]').click()"); pg.wait_for_timeout(200)
+
+    # ---- Heart tab in 3D
+    scene_3d("heart")
+    st = ev(f"async () => {HV}.stats")
+    check("Heart 3D loads all five layers", set(st["layers"]) == {"wall", "valves", "coronary", "veins", "vessels"},
+          f"{st['meshes']} meshes, {round(st['triangles'] / 1000)}k triangles")
+    if shots: pg.screenshot(path=str(shots / "3d-heart.png"))
+    lv = ev(f"async () => {HV}.debugProject('Left ventricle')")
+    pg.touchscreen.tap(lv["x"] + 25, lv["y"] + 40); pg.wait_for_timeout(400)
+    t = pg.inner_text("#card3d-heart")
+    check("tap a ventricle opens its card", "ventricle" in t.lower(), t.split("\n")[1] if "\n" in t else t)
+    ev("const r = document.querySelector('#heartcut'); r.value = 55; r.dispatchEvent(new Event('input', { bubbles: true }))"); pg.wait_for_timeout(500)
+    check("Cut open slider cuts the heart", abs((ev(f"async () => {HV}.cut()") or 0) - 0.55) < 0.01 and pg.inner_text("#heartcutv") == "55%")
+    if shots: pg.screenshot(path=str(shots / "3d-heart-cut.png"))
+    ml = ev(f"async () => {HV}.debugProject('Anterior leaflet of mitral valve')")
+    pg.touchscreen.tap(ml["x"], ml["y"]); pg.wait_for_timeout(400)
+    t = pg.inner_text("#card3d-heart")
+    check("cut open: tap reaches an inner structure", any(w in t for w in ("Mitral valve", "Aortic valve", "Papillary", "Left atrium", "Left ventricle", "leaflet")),
+          t.split("\n")[1] if "\n" in t else t)
+    ev("const r = document.querySelector('#heartcut'); r.value = 0; r.dispatchEvent(new Event('input', { bubbles: true }))"); pg.wait_for_timeout(300)
+    index_go("aortic valve")
+    t = pg.inner_text("#card3d-heart") if pg.query_selector("#card3d-heart") else ""
+    check("Index jumps to the aortic valve in 3D", "Aortic valve" in t)
+    index_go("sinoatrial")
+    check("no 3D match (SA node) falls back to the heart Diagram", bool(pg.query_selector("#heartwrap")) and "Sinoatrial node" in pg.inner_text("#heartcard"))
+    ev("document.querySelector('[data-act=scene-mode][data-scene=heart][data-v=\"3d\"]').click()"); pg.wait_for_selector("#load3d-heart", state="hidden", timeout=60000); pg.wait_for_timeout(300)
+    ev("document.querySelector('[data-act=q3-start][data-scene=heart]').click()"); pg.wait_for_timeout(800)
+    ev("document.querySelector('[data-act=q3-pick]').click()"); pg.wait_for_timeout(300)
+    t = pg.inner_text("#card3d-heart")
+    check("Name that structure runs in the 3D heart", "Correct." in t or "Not quite." in t)
+    pg.reload(); pg.wait_for_timeout(600)
+    ev("document.querySelector('[data-tab=anatomy]').click()"); pg.wait_for_timeout(200)
+    ev("document.querySelector('[data-act=atab][data-v=brain]').click()"); pg.wait_for_timeout(300)
+    check("3D choice is remembered after a reload", bool(pg.query_selector("[data-act=scene-mode][data-scene=brain][data-v='3d'][aria-pressed=true]")) and bool(pg.query_selector("#fig3d-brain")))
     ctx.close()
 
     # A stale cached viewer must ask for a reload; a failed download must offer "Try again" and recover.
     ctx = b.new_context(**PHONE); pg = ctx.new_page()
     body3d = (ROOT / "js/body3d.js").read_text(encoding="utf-8")
-    pg.route("**/js/body3d.js*", lambda r: r.fulfill(status=200, content_type="text/javascript", body=body3d.replace("export const API = 2;", "export const API = 1;")))
+    pg.route("**/js/body3d.js*", lambda r: r.fulfill(status=200, content_type="text/javascript", body=re.sub(r"export const API = \d+;", "export const API = 1;", body3d)))
     open_3d_no_wait = lambda: (pg.goto(URL), pg.wait_for_timeout(400), pg.evaluate("document.querySelector('[data-tab=anatomy]').click()"),
                                pg.evaluate("document.querySelector('[data-act=body-mode][data-v=\"3d\"]').click()"), pg.wait_for_timeout(1500))
     open_3d_no_wait()
@@ -212,6 +298,14 @@ with sync_playwright() as p:
             st = pg.evaluate(f"async () => {B3}.stats")
             print(f"TIMING S25 Ultra, {label}: 3D (skeleton + organs, {mb:.2f} MB) ready {first:.1f} s after tapping 3D; "
                   f"muscles ({st['layers']['muscle']['transfer'] / 1048576:.2f} MB) +{musc:.1f} s")
+            for sc in ("brain", "heart"):
+                pg.evaluate(f"document.querySelector('[data-act=atab][data-v={sc}]').click()"); pg.wait_for_timeout(200)
+                t0 = pg.evaluate("performance.now()")
+                pg.evaluate(f"document.querySelector('[data-act=scene-mode][data-scene={sc}][data-v=\"3d\"]').click()")
+                pg.wait_for_selector(f"#load3d-{sc}", state="hidden", timeout=180000)
+                secs = (pg.evaluate("performance.now()") - t0) / 1000
+                sst = pg.evaluate(f"async () => {MOD}.viewer('{sc}').stats")
+                print(f"TIMING S25 Ultra, {label}: {sc} 3D ({sum(l['transfer'] for l in sst['layers'].values()) / 1048576:.2f} MB) ready {secs:.1f} s after tapping 3D")
             ctx.close()
     b.close()
 check("no page errors", not errs)
