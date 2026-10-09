@@ -93,7 +93,9 @@ const Anat = (function () {
   const layers3 = () => LAYERS3().map((l) => l.k).filter((k) => Body.layers.has(k));
   const layerName = (k) => (LAYERS.find((l) => l.k === k) || { n: k }).n.toLowerCase();
   const syncChips = () => { $$("[data-act=layer]").forEach((b) => b.setAttribute("aria-pressed", Body.layers.has(b.dataset.v))); const all = $("[data-act=layers-all]"); if (all) all.setAttribute("aria-pressed", (Body.mode === "3d" ? LAYERS3() : LAYERS).every((l) => Body.layers.has(l.k))); };
-  const load3D = () => b3Loading || (b3Loading = import("./js/body3d.js").then((m) => (B3 = m)));
+  const API3D = 2;   // must equal API in js/body3d.js; a different number means a stale cached viewer
+  // ?v= is the file's content hash (build.py), so a new page never runs an old cached viewer
+  const load3D = () => b3Loading || (b3Loading = import(`./js/body3d.js?v=${ASSET_V.body3d}`).then((m) => (B3 = m)));
   const SIDE_WORD = { R: "Right ", L: "Left " };
   const DIGIT = { hand: ["thumb", "index finger", "middle finger", "ring finger", "little finger"], foot: ["great toe", "second toe", "third toe", "fourth toe", "little toe"] };
   const ORD = ["first", "second", "third", "fourth", "fifth"];
@@ -116,21 +118,23 @@ const Anat = (function () {
   function mount3D() {
     const el = $("#fig3d"), msg = $("#load3d"); if (!el) return;
     mountSearch();
-    const fail =(t) => { msg.hidden = false; msg.innerHTML = `<div>${esc(t)}<br><button class="btn ghost sm" style="margin-top:10px" data-act="body-mode" data-v="2d">Use Diagram</button></div>`; };
+    const fail = (t, reload) => { msg.hidden = false; msg.dataset.failed = "1"; msg.innerHTML = `<div>${esc(t)}<div class="row" style="justify-content:center;margin-top:10px">${reload ? `<button class="btn sm" data-act="reload-app">Reload</button>` : `<button class="btn sm" data-act="body3d-retry">Try again</button>`}<button class="btn ghost sm" data-act="body-mode" data-v="2d">Use Diagram</button></div></div>`; };
     if (location.protocol === "file:") { fail("The 3D view works when the app is opened from its web address."); return; }
     load3D().then((m) => {
+      if (m.API !== API3D) { b3Loading = null; fail("Rounds was just updated. Reload to finish updating.", true); return; }
       if (!m.supported()) { fail("3D needs WebGL 2, which this browser has turned off."); return; }
       if (!el.isConnected) return;
       const colors = Object.fromEntries(LAYERS.map((l) => [l.k, l.c]));
-      return m.attach(el, { onPick: pick3D, onProgress: progress3D, t0: Body.t3, layers: layers3(), colors }).then(() => {
+      return m.attach(el, { onPick: pick3D, onProgress: progress3D, t0: Body.t3, layers: layers3(), colors, versions: ASSET_V }).then(() => {
         if (!el.isConnected) return;
         msg.hidden = true; const st = $("#status3d"); if (st) st.hidden = true;
         apply3DPending();
       });
-    }).catch((err) => { console.error(err); b3Loading = null; fail("The 3D model could not load. Check the connection, then switch to Diagram and back to try again."); });
+    }).catch((err) => { console.error(err); if (!B3) b3Loading = null; if (el.isConnected) fail("The 3D model could not load. Check the connection and try again."); });
   }
   function progress3D(layer, bytes) {
     const msg = $("#load3d"), st = $("#status3d");
+    if (msg && msg.dataset.failed) return;          // keep the error and its buttons on screen
     if (msg && !msg.hidden) msg.textContent = `Loading 3D anatomy… ${((B3 ? B3.stats.bytes : bytes) / 1048576).toFixed(1)} MB`;
     else if (st) { st.hidden = false; st.textContent = `Loading ${layerName(layer)}… ${(bytes / 1048576).toFixed(1)} MB`; }
   }
@@ -577,6 +581,8 @@ const Anat = (function () {
       case "layers-all": { const keys = (Body.mode === "3d" ? LAYERS3() : LAYERS).map((l) => l.k), all = keys.every((k) => Body.layers.has(k)); Body.layers = all ? new Set(["bone", "organ"]) : new Set([...Body.layers, ...keys]); syncChips(); applyFigState(); if (Body.mode === "3d") sync3DLayers(); return true; }
       case "sex": Body.sex = v; $$("[data-act=sex]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === v)); if (Body.sel) { const so = ID2S[Body.sel.replace(/-(r|l)$/, "")]; if (so && so.sex && so.sex !== v) { Body.sel = null; $("#infocard").innerHTML = infoCardHTML(); } } applyFigState(); return true;
       case "rotate-body": rotateBody(); return true;
+      case "body3d-retry": rerender(true); return true;
+      case "reload-app": location.reload(); return true;
       case "body-mode": if (Body.mode !== v) { if (v === "3d" && !Body.t3) Body.t3 = performance.now(); if (Body.quiz && Body.quiz.three && B3) B3.clear(); Body.quiz = null; Body.mode = v; rerender(true); } return true;
       case "zoom-in": if (Body.mode === "3d") { if (B3 && B3.isReady()) B3.zoom(1 / 1.5); } else animateVB(zoomBy(1 / 1.5)); return true;
       case "zoom-out": if (Body.mode === "3d") { if (B3 && B3.isReady()) B3.zoom(1.5); } else animateVB(zoomBy(1.5)); return true;

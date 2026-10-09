@@ -85,7 +85,7 @@ def pressed(pg, layer): return pg.get_attribute(f"[data-act=layer][data-v={layer
 # Her phone: Galaxy S25 Ultra (Chrome: 412 x 891 CSS px, 3.5x; Snapdragon 8 Elite, Adreno 830). No CPU slowdown.
 PHONE = dict(viewport={"width": 412, "height": 891}, device_scale_factor=3.5, has_touch=True, is_mobile=True)
 ARGS = ["--enable-unsafe-swiftshader", "--use-angle=swiftshader", "--ignore-gpu-blocklist"]
-B3 = "(await import('./js/body3d.js'))"
+B3 = "(await import('./js/body3d.js?v=' + ASSET_V.body3d))"   # same URL as the app, so the same module instance
 with sync_playwright() as p:
     b = p.chromium.launch(args=ARGS)
     ctx = b.new_context(**PHONE)
@@ -93,12 +93,16 @@ with sync_playwright() as p:
     pg.on("pageerror", lambda e: errs.append(str(e)))
     pg.on("console", lambda m: errs.append(m.text) if m.type == "error" and not m.text.startswith("Failed to load resource") else None)
     pg.on("requestfailed", lambda r: errs.append("request failed: " + r.url) if "fonts.g" not in r.url else None)
+    asked = []
+    pg.on("request", lambda r: asked.append(r.url) if re.search(r"/(js/body3d\.js|data/mesh_map\.json|models/\w+\.glb)", r.url) else None)
     pg.goto(URL); pg.wait_for_timeout(500)
     ev = pg.evaluate
     ev("document.querySelector('[data-tab=anatomy]').click()"); pg.wait_for_timeout(300)
     check("3D | Diagram switch on Body tab", bool(pg.query_selector("[data-act=body-mode][data-v='3d']")) and bool(pg.query_selector("[data-act=body-mode][data-v='2d'][aria-pressed=true]")))
     check("Diagram is the default view", bool(pg.query_selector("#fig .st")))
     open_3d(pg)
+    unstamped = [u for u in asked if "?v=" not in u]
+    check("3D files are requested with version stamps", asked and not unstamped, ", ".join(u.split("/")[-1] for u in unstamped[:3]) or f"{len(asked)} requests")
     st = ev(f"async () => {B3}.stats")
     lay = st["layers"]
     check("3D opens with the Diagram's layers (skeleton, organs)", set(lay) == {"bone", "organ"} and not pg.query_selector("[data-act=layer][data-v=derm]"),
@@ -163,6 +167,24 @@ with sync_playwright() as p:
     ev("document.querySelector('[data-act=atab][data-v=index]').click()"); pg.wait_for_timeout(200)
     pg.fill("#idxsearch", "great saphenous"); pg.wait_for_timeout(200); ev("document.querySelector('#idxlist [data-act=dict-go]').click()"); idle(pg)
     check("Index jumps to a 3D vein", "great saphenous" in pg.inner_text("#infocard").lower() and bool(pg.query_selector("#fig3d canvas")))
+    ctx.close()
+
+    # A stale cached viewer must ask for a reload; a failed download must offer "Try again" and recover.
+    ctx = b.new_context(**PHONE); pg = ctx.new_page()
+    body3d = (ROOT / "js/body3d.js").read_text(encoding="utf-8")
+    pg.route("**/js/body3d.js*", lambda r: r.fulfill(status=200, content_type="text/javascript", body=body3d.replace("export const API = 2;", "export const API = 1;")))
+    open_3d_no_wait = lambda: (pg.goto(URL), pg.wait_for_timeout(400), pg.evaluate("document.querySelector('[data-tab=anatomy]').click()"),
+                               pg.evaluate("document.querySelector('[data-act=body-mode][data-v=\"3d\"]').click()"), pg.wait_for_timeout(1500))
+    open_3d_no_wait()
+    check("stale viewer shows a Reload prompt", bool(pg.query_selector("#load3d [data-act=reload-app]")), pg.inner_text("#load3d")[:60])
+    pg.unroute("**/js/body3d.js*")
+    ctx.close(); ctx = b.new_context(**PHONE); pg = ctx.new_page()
+    pg.route("**/models/organs.glb*", lambda r: r.abort())
+    open_3d_no_wait(); pg.wait_for_selector("#load3d [data-act=body3d-retry]", timeout=60000)
+    pg.unroute("**/models/organs.glb*")
+    pg.evaluate("document.querySelector('[data-act=body3d-retry]').click()")
+    pg.wait_for_selector("#load3d", state="hidden", timeout=60000)
+    check("failed download offers Try again, which recovers", pg.evaluate(f"async () => {B3}.loaded('organ')"))
     ctx.close()
 
     if a.timing:

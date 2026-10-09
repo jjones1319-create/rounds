@@ -8,7 +8,12 @@ let THREE, GLTFLoader, OrbitControls, MeshoptDecoder;
 const libs = () => Promise.all([import("three"), import("three/addons/loaders/GLTFLoader.js"), import("three/addons/controls/OrbitControls.js"), import("three/addons/libs/meshopt_decoder.module.js")])
   .then(([t, g, o, m]) => { THREE = t; GLTFLoader = g.GLTFLoader; OrbitControls = o.OrbitControls; MeshoptDecoder = m.MeshoptDecoder; });
 
+/** Bumped when the page/viewer contract changes; src/anat.js refuses a viewer with a different number (stale cache). */
+export const API = 2;
 const MAP = "data/mesh_map.json";
+let V = {};                                                         // content hashes from build.py (ASSET_V)
+const versioned = (file, key = file) => (V[key] ? `${file}?v=${V[key]}` : file);
+const STALL_MS = 30000;                                             // give up on a download that stops for this long
 const reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 const PERF = new URLSearchParams(location.search).has("perf");   // ?perf shows size, load time, fps and draw calls
 const MAX_DPR = Math.min(window.devicePixelRatio || 1, 3);         // sharp on high-density phones; lowered if frames drop
@@ -128,25 +133,35 @@ function init() {
 }
 
 async function fetchBytes(url, report) {
-  const r = await fetch(url); if (!r.ok) throw new Error(url + " " + r.status);
-  if (!r.body || !r.body.getReader) { const b = await r.arrayBuffer(); report(b.byteLength); return b; }
-  const reader = r.body.getReader(), parts = []; let n = 0;
-  for (;;) { const { done, value } = await reader.read(); if (done) break; parts.push(value); n += value.length; report(n); }
-  const out = new Uint8Array(n); let o = 0; for (const p of parts) { out.set(p, o); o += p.length; }
-  return out.buffer;
+  const ac = new AbortController(); let timer;
+  const arm = () => { clearTimeout(timer); timer = setTimeout(() => ac.abort(), STALL_MS); };
+  try {
+    arm();
+    const r = await fetch(url, { signal: ac.signal }); if (!r.ok) throw new Error(url + " " + r.status);
+    if (!r.body || !r.body.getReader) { const b = await r.arrayBuffer(); report(b.byteLength); return b; }
+    const reader = r.body.getReader(), parts = []; let n = 0;
+    for (;;) { const { done, value } = await reader.read(); arm(); if (done) break; parts.push(value); n += value.length; report(n); }
+    const out = new Uint8Array(n); let o = 0; for (const p of parts) { out.set(p, o); o += p.length; }
+    return out.buffer;
+  } finally { clearTimeout(timer); }
 }
+/* A failed layer load clears itself so the next request retries it; the noop handler stops an "unhandled rejection"
+   when the failure lands before anyone awaits it (callers still see the error). */
+const retryable = (layer, p) => { const q = p.catch((e) => { L[layer].loading = null; throw e; }); q.catch(() => {}); return q; };
+/* Libraries, renderer and mesh map, once; the first layers' downloads start as soon as the map arrives. */
 async function start(first) {
-  stats.tLoadStart = performance.now();
-  const mapP = fetch(MAP).then((r) => { if (!r.ok) throw new Error("map " + r.status); return r.json(); });
+  stats.tLoadStart = stats.tLoadStart || performance.now();
+  const mapP = fetch(versioned(MAP, "map")).then((r) => { if (!r.ok) throw new Error("map " + r.status); return r.json(); });
   mapP.catch(() => {});
-  // the map is tiny; fetch the first layers' files alongside the libraries
   const early = {};
   mapP.then((m) => { for (const k of first) if (m.layers[k]) early[k] = fetchLayer(k, m.layers[k].file); }).catch(() => {});
   await libs();
-  init();
+  if (!renderer) init();
   map = await mapP;
   for (const [layer, cfg] of Object.entries(map.layers)) {
-    L[layer] = { file: cfg.file, root: null, meshes: [], loading: early[layer] ? parseLayer(layer, early[layer]) : null, visible: false };
+    if (L[layer]) continue;
+    L[layer] = { file: cfg.file, root: null, meshes: [], loading: null, visible: false };
+    if (early[layer]) L[layer].loading = retryable(layer, parseLayer(layer, early[layer]));
     for (const [key, names] of Object.entries(cfg.cards)) {
       layerOfKey.set(key, layer);
       for (const n of names) { const m = n.match(/^(.*)\.(l|r)$/); keyOf.set(m ? `${m[1]}|${m[2].toUpperCase()}` : n, key); }
@@ -155,14 +170,14 @@ async function start(first) {
 }
 function fetchLayer(layer, file) {
   stats.layers[layer] = { bytes: 0, transfer: 0, triangles: 0, meshes: 0 };
-  const p = fetchBytes(file, (n) => { stats.layers[layer].bytes = n; stats.bytes = Object.values(stats.layers).reduce((s, l) => s + l.bytes, 0); onProgress(layer, n); });
+  const p = fetchBytes(versioned(file), (n) => { stats.layers[layer].bytes = n; stats.bytes = Object.values(stats.layers).reduce((s, l) => s + l.bytes, 0); onProgress(layer, n); });
   p.catch(() => {});
   return p;
 }
 async function parseLayer(layer, bytesP) {
   const buf = await bytesP;
   const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(buf, "");
-  const st = stats.layers[layer], res = performance.getEntriesByName(new URL(L[layer].file, location.href).href)[0];
+  const st = stats.layers[layer], res = performance.getEntriesByName(new URL(versioned(L[layer].file), location.href).href)[0];
   st.transfer = res && res.encodedBodySize ? res.encodedBodySize : st.bytes;
   const root = gltf.scene;
   root.traverse((o) => {
@@ -261,9 +276,10 @@ export function attach(el, opts = {}) {
   onPick = opts.onPick || (() => {});
   onProgress = opts.onProgress || (() => {});
   if (opts.colors) layerColors = opts.colors;
+  if (opts.versions) V = opts.versions;
   if (opts.t0 && !stats.tTap) stats.tTap = opts.t0;
   container = el;
-  if (!ready) ready = start(opts.layers || ["bone"]);
+  if (!ready) ready = start(opts.layers || ["bone"]).catch((e) => { ready = null; throw e; });   // a failed start can be retried
   return ready.then(() => setLayers(opts.layers || ["bone"])).then(() => {
     if (container !== el) return stats;          // a later attach() (re-render) owns the canvas now
     el.appendChild(renderer.domElement);
@@ -291,7 +307,7 @@ export function setLayers(keys) {
   for (const [layer, l] of Object.entries(L)) {
     l.visible = want.has(layer);
     if (l.root) l.root.visible = l.visible;
-    if (l.visible && !l.loading) l.loading = parseLayer(layer, fetchLayer(layer, l.file)).catch((e) => { l.loading = null; throw e; });
+    if (l.visible && !l.loading) l.loading = retryable(layer, parseLayer(layer, fetchLayer(layer, l.file)));
     if (l.visible) jobs.push(l.loading);
   }
   if (sel && !L[sel.layer].visible) { setSelection(null); onPick(null); }

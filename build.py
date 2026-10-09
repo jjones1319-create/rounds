@@ -1,7 +1,7 @@
 """Build the single-file app (index.html) from src/ and questions/.
 Run from the repo root:  python build.py
 """
-import json, re, html, sys
+import hashlib, json, re, html, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "questions"))
@@ -28,9 +28,18 @@ qb = [{"id":q["id"],"sys":SYS[q["id"]],"discipline":plain(q["discipline"]),"topi
        "why_correct":[h(p) for p in q["why_correct"]],"why_wrong":{k:h(v) for k,v in q["why_wrong"].items()},
        "objective":h(q["objective"]),"sources":[h(s) for s in q["sources"]]} for q in QUESTIONS]
 
+# Version stamps for the separately served 3D files: the page asks for js/body3d.js?v=<hash> and the viewer adds the
+# same kind of stamp to the mesh map and each model, so a browser can never mix a new page with old cached 3D files.
+def vhash(p): return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()[:10]
+mesh_map = json.loads((ROOT / "data/mesh_map.json").read_text(encoding="utf-8"))
+ASSET_V = {"body3d": vhash(ROOT / "js/body3d.js"), "map": vhash(ROOT / "data/mesh_map.json"),
+           **{l["file"]: vhash(ROOT / l["file"]) for l in mesh_map["layers"].values()}}
+
 src = ROOT / "src"
 out = (src / "shell.html").read_text(encoding="utf-8")
 out = out.replace("__QBANK__", json.dumps(qb, ensure_ascii=False).replace("</","<\\/"))
+assert out.count("__ASSET_V__") == 1, "src/shell.html must contain __ASSET_V__ once"
+out = out.replace("__ASSET_V__", json.dumps(ASSET_V))
 for marker, name in [("FIGURE_JS","figure.js"),("CONTENT_JS","content.js"),("MODELS_JS","models.js"),("ANAT_JS","anat.js"),("APP_JS","app.js")]:
     out = out.replace(f"/*{marker}*/", (src / name).read_text(encoding="utf-8"))
 (ROOT / "index.html").write_text(out, encoding="utf-8")
