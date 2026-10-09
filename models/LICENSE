@@ -12,13 +12,31 @@ Attribution
   Source used: Z-Anatomy.zip -> Startup.blend, commit bb293be456f6d2245191f37752d14ec76894740d
   (Z-Anatomy.zip sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736)
 
-skeleton.glb: changes made
-- Selected the bone and costal-cartilage meshes of Z-Anatomy's "Skeletal system" collection. Left out: the
-  auditory ossicles, laryngeal and nasal cartilages, and the sinus/air-cell volumes (list in tools/export_skeleton.py).
-- Applied modifiers, baked world transforms, removed materials, UVs, labels and text definitions.
-- Renamed nodes and stored the original Z-Anatomy name and side as glTF extras ("n", "s").
-- Welded, simplified (meshoptimizer, 50% triangle target, 0.2% error limit), quantized and compressed (EXT_meshopt_compression)
-  with glTF-Transform. Rebuild with tools/build_models.py.
+Changes made (all files)
+- Exported from Z-Anatomy's Blender file by tools/export_layers.py: applied modifiers, baked world transforms, removed
+  materials, UVs, labels and text definitions; vessels and nerves (Bezier curves) were turned into tubes at a lower
+  resolution (8 sides). Nodes are renamed; the original Z-Anatomy name and side are stored as glTF extras ("n", "s").
+- Welded, simplified (meshoptimizer), quantized and compressed (EXT_meshopt_compression) with glTF-Transform by
+  tools/build_models.py, which lists the simplification settings per file.
+
+What each file holds
+- skeleton.glb  bones and costal cartilages from "Skeletal system" (no ossicles, laryngeal/nasal cartilages or sinus volumes).
+- organs.glb    "Visceral systems" plus the heart chambers, spleen, diaphragm and eye (sclera, cornea); without the pleura,
+                omenta, mesocolon, liver segments, segmental bronchi, ducts inside the pancreas, mucosa and gingiva.
+- muscles.glb   "Muscular system" muscles and tendons; no fascia, aponeuroses, bursae, tendon sheaths, retinacula or septa.
+- arteries.glb, veins.glb   "Cardiovascular system" vessels, split by Z-Anatomy's artery and vein collections.
+- nerves.glb    peripheral and cranial nerves, the sympathetic trunk, and the spinal cord (its tracts merged into one mesh).
+                Cranial nerves may derive from "Cranial Nerves and Foramina", University of Dundee, CAHID, CC BY 4.0.
+- lymph.glb     "Lymphoid organs": lymph nodes, thymus and palatine tonsil.
+
+Left out of every file
+- Brain (cerebrum, cerebellum, brainstem, deep nuclei): Z-Anatomy credits "Brainder" and "White matter" (University
+  of Washington) with no license stated, so these are not redistributed here.
+- Inner and middle ear (cochlea, vestibule, eardrum, auditory tube, ossicles, cochlear and vestibular nerves): may come
+  from "Anatomy of the Inner Ear",
+  University of Dundee, CC BY-NC-SA 4.0.
+- Kidney internals (renal pelvis, intrarenal vessels): may come from "Kidney", Lissie Cowley, CC BY-NC 4.0. The kidney
+  itself is the BodyParts3D kidney.
 
 No material under a non-commercial license is included.
 

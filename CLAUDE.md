@@ -17,8 +17,13 @@ anything public or irreversible (creating the repo, first push, making it public
 - `questions/questions.py` (Block 1), `questions/questions2.py` (Block 2): question source of truth.
 - 3D (not inlined; served as separate files, loaded only when the Body tab's "3D" is chosen):
   `js/body3d.js` viewer (ES module) · `vendor/three/` three.js 0.186.1, mapped by the import map in `src/shell.html`
-  · `models/skeleton.glb` · `data/mesh_map.json` (card key → Z-Anatomy mesh names).
-  Rebuild models with `py tools/build_models.py` (needs Blender + glTF-Transform under `work/`; see its docstring).
+  · `models/*.glb` one file per layer (skeleton, organs, muscles, arteries, veins, nerves, lymph), each loaded the first
+  time its layer chip is switched on · `data/mesh_map.json` (per layer: model file, card key → Z-Anatomy mesh names).
+  Rebuild models with `py tools/build_models.py [layer]` (needs Blender + glTF-Transform under `work/`; see its docstring).
+  What each layer takes, and what is never exported for licensing reasons, is in `tools/export_layers.py`.
+- The Body tab's layer chips drive both views (`Body.layers`); 3D has no dermatome layer and is a male model.
+  Cards with no 3D match (female organs, rectum, brain, phrenic/RLN/inferior gluteal nerves, lymph ducts, orbit)
+  fall back to the Diagram.
 - Tests (need `pip install -r tests/requirements.txt` and `python -m playwright install chromium`):
   `python tests/smoke.py`, `python tests/overflow.py`, and `python tests/three_d.py` (serves the repo over http,
   since 3D can't load from file://; `--timing` emulates phones on 4G). Run all three after every change, before every push.
@@ -46,14 +51,16 @@ anything public or irreversible (creating the repo, first push, making it public
 ## Current state (2026-10-09)
 - 16 questions (Blocks 1–2). Anatomy: 2D body (front/back, 8 layers incl. dermatomes), brain, heart, 254-entry index.
 - Live at https://jjones1319-create.github.io/rounds/ (Phase 0 done).
-- Phase 1 built: 3D skeleton (252 meshes, 1.3 MB gzipped) behind a "3D | Diagram" switch; Diagram stays the default.
-  Awaiting the owner's report from her phone before Phase 2.
+- Phase 1 done: 3D skeleton behind a "3D | Diagram" switch (Diagram stays the default); on her phone: 0.7 s, 56 fps.
+- Phase 2 built: all seven 3D layers (7.8 MB gzipped in total, loaded per layer); 156 of 168 body cards open from a
+  tap; search, Index, Bones and "Name that structure" work in 3D. 3D renders at up to 3x and steps down if fps drops.
+  Gaps: 708 structures (1,242 of 1,863 meshes) show a name-only card; write verified cards for the important ones.
 - The live claude.ai version is the reference: behavior there should keep working here.
 
 ## Next work, in order
 See `docs/PLAN_3D.md` for details and acceptance criteria.
 0. Repo + GitHub Pages setup; confirm the current app works on her phone.
-1. 3D feasibility test: simplified real skeleton, rotate/zoom/tap, measure size and phone performance. Report back before continuing.
-2. Add organs, vessels, nerves, muscles as lazy-loaded layers; map meshes to existing cards and the index.
+1. ~~3D feasibility test~~ (done 2026-10-09).
+2. ~~Organs, vessels, nerves, muscles, lymphatics as lazy-loaded layers~~ (built 2026-10-09; confirm on her phone).
 3. Progress export/import + installable PWA (manifest, icons, offline cache).
 4. Block 3 questions per the spec (coverage gaps are listed in spec §7).

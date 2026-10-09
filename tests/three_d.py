@@ -5,7 +5,7 @@ serves the repo itself, gzipping like GitHub Pages does. Run from repo root afte
     python tests/three_d.py --url https://jjones1319-create.github.io/rounds/ --timing   # the live site
     python tests/three_d.py --shots work/shots   # save screenshots
 Exits non-zero on any page error or failed check."""
-import argparse, gzip, http.server, io, sys, threading
+import argparse, collections, gzip, http.server, io, json, re, struct, sys, threading
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
@@ -43,16 +43,49 @@ def check(name, ok, detail=""):
 shots = Path(a.shots) if a.shots else None
 if shots: shots.mkdir(parents=True, exist_ok=True)
 
+# ---- data/mesh_map.json against the model files and the app's cards (no browser needed)
+src = (ROOT / "src/content.js").read_text(encoding="utf-8") + (ROOT / "src/models.js").read_text(encoding="utf-8")
+INFO_LAYER = dict(re.findall(r'^\s*"?([a-z_0-9]+)"?:\s*\{\s*n:\s*"[^"]+",\s*L:\s*"([a-z]+)"', src, re.M))
+MAP = json.loads((ROOT / "data/mesh_map.json").read_text(encoding="utf-8"))["layers"]
+problems, covered = [], set()
+for layer, cfg in MAP.items():
+    blob = (ROOT / cfg["file"]).read_bytes(); n = struct.unpack_from("<I", blob, 12)[0]
+    nodes = json.loads(blob[20:20 + n])["nodes"]
+    have = {(nd["extras"]["n"], nd["extras"]["s"]) for nd in nodes if "mesh" in nd}
+    names, seen = {x for x, _ in have}, collections.Counter()
+    size = (ROOT / cfg["file"]).stat().st_size
+    if size > 15 * 1048576: problems.append(f"{cfg['file']} is {size / 1048576:.1f} MB (limit ~15 MB)")
+    for key, lst in cfg["cards"].items():
+        covered.add(key)
+        if INFO_LAYER.get(key) != layer: problems.append(f"{key}: card layer {INFO_LAYER.get(key)} != {layer}")
+        for nm in lst:
+            seen[nm] += 1
+            base, side = (nm[:-2], nm[-1].upper()) if re.search(r"\.(l|r)$", nm) else (nm, None)
+            if base not in names or (side and (base, side) not in have): problems.append(f"{layer}/{key}: no mesh '{nm}'")
+    problems += [f"{layer}: '{nm}' is in {c} cards" for nm, c in seen.items() if c > 1]
+body_cards = {k for k, L in INFO_LAYER.items() if L in MAP}
+check("mesh map matches models and cards", not problems, "; ".join(problems[:5]) or f"{len(covered)} of {len(body_cards)} body cards have 3D")
+
 def open_3d(pg):
     ev = pg.evaluate
     ev("document.querySelector('[data-tab=anatomy]').click()"); pg.wait_for_timeout(300)
     ev("document.querySelector('[data-act=body-mode][data-v=\"3d\"]').click()")
     pg.wait_for_selector("#load3d", state="hidden", timeout=120000)
     pg.wait_for_timeout(300)
+def idle(pg):   # wait for any layer download to finish
+    pg.wait_for_selector("#status3d", state="hidden", timeout=120000); pg.wait_for_timeout(300)
+def card(pg):
+    t = pg.inner_text("#infocard"); return t, (t.split("\n")[1] if "\n" in t else t)
+def search(pg, q):
+    pg.fill("#bsearch", q); pg.wait_for_timeout(150); pg.click("#bresults button"); pg.wait_for_timeout(500)
+def chip(pg, layer):
+    pg.evaluate(f"document.querySelector('[data-act=layer][data-v={layer}]').click()"); pg.wait_for_timeout(200)
+def pressed(pg, layer): return pg.get_attribute(f"[data-act=layer][data-v={layer}]", "aria-pressed") == "true"
 
 # Her phone: Galaxy S25 Ultra (Chrome: 412 x 891 CSS px, 3.5x; Snapdragon 8 Elite, Adreno 830). No CPU slowdown.
 PHONE = dict(viewport={"width": 412, "height": 891}, device_scale_factor=3.5, has_touch=True, is_mobile=True)
 ARGS = ["--enable-unsafe-swiftshader", "--use-angle=swiftshader", "--ignore-gpu-blocklist"]
+B3 = "(await import('./js/body3d.js'))"
 with sync_playwright() as p:
     b = p.chromium.launch(args=ARGS)
     ctx = b.new_context(**PHONE)
@@ -66,42 +99,70 @@ with sync_playwright() as p:
     check("3D | Diagram switch on Body tab", bool(pg.query_selector("[data-act=body-mode][data-v='3d']")) and bool(pg.query_selector("[data-act=body-mode][data-v='2d'][aria-pressed=true]")))
     check("Diagram is the default view", bool(pg.query_selector("#fig .st")))
     open_3d(pg)
-    B3 = "(await import('./js/body3d.js'))"
     st = ev(f"async () => {B3}.stats")
-    check("3D skeleton loads", st["meshes"] >= 240, f"{st['meshes']} meshes, {round(st['triangles'] / 1000)}k triangles")
+    lay = st["layers"]
+    check("3D opens with the Diagram's layers (skeleton, organs)", set(lay) == {"bone", "organ"} and not pg.query_selector("[data-act=layer][data-v=derm]"),
+          ", ".join(f"{k} {v['meshes']} meshes" for k, v in lay.items()))
     px = ev(f"async () => {B3}.debugDrawnPixels()")
-    check("skeleton is drawn", px["drawn"] > px["total"] * 0.02, f"{100 * px['drawn'] / px['total']:.1f}% of canvas")
+    check("model is drawn", px["drawn"] > px["total"] * 0.02, f"{100 * px['drawn'] / px['total']:.1f}% of canvas")
     if shots: pg.screenshot(path=str(shots / "3d-front.png"))
     fr, fl = ev(f"async () => {B3}.debugProject('Femur', 'R')"), ev(f"async () => {B3}.debugProject('Femur', 'L')")
     check("front view: their right is on your left", fr["x"] < fl["x"] and fr["world"][0] < 0, f"right femur x={fr['x']:.0f}, left x={fl['x']:.0f}")
     pg.touchscreen.tap(fr["x"], fr["y"]); pg.wait_for_timeout(500)
-    card = pg.inner_text("#infocard")
-    check("tap femur opens the femur card", card.startswith("Skeleton") and "Right femur" in card and "Clinical pearl" in card, card.split("\n")[1] if "\n" in card else card)
-    if shots: pg.screenshot(path=str(shots / "3d-femur.png"))
+    t, h = card(pg)
+    check("tap femur opens the femur card", t.startswith("Skeleton") and "Right femur" in t and "Clinical pearl" in t, h)
     box = pg.query_selector("#fig3d").bounding_box()
     pg.touchscreen.tap(box["x"] + 20, box["y"] + box["height"] - 60); pg.wait_for_timeout(300)
-    check("tap empty space clears", "Tap any bone" in pg.inner_text("#infocard"))
+    check("tap empty space clears", "Tap any structure" in pg.inner_text("#infocard"))
+    li = ev(f"async () => {B3}.debugProject('Liver')")
+    pg.touchscreen.tap(li["x"], li["y"]); pg.wait_for_timeout(400)
+    t, h = card(pg)
+    check("tap an organ opens its card", t.startswith("Organs") and "Liver" in h, h)
+    chip(pg, "organ")
     l3 = ev(f"async () => {B3}.debugProject('Vertebra L3')")
     pg.touchscreen.tap(l3["x"], l3["y"]); pg.wait_for_timeout(400)
-    card = pg.inner_text("#infocard")
-    check("tap a vertebra opens its group card", "Lumbar vertebrae" in card or "You tapped" in card, card.split("\n")[1] if "\n" in card else card)
-    ev("document.querySelector('[data-act=zoom-fit]').click()"); pg.wait_for_timeout(600)
-    pg.fill("#bsearch", "scapula"); pg.wait_for_timeout(150); pg.click("#bresults button"); pg.wait_for_timeout(800)
-    check("search selects a bone in 3D", "scapula" in pg.inner_text("#infocard").lower() and bool(pg.query_selector("#fig3d canvas")))
-    if shots: pg.screenshot(path=str(shots / "3d-scapula.png"))
-    if shots:   # close-ups to judge mesh simplification
-        for q, f in [("frontal bone", "3d-skull.png"), ("carpal", "3d-hand.png")]:
-            pg.fill("#bsearch", q); pg.wait_for_timeout(150); pg.click("#bresults button"); pg.wait_for_timeout(900)
-            pg.screenshot(path=str(shots / f))
-    pg.fill("#bsearch", "vagus"); pg.wait_for_timeout(150); pg.click("#bresults button"); pg.wait_for_timeout(800)
-    check("non-bone search falls back to Diagram", bool(pg.query_selector("#fig .st")) and "vagus nerve" in pg.inner_text("#infocard").lower())
-    ev("document.querySelector('[data-act=body-mode][data-v=\"3d\"]').click()"); pg.wait_for_timeout(400)
+    t, h = card(pg)
+    check("organs off: tap a vertebra opens its group card", "Lumbar vertebrae" in t, h)
+    chip(pg, "muscle"); idle(pg)
+    check("muscle layer loads when switched on", ev(f"async () => {B3}.loaded('muscle')") and pressed(pg, "muscle"))
+    bi = ev(f"async () => {B3}.debugProject('Long head of biceps brachii', 'R')")
+    pg.touchscreen.tap(bi["x"], bi["y"]); pg.wait_for_timeout(400)
+    t, h = card(pg)
+    check("tap a muscle opens its card", t.startswith("Muscles") and "biceps brachii" in h.lower(), h)
+    if shots: pg.screenshot(path=str(shots / "3d-muscles.png"))
+    ev("document.querySelector('[data-act=zoom-fit]').click()"); pg.wait_for_timeout(500)
+    search(pg, "aorta"); idle(pg)
+    t, h = card(pg)
+    check("search loads the artery layer and shows the aorta", "Aorta" in h and pressed(pg, "artery") and bool(pg.query_selector("#fig3d canvas")), h)
+    if shots: pg.screenshot(path=str(shots / "3d-aorta.png"))
+    search(pg, "brachial plexus"); idle(pg)
+    t, h = card(pg)
+    check("search loads nerves and shows the brachial plexus", "brachial plexus" in h.lower() and pressed(pg, "nerve"), h)
+    search(pg, "axillary lymph"); idle(pg)
+    t, h = card(pg)
+    check("search loads lymphatics and shows axillary nodes", "axillary lymph nodes" in h.lower() and pressed(pg, "lymph"), h)
+    ev("document.querySelector('[data-act=id-quiz]').click()"); pg.wait_for_timeout(800)
+    t, h = card(pg)
+    ok = "Name that structure" in t and bool(pg.query_selector("#fig3d canvas"))
+    ev("document.querySelector('[data-act=id-pick]').click()"); pg.wait_for_timeout(300)
+    t2 = pg.inner_text("#infocard")
+    check("Name that structure runs in 3D", ok and ("Correct." in t2 or "Not quite." in t2), t2.split("\n")[-1][:60])
+    ev("document.querySelector('[data-act=id-quiz-stop]').click()"); pg.wait_for_timeout(300)
+    ev("document.querySelector('[data-act=layers-all]').click()"); idle(pg)
+    st = ev(f"async () => {B3}.stats")
+    check("All layers loads all seven", len(st["layers"]) == 7 and all(st["layers"][k]["meshes"] for k in st["layers"]),
+          f"{st['meshes']} meshes, {round(st['triangles'] / 1000)}k triangles")
+    if shots: pg.screenshot(path=str(shots / "3d-all.png"))
+    search(pg, "uterus"); pg.wait_for_timeout(500)
+    check("no 3D match (uterus) falls back to Diagram", bool(pg.query_selector("#fig .st")) and "uterus" in pg.inner_text("#infocard").lower())
+    ev("document.querySelector('[data-act=body-mode][data-v=\"3d\"]').click()"); pg.wait_for_timeout(500)
     check("back to 3D reuses the loaded model", pg.is_hidden("#load3d") and bool(pg.query_selector("#fig3d canvas")))
     ev("document.querySelector('[data-act=atab][data-v=bones]').click()"); pg.wait_for_timeout(200)
     ev("document.querySelector('[data-act=show-fig][data-fig=femur]').click()"); pg.wait_for_timeout(800)
     check("Bones tab 'Show on the body' opens 3D femur", "femur" in pg.inner_text("#infocard").lower() and bool(pg.query_selector("#fig3d canvas")))
-    ev("document.querySelector('[data-act=id-quiz]').click()"); pg.wait_for_timeout(500)
-    check("Name that structure runs in Diagram", "Name that structure" in pg.inner_text("#infocard") and bool(pg.query_selector("#fig .st")))
+    ev("document.querySelector('[data-act=atab][data-v=index]').click()"); pg.wait_for_timeout(200)
+    pg.fill("#idxsearch", "great saphenous"); pg.wait_for_timeout(200); ev("document.querySelector('#idxlist [data-act=dict-go]').click()"); idle(pg)
+    check("Index jumps to a 3D vein", "great saphenous" in pg.inner_text("#infocard").lower() and bool(pg.query_selector("#fig3d canvas")))
     ctx.close()
 
     if a.timing:
@@ -115,13 +176,14 @@ with sync_playwright() as p:
             pg.goto(URL); pg.wait_for_timeout(300)
             open_3d(pg)
             st = pg.evaluate(f"async () => {B3}.stats")
-            res = pg.evaluate("""() => performance.getEntriesByType('resource').filter(r => /vendor\\/three|body3d|skeleton\\.glb|mesh_map/.test(r.name))
-                                 .map(r => ({n: r.name.split('/').pop(), t: r.transferSize, e: r.encodedBodySize, d: r.decodedBodySize}))""")
-            sent = sum(r["e"] for r in res)
-            glb = next((r for r in res if r["n"] == "skeleton.glb"), {"e": 0, "d": 0})
-            print(f"TIMING S25 Ultra, {label}: 3D ready {(st['tFirstFrame'] - st['tTap']) / 1000:.1f} s after tapping 3D "
-                  f"(model parsed {(st['tLoaded'] - st['tLoadStart']) / 1000:.1f} s after its request started); "
-                  f"transferred {sent / 1048576:.2f} MB (model {glb['e'] / 1048576:.2f} MB, unpacked {glb['d'] / 1048576:.2f} MB)")
+            first = (st["tFirstFrame"] - st["tTap"]) / 1000
+            mb = sum(l["transfer"] for l in st["layers"].values()) / 1048576
+            t0 = pg.evaluate("performance.now()")
+            pg.evaluate("document.querySelector('[data-act=layer][data-v=muscle]').click()"); idle(pg)
+            musc = (pg.evaluate("performance.now()") - t0) / 1000
+            st = pg.evaluate(f"async () => {B3}.stats")
+            print(f"TIMING S25 Ultra, {label}: 3D (skeleton + organs, {mb:.2f} MB) ready {first:.1f} s after tapping 3D; "
+                  f"muscles ({st['layers']['muscle']['transfer'] / 1048576:.2f} MB) +{musc:.1f} s")
             ctx.close()
     b.close()
 check("no page errors", not errs)

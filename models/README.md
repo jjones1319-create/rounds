@@ -1,12 +1,22 @@
 # models/
 
-Optimized 3D model files (`.glb`), one per anatomy layer. Raw source downloads stay in `work/` (gitignored).
+Optimized 3D model files (`.glb`), one per anatomy layer, each loaded only when its layer is switched on.
+Raw source downloads stay in `work/` (gitignored).
 
-| File | Layer | Built by |
+| File | App layer | Size (gzipped as served) |
 |---|---|---|
-| `skeleton.glb` | Skeleton (Phase 1) | `py tools/build_models.py` (Blender export → glTF-Transform weld, simplify, meshopt) |
+| `skeleton.glb` | Skeleton (`bone`) | 2.0 MB (1.3 MB) |
+| `organs.glb` | Organs (`organ`) | 0.9 MB (0.6 MB) |
+| `muscles.glb` | Muscles (`muscle`) | 4.4 MB (3.0 MB) |
+| `arteries.glb` | Arteries (`artery`) | 1.8 MB (0.9 MB) |
+| `veins.glb` | Veins (`vein`) | 1.1 MB (0.6 MB) |
+| `nerves.glb` | Nerves (`nerve`) | 1.6 MB (1.0 MB) |
+| `lymph.glb` | Lymphatics (`lymph`) | 0.6 MB (0.3 MB) |
 
-Licensed CC BY-SA 4.0: see `LICENSE` here and `CREDITS.md`. Before adding a file: read docs/PLAN_3D.md §Licensing,
-add its source and changes to `LICENSE`, and update `CREDITS.md`.
+Rebuild: `py tools/build_models.py [layer ...]` (Blender export by `tools/export_layers.py`, then glTF-Transform
+weld, simplify, meshopt). Which meshes each layer takes, and what is never exported, is in `tools/export_layers.py`.
 
-Mesh names → app cards: `data/mesh_map.json`.
+Licensed CC BY-SA 4.0: see `LICENSE` here and `CREDITS.md`. Before adding or changing a file: read docs/PLAN_3D.md
+§Licensing, update `LICENSE` and `CREDITS.md`.
+
+Mesh names → app cards: `data/mesh_map.json` (checked by `tests/three_d.py`).
