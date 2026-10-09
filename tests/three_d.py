@@ -50,10 +50,12 @@ def open_3d(pg):
     pg.wait_for_selector("#load3d", state="hidden", timeout=120000)
     pg.wait_for_timeout(300)
 
+# Her phone: Galaxy S25 Ultra (Chrome: 412 x 891 CSS px, 3.5x; Snapdragon 8 Elite, Adreno 830). No CPU slowdown.
+PHONE = dict(viewport={"width": 412, "height": 891}, device_scale_factor=3.5, has_touch=True, is_mobile=True)
 ARGS = ["--enable-unsafe-swiftshader", "--use-angle=swiftshader", "--ignore-gpu-blocklist"]
 with sync_playwright() as p:
     b = p.chromium.launch(args=ARGS)
-    ctx = b.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=2, has_touch=True, is_mobile=True)
+    ctx = b.new_context(**PHONE)
     pg = ctx.new_page()
     pg.on("pageerror", lambda e: errs.append(str(e)))
     pg.on("console", lambda m: errs.append(m.text) if m.type == "error" and not m.text.startswith("Failed to load resource") else None)
@@ -103,14 +105,13 @@ with sync_playwright() as p:
     ctx.close()
 
     if a.timing:
-        # Emulated phones (software rendering here, so fps is not meaningful; load time is).
+        # Her phone on 4G (software rendering here, so fps is not meaningful; load time is).
         nets = [("fast 4G (9 Mbps, 60 ms)", 9e6, 60), ("slow 4G (1.6 Mbps, 150 ms)", 1.6e6, 150)]
         for label, bps, rtt in nets:
-            ctx = b.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=2, has_touch=True, is_mobile=True)
+            ctx = b.new_context(**PHONE)
             pg = ctx.new_page(); cdp = ctx.new_cdp_session(pg)
             cdp.send("Network.enable"); cdp.send("Network.setCacheDisabled", {"cacheDisabled": True})
             cdp.send("Network.emulateNetworkConditions", {"offline": False, "latency": rtt, "downloadThroughput": bps / 8, "uploadThroughput": 750e3 / 8})
-            cdp.send("Emulation.setCPUThrottlingRate", {"rate": 4})
             pg.goto(URL); pg.wait_for_timeout(300)
             open_3d(pg)
             st = pg.evaluate(f"async () => {B3}.stats")
@@ -118,7 +119,7 @@ with sync_playwright() as p:
                                  .map(r => ({n: r.name.split('/').pop(), t: r.transferSize, e: r.encodedBodySize, d: r.decodedBodySize}))""")
             sent = sum(r["e"] for r in res)
             glb = next((r for r in res if r["n"] == "skeleton.glb"), {"e": 0, "d": 0})
-            print(f"TIMING {label}, CPU 4x slower: 3D ready {(st['tFirstFrame'] - st['tTap']) / 1000:.1f} s after tapping 3D "
+            print(f"TIMING S25 Ultra, {label}: 3D ready {(st['tFirstFrame'] - st['tTap']) / 1000:.1f} s after tapping 3D "
                   f"(model parsed {(st['tLoaded'] - st['tLoadStart']) / 1000:.1f} s after its request started); "
                   f"transferred {sent / 1048576:.2f} MB (model {glb['e'] / 1048576:.2f} MB, unpacked {glb['d'] / 1048576:.2f} MB)")
             ctx.close()

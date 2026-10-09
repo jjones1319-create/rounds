@@ -1,4 +1,4 @@
-"""Checks every screen for horizontal overflow at 360 and 390 px (phone widths).
+"""Checks every screen for horizontal overflow at 360, 390 and 412 px (phone widths; 412 = her Galaxy S25 Ultra).
     python tests/overflow.py"""
 import sys
 from pathlib import Path
@@ -8,7 +8,7 @@ JS = """()=>{const W=document.documentElement.clientWidth;const out=[];document.
 bad = 0
 with sync_playwright() as p:
     b = p.chromium.launch()
-    for w in (360, 390):
+    for w in (360, 390, 412):
         ctx = b.new_context(viewport={"width": w, "height": 800}, has_touch=True, is_mobile=True); pg = ctx.new_page()
         pg.goto(URL); pg.wait_for_timeout(400)
         def chk(label):

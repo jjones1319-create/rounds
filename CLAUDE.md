@@ -31,7 +31,9 @@ anything public or irreversible (creating the repo, first push, making it public
 - **Original content only.** Never copy UWorld/AMBOSS/NBME questions or Wikipedia text into cards.
 - **Question IDs are permanent** (`B1-Q01`…). Saved progress is keyed by ID. Never renumber; add new blocks
   as `questions/questionsN.py`, import them in `build.py`, and add each ID to `SYS` in `build.py`.
-- **Phone first.** Test at 360 px and 390 px wide; no horizontal overflow (`tests/overflow.py` must pass).
+- **Phone first.** Her phone is a **Samsung Galaxy S25 Ultra** (Chrome viewport about 412 × 891 CSS px at 3.5×;
+  Snapdragon 8 Elite, Adreno 830 GPU, 120 Hz screen): design for it and measure 3D on it (`tests/three_d.py` emulates it).
+  Still test at 360 and 390 px too (412 is also checked); no horizontal overflow (`tests/overflow.py` must pass).
   Keep light/dark theme tokens, safe-area insets, `prefers-reduced-motion`, and keyboard support working.
 - **Licensing.** 3D models come from share-alike sources. Read `docs/PLAN_3D.md` §Licensing before adding any
   model file, and keep `CREDITS.md` accurate.
