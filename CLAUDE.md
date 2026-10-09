@@ -21,6 +21,10 @@ anything public or irreversible (creating the repo, first push, making it public
   time its layer chip is switched on · `data/mesh_map.json` (per layer: model file, card key → Z-Anatomy mesh names).
   Rebuild models with `py tools/build_models.py [layer]` (needs Blender + glTF-Transform under `work/`; see its docstring).
   What each layer takes, and what is never exported for licensing reasons, is in `tools/export_layers.py`.
+- `build.py` stamps `js/body3d.js`, the mesh map and each model with a content hash (`ASSET_V` in `index.html`); the page
+  loads `js/body3d.js?v=<hash>` so phones never mix a new page with old cached 3D files. **Rebuild after changing any
+  of them** (`tests/three_d.py` fails if the stamps are stale). Bump `API` in `js/body3d.js` and `API3D` in
+  `src/anat.js` together when their contract changes; a mismatch shows a Reload prompt.
 - The Body tab's layer chips drive both views (`Body.layers`); 3D has no dermatome layer and is a male model.
   Cards with no 3D match (female organs, rectum, brain, phrenic/RLN/inferior gluteal nerves, lymph ducts, orbit)
   fall back to the Diagram.
