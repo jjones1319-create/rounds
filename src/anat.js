@@ -18,7 +18,7 @@ const Anat = (function () {
   const STRUCTS = FIG.structures.filter((o) => INFO[o.info || o.id] && !o.noTap);
   const DICT = buildDictionary();
   const UIA = { tab: "body" };
-  const Body = { view: "front", layers: new Set(["bone", "organ"]), sex: "f", sel: null, vb: { x: 0, y: 0, w: 400, h: 920 }, q: "", quiz: null };
+  const Body = { view: "front", layers: new Set(["bone", "organ"]), sex: "f", sel: null, vb: { x: 0, y: 0, w: 400, h: 920 }, q: "", quiz: null, mode: "2d", sel3: null };
   const Brain = { view: "lateral", sel: null, terr: false, cn: null };
   const Heart = { view: "outside", sel: null };
   const Idx = { q: "", filter: "all" };
@@ -44,14 +44,25 @@ const Anat = (function () {
     return h;
   }
   function mount() {
-    if (UIA.tab === "body") mountBody();
+    if (UIA.tab === "body") { if (Body.mode === "3d") mount3D(); else mountBody(); }
     if (UIA.tab === "brain" && Brain.view === "underside") $$(".cnfig .cn").forEach((g) => g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectCN(g.dataset.v); } }));
   }
   function rerender(keepScroll) { const y = window.scrollY; appHooks.render(); if (keepScroll) window.scrollTo(0, y); else window.scrollTo(0, 0); }
 
   /* ================= BODY ================= */
   function bodyHTML() {
-    return `<div class="search-wrap" style="margin-top:14px"><input class="search" type="search" id="bsearch" placeholder="Find a structure (femur, vagus, L5 dermatome…)" aria-label="Find a structure" value="${esc(Body.q)}" autocomplete="off"><div id="bresults"></div></div>
+    const is3 = Body.mode === "3d";
+    const top = `<div class="search-wrap" style="margin-top:14px"><input class="search" type="search" id="bsearch" placeholder="Find a structure (femur, vagus, L5 dermatome…)" aria-label="Find a structure" value="${esc(Body.q)}" autocomplete="off"><div id="bresults"></div></div>
+      <div class="row" style="margin-top:12px"><div class="seg fit" role="group" aria-label="Body view"><button data-act="body-mode" data-v="3d" aria-pressed="${is3}">3D</button><button data-act="body-mode" data-v="2d" aria-pressed="${!is3}">Diagram</button></div>${is3 ? `<span class="hint">Preview: skeleton only. Other layers are in Diagram.</span>` : ""}</div>`;
+    if (is3) return top + `
+      <div class="fig-wrap" id="figwrap" style="margin-top:10px"><div class="fig fig3d" id="fig3d"></div>
+        <div class="zoom"><button data-act="zoom-in" aria-label="Zoom in">${IC.plus}</button><button data-act="zoom-out" aria-label="Zoom out">${IC.minus}</button><button data-act="zoom-fit" aria-label="Show whole skeleton">${IC.fit}</button></div>
+        <div class="viewtag">3D</div>
+        <div class="fig-note">Drag to turn, pinch to zoom, two fingers to move.</div>
+        <div class="load3d" id="load3d" aria-live="polite">Loading the 3D skeleton…</div></div>
+      <div class="row" style="margin-top:10px"><button class="btn ghost sm" data-act="id-quiz">Name that structure</button><span class="hint">Quizzes run in Diagram for now.</span></div>
+      <div class="panel infocard" id="infocard" style="margin-top:10px" aria-live="polite">${infoCardHTML()}</div>`;
+    return top + `
       <div class="scrollx" style="margin-top:12px" role="group" aria-label="Layers"><button class="chip" data-act="layers-all" aria-pressed="${Body.layers.size === LAYERS.length}">All layers</button>${LAYERS.map((l) => `<button class="chip" data-act="layer" data-v="${l.k}" aria-pressed="${Body.layers.has(l.k)}"><span class="dot" style="background:${l.c}"></span>${l.n}</button>`).join("")}</div>
       <div class="row" style="margin:10px 0"><button class="btn ghost sm" data-act="rotate-body" aria-label="Turn the figure around">${IC.rotate}${Body.view === "front" ? "Back" : "Front"}</button><div class="seg fit" role="group" aria-label="Pelvic organs"><button data-act="sex" data-v="f" aria-pressed="${Body.sex === "f"}">Female</button><button data-act="sex" data-v="m" aria-pressed="${Body.sex === "m"}">Male</button></div></div>
       <div class="fig-wrap" id="figwrap"><svg class="fig" id="fig" viewBox="0 0 400 920" role="img" aria-label="Interactive anatomical figure, ${Body.view} view">${markup(Body.view)}</svg>
@@ -62,14 +73,67 @@ const Anat = (function () {
       <div class="panel infocard" id="infocard" style="margin-top:10px" aria-live="polite">${Body.quiz ? quizCard() : infoCardHTML()}</div>`;
   }
   function infoCardHTML() {
+    if (Body.mode === "3d") return info3DHTML();
     if (!Body.sel) return `<h3>Tap anything on the body</h3><p class="muted" style="margin:6px 0 0">Switch layers with the chips, turn the figure around, pinch or scroll to zoom, and drag to move. Every structure has a short description and a board-relevant clinical pearl. Dermatomes are a layer too.</p>`;
     const base = Body.sel.replace(/-(r|l)$/, ""), so = ID2S[base], key = so ? (so.info || so.id) : base;
     const side = /-r$/.test(Body.sel) ? "Right " : /-l$/.test(Body.sel) ? "Left " : "";
+    return keyCardHTML(key, side, true, "");
+  }
+  function keyCardHTML(key, side, showPost, extra) {
     const inf = INFO[key]; if (!inf) return "";
     const lay = layerOf(key);
     const display = side && inf.L !== "derm" ? side + inf.n.charAt(0).toLowerCase() + inf.n.slice(1) : inf.n;
-    const pills = pill(lay.n, lay.c) + (inf.post ? pill("Back of the body") : "");
-    return cardHTML(display, pills, inf.d, inf.p, `<p style="margin:8px 0 0"><button class="btn quiet sm" style="padding:0" data-act="dict-go" data-id="${key}">Open in the index</button></p>`);
+    const pills = pill(lay.n, lay.c) + (showPost && inf.post ? pill("Back of the body") : "");
+    return cardHTML(display, pills, inf.d, inf.p, extra + `<p style="margin:8px 0 0"><button class="btn quiet sm" style="padding:0" data-act="dict-go" data-id="${key}">Open in the index</button></p>`);
+  }
+
+  /* ---------- 3D body (Phase 1: skeleton). js/body3d.js loads on first use. ---------- */
+  let B3 = null, b3Loading = null;
+  const load3D = () => b3Loading || (b3Loading = import("./js/body3d.js").then((m) => (B3 = m)));
+  const SIDE_WORD = { R: "Right ", L: "Left " };
+  const DIGIT = { hand: ["thumb", "index finger", "middle finger", "ring finger", "little finger"], foot: ["great toe", "second toe", "third toe", "fourth toe", "little toe"] };
+  const ORD = ["first", "second", "third", "fourth", "fifth"];
+  // Z-Anatomy names -> everyday names ("Distal phalanx of first finger of foot" -> "Distal phalanx of the great toe")
+  const partName = (n) => n.replace(/of (first|second|third|fourth|fifth) finger of (hand|foot)/, (_, o, w) => "of the " + DIGIT[w][ORD.indexOf(o)]).replace(/^Vertebra ([CTL]\d+)$/, "$1 vertebra");
+  const withSide = (side, n) => (SIDE_WORD[side] ? SIDE_WORD[side] + n.charAt(0).toLowerCase() + n.slice(1) : n);
+  function info3DHTML() {
+    const s = Body.sel3;
+    if (!s || s.pending) return `<h3>Tap any bone</h3><p class="muted" style="margin:6px 0 0">Drag to turn the skeleton, pinch or use the buttons to zoom, and drag with two fingers to move. Tap empty space to clear. This is an early test of real 3D anatomy; organs, muscles, vessels, nerves and dermatomes are still in Diagram.</p>`;
+    const part = partName(s.name);
+    if (s.key && INFO[s.key]) {
+      const tapped = s.tapped && part.toLowerCase() !== INFO[s.key].n.toLowerCase() ? `<p class="small muted" style="margin:6px 0 0">You tapped: ${esc(withSide(s.side, part))}</p>` : "";
+      return keyCardHTML(s.key, SIDE_WORD[s.side] || "", false, tapped);
+    }
+    const lay = LAYERS.find((l) => l.k === "bone");
+    return `<div class="row wrap" style="margin-bottom:6px">${pill(lay.n, lay.c)}</div><h3>${esc(withSide(s.side, part))}</h3><p class="muted" style="margin:8px 0 0">No study card for this one yet.</p>`;
+  }
+  function mount3D() {
+    const el = $("#fig3d"), msg = $("#load3d"); if (!el) return;
+    mountSearch();
+    const fail =(t) => { msg.hidden = false; msg.innerHTML = `<div>${esc(t)}<br><button class="btn ghost sm" style="margin-top:10px" data-act="body-mode" data-v="2d">Use Diagram</button></div>`; };
+    if (location.protocol === "file:") { fail("The 3D view works when the app is opened from its web address."); return; }
+    load3D().then((m) => {
+      if (!m.supported()) { fail("3D needs WebGL 2, which this browser has turned off."); return; }
+      if (!el.isConnected) return;
+      const progress = (b) => { if (!m.isReady() && el.isConnected) msg.textContent = `Loading the 3D skeleton… ${(b / 1048576).toFixed(1)} MB`; };
+      return m.attach(el, { onPick: pick3D, onProgress: progress, t0: Body.t3 }).then(() => { if (el.isConnected) { msg.hidden = true; apply3DPending(); } });
+    }).catch((err) => { console.error(err); b3Loading = null; fail("The 3D skeleton could not load. Check the connection, then switch to Diagram and back to try again."); });
+  }
+  function pick3D(info) {
+    Body.sel3 = info ? Object.assign({ tapped: true }, info) : null;
+    const card = $("#infocard"); if (card) card.innerHTML = infoCardHTML();
+  }
+  function show3D(key) {
+    Body.quiz = null; Body.sel3 = { key, pending: true };
+    if (appHooks.tab() !== "anatomy" || UIA.tab !== "body") { UIA.tab = "body"; appHooks.go("anatomy"); return; } // mount3D applies it
+    apply3DPending();
+  }
+  function apply3DPending() {
+    const s = Body.sel3; if (!s || !s.pending || !B3 || !B3.isReady()) return;
+    if (!B3.hasKey(s.key)) { Body.sel3 = null; Body.mode = "2d"; rerender(true); showOnBody(s.key); return; } // not in 3D yet
+    B3.selectKey(s.key, "R", true);
+    Body.sel3 = Object.assign({ tapped: false }, B3.current());
+    const card = $("#infocard"); if (card) card.innerHTML = infoCardHTML();
   }
   function applyFigState() {
     const svg = $("#fig"); if (!svg) return;
@@ -121,6 +185,11 @@ const Anat = (function () {
     if (zoom) zoomToSel();
   }
   function showOnBody(key) {
+    if (Body.mode === "3d") {
+      if (!B3 || !B3.isReady() || B3.hasKey(key)) { show3D(key); return; }
+      Body.mode = "2d"; // not in the 3D model yet: show it on the diagram
+      if (appHooks.tab() === "anatomy" && UIA.tab === "body") rerender(true);
+    }
     const so = structForKey(key, Body.view); if (!so) return;
     Body.vb = { x: 0, y: 0, w: 400, h: 920 };
     selectStruct(so.id + (so.mirror ? "-r" : ""), true);
@@ -179,7 +248,10 @@ const Anat = (function () {
     };
     svg.addEventListener("pointerup", end); svg.addEventListener("pointercancel", end);
     svg.addEventListener("wheel", (e) => { e.preventDefault(); const c = toSvg(e.clientX, e.clientY); Body.vb = zoomBy(e.deltaY > 0 ? 1.12 : 1 / 1.12, c.x, c.y); setVB(Body.vb); }, { passive: false });
-    const inp = $("#bsearch");
+    mountSearch();
+  }
+  function mountSearch() {
+    const inp = $("#bsearch"); if (!inp) return;
     inp.addEventListener("input", () => { Body.q = inp.value; renderSearch(); });
     inp.addEventListener("focus", renderSearch);
     inp.addEventListener("keydown", (e) => { if (e.key === "Enter") { const f = $("#bresults button"); if (f) f.click(); } if (e.key === "Escape") $("#bresults").innerHTML = ""; });
@@ -458,12 +530,13 @@ const Anat = (function () {
       case "layers-all": { const all = Body.layers.size === LAYERS.length; Body.layers = all ? new Set(["bone", "organ"]) : new Set(LAYERS.map((l) => l.k)); t.setAttribute("aria-pressed", !all); $$("[data-act=layer]").forEach((b) => b.setAttribute("aria-pressed", Body.layers.has(b.dataset.v))); applyFigState(); return true; }
       case "sex": Body.sex = v; $$("[data-act=sex]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === v)); if (Body.sel) { const so = ID2S[Body.sel.replace(/-(r|l)$/, "")]; if (so && so.sex && so.sex !== v) { Body.sel = null; $("#infocard").innerHTML = infoCardHTML(); } } applyFigState(); return true;
       case "rotate-body": rotateBody(); return true;
-      case "zoom-in": animateVB(zoomBy(1 / 1.5)); return true;
-      case "zoom-out": animateVB(zoomBy(1.5)); return true;
-      case "zoom-fit": animateVB({ x: 0, y: 0, w: 400, h: 920 }); return true;
+      case "body-mode": if (Body.mode !== v) { if (v === "3d" && !Body.t3) Body.t3 = performance.now(); Body.mode = v; rerender(true); } return true;
+      case "zoom-in": if (Body.mode === "3d") { if (B3 && B3.isReady()) B3.zoom(1 / 1.5); } else animateVB(zoomBy(1 / 1.5)); return true;
+      case "zoom-out": if (Body.mode === "3d") { if (B3 && B3.isReady()) B3.zoom(1.5); } else animateVB(zoomBy(1.5)); return true;
+      case "zoom-fit": if (Body.mode === "3d") { if (B3 && B3.isReady()) B3.fit(); } else animateVB({ x: 0, y: 0, w: 400, h: 920 }); return true;
       case "bpick": Body.q = ""; $("#bsearch").value = ""; $("#bresults").innerHTML = ""; showOnBody(t.dataset.key); return true;
       case "show-fig": showOnBody(t.dataset.fig); return true;
-      case "id-quiz": startIdQuiz(); return true;
+      case "id-quiz": if (Body.mode === "3d") { Body.mode = "2d"; rerender(true); } startIdQuiz(); return true;
       case "id-quiz-stop": Body.quiz = null; Body.sel = null; applyFigState(); $("#infocard").innerHTML = infoCardHTML(); return true;
       case "id-pick": quizPick(t.dataset.key); return true;
       case "id-next": nextIdQuestion(); return true;

@@ -1,2 +1,3 @@
 # Store text files with LF line endings, whatever OS builds them
 * text=auto eol=lf
+*.glb binary

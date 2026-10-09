@@ -1,0 +1,1 @@
+{ "package": "three", "version": "0.186.1", "source": "npm", "files": "build/three.module.js, build/three.core.js, examples/jsm/{loaders/GLTFLoader,controls/OrbitControls,libs/meshopt_decoder.module,utils/BufferGeometryUtils,utils/SkeletonUtils}.js" }

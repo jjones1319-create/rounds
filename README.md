@@ -37,5 +37,6 @@ Open the folder in VS Code and tell Claude Code what you want. Useful starting p
 
 - Build: `python build.py` (writes `index.html`)
 - Tests: `pip install -r tests/requirements.txt`, `python -m playwright install chromium`,
-  then `python tests/smoke.py` and `python tests/overflow.py`
+  then `python tests/smoke.py`, `python tests/overflow.py` and `python tests/three_d.py`
+- 3D models: `python tools/build_models.py` (see `models/README.md`)
 - Architecture and rules: `CLAUDE.md`. 3D plan: `docs/PLAN_3D.md`. Question rules: `docs/board_question_generator_spec.md`.

@@ -15,8 +15,14 @@ anything public or irreversible (creating the repo, first push, making it public
 - `src/figure.js` 2D body figure (front/back SVG) · `src/content.js` structure cards, cranial nerves, bones, lab values
 - `src/models.js` dermatomes, brain + heart models, `buildDictionary()` · `src/anat.js` anatomy UI module (`Anat`)
 - `questions/questions.py` (Block 1), `questions/questions2.py` (Block 2): question source of truth.
+- 3D (not inlined; served as separate files, loaded only when the Body tab's "3D" is chosen):
+  `js/body3d.js` viewer (ES module) · `vendor/three/` three.js 0.186.1, mapped by the import map in `src/shell.html`
+  · `models/skeleton.glb` · `data/mesh_map.json` (card key → Z-Anatomy mesh names).
+  Rebuild models with `py tools/build_models.py` (needs Blender + glTF-Transform under `work/`; see its docstring).
 - Tests (need `pip install -r tests/requirements.txt` and `python -m playwright install chromium`):
-  `python tests/smoke.py` and `python tests/overflow.py`. Run both after every change, before every push.
+  `python tests/smoke.py`, `python tests/overflow.py`, and `python tests/three_d.py` (serves the repo over http,
+  since 3D can't load from file://; `--timing` emulates phones on 4G). Run all three after every change, before every push.
+- `?perf` on the URL shows the 3D download size, load time and fps on the device.
 
 ## Non-negotiables
 - **Accuracy first.** Every question and anatomy fact must be verifiable. Follow `docs/board_question_generator_spec.md`
@@ -35,8 +41,11 @@ anything public or irreversible (creating the repo, first push, making it public
 - `Sync` in `app.js` uses `window.claude` (claude.ai only). Off claude.ai it is a no-op; leave it, it's harmless.
 - Moving to GitHub Pages changes the site origin, so progress from the claude.ai version does not carry over.
 
-## Current state (2026-10-05)
+## Current state (2026-10-09)
 - 16 questions (Blocks 1–2). Anatomy: 2D body (front/back, 8 layers incl. dermatomes), brain, heart, 254-entry index.
+- Live at https://jjones1319-create.github.io/rounds/ (Phase 0 done).
+- Phase 1 built: 3D skeleton (252 meshes, 1.3 MB gzipped) behind a "3D | Diagram" switch; Diagram stays the default.
+  Awaiting the owner's report from her phone before Phase 2.
 - The live claude.ai version is the reference: behavior there should keep working here.
 
 ## Next work, in order
