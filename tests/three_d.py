@@ -64,6 +64,12 @@ for layer, cfg in MAP.items():
             if base not in names or (side and (base, side) not in have): problems.append(f"{layer}/{key}: no mesh '{nm}'")
     problems += [f"{layer}: '{nm}' is in {c} cards" for nm, c in seen.items() if c > 1]
 body_cards = {k for k, L in INFO_LAYER.items() if L in MAP}
+# index.html's version stamps must match the files, or browsers may keep stale 3D files (rebuild with build.py)
+import hashlib
+vh = lambda f: hashlib.sha256((ROOT / f).read_bytes().replace(b"\r\n", b"\n")).hexdigest()[:10]
+stamps = json.loads(re.search(r"const ASSET_V = (\{.*?\});", (ROOT / "index.html").read_text(encoding="utf-8")).group(1))
+want = {"body3d": vh("js/body3d.js"), "map": vh("data/mesh_map.json"), **{c["file"]: vh(c["file"]) for c in MAP.values()}}
+check("index.html version stamps are current", stamps == want, ", ".join(k for k in want if stamps.get(k) != want[k]) or "")
 check("mesh map matches models and cards", not problems, "; ".join(problems[:5]) or f"{len(covered)} of {len(body_cards)} body cards have 3D")
 
 def open_3d(pg):
