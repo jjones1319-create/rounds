@@ -1,6 +1,6 @@
 # Board Question Generator — Master Spec
 
-**Version:** 1.1 · **Created:** 2026-10-04 · **Updated:** 2026-10-05 · **Blocks produced so far:** 2 (16 questions)
+**Version:** 1.2 · **Created:** 2026-10-04 · **Updated:** 2026-10-10 · **Blocks produced so far:** 3 (24 questions)
 
 This file is the single source of truth for generating board-prep question blocks (and, later, the app). Upload it at the start of any new session and say something like:
 
@@ -95,9 +95,9 @@ Rotate across Step 2 CK systems (per the USMLE content outline; verify the curre
 
 Also rotate disciplines: internal medicine, surgery, pediatrics, OB/GYN, psychiatry, neurology, emergency medicine, family medicine.
 
-**Covered so far (Blocks 1–2):** cardiology, OB/GYN, endocrine, GI/peds surgery, toxicology, hematology, ID/neuro, renal, psychiatry/nutrition, surgery (volvulus), respiratory, musculoskeletal (peds), skin, male reproductive, ethics/legal, biostatistics.
+**Covered so far (Blocks 1–3):** cardiology, OB/GYN (ectopic; preeclampsia/magnesium toxicity), endocrine, GI/peds surgery, toxicology (acetaminophen; lithium), hematology, ID/neuro, renal, psychiatry/nutrition, surgery (volvulus), respiratory, musculoskeletal (peds), skin, male reproductive, ethics/legal, biostatistics, preventive screening (lung cancer), geriatrics (postoperative delirium, Beers), breast (palpable mass), neurology (acute stroke/thrombolysis), rheumatology/ophthalmology (giant cell arteritis), trauma (ATLS hemorrhagic shock), pharmacology adverse effects (drug interaction).
 
-**Not yet covered after Block 2:** preventive screening (USPSTF: lung, breast, colon, AAA, cervical), geriatrics (falls, delirium, polypharmacy), breast, primary neurology (stroke, seizure, headache), ophthalmology, ENT, rheumatology, allergy/immunology, nephrology beyond electrolytes, trauma (ATLS), obstetrics beyond ectopic (preeclampsia, labor), pediatrics beyond MSK (vaccines, development), patient safety/quality, pharmacology adverse effects. Prioritize these in Block 3.
+**Not yet covered after Block 3:** preventive screening beyond lung (USPSTF: breast, colon, AAA, cervical), geriatrics beyond delirium (falls, incontinence), neurology beyond stroke (seizure, headache), ophthalmology proper (angle-closure glaucoma, retinal detachment), ENT, allergy/immunology (anaphylaxis, hereditary angioedema), nephrology beyond electrolytes (glomerular disease, AKI), obstetrics beyond preeclampsia (labor, postpartum hemorrhage), pediatrics beyond MSK (vaccines, development), patient safety/quality, pulmonology beyond effusion (asthma/COPD exacerbation), oncology emergencies. Prioritize these in Block 4.
 
 Check §9 before writing; do not repeat a topic unless deliberately testing a different decision point.
 
@@ -124,7 +124,7 @@ Check §9 before writing; do not repeat a topic unless deliberately testing a di
 
 **Data:** question bank as a JSON array (schema below); user progress stored separately (`{question_id, chosen, correct, seconds, flagged, timestamp}`).
 
-**Current app (Rounds, v2, 2026-10-05):** single-file web app at the published claude.ai link. Practice (tutor/timed blocks, strike-outs, flags, notes, lab values, key points, stats) plus an Anatomy section: body model with front/back rotation and layers (skeleton, organs, muscles, arteries, veins, nerves, lymphatics, dermatomes), brain model (lateral view with functional areas and MCA/ACA/PCA territories; underside with cranial nerves), heart model (outside with coronaries; inside with valves and conduction system), an A–Z index of ~250 entries that highlights the entry on its model, and quizzes (cranial nerves, "name that structure"). To add a block: regenerate questions per this spec, append to the question JSON, rebuild, and republish to the same link so progress carries over (questions are keyed by ID).
+**Current app (Rounds, 2026-10-10):** web app on GitHub Pages (https://jjones1319-create.github.io/rounds/); `index.html` is built from `src/` + `questions/` by `build.py`, and 3D anatomy models load as separate files. Practice (tutor/timed blocks, strike-outs, flags, notes, lab values, key points, stats) plus an Anatomy section: body model with front/back rotation and layers (skeleton, organs, muscles, arteries, veins, nerves, lymphatics, dermatomes), brain model (lateral view with functional areas and MCA/ACA/PCA territories; underside with cranial nerves), heart model (outside with coronaries; inside with valves and conduction system), an A–Z index of ~250 entries that highlights the entry on its model, and quizzes (cranial nerves, "name that structure"). To add a block: regenerate questions per this spec, append to the question JSON, rebuild, and republish to the same link so progress carries over (questions are keyed by ID).
 
 **Question schema (example = B1-Q01):**
 
@@ -203,7 +203,16 @@ Check §9 before writing; do not repeat a topic unless deliberately testing a di
 | B2-Q07 | Confidential STI care for a minor | Ethics and law | E | ★★★ | CDC STI guidelines, MMWR (2021); Guttmacher; SAHM/AAP (2016) | 2026-10-05 |
 | B2-Q08 | Number needed to treat from absolute risk reduction | Biostatistics | C | ★★★ | Laupacis, NEJM (1988) | 2026-10-05 |
 
-Block 1 answer distribution: A 1, B 1, C 2, D 2, E 2. Block 2: A 2, B 2, C 1, D 1, E 2.
+| B3-Q01 | Lung cancer screening eligibility: 22 pack-years, quit 13 years ago | Preventive medicine | B | ★★★ | USPSTF lung cancer screening, JAMA (2021); NLST, NEJM (2011) | 2026-10-10 |
+| B3-Q02 | Postoperative delirium precipitated by diphenhydramine: stop the drug, nonpharmacologic care | Geriatrics | E | ★★★★ | AGS postoperative delirium guideline, JAGS (2015); AGS Beers Criteria (2023) | 2026-10-10 |
+| B3-Q03 | Palpable breast mass in a woman under 30: ultrasonography first | Female reproductive and breast | B | ★★★ | ACR Appropriateness Criteria, JACR (2023); ACOG PB 164 (2016) | 2026-10-10 |
+| B3-Q04 | Acute ischemic stroke with BP above 185/110: lower it, then thrombolyse | Nervous system | A | ★★★★ | AHA/ASA acute ischemic stroke guideline, Stroke (2026); 2019 update (agents/doses) | 2026-10-10 |
+| B3-Q05 | Magnesium toxicity in preeclampsia with renal impairment: stop infusion, calcium gluconate | Pregnancy | A | ★★★★★ | ACOG Practice Bulletin 222 (2020) | 2026-10-10 |
+| B3-Q06 | Giant cell arteritis with amaurosis fugax: IV pulse glucocorticoids before biopsy | Immune / Rheumatology | C | ★★★★ | ACR/VF GCA guideline, Arthritis Care Res (2021); Smetana & Shmerling, JAMA (2002) | 2026-10-10 |
+| B3-Q07 | Blunt trauma, transient responder with positive FAST: laparotomy with blood products | Multisystem / Trauma | D | ★★★★★ | ATLS 10th ed. (2018); EAST blunt abdominal trauma PMG (2002); PROPPR, JAMA (2015) | 2026-10-10 |
+| B3-Q08 | Chronic lithium toxicity after an ACE inhibitor: EXTRIP dialysis criteria | Pharmacology / Toxicology | D | ★★★★ | EXTRIP lithium recommendations, CJASN (2015); FDA lithium label (2018) | 2026-10-10 |
+
+Block 1 answer distribution: A 1, B 1, C 2, D 2, E 2. Block 2: A 2, B 2, C 1, D 1, E 2. Block 3: A 2, B 2, C 1, D 2, E 1.
 
 ---
 
@@ -228,6 +237,7 @@ Block 1 answer distribution: A 1, B 1, C 2, D 2, E 2. Block 2: A 2, B 2, C 1, D 
 |---|---|---|
 | 1.0 | 2026-10-04 | Spec created. Block 1 delivered (8 questions: cardiology, OB/GYN, endocrine, peds/surgery, toxicology/psych, hematology, ID/neuro, renal). |
 | 1.1 | 2026-10-05 | Block 2 delivered inside the Rounds web app (8 questions: psych/nutrition, surgery, respiratory, MSK, skin, male reproductive, ethics, biostatistics). App gained front/back body views, a dermatome layer, brain and heart models, an A–Z index, and identification quizzes. All verified sources listed in §9. |
+| 1.2 | 2026-10-10 | Block 3 delivered in the app (8 questions: preventive screening, geriatrics, breast, neurology, obstetrics, rheumatology, trauma, pharmacology/toxicology). Verification notes: the AHA/ASA published a 2026 acute ischemic stroke guideline (January 2026) that replaces the 2019 update; ATLS 11th edition launched in 2025 (its shock chapter was not readable online, so B3-Q07 cites the 10th edition and the EAST guideline, whose positive-FAST rule is unchanged). Questions now carry `distractor_error_types` and `verified_on` in `questions/questions3.py`. App now serves real 3D anatomy (body, brain, heart) from GitHub Pages. §7 gap list refreshed for Block 4. |
 
 ---
 
