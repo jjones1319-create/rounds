@@ -1,6 +1,6 @@
 # Board Question Generator — Master Spec
 
-**Version:** 1.2 · **Created:** 2026-10-04 · **Updated:** 2026-10-10 · **Blocks produced so far:** 3 (24 questions)
+**Version:** 1.3 · **Created:** 2026-10-04 · **Updated:** 2026-10-10 · **Blocks produced so far:** 3 (24 questions)
 
 This file is the single source of truth for generating board-prep question blocks (and, later, the app). Upload it at the start of any new session and say something like:
 
@@ -31,7 +31,7 @@ Claude should read the whole spec, follow every rule in §2, and return (1) the 
 4. **Exactly one defensible best answer.** If a reasonable expert could argue for a second option, rewrite the stem or the option. Add stem details that close loopholes (e.g., "the cath lab has been activated").
 5. **Check the numbers.** Every vignette must be internally consistent: anion gap, corrected sodium, osmolality, A–a gradient, and scores (4Ts, Wells, CURB-65, MELD, CHA₂DS₂-VASc). Show the arithmetic in the explanation.
 6. **Realistic data.** Vitals and labs plausible for age and condition; US conventional units; no reference ranges printed (the real exam provides a separate lab table).
-7. **Original content only.** Never copy or closely paraphrase UWorld, AMBOSS, NBME, Kaplan, or any other bank. If a search turns up a near-identical public practice question, change the patient, setting, and clues.
+7. **Original content only.** Never take questions from any website, question bank, or prep source (UWorld, AMBOSS, NBME, Kaplan, forums, or any other). Publicly available official sample questions (for example, USMLE's free sample items) may be read only to understand structure, style, and difficulty; never copy, paraphrase, or adapt their content. If a draft turns out to resemble a published question, rewrite it from scratch.
 8. **Never guess.** If a fact cannot be verified, drop the question or list it under "Open issues" in the delivery message. Cite only what can be verified; omit page numbers rather than invent them.
 9. **Safety-sensitive content** (self-harm, overdoses) is written clinically and always includes the appropriate safety step in the explanation (observation, psychiatric evaluation).
 
@@ -238,6 +238,7 @@ Block 1 answer distribution: A 1, B 1, C 2, D 2, E 2. Block 2: A 2, B 2, C 1, D 
 | 1.0 | 2026-10-04 | Spec created. Block 1 delivered (8 questions: cardiology, OB/GYN, endocrine, peds/surgery, toxicology/psych, hematology, ID/neuro, renal). |
 | 1.1 | 2026-10-05 | Block 2 delivered inside the Rounds web app (8 questions: psych/nutrition, surgery, respiratory, MSK, skin, male reproductive, ethics, biostatistics). App gained front/back body views, a dermatome layer, brain and heart models, an A–Z index, and identification quizzes. All verified sources listed in §9. |
 | 1.2 | 2026-10-10 | Block 3 delivered in the app (8 questions: preventive screening, geriatrics, breast, neurology, obstetrics, rheumatology, trauma, pharmacology/toxicology). Verification notes: the AHA/ASA published a 2026 acute ischemic stroke guideline (January 2026) that replaces the 2019 update; ATLS 11th edition launched in 2025 (its shock chapter was not readable online, so B3-Q07 cites the 10th edition and the EAST guideline, whose positive-FAST rule is unchanged). Questions now carry `distractor_error_types` and `verified_on` in `questions/questions3.py`. App now serves real 3D anatomy (body, brain, heart) from GitHub Pages. §7 gap list refreshed for Block 4. |
+| 1.3 | 2026-10-10 | §2 rule 7 tightened per the owner: never take questions from any website or prep source; official sample questions may be read only for structure, style, and difficulty, never copied, paraphrased, or adapted. |
 
 ---
 

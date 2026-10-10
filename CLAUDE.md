@@ -1,77 +1,92 @@
-# Rounds — board prep app (project memory for Claude Code)
+# Rounds — study app for Boards and MCAT (project memory for Claude Code)
 
 ## What this is
-A mobile-first study app for one medical student preparing for USMLE Step 2 CK, used on an Android phone.
-Two halves: **Practice** (original board-style questions with explanations, tutor/timed blocks, stats) and
-**Anatomy** (interactive body, brain, and heart models, an A–Z index, quizzes).
-It was built in a claude.ai chat and is moving to GitHub Pages so the anatomy can use real 3D models.
-The person you're working with is not necessarily a developer: explain steps plainly and ask before
-anything public or irreversible (creating the repo, first push, making it public, deleting files).
+A mobile-first study app, built for one medical student on an Android phone, covering two exams: **Boards**
+(USMLE Step 2 CK–style) and **MCAT**. Each exam has **Practice** (original questions with explanations,
+tutor/timed blocks, stats). **Anatomy** (interactive 2D and 3D body, brain, and heart, an A–Z index, quizzes) is
+shared. The long-term goal is a free study guide for both exams. The site is public only because GitHub Pages
+requires it; it is not promoted or announced.
+The owner you work with holds degrees in biology, chemistry, mathematics, and physics, with PhD colleagues in
+each field, and is the reviewer of all content. They are not necessarily a developer: explain steps plainly and
+ask before anything public or irreversible (pushing, deleting files, migrating storage).
+
+## Docs to read before related work
+- Board questions: `docs/board_question_generator_spec.md` · MCAT questions: `docs/MCAT_SPEC.md` (rules, blueprint, schema, review)
+- MCAT section guides ("What's tested"): `docs/MCAT_GUIDES_SPEC.md` · MCAT features: `docs/PLAN_MCAT.md` (phases M0–M5)
+- 3D anatomy: `docs/PLAN_3D.md` · Public-site rules: `docs/PUBLIC_RELEASE.md` · Owner's prompts: `docs/PROMPTS.md`
 
 ## How it's built
 - `python build.py` → writes `index.html` (a single self-contained file) from `src/` + `questions/`.
 - GitHub Pages serves the repo root (`main` branch, `/`). `.nojekyll` must stay.
 - `src/shell.html` HTML + all CSS · `src/app.js` app shell, practice engine, storage, settings
 - `src/figure.js` 2D body figure (front/back SVG) · `src/content.js` structure cards, cranial nerves, bones, lab values
-- `src/models.js` dermatomes, brain + heart models, `buildDictionary()` · `src/anat.js` anatomy UI module (`Anat`)
-- `questions/questions.py` (Block 1), `questions/questions2.py` (Block 2): question source of truth.
-- 3D (not inlined; served as separate files, loaded only when a tab's "3D" is chosen; the choice is remembered per device):
-  `js/body3d.js` viewers for the Body, Brain and Heart tabs (`viewer("body"|"brain"|"heart")`, ES module) · `vendor/three/` three.js 0.186.1, mapped by the import map in `src/shell.html`
-  · `models/*.glb` one file per layer (body: skeleton…lymph; brain_*: cortex, deep, arteries, nerves, skull; heart_*: wall,
-  valves, coronary, veins, vessels), each loaded the first time its layer chip is switched on · `data/mesh_map.json`
-  (per scene and layer: model file, card key → mesh names; brain/heart keys are Index ids br_*, cn_*, ht_*).
-  Brain/Heart 3D layer chips: `SCENE3D` in `src/models.js`. The brain has a Left/Right hemisphere control, the heart a
-  "Cut open" slider (a clipping plane).
-  Rebuild models with `py tools/build_models.py [layer]` (needs Blender + glTF-Transform under `work/`, and BodyParts3D
-  under `work/bp3d/` for the heart; see its docstring).
-  What each layer takes, and what is never exported for licensing reasons, is in `tools/export_layers.py`.
+- `src/models.js` dermatomes, brain + heart models, `SCENE3D`, `buildDictionary()` · `src/anat.js` anatomy UI module (`Anat`)
+- `questions/questions.py` (Block 1), `questions2.py` (Block 2), `questions3.py` (Block 3): board question source of truth.
+- 3D (served as separate files, loaded only when a tab's "3D" is chosen; the choice is remembered per device):
+  `js/body3d.js` viewers for the Body, Brain and Heart tabs (`viewer("body"|"brain"|"heart")`, ES module) ·
+  `vendor/three/` three.js 0.186.1, mapped by the import map in `src/shell.html` · `models/*.glb` one file per layer
+  (body: skeleton…lymph; brain_*: cortex, deep, arteries, nerves, skull; heart_*: wall, valves, coronary, veins, vessels),
+  each loaded the first time its layer chip is switched on · `data/mesh_map.json` (per scene and layer: model file,
+  card key → mesh names; brain/heart keys are Index ids br_*, cn_*, ht_*). The brain has a Left/Right hemisphere
+  control, the heart a "Cut open" slider. Rebuild models with `py tools/build_models.py [layer]` (needs Blender +
+  glTF-Transform under `work/`, and BodyParts3D under `work/bp3d/` for the heart; see its docstring). What each layer
+  takes, and what is never exported for licensing reasons, is in `tools/export_layers.py`.
 - `build.py` stamps `js/body3d.js`, the mesh map and each model with a content hash (`ASSET_V` in `index.html`); the page
   loads `js/body3d.js?v=<hash>` so phones never mix a new page with old cached 3D files. **Rebuild after changing any
   of them** (`tests/three_d.py` fails if the stamps are stale). Bump `API` in `js/body3d.js` and `API3D` in
   `src/anat.js` together when their contract changes; a mismatch shows a Reload prompt.
 - The Body tab's layer chips drive both views (`Body.layers`); 3D has no dermatome layer and is a male model.
-  Cards with no 3D match (female organs, rectum, brain, phrenic/RLN/inferior gluteal nerves, lymph ducts, orbit)
-  fall back to the Diagram.
+  Cards with no 3D match fall back to the Diagram.
 - Tests (need `pip install -r tests/requirements.txt` and `python -m playwright install chromium`):
   `python tests/smoke.py`, `python tests/overflow.py`, and `python tests/three_d.py` (serves the repo over http,
   since 3D can't load from file://; `--timing` emulates phones on 4G). Run all three after every change, before every push.
+  After PLAN_MCAT Phase M0 (content/data split), every test must run against a local HTTP server.
 - `?perf` on the URL shows the 3D download size, load time and fps on the device.
 
 ## Non-negotiables
-- **Accuracy first.** Every question and anatomy fact must be verifiable. Follow `docs/board_question_generator_spec.md`
-  §2 exactly when writing questions: verify each answer against a current named guideline with a web search,
-  cite it, record it in the spec's question log (§9) and changelog (§11). If unsure, flag it; never guess.
-- **Original content only.** Never copy UWorld/AMBOSS/NBME questions or Wikipedia text into cards.
-- **Question IDs are permanent** (`B1-Q01`…). Saved progress is keyed by ID. Never renumber; add new blocks
-  as `questions/questionsN.py`, import them in `build.py`, and add each ID to `SYS` in `build.py`.
+- **Accuracy first.** Every question, guide topic, and anatomy fact must be verifiable. Boards: follow
+  `docs/board_question_generator_spec.md` §2 exactly (verify each answer against a current named guideline with a web
+  search, cite it, log it in §9 and §11). MCAT: follow `docs/MCAT_SPEC.md` §3. If unsure, flag it; never guess.
+- **Original content only.** Never take questions from any website, question bank, or prep source, for MCAT or
+  boards (UWorld, AMBOSS, NBME, Kaplan, AAMC, Khan Academy, Blueprint, forums, or any other). Publicly available
+  official sample questions may be read only to understand structure, style, and difficulty; never copy, paraphrase,
+  or adapt their content. Never copy Wikipedia or textbook text into cards or guides. CARS passages are original or
+  US public domain (published 1930 or earlier, with citation). Hypothetical experiments are labeled hypothetical.
+- **No recalled exam content**, and no "frequently tested" claims beyond AAMC's published weightings.
+- **Section guides** follow AAMC's outline structure but are written in our own words; never reproduce the outline,
+  and keep any private copy used for checking in `work/` (gitignored).
+- **MCAT items** have exactly four choices, are tagged per MCAT_SPEC §2 and §8, and pass `tools/validate.py`.
+- **Never show or imply** a predicted MCAT scaled score (118–132) or a predicted board score.
+- **Review.** Every item and guide topic carries `status` (`draft` → `reviewed`) and `reviewed_by`. The owner reviews
+  all content; no second reviewer is required. A "Beta" label for unreviewed items is optional and off by default.
+- **Question IDs are permanent** (`B1-Q01`…, `M1-Q01`…). Saved progress is keyed by ID. Never renumber; add board
+  blocks as `questions/questionsN.py`, import them in `build.py`, and add each ID to `SYS` in `build.py`.
 - **Phone first.** Her phone is a **Samsung Galaxy S25 Ultra** (Chrome viewport about 412 × 891 CSS px at 3.5×;
   Snapdragon 8 Elite, Adreno 830 GPU, 120 Hz screen): design for it and measure 3D on it (`tests/three_d.py` emulates it).
   Still test at 360 and 390 px too (412 is also checked); no horizontal overflow (`tests/overflow.py` must pass).
   Keep light/dark theme tokens, safe-area insets, `prefers-reduced-motion`, and keyboard support working.
-- **Licensing.** 3D models come from share-alike sources. Read `docs/PLAN_3D.md` §Licensing before adding any
-  model file, and keep `CREDITS.md` accurate.
+- **Licensing, trademarks, disclaimers.** 3D models come from share-alike sources: read `docs/PLAN_3D.md` §Licensing
+  before adding any model file and keep `CREDITS.md` accurate. Keep the disclaimer, trademark, and licensing rules in
+  `docs/PUBLIC_RELEASE.md`; its report-a-problem and contribution items are optional, for later.
+- **Storage.** Never change or migrate `rounds.progress.v1` (boards progress) without asking. MCAT progress uses
+  `rounds.mcat.v1`.
 
 ## Storage notes
 - Progress lives in `localStorage` key `rounds.progress.v1` (answers, flags, notes, sessions, settings).
 - `Sync` in `app.js` uses `window.claude` (claude.ai only). Off claude.ai it is a no-op; leave it, it's harmless.
-- Moving to GitHub Pages changes the site origin, so progress from the claude.ai version does not carry over.
+- The 3D/Diagram choice per tab is in `rounds.view3d` (a convenience, not progress).
 
-## Current state (2026-10-09)
-- 16 questions (Blocks 1–2). Anatomy: 2D body (front/back, 8 layers incl. dermatomes), brain, heart, 254-entry index.
-- Live at https://jjones1319-create.github.io/rounds/ (Phase 0 done).
-- Phase 1 done: 3D skeleton behind a "3D | Diagram" switch (Diagram stays the default); on her phone: 0.7 s, 56 fps.
-- Phase 2 done: all seven body 3D layers (7.8 MB gzipped, loaded per layer); 156 of 168 body cards open from a tap;
-  search, Index, Bones and "Name that structure" work in 3D. Renders at up to 3x and steps down if fps drops.
-- Brain and Heart tabs have 3D too (2026-10-09): real-MRI cortex (Brainder via Z-Anatomy), deep brain, circle of Willis,
-  cranial nerves; heart from Z-Anatomy plus BodyParts3D parts. Brain 28/31 and heart 18/28 cards have 3D; the rest
-  (arcuate fasciculus, prefrontal cortex, FEF; septa, conduction system, LA appendage, inside-view chamber cards) use Diagram.
-  Gaps: many structures show a name-only card; write verified cards for the important ones.
-- The live claude.ai version is the reference: behavior there should keep working here.
+## Current state (2026-10-10)
+- Boards: 24 questions (Blocks 1–3). Anatomy: 2D body (front/back, 8 layers incl. dermatomes), brain, heart,
+  254-entry index; 3D body (seven lazy-loaded layers, 7.8 MB gzipped), 3D brain (real-MRI cortex, deep brain, circle of
+  Willis, cranial nerves) and 3D heart (chambers, valves, coronaries, cut-open view). Live at
+  https://jjones1319-create.github.io/rounds/ and confirmed smooth on her phone.
+- MCAT: planning docs only (`docs/MCAT_SPEC.md`, `docs/MCAT_GUIDES_SPEC.md`, `docs/PLAN_MCAT.md`); no MCAT code or content yet.
+- Open gaps: many 3D structures show a name-only card; write verified cards for the important ones.
 
-## Next work, in order
-See `docs/PLAN_3D.md` for details and acceptance criteria.
-0. Repo + GitHub Pages setup; confirm the current app works on her phone.
-1. ~~3D feasibility test~~ (done 2026-10-09).
-2. ~~Organs, vessels, nerves, muscles, lymphatics as lazy-loaded layers~~ (built 2026-10-09; confirm on her phone).
-3. Progress export/import + installable PWA (manifest, icons, offline cache).
-4. Block 3 questions per the spec (coverage gaps are listed in spec §7).
+## Work order
+Work on one track at a time and finish its current phase before switching. Report at each phase boundary.
+- Track A, 3D anatomy: `docs/PLAN_3D.md`. Phases 0–2 are done; Phase 3 (progress export/import, installable PWA) remains.
+- Track B, MCAT: `docs/PLAN_MCAT.md` phases M0–M5.
+- Track C, content: new board blocks (`/new-board-block`, boards spec) and MCAT blocks (MCAT spec).
+- If the site is ever to be promoted: `docs/PUBLIC_RELEASE.md` checklist first.
