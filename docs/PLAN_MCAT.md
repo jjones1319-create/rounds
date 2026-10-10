@@ -79,7 +79,7 @@ and CARS skill; time per question. Clearly state that scores are not MCAT scaled
 
 ## Phases and acceptance criteria
 
-### Phase M0: foundations (no MCAT content yet)
+### Phase M0: foundations (no MCAT content yet) — done 2026-10-10
 Exam switcher, content/data split, validator, HTTP-based tests, MCAT progress key.
 - Pass: boards section works exactly as before, including her saved progress; tests pass over HTTP;
   the MCAT tab shows an empty state for each of the four sections.

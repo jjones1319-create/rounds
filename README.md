@@ -1,7 +1,7 @@
 # Rounds
 
-A phone-friendly study app for USMLE Step 2 CK: original board-style questions with full explanations, plus an
-interactive anatomy guide (body, brain, heart, an A–Z index, and quizzes).
+A phone-friendly study app for the boards (original USMLE® Step 2 CK–style questions with full explanations) and,
+in progress, the MCAT®, plus an interactive 2D and 3D anatomy guide (body, brain, heart, an A–Z index, and quizzes).
 
 ## Get it running (one time)
 
@@ -35,8 +35,19 @@ Open the folder in VS Code and tell Claude Code what you want. Useful starting p
 
 ## For developers
 
-- Build: `python build.py` (writes `index.html`)
+- Build: `python build.py` reads `questions/` (boards) and `content/` (MCAT, validated by `tools/validate.py`),
+  writes `data/boards.json`, `data/mcat.json`, and `index.html`. The app fetches the data files at startup, so open it
+  over HTTP (the tests start their own local server).
 - Tests: `pip install -r tests/requirements.txt`, `python -m playwright install chromium`,
   then `python tests/smoke.py`, `python tests/overflow.py` and `python tests/three_d.py`
 - 3D models: `python tools/build_models.py` (see `models/README.md`)
-- Architecture and rules: `CLAUDE.md`. 3D plan: `docs/PLAN_3D.md`. Question rules: `docs/board_question_generator_spec.md`.
+- Architecture and rules: `CLAUDE.md`. Plans: `docs/PLAN_3D.md`, `docs/PLAN_MCAT.md`. Question rules:
+  `docs/board_question_generator_spec.md`, `docs/MCAT_SPEC.md`.
+
+## About
+
+Rounds is an independent, free study resource. It is not affiliated with, endorsed by, or sponsored by the AAMC,
+FSMB, or NBME. Practice scores are not predictions of official scores. Content is for exam study only and is not
+medical advice. MCAT® is a registered trademark of the Association of American Medical Colleges (AAMC). USMLE® is a
+program of the Federation of State Medical Boards (FSMB) and the National Board of Medical Examiners (NBME).
+Progress is saved only in your browser; there are no accounts, ads, or tracking.

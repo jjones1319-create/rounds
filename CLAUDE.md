@@ -16,7 +16,10 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
 - 3D anatomy: `docs/PLAN_3D.md` · Public-site rules: `docs/PUBLIC_RELEASE.md` · Owner's prompts: `docs/PROMPTS.md`
 
 ## How it's built
-- `python build.py` → writes `index.html` (a single self-contained file) from `src/` + `questions/`.
+- `python build.py` → validates `content/` (MCAT) with `tools/validate.py` (any error stops the build), writes
+  `data/boards.json` (from `questions/*.py`) and `data/mcat.json` (items, passages, guides, sections), then `index.html`
+  from `src/`. The app fetches the two data files at boot (stamped with content hashes like the 3D files), so it
+  needs HTTP, not file://. `QB`/`QMAP`/`SYSTEMS` in `app.js` always describe the selected exam's bank.
 - GitHub Pages serves the repo root (`main` branch, `/`). `.nojekyll` must stay.
 - `src/shell.html` HTML + all CSS · `src/app.js` app shell, practice engine, storage, settings
 - `src/figure.js` 2D body figure (front/back SVG) · `src/content.js` structure cards, cranial nerves, bones, lab values
@@ -38,9 +41,9 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
 - The Body tab's layer chips drive both views (`Body.layers`); 3D has no dermatome layer and is a male model.
   Cards with no 3D match fall back to the Diagram.
 - Tests (need `pip install -r tests/requirements.txt` and `python -m playwright install chromium`):
-  `python tests/smoke.py`, `python tests/overflow.py`, and `python tests/three_d.py` (serves the repo over http,
-  since 3D can't load from file://; `--timing` emulates phones on 4G). Run all three after every change, before every push.
-  After PLAN_MCAT Phase M0 (content/data split), every test must run against a local HTTP server.
+  `python tests/smoke.py`, `python tests/overflow.py`, and `python tests/three_d.py`; each serves the repo over HTTP
+  via `tests/serve.py` (`three_d.py --timing` emulates phones on 4G). Run all three after every change, before every push.
+  `smoke.py` seeds an old-style boards record and checks it is read and left byte-for-byte unchanged.
 - `?perf` on the URL shows the 3D download size, load time and fps on the device.
 
 ## Non-negotiables
@@ -74,19 +77,22 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
 ## Storage notes
 - Progress lives in `localStorage` key `rounds.progress.v1` (answers, flags, notes, sessions, settings).
 - `Sync` in `app.js` uses `window.claude` (claude.ai only). Off claude.ai it is a no-op; leave it, it's harmless.
-- The 3D/Diagram choice per tab is in `rounds.view3d` (a convenience, not progress).
+- The 3D/Diagram choice per tab is in `rounds.view3d` and the selected exam in `rounds.exam` (conveniences, not progress).
+- MCAT progress lives in `rounds.mcat.v1` (same shape as the boards record; created only once something is saved).
+  Theme and text size stay in the boards record whichever exam is selected (`Store.settings()`).
 
 ## Current state (2026-10-10)
 - Boards: 24 questions (Blocks 1–3). Anatomy: 2D body (front/back, 8 layers incl. dermatomes), brain, heart,
   254-entry index; 3D body (seven lazy-loaded layers, 7.8 MB gzipped), 3D brain (real-MRI cortex, deep brain, circle of
   Willis, cranial nerves) and 3D heart (chambers, valves, coronaries, cut-open view). Live at
   https://jjones1319-create.github.io/rounds/ and confirmed smooth on her phone.
-- MCAT: planning docs only (`docs/MCAT_SPEC.md`, `docs/MCAT_GUIDES_SPEC.md`, `docs/PLAN_MCAT.md`); no MCAT code or content yet.
+- MCAT: Phase M0 done 2026-10-10 (Boards | MCAT switcher on Home, Practice and Progress; banks fetched from `data/`;
+  `tools/validate.py`; HTTP tests; `rounds.mcat.v1`). The MCAT tab shows its four sections as empty states; no content yet.
 - Open gaps: many 3D structures show a name-only card; write verified cards for the important ones.
 
 ## Work order
 Work on one track at a time and finish its current phase before switching. Report at each phase boundary.
 - Track A, 3D anatomy: `docs/PLAN_3D.md`. Phases 0–2 are done; Phase 3 (progress export/import, installable PWA) remains.
-- Track B, MCAT: `docs/PLAN_MCAT.md` phases M0–M5.
+- Track B, MCAT: `docs/PLAN_MCAT.md`. M0 is done; M1 (section guides, Chem/Phys first) is next, then M2–M5.
 - Track C, content: new board blocks (`/new-board-block`, boards spec) and MCAT blocks (MCAT spec).
 - If the site is ever to be promoted: `docs/PUBLIC_RELEASE.md` checklist first.

@@ -30,19 +30,29 @@ qb = [{"id":q["id"],"sys":SYS[q["id"]],"discipline":plain(q["discipline"]),"topi
        "why_correct":[h(p) for p in q["why_correct"]],"why_wrong":{k:h(v) for k,v in q["why_wrong"].items()},
        "objective":h(q["objective"]),"sources":[h(s) for s in q["sources"]]} for q in QUESTIONS]
 
-# Version stamps for the separately served 3D files: the page asks for js/body3d.js?v=<hash> and the viewer adds the
-# same kind of stamp to the mesh map and each model, so a browser can never mix a new page with old cached 3D files.
+# Question banks are served as data files that the app fetches at boot (docs/PLAN_MCAT.md, Phase M0):
+# data/boards.json from questions/*.py, data/mcat.json from content/mcat/ after validation.
+DATA = ROOT / "data"; DATA.mkdir(exist_ok=True)
+(DATA / "boards.json").write_text(json.dumps(qb, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+sys.path.insert(0, str(ROOT / "tools"))
+from validate import build_bundle  # stops the build with a list of problems if any MCAT content is invalid
+mcat = build_bundle()
+(DATA / "mcat.json").write_text(json.dumps(mcat, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+
+# Version stamps for the separately served files: the page asks for js/body3d.js?v=<hash> and data/*.json?v=<hash>,
+# and the viewer stamps the mesh map and each model, so a browser can never mix a new page with old cached files.
 def vhash(p): return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()[:10]
 mesh_map = json.loads((ROOT / "data/mesh_map.json").read_text(encoding="utf-8"))
 ASSET_V = {"body3d": vhash(ROOT / "js/body3d.js"), "map": vhash(ROOT / "data/mesh_map.json"),
+           "data/boards.json": vhash(DATA / "boards.json"), "data/mcat.json": vhash(DATA / "mcat.json"),
            **{l["file"]: vhash(ROOT / l["file"]) for sc in mesh_map["scenes"].values() for l in sc["layers"].values()}}
 
 src = ROOT / "src"
 out = (src / "shell.html").read_text(encoding="utf-8")
-out = out.replace("__QBANK__", json.dumps(qb, ensure_ascii=False).replace("</","<\\/"))
+assert "__QBANK__" not in out, "the question bank is no longer inlined; remove __QBANK__ from src/shell.html"
 assert out.count("__ASSET_V__") == 1, "src/shell.html must contain __ASSET_V__ once"
 out = out.replace("__ASSET_V__", json.dumps(ASSET_V))
 for marker, name in [("FIGURE_JS","figure.js"),("CONTENT_JS","content.js"),("MODELS_JS","models.js"),("ANAT_JS","anat.js"),("APP_JS","app.js")]:
     out = out.replace(f"/*{marker}*/", (src / name).read_text(encoding="utf-8"))
 (ROOT / "index.html").write_text(out, encoding="utf-8")
-print(f"index.html built: {len(QUESTIONS)} questions, {len(out)//1024} KB")
+print(f"index.html built: {len(out)//1024} KB; data/boards.json: {len(QUESTIONS)} questions; data/mcat.json: {len(mcat['items'])} items, {len(mcat['guides'])} guides")

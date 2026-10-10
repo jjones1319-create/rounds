@@ -1,40 +1,20 @@
-"""3D body test at phone size. The 3D view loads ES modules, so it needs http:// (not file://); this script
-serves the repo itself, gzipping like GitHub Pages does. Run from repo root after `python build.py`:
+"""3D body test at phone size, served over HTTP (tests/serve.py). Run from repo root after `python build.py`:
     python tests/three_d.py                      # checks only
     python tests/three_d.py --timing             # also time loading on emulated phones on 4G
     python tests/three_d.py --url https://jjones1319-create.github.io/rounds/ --timing   # the live site
     python tests/three_d.py --shots work/shots   # save screenshots
 Exits non-zero on any page error or failed check."""
-import argparse, collections, gzip, http.server, io, json, re, struct, sys, threading
+import argparse, collections, json, re, struct, sys
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from serve import start
 ap = argparse.ArgumentParser()
 ap.add_argument("--url"); ap.add_argument("--timing", action="store_true"); ap.add_argument("--shots")
 a = ap.parse_args()
-
-class Handler(http.server.SimpleHTTPRequestHandler):
-    extensions_map = {**http.server.SimpleHTTPRequestHandler.extensions_map, ".js": "text/javascript", ".json": "application/json",
-                      ".glb": "model/gltf-binary", ".html": "text/html; charset=utf-8"}
-    def __init__(self, *args, **kw): super().__init__(*args, directory=str(ROOT), **kw)
-    def log_message(self, *args): pass
-    def send_head(self):   # gzip text, JS and models when the browser accepts it (GitHub Pages does the same)
-        path = Path(self.translate_path(self.path))
-        if path.is_dir(): path = path / "index.html"
-        if "gzip" not in self.headers.get("Accept-Encoding", "") or not path.is_file() or path.suffix not in (".html", ".js", ".json", ".glb"):
-            return super().send_head()
-        body = gzip.compress(path.read_bytes(), 6)
-        self.send_response(200); self.send_header("Content-Type", self.guess_type(str(path)))
-        self.send_header("Content-Encoding", "gzip"); self.send_header("Content-Length", str(len(body))); self.end_headers()
-        return io.BytesIO(body)
-
-if a.url:
-    URL = a.url
-else:
-    srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Handler)
-    threading.Thread(target=srv.serve_forever, daemon=True).start()
-    URL = f"http://127.0.0.1:{srv.server_address[1]}/index.html"
+URL = a.url or start() + "index.html"
 
 errs, fails = [], []
 def check(name, ok, detail=""):
@@ -78,7 +58,8 @@ body_cards = {k for k, L in INFO_LAYER.items() if L in MAP}
 import hashlib
 vh = lambda f: hashlib.sha256((ROOT / f).read_bytes().replace(b"\r\n", b"\n")).hexdigest()[:10]
 stamps = json.loads(re.search(r"const ASSET_V = (\{.*?\});", (ROOT / "index.html").read_text(encoding="utf-8")).group(1))
-want = {"body3d": vh("js/body3d.js"), "map": vh("data/mesh_map.json"), **{c["file"]: vh(c["file"]) for sc in SCENES.values() for c in sc["layers"].values()}}
+want = {"body3d": vh("js/body3d.js"), "map": vh("data/mesh_map.json"), "data/boards.json": vh("data/boards.json"), "data/mcat.json": vh("data/mcat.json"),
+        **{c["file"]: vh(c["file"]) for sc in SCENES.values() for c in sc["layers"].values()}}
 check("index.html version stamps are current", stamps == want, ", ".join(k for k in want if stamps.get(k) != want[k]) or "")
 nb = len(covered & body_cards); nbr = len(covered & SCENE_KEYS["brain"]); nh = len(covered & SCENE_KEYS["heart"])
 check("mesh map matches models and cards", not problems, "; ".join(problems[:5]) or
@@ -114,7 +95,7 @@ with sync_playwright() as p:
     pg.on("requestfailed", lambda r: errs.append("request failed: " + r.url) if "fonts.g" not in r.url else None)
     asked = []
     pg.on("request", lambda r: asked.append(r.url) if re.search(r"/(js/body3d\.js|data/mesh_map\.json|models/\w+\.glb)", r.url) else None)
-    pg.goto(URL); pg.wait_for_timeout(500)
+    pg.goto(URL); pg.wait_for_selector("body[data-ready]", timeout=30000)
     ev = pg.evaluate
     ev("document.querySelector('[data-tab=anatomy]').click()"); pg.wait_for_timeout(300)
     check("3D | Diagram switch on Body tab", bool(pg.query_selector("[data-act=body-mode][data-v='3d']")) and bool(pg.query_selector("[data-act=body-mode][data-v='2d'][aria-pressed=true]")))
@@ -265,7 +246,7 @@ with sync_playwright() as p:
     ctx = b.new_context(**PHONE); pg = ctx.new_page()
     body3d = (ROOT / "js/body3d.js").read_text(encoding="utf-8")
     pg.route("**/js/body3d.js*", lambda r: r.fulfill(status=200, content_type="text/javascript", body=re.sub(r"export const API = \d+;", "export const API = 1;", body3d)))
-    open_3d_no_wait = lambda: (pg.goto(URL), pg.wait_for_timeout(400), pg.evaluate("document.querySelector('[data-tab=anatomy]').click()"),
+    open_3d_no_wait = lambda: (pg.goto(URL), pg.wait_for_selector("body[data-ready]", timeout=30000), pg.evaluate("document.querySelector('[data-tab=anatomy]').click()"),
                                pg.evaluate("document.querySelector('[data-act=body-mode][data-v=\"3d\"]').click()"), pg.wait_for_timeout(1500))
     open_3d_no_wait()
     check("stale viewer shows a Reload prompt", bool(pg.query_selector("#load3d [data-act=reload-app]")), pg.inner_text("#load3d")[:60])
@@ -287,7 +268,7 @@ with sync_playwright() as p:
             pg = ctx.new_page(); cdp = ctx.new_cdp_session(pg)
             cdp.send("Network.enable"); cdp.send("Network.setCacheDisabled", {"cacheDisabled": True})
             cdp.send("Network.emulateNetworkConditions", {"offline": False, "latency": rtt, "downloadThroughput": bps / 8, "uploadThroughput": 750e3 / 8})
-            pg.goto(URL); pg.wait_for_timeout(300)
+            pg.goto(URL); pg.wait_for_selector("body[data-ready]", timeout=60000)
             open_3d(pg)
             st = pg.evaluate(f"async () => {B3}.stats")
             first = (st["tFirstFrame"] - st["tTap"]) / 1000

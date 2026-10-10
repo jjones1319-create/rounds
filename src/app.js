@@ -1,9 +1,17 @@
 (function () {
   "use strict";
-  const QB = JSON.parse(document.getElementById("qbank").textContent);
-  const QMAP = Object.fromEntries(QB.map((q) => [q.id, q]));
-  const QNUM = Object.fromEntries(QB.map((q, i) => [q.id, i + 1]));
-  const SYSTEMS = [...new Set(QB.map((q) => q.sys))];
+  /* Question banks are fetched at boot (data/boards.json, data/mcat.json). QB, QMAP, QNUM and SYSTEMS always describe the
+     selected exam's bank, so the boards code below is unchanged; the MCAT bank stays empty until PLAN_MCAT Phase M2. */
+  const EXAMS = { boards: { key: "rounds.progress.v1", name: "Boards" }, mcat: { key: "rounds.mcat.v1", name: "MCAT" } };
+  const EXAM_KEY = "rounds.exam";                       // which exam is selected (a convenience, not progress)
+  const Bank = { boards: [], mcat: { sections: [], items: [], passages: [], guides: {} } };
+  const MAPS = { boards: {}, mcat: {} };                 // id -> question, per exam
+  let EXAM = "boards", QB = [], QMAP = {}, QNUM = {}, SYSTEMS = [], ready = false;
+  function activate(exam) {
+    EXAM = exam; QB = exam === "boards" ? Bank.boards : Bank.mcat.items; QMAP = MAPS[exam];
+    QNUM = Object.fromEntries(QB.map((q, i) => [q.id, i + 1])); SYSTEMS = [...new Set(QB.map((q) => q.sys))];
+    P.systems = new Set(SYSTEMS);
+  }
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -37,25 +45,39 @@
   };
 
   /* ---------------- storage ---------------- */
-  const KEY = "rounds.progress.v1";
   const fresh = () => ({ v: 1, answers: {}, flags: {}, notes: {}, sessions: [], settings: { theme: "system", font: 1, ts: 0 }, updatedAt: 0 });
-  function normalize(d) {
+  function normalize(d, qmap) {
     const f = fresh();
     if (!d || typeof d !== "object") return f;
     for (const k in f) if (d[k] == null) d[k] = f[k];
     d.settings = Object.assign(fresh().settings, d.settings || {});
     if (!Array.isArray(d.sessions)) d.sessions = [];
-    d.sessions = d.sessions.filter((s) => s && Array.isArray(s.qids) && s.qids.every((id) => QMAP[id]));
+    d.sessions = d.sessions.filter((s) => s && Array.isArray(s.qids) && s.qids.every((id) => qmap[id]));
     return d;
   }
+  /* One progress record per exam, each under its own localStorage key. Store.d is the selected exam's record. The boards
+     key (rounds.progress.v1) keeps its original shape, and the app settings (theme, text size) live in it. */
   const Store = {
-    d: null,
-    load() { let d = null; try { d = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { d = null; } this.d = normalize(d); },
-    local() { try { localStorage.setItem(KEY, JSON.stringify(this.d)); } catch (e) { /* storage unavailable */ } },
-    save() { this.d.updatedAt = Date.now(); this.local(); Sync.schedule(); },
+    all: { boards: null, mcat: null },
+    get d() { return this.all[EXAM]; },
+    set d(v) { this.all[EXAM] = v; },
+    settings() { return this.all.boards.settings; },
+    read(exam) { let d = null; try { d = JSON.parse(localStorage.getItem(EXAMS[exam].key) || "null"); } catch (e) { d = null; } return normalize(d, MAPS[exam]); },
+    load() { for (const exam in EXAMS) this.all[exam] = this.read(exam); },
+    pristine(d) { return !d.updatedAt && !d.settings.ts && !d.sessions.length && !Object.keys(d.answers).length && !Object.keys(d.flags).length && !Object.keys(d.notes).length; },
+    local() {                                           // an exam that has never been used gets no record at all
+      if (this.pristine(this.d)) return;
+      try { localStorage.setItem(EXAMS[EXAM].key, JSON.stringify(this.d)); } catch (e) { /* storage unavailable */ }
+    },
+    save() { if (!this.pristine(this.d)) { this.d.updatedAt = Date.now(); this.local(); } Sync.schedule(); },
+    saveSettings() {                                   // settings live in the boards record, whichever exam is selected
+      this.settings().ts = Date.now();
+      if (EXAM === "boards") { this.save(); return; }
+      try { localStorage.setItem(EXAMS.boards.key, JSON.stringify(this.all.boards)); } catch (e) { /* storage unavailable */ }
+    },
   };
   function mergeInto(L, R) {
-    R = normalize(R);
+    R = normalize(R, MAPS.boards);
     for (const id in R.answers) {
       const a = L.answers[id], b = R.answers[id];
       if (!a) L.answers[id] = b;
@@ -82,7 +104,7 @@
         if (!id) return;
         const ref = db.doc("data/users/" + id + "/progress");
         const snap = await ref.get();
-        if (snap.exists) { mergeInto(Store.d, JSON.parse(JSON.stringify(snap.data()))); Store.local(); applySettings(); render(); }
+        if (snap.exists) { mergeInto(Store.all.boards, JSON.parse(JSON.stringify(snap.data()))); if (EXAM === "boards") Store.local(); applySettings(); render(); }
         this.ref = ref; this.status = "sync";
         this.schedule();
         refreshSyncLabels();
@@ -93,7 +115,7 @@
       if (!this.ref) return;
       if (this.writing) { this.pending = true; return; }
       this.writing = true;
-      const body = JSON.stringify(Store.d);
+      const body = JSON.stringify(Store.all.boards);
       if (body === this.last) { this.writing = false; return; }
       try { await this.ref.set(JSON.parse(body)); this.last = body; this.status = "sync"; }
       catch (e) {
@@ -130,15 +152,15 @@
 
   /* ---------------- UI state ---------------- */
   const UI = { tab: "home", ptab: "new", missedOnly: false };
-  const P = { mode: "tutor", pool: "unused", systems: new Set(SYSTEMS), diffs: new Set([3, 4, 5]), count: 10, shuffle: true, perQ: 90 };
+  const P = { mode: "tutor", pool: "unused", systems: new Set(), diffs: new Set([3, 4, 5]), count: 10, shuffle: true, perQ: 90 };
 
   /* ---------------- settings ---------------- */
-  function applySettings() {
-    const s = Store.d.settings;
+  function applyTheme(s) {
     const root = document.documentElement;
     if (s.theme === "system") root.removeAttribute("data-theme"); else root.setAttribute("data-theme", s.theme);
     root.style.setProperty("--qfs", [15.5, 17, 19][s.font] + "px");
   }
+  function applySettings() { applyTheme(Store.settings()); }
 
   /* ---------------- toast & sheet ---------------- */
   let toastT;
@@ -171,10 +193,11 @@
   function render() {
     renderTabs();
     const v = $("#view");
-    if (UI.tab === "home") v.innerHTML = viewHome();
-    else if (UI.tab === "practice") v.innerHTML = viewPractice();
-    else if (UI.tab === "anatomy") { v.innerHTML = Anat.view(); Anat.mount(); }
-    else v.innerHTML = viewProgress();
+    if (UI.tab === "anatomy") { v.innerHTML = Anat.view(); Anat.mount(); return; }
+    if (!ready) { v.innerHTML = `<div class="boot"><p class="muted">Loading questions…</p></div>`; return; }
+    if (UI.tab === "home") v.innerHTML = EXAM === "mcat" ? mcatHome() : viewHome();
+    else if (UI.tab === "practice") v.innerHTML = EXAM === "mcat" ? mcatPractice() : viewPractice();
+    else v.innerHTML = EXAM === "mcat" ? mcatProgress() : viewProgress();
   }
   function go(tab) { UI.tab = tab; render(); window.scrollTo(0, 0); }
 
@@ -193,6 +216,39 @@
     return { total: QB.length, answered: answered.length, pct: answered.length ? Math.round((firstCorrect / answered.length) * 100) : null, avg: times.length ? times.reduce((a, b) => a + b, 0) / times.length : null };
   }
 
+  /* ---------------- exam switcher and the MCAT section (foundations only; no MCAT questions yet) ---------------- */
+  function examSeg() {
+    return `<div class="seg fit exam-seg" role="group" aria-label="Exam">${Object.keys(EXAMS).map((k) => `<button data-act="exam" data-v="${k}" aria-pressed="${EXAM === k}">${EXAMS[k].name}</button>`).join("")}</div>`;
+  }
+  function setExam(exam) {
+    if (!EXAMS[exam] || exam === EXAM) return;
+    try { localStorage.setItem(EXAM_KEY, exam); } catch (e) { /* ignore */ }
+    activate(exam); UI.ptab = "new"; UI.missedOnly = false; P.pool = "unused";
+    render(); window.scrollTo(0, 0);
+  }
+  const MCAT_TM = `MCAT<sup>&#174;</sup> is a registered trademark of the Association of American Medical Colleges (AAMC), which is not affiliated with and does not endorse this app.`;
+  const sectionCards = (note) => `<div class="list">${Bank.mcat.sections.map((s) => `<div class="li static"><div class="t"><b>${esc(s.short)}</b><span>${esc(s.name)}</span><span class="meta">${s.questions} questions, ${s.minutes} minutes${s.tools ? `, ${esc(s.tools.toLowerCase())} provided` : ""}</span></div><span class="badge">${note}</span></div>`).join("")}</div>`;
+  function mcatHome() {
+    return `<div class="topline"><div class="wordmark">${ICON.logo}Rounds</div><span class="spacer"></span><button class="iconbtn" data-act="settings" aria-label="Settings">${ICON.gear}</button></div>${examSeg()}
+      <h1>MCAT<sup>&#174;</sup> practice</h1><p class="status-line">The MCAT section is being built. Its four sections are set up; questions and the "What's tested" guides come next.</p>
+      <h2>Sections</h2>${sectionCards("Coming soon")}
+      <p class="hint" style="margin-top:14px">${MCAT_TM} Practice scores here are never official scaled scores.</p>${pearlHTML()}`;
+  }
+  function mcatPractice() {
+    return `${examSeg()}<h1>Practice</h1><p class="hint" style="margin:10px 2px 8px">No MCAT questions yet. Each section will get Practice and "What's tested" tabs.</p>${sectionCards("No questions yet")}`;
+  }
+  function mcatProgress() {
+    return `${examSeg()}<h1>Progress</h1><div class="panel" style="margin-top:14px"><p style="margin:0">No MCAT practice yet. MCAT progress is kept separately from your Boards progress and will show percent correct by section, content category, and skill, never a predicted scaled score.</p></div>
+      <p class="hint" style="margin-top:18px" data-sync>${syncText()}</p>`;
+  }
+  function pearlHTML() {
+    const keys = Object.keys(INFO);
+    const day = Math.floor(Date.now() / 864e5);
+    const k = keys[day % keys.length], inf = INFO[k], lay = LAYERS.find((l) => l.k === inf.L);
+    return `<h2>Anatomy pearl of the day</h2><div class="panel"><div class="pearl"><span class="k">${esc(lay.n)}</span><h3 style="margin:2px 0 6px">${esc(inf.n)}</h3><p>${esc(inf.p)}</p></div>
+      <button class="btn ghost sm" data-act="show-fig" data-fig="${k}">See it on the body</button></div>`;
+  }
+
   /* ---------------- home ---------------- */
   function viewHome() {
     const s = summary(), act = activeSession();
@@ -200,7 +256,7 @@
     const line = s.answered === 0 ? `${s.total} questions ready. Start with a tutor block to see explanations as you go.` :
       s.answered === s.total ? `All ${s.total} questions answered. Review what you missed or retake a timed block.` :
       `${s.answered} of ${s.total} answered. ${unused} still new.`;
-    let h = `<div class="topline"><div class="wordmark">${ICON.logo}Rounds</div><span class="spacer"></span><button class="iconbtn" data-act="settings" aria-label="Settings">${ICON.gear}</button></div>
+    let h = `<div class="topline"><div class="wordmark">${ICON.logo}Rounds</div><span class="spacer"></span><button class="iconbtn" data-act="settings" aria-label="Settings">${ICON.gear}</button></div>${examSeg()}
       <h1>Ready for a block?</h1><p class="status-line">${line}</p>`;
     if (act) {
       const done = Object.keys(act.mode === "tutor" ? act.resp : act.sel).length;
@@ -215,11 +271,7 @@
         <button class="chip" data-act="start-pool" data-pool="flagged" ${flagged ? "" : "disabled"}>Flagged <span class="n">${flagged}</span></button>
         <button class="chip" data-act="tab" data-tab="practice">Build a custom block</button></div>
       <h2>Your question bank</h2><div class="panel">${qmapHTML()}</div>`;
-    const keys = Object.keys(INFO);
-    const day = Math.floor(Date.now() / 864e5);
-    const k = keys[day % keys.length], inf = INFO[k], lay = LAYERS.find((l) => l.k === inf.L);
-    h += `<h2>Anatomy pearl of the day</h2><div class="panel"><div class="pearl"><span class="k">${esc(lay.n)}</span><h3 style="margin:2px 0 6px">${esc(inf.n)}</h3><p>${esc(inf.p)}</p></div>
-      <button class="btn ghost sm" data-act="show-fig" data-fig="${k}">See it on the body</button></div>`;
+    h += pearlHTML();
     return h;
   }
 
@@ -229,7 +281,7 @@
   }
   function viewPractice() {
     const tabs = [["new", "Build"], ["library", "Questions"], ["history", "History"], ["takeaways", "Key points"]];
-    let h = `<h1>Practice</h1><div class="seg" role="group" aria-label="Practice sections" style="margin-top:12px">${tabs.map(([k, n]) => `<button data-act="ptab" data-v="${k}" aria-pressed="${UI.ptab === k}">${n}</button>`).join("")}</div>`;
+    let h = `${examSeg()}<h1>Practice</h1><div class="seg" role="group" aria-label="Practice sections" style="margin-top:12px">${tabs.map(([k, n]) => `<button data-act="ptab" data-v="${k}" aria-pressed="${UI.ptab === k}">${n}</button>`).join("")}</div>`;
     if (UI.ptab === "new") h += practiceNew();
     else if (UI.ptab === "library") h += practiceLibrary();
     else if (UI.ptab === "history") h += practiceHistory();
@@ -294,7 +346,7 @@
   /* ---------------- progress ---------------- */
   function viewProgress() {
     const s = summary();
-    let h = `<h1>Progress</h1><div class="kpis" style="margin-top:14px">
+    let h = `${examSeg()}<h1>Progress</h1><div class="kpis" style="margin-top:14px">
       <div class="kpi"><b>${s.answered}/${s.total}</b><span>Answered</span></div>
       <div class="kpi"><b>${s.pct == null ? "–" : s.pct + "%"}</b><span>Right on first try</span></div>
       <div class="kpi"><b>${s.avg == null ? "–" : fmt(s.avg)}</b><span>Average time</span></div></div>
@@ -317,12 +369,13 @@
 
   /* ---------------- settings ---------------- */
   function openSettings() {
-    const s = Store.d.settings;
+    const s = Store.settings(), blocks = new Set(Bank.boards.map((q) => q.id.split("-")[0])).size;
     openSheet("Settings", `
       <div class="field" style="margin-top:4px"><span class="lab">Appearance</span><div class="seg" role="group" aria-label="Appearance">${[["system", "Match device"], ["light", "Light"], ["dark", "Dark"]].map(([k, n]) => `<button data-act="set-theme" data-v="${k}" aria-pressed="${s.theme === k}">${n}</button>`).join("")}</div></div>
       <div class="field"><span class="lab">Question text size</span><div class="seg" role="group" aria-label="Question text size">${["Small", "Medium", "Large"].map((n, i) => `<button data-act="set-font" data-v="${i}" aria-pressed="${s.font === i}">${n}</button>`).join("")}</div></div>
       <div class="field"><span class="lab">Saving</span><p class="hint" data-sync>${syncText()}</p></div>
-      <div class="field"><span class="lab">About</span><p class="hint">Blocks 1 and 2: ${QB.length} original Step 2 CK–style questions. Each explanation cites the guideline it was checked against (October 2026). For study only; not medical advice and not affiliated with the USMLE or NBME. Keyboard: A–E to choose, Enter to submit, arrow keys to move, F to flag.</p></div>
+      <div class="field"><span class="lab">About</span><p class="hint">Boards: ${Bank.boards.length} original Step 2 CK–style questions in ${blocks} block${blocks === 1 ? "" : "s"}. Each explanation cites the guideline it was checked against (October 2026). MCAT<sup>&#174;</sup>: in progress. Keyboard: A–E to choose, Enter to submit, arrow keys to move, F to flag.</p>
+      <p class="hint">Rounds is an independent, free study resource. It is not affiliated with, endorsed by, or sponsored by the AAMC, FSMB, or NBME. Practice scores are not predictions of official scores. Content is for exam study only and is not medical advice. ${MCAT_TM} USMLE<sup>&#174;</sup> is a program of the Federation of State Medical Boards (FSMB) and the National Board of Medical Examiners (NBME).</p></div>
       <button class="btn ghost block" data-act="reset" style="margin-top:8px">Reset all progress</button>`);
   }
   function confirmReset() {
@@ -522,7 +575,7 @@
       else if (s.sel[id]) cls = "ans";
       return `<button class="${cls} ${i === R.idx ? "cur" : ""} ${isFlag(id) ? "flagged" : ""}" data-act="r-goto" data-i="${i}" aria-label="Question ${i + 1}">${i + 1}</button>`;
     }).join("");
-    const f = Store.d.settings.font;
+    const f = Store.settings().font;
     openSheet("Questions in this block", `<div class="navgrid">${cells}</div>
       <div class="field"><span class="lab">Question text size</span><div class="seg" role="group" aria-label="Question text size">${["Small", "Medium", "Large"].map((n, i) => `<button data-act="set-font" data-v="${i}" aria-pressed="${f === i}">${n}</button>`).join("")}</div></div>
       ${!R.review && s.mode === "timed" && !s.done ? `<button class="btn ghost block" style="margin-top:18px" data-act="r-end">End block now</button>` : ""}
@@ -573,10 +626,12 @@
       case "tab": go(t.dataset.tab); break;
       case "settings": openSettings(); break;
       case "sheet-close": closeSheet(); break;
-      case "set-theme": Store.d.settings.theme = v; Store.d.settings.ts = Date.now(); applySettings(); Store.save(); $$("[data-act=set-theme]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === v)); break;
-      case "set-font": Store.d.settings.font = +v; Store.d.settings.ts = Date.now(); applySettings(); Store.save(); $$("[data-act=set-font]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === v)); break;
+      case "set-theme": Store.settings().theme = v; applySettings(); Store.saveSettings(); $$("[data-act=set-theme]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === v)); break;
+      case "set-font": Store.settings().font = +v; applySettings(); Store.saveSettings(); $$("[data-act=set-font]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === v)); break;
+      case "exam": setExam(v); break;
+      case "boot-retry": boot(); break;
       case "reset": confirmReset(); break;
-      case "reset-confirm": { const st = Store.d.settings; Store.d = fresh(); Store.d.settings = st; Store.save(); closeSheet(true); render(); toast("Progress reset."); break; }
+      case "reset-confirm": { const st = Store.d.settings; Store.d = fresh(); Store.d.settings = st; try { localStorage.removeItem(EXAMS[EXAM].key); } catch (e) { /* ignore */ } Store.save(); closeSheet(true); render(); toast("Progress reset."); break; }
       case "quick": quickStart(t.dataset.mode); break;
       case "start-pool": startSession("tutor", pool(t.dataset.pool), {}); break;
       case "resume": { closeSheet(true); const s = activeSession(); if (s) openRunner(s, { idx: s.idx }); break; }
@@ -640,9 +695,35 @@
   document.addEventListener("visibilitychange", () => { if (document.hidden) { if (R.s && !R.s.temp && !R.s.done) { R.s.updated = Date.now(); } Store.save(); } });
 
   /* ---------------- boot ---------------- */
-  Store.load();
-  applySettings();
+  function preApplySettings() {   // theme and text size straight from storage, before the banks arrive, so nothing flashes
+    try { const d = JSON.parse(localStorage.getItem(EXAMS.boards.key) || "null"); if (d && d.settings) applyTheme(Object.assign(fresh().settings, d.settings)); } catch (e) { /* ignore */ }
+  }
+  async function fetchBank(file) {
+    const v = typeof ASSET_V === "object" && ASSET_V[file] ? `?v=${ASSET_V[file]}` : "";
+    const r = await fetch(file + v); if (!r.ok) throw new Error(`${file}: ${r.status}`);
+    return r.json();
+  }
+  async function boot() {
+    ready = false; render();
+    try {
+      const [boards, mcat] = await Promise.all([fetchBank("data/boards.json"), fetchBank("data/mcat.json")]);
+      Bank.boards = boards; Bank.mcat = mcat;
+    } catch (e) {
+      console.error(e);
+      if (UI.tab !== "anatomy") $("#view").innerHTML = `<div class="boot"><p>The questions could not be loaded. Check the connection and try again.</p><button class="btn" data-act="boot-retry">Try again</button></div>`;
+      return;
+    }
+    MAPS.boards = Object.fromEntries(Bank.boards.map((q) => [q.id, q]));
+    MAPS.mcat = Object.fromEntries((Bank.mcat.items || []).map((q) => [q.id, q]));
+    let exam = "boards"; try { if (localStorage.getItem(EXAM_KEY) === "mcat") exam = "mcat"; } catch (e) { /* ignore */ }
+    activate(exam);
+    Store.load();
+    applySettings();
+    ready = true; document.body.dataset.ready = "1";
+    render();
+    Sync.init();
+  }
+  preApplySettings();
   Anat.init({ render, go, tab: () => UI.tab, toast, openSheet, sheetBody, closeSheet });
-  render();
-  Sync.init();
+  boot();
 })();
