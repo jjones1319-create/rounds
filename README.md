@@ -1,7 +1,8 @@
 # Rounds
 
 A phone-friendly study app for the boards (original USMLE® Step 2 CK–style questions with full explanations) and,
-in progress, the MCAT®, plus an interactive 2D and 3D anatomy guide (body, brain, heart, an A–Z index, and quizzes).
+in progress, the MCAT® (a searchable "What's tested" guide per section, with questions to follow), plus an
+interactive 2D and 3D anatomy guide (body, brain, heart, an A–Z index, and quizzes).
 
 ## Get it running (one time)
 

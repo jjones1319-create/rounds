@@ -25,6 +25,10 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
 - `src/figure.js` 2D body figure (front/back SVG) · `src/content.js` structure cards, cranial nerves, bones, lab values
 - `src/models.js` dermatomes, brain + heart models, `SCENE3D`, `buildDictionary()` · `src/anat.js` anatomy UI module (`Anat`)
 - `questions/questions.py` (Block 1), `questions2.py` (Block 2), `questions3.py` (Block 3): board question source of truth.
+- MCAT content: `content/mcat/guides/<section>.json` ("What's tested" guides, schema in `docs/MCAT_GUIDES_SPEC.md` §4)
+  and `content/mcat/M*.json` (question blocks). Each MCAT section screen (Practice tab → a section) has Practice |
+  What's tested; the guide is searchable across sections, remembers what is expanded, and renders equations with
+  `vendor/katex/` (KaTeX 0.19.0, loaded the first time a guide opens; `ASSET_V.katex` stamps it).
 - 3D (served as separate files, loaded only when a tab's "3D" is chosen; the choice is remembered per device):
   `js/body3d.js` viewers for the Body, Brain and Heart tabs (`viewer("body"|"brain"|"heart")`, ES module) ·
   `vendor/three/` three.js 0.186.1, mapped by the import map in `src/shell.html` · `models/*.glb` one file per layer
@@ -78,8 +82,9 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
 - Progress lives in `localStorage` key `rounds.progress.v1` (answers, flags, notes, sessions, settings).
 - `Sync` in `app.js` uses `window.claude` (claude.ai only). Off claude.ai it is a no-op; leave it, it's harmless.
 - The 3D/Diagram choice per tab is in `rounds.view3d` and the selected exam in `rounds.exam` (conveniences, not progress).
-- MCAT progress lives in `rounds.mcat.v1` (same shape as the boards record; created only once something is saved).
-  Theme and text size stay in the boards record whichever exam is selected (`Store.settings()`).
+- MCAT progress lives in `rounds.mcat.v1` (same shape as the boards record plus `reviewed: {topicId: ts}` for the
+  guides' Reviewed ticks; created only once something is saved). Theme and text size stay in the boards record
+  whichever exam is selected (`Store.settings()`). Which guide groups are expanded is in `rounds.guide.v1`.
 
 ## Current state (2026-10-10)
 - Boards: 24 questions (Blocks 1–3). Anatomy: 2D body (front/back, 8 layers incl. dermatomes), brain, heart,
@@ -87,12 +92,15 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
   Willis, cranial nerves) and 3D heart (chambers, valves, coronaries, cut-open view). Live at
   https://jjones1319-create.github.io/rounds/ and confirmed smooth on her phone.
 - MCAT: Phase M0 done 2026-10-10 (Boards | MCAT switcher on Home, Practice and Progress; banks fetched from `data/`;
-  `tools/validate.py`; HTTP tests; `rounds.mcat.v1`). The MCAT tab shows its four sections as empty states; no content yet.
+  `tools/validate.py`; HTTP tests; `rounds.mcat.v1`). Phase M1 in progress: the section screens and the Chem/Phys
+  "What's tested" guide (96 topics, 4A–5E, all `draft`, references to OpenStax/LibreTexts) are built; the CARS,
+  Bio/Biochem and Psych/Soc guides wait for the owner's review of the Chem/Phys topic list. No MCAT questions yet.
 - Open gaps: many 3D structures show a name-only card; write verified cards for the important ones.
 
 ## Work order
 Work on one track at a time and finish its current phase before switching. Report at each phase boundary.
 - Track A, 3D anatomy: `docs/PLAN_3D.md`. Phases 0–2 are done; Phase 3 (progress export/import, installable PWA) remains.
-- Track B, MCAT: `docs/PLAN_MCAT.md`. M0 is done; M1 (section guides, Chem/Phys first) is next, then M2–M5.
+- Track B, MCAT: `docs/PLAN_MCAT.md`. M0 is done; M1 is half done (app side + Chem/Phys guide; three guides to
+  write after the owner's review), then M2–M5.
 - Track C, content: new board blocks (`/new-board-block`, boards spec) and MCAT blocks (MCAT spec).
 - If the site is ever to be promoted: `docs/PUBLIC_RELEASE.md` checklist first.

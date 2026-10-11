@@ -84,9 +84,13 @@ Exam switcher, content/data split, validator, HTTP-based tests, MCAT progress ke
 - Pass: boards section works exactly as before, including her saved progress; tests pass over HTTP;
   the MCAT tab shows an empty state for each of the four sections.
 
-### Phase M1: section guides ("What's tested")
+### Phase M1: section guides ("What's tested") — in progress
 Build the four guides per `docs/MCAT_GUIDES_SPEC.md`, starting with Chem/Phys so the owner can review the
 physics topics first. Questions depend on these topic IDs, so guides come before the question bank grows.
+Status 2026-10-10: the app side is done (section screens with Practice | What's tested, search across guides,
+expand/collapse memory, Reviewed ticks, KaTeX equations) and the Chem/Phys guide is written (96 topics, every
+outline item mapped in the private checklist in `work/`, references checked, all topics `draft`). CARS,
+Bio/Biochem, and Psych/Soc guides follow once the owner has reviewed the Chem/Phys topic list.
 - Pass: each guide is complete against the AAMC outline (private checklist in `work/`), uses original wording,
   shows the official-outline link and "Last verified" date, is searchable, and reads well at 360 px;
   topics carry `status` and `reviewed_by` (the optional Beta label stays off by default).

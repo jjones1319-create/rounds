@@ -97,6 +97,36 @@ p{margin:0 0 10px}
 .list .li.static{cursor:default}
 .list .li .t .meta{display:block; margin-top:4px; font-size:13px; color:var(--muted)}
 .seg.fit button{flex:none; padding:0 14px}
+/* MCAT "What's tested" guides */
+details.gc,details.gcat,details.gt{border:1px solid var(--line); border-radius:14px; background:var(--surface); margin-top:10px}
+details.gcat{background:var(--paper)}
+details.gc>summary,details.gcat>summary,details.gt>summary{list-style:none; cursor:pointer; padding:12px 14px; display:flex; gap:10px; align-items:flex-start; min-height:48px; box-sizing:border-box}
+details.gc>summary::-webkit-details-marker,details.gcat>summary::-webkit-details-marker,details.gt>summary::-webkit-details-marker{display:none}
+details.gc>summary::before,details.gcat>summary::before,details.gt>summary::before{content:""; flex:none; width:9px; height:9px; margin:7px 2px 0 0; border-right:2px solid var(--muted); border-bottom:2px solid var(--muted); transform:rotate(-45deg); transition:transform .15s}
+details[open].gc>summary::before,details[open].gcat>summary::before,details[open].gt>summary::before{transform:rotate(45deg)}
+.gsum{flex:1; min-width:0; overflow-wrap:anywhere}
+.gsum b{display:block}
+.gsum .meta{display:block; margin-top:3px; font-size:13px; color:var(--muted)}
+.gsum .meta .badge{vertical-align:middle}
+.gc-body{padding:0 10px 10px}
+.gcat-body{padding:0 10px 10px}
+.gt-body{padding:0 14px 14px}
+.know{margin:0; padding-left:20px}
+.know li{margin:6px 0; font-size:15px; line-height:1.55}
+.eqs{display:flex; flex-direction:column; gap:8px; margin:12px 0 4px}
+.eq{overflow-x:auto; padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:var(--surface2); font-size:16px; -webkit-overflow-scrolling:touch; scrollbar-width:thin}
+.eq .katex-display{margin:0}
+.eq .katex-display>.katex{text-align:left; white-space:nowrap}
+.eq code{white-space:pre; font-size:13px; color:var(--muted)}
+.tag-d{display:inline-block; font-size:11px; font-weight:700; padding:1px 7px; border-radius:999px; background:var(--accent-soft); color:var(--accent); margin:0 6px 0 0; vertical-align:middle}
+.chk{display:inline-flex; align-items:center; gap:10px; font-weight:700; min-height:44px; cursor:pointer}
+.chk input{width:22px; height:22px; margin:0; accent-color:var(--accent)}
+.gt-foot{margin-top:8px}
+.refs{margin:12px 0 0; overflow-wrap:anywhere}
+.refs a,.hint a{color:var(--accent)}
+.skill{padding:12px 0; border-top:1px solid var(--line)}
+.skill.first{padding-top:0; border-top:0}
+.bars h3{font-size:14px; color:var(--muted)}
 
 /* tabbar */
 .tabbar{position:fixed; left:0; right:0; bottom:0; z-index:20; background:color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-top:1px solid var(--line); padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -377,7 +407,7 @@ details.bgroup[open] summary::after{transform:rotate(-135deg)}
 <div class="runner" id="runner" hidden role="dialog" aria-modal="true" aria-label="Question block"></div>
 <div id="sheetroot"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script>const ASSET_V = {"body3d": "64e615e1c2", "map": "64bdaa918d", "data/boards.json": "10d3b1e7b9", "data/mcat.json": "6af53edb02", "models/skeleton.glb": "8b64aa61f7", "models/organs.glb": "eca00964bc", "models/muscles.glb": "5781f0b454", "models/arteries.glb": "af3bbb5999", "models/veins.glb": "53a3a0c905", "models/nerves.glb": "8af742eafb", "models/lymph.glb": "8b7f51010d", "models/brain_cortex.glb": "1974b39599", "models/brain_deep.glb": "cdca5a7156", "models/brain_arteries.glb": "45b2909462", "models/brain_nerves.glb": "8a0660696b", "models/brain_skull.glb": "60b3976b71", "models/heart_wall.glb": "d09d25e840", "models/heart_valves.glb": "37b965357c", "models/heart_coronary.glb": "5d3d252113", "models/heart_veins.glb": "b94b3381fe", "models/heart_vessels.glb": "5f2a5b42e3"}; /* content hashes of the 3D files, from build.py */</script>
+<script>const ASSET_V = {"body3d": "64e615e1c2", "map": "64bdaa918d", "data/boards.json": "10d3b1e7b9", "data/mcat.json": "a2333fbcaf", "katex": "0.19.0", "models/skeleton.glb": "8b64aa61f7", "models/organs.glb": "eca00964bc", "models/muscles.glb": "5781f0b454", "models/arteries.glb": "af3bbb5999", "models/veins.glb": "53a3a0c905", "models/nerves.glb": "8af742eafb", "models/lymph.glb": "8b7f51010d", "models/brain_cortex.glb": "1974b39599", "models/brain_deep.glb": "cdca5a7156", "models/brain_arteries.glb": "45b2909462", "models/brain_nerves.glb": "8a0660696b", "models/brain_skull.glb": "60b3976b71", "models/heart_wall.glb": "d09d25e840", "models/heart_valves.glb": "37b965357c", "models/heart_coronary.glb": "5d3d252113", "models/heart_veins.glb": "b94b3381fe", "models/heart_vessels.glb": "5f2a5b42e3"}; /* content hashes of the 3D files, from build.py */</script>
 <script>
 /* Anatomy figure v2: original stylized drawing with FRONT and BACK views.
    viewBox 0 0 400 920, midline x=200. Paired structures are defined on the patient's RIGHT
@@ -2119,7 +2149,7 @@ const Anat = (function () {
     settings() { return this.all.boards.settings; },
     read(exam) { let d = null; try { d = JSON.parse(localStorage.getItem(EXAMS[exam].key) || "null"); } catch (e) { d = null; } return normalize(d, MAPS[exam]); },
     load() { for (const exam in EXAMS) this.all[exam] = this.read(exam); },
-    pristine(d) { return !d.updatedAt && !d.settings.ts && !d.sessions.length && !Object.keys(d.answers).length && !Object.keys(d.flags).length && !Object.keys(d.notes).length; },
+    pristine(d) { return !d.updatedAt && !d.settings.ts && !d.sessions.length && !Object.keys(d.answers).length && !Object.keys(d.flags).length && !Object.keys(d.notes).length && !Object.keys(d.reviewed || {}).length; },
     local() {                                           // an exam that has never been used gets no record at all
       if (this.pristine(this.d)) return;
       try { localStorage.setItem(EXAMS[EXAM].key, JSON.stringify(this.d)); } catch (e) { /* storage unavailable */ }
@@ -2206,8 +2236,15 @@ const Anat = (function () {
   const activeSession = () => Store.d.sessions.find((s) => !s.done && !s.temp);
 
   /* ---------------- UI state ---------------- */
-  const UI = { tab: "home", ptab: "new", missedOnly: false };
+  const UI = { tab: "home", ptab: "new", missedOnly: false, msec: null, mtab: "guide" };   // msec: the open MCAT section screen
   const P = { mode: "tutor", pool: "unused", systems: new Set(), diffs: new Set([3, 4, 5]), count: 10, shuffle: true, perQ: 90 };
+  /* "What's tested" guide UI state. Which groups are expanded is remembered in its own key (a convenience, like the exam
+     choice); "Reviewed" marks are progress and live in the MCAT record (Store.all.mcat.reviewed). */
+  const GUIDE_KEY = "rounds.guide.v1";
+  const G = { q: "", open: {}, idx: null };
+  try { Object.assign(G.open, JSON.parse(localStorage.getItem(GUIDE_KEY) || "{}").open || {}); } catch (e) { /* ignore */ }
+  function saveGuideUI() { try { localStorage.setItem(GUIDE_KEY, JSON.stringify({ open: G.open })); } catch (e) { /* ignore */ } }
+  const isOpen = (key, def) => (key in G.open ? !!G.open[key] : def);
 
   /* ---------------- settings ---------------- */
   function applyTheme(s) {
@@ -2251,8 +2288,9 @@ const Anat = (function () {
     if (UI.tab === "anatomy") { v.innerHTML = Anat.view(); Anat.mount(); return; }
     if (!ready) { v.innerHTML = `<div class="boot"><p class="muted">Loading questions…</p></div>`; return; }
     if (UI.tab === "home") v.innerHTML = EXAM === "mcat" ? mcatHome() : viewHome();
-    else if (UI.tab === "practice") v.innerHTML = EXAM === "mcat" ? mcatPractice() : viewPractice();
+    else if (UI.tab === "practice") v.innerHTML = EXAM === "mcat" ? (UI.msec ? mcatSection() : mcatPractice()) : viewPractice();
     else v.innerHTML = EXAM === "mcat" ? mcatProgress() : viewProgress();
+    renderMath(v);
   }
   function go(tab) { UI.tab = tab; render(); window.scrollTo(0, 0); }
 
@@ -2278,23 +2316,157 @@ const Anat = (function () {
   function setExam(exam) {
     if (!EXAMS[exam] || exam === EXAM) return;
     try { localStorage.setItem(EXAM_KEY, exam); } catch (e) { /* ignore */ }
-    activate(exam); UI.ptab = "new"; UI.missedOnly = false; P.pool = "unused";
+    activate(exam); UI.ptab = "new"; UI.missedOnly = false; UI.msec = null; P.pool = "unused";
     render(); window.scrollTo(0, 0);
   }
   const MCAT_TM = `MCAT<sup>&#174;</sup> is a registered trademark of the Association of American Medical Colleges (AAMC), which is not affiliated with and does not endorse this app.`;
-  const sectionCards = (note) => `<div class="list">${Bank.mcat.sections.map((s) => `<div class="li static"><div class="t"><b>${esc(s.short)}</b><span>${esc(s.name)}</span><span class="meta">${s.questions} questions, ${s.minutes} minutes${s.tools ? `, ${esc(s.tools.toLowerCase())} provided` : ""}</span></div><span class="badge">${note}</span></div>`).join("")}</div>`;
+  const secInfo = (k) => Bank.mcat.sections.find((s) => s.k === k);
+  const guideOf = (k) => (Bank.mcat.guides || {})[k];
+  const guideTopics = (g) => (g.concepts || []).flatMap((c) => c.categories.flatMap((cat) => cat.topics));
+  const reviewedMap = () => Store.all.mcat.reviewed || {};
+  const reviewedCount = (g) => guideTopics(g).filter((t) => reviewedMap()[t.id]).length;
+  function sectionCards() {
+    return `<div class="list">${Bank.mcat.sections.map((s) => {
+      const g = guideOf(s.k), n = (Bank.mcat.items || []).filter((q) => q.section === s.k).length;
+      const meta = `${s.questions} questions, ${s.minutes} minutes${s.tools ? `, ${esc(s.tools.toLowerCase())} provided` : ""}` + (g ? ` · ${reviewedCount(g)} of ${guideTopics(g).length} topics reviewed` : "");
+      return `<button class="li" data-act="msec" data-v="${s.k}"><div class="t"><b>${esc(s.short)}</b><span>${esc(s.name)}</span><span class="meta">${meta}</span></div><span class="badge${g ? " correct" : ""}">${n ? `${n} questions` : g ? "What's tested" : "Coming soon"}</span>${ICON.right}</button>`;
+    }).join("")}</div>`;
+  }
   function mcatHome() {
+    const ready = Bank.mcat.sections.filter((s) => guideOf(s.k)).length;
     return `<div class="topline"><div class="wordmark">${ICON.logo}Rounds</div><span class="spacer"></span><button class="iconbtn" data-act="settings" aria-label="Settings">${ICON.gear}</button></div>${examSeg()}
-      <h1>MCAT<sup>&#174;</sup> practice</h1><p class="status-line">The MCAT section is being built. Its four sections are set up; questions and the "What's tested" guides come next.</p>
-      <h2>Sections</h2>${sectionCards("Coming soon")}
+      <h1>MCAT<sup>&#174;</sup> practice</h1><p class="status-line">${ready ? `Open a section to see everything it tests and mark topics as you review them. Questions come next.` : `The MCAT section is being built. Its four sections are set up; questions and the "What's tested" guides come next.`}</p>
+      <h2>Sections</h2>${sectionCards()}
       <p class="hint" style="margin-top:14px">${MCAT_TM} Practice scores here are never official scaled scores.</p>${pearlHTML()}`;
   }
   function mcatPractice() {
-    return `${examSeg()}<h1>Practice</h1><p class="hint" style="margin:10px 2px 8px">No MCAT questions yet. Each section will get Practice and "What's tested" tabs.</p>${sectionCards("No questions yet")}`;
+    return `${examSeg()}<h1>Practice</h1><p class="hint" style="margin:10px 2px 8px">No MCAT questions yet. Each section has a "What's tested" guide; practice blocks arrive as questions are written.</p>${sectionCards()}`;
   }
   function mcatProgress() {
+    const rows = Bank.mcat.sections.map((s) => { const g = guideOf(s.k); if (!g) return ""; const n = guideTopics(g).length, r = reviewedCount(g), pct = n ? Math.round((100 * r) / n) : 0; return `<div class="bar-row"><div class="lab"><span>${esc(s.short)} topics reviewed</span><span class="muted">${r} of ${n}</span></div><div class="bar" role="img" aria-label="${pct}% reviewed"><i style="width:${pct}%"></i></div></div>`; }).join("");
     return `${examSeg()}<h1>Progress</h1><div class="panel" style="margin-top:14px"><p style="margin:0">No MCAT practice yet. MCAT progress is kept separately from your Boards progress and will show percent correct by section, content category, and skill, never a predicted scaled score.</p></div>
+      ${rows ? `<h2>What's tested</h2><div class="panel bars">${rows}</div>` : ""}
       <p class="hint" style="margin-top:18px" data-sync>${syncText()}</p>`;
+  }
+
+  /* ---------------- MCAT section screen: Practice | What's tested (docs/MCAT_GUIDES_SPEC.md §5) ---------------- */
+  function mcatSection() {
+    const s = secInfo(UI.msec); if (!s) { UI.msec = null; return mcatPractice(); }
+    const g = guideOf(s.k), n = (Bank.mcat.items || []).filter((q) => q.section === s.k).length;
+    let h = `${examSeg()}<p style="margin:14px 0 0"><button class="btn quiet sm" data-act="msec" data-v="">${ICON.left} All sections</button></p>
+      <h1>${esc(s.short)}</h1><p class="status-line">${esc(s.name)}. ${s.questions} questions in ${s.minutes} minutes${s.tools ? `, ${esc(s.tools.toLowerCase())} provided` : ""}.</p>
+      <div class="seg" role="group" aria-label="Section view">${[["practice", "Practice"], ["guide", "What's tested"]].map(([k, nm]) => `<button data-act="mtab" data-v="${k}" aria-pressed="${UI.mtab === k}">${nm}</button>`).join("")}</div>`;
+    if (UI.mtab === "practice") h += `<div class="panel" style="margin-top:14px"><p style="margin:0">${n ? `${n} ${esc(s.short)} question${n === 1 ? "" : "s"} so far. Custom blocks for the MCAT arrive with the first full block of questions.` : `No ${esc(s.short)} questions yet. They arrive in blocks, each tagged to a topic in "What's tested", so you can practice any topic from the guide.`}</p></div>`;
+    else h += g ? guideHTML(g) : `<div class="panel" style="margin-top:14px"><p style="margin:0">The ${esc(s.short)} guide is being written. Chem/Phys is first.</p></div>`;
+    return h;
+  }
+  const ext = (url, text) => `<a href="${esc(url)}" target="_blank" rel="noopener">${text}</a>`;
+  function guideHTML(g) {
+    return `<p class="hint" style="margin:12px 2px 0">${esc(g.attribution || "")} ${ext(g.official_outline_url, "Official outline")}${g.official_prep_url ? ` · ${ext(g.official_prep_url, "AAMC free prep resources")}` : ""} · Last verified ${esc(g.verified)}.</p>
+      <div class="search-wrap" style="margin-top:12px"><input class="search" type="search" placeholder="Search every guide" aria-label="Search every guide" data-gsearch value="${esc(G.q)}"></div>
+      <div id="gbody">${G.q.trim() ? guideResultsHTML() : guideBodyHTML(g)}</div>`;
+  }
+  const topicItems = (id) => (Bank.mcat.items || []).filter((q) => (q.topics || []).includes(id));
+  const catItems = (code) => (Bank.mcat.items || []).filter((q) => q.category === code);
+  function accuracy(items) {
+    const ans = items.filter((q) => Store.all.mcat.answers[q.id]), ok = ans.filter((q) => { const a = Store.all.mcat.answers[q.id]; return a.first ? a.first.ok : a.ok; }).length;
+    return { n: items.length, answered: ans.length, pct: ans.length ? Math.round((100 * ok) / ans.length) : null };
+  }
+  const accText = (a) => (!a.n ? "" : a.answered ? `${a.pct}% right on first try (${a.answered} of ${a.n})` : `${a.n} question${a.n === 1 ? "" : "s"}, not started`);
+  const barRow = (label, pct, note) => `<div class="bar-row"><div class="lab"><span>${label}</span><span class="muted">${note == null ? `${pct}%` : note}</span></div><div class="bar" role="img" aria-label="${pct}%"><i style="width:${pct}%"></i></div></div>`;
+  const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+  const eqHTML = (e) => `<div class="eq" data-tex="${esc(e)}"><code>${esc(e)}</code></div>`;
+  function guideBodyHTML(g) {
+    const gl = g.glance || {}, bp = g.blueprint || {}, rv = reviewedMap();
+    let h = `<h2>At a glance</h2><div class="panel"><div class="kpis"><div class="kpi"><b>${gl.questions}</b><span>Questions</span></div><div class="kpi"><b>${gl.minutes}</b><span>Minutes</span></div><div class="kpi"><b>${gl.passage_questions}+${gl.discrete_questions}</b><span>Passage + discrete</span></div></div>
+      <p style="margin:14px 0 0">${esc(gl.summary || "")}</p>${gl.math ? `<p style="margin:10px 0 0"><b>Math:</b> ${esc(gl.math)}</p>` : ""}
+      <p style="margin:10px 0 0"><b>Tools:</b> ${esc(gl.tools || "none")}. ${gl.calculator ? "Calculator allowed." : "No calculator."}</p>${gl.scores_note ? `<p class="hint" style="margin:10px 0 0">${esc(gl.scores_note)}</p>` : ""}</div>`;
+    h += `<h2>Blueprint</h2><div class="panel bars"><h3 style="margin:0">By discipline</h3>${Object.entries(bp.disciplines || {}).map(([k, v]) => barRow(esc(cap(k)), v)).join("")}
+      <h3 style="margin:6px 0 0">By foundational concept</h3>${(g.concepts || []).map((c) => barRow(`FC${esc(c.id)} · ${esc(c.name)}`, (bp.concepts || {})[c.id] || 0)).join("")}
+      <h3 style="margin:6px 0 0">By skill</h3>${(g.skills || []).map((s) => barRow(`Skill ${esc(s.id)} · ${esc(s.name)}`, (bp.skills || {})[s.id] || s.pct || 0)).join("")}
+      <p class="hint" style="margin:4px 0 0">AAMC's published weightings, rounded to the nearest 5%; they vary a little from one test to another.</p></div>`;
+    h += `<h2>Content map</h2><p class="hint" style="margin:-4px 2px 10px">Tap a concept, then a category, then a topic. Tick "Reviewed" as you go.</p>`;
+    (g.concepts || []).forEach((c) => {
+      const topics = c.categories.flatMap((cat) => cat.topics), r = topics.filter((t) => rv[t.id]).length;
+      h += `<details class="gc" data-okey="c:${esc(c.id)}" ${isOpen("c:" + c.id, true) ? "open" : ""}><summary><span class="gsum"><b>Foundational Concept ${esc(c.id)} · ${esc(c.name)}</b><span class="meta">${r} of ${topics.length} topics reviewed</span></span></summary>
+        <div class="gc-body"><p class="hint" style="margin:0 0 4px">${esc(c.summary || "")}</p>`;
+      c.categories.forEach((cat) => {
+        const cr = cat.topics.filter((t) => rv[t.id]).length, a = accuracy(catItems(cat.id));
+        h += `<details class="gcat" data-okey="k:${esc(cat.id)}" ${isOpen("k:" + cat.id, false) ? "open" : ""}><summary><span class="gsum"><b>${esc(cat.id)} · ${esc(cat.name)}</b><span class="meta">${cr} of ${cat.topics.length} reviewed${a.n ? ` · ${accText(a)}` : ""}</span></span></summary>
+          <div class="gcat-body"><p class="hint" style="margin:0">${esc(cat.summary || "")}</p>${cat.topics.map((t) => topicHTML(t)).join("")}</div></details>`;
+      });
+      h += `</div></details>`;
+    });
+    if ((g.skills || []).length) h += `<h2>Skills</h2><div class="panel">${g.skills.map((s, i) => `<div class="skill${i ? "" : " first"}"><b>Skill ${esc(s.id)} · ${esc(s.name)}</b> <span class="muted small">${s.pct}% of the section</span><p style="margin:6px 0 0">${esc(s.what)}</p><p class="hint" style="margin:6px 0 0"><b>What a question might ask:</b> ${esc(s.example)}</p></div>`).join("")}<p class="hint" style="margin:12px 0 0">Skill names are AAMC's; the explanations and examples are our own.</p></div>`;
+    if ((g.research_methods || []).length) h += `<h2>Research methods and statistics</h2>${g.research_methods.map((m) => blockHTML("r", m)).join("")}`;
+    if ((g.math_toolkit || []).length) h += `<h2>Math toolkit</h2><p class="hint" style="margin:-4px 2px 10px">No-calculator techniques, with worked examples.</p>${g.math_toolkit.map((m) => blockHTML("m", m)).join("")}`;
+    return h;
+  }
+  function blockHTML(kind, m) {
+    const key = `${kind}:${m.name}`;
+    return `<details class="gt" data-okey="${esc(key)}" ${isOpen(key, false) ? "open" : ""}><summary><span class="gsum"><b>${esc(m.name)}</b></span></summary><div class="gt-body"><ul class="know">${(m.know || []).map((k) => `<li>${esc(k)}</li>`).join("")}</ul>
+      ${(m.equations || []).length ? `<div class="eqs">${m.equations.map(eqHTML).join("")}</div>` : ""}${m.example ? `<div class="callout"><b>Example</b> ${esc(m.example)}</div>` : ""}</div></details>`;
+  }
+  function topicHTML(t) {
+    const rv = !!reviewedMap()[t.id], items = topicItems(t.id), a = accuracy(items);
+    return `<details class="gt" id="t-${esc(t.id)}" data-okey="t:${esc(t.id)}" ${isOpen("t:" + t.id, false) ? "open" : ""}><summary><span class="gsum"><b>${esc(t.name)}</b><span class="meta">${(t.tags || []).map((x) => `<span class="tag-d">${esc(x)}</span>`).join("")}${rv ? `<span class="badge correct">Reviewed</span>` : ""}</span></span></summary>
+      <div class="gt-body"><ul class="know">${t.know.map((k) => `<li>${esc(k)}</li>`).join("")}</ul>
+      ${(t.equations || []).length ? `<div class="eqs">${t.equations.map(eqHTML).join("")}</div>` : ""}
+      ${(t.confusions || []).length ? `<div class="callout"><b>Watch out</b> ${t.confusions.map(esc).join(" ")}</div>` : ""}
+      ${(t.refs || []).length ? `<p class="hint refs">References (links only): ${t.refs.map((r) => (r.url ? ext(r.url, esc(r.label)) : esc(r.label))).join(" · ")}</p>` : ""}
+      <div class="row wrap gt-foot"><label class="chk"><input type="checkbox" data-reviewed="${esc(t.id)}" ${rv ? "checked" : ""}> Reviewed</label><span class="spacer"></span>${items.length ? `<span class="small muted">${accText(a)}</span><button class="btn ghost sm" data-act="g-practice" data-id="${esc(t.id)}">Practice this topic</button>` : `<span class="small muted">No questions yet</span>`}</div></div></details>`;
+  }
+  function guideIndex() {
+    if (G.idx) return G.idx;
+    G.idx = [];
+    for (const sec in Bank.mcat.guides || {}) {
+      const g = Bank.mcat.guides[sec];
+      (g.concepts || []).forEach((c) => c.categories.forEach((cat) => cat.topics.forEach((t) => G.idx.push({ sec, c: c.id, cat, t, text: [t.name, cat.name, cat.id, ...t.know, ...(t.equations || []), ...(t.confusions || [])].join(" ").toLowerCase() }))));
+    }
+    return G.idx;
+  }
+  function guideResultsHTML() {
+    const words = G.q.toLowerCase().split(/\s+/).filter(Boolean);
+    const hits = guideIndex().filter((e) => words.every((w) => e.text.includes(w))).slice(0, 40);
+    if (!hits.length) return `<div class="panel" style="margin-top:14px"><p style="margin:0">Nothing in the guides matches "${esc(G.q)}".</p></div>`;
+    return `<p class="hint" style="margin:12px 2px 8px">${hits.length === 40 ? "First 40 matches" : `${hits.length} match${hits.length === 1 ? "" : "es"}`} across the guides.</p><div class="list">${hits.map((e) => { const s = secInfo(e.sec); return `<button class="li" data-act="g-go" data-sec="${e.sec}" data-id="${esc(e.t.id)}"><div class="t"><b>${esc(e.t.name)}</b><span>${esc(e.cat.id)} · ${esc(e.cat.name)}</span><span class="meta">${esc(e.t.know[0]).slice(0, 120)}…</span></div><span class="badge">${esc(s ? s.short : e.sec)}</span>${ICON.right}</button>`; }).join("")}</div>`;
+  }
+  function refreshGuideBody() {
+    const b = $("#gbody"); if (!b) return;
+    const g = guideOf(UI.msec); if (!g) return;
+    const y = window.scrollY; b.innerHTML = G.q.trim() ? guideResultsHTML() : guideBodyHTML(g); renderMath(b); window.scrollTo(0, y);
+  }
+  function openTopic(sec, id) {
+    G.q = ""; UI.msec = sec; UI.mtab = "guide"; UI.tab = "practice";
+    const e = guideIndex().find((x) => x.sec === sec && x.t.id === id);
+    if (e) { G.open["c:" + e.c] = true; G.open["k:" + e.cat.id] = true; G.open["t:" + id] = true; saveGuideUI(); }
+    render();
+    const el = document.getElementById("t-" + id); if (el) el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  }
+  function setReviewed(id, on) {
+    const d = Store.all.mcat; d.reviewed = d.reviewed || {};
+    if (on) d.reviewed[id] = Date.now(); else delete d.reviewed[id];
+    if (EXAM === "mcat") Store.save(); else { try { if (!Store.pristine(d)) localStorage.setItem(EXAMS.mcat.key, JSON.stringify(d)); } catch (e) { /* ignore */ } }
+    refreshGuideBody();
+  }
+  /* KaTeX (vendor/katex, MIT) is loaded the first time a guide shows an equation; until then the TeX source stays visible. */
+  let katexLoad = null;
+  function loadKatex() {
+    if (window.katex) return Promise.resolve();
+    if (katexLoad) return katexLoad;
+    const v = typeof ASSET_V === "object" && ASSET_V.katex ? `?v=${ASSET_V.katex}` : "";
+    katexLoad = new Promise((resolve, reject) => {
+      const l = document.createElement("link"); l.rel = "stylesheet"; l.href = "vendor/katex/katex.min.css" + v; document.head.appendChild(l);
+      const s = document.createElement("script"); s.src = "vendor/katex/katex.min.js" + v; s.onload = resolve; s.onerror = () => { katexLoad = null; reject(new Error("KaTeX failed to load")); }; document.head.appendChild(s);
+    });
+    return katexLoad;
+  }
+  function renderMath(root) {
+    if (!$("[data-tex]:not([data-done])", root)) return;
+    loadKatex().then(() => $$("[data-tex]:not([data-done])", root).forEach((el) => {
+      try { window.katex.render(el.dataset.tex, el, { throwOnError: false, displayMode: true, output: "htmlAndMathml" }); } catch (e) { /* keep the TeX text */ }
+      el.dataset.done = "1";
+    })).catch(() => { /* equations stay as TeX text */ });
   }
   function pearlHTML() {
     const keys = Object.keys(INFO);
@@ -2678,7 +2850,11 @@ const Anat = (function () {
     suppressClick = false;
     const act = t.dataset.act, v = t.dataset.v;
     switch (act) {
-      case "tab": go(t.dataset.tab); break;
+      case "tab": if (t.dataset.tab === "practice" && UI.tab === "practice") UI.msec = null; go(t.dataset.tab); break;
+      case "msec": UI.msec = v || null; if (v) { UI.tab = "practice"; const g = guideOf(v); UI.mtab = g && !(Bank.mcat.items || []).some((q) => q.section === v) ? "guide" : UI.mtab; } G.q = ""; render(); window.scrollTo(0, 0); break;
+      case "mtab": UI.mtab = v; render(); break;
+      case "g-go": openTopic(t.dataset.sec, t.dataset.id); break;
+      case "g-practice": startSession("tutor", topicItems(t.dataset.id), {}); break;
       case "settings": openSettings(); break;
       case "sheet-close": closeSheet(); break;
       case "set-theme": Store.settings().theme = v; applySettings(); Store.saveSettings(); $$("[data-act=set-theme]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === v)); break;
@@ -2731,8 +2907,11 @@ const Anat = (function () {
     const t = e.target;
     if (t.dataset.note) { const id = t.dataset.note; Store.d.notes[id] = { text: t.value, ts: Date.now() }; clearTimeout(t._nt); t._nt = setTimeout(() => Store.save(), 700); Store.local(); }
     else if (t.hasAttribute("data-labsearch")) { $("#labsheet").innerHTML = labsHTML(t.value); }
+    else if (t.hasAttribute("data-gsearch")) { G.q = t.value; refreshGuideBody(); }
     else Anat.input(t);
   });
+  document.addEventListener("change", (e) => { const t = e.target; if (t.dataset && t.dataset.reviewed) setReviewed(t.dataset.reviewed, t.checked); });
+  document.addEventListener("toggle", (e) => { const d = e.target; if (d && d.dataset && d.dataset.okey) { G.open[d.dataset.okey] = d.open; saveGuideUI(); } }, true);
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && $("#sheetroot").firstChild) { closeSheet(); return; }
     if ($("#runner").hidden || !R.s || R.results) return;

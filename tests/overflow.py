@@ -9,7 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from serve import start
 
 URL = start() + "index.html"
-JS = """()=>{const W=document.documentElement.clientWidth;const out=[];document.querySelectorAll('body *').forEach(e=>{const r=e.getBoundingClientRect();if(r.width&&r.right>W+1&&!e.closest('.scrollx')&&!e.closest('svg')&&getComputedStyle(e).position!=='fixed'&&getComputedStyle(e).overflowX!=='auto'&&!e.closest('.labs')){out.push(e.tagName.toLowerCase()+(e.className&&typeof e.className==='string'?'.'+e.className.trim().split(/\\s+/).join('.'):'')+' right='+Math.round(r.right));}});return out.slice(0,6);}"""
+JS = """()=>{const W=document.documentElement.clientWidth;const out=[];document.querySelectorAll('body *').forEach(e=>{const r=e.getBoundingClientRect();if(r.width&&r.right>W+1&&!e.closest('.scrollx, .eq')&&!e.closest('svg')&&getComputedStyle(e).position!=='fixed'&&getComputedStyle(e).overflowX!=='auto'&&!e.closest('.labs')){out.push(e.tagName.toLowerCase()+(e.className&&typeof e.className==='string'?'.'+e.className.trim().split(/\\s+/).join('.'):'')+' right='+Math.round(r.right));}});return out.slice(0,6);}"""
 bad = 0
 with sync_playwright() as p:
     b = p.chromium.launch()
@@ -33,6 +33,13 @@ with sync_playwright() as p:
         click("[data-act=exam][data-v=mcat]"); chk("mcat/progress")
         click("[data-tab=home]"); chk("mcat/home")
         click("[data-tab=practice]"); chk("mcat/practice")
+        click("[data-act=msec][data-v=chem_phys]"); chk("mcat/section-guide")
+        click("details.gcat[data-okey='k:4B'] > summary"); click("[id='t-4B.continuity-bernoulli'] > summary")
+        try: pg.wait_for_selector("[id='t-4B.continuity-bernoulli'] .eq .katex", timeout=20000)
+        except Exception: pass
+        chk("mcat/guide-topic")
+        pg.fill("[data-gsearch]", "pressure"); pg.wait_for_timeout(200); chk("mcat/guide-search"); pg.fill("[data-gsearch]", ""); pg.wait_for_timeout(200)
+        click("[data-act=mtab][data-v=practice]"); chk("mcat/section-practice")
         click("[data-act=exam][data-v=boards]")
         click("[data-tab=home]"); click("[data-act=quick][data-mode=tutor]"); chk("question runner")
         ctx.close()

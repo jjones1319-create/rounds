@@ -1,0 +1,1 @@
+{ "package": "katex", "version": "0.19.0", "source": "npm", "files": "dist/katex.min.js, dist/katex.min.css, dist/fonts/*.woff2 (woff2 only; the CSS lists woff2 first so browsers never request the others)" }

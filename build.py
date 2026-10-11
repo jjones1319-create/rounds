@@ -45,6 +45,7 @@ def vhash(p): return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexd
 mesh_map = json.loads((ROOT / "data/mesh_map.json").read_text(encoding="utf-8"))
 ASSET_V = {"body3d": vhash(ROOT / "js/body3d.js"), "map": vhash(ROOT / "data/mesh_map.json"),
            "data/boards.json": vhash(DATA / "boards.json"), "data/mcat.json": vhash(DATA / "mcat.json"),
+           "katex": json.loads((ROOT / "vendor/katex/VERSION.json").read_text(encoding="utf-8"))["version"],  # loaded lazily by the guides
            **{l["file"]: vhash(ROOT / l["file"]) for sc in mesh_map["scenes"].values() for l in sc["layers"].values()}}
 
 src = ROOT / "src"

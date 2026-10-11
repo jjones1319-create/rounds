@@ -102,6 +102,19 @@ options rather than rules. No outside knowledge needed: say so clearly.
 
 CARS uses `passage_types`, `skill_areas`, `wrong_answer_patterns`, and `approaches` instead of `concepts`.
 
+Fields added when the first guide was built (2026-10-10), all checked by `tools/validate.py`:
+- `official_prep_url`: AAMC's free prep resources page. `attribution`: the statement from §1, shown at the top of the guide.
+- `glance.math` (what math is expected) and `glance.scores_note` (practice scores are not scaled scores); the exam
+  facts in `glance` and the weightings in `blueprint` must equal the numbers in MCAT_SPEC §1–2.
+- Concepts and categories carry `name` and `summary` (AAMC's framework names as identifiers; summaries our own).
+- `skills`: four entries `{id, name, pct, what, example}` in order 1–4. `research_methods`: `[{name, know[]}]`.
+  `math_toolkit`: `[{name, know[], equations[], example}]`. Equations are LaTeX strings rendered with KaTeX
+  (HTML + MathML output) in a box that scrolls horizontally.
+- Topic `status`/`reviewed_by` are kept for the review workflow (§6); nothing is shown in the app for `draft`.
+
+App storage: "Reviewed" ticks live in the MCAT progress record (`rounds.mcat.v1`, field `reviewed: {topicId: timestamp}`),
+created only when the first tick is made. Which groups are expanded is remembered under `rounds.guide.v1`.
+
 ## 5. App behavior
 
 - Each MCAT section screen has two tabs: **Practice** and **What's tested**.
@@ -134,3 +147,4 @@ default.
 |---|---|---|
 | 1.0 | 2026-10-10 | Spec created. |
 | 1.1 | 2026-10-10 | Owner decisions applied: §6 makes the owner the reviewer of all topics, drops the second-reviewer requirement, and makes the Beta label optional and off by default; §2.C clarifies references are links only. |
+| 1.2 | 2026-10-10 | Chem/Phys guide built (96 topics, 4A–5E, all `draft`): §4 documents the front-matter fields, the equation rendering, and where Reviewed ticks and expand state are stored. |

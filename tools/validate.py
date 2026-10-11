@@ -102,15 +102,31 @@ def validate_guides(ck):
             for key in ("passage_types", "skill_areas", "wrong_answer_patterns", "approaches"):
                 ck.require(isinstance(g.get(key), list), path.name, f"CARS guide needs a '{key}' list")
         else:
+            # front matter (MCAT_GUIDES_SPEC §2 A, B, D, E, F): exam facts and weightings must match the spec's numbers
+            ck.require(isinstance(g.get("attribution"), str) and "AAMC" in g["attribution"] and "our own" in g["attribution"], path.name, "needs the attribution statement from MCAT_GUIDES_SPEC §1")
+            gl = g.get("glance") or {}
+            for key in ("questions", "minutes", "passage_questions", "discrete_questions", "tools"):
+                ck.require(gl.get(key) == SECTION[sec][key], path.name, f"glance.{key} should be {SECTION[sec][key]!r}")
+            ck.require(gl.get("calculator") is False and isinstance(gl.get("summary"), str) and gl["summary"].strip(), path.name, "glance needs calculator: false and a summary")
+            bp = g.get("blueprint") or {}
+            ck.require(bp.get("disciplines") == SECTION[sec]["disciplines"], path.name, "blueprint.disciplines must match the AAMC weightings in MCAT_SPEC §2")
+            ck.require({str(k): v for k, v in (bp.get("concepts") or {}).items()} == SECTION[sec]["concepts"], path.name, "blueprint.concepts must match MCAT_SPEC §2")
+            ck.require({str(k): v for k, v in (bp.get("skills") or {}).items()} == SKILLS, path.name, "blueprint.skills must be 35/45/10/10")
+            skills = g.get("skills") or []
+            ck.require([str(s.get("id")) for s in skills] == ["1", "2", "3", "4"] and all(s.get("name") and s.get("what") and s.get("example") for s in skills), path.name, "skills must describe Skills 1–4 (name, what, example)")
+            for key in ("research_methods", "math_toolkit"):
+                ck.require(isinstance(g.get(key), list) and g[key] and all(isinstance(m, dict) and m.get("name") and nonempty_strings(m.get("know")) for m in g[key]), path.name, f"{key} must be a non-empty list of {{name, know[]}}")
             allowed = SECTION[sec]["fcs"]
             for concept in g.get("concepts") or []:
                 cid = str(concept.get("id"))
                 where = f"{path.name} concept {cid}"
                 if not ck.require(cid in allowed, where, f"foundational concept {cid} is not part of {sec} (allowed: {allowed})"): continue
+                ck.require(isinstance(concept.get("name"), str) and concept["name"].strip(), where, "needs a name")
                 for cat in concept.get("categories") or []:
                     code = cat.get("id")
                     cwhere = f"{path.name} category {code}"
                     if not ck.require(code in CATEGORIES and FC_OF[code] == cid, cwhere, f"unknown category or not in concept {cid}"): continue
+                    ck.require(isinstance(cat.get("name"), str) and cat["name"].strip() and (cat.get("topics") or []), cwhere, "needs a name and at least one topic")
                     for t in cat.get("topics") or []:
                         tid = t.get("id")
                         twhere = f"{path.name} topic {tid}"
@@ -120,6 +136,7 @@ def validate_guides(ck):
                         ck.require(isinstance(t.get("name"), str) and t["name"].strip(), twhere, "needs a name")
                         ck.require(nonempty_strings(t.get("know")), twhere, "'know' must be a non-empty list of sentences")
                         ck.require(set(t.get("tags") or []) <= TOPIC_TAGS and t.get("tags"), twhere, f"tags must be from {sorted(TOPIC_TAGS)}")
+                        ck.require(all(isinstance(e, str) and e.strip() for e in t.get("equations") or []), twhere, "equations must be LaTeX strings")
                         ck.require(t.get("status") in STATUSES, twhere, "status must be draft or reviewed")
                         if t.get("status") == "reviewed": ck.require(bool(t.get("reviewed_by")), twhere, "reviewed topics need reviewed_by")
                         for r in t.get("refs") or []:

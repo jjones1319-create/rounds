@@ -38,6 +38,16 @@ See docs/PLAN_3D.md §Licensing and tools/export_layers.py (`NEVER`).
 ## Code libraries
 - three.js 0.186.1 (`vendor/three/`: core, GLTFLoader, OrbitControls, meshopt decoder), MIT License,
   © 2010–2026 three.js authors. See `vendor/three/LICENSE`.
+- KaTeX 0.19.0 (`vendor/katex/`: katex.min.js, katex.min.css, woff2 fonts), MIT License,
+  © 2013–2020 Khan Academy and other contributors. See `vendor/katex/LICENSE`. Renders the equations in the MCAT guides.
+
+## MCAT section guides
+`content/mcat/guides/*.json` are organized according to the AAMC's *What's on the MCAT Exam?* outline (section
+names, foundational concept numbers, content category codes and short names, and the names of the four Scientific
+Inquiry and Reasoning Skills are AAMC's framework, used as identifiers). All descriptions, equations as written, and
+examples are our own, verified against the open textbooks each topic links to (OpenStax, LibreTexts); the guides
+link to those references and never reproduce their text. MCAT® is a registered trademark of the AAMC, which is not
+affiliated with and does not endorse this app.
 
 ## Fonts
 Atkinson Hyperlegible (Braille Institute), loaded from Google Fonts, SIL Open Font License 1.1.

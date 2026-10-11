@@ -97,6 +97,36 @@ p{margin:0 0 10px}
 .list .li.static{cursor:default}
 .list .li .t .meta{display:block; margin-top:4px; font-size:13px; color:var(--muted)}
 .seg.fit button{flex:none; padding:0 14px}
+/* MCAT "What's tested" guides */
+details.gc,details.gcat,details.gt{border:1px solid var(--line); border-radius:14px; background:var(--surface); margin-top:10px}
+details.gcat{background:var(--paper)}
+details.gc>summary,details.gcat>summary,details.gt>summary{list-style:none; cursor:pointer; padding:12px 14px; display:flex; gap:10px; align-items:flex-start; min-height:48px; box-sizing:border-box}
+details.gc>summary::-webkit-details-marker,details.gcat>summary::-webkit-details-marker,details.gt>summary::-webkit-details-marker{display:none}
+details.gc>summary::before,details.gcat>summary::before,details.gt>summary::before{content:""; flex:none; width:9px; height:9px; margin:7px 2px 0 0; border-right:2px solid var(--muted); border-bottom:2px solid var(--muted); transform:rotate(-45deg); transition:transform .15s}
+details[open].gc>summary::before,details[open].gcat>summary::before,details[open].gt>summary::before{transform:rotate(45deg)}
+.gsum{flex:1; min-width:0; overflow-wrap:anywhere}
+.gsum b{display:block}
+.gsum .meta{display:block; margin-top:3px; font-size:13px; color:var(--muted)}
+.gsum .meta .badge{vertical-align:middle}
+.gc-body{padding:0 10px 10px}
+.gcat-body{padding:0 10px 10px}
+.gt-body{padding:0 14px 14px}
+.know{margin:0; padding-left:20px}
+.know li{margin:6px 0; font-size:15px; line-height:1.55}
+.eqs{display:flex; flex-direction:column; gap:8px; margin:12px 0 4px}
+.eq{overflow-x:auto; padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:var(--surface2); font-size:16px; -webkit-overflow-scrolling:touch; scrollbar-width:thin}
+.eq .katex-display{margin:0}
+.eq .katex-display>.katex{text-align:left; white-space:nowrap}
+.eq code{white-space:pre; font-size:13px; color:var(--muted)}
+.tag-d{display:inline-block; font-size:11px; font-weight:700; padding:1px 7px; border-radius:999px; background:var(--accent-soft); color:var(--accent); margin:0 6px 0 0; vertical-align:middle}
+.chk{display:inline-flex; align-items:center; gap:10px; font-weight:700; min-height:44px; cursor:pointer}
+.chk input{width:22px; height:22px; margin:0; accent-color:var(--accent)}
+.gt-foot{margin-top:8px}
+.refs{margin:12px 0 0; overflow-wrap:anywhere}
+.refs a,.hint a{color:var(--accent)}
+.skill{padding:12px 0; border-top:1px solid var(--line)}
+.skill.first{padding-top:0; border-top:0}
+.bars h3{font-size:14px; color:var(--muted)}
 
 /* tabbar */
 .tabbar{position:fixed; left:0; right:0; bottom:0; z-index:20; background:color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-top:1px solid var(--line); padding-bottom:env(safe-area-inset-bottom,0px)}
