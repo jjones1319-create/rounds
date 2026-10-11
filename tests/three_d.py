@@ -60,7 +60,7 @@ vh = lambda f: hashlib.sha256((ROOT / f).read_bytes().replace(b"\r\n", b"\n")).h
 stamps = json.loads(re.search(r"const ASSET_V = (\{.*?\});", (ROOT / "index.html").read_text(encoding="utf-8")).group(1))
 want = {"body3d": vh("js/body3d.js"), "map": vh("data/mesh_map.json"), "data/boards.json": vh("data/boards.json"), "data/mcat.json": vh("data/mcat.json"),
         **{c["file"]: vh(c["file"]) for sc in SCENES.values() for c in sc["layers"].values()}}
-check("index.html version stamps are current", stamps == want, ", ".join(k for k in want if stamps.get(k) != want[k]) or "")
+check("index.html version stamps are current", all(stamps.get(k) == v for k, v in want.items()), ", ".join(k for k in want if stamps.get(k) != want[k]) or "")  # katex is stamped by version, not hash
 nb = len(covered & body_cards); nbr = len(covered & SCENE_KEYS["brain"]); nh = len(covered & SCENE_KEYS["heart"])
 check("mesh map matches models and cards", not problems, "; ".join(problems[:5]) or
       f"3D cards: body {nb}/{len(body_cards)}, brain {nbr}/{len(SCENE_KEYS['brain'])}, heart {nh}/{len(SCENE_KEYS['heart'])}")

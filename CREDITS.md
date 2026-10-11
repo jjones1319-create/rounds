@@ -49,5 +49,10 @@ examples are our own, verified against the open textbooks each topic links to (O
 link to those references and never reproduce their text. MCAT® is a registered trademark of the AAMC, which is not
 affiliated with and does not endorse this app.
 
+## Periodic table
+`src/ptable.js` lists the 118 elements with IUPAC standard atomic weights (CIAAW 2024, abridged to one decimal;
+elements without a standard weight show the mass number of their longest-lived isotope in brackets, as IUPAC does),
+checked against ciaaw.org, NIST and PubChem on 2026-10-11.
+
 ## Fonts
 Atkinson Hyperlegible (Braille Institute), loaded from Google Fonts, SIL Open Font License 1.1.

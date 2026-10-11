@@ -40,6 +40,8 @@ with sync_playwright() as p:
         chk("mcat/guide-topic")
         pg.fill("[data-gsearch]", "pressure"); pg.wait_for_timeout(200); chk("mcat/guide-search"); pg.fill("[data-gsearch]", ""); pg.wait_for_timeout(200)
         click("[data-act=mtab][data-v=practice]"); chk("mcat/section-practice")
+        click("[data-act=msec][data-v='']"); click("[data-act=msec][data-v=cars]"); chk("mcat/cars-guide")
+        click("[data-act=msec][data-v='']"); click("[data-act=msec][data-v=psych_soc]"); click("details.gcat[data-okey='k:7A'] > summary"); click("[id='t-7A.brain'] > summary"); chk("mcat/psych-guide-topic")
         click("[data-act=exam][data-v=boards]")
         click("[data-tab=home]"); click("[data-act=quick][data-mode=tutor]"); chk("question runner")
         ctx.close()

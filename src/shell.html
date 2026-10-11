@@ -124,6 +124,13 @@ details[open].gc>summary::before,details[open].gcat>summary::before,details[open
 .gt-foot{margin-top:8px}
 .refs{margin:12px 0 0; overflow-wrap:anywhere}
 .refs a,.hint a{color:var(--accent)}
+.ptgrid{display:grid; grid-template-columns:repeat(18, 46px); grid-auto-rows:50px; gap:3px; padding:2px 2px 6px}
+.ptgrid .pt-el{border:1px solid var(--line); border-radius:7px; background:var(--surface); padding:2px 0 0; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1.05; font-size:10px; color:var(--muted); min-height:0}
+.ptgrid .pt-el b{font-size:14px; color:var(--ink)}
+.ptgrid .pt-el .m{font-size:9px}
+.ptgrid .pt-el.f{background:var(--surface2)}
+.ptgrid .pt-el.hit{border-color:var(--accent); background:var(--accent-soft); outline:2px solid var(--accent)}
+.ptgrid .pt-el[style*="grid-row:8"]{margin-top:8px}
 .skill{padding:12px 0; border-top:1px solid var(--line)}
 .skill.first{padding-top:0; border-top:0}
 .bars h3{font-size:14px; color:var(--muted)}
@@ -413,6 +420,7 @@ details.bgroup[open] summary::after{transform:rotate(-135deg)}
 </script>
 <script>
 /*CONTENT_JS*/
+/*PTABLE_JS*/
 </script>
 <script>
 /*MODELS_JS*/

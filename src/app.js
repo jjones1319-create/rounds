@@ -11,7 +11,10 @@
     EXAM = exam; QB = exam === "boards" ? Bank.boards : Bank.mcat.items; QMAP = MAPS[exam];
     QNUM = Object.fromEntries(QB.map((q, i) => [q.id, i + 1])); SYSTEMS = [...new Set(QB.map((q) => q.sys))];
     P.systems = new Set(SYSTEMS);
+    if (exam === "mcat") { P.sections = new Set(Bank.mcat.sections.map((s) => s.k)); P.skills = new Set(["1", "2", "3", "4"]); P.diffs = new Set([2, 3, 4, 5]); P.perQ = 96; }
+    else { P.diffs = new Set([3, 4, 5]); P.perQ = 90; }
   }
+  const MCAT_PERQ = { chem_phys: 96, bio_biochem: 96, psych_soc: 96, cars: 102 };   // seconds: 95 min / 59 questions, 90 min / 53
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -40,6 +43,7 @@
     minus: I('<path d="M5 12h14"/>'),
     fit: I('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>'),
     search: I('<circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/>'),
+    table: I('<rect x="3.5" y="5" width="17" height="14" rx="2"/><path d="M3.5 10h17M3.5 15h17M9 5v14M15 5v14"/>'),
     check: I('<path d="m5 12.5 4.5 4.5L19 7"/>'),
     logo: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="12.5"/><path d="M5 17h6l2.5-5 4 9 2.5-4H27"/></svg>',
   };
@@ -152,7 +156,7 @@
 
   /* ---------------- UI state ---------------- */
   const UI = { tab: "home", ptab: "new", missedOnly: false, msec: null, mtab: "guide" };   // msec: the open MCAT section screen
-  const P = { mode: "tutor", pool: "unused", systems: new Set(), diffs: new Set([3, 4, 5]), count: 10, shuffle: true, perQ: 90 };
+  const P = { mode: "tutor", pool: "unused", systems: new Set(), diffs: new Set([3, 4, 5]), count: 10, shuffle: true, perQ: 90, sections: new Set(), skills: new Set() };
   /* "What's tested" guide UI state. Which groups are expanded is remembered in its own key (a convenience, like the exam
      choice); "Reviewed" marks are progress and live in the MCAT record (Store.all.mcat.reviewed). */
   const GUIDE_KEY = "rounds.guide.v1";
@@ -231,7 +235,7 @@
   function setExam(exam) {
     if (!EXAMS[exam] || exam === EXAM) return;
     try { localStorage.setItem(EXAM_KEY, exam); } catch (e) { /* ignore */ }
-    activate(exam); UI.ptab = "new"; UI.missedOnly = false; UI.msec = null; P.pool = "unused";
+    activate(exam); UI.ptab = exam === "mcat" ? "sections" : "new"; UI.missedOnly = false; UI.msec = null; P.pool = "unused";
     render(); window.scrollTo(0, 0);
   }
   const MCAT_TM = `MCAT<sup>&#174;</sup> is a registered trademark of the Association of American Medical Colleges (AAMC), which is not affiliated with and does not endorse this app.`;
@@ -243,7 +247,7 @@
   function sectionCards() {
     return `<div class="list">${Bank.mcat.sections.map((s) => {
       const g = guideOf(s.k), n = (Bank.mcat.items || []).filter((q) => q.section === s.k).length;
-      const meta = `${s.questions} questions, ${s.minutes} minutes${s.tools ? `, ${esc(s.tools.toLowerCase())} provided` : ""}` + (g ? ` · ${reviewedCount(g)} of ${guideTopics(g).length} topics reviewed` : "");
+      const meta = `${s.questions} questions, ${s.minutes} minutes${s.tools ? `, ${esc(s.tools.toLowerCase())} provided` : ""}` + (g && guideTopics(g).length ? ` · ${reviewedCount(g)} of ${guideTopics(g).length} topics reviewed` : "");
       return `<button class="li" data-act="msec" data-v="${s.k}"><div class="t"><b>${esc(s.short)}</b><span>${esc(s.name)}</span><span class="meta">${meta}</span></div><span class="badge${g ? " correct" : ""}">${n ? `${n} questions` : g ? "What's tested" : "Coming soon"}</span>${ICON.right}</button>`;
     }).join("")}</div>`;
   }
@@ -255,13 +259,67 @@
       <p class="hint" style="margin-top:14px">${MCAT_TM} Practice scores here are never official scaled scores.</p>${pearlHTML()}`;
   }
   function mcatPractice() {
-    return `${examSeg()}<h1>Practice</h1><p class="hint" style="margin:10px 2px 8px">No MCAT questions yet. Each section has a "What's tested" guide; practice blocks arrive as questions are written.</p>${sectionCards()}`;
+    const tabs = [["sections", "Sections"], ["new", "Build"], ["history", "History"], ["takeaways", "Key points"]];
+    let h = `${examSeg()}<h1>Practice</h1><div class="seg" role="group" aria-label="Practice sections" style="margin-top:12px">${tabs.map(([k, n]) => `<button data-act="ptab" data-v="${k}" aria-pressed="${UI.ptab === k}">${n}</button>`).join("")}</div>`;
+    if (UI.ptab === "sections") h += `<p class="hint" style="margin:14px 2px 8px">${QB.length ? `${QB.length} questions so far. Open a section for its guide and practice, or build a block across sections.` : `No MCAT questions yet. Each section has a "What's tested" guide; practice blocks arrive as questions are written.`}</p>${sectionCards()}`;
+    else if (UI.ptab === "new") h += QB.length ? mcatBuild() : `<div class="panel" style="margin-top:14px"><p style="margin:0">No MCAT questions yet. The first blocks arrive with Phase M2.</p></div>`;
+    else if (UI.ptab === "history") h += practiceHistory();
+    else h += practiceTakeaways();
+    return h;
+  }
+  function mcatBuild() {
+    const av = available(), n = Math.min(P.count, av.length);
+    const pools = [["unused", "New"], ["incorrect", "Missed"], ["flagged", "Flagged"], ["all", "All"]];
+    const skillNames = { "1": "Knowledge", "2": "Reasoning", "3": "Research design", "4": "Data" };
+    let h = `<div class="panel" style="margin-top:14px">
+      <div class="field" style="margin-top:0"><span class="lab">Mode</span><div class="seg" role="group" aria-label="Mode">
+        <button data-act="p-mode" data-v="tutor" aria-pressed="${P.mode === "tutor"}">Tutor</button><button data-act="p-mode" data-v="timed" aria-pressed="${P.mode === "timed"}">Timed</button></div>
+        <p class="hint" style="margin-top:8px">${P.mode === "tutor" ? "Each answer is checked right away, with the full explanation." : "Answers stay hidden until you end the block, like the real exam."}</p></div>
+      <div class="field"><span class="lab">Questions from</span><div class="chips">${pools.map(([k, nm]) => `<button class="chip" data-act="p-pool" data-v="${k}" aria-pressed="${P.pool === k}">${nm} <span class="n">${pool(k).length}</span></button>`).join("")}</div></div>
+      <div class="field"><span class="lab">Sections</span><div class="chips">${Bank.mcat.sections.filter((s) => QB.some((q) => q.section === s.k)).map((s) => `<button class="chip" data-act="p-section" data-v="${s.k}" aria-pressed="${P.sections.has(s.k)}">${esc(s.short)} <span class="n">${QB.filter((q) => q.section === s.k).length}</span></button>`).join("")}</div></div>
+      <div class="field"><span class="lab">Skill</span><div class="chips">${["1", "2", "3", "4"].map((k) => `<button class="chip" data-act="p-skill" data-v="${k}" aria-pressed="${P.skills.has(k)}">${k} · ${skillNames[k]}</button>`).join("")}</div></div>
+      <div class="field"><span class="lab">Difficulty</span><div class="chips">${[2, 3, 4, 5].map((d) => `<button class="chip" data-act="p-diff" data-v="${d}" aria-pressed="${P.diffs.has(d)}">${stars(d)}</button>`).join("")}</div></div>
+      <div class="field"><span class="lab">Number of questions</span><div class="stepper"><button data-act="p-count" data-v="-1" aria-label="Fewer">−</button><output aria-live="polite">${n}</output><button data-act="p-count" data-v="1" aria-label="More">+</button><span class="hint" style="margin-left:6px">${av.length} available</span></div></div>`;
+    if (P.mode === "timed") h += `<div class="field"><span class="lab">Time per question</span><div class="chips">${[60, 96, 120].map((t) => `<button class="chip" data-act="p-perq" data-v="${t}" aria-pressed="${P.perQ === t}">${t} sec</button>`).join("")}</div><p class="hint" style="margin-top:8px">The real exam allows about 96 seconds per science question (95 minutes for 59) and 102 per CARS question.</p></div>`;
+    h += `<div class="field switch"><span class="lab" style="margin:0">Shuffle question order</span><button class="toggle" role="switch" aria-checked="${P.shuffle}" aria-label="Shuffle question order" data-act="p-shuffle"></button></div>
+      <button class="btn block" style="margin-top:20px" data-act="start-custom" ${n ? "" : "disabled"}>${n ? `Start ${P.mode} block with ${n} question${n > 1 ? "s" : ""}` : "No questions match these filters"}</button></div>`;
+    return h;
   }
   function mcatProgress() {
-    const rows = Bank.mcat.sections.map((s) => { const g = guideOf(s.k); if (!g) return ""; const n = guideTopics(g).length, r = reviewedCount(g), pct = n ? Math.round((100 * r) / n) : 0; return `<div class="bar-row"><div class="lab"><span>${esc(s.short)} topics reviewed</span><span class="muted">${r} of ${n}</span></div><div class="bar" role="img" aria-label="${pct}% reviewed"><i style="width:${pct}%"></i></div></div>`; }).join("");
-    return `${examSeg()}<h1>Progress</h1><div class="panel" style="margin-top:14px"><p style="margin:0">No MCAT practice yet. MCAT progress is kept separately from your Boards progress and will show percent correct by section, content category, and skill, never a predicted scaled score.</p></div>
-      ${rows ? `<h2>What's tested</h2><div class="panel bars">${rows}</div>` : ""}
-      <p class="hint" style="margin-top:18px" data-sync>${syncText()}</p>`;
+    const rows = Bank.mcat.sections.map((s) => { const g = guideOf(s.k); if (!g || !guideTopics(g).length) return ""; const n = guideTopics(g).length, r = reviewedCount(g), pct = n ? Math.round((100 * r) / n) : 0; return `<div class="bar-row"><div class="lab"><span>${esc(s.short)} topics reviewed</span><span class="muted">${r} of ${n}</span></div><div class="bar" role="img" aria-label="${pct}% reviewed"><i style="width:${pct}%"></i></div></div>`; }).join("");
+    const stat = (qs) => { const ans = qs.filter((q) => A(q.id)), ok = ans.filter((q) => firstOk(q.id)).length; return { n: qs.length, ans: ans.length, ok, pct: ans.length ? Math.round((100 * ok) / ans.length) : 0 }; };
+    const row = (label, qs) => { const t = stat(qs); return t.n ? `<div class="bar-row"><div class="lab"><span>${label}</span><span class="muted">${t.ans ? `${t.ok} of ${t.ans} right` : `${t.n} question${t.n === 1 ? "" : "s"}, not started`}</span></div><div class="bar" role="img" aria-label="${t.pct}% correct"><i style="width:${t.pct}%"></i></div></div>` : ""; };
+    let h = `${examSeg()}<h1>Progress</h1>`;
+    if (!QB.length) h += `<div class="panel" style="margin-top:14px"><p style="margin:0">No MCAT practice yet. MCAT progress is kept separately from your Boards progress and will show percent correct by section, content category, and skill, never a predicted scaled score.</p></div>`;
+    else {
+      const s = summary(), skillNames = { "1": "Knowledge of concepts", "2": "Reasoning and problem-solving", "3": "Research design", "4": "Data and statistics" };
+      h += `<div class="kpis" style="margin-top:14px"><div class="kpi"><b>${s.answered}/${s.total}</b><span>Answered</span></div><div class="kpi"><b>${s.pct == null ? "–" : s.pct + "%"}</b><span>Right on first try</span></div><div class="kpi"><b>${s.avg == null ? "–" : fmt(s.avg)}</b><span>Average time</span></div></div>
+        <p class="hint" style="margin:10px 2px 0">Percent correct only. This is not an MCAT scaled score; only AAMC's equating can produce one.</p>
+        <h2>Question map</h2><div class="panel">${qmapHTML()}</div>
+        <h2>By section</h2><div class="panel bars">${Bank.mcat.sections.map((sec) => row(esc(sec.short), QB.filter((q) => q.section === sec.k))).join("")}</div>
+        <h2>By skill</h2><div class="panel bars">${["1", "2", "3", "4"].map((k) => row(`Skill ${k} · ${skillNames[k]}`, QB.filter((q) => String(q.skill) === k))).join("")}</div>
+        <h2>By content category</h2><div class="panel bars">${Object.keys(Bank.mcat.categories || {}).map((c) => row(`${esc(c)} · ${esc(Bank.mcat.categories[c])}`, QB.filter((q) => q.category === c))).join("")}</div>
+        <h2>By difficulty</h2><div class="panel bars">${[2, 3, 4, 5].map((d) => row(stars(d), QB.filter((q) => q.difficulty === d))).join("")}</div>`;
+    }
+    h += `${rows ? `<h2>What's tested</h2><div class="panel bars">${rows}</div>` : ""}
+      <p class="hint" style="margin-top:18px" data-sync>${syncText()}</p>${QB.length ? `<button class="btn ghost" style="margin-top:6px" data-act="reset">Reset MCAT progress</button>` : ""}`;
+    return h;
+  }
+  /* Periodic table sheet for the science sections (src/ptable.js). A search box finds an element; the grid scrolls sideways. */
+  function openPTable() {
+    openSheet("Periodic table", `<input class="search" type="search" placeholder="Element name or symbol" aria-label="Find an element" data-ptsearch data-autofocus>
+      <div id="ptfound" class="hint" style="margin:8px 2px 0; min-height:20px"></div>
+      <div class="scrollx" style="margin-top:8px"><div class="ptgrid" id="ptgrid">${PTABLE.map((e) => `<button class="pt-el${e[4] >= 8 ? " f" : ""}" style="grid-row:${e[4]};grid-column:${e[5]}" data-act="pt-pick" data-z="${e[0]}" aria-label="${esc(e[2])}, atomic number ${e[0]}, mass ${esc(e[3])}"><span class="z">${e[0]}</span><b>${esc(e[1])}</b><span class="m">${esc(e[3])}</span></button>`).join("")}</div></div>
+      <p class="hint" style="margin-top:10px">Standard atomic weights rounded to one decimal; bracketed numbers are the mass number of a well-known isotope for elements with no standard weight (as on the IUPAC table). Lanthanides and actinides are the two rows below the main table.</p>`);
+  }
+  function ptFind(q) {
+    q = q.trim().toLowerCase(); const box = $("#ptfound"); if (!box) return;
+    $$("#ptgrid .pt-el.hit").forEach((el) => el.classList.remove("hit"));
+    if (!q) { box.textContent = ""; return; }
+    const e = PTABLE.find((x) => x[1].toLowerCase() === q) || PTABLE.find((x) => x[2].toLowerCase().startsWith(q)) || PTABLE.find((x) => String(x[0]) === q);
+    if (!e) { box.textContent = "No element matches."; return; }
+    box.innerHTML = `<b>${esc(e[2])}</b> (${esc(e[1])}): atomic number ${e[0]}, atomic mass ${esc(e[3])}`;
+    const el = $(`#ptgrid [data-z="${e[0]}"]`); if (el) { el.classList.add("hit"); el.scrollIntoView({ block: "nearest", inline: "center", behavior: reduceMotion ? "auto" : "smooth" }); }
   }
 
   /* ---------------- MCAT section screen: Practice | What's tested (docs/MCAT_GUIDES_SPEC.md §5) ---------------- */
@@ -271,7 +329,16 @@
     let h = `${examSeg()}<p style="margin:14px 0 0"><button class="btn quiet sm" data-act="msec" data-v="">${ICON.left} All sections</button></p>
       <h1>${esc(s.short)}</h1><p class="status-line">${esc(s.name)}. ${s.questions} questions in ${s.minutes} minutes${s.tools ? `, ${esc(s.tools.toLowerCase())} provided` : ""}.</p>
       <div class="seg" role="group" aria-label="Section view">${[["practice", "Practice"], ["guide", "What's tested"]].map(([k, nm]) => `<button data-act="mtab" data-v="${k}" aria-pressed="${UI.mtab === k}">${nm}</button>`).join("")}</div>`;
-    if (UI.mtab === "practice") h += `<div class="panel" style="margin-top:14px"><p style="margin:0">${n ? `${n} ${esc(s.short)} question${n === 1 ? "" : "s"} so far. Custom blocks for the MCAT arrive with the first full block of questions.` : `No ${esc(s.short)} questions yet. They arrive in blocks, each tagged to a topic in "What's tested", so you can practice any topic from the guide.`}</p></div>`;
+    if (UI.mtab === "practice") {
+      if (!n) h += `<div class="panel" style="margin-top:14px"><p style="margin:0">No ${esc(s.short)} questions yet. They arrive in blocks, each tagged to a topic in "What's tested", so you can practice any topic from the guide.</p></div>`;
+      else {
+        const qs = QB.filter((q) => q.section === s.k), unused = qs.filter((q) => !A(q.id)).length, missed = qs.filter((q) => lastStatus(q.id) === "incorrect").length;
+        h += `<p class="status-line" style="margin-top:14px">${n} question${n === 1 ? "" : "s"}, ${unused} still new${missed ? `, ${missed} missed` : ""}.</p>
+          <div class="start-grid"><button class="start-card primary" data-act="msec-start" data-mode="tutor"><b>Tutor block</b><span>Explanation after each answer.</span></button><button class="start-card" data-act="msec-start" data-mode="timed"><b>Timed block</b><span>About ${MCAT_PERQ[s.k] || 96} seconds each, like the exam.</span></button></div>
+          <div class="chips" style="margin-top:12px"><button class="chip" data-act="msec-start" data-mode="tutor" data-pool="incorrect" ${missed ? "" : "disabled"}>Redo missed <span class="n">${missed}</span></button><button class="chip" data-act="ptab-go" data-v="new">Build a custom block</button></div>
+          <h2>Questions</h2><div class="list">${qs.map((q) => { const st = lastStatus(q.id); const badge = st === "correct" ? '<span class="badge correct">Correct</span>' : st === "incorrect" ? '<span class="badge incorrect">Incorrect</span>' : '<span class="badge">New</span>'; return `<button class="li" data-act="q-open" data-id="${q.id}"><div class="t"><b>${esc(q.category)} · ${esc(q.sys)}</b><span>${stars(q.difficulty)} Skill ${esc(q.skill)}${isFlag(q.id) ? ' <span class="badge flag">Flagged</span>' : ""}</span></div>${badge}${ICON.right}</button>`; }).join("")}</div>`;
+      }
+    }
     else h += g ? guideHTML(g) : `<div class="panel" style="margin-top:14px"><p style="margin:0">The ${esc(s.short)} guide is being written. Chem/Phys is first.</p></div>`;
     return h;
   }
@@ -291,11 +358,29 @@
   const barRow = (label, pct, note) => `<div class="bar-row"><div class="lab"><span>${label}</span><span class="muted">${note == null ? `${pct}%` : note}</span></div><div class="bar" role="img" aria-label="${pct}%"><i style="width:${pct}%"></i></div></div>`;
   const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
   const eqHTML = (e) => `<div class="eq" data-tex="${esc(e)}"><code>${esc(e)}</code></div>`;
-  function guideBodyHTML(g) {
-    const gl = g.glance || {}, bp = g.blueprint || {}, rv = reviewedMap();
-    let h = `<h2>At a glance</h2><div class="panel"><div class="kpis"><div class="kpi"><b>${gl.questions}</b><span>Questions</span></div><div class="kpi"><b>${gl.minutes}</b><span>Minutes</span></div><div class="kpi"><b>${gl.passage_questions}+${gl.discrete_questions}</b><span>Passage + discrete</span></div></div>
+  function glanceHTML(g) {
+    const gl = g.glance || {};
+    return `<h2>At a glance</h2><div class="panel"><div class="kpis"><div class="kpi"><b>${gl.questions}</b><span>Questions</span></div><div class="kpi"><b>${gl.minutes}</b><span>Minutes</span></div><div class="kpi"><b>${gl.discrete_questions ? `${gl.passage_questions}+${gl.discrete_questions}` : gl.passage_questions}</b><span>${gl.discrete_questions ? "Passage + discrete" : "All passage-based"}</span></div></div>
       <p style="margin:14px 0 0">${esc(gl.summary || "")}</p>${gl.math ? `<p style="margin:10px 0 0"><b>Math:</b> ${esc(gl.math)}</p>` : ""}
       <p style="margin:10px 0 0"><b>Tools:</b> ${esc(gl.tools || "none")}. ${gl.calculator ? "Calculator allowed." : "No calculator."}</p>${gl.scores_note ? `<p class="hint" style="margin:10px 0 0">${esc(gl.scores_note)}</p>` : ""}</div>`;
+  }
+  function carsBodyHTML(g) {
+    const bp = g.blueprint || {}, names = { foundations: "Foundations of Comprehension", within: "Reasoning Within the Text", beyond: "Reasoning Beyond the Text" };
+    let h = glanceHTML(g);
+    h += `<h2>Blueprint</h2><div class="panel bars"><h3 style="margin:0">By skill</h3>${Object.entries(bp.cars_skills || {}).map(([k, v]) => barRow(esc(names[k] || k), v)).join("")}
+      <h3 style="margin:6px 0 0">By passage content</h3>${Object.entries(bp.passage_content || {}).map(([k, v]) => barRow(esc(cap(k)), v)).join("")}
+      <p class="hint" style="margin:4px 0 0">AAMC's published weightings, rounded to the nearest 5%; they vary a little from one test to another.</p></div>`;
+    if (g.no_outside_knowledge) h += `<div class="callout" style="margin-top:14px"><b>No outside knowledge</b> ${esc(g.no_outside_knowledge)}</div>`;
+    h += `<h2>Passage types</h2>${(g.passage_types || []).map((p) => `<div class="panel" style="margin-top:10px"><b>${esc(p.name)}</b> <span class="muted small">${p.pct}% of passages</span><p style="margin:6px 0 0">${esc(p.what)}</p><p class="hint" style="margin:6px 0 0">Drawn from ${(p.disciplines || []).map(esc).join(", ")}, among others.</p></div>`).join("")}`;
+    h += `<h2>Skill areas</h2><p class="hint" style="margin:-4px 2px 10px">AAMC's three skill names; the explanations and examples are our own.</p>${(g.skill_areas || []).map((s) => `<details class="gt" data-okey="s:${esc(s.id)}" ${isOpen("s:" + s.id, true) ? "open" : ""}><summary><span class="gsum"><b>${esc(s.name)}</b><span class="meta">${s.pct}% of the section</span></span></summary><div class="gt-body"><p style="margin:0 0 8px">${esc(s.what)}</p><p style="margin:0 0 4px"><b>What questions ask:</b></p><ul class="know">${(s.asks || []).map((a) => `<li>${esc(a)}</li>`).join("")}</ul>${s.example ? `<div class="callout"><b>Example</b> ${esc(s.example)}</div>` : ""}</div></details>`).join("")}`;
+    h += `<h2>Wrong-answer patterns</h2>${(g.wrong_answer_patterns || []).map((w) => `<details class="gt" data-okey="w:${esc(w.name)}" ${isOpen("w:" + w.name, false) ? "open" : ""}><summary><span class="gsum"><b>${esc(w.name)}</b></span></summary><div class="gt-body"><p style="margin:0">${esc(w.what)}</p>${w.spot ? `<p class="hint" style="margin:8px 0 0"><b>How to spot it:</b> ${esc(w.spot)}</p>` : ""}</div></details>`).join("")}`;
+    h += `<h2>Approaches</h2><p class="hint" style="margin:-4px 2px 10px">Options to try, not rules. Keep what raises your score.</p>${(g.approaches || []).map((a) => `<details class="gt" data-okey="a:${esc(a.name)}" ${isOpen("a:" + a.name, false) ? "open" : ""}><summary><span class="gsum"><b>${esc(a.name)}</b></span></summary><div class="gt-body"><p style="margin:0">${esc(a.what)}</p></div></details>`).join("")}`;
+    return h;
+  }
+  function guideBodyHTML(g) {
+    if (!g.concepts) return carsBodyHTML(g);
+    const bp = g.blueprint || {}, rv = reviewedMap();
+    let h = glanceHTML(g);
     h += `<h2>Blueprint</h2><div class="panel bars"><h3 style="margin:0">By discipline</h3>${Object.entries(bp.disciplines || {}).map(([k, v]) => barRow(esc(cap(k)), v)).join("")}
       <h3 style="margin:6px 0 0">By foundational concept</h3>${(g.concepts || []).map((c) => barRow(`FC${esc(c.id)} · ${esc(c.name)}`, (bp.concepts || {})[c.id] || 0)).join("")}
       <h3 style="margin:6px 0 0">By skill</h3>${(g.skills || []).map((s) => barRow(`Skill ${esc(s.id)} · ${esc(s.name)}`, (bp.skills || {})[s.id] || s.pct || 0)).join("")}
@@ -419,6 +504,7 @@
 
   /* ---------------- practice ---------------- */
   function available() {
+    if (EXAM === "mcat") return pool(P.pool).filter((q) => P.sections.has(q.section) && P.skills.has(String(q.skill)) && P.diffs.has(q.difficulty));
     return pool(P.pool).filter((q) => P.systems.has(q.sys) && P.diffs.has(q.difficulty));
   }
   function viewPractice() {
@@ -602,7 +688,7 @@
       <button class="iconbtn" data-act="r-exit" aria-label="${R.review ? "Close review" : "Pause and exit"}">${ICON.x}</button>
       <div class="pos"><b>Question ${R.idx + 1} of ${n}</b><span id="rclock" class="${typeof c !== "string" && c.low ? "low" : ""}">${ctext}</span></div>
       <button class="iconbtn" data-act="r-flag" aria-pressed="${isFlag(id)}" aria-label="Flag this question">${ICON.flag}</button>
-      <button class="iconbtn" data-act="r-labs" aria-label="Lab reference values">${ICON.labs}</button>
+      ${EXAM === "mcat" ? (q.section !== "cars" ? `<button class="iconbtn" data-act="r-ptable" aria-label="Periodic table">${ICON.table}</button>` : `<span style="width:44px"></span>`) : `<button class="iconbtn" data-act="r-labs" aria-label="Lab reference values">${ICON.labs}</button>`}
       <button class="iconbtn" data-act="r-more" aria-label="All questions and options">${ICON.more}</button></div>
       <div class="rbody"><div class="rcontent">
       <div class="qhead">${stars(q.difficulty)}${rev ? `<span>Question ${QNUM[id]} in the bank</span>` : ""}</div>
@@ -644,10 +730,10 @@
     const note = (Store.d.notes[id] && Store.d.notes[id].text) || "";
     return v + `<div class="exp"><h3>Why ${q.answer} is correct</h3>${q.why_correct.map((p) => `<p>${p}</p>`).join("")}
       <h3>Why the other choices are wrong</h3><ul class="why">${Object.keys(q.why_wrong).sort().map((L) => `<li class="${L === chosen ? "picked" : ""}"><div class="h"><span>${L}. ${q.options[L]}</span>${L === chosen ? '<span class="tag">Your answer</span>' : ""}</div><p>${q.why_wrong[L]}</p></li>`).join("")}</ul>
-      <div class="objective"><h4>Educational objective</h4><p>${q.objective}</p></div>
+      <div class="objective"><h4>${EXAM === "mcat" ? "Takeaway" : "Educational objective"}</h4><p>${q.objective}</p></div>
       <div class="notes"><label for="note-${id}">My notes</label><textarea id="note-${id}" data-note="${id}" placeholder="Anything you want to remember about this one">${esc(note)}</textarea></div>
       <details class="src"><summary>Sources</summary><ul>${q.sources.map((x) => `<li>${x}</li>`).join("")}</ul></details>
-      <div class="tagline"><span class="badge">${esc(q.sys)}</span><span class="badge">${esc(q.discipline)}</span></div></div>`;
+      <div class="tagline"><span class="badge">${esc(q.sys)}</span><span class="badge">${esc(q.discipline)}</span>${EXAM === "mcat" ? `<span class="badge">${esc(q.category)}</span><span class="badge">Skill ${esc(q.skill)}</span>${(q.topics || []).map((t) => `<button class="badge" data-act="g-go" data-sec="${esc(q.section)}" data-id="${esc(t)}" style="border:0;cursor:pointer">Guide: ${esc(t)}</button>`).join("")}` : ""}</div></div>`;
   }
   function resultsHTML() {
     const s = R.s, sc = sessionScore(s);
@@ -768,8 +854,14 @@
       case "tab": if (t.dataset.tab === "practice" && UI.tab === "practice") UI.msec = null; go(t.dataset.tab); break;
       case "msec": UI.msec = v || null; if (v) { UI.tab = "practice"; const g = guideOf(v); UI.mtab = g && !(Bank.mcat.items || []).some((q) => q.section === v) ? "guide" : UI.mtab; } G.q = ""; render(); window.scrollTo(0, 0); break;
       case "mtab": UI.mtab = v; render(); break;
-      case "g-go": openTopic(t.dataset.sec, t.dataset.id); break;
-      case "g-practice": startSession("tutor", topicItems(t.dataset.id), {}); break;
+      case "g-go": if (R.s) { closeSheet(true); closeRunner(); } openTopic(t.dataset.sec, t.dataset.id); break;
+      case "g-practice": startSession("tutor", topicItems(t.dataset.id), { perQ: MCAT_PERQ[UI.msec] || 96 }); break;
+      case "msec-start": { const qs = QB.filter((q) => q.section === UI.msec && (t.dataset.pool === "incorrect" ? lastStatus(q.id) === "incorrect" : true)); const fresh_ = qs.filter((q) => !A(q.id)); startSession(t.dataset.mode, (t.dataset.pool || fresh_.length === 0) ? qs : fresh_, { perQ: MCAT_PERQ[UI.msec] || 96 }); break; }
+      case "ptab-go": UI.msec = null; UI.ptab = v; render(); window.scrollTo(0, 0); break;
+      case "p-section": if (P.sections.has(v)) P.sections.delete(v); else P.sections.add(v); render(); break;
+      case "p-skill": if (P.skills.has(v)) P.skills.delete(v); else P.skills.add(v); render(); break;
+      case "r-ptable": openPTable(); break;
+      case "pt-pick": { const e = PTABLE.find((x) => String(x[0]) === t.dataset.z); if (e) { const inp = $("[data-ptsearch]"); if (inp) inp.value = e[1]; ptFind(e[1]); } break; }
       case "settings": openSettings(); break;
       case "sheet-close": closeSheet(); break;
       case "set-theme": Store.settings().theme = v; applySettings(); Store.saveSettings(); $$("[data-act=set-theme]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.v === v)); break;
@@ -823,6 +915,7 @@
     if (t.dataset.note) { const id = t.dataset.note; Store.d.notes[id] = { text: t.value, ts: Date.now() }; clearTimeout(t._nt); t._nt = setTimeout(() => Store.save(), 700); Store.local(); }
     else if (t.hasAttribute("data-labsearch")) { $("#labsheet").innerHTML = labsHTML(t.value); }
     else if (t.hasAttribute("data-gsearch")) { G.q = t.value; refreshGuideBody(); }
+    else if (t.hasAttribute("data-ptsearch")) { ptFind(t.value); }
     else Anat.input(t);
   });
   document.addEventListener("change", (e) => { const t = e.target; if (t.dataset && t.dataset.reviewed) setReviewed(t.dataset.reviewed, t.checked); });
@@ -863,9 +956,11 @@
       return;
     }
     MAPS.boards = Object.fromEntries(Bank.boards.map((q) => [q.id, q]));
+    /* MCAT items (docs/MCAT_SPEC.md §8) are given the few fields the shared runner and lists expect from a boards question. */
+    (Bank.mcat.items || []).forEach((q) => { q.sys = (Bank.mcat.categories || {})[q.category] || q.category; q.objective = q.takeaway; q.topic = q.sys; q.vignette = q.vignette || []; q.labs = []; q.after_labs = []; });
     MAPS.mcat = Object.fromEntries((Bank.mcat.items || []).map((q) => [q.id, q]));
     let exam = "boards"; try { if (localStorage.getItem(EXAM_KEY) === "mcat") exam = "mcat"; } catch (e) { /* ignore */ }
-    activate(exam);
+    activate(exam); if (exam === "mcat") UI.ptab = "sections";
     Store.load();
     applySettings();
     ready = true; document.body.dataset.ready = "1";

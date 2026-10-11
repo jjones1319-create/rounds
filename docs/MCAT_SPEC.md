@@ -187,6 +187,30 @@ IDs are permanent (progress is keyed by them). Corrections increment `rev` and a
 
 | ID | Section | Category / skill | Topic | Ans | Diff | Status | Key source |
 |---|---|---|---|---|---|---|---|
+| M1-Q01 | chem_phys | 4A / S2 | 4A.energy | C | ★★ | draft | OpenStax College Physics 2e, 7.3 Gravitational Potential Energy |
+| M1-Q02 | chem_phys | 4C / S2 | 4C.resistance | B | ★★★ | draft | OpenStax College Physics 2e, 21.1 Resistors in Series and Parallel |
+| M1-Q03 | chem_phys | 4D / S2 | 4D.reflection-refraction | C | ★★★ | draft | OpenStax College Physics 2e, 25.4 Total Internal Reflection |
+| M1-Q04 | chem_phys | 4E / S2 | 4E.radioactive-decay | B | ★★★ | draft | OpenStax College Physics 2e, 31.5 Half-Life and Activity |
+| M1-Q05 | chem_phys | 5A / S2 | 5A.buffers | D | ★★★ | draft | OpenStax Chemistry 2e, 14.6 Buffers |
+| M1-Q06 | chem_phys | 5E / S3 | 5E.enzymes-mechanism | A | ★★★ | draft | OpenStax Biology 2e, 6.5 Enzymes |
+| M1-Q07 | chem_phys | 5D / S1 | 5D.carbonyl-addition | D | ★★★ | draft | OpenStax Organic Chemistry, 25.5 Cyclic Structures of Monosaccharides |
+| M1-Q08 | chem_phys | 5E / S4 | 5E.enzyme-inhibition-regulation | A | ★★★ | draft | Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 4.2 Control of Enzymatic Activity |
+| M2-Q01 | bio_biochem | 1A / S4 | 1A.enzyme-control | B | ★★★ | draft | Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 4.1 Basic Principles of Catalysis |
+| M2-Q02 | bio_biochem | 1B / S2 | 1B.genetic-code | D | ★★ | draft | OpenStax Microbiology, 11.4 Protein Synthesis (Translation) |
+| M2-Q03 | bio_biochem | 1C / S2 | 1C.analytic-methods | C | ★★★ | draft | OpenStax Biology 2e, 19.1 Population Evolution |
+| M2-Q04 | bio_biochem | 1D / S1 | 1D.citric-acid-cycle | A | ★★★ | draft | OpenStax Biology 2e, 7.3 Oxidation of Pyruvate and the Citric Acid Cycle |
+| M2-Q05 | bio_biochem | 2A / S2 | 2A.membrane-transport | B | ★★★ | draft | OpenStax Biology 2e, 5.2 Passive Transport |
+| M2-Q06 | bio_biochem | 2C / S1 | 2C.mitosis-cell-cycle | D | ★★ | draft | OpenStax Biology 2e, 10.2 The Cell Cycle |
+| M2-Q07 | bio_biochem | 3A / S2 | 3A.nerve-cell | A | ★★★ | draft | OpenStax Biology 2e, 35.2 How Neurons Communicate |
+| M2-Q08 | bio_biochem | 3B / S3 | 3B.excretory | C | ★★★ | draft | OpenStax Biology 2e, 41.5 Hormonal Control of Osmoregulatory Functions |
+| M3-Q01 | psych_soc | 6A / S2 | 6A.sensation-thresholds | B | ★★ | draft | OpenStax Psychology 2e, 5.1 Sensation versus Perception |
+| M3-Q02 | psych_soc | 6B / S1 | 6B.memory-retrieval-forgetting | C | ★★★ | draft | OpenStax Psychology 2e, 8.3 Problems with Memory |
+| M3-Q03 | psych_soc | 6C / S2 | 6C.emotion | A | ★★★ | draft | OpenStax Psychology 2e, 10.4 Emotion |
+| M3-Q04 | psych_soc | 7C / S2 | 7C.operant | D | ★★★ | draft | OpenStax Psychology 2e, 6.3 Operant Conditioning |
+| M3-Q05 | psych_soc | 6C / S3 | 6C.stress | B | ★★★ | draft | OpenStax Psychology 2e, 2.3 Analyzing Findings |
+| M3-Q06 | psych_soc | 8B / S2 | 8B.attribution | C | ★★★ | draft | OpenStax Psychology 2e, 12.1 What Is Social Psychology? |
+| M3-Q07 | psych_soc | 9A / S2 | 9A.theoretical-approaches | A | ★★★ | draft | OpenStax Introduction to Sociology 3e, 1.3 Theoretical Perspectives in Sociology |
+| M3-Q08 | psych_soc | 10A / S4 | 10A.social-class | D | ★★★ | draft | OpenStax Introduction to Sociology 3e, 19.3 Health in the United States |
 
 ## 11. Changelog
 
@@ -195,3 +219,4 @@ IDs are permanent (progress is keyed by them). Corrections increment `rev` and a
 | 1.0 | 2026-10-10 | Spec created. |
 | 1.1 | 2026-10-10 | Added topic tagging to section guides (§3.10, §8) and the no-recalled-content rule (§3.9). |
 | 1.2 | 2026-10-10 | Owner decisions applied: §3.4 now bans taking questions from any website or prep source (official samples may be read only for structure, style, and difficulty); §7 makes the owner the reviewer of all content, drops the second-reviewer requirement, and makes the Beta label optional and off by default; §9 wording updated. |
+| 1.3 | 2026-10-11 | Phase M2 starter blocks M1 (Chem/Phys), M2 (Bio/Biochem), M3 (Psych/Soc): 8 discrete items each, all `draft`, each re-derived and fact-checked against the cited open textbooks before commit; §10 item log started. |

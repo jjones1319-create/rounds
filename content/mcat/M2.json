@@ -1,0 +1,373 @@
+{
+ "block": "M2",
+ "section": "bio_biochem",
+ "passages": [],
+ "items": [
+  {
+   "id": "M2-Q01",
+   "rev": 1,
+   "section": "bio_biochem",
+   "passage": null,
+   "discipline": "biochemistry",
+   "fc": "1",
+   "category": "1A",
+   "topics": [
+    "1A.enzyme-control"
+   ],
+   "skill": "4",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "A Lineweaver–Burk plot (1/v₀ against 1/[S]) for a purified enzyme is a straight line that crosses the x-axis at −0.5 mM⁻¹ and the y-axis at 0.01 min·µmol⁻¹. The enzyme's Km and Vmax are:",
+   "options": {
+    "A": "Km = 0.5 mM; Vmax = 100 µmol/min",
+    "B": "Km = 2 mM; Vmax = 100 µmol/min",
+    "C": "Km = 2 mM; Vmax = 0.01 µmol/min",
+    "D": "Km = 0.5 mM; Vmax = 0.01 µmol/min"
+   },
+   "answer": "B",
+   "why_correct": [
+    "The double-reciprocal form of the Michaelis–Menten equation is 1/v₀ = (Km/Vmax)(1/[S]) + 1/Vmax. The y-intercept is 1/Vmax and the x-intercept is −1/Km.",
+    "y-intercept 0.01 min/µmol means Vmax = 1/0.01 = 100 µmol/min. x-intercept −0.5 mM⁻¹ means −1/Km = −0.5 mM⁻¹, so Km = 1/0.5 = 2 mM.",
+    "Check with the slope: Km/Vmax = 2/100 = 0.02 min·mM/µmol; rise over run from the x-intercept to the y-intercept is 0.01/0.5 = 0.02, consistent."
+   ],
+   "why_wrong": {
+    "A": "0.5 mM is the magnitude of the x-intercept itself, not its reciprocal; Km is 1 divided by that value.",
+    "C": "0.01 is the y-intercept, which is 1/Vmax; Vmax is its reciprocal, 100, not 0.01.",
+    "D": "Both constants are read directly from the intercepts instead of inverting them."
+   },
+   "error_types": {
+    "A": "misread graph: x-intercept not inverted to get Km",
+    "C": "misread graph: y-intercept not inverted to get Vmax",
+    "D": "misread graph: neither intercept inverted"
+   },
+   "takeaway": "On a Lineweaver–Burk plot, Vmax is the reciprocal of the y-intercept and Km is the negative reciprocal of the x-intercept.",
+   "sources": [
+    "Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 4.1 Basic Principles of Catalysis (2019): Lineweaver–Burk plot intercepts 1/Vmax (y) and −1/Km (x).",
+    "OpenStax Biology 2e, 6.5 Enzymes (2018): qualitative relationship between substrate concentration and reaction rate, and the effect of inhibitors."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M2-Q02",
+   "rev": 1,
+   "section": "bio_biochem",
+   "passage": null,
+   "discipline": "biology",
+   "fc": "1",
+   "category": "1B",
+   "topics": [
+    "1B.genetic-code",
+    "1B.translation"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 2,
+   "stem": "A single-nucleotide substitution in a gene changes the codon UGG, which encodes tryptophan, to UGA in the middle of the coding sequence. The most likely effect on the protein is:",
+   "options": {
+    "A": "No change, because the substitution is silent",
+    "B": "A single amino acid replaced by another",
+    "C": "A shifted reading frame from the mutation onward",
+    "D": "A truncated protein, because translation stops early"
+   },
+   "answer": "D",
+   "why_correct": [
+    "UGA is one of the three stop codons (UAA, UAG, UGA). No tRNA reads it; instead a release factor ends translation, so the ribosome stops in the middle of the message.",
+    "A codon changed to a stop is a nonsense mutation. The protein made is shorter than normal, usually unfolded and nonfunctional, and the mRNA is often destroyed by nonsense-mediated decay.",
+    "The reading frame is unaffected because one nucleotide replaced another; no bases were added or removed."
+   ],
+   "why_wrong": {
+    "A": "A silent mutation changes a codon to another codon for the same amino acid. Tryptophan has only one codon (UGG), and UGA encodes no amino acid at all.",
+    "B": "That describes a missense mutation, in which the new codon specifies a different amino acid. UGA specifies none; it signals stop.",
+    "C": "Frameshifts come from insertions or deletions that are not multiples of three. A substitution keeps the frame intact."
+   },
+   "error_types": {
+    "A": "wrong formula: UGA is a stop codon, not a synonymous codon",
+    "B": "wrong formula: missense requires a new amino acid, not a stop",
+    "C": "wrong formula: frameshifts need insertions or deletions"
+   },
+   "takeaway": "A substitution that creates UAA, UAG, or UGA is a nonsense mutation and truncates the protein without shifting the frame.",
+   "sources": [
+    "OpenStax Microbiology, 11.4 Protein Synthesis (Translation) (2016): UAA, UAG and UGA are stop codons, recognized by release factors rather than a tRNA.",
+    "OpenStax Microbiology, 11.5 Mutations (2016): silent, missense and nonsense substitutions; nonsense mutations give shorter, usually non-functional proteins; insertions and deletions cause frameshifts.",
+    "OpenStax Biology 2e, 15.1 The Genetic Code (2018): codon table (tryptophan has the single codon UGG).",
+    "Hwang J, Kim YK. When a ribosome encounters a premature termination codon. BMB Reports. 2013;46(1):9–16: nonsense-mediated decay of transcripts with premature stop codons."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M2-Q03",
+   "rev": 1,
+   "section": "bio_biochem",
+   "passage": null,
+   "discipline": "biology",
+   "fc": "1",
+   "category": "1C",
+   "topics": [
+    "1C.analytic-methods",
+    "1C.mendelian-concepts"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "An autosomal recessive metabolic disorder affects 1 newborn in 10,000 in a large, randomly mating population. Assuming Hardy–Weinberg equilibrium, the fraction of the population that carries one copy of the disease allele is closest to:",
+   "options": {
+    "A": "1 in 10,000",
+    "B": "1 in 100",
+    "C": "1 in 50",
+    "D": "1 in 25"
+   },
+   "answer": "C",
+   "why_correct": [
+    "Affected newborns are homozygous recessive, so q² = 1/10,000 = 0.0001. Taking the square root, q = 0.01 (1 in 100) is the allele frequency, and p = 1 − q = 0.99.",
+    "Carriers are heterozygotes: 2pq = 2 × 0.99 × 0.01 ≈ 0.0198, about 0.02, which is 1 in 50.",
+    "Shortcut for rare recessive traits: the carrier frequency is about 2q, twice the allele frequency, because p is nearly 1."
+   ],
+   "why_wrong": {
+    "A": "1 in 10,000 is the frequency of affected individuals (q²), not of carriers.",
+    "B": "1 in 100 is the allele frequency q. Each carrier has two alleles and can carry the disease allele on either, so the carrier frequency is about twice this.",
+    "D": "1 in 25 (0.04) would require q = 0.02, that is, an affected frequency of 1 in 2,500."
+   },
+   "error_types": {
+    "A": "true but irrelevant: reported the affected frequency instead of the carriers",
+    "B": "wrong formula: stopped at the allele frequency q instead of 2pq",
+    "D": "wrong formula: doubled twice (4q instead of 2q)"
+   },
+   "takeaway": "For a rare recessive disease: q = √(affected frequency), and carriers ≈ 2q.",
+   "sources": [
+    "OpenStax Biology 2e, 19.1 Population Evolution (2018): Hardy–Weinberg equation p² + 2pq + q² = 1; heterozygote frequency 2pq.",
+    "OpenStax Anatomy and Physiology 2e, 28.7 Patterns of Inheritance (2022): autosomal recessive disorders appear only in homozygous recessive individuals; heterozygotes are carriers."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M2-Q04",
+   "rev": 1,
+   "section": "bio_biochem",
+   "passage": null,
+   "discipline": "biochemistry",
+   "fc": "1",
+   "category": "1D",
+   "topics": [
+    "1D.citric-acid-cycle"
+   ],
+   "skill": "1",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "One molecule of acetyl-CoA enters the citric acid cycle and is fully processed through one turn. Which set of energy-carrying products does that single turn generate?",
+   "options": {
+    "A": "3 NADH, 1 FADH₂, and 1 GTP (or ATP)",
+    "B": "2 NADH, 2 FADH₂, and 2 ATP",
+    "C": "4 NADH, 1 FADH₂, and 2 GTP",
+    "D": "6 NADH, 2 FADH₂, and 2 GTP"
+   },
+   "answer": "A",
+   "why_correct": [
+    "In one turn the two carbons of the acetyl group are oxidized and released as two CO₂ while four pairs of electrons are captured: three by NAD⁺ (isocitrate dehydrogenase, α-ketoglutarate dehydrogenase, malate dehydrogenase) and one by FAD (succinate dehydrogenase).",
+    "One substrate-level phosphorylation, at succinyl-CoA synthetase, makes one GTP (ATP in some tissues).",
+    "Per glucose, which gives two acetyl-CoA, the totals double to 6 NADH, 2 FADH₂, 2 GTP, and 4 CO₂; option D lists those per-glucose numbers, not the per-turn numbers asked for."
+   ],
+   "why_wrong": {
+    "B": "No step of the cycle makes two FADH₂, and the cycle's substrate-level phosphorylation yields one nucleotide triphosphate per turn, not two.",
+    "C": "Only three dehydrogenases in the cycle use NAD⁺, and there is one substrate-level phosphorylation per turn, not two.",
+    "D": "These are the yields for two turns, that is, per glucose molecule, not per acetyl-CoA."
+   },
+   "error_types": {
+    "B": "wrong formula: miscounted the electron carriers and phosphorylations",
+    "C": "wrong formula: one NADH and one GTP too many",
+    "D": "true but irrelevant: per-glucose totals given for a per-acetyl-CoA question"
+   },
+   "takeaway": "Each turn of the citric acid cycle yields 3 NADH, 1 FADH₂, 1 GTP, and 2 CO₂; double everything for one glucose.",
+   "sources": [
+    "OpenStax Biology 2e, 7.3 Oxidation of Pyruvate and the Citric Acid Cycle (2018): each turn produces 3 NADH, 1 FADH₂ and 1 ATP or GTP, with two carbons released as CO₂.",
+    "OpenStax Organic Chemistry, 29.7 The Citric Acid Cycle (2023): the eight steps and the dehydrogenase and substrate-level phosphorylation steps."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M2-Q05",
+   "rev": 1,
+   "section": "bio_biochem",
+   "passage": null,
+   "discipline": "biology",
+   "fc": "2",
+   "category": "2A",
+   "topics": [
+    "2A.membrane-transport"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "Normal saline (0.9% NaCl) has about the same osmolarity as blood plasma. If red blood cells are placed in a solution of 0.45% NaCl, the cells will most likely:",
+   "options": {
+    "A": "shrink and crenate as water leaves them",
+    "B": "swell, and some will burst, as water enters them",
+    "C": "keep their shape, because NaCl crosses the membrane freely",
+    "D": "shrink at first and then return to normal size"
+   },
+   "answer": "B",
+   "why_correct": [
+    "Osmosis moves water across a selectively permeable membrane toward the side with the higher concentration of non-penetrating solute. The cell interior matches 0.9% NaCl; a 0.45% solution has half that solute, so it is hypotonic to the cell.",
+    "Water therefore flows into the cells. Red cells have no wall to resist the pressure, so they swell and, if the gradient is large enough, lyse (hemolysis).",
+    "Numbers: 0.9% NaCl is about 0.15 M and, since each NaCl gives two particles, about 300 mOsm, like plasma; 0.45% is about 150 mOsm, clearly hypotonic."
+   ],
+   "why_wrong": {
+    "A": "Shrinking (crenation) happens in a hypertonic solution such as 3% NaCl, where water leaves the cell.",
+    "C": "The red cell membrane is not freely permeable to Na⁺ and Cl⁻, so NaCl is a non-penetrating solute and the gradient drives water movement.",
+    "D": "There is no mechanism for an initial loss of water in a hypotonic solution; the gradient favours water entry from the start."
+   },
+   "error_types": {
+    "A": "reversed relationship: hypotonic and hypertonic effects swapped",
+    "C": "wrong formula: treats NaCl as a solute that crosses the membrane freely",
+    "D": "wrong formula: invented a two-phase response with no basis"
+   },
+   "takeaway": "Cells in a hypotonic solution gain water and swell (red cells lyse); in a hypertonic solution they lose water and shrink.",
+   "sources": [
+    "OpenStax Biology 2e, 5.2 Passive Transport (2018): osmosis, tonicity, and the behaviour of red blood cells in hypotonic, isotonic and hypertonic solutions.",
+    "OpenStax Biology 2e, 41.1 Osmoregulation and Osmotic Balance (2018): body fluids are about 280–300 mOsm; OpenStax Chemistry 2e, 11.4 Colligative Properties (2019): hemolysis in hypotonic and crenation in hypertonic solutions; a 0.9% NaCl solution is isotonic with serum."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M2-Q06",
+   "rev": 1,
+   "section": "bio_biochem",
+   "passage": null,
+   "discipline": "biology",
+   "fc": "2",
+   "category": "2C",
+   "topics": [
+    "2C.mitosis-cell-cycle"
+   ],
+   "skill": "1",
+   "cars_skill": null,
+   "difficulty": 2,
+   "stem": "A human somatic cell has completed S phase and is in G₂ of the cell cycle. At this point the cell contains:",
+   "options": {
+    "A": "23 chromosomes and 46 chromatids",
+    "B": "46 chromosomes and 46 chromatids",
+    "C": "92 chromosomes and 92 chromatids",
+    "D": "46 chromosomes and 92 chromatids"
+   },
+   "answer": "D",
+   "why_correct": [
+    "Chromosomes are counted by centromeres. A human somatic cell has 46 chromosomes throughout interphase and mitosis until anaphase, when sister chromatids separate.",
+    "During S phase each chromosome is replicated into two sister chromatids joined at one centromere, so after S phase (in G₂) there are 46 chromosomes made of 92 chromatids.",
+    "At anaphase the 92 chromatids separate and each becomes a chromosome in its own right, so each daughter cell receives 46."
+   ],
+   "why_wrong": {
+    "A": "23 is the haploid number found in gametes; a somatic cell is diploid with 46.",
+    "B": "46 chromosomes of one chromatid each describes a cell in G₁, before DNA replication.",
+    "C": "92 chromosomes would only be reached if the replicated chromatids were already counted as separate chromosomes, which happens at anaphase, after which they are divided between the two daughter cells."
+   },
+   "error_types": {
+    "A": "wrong formula: haploid number used for a somatic cell",
+    "B": "reversed relationship: pre-replication count given for a post-replication cell",
+    "C": "wrong formula: chromatids counted as chromosomes before anaphase"
+   },
+   "takeaway": "Count chromosomes by centromeres: a human cell in G₂ has 46 chromosomes and 92 chromatids.",
+   "sources": [
+    "OpenStax Biology 2e, 10.2 The Cell Cycle (2018): DNA is replicated in S phase, producing sister chromatids held at the centromere; chromosome number does not change until anaphase.",
+    "OpenStax Anatomy and Physiology 2e, 3.5 Cell Growth and Division (2022): human cells have 46 chromosomes; after replication each consists of two sister chromatids."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M2-Q07",
+   "rev": 1,
+   "section": "bio_biochem",
+   "passage": null,
+   "discipline": "biology",
+   "fc": "3",
+   "category": "3A",
+   "topics": [
+    "3A.nerve-cell",
+    "3A.biosignaling-electrochemistry"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "Tetrodotoxin, the pufferfish toxin, selectively blocks voltage-gated Na⁺ channels in neurons. A neuron exposed to tetrodotoxin would be expected to:",
+   "options": {
+    "A": "maintain its resting potential but be unable to fire action potentials",
+    "B": "depolarize to about 0 mV and stay there",
+    "C": "fire action potentials that cannot repolarize",
+    "D": "fire larger action potentials than normal"
+   },
+   "answer": "A",
+   "why_correct": [
+    "The resting potential depends on K⁺ leak channels and the Na⁺/K⁺ pump, neither of which tetrodotoxin touches, so the membrane stays near −70 mV.",
+    "The rising phase of the action potential is the inrush of Na⁺ through voltage-gated Na⁺ channels. With those blocked, a stimulus can still produce a small graded depolarization, but it cannot regenerate into an all-or-none spike, so the neuron is silenced.",
+    "This is why tetrodotoxin poisoning causes paralysis and numbness: sensory and motor neurons stop conducting while the cells themselves remain alive."
+   ],
+   "why_wrong": {
+    "B": "A sustained depolarization would require Na⁺ channels stuck open, the opposite of blockade; blocking them removes the main depolarizing current.",
+    "C": "Repolarization is carried by voltage-gated K⁺ channels, which the toxin does not affect; but no action potential starts in the first place.",
+    "D": "Action potential amplitude depends on the Na⁺ gradient and the number of channels that open; blocking channels cannot make the spike larger."
+   },
+   "error_types": {
+    "B": "reversed relationship: blockade confused with channels held open",
+    "C": "wrong formula: repolarization is carried by K⁺ channels, not Na⁺",
+    "D": "reversed relationship: fewer working channels cannot increase amplitude"
+   },
+   "takeaway": "Voltage-gated Na⁺ channels generate the action potential's rising phase; block them and the neuron keeps its resting potential but cannot fire.",
+   "sources": [
+    "OpenStax Biology 2e, 35.2 How Neurons Communicate (2018): the resting potential arises from K⁺ leak and the Na⁺/K⁺ pump; the action potential's depolarization is due to voltage-gated Na⁺ channels and repolarization to voltage-gated K⁺ channels.",
+    "Geffeney SL, Ruben PC. The structural basis and functional consequences of sodium channel pharmacology. Marine Drugs. 2006; and Lago J et al. Tetrodotoxin, an extremely potent marine neurotoxin. Marine Drugs. 2015;13(10):6384–6406: tetrodotoxin binds the outer pore of voltage-gated Na⁺ channels, blocking action-potential propagation and causing numbness and paralysis.",
+    "OpenStax Anatomy and Physiology 2e, 12.4 The Action Potential (2022): all action potentials peak at the same voltage, so one cannot be larger than another."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M2-Q08",
+   "rev": 1,
+   "section": "bio_biochem",
+   "passage": null,
+   "discipline": "biology",
+   "fc": "3",
+   "category": "3B",
+   "topics": [
+    "3B.excretory"
+   ],
+   "skill": "3",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "Researchers hypothesize that a new compound stimulates antidiuretic hormone (ADH) release. They inject the compound dissolved in saline into rats with free access to water and measure urine osmolarity two hours later. To test the hypothesis, the most appropriate comparison group is rats that:",
+   "options": {
+    "A": "receive no injection and have free access to water",
+    "B": "receive twice the dose of the compound",
+    "C": "receive an injection of the same volume of saline by the same route",
+    "D": "are deprived of water for the two hours"
+   },
+   "answer": "C",
+   "why_correct": [
+    "The experimental variable is the compound. A proper control matches everything else, the injection itself, its volume, route, timing, and handling stress, and omits only the compound; that is the vehicle (saline) control.",
+    "If the compound raises ADH, its rats should produce more concentrated urine (higher osmolarity, lower volume) than the vehicle group because ADH inserts aquaporins in the collecting duct and water is reabsorbed.",
+    "Handling and the injection itself could alter hormone levels or urine output, so an uninjected group would leave that confound in place."
+   ],
+   "why_wrong": {
+    "A": "Uninjected rats differ from the treated rats in two ways, the compound and the injection procedure, so any difference could be due to handling or stress rather than the compound.",
+    "B": "A higher dose tests dose dependence, which is useful later, but without a no-compound baseline it cannot show that the compound has any effect at all.",
+    "D": "Water deprivation raises ADH on its own; it is a positive control for the measurement, not the comparison that isolates the compound's effect."
+   },
+   "error_types": {
+    "A": "true but irrelevant: leaves the injection procedure as a confounding difference",
+    "B": "out of scope: dose–response is a different question from whether there is an effect",
+    "D": "reversed relationship: a positive control cannot serve as the negative (vehicle) control"
+   },
+   "takeaway": "The right control differs from the treatment in exactly one way: here, the vehicle injection without the compound.",
+   "sources": [
+    "OpenStax Biology 2e, 41.5 Hormonal Control of Osmoregulatory Functions (2018): ADH increases water reabsorption in the collecting duct, concentrating the urine.",
+    "OpenStax Psychology 2e, 2.3 Analyzing Findings (2020): the experimental group receives the manipulation and the control group does not; placebo controls."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  }
+ ]
+}

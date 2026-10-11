@@ -57,7 +57,9 @@ ERROR_TYPES = ["sign or unit error", "wrong formula", "misread graph", "reversed
                "too extreme", "out of scope", "outside knowledge contradicting the passage"]
 FIGURE_TYPES = {"line", "bar", "scatter", "table", "structure", "equation"}
 STATUSES = {"draft", "reviewed"}
-ID_BLOCK, ID_ITEM, ID_PASSAGE = re.compile(r"^M\d+$"), re.compile(r"^(M\d+)-Q\d{2}$"), re.compile(r"^(M\d+)-P\d{2}$")
+# Block ids are M<n> (one section per block in practice) or M<n><category letter> for single-category blocks such as M4B.
+ID_BLOCK, ID_ITEM, ID_PASSAGE = re.compile(r"^M\d+[A-E]?$"), re.compile(r"^(M\d+[A-E]?)-Q\d{2}$"), re.compile(r"^(M\d+[A-E]?)-P\d{2}$")
+WORDS = {"science": (200, 550), "cars": (450, 650)}  # passage length (words) per MCAT_SPEC §5, warned when outside
 ID_TOPIC = re.compile(r"^(\d{1,2}[A-E])\.[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 
@@ -164,11 +166,17 @@ def validate_blocks(ck, topics):
             ck.require(nonempty_strings(p.get("text")), where, "text must be a non-empty list of paragraphs")
             ck.require(isinstance(p.get("source"), str) and p["source"].strip(), where, "needs a source line")
             ck.require(p.get("status") in STATUSES, where, "status must be draft or reviewed")
+            if nonempty_strings(p.get("text")):
+                n = sum(len(t.split()) for t in p["text"]); lo, hi = WORDS.get(p.get("kind"), (0, 10**9))
+                if not lo <= n <= hi: ck.warn(where, f"{n} words; {p.get('kind')} passages should be {lo}–{hi}")
+            fids = set()
             for f in p.get("figures") or []:
                 fwhere = f"{where} figure {f.get('id')}"
+                ck.require(isinstance(f.get("id"), str) and f["id"] and f["id"] not in fids, fwhere, "figures need unique ids within the passage"); fids.add(f.get("id"))
                 ck.require(f.get("type") in FIGURE_TYPES, fwhere, f"type must be one of {sorted(FIGURE_TYPES)}")
                 ck.require(isinstance(f.get("data"), (dict, list)) and f["data"], fwhere, "needs data (figures are drawn from data)")
                 ck.require(isinstance(f.get("alt"), str) and f["alt"].strip(), fwhere, "needs alt text")
+                validate_figure(ck, fwhere, f)
             local_passages[pid] = p
             passages.append(p)
         answers = []
@@ -235,6 +243,42 @@ def validate_blocks(ck, topics):
     return passages, items
 
 
+def validate_figure(ck, where, f):
+    """Shape of each figure's data (the app draws the figure from it; docs/MCAT_SPEC.md §5, §8)."""
+    t, d = f.get("type"), f.get("data")
+    if not isinstance(d, dict): ck.err(where, "data must be an object"); return
+    if t == "table":
+        cols, rows = d.get("columns"), d.get("rows")
+        if ck.require(nonempty_strings(cols), where, "table data needs 'columns' (list of header strings)") and            ck.require(isinstance(rows, list) and rows and all(isinstance(r, list) for r in rows), where, "table data needs 'rows' (list of lists)"):
+            for i, r in enumerate(rows): ck.require(len(r) == len(cols), where, f"row {i} has {len(r)} cells for {len(cols)} columns")
+    elif t in ("line", "scatter", "bar"):
+        for ax in ("x", "y"):
+            a = d.get(ax)
+            ck.require(isinstance(a, dict) and isinstance(a.get("label"), str) and a["label"].strip(), where, f"'{ax}' axis needs a label (with units)")
+        ser = d.get("series")
+        if ck.require(isinstance(ser, list) and ser, where, "chart data needs 'series' (list)"):
+            for i, sr in enumerate(ser):
+                ck.require(isinstance(sr, dict) and isinstance(sr.get("name"), str), where, f"series {i} needs a name")
+                pts = sr.get("points") if isinstance(sr, dict) else None
+                if t == "bar":
+                    ck.require(isinstance(pts, list) and pts and all(isinstance(pt, list) and len(pt) == 2 and isinstance(pt[0], str) and isinstance(pt[1], (int, float)) for pt in pts),
+                               where, f"series {i} points must be [category, value] pairs")
+                else:
+                    ck.require(isinstance(pts, list) and len(pts) >= 2 and all(isinstance(pt, list) and len(pt) == 2 and all(isinstance(v, (int, float)) for v in pt) for pt in pts),
+                               where, f"series {i} points must be at least two [x, y] number pairs")
+    elif t == "equation":
+        ck.require(isinstance(d.get("tex"), str) and d["tex"].strip(), where, "equation data needs 'tex'")
+    elif t == "structure":
+        ck.require(isinstance(d.get("smiles"), str) and d["smiles"].strip(), where, "structure data needs 'smiles' (rendered to SVG at build time)")
+        if d.get("smiles"):
+            try:
+                from structures import check_smiles
+                err = check_smiles(d["smiles"])
+                if err: ck.err(where, err)
+            except ImportError:
+                ck.warn(where, "RDKit is not installed, so the SMILES was not parsed (pip install rdkit)")
+
+
 def coverage_report(guides, topics, items):
     """Markdown: topics with no questions, and questions per category versus AAMC weightings."""
     per_topic = collections.Counter(t for q in items for t in (q.get("topics") or []))
@@ -266,7 +310,7 @@ def validate():
     passages, items = validate_blocks(ck, topics)
     bundle = {
         "sections": [{key: s[key] for key in ("k", "name", "short", "questions", "minutes", "passage_questions", "discrete_questions", "tools")} for s in SECTIONS],
-        "passages": passages, "items": items, "guides": guides,
+        "passages": passages, "items": items, "guides": guides, "categories": CATEGORIES,
     }
     return bundle, ck, coverage_report(guides, topics, items)
 

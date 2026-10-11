@@ -84,18 +84,20 @@ Exam switcher, content/data split, validator, HTTP-based tests, MCAT progress ke
 - Pass: boards section works exactly as before, including her saved progress; tests pass over HTTP;
   the MCAT tab shows an empty state for each of the four sections.
 
-### Phase M1: section guides ("What's tested") — in progress
+### Phase M1: section guides ("What's tested") — done 2026-10-11
 Build the four guides per `docs/MCAT_GUIDES_SPEC.md`, starting with Chem/Phys so the owner can review the
 physics topics first. Questions depend on these topic IDs, so guides come before the question bank grows.
-Status 2026-10-10: the app side is done (section screens with Practice | What's tested, search across guides,
-expand/collapse memory, Reviewed ticks, KaTeX equations) and the Chem/Phys guide is written (96 topics, every
-outline item mapped in the private checklist in `work/`, references checked, all topics `draft`). CARS,
-Bio/Biochem, and Psych/Soc guides follow once the owner has reviewed the Chem/Phys topic list.
+Done: the app side (section screens with Practice | What's tested, search across guides, expand/collapse memory,
+Reviewed ticks, KaTeX equations) and all four guides: Chem/Phys (96 topics), Bio/Biochem (62), Psych/Soc (61),
+and CARS (passage types, three skill areas, wrong-answer patterns, approaches). Every outline item is mapped in
+the private checklists in `work/`, every reference link checked, every fact independently checked against the
+cited pages; all topics are `draft` until the owner marks them reviewed.
 - Pass: each guide is complete against the AAMC outline (private checklist in `work/`), uses original wording,
   shows the official-outline link and "Last verified" date, is searchable, and reads well at 360 px;
   topics carry `status` and `reviewed_by` (the optional Beta label stays off by default).
 
 ### Phase M2: discrete questions (starter content)
+**Done 2026-10-11** (blocks M1–M3, 24 items, MCAT runner with periodic table, section/skill/category stats, block builder).
 8 discrete questions each for Chem/Phys, Bio/Biochem, and Psych/Soc (24 total), ★★–★★★, per MCAT_SPEC.
 Every item is marked `draft` until the owner reviews it.
 - Pass: validator passes; every item is tagged to guide topics and "Practice this topic" works; items run in

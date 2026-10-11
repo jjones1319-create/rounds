@@ -1,0 +1,177 @@
+{
+ "section": "cars",
+ "verified": "2026-10-11",
+ "official_outline_url": "https://students-residents.aamc.org/prepare-mcat-exam/whats-mcat-exam-pdf-outline",
+ "official_prep_url": "https://students-residents.aamc.org/prepare-mcat-exam/free-planning-and-study-resources",
+ "attribution": "Organized according to the AAMC's What's on the MCAT Exam? outline. Descriptions are our own. See the official outline for the authoritative list.",
+ "glance": {
+  "questions": 53,
+  "minutes": 90,
+  "passage_questions": 53,
+  "discrete_questions": 0,
+  "tools": null,
+  "calculator": false,
+  "summary": "CARS is a reading section with no content to memorize: nine passages (AAMC's published structure) of about 500–600 words from the humanities and social sciences, each followed by five to seven questions that ask what the passage says, how its argument is built, and what follows if its ideas are pushed somewhere new. The passage and the question stem supply all you need; the section assumes no prior coursework, and outside knowledge can mislead.",
+  "math": "None.",
+  "scores_note": "Scores in this app are percent correct. They are not MCAT scaled scores (118–132), which only AAMC's equating can produce."
+ },
+ "blueprint": {
+  "cars_skills": {
+   "foundations": 30,
+   "within": 30,
+   "beyond": 40
+  },
+  "passage_content": {
+   "humanities": 50,
+   "social sciences": 50
+  }
+ },
+ "no_outside_knowledge": "There is no content outline for CARS. You are not expected to know anything about the passage's subject, and an answer that depends on something the passage did not say is wrong even when the fact is true. Treat each passage as a closed world.",
+ "passage_types": [
+  {
+   "name": "Humanities",
+   "pct": 50,
+   "disciplines": [
+    "architecture",
+    "art",
+    "dance",
+    "ethics",
+    "literature",
+    "music",
+    "philosophy",
+    "popular culture",
+    "religion",
+    "theater",
+    "studies of diverse cultures"
+   ],
+   "what": "Writing that argues about ideas, works, and values. The author often has a stance and a voice; the tone may be reflective, playful, or combative, and a common shape is claim, example, qualification. Read for the author's opinion and how far it is pressed."
+  },
+  {
+   "name": "Social sciences",
+   "pct": 50,
+   "disciplines": [
+    "anthropology",
+    "archaeology",
+    "economics",
+    "education",
+    "geography",
+    "history",
+    "linguistics",
+    "political science",
+    "population health",
+    "psychology",
+    "sociology",
+    "studies of diverse cultures"
+   ],
+   "what": "Writing that explains or interprets how people and societies behave, often with evidence, studies, or historical accounts. The tone tends toward reporting: a question, evidence or findings, competing explanations, and a conclusion, often in that order. Read for what is claimed, what supports it, and where the author hedges."
+  }
+ ],
+ "skill_areas": [
+  {
+   "id": "foundations",
+   "name": "Foundations of Comprehension",
+   "pct": 30,
+   "what": "Understanding what the passage says: its main idea, the role a sentence or paragraph plays, what a word or phrase means where it is used, and what the author implies without stating. The scope is local: a sentence and its neighbours, or the passage's overall point.",
+   "asks": [
+    "The main idea or central thesis of the passage.",
+    "What a word, phrase, or image means in its context (a familiar word used in an unusual sense).",
+    "Why the author included a particular example, sentence, or paragraph.",
+    "What the author implies by a tone, a comparison, or a transition."
+   ],
+   "example": "A passage about a composer calls one symphony 'an argument in sound'; a question asks what the phrase most nearly means as used, and the answer must come from how the surrounding sentences describe the work, not from any general sense of 'argument'."
+  },
+  {
+   "id": "within",
+   "name": "Reasoning Within the Text",
+   "pct": 30,
+   "what": "Putting distant parts of the passage together: inferring the author's purpose, position, assumptions, or bias from the whole, and judging how well the argument is built, whether the evidence supports the claim, whether a generalization is justified, whether a cited source is credible, and whether two parts of the passage conflict. Your own opinion of the author's conclusion is beside the point.",
+   "asks": [
+    "What the author's attitude toward a subject is, judged from the whole passage.",
+    "Which assumption the argument depends on.",
+    "Which claim the passage supports best, or least.",
+    "Where the passage is inconsistent, or which of its claims rests on the least evidence."
+   ],
+   "example": "An author praises a reform in two paragraphs and in a third notes the data behind it came from the reformers themselves; a question asks what this detail suggests about the author's confidence, and the answer draws on the passage's own hedging rather than on the reader's view of the reform."
+  },
+  {
+   "id": "beyond",
+   "name": "Reasoning Beyond the Text",
+   "pct": 40,
+   "what": "Taking the passage somewhere it did not go: applying its ideas to a new situation, picking the option whose parts relate to each other the way two things in the passage do, or deciding how a new fact introduced by the question would affect the author's argument (support it, weaken it, require a change). Only the passage and the new information count.",
+   "asks": [
+    "How the author would most likely respond to a new case or claim.",
+    "Which of several situations is most analogous to one described in the passage.",
+    "Whether a new finding strengthens, weakens, or is irrelevant to the argument.",
+    "Which added statement would change the author's conclusion least, or most."
+   ],
+   "example": "A passage argues that a craft tradition survived because it adapted its tools without changing its goals; a question describes a dance school that changed its goals to keep its tools and asks what the author would predict, and the answer applies the passage's own principle to the new case."
+  }
+ ],
+ "wrong_answer_patterns": [
+  {
+   "name": "Too extreme",
+   "what": "Uses absolute words (always, never, only, all, proves) where the passage was measured. Authors in CARS passages often qualify their claims; an option stronger than the passage is wrong even when it points the right way.",
+   "spot": "Compare the option's strength with the author's own language; look for 'some', 'often', 'may' in the passage."
+  },
+  {
+   "name": "Out of scope",
+   "what": "Brings in a topic, group, or time period the passage never addresses, or answers a broader question than the one asked.",
+   "spot": "Ask whether the passage gives any basis for the option; if you would need to assume something about a subject it never mentions, drop it."
+  },
+  {
+   "name": "Outside knowledge",
+   "what": "States something true in the world (or that you believe) but not supported by, or contrary to, the passage. The question is about the passage's argument, not reality.",
+   "spot": "If an option feels right because you know the topic, check that the passage actually says it."
+  },
+  {
+   "name": "True but irrelevant",
+   "what": "Restates something the passage does say, but it does not answer the question asked (a detail offered as a main idea, a cause offered as a consequence).",
+   "spot": "Re-read the question stem; confirm the option addresses that precise task, not just the passage."
+  },
+  {
+   "name": "Reversed relationship",
+   "what": "Swaps cause and effect, or attributes to the author a view the author reports in order to reject it.",
+   "spot": "Track who holds each view in the passage and which direction each relationship runs."
+  },
+  {
+   "name": "Half right",
+   "what": "Two clauses joined together, one supported and one not; the unsupported half makes the whole option wrong.",
+   "spot": "Check every clause separately, especially after 'and' or 'because'."
+  },
+  {
+   "name": "Distorted detail",
+   "what": "Takes real words from the passage and bends their meaning slightly (a different degree, a different subject, a different time).",
+   "spot": "An option that echoes the passage's wording deserves as much scrutiny as any other; verify the meaning, not the words."
+  }
+ ],
+ "approaches": [
+  {
+   "name": "Read for the argument, not the facts",
+   "what": "On a first pass, aim to be able to state in a sentence what the author is claiming and how they feel about it. Track the structure: where a claim is made, where an example supports it, where a concession or counterargument appears, and whether the ending resolves, qualifies, or calls for more. Details can be found again; the shape of the argument is much harder to reconstruct on the fly."
+  },
+  {
+   "name": "Mark the signals",
+   "what": "Words such as 'however', 'although', 'for example', 'therefore', and 'some argue' tell you what a sentence is doing. Noting them (mentally or with the highlighter) can make 'why did the author include this' and 'what does the author believe' questions quicker to answer."
+  },
+  {
+   "name": "Predict before you look",
+   "what": "After reading a question, form your own short answer from the passage before reading the options. Then eliminate options that contradict your prediction, are too extreme, or go beyond the passage. Many people find this blunts the pull of well-written wrong answers."
+  },
+  {
+   "name": "Go back to the text when a question points to a place",
+   "what": "For questions about a specific claim, paragraph, or word, re-read that part and its neighbours. A paragraph number in the question is a pointer worth using. Answering from memory of a passage read five minutes ago is a common source of errors."
+  },
+  {
+   "name": "Hold outside knowledge at arm's length",
+   "what": "If you know the subject, use that only to read faster, never to pick an answer. Ask of every option: could someone who knew nothing about this topic justify it from the passage alone?"
+  },
+  {
+   "name": "Manage the clock as a choice, not a crisis",
+   "what": "Nine passages in 90 minutes is about ten minutes each. Some people do passages in order; some skim all nine first and start with the most comfortable; some skip a hard passage and return. Try each approach in practice and keep the one that gives you the best score, not the one that feels fastest. Many find it better to mark a question and move on than to stall on it."
+  },
+  {
+   "name": "Review by category",
+   "what": "When you miss a question, name the pattern (too extreme, out of scope, outside knowledge, misread the question) and the skill area. Patterns repeat; naming them shows you what to practise."
+  }
+ ]
+}

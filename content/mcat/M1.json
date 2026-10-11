@@ -1,0 +1,375 @@
+{
+ "block": "M1",
+ "section": "chem_phys",
+ "passages": [],
+ "items": [
+  {
+   "id": "M1-Q01",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4A",
+   "topics": [
+    "4A.energy",
+    "4A.work"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 2,
+   "stem": "A nurse lifts a 2.0 kg infusion pump from the floor onto a shelf 1.5 m high, moving it at constant speed. Taking g = 9.8 m/s², the work the nurse does against gravity is closest to:",
+   "options": {
+    "A": "3 J",
+    "B": "15 J",
+    "C": "30 J",
+    "D": "60 J"
+   },
+   "answer": "C",
+   "why_correct": [
+    "At constant speed the lifting force just balances the weight, so the work against gravity equals the gain in gravitational potential energy: W = mgh.",
+    "W = (2.0 kg)(9.8 m/s²)(1.5 m) = 29.4 J, which rounds to 30 J. Estimate: 2 × 10 × 1.5 = 30 J. Check the units: kg·m/s²·m = N·m = J.",
+    "Second route: the weight is 2.0 × 9.8 ≈ 20 N; a 20 N force through 1.5 m does 30 J of work."
+   ],
+   "why_wrong": {
+    "A": "3 J is m × h without g: 2.0 × 1.5. Weight is mg, not m, so this answer is off by a factor of about 10.",
+    "B": "15 J is half the correct value, as if the lift stored ½mgh. The ½ belongs to kinetic energy (½mv²) and spring energy (½kx²), not to gravitational potential energy.",
+    "D": "60 J doubles the correct value, which would follow from using g ≈ 20 m/s² or counting the weight twice."
+   },
+   "error_types": {
+    "A": "sign or unit error: dropped g, multiplying mass by height",
+    "B": "wrong formula: applied the ½ from kinetic energy to mgh",
+    "D": "wrong formula: doubled g or counted the force twice"
+   },
+   "takeaway": "Work against gravity at constant speed equals mgh; with g ≈ 10 m/s² a 2 kg mass lifted 1.5 m takes about 30 J.",
+   "sources": [
+    "OpenStax College Physics 2e, 7.3 Gravitational Potential Energy (2022): ΔPE_g = mgh for a mass raised a height h near Earth's surface.",
+    "OpenStax College Physics 2e, 7.1 Work: The Scientific Definition (2022): W = Fd cos θ with the lifting force parallel to the displacement."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M1-Q02",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4C",
+   "topics": [
+    "4C.resistance",
+    "4C.current-voltage"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "In a bench-top electrophoresis power circuit, a 10 Ω resistor and a 15 Ω resistor are connected in parallel, and that pair is connected in series with a 3 Ω resistor across an 18 V supply of negligible internal resistance. What current does the supply deliver?",
+   "options": {
+    "A": "0.6 A",
+    "B": "2 A",
+    "C": "3 A",
+    "D": "6 A"
+   },
+   "answer": "B",
+   "why_correct": [
+    "Reduce the parallel pair first: 1/R = 1/10 + 1/15 = 3/30 + 2/30 = 5/30, so R = 6 Ω. A parallel combination is always smaller than its smallest member, so 6 Ω is sensible.",
+    "That 6 Ω sits in series with 3 Ω, giving a total of 9 Ω. Ohm's law: I = V/R = 18 V / 9 Ω = 2 A.",
+    "Second route: the 2 A through the 3 Ω resistor drops 6 V, leaving 12 V across the parallel pair; 12 V/10 Ω + 12 V/15 Ω = 1.2 A + 0.8 A = 2 A, consistent."
+   ],
+   "why_wrong": {
+    "A": "0.6 A comes from adding all three resistors in series (28 Ω) and dividing 18 V by 28 Ω. The 10 Ω and 15 Ω resistors share the same voltage, so they are in parallel, not series.",
+    "C": "3 A is 18 V divided by the 6 Ω parallel combination alone, ignoring the 3 Ω resistor in series with it.",
+    "D": "6 A is 18 V divided by the 3 Ω resistor alone, ignoring the parallel pair that adds 6 Ω to the path."
+   },
+   "error_types": {
+    "A": "wrong formula: treated the parallel pair as series resistors",
+    "C": "wrong formula: dropped the series resistor from the total resistance",
+    "D": "wrong formula: dropped the parallel pair from the total resistance"
+   },
+   "takeaway": "Collapse parallel groups first (reciprocals add), then add series resistances, then apply I = V/R once.",
+   "sources": [
+    "OpenStax College Physics 2e, 21.1 Resistors in Series and Parallel (2022): R_s = R₁ + R₂ + …; 1/R_p = 1/R₁ + 1/R₂ + …; combinations are reduced in stages.",
+    "OpenStax College Physics 2e, 20.2 Ohm's Law: Resistance and Simple Circuits (2022): I = V/R."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M1-Q03",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4D",
+   "topics": [
+    "4D.reflection-refraction"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "The glass core of an endoscope's optical fibre has a refractive index of 1.60 and is surrounded by a cladding of index 1.28. Light inside the core is totally internally reflected at the core–cladding boundary when its angle of incidence, measured from the normal, is greater than approximately:",
+   "options": {
+    "A": "37°",
+    "B": "45°",
+    "C": "53°",
+    "D": "60°"
+   },
+   "answer": "C",
+   "why_correct": [
+    "Total internal reflection occurs only when light travels from a higher-index medium toward a lower-index one, and the critical angle satisfies sin θc = n₂/n₁.",
+    "sin θc = 1.28/1.60 = 0.80. The 3-4-5 triangle gives sin 53° ≈ 0.80, so θc ≈ 53°; any incidence angle larger than that is reflected completely.",
+    "Second route: Snell's law with the refracted ray at 90°: 1.60 sin θc = 1.28 sin 90° = 1.28, so sin θc = 0.80, as before. Check: 0.80 lies between sin 45° (0.71) and sin 60° (0.87), so the answer must be between 45° and 60°."
+   ],
+   "why_wrong": {
+    "A": "37° is the complement of 53° (cos 53° = 0.60). It would follow from measuring the angle from the boundary surface instead of from the normal, or from reading sin and cos backward.",
+    "B": "45° corresponds to a ratio of 0.71, which would need a cladding index of about 1.13 with this core.",
+    "D": "60° corresponds to a ratio of 0.87; it would also result from using 1.28/1.60 with a wrong value of sin 60°."
+   },
+   "error_types": {
+    "A": "reversed relationship: angle taken from the surface rather than the normal (sin and cos swapped)",
+    "B": "wrong formula: guessed the 45° value instead of computing n₂/n₁",
+    "D": "misread graph: wrong trigonometric value for the 0.80 ratio"
+   },
+   "takeaway": "Critical angle: sin θc = n₂/n₁ (lower index over higher); a ratio of 0.80 means about 53°.",
+   "sources": [
+    "OpenStax College Physics 2e, 25.4 Total Internal Reflection (2022): θc = sin⁻¹(n₂/n₁) for n₁ > n₂; fibre optics use a core of higher index than the cladding.",
+    "OpenStax College Physics 2e, 25.3 The Law of Refraction (2022): n₁ sin θ₁ = n₂ sin θ₂."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M1-Q04",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4E",
+   "topics": [
+    "4E.radioactive-decay"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "Technetium-99m, used in nuclear medicine imaging, has a half-life of about 6.0 hours. A syringe is calibrated to contain 800 MBq at 8:00 a.m. If the dose is not used until 8:00 p.m. the same day, the activity remaining is closest to:",
+   "options": {
+    "A": "100 MBq",
+    "B": "200 MBq",
+    "C": "400 MBq",
+    "D": "570 MBq"
+   },
+   "answer": "B",
+   "why_correct": [
+    "Radioactive decay is first-order: after each half-life the activity halves. From 8:00 a.m. to 8:00 p.m. is 12 hours, which is 12/6 = 2 half-lives.",
+    "800 MBq → 400 MBq after the first half-life → 200 MBq after the second. In one step: A = A₀(½)ⁿ = 800 × ¼ = 200 MBq.",
+    "Second route: the decay constant is λ = 0.693/6.0 h ≈ 0.116 h⁻¹; λt = 0.116 × 12 ≈ 1.39, and e⁻¹·³⁹ ≈ 0.25, giving 800 × 0.25 = 200 MBq."
+   ],
+   "why_wrong": {
+    "A": "100 MBq would need three half-lives (18 hours), that is, 2:00 a.m. the next day.",
+    "C": "400 MBq is one half-life's worth of decay, which would be the activity at 2:00 p.m., not 8:00 p.m. Twelve hours is two half-lives, not one.",
+    "D": "570 MBq comes from inverting the exponent: 800 × (½)^(6/12) = 800 × 0.71. The number of half-lives is elapsed time ÷ half-life = 12/6 = 2, not 6/12."
+   },
+   "error_types": {
+    "A": "wrong formula: used three half-lives instead of two",
+    "C": "sign or unit error: counted the 12-hour interval as one half-life",
+    "D": "wrong formula: inverted the exponent (half-life ÷ time instead of time ÷ half-life)"
+   },
+   "takeaway": "Count half-lives (elapsed time ÷ half-life) and halve the activity that many times; two half-lives leave one-quarter.",
+   "sources": [
+    "OpenStax College Physics 2e, 31.5 Half-Life and Activity (2022): N = N₀e^(−λt), t½ = 0.693/λ, and the activity falls by half each half-life.",
+    "OpenStax Chemistry 2e, 21.5 Uses of Radioisotopes (2019): the ubiquitous Tc-99m has a half-life of 6.01 hours.",
+    "Brookhaven National Laboratory, NuDat 3 / ENSDF (accessed 2026): Tc-99m half-life 6.0072 h (DDEP/LNHB recommends 6.0067 h)."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M1-Q05",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "general chemistry",
+   "fc": "5",
+   "category": "5A",
+   "topics": [
+    "5A.buffers",
+    "5A.weak-acid-equilibria"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "A researcher prepares a phosphate buffer for an enzyme assay that contains 20 mM HPO₄²⁻ and 2 mM H₂PO₄⁻. The pKa of H₂PO₄⁻ is 7.2. The pH of the buffer is closest to:",
+   "options": {
+    "A": "6.2",
+    "B": "7.2",
+    "C": "7.7",
+    "D": "8.2"
+   },
+   "answer": "D",
+   "why_correct": [
+    "H₂PO₄⁻ is the acid of this pair and HPO₄²⁻ its conjugate base. Henderson–Hasselbalch: pH = pKa + log([base]/[acid]) = 7.2 + log(20/2) = 7.2 + log 10 = 7.2 + 1 = 8.2.",
+    "Sense check: there is ten times more base than acid, so the pH must sit one unit above the pKa, on the basic side. A buffer this lopsided is near the edge of its useful range (about pKa ± 1).",
+    "Second route: Ka = [H⁺][HPO₄²⁻]/[H₂PO₄⁻], so [H⁺] = Ka × (2/20) = Ka/10 = 10⁻⁷·² /10 = 10⁻⁸·², giving pH 8.2."
+   ],
+   "why_wrong": {
+    "A": "6.2 results from inverting the ratio, log(2/20) = −1, treating HPO₄²⁻ as the acid. The species with the extra proton (H₂PO₄⁻) is the acid.",
+    "B": "7.2 is the pKa, which equals the pH only when acid and base are present in equal amounts. Here they differ tenfold.",
+    "C": "7.7 would correspond to a base:acid ratio of about 3:1 (log 3 ≈ 0.5), not 10:1."
+   },
+   "error_types": {
+    "A": "reversed relationship: acid and conjugate base swapped in the ratio",
+    "B": "true but irrelevant: pH equals pKa only at a 1:1 ratio",
+    "C": "wrong formula: log of the ratio miscomputed (log 10 = 1, not 0.5)"
+   },
+   "takeaway": "pH = pKa + log(base/acid); each tenfold excess of base adds one pH unit above the pKa.",
+   "sources": [
+    "OpenStax Chemistry 2e, 14.6 Buffers (2019): Henderson–Hasselbalch equation pH = pKa + log([A⁻]/[HA]).",
+    "Chemistry LibreTexts, Henderson–Hasselbalch Approximation (2023): the effective buffer range spans about two pH units centred on the pKa.",
+    "OpenStax Chemistry 2e, Appendix H (2019): Ka₂ of phosphoric acid (H₂PO₄⁻) = 6.2 × 10⁻⁸, pKa ≈ 7.2."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M1-Q06",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "biochemistry",
+   "fc": "5",
+   "category": "5E",
+   "topics": [
+    "5E.enzymes-mechanism",
+    "5E.enzyme-kinetics"
+   ],
+   "skill": "3",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "A student measures the initial rate of a digestive enzyme at pH 5, 7, and 9 with the substrate at saturating concentration and finds the rate highest at pH 7. The student concludes that the enzyme's optimum pH is 7. Which additional measurement would most strengthen this conclusion?",
+   "options": {
+    "A": "Measuring the rate at pH 6 and pH 8 under the same conditions",
+    "B": "Repeating the pH 7 trial with twice as much enzyme",
+    "C": "Measuring the rate at pH 7 with half the substrate concentration",
+    "D": "Measuring the rate at pH 7 at a higher temperature"
+   },
+   "answer": "A",
+   "why_correct": [
+    "Three widely spaced pH values can only show that 7 beats 5 and 9; the true optimum could lie anywhere between about 5 and 9. Sampling pH 6 and 8 narrows the peak and tests whether 7 really is the maximum rather than a point on a slope.",
+    "Keeping substrate saturating and everything else the same isolates pH as the only variable, which is what the conclusion is about.",
+    "Design principle: to locate an optimum, sample more densely around the apparent peak while holding other variables fixed."
+   ],
+   "why_wrong": {
+    "B": "Doubling the enzyme raises the rate at every pH proportionally and says nothing about where the optimum lies.",
+    "C": "Lowering substrate below saturation changes the rate for kinetic reasons unrelated to pH and would confound the comparison.",
+    "D": "Changing temperature introduces a second variable; it would test temperature dependence, not pin down the pH optimum."
+   },
+   "error_types": {
+    "B": "true but irrelevant: enzyme amount scales rate without locating the optimum",
+    "C": "true but irrelevant: substrate concentration is a different variable",
+    "D": "true but irrelevant: adds a second variable instead of resolving the first"
+   },
+   "takeaway": "To pin down an optimum, measure more points around the apparent peak while holding every other variable constant.",
+   "sources": [
+    "OpenStax Biology 2e, 6.5 Enzymes (2018): each enzyme has an optimal pH and temperature; activity falls away from the optimum as the active site's shape and charges change.",
+    "OpenStax Biology 2e, 1.1 The Science of Biology (2018): a controlled experiment changes one variable between the experimental and control groups and holds the rest constant."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M1-Q07",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "organic chemistry",
+   "fc": "5",
+   "category": "5D",
+   "topics": [
+    "5D.carbonyl-addition",
+    "5D.carbohydrates"
+   ],
+   "skill": "1",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "In aqueous solution, D-glucose exists mostly as a six-membered ring (glucopyranose). The ring forms when one of the sugar's own hydroxyl groups adds to its aldehyde carbon. Which hydroxyl attacks, and what functional group is produced at C1?",
+   "options": {
+    "A": "The C2 hydroxyl; an acetal",
+    "B": "The C5 hydroxyl; an acetal",
+    "C": "The C6 hydroxyl; a hemiacetal",
+    "D": "The C5 hydroxyl; a hemiacetal"
+   },
+   "answer": "D",
+   "why_correct": [
+    "An alcohol adding once to an aldehyde gives a hemiacetal: a carbon bearing one –OH and one –OR. In glucose the attacking alcohol is the C5 hydroxyl, so the ring contains C1 through C5 plus the ring oxygen, six atoms, a pyranose.",
+    "C1 therefore ends up with the ring oxygen (the –OR part) and a free hydroxyl (the anomeric –OH), which can point either way, giving the α and β anomers that interconvert by mutarotation.",
+    "An acetal would require a second alcohol to replace that anomeric –OH; that happens when glucose bonds to another sugar or alcohol (a glycoside), not when it simply cyclizes."
+   ],
+   "why_wrong": {
+    "A": "The C2 hydroxyl would make a three-membered ring, which is far too strained; and a single addition gives a hemiacetal, not an acetal.",
+    "B": "The C5 hydroxyl is the right nucleophile, but one addition produces a hemiacetal; an acetal needs a second –OR in place of the anomeric –OH.",
+    "C": "The C6 hydroxyl would give a seven-membered ring, which glucose does not favour; the six-membered pyranose uses C5."
+   },
+   "error_types": {
+    "A": "wrong formula: wrong ring size and the acetal/hemiacetal distinction confused",
+    "B": "wrong formula: hemiacetal (one addition) confused with acetal (two)",
+    "C": "wrong formula: wrong hydroxyl, giving a seven-membered ring"
+   },
+   "takeaway": "Cyclic glucose is a hemiacetal formed by the C5 –OH attacking C1; a glycosidic bond converts it to an acetal.",
+   "sources": [
+    "OpenStax Organic Chemistry, 25.5 Cyclic Structures of Monosaccharides: Anomers (2023): glucose forms its pyranose ring by addition of the C5 –OH to the C1 carbonyl, producing a cyclic hemiacetal with a new anomeric centre.",
+    "OpenStax Organic Chemistry, 19.10 Nucleophilic Addition of Alcohols: Acetal Formation (2023): one equivalent of alcohol gives a hemiacetal; a second, with acid, gives an acetal."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M1-Q08",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "biochemistry",
+   "fc": "5",
+   "category": "5E",
+   "topics": [
+    "5E.enzyme-inhibition-regulation",
+    "5E.enzyme-kinetics"
+   ],
+   "skill": "4",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "A candidate drug is tested against a kinase. Without the drug, the enzyme shows Vmax = 100 µmol/min and Km = 3 mM. With the drug present, Vmax = 100 µmol/min and Km = 9 mM. Based on these data, the drug is most likely a:",
+   "options": {
+    "A": "competitive inhibitor",
+    "B": "noncompetitive inhibitor",
+    "C": "uncompetitive inhibitor",
+    "D": "irreversible inhibitor"
+   },
+   "answer": "A",
+   "why_correct": [
+    "The drug left Vmax unchanged and raised the apparent Km threefold. That is the signature of competitive inhibition: the inhibitor competes with substrate for the active site, so more substrate is needed to reach half-maximal rate, but enough substrate can still drive the enzyme to the same Vmax.",
+    "Quantitatively, Km,app = Km(1 + [I]/Ki); a threefold rise means [I]/Ki = 2.",
+    "On a Lineweaver–Burk plot these two conditions would give lines crossing on the y-axis (same 1/Vmax) with different x-intercepts."
+   ],
+   "why_wrong": {
+    "B": "A noncompetitive inhibitor lowers Vmax and leaves Km unchanged, the reverse of what was observed.",
+    "C": "An uncompetitive inhibitor binds only the enzyme–substrate complex and lowers both Vmax and Km; here Vmax did not change and Km rose.",
+    "D": "An irreversible inhibitor removes active enzyme permanently, which shows up as a lower Vmax (less working enzyme), not a higher Km with unchanged Vmax."
+   },
+   "error_types": {
+    "B": "reversed relationship: swapped the effects on Km and Vmax",
+    "C": "misread graph: uncompetitive lowers both constants",
+    "D": "wrong formula: irreversible inhibition reduces Vmax"
+   },
+   "takeaway": "Competitive inhibition raises apparent Km and leaves Vmax alone; noncompetitive lowers Vmax and leaves Km alone; uncompetitive lowers both.",
+   "sources": [
+    "Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 4.2 Control of Enzymatic Activity (2019): competitive inhibitors raise apparent Km with Vmax unchanged; noncompetitive lower Vmax with Km unchanged; uncompetitive lower both.",
+    "OpenStax Biology 2e, 6.5 Enzymes (2018): competitive inhibitors bind the active site and can be overcome by substrate."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  }
+ ]
+}

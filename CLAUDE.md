@@ -86,21 +86,22 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
   guides' Reviewed ticks; created only once something is saved). Theme and text size stay in the boards record
   whichever exam is selected (`Store.settings()`). Which guide groups are expanded is in `rounds.guide.v1`.
 
-## Current state (2026-10-10)
+## Current state (2026-10-11)
 - Boards: 24 questions (Blocks 1–3). Anatomy: 2D body (front/back, 8 layers incl. dermatomes), brain, heart,
   254-entry index; 3D body (seven lazy-loaded layers, 7.8 MB gzipped), 3D brain (real-MRI cortex, deep brain, circle of
   Willis, cranial nerves) and 3D heart (chambers, valves, coronaries, cut-open view). Live at
   https://jjones1319-create.github.io/rounds/ and confirmed smooth on her phone.
 - MCAT: Phase M0 done 2026-10-10 (Boards | MCAT switcher on Home, Practice and Progress; banks fetched from `data/`;
-  `tools/validate.py`; HTTP tests; `rounds.mcat.v1`). Phase M1 in progress: the section screens and the Chem/Phys
-  "What's tested" guide (96 topics, 4A–5E, all `draft`, references to OpenStax/LibreTexts) are built; the CARS,
-  Bio/Biochem and Psych/Soc guides wait for the owner's review of the Chem/Phys topic list. No MCAT questions yet.
+  `tools/validate.py`; HTTP tests; `rounds.mcat.v1`). Phase M1 done 2026-10-11: section screens and all four
+  "What's tested" guides (Chem/Phys 96 topics, Bio/Biochem 62, Psych/Soc 61, CARS skill areas; all topics `draft`,
+  references to OpenStax/LibreTexts, every fact independently checked). Phase M2 done 2026-10-11: blocks
+  `M1`–`M3` (8 discrete items per science section, all `draft`), MCAT runner (periodic table `src/ptable.js` instead of
+  labs, Takeaway + guide links), block builder by section/skill/difficulty, progress by section/skill/category.
 - Open gaps: many 3D structures show a name-only card; write verified cards for the important ones.
 
 ## Work order
 Work on one track at a time and finish its current phase before switching. Report at each phase boundary.
 - Track A, 3D anatomy: `docs/PLAN_3D.md`. Phases 0–2 are done; Phase 3 (progress export/import, installable PWA) remains.
-- Track B, MCAT: `docs/PLAN_MCAT.md`. M0 is done; M1 is half done (app side + Chem/Phys guide; three guides to
-  write after the owner's review), then M2–M5.
+- Track B, MCAT: `docs/PLAN_MCAT.md`. M0–M2 are done; M3 (passages) is next, then M4–M5.
 - Track C, content: new board blocks (`/new-board-block`, boards spec) and MCAT blocks (MCAT spec).
 - If the site is ever to be promoted: `docs/PUBLIC_RELEASE.md` checklist first.

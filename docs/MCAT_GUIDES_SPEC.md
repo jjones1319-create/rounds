@@ -148,3 +148,4 @@ default.
 | 1.0 | 2026-10-10 | Spec created. |
 | 1.1 | 2026-10-10 | Owner decisions applied: §6 makes the owner the reviewer of all topics, drops the second-reviewer requirement, and makes the Beta label optional and off by default; §2.C clarifies references are links only. |
 | 1.2 | 2026-10-10 | Chem/Phys guide built (96 topics, 4A–5E, all `draft`): §4 documents the front-matter fields, the equation rendering, and where Reviewed ticks and expand state are stored. |
+| 1.3 | 2026-10-11 | Bio/Biochem (62 topics), Psych/Soc (61) and CARS guides built. CARS fields: `glance` (tools null), `blueprint.cars_skills` and `blueprint.passage_content`, `no_outside_knowledge`, `passage_types[{name, pct, disciplines, what}]`, `skill_areas[{id, name, pct, what, asks[], example}]`, `wrong_answer_patterns[{name, what, spot}]`, `approaches[{name, what}]`; CARS has no topics, so no Reviewed ticks. |

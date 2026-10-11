@@ -1,0 +1,370 @@
+{
+ "block": "M3",
+ "section": "psych_soc",
+ "passages": [],
+ "items": [
+  {
+   "id": "M3-Q01",
+   "rev": 1,
+   "section": "psych_soc",
+   "passage": null,
+   "discipline": "psychology",
+   "fc": "6",
+   "category": "6A",
+   "topics": [
+    "6A.sensation-thresholds"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 2,
+   "stem": "A participant holding a 100 g weight can just notice when it is replaced by a 102 g weight. According to Weber's law, the smallest increase the same participant could notice when holding a 500 g weight is about:",
+   "options": {
+    "A": "2 g",
+    "B": "10 g",
+    "C": "20 g",
+    "D": "50 g"
+   },
+   "answer": "B",
+   "why_correct": [
+    "Weber's law says the just noticeable difference is a constant fraction of the starting stimulus: ΔI/I = k. From the first pair, k = 2 g / 100 g = 0.02, two percent.",
+    "At 500 g the just noticeable difference is 0.02 × 500 g = 10 g. The participant needs 510 g before the change registers.",
+    "Second route: 500 g is five times 100 g, so the difference threshold is five times 2 g, which is 10 g."
+   ],
+   "why_wrong": {
+    "A": "2 g assumes the difference threshold is a fixed amount regardless of the standard; Weber's law says it scales with the standard.",
+    "C": "20 g is four percent of 500 g, double the fraction found at 100 g.",
+    "D": "50 g is ten percent, which would need a Weber fraction five times larger than the one measured."
+   },
+   "error_types": {
+    "A": "wrong formula: treated the threshold as a constant amount instead of a constant fraction",
+    "C": "wrong formula: used double the Weber fraction",
+    "D": "wrong formula: multiplied the threshold by the ratio of weights twice"
+   },
+   "takeaway": "Weber's law: the just noticeable difference is a constant proportion of the stimulus, so heavier standards need bigger changes.",
+   "sources": [
+    "OpenStax Psychology 2e, 5.1 Sensation versus Perception (2020): Weber's law, the just noticeable difference is a constant proportion of the original stimulus."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M3-Q02",
+   "rev": 1,
+   "section": "psych_soc",
+   "passage": null,
+   "discipline": "psychology",
+   "fc": "6",
+   "category": "6B",
+   "topics": [
+    "6B.memory-retrieval-forgetting"
+   ],
+   "skill": "1",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "A student who studied Spanish for three years begins learning Italian. When trying to recall Italian vocabulary, Spanish words keep coming to mind instead. This difficulty is best described as:",
+   "options": {
+    "A": "retroactive interference",
+    "B": "decay",
+    "C": "proactive interference",
+    "D": "a source monitoring error"
+   },
+   "answer": "C",
+   "why_correct": [
+    "Interference is forgetting caused by competing memories. In proactive interference, older learning disrupts the retrieval of newer learning: the earlier Spanish gets in the way of the later Italian.",
+    "The direction is the key: 'pro' means the old material acts forward onto the new.",
+    "If the student later found that Italian had begun to crowd out their Spanish, that would be retroactive interference, the new disrupting the old."
+   ],
+   "why_wrong": {
+    "A": "Retroactive interference runs the other way: newly learned material disrupts recall of what was learned earlier.",
+    "B": "Decay is the fading of a memory trace with disuse over time; here the Spanish is being recalled all too well.",
+    "D": "A source monitoring error is misattributing where a memory came from, not competition between two sets of words."
+   },
+   "error_types": {
+    "A": "reversed relationship: direction of interference swapped",
+    "B": "wrong formula: decay is loss with time, not competition",
+    "D": "out of scope: concerns the origin of a memory, not retrieval competition"
+   },
+   "takeaway": "Proactive interference: old learning blocks new; retroactive interference: new learning blocks old.",
+   "sources": [
+    "OpenStax Psychology 2e, 8.3 Problems with Memory (2020): proactive interference (old information hinders recall of new) and retroactive interference (new information hinders recall of old).",
+    "Johnson MK, Hashtroudi S, Lindsay DS. Source monitoring. Psychological Bulletin. 1993;114(1):3–28 (OpenStax 8.3 calls the same error misattribution)."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M3-Q03",
+   "rev": 1,
+   "section": "psych_soc",
+   "passage": null,
+   "discipline": "psychology",
+   "fc": "6",
+   "category": "6C",
+   "topics": [
+    "6C.emotion"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "In a classic experiment, participants were injected with epinephrine (adrenaline) but not told what effects to expect. Those who then waited with a playful confederate reported feeling happier and joined in, while those who waited with an angry confederate behaved more angrily, despite comparable physiological arousal. These findings most directly support which theory of emotion?",
+   "options": {
+    "A": "Schachter–Singer two-factor theory",
+    "B": "James–Lange theory",
+    "C": "Cannon–Bard theory",
+    "D": "Yerkes–Dodson law"
+   },
+   "answer": "A",
+   "why_correct": [
+    "Two-factor theory holds that an emotion is produced by physiological arousal plus a cognitive label for it drawn from the situation. The same epinephrine-induced arousal was expressed as happiness in one context and anger in another, which is exactly what the theory predicts.",
+    "Participants who were told what the injection would do had an explanation for their arousal and were less influenced by the confederate, again as the theory predicts.",
+    "The experiment separated arousal (comparable across groups) from interpretation (varied), showing that interpretation shapes which emotion is felt and shown. In the anger condition the difference appeared in behaviour rather than in self-report, which the authors attributed to participants' reluctance to admit anger to the experimenter."
+   ],
+   "why_wrong": {
+    "B": "James–Lange holds that distinct bodily responses produce distinct emotions; comparable arousal producing different emotions is a problem for that view, not support for it.",
+    "C": "Cannon–Bard holds that arousal and emotion occur at the same time and independently; it does not predict that the social context will decide which emotion is felt.",
+    "D": "The Yerkes–Dodson law relates arousal level to task performance, not to which emotion a person experiences."
+   },
+   "error_types": {
+    "B": "reversed relationship: the finding contradicts a one-to-one arousal–emotion mapping",
+    "C": "wrong formula: simultaneous-but-independent theory does not involve labelling",
+    "D": "out of scope: a performance law, not a theory of emotion"
+   },
+   "takeaway": "Two-factor theory: emotion = physiological arousal + a cognitive label supplied by the situation.",
+   "sources": [
+    "OpenStax Psychology 2e, 10.4 Emotion (2020): Schachter–Singer two-factor theory, with the epinephrine and confederate experiment, and the contrast with James–Lange and Cannon–Bard; the Yerkes–Dodson law is in 10.1 Motivation.",
+    "Schachter S, Singer JE. Cognitive, social, and physiological determinants of emotional state. Psychological Review. 1962;69(5):379–399: euphoria self-report differed by condition (Table 2); anger appeared on the behavioural index (Table 5), not in self-report (Table 4)."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M3-Q04",
+   "rev": 1,
+   "section": "psych_soc",
+   "passage": null,
+   "discipline": "psychology",
+   "fc": "7",
+   "category": "7C",
+   "topics": [
+    "7C.operant"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "A physiotherapy clinic gives patients a small gift each time they complete five supervised exercise sessions. Which schedule of reinforcement is the clinic using?",
+   "options": {
+    "A": "Fixed-interval",
+    "B": "Variable-interval",
+    "C": "Variable-ratio",
+    "D": "Fixed-ratio"
+   },
+   "answer": "D",
+   "why_correct": [
+    "Ratio schedules reinforce after a number of responses; interval schedules reinforce the first response after a period of time. The gift depends on a count of sessions, so it is a ratio schedule.",
+    "The count is always five, so the ratio is fixed: a fixed-ratio (FR-5) schedule.",
+    "Fixed-ratio schedules produce a high, steady response rate with a brief pause after each reinforcer, which is why some patients slow down right after collecting a gift."
+   ],
+   "why_wrong": {
+    "A": "A fixed-interval schedule would give the gift for the first session completed after a set time (say, every month) regardless of how many sessions were done.",
+    "B": "A variable-interval schedule rewards after unpredictable amounts of time, as when a supervisor drops in at random.",
+    "C": "A variable-ratio schedule rewards after an unpredictable number of responses, as a slot machine does; here the number is always five."
+   },
+   "error_types": {
+    "A": "wrong formula: time-based schedule chosen for a count-based rule",
+    "B": "wrong formula: time-based and unpredictable, neither of which applies",
+    "C": "reversed relationship: a fixed count read as a variable one"
+   },
+   "takeaway": "Ratio = number of responses, interval = time; fixed = constant, variable = unpredictable. A gift every five sessions is fixed-ratio.",
+   "sources": [
+    "OpenStax Psychology 2e, 6.3 Operant Conditioning (2020): fixed-ratio, variable-ratio, fixed-interval and variable-interval schedules with examples and response patterns."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M3-Q05",
+   "rev": 1,
+   "section": "psych_soc",
+   "passage": null,
+   "discipline": "psychology",
+   "fc": "6",
+   "category": "6C",
+   "topics": [
+    "6C.stress"
+   ],
+   "skill": "3",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "In a hypothetical study, a researcher wants to know whether a daily meditation program reduces stress in medical students. Students are invited to join; those who accept form the meditation group and those who decline form the comparison group. After eight weeks the meditation group reports lower stress. The most serious threat to concluding that meditation caused the reduction is:",
+   "options": {
+    "A": "the sample is too small to detect a difference",
+    "B": "the groups were not formed by random assignment",
+    "C": "stress was not operationally defined",
+    "D": "the researcher knew which group each student was in"
+   },
+   "answer": "B",
+   "why_correct": [
+    "Students chose their own group. Those who accept a meditation program may already differ from those who decline, in baseline stress, motivation, free time, or beliefs about meditation, and any of those differences could produce the result.",
+    "Random assignment is what makes the groups equivalent on average before treatment, so that the only systematic difference is the program. Without it the design is a quasi-experiment and the result is a correlation, not evidence of cause.",
+    "A fix would be to randomize willing volunteers to meditate now or to a waiting list, and compare them."
+   ],
+   "why_wrong": {
+    "A": "A small sample makes it harder to find a difference, but a difference was found; sample size does not explain away the self-selection problem.",
+    "C": "The stem implies stress was measured by self-report, which is an operational definition, even if an imperfect one; it is not the main threat to the causal claim.",
+    "D": "Researcher awareness could bias measurement, but it is not the design flaw at issue: even a blinded researcher would be left with self-selected groups."
+   },
+   "error_types": {
+    "A": "true but irrelevant: power concerns a missed effect, not a found one",
+    "C": "out of scope: a measurement issue, not the design flaw that blocks causal inference",
+    "D": "true but irrelevant: a measurement bias that would remain even after blinding"
+   },
+   "takeaway": "Without random assignment, group differences that existed before the treatment can explain the outcome; self-selected groups cannot support a causal claim.",
+   "sources": [
+    "OpenStax Psychology 2e, 2.3 Analyzing Findings (2020): random assignment makes systematic differences between groups unlikely; quasi-experimental designs cannot support cause-and-effect claims.",
+    "OpenStax Introductory Statistics 2e, 1.4 Experimental Design and Ethics (2023): random assignment to treatment groups controls lurking variables."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M3-Q06",
+   "rev": 1,
+   "section": "psych_soc",
+   "passage": null,
+   "discipline": "psychology",
+   "fc": "8",
+   "category": "8B",
+   "topics": [
+    "8B.attribution"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "A driver who is cut off in traffic concludes that the other driver is reckless and selfish. Later that day the same driver cuts someone off and explains it by the confusing lane markings at that junction. This pattern of explanation best illustrates:",
+   "options": {
+    "A": "the self-serving bias",
+    "B": "the just-world hypothesis",
+    "C": "the actor–observer bias",
+    "D": "the false consensus effect"
+   },
+   "answer": "C",
+   "why_correct": [
+    "The driver explains another person's behaviour by disposition (reckless, selfish) but their own identical behaviour by the situation (bad lane markings). That asymmetry, dispositional attributions for others and situational attributions for oneself, is the actor–observer bias.",
+    "It arises partly because we see our own circumstances in detail but see other people as the most salient thing in their scene.",
+    "The first half alone, blaming the other driver's character, is the fundamental attribution error; the contrast with the self-explanation is what makes it actor–observer."
+   ],
+   "why_wrong": {
+    "A": "The self-serving bias is attributing one's successes to oneself and one's failures to circumstances; this scenario involves no success, only two explanations of the same misbehaviour.",
+    "B": "The just-world hypothesis is the belief that people get what they deserve, leading to blaming victims; nobody here is judged to deserve a misfortune.",
+    "D": "The false consensus effect is overestimating how many others share one's own views or behaviour, which is not what is described."
+   },
+   "error_types": {
+    "A": "wrong formula: the self-serving bias concerns success versus failure",
+    "B": "out of scope: no judgement about deserved outcomes is made",
+    "D": "out of scope: no estimate of others' agreement is involved"
+   },
+   "takeaway": "Actor–observer bias: my behaviour is due to the situation, yours is due to your character.",
+   "sources": [
+    "OpenStax Psychology 2e, 12.1 What Is Social Psychology? (2020): fundamental attribution error, actor–observer bias, self-serving bias and the just-world hypothesis.",
+    "Ross L, Greene D, House P. The false consensus effect. Journal of Experimental Social Psychology. 1977;13(3):279–301 (people overestimate how far others share their beliefs and behaviour)."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M3-Q07",
+   "rev": 1,
+   "section": "psych_soc",
+   "passage": null,
+   "discipline": "sociology",
+   "fc": "9",
+   "category": "9A",
+   "topics": [
+    "9A.theoretical-approaches",
+    "9A.health-medicine"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "A sociologist argues that the traditional hierarchy of physicians over nurses in hospitals persists because it protects the income and authority of the more powerful group, and that it will change only when nurses organize to contest it. This analysis is most characteristic of:",
+   "options": {
+    "A": "conflict theory",
+    "B": "functionalism",
+    "C": "symbolic interactionism",
+    "D": "exchange theory"
+   },
+   "answer": "A",
+   "why_correct": [
+    "Conflict theory views social arrangements as the outcome of competition between groups with unequal power, sees institutions as serving the interests of the dominant group, and expects change to come from struggle. Every element of the argument fits: an arrangement that benefits the powerful, maintained by power, changed by organized contest.",
+    "A functionalist would instead ask what the hierarchy contributes to the smooth running of the hospital; an interactionist would study how the hierarchy is enacted in daily encounters.",
+    "The macro scale (an institution-wide arrangement) and the focus on power and inequality are the markers of the conflict perspective."
+   ],
+   "why_wrong": {
+    "B": "Functionalism explains institutions by the functions they serve for the whole system and emphasizes stability and consensus, not the interests of a dominant group or change through struggle.",
+    "C": "Symbolic interactionism is a micro perspective on how meaning is created in face-to-face interaction; it would examine how deference is performed, not why the structure persists.",
+    "D": "Exchange theory treats interaction as the trading of rewards and costs between individuals; it does not frame institutions as instruments of group power."
+   },
+   "error_types": {
+    "B": "reversed relationship: a consensus perspective offered for a power-based argument",
+    "C": "out of scope: a micro perspective for a macro question",
+    "D": "wrong formula: individual cost–benefit framing for a group-power argument"
+   },
+   "takeaway": "Arguments about who benefits, power, and change through struggle are conflict theory; arguments about what an arrangement does for the system are functionalist.",
+   "sources": [
+    "OpenStax Introduction to Sociology 3e, 1.3 Theoretical Perspectives in Sociology (2021): functionalism, conflict theory and symbolic interactionism compared.",
+    "OpenStax Introduction to Sociology 3e, 19.5 Theoretical Perspectives on Health and Medicine (2021): conflict theory applied to the health care system.",
+    "Social Sci LibreTexts, Sociology (Boundless), 5.2B Exchange (2021): exchange theory treats interaction as a trade of rewards and costs between individuals."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M3-Q08",
+   "rev": 1,
+   "section": "psych_soc",
+   "passage": null,
+   "discipline": "sociology",
+   "fc": "10",
+   "category": "10A",
+   "topics": [
+    "10A.social-class",
+    "10A.health-disparities"
+   ],
+   "skill": "4",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "A hypothetical survey reports the following age-adjusted rates of type 2 diabetes among adults, per 1,000 people, by annual household income: under $25,000: 120; $25,000–$49,999: 95; $50,000–$99,999: 70; $100,000 and above: 50. Which conclusion do these data best support?",
+   "options": {
+    "A": "Low income causes type 2 diabetes in the population surveyed",
+    "B": "Diabetes is concentrated almost entirely in households earning under $25,000",
+    "C": "Above $25,000, income has little relationship with diabetes rates",
+    "D": "Diabetes rates fall at every step up the income scale"
+   },
+   "answer": "D",
+   "why_correct": [
+    "Read the table: 120 → 95 → 70 → 50. The rate drops at every income step, not only at the poverty line, and the drop continues well into the highest bracket. That stepwise pattern is what health researchers call the socioeconomic gradient in health.",
+    "Age adjustment rules out the explanation that the pattern arises just because poorer groups are older, which strengthens the comparison across income groups.",
+    "The data are observational and describe a relationship; they do not identify its cause."
+   ],
+   "why_wrong": {
+    "A": "A survey correlation cannot establish cause. Illness can also lower income (reverse causation), and factors such as education, neighbourhood, and access to care could drive both.",
+    "B": "The lowest-income group has the highest rate, but the rates in the other three groups (95, 70 and 50 per 1,000) are far from negligible, so diabetes is clearly not confined to the lowest bracket.",
+    "C": "The rate falls from 95 to 70 to 50 above $25,000, a substantial and consistent relationship."
+   },
+   "error_types": {
+    "A": "reversed relationship: causation inferred from correlational data",
+    "B": "too extreme: 'almost entirely' is not supported by the other groups' rates",
+    "C": "misread graph: the decline above $25,000 is large and consistent"
+   },
+   "takeaway": "A health gradient means risk changes at every step of socioeconomic status, not only below a poverty threshold; survey data show the pattern but not its cause.",
+   "sources": [
+    "OpenStax Introduction to Sociology 3e, 19.3 Health in the United States (2021): socioeconomic status is one of the strongest and most consistent predictors of morbidity and mortality.",
+    "Adler NE et al. Socioeconomic status and health: the challenge of the gradient. American Psychologist. 1994;49(1):15–24: the association is graded across the whole SES range, not confined to poverty.",
+    "CDC, National Diabetes Statistics Report, Appendix Table 3 (NHIS 2019–2021): age-adjusted diagnosed diabetes 13.1% below the poverty level, 10.3% at 100–299%, 7.7% at 300–499%, 5.1% at 500% and above (the stem's figures are hypothetical but of this order).",
+    "OpenStax Introductory Statistics 2e, 12.3 The Regression Equation and 1.4 Experimental Design and Ethics (2023): correlation does not imply causation; observational studies cannot establish cause."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  }
+ ]
+}

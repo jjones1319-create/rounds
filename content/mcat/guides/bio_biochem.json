@@ -1,0 +1,2499 @@
+{
+ "section": "bio_biochem",
+ "verified": "2026-10-11",
+ "official_outline_url": "https://students-residents.aamc.org/prepare-mcat-exam/whats-mcat-exam-pdf-outline",
+ "official_prep_url": "https://students-residents.aamc.org/prepare-mcat-exam/free-planning-and-study-resources",
+ "attribution": "Organized according to the AAMC's What's on the MCAT Exam? outline. Descriptions are our own. See the official outline for the authoritative list.",
+ "glance": {
+  "questions": 59,
+  "minutes": 95,
+  "passage_questions": 44,
+  "discrete_questions": 15,
+  "tools": "Periodic table",
+  "calculator": false,
+  "summary": "This section tests biology and biochemistry as the foundation of medicine: the molecules of life and how cells use them, how genetic information is stored, expressed, and inherited, how cells divide and specialize, and how the organ systems keep the body stable. Most questions follow a passage describing an experiment, so reading data and judging study design matter as much as recall.",
+  "math": "Light arithmetic: ratios and percentages for genetics (Punnett squares, Hardy–Weinberg), simple probability, reading graphs and tables, and the occasional logarithm or exponential (pH, growth curves). No calculator.",
+  "scores_note": "Scores in this app are percent correct. They are not MCAT scaled scores (118–132), which only AAMC's equating can produce."
+ },
+ "blueprint": {
+  "disciplines": {
+   "biology": 65,
+   "biochemistry": 25,
+   "general chemistry": 5,
+   "organic chemistry": 5
+  },
+  "concepts": {
+   "1": 55,
+   "2": 20,
+   "3": 25
+  },
+  "skills": {
+   "1": 35,
+   "2": 45,
+   "3": 10,
+   "4": 10
+  }
+ },
+ "concepts": [
+  {
+   "id": "1",
+   "name": "Biomolecules and the processes of life",
+   "summary": "Foundational Concept 1 (AAMC): the molecules that make cells work. Proteins and enzymes, the path from gene to protein, inheritance and variation, and the pathways that harvest energy from fuel.",
+   "categories": [
+    {
+     "id": "1A",
+     "name": "Proteins and amino acids",
+     "summary": "From amino acids to working proteins: the chemistry of the building blocks, the four levels of structure and what holds them, non-enzyme jobs, and enzymes with their kinetics and control.",
+     "topics": [
+      {
+       "id": "1A.amino-acids",
+       "name": "Amino acids: configuration, dipolar ions, classification, and reactions",
+       "tags": [
+        "BC",
+        "OC"
+       ],
+       "know": [
+        "Every proteinogenic amino acid has an α-carbon bonded to an amino group, a carboxyl group, a hydrogen, and a side chain. All but glycine are chiral, and the ones in proteins have the L configuration (S by the sequence rules, except cysteine). At physiological pH the carboxyl is deprotonated and the amino group protonated, making the molecule a zwitterion with no net charge.",
+        "Classify by side chain: hydrophobic (Gly, Ala, Val, Leu, Ile, Met, Pro, Phe, Trp), polar and hydrophilic (Ser, Thr, Cys, Tyr, Asn, Gln), acidic (Asp, Glu), and basic (Lys, Arg, His). Hydrophobic residues cluster in protein cores and membrane-spanning segments; charged ones face water or form salt bridges. Histidine's side chain (pKa about 6) can gain or lose a proton near physiological pH, which makes it a common catalytic residue.",
+        "Reactions: two cysteine thiols oxidize to a disulfide, cystine, a covalent cross-link within or between chains that is reduced back by agents such as β-mercaptoethanol. Amino acids join through peptide bonds (amide bonds between one carboxyl and the next amino group, formed by condensation) into polypeptides; hydrolysis by acid, base, or proteases reverses it."
+       ],
+       "equations": [],
+       "confusions": [
+        "Zwitterion means net charge zero, not uncharged. Proline's side chain loops back onto its own nitrogen, which is why it kinks helices."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 3.4 Proteins",
+         "url": "https://openstax.org/books/biology-2e/pages/3-4-proteins"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 26.1 Structures of Amino Acids",
+         "url": "https://openstax.org/books/organic-chemistry/pages/26-1-structures-of-amino-acids"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 26.4 Peptides and Proteins",
+         "url": "https://openstax.org/books/organic-chemistry/pages/26-4-peptides-and-proteins"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1A.protein-structure",
+       "name": "Protein structure: primary to quaternary, stability, folding, and separation",
+       "tags": [
+        "BIO",
+        "BC",
+        "OC"
+       ],
+       "know": [
+        "Primary structure is the amino acid sequence, fixed by covalent peptide bonds. Secondary structure is local backbone folding held by backbone hydrogen bonds: the α-helix and the β-sheet (parallel or antiparallel). Tertiary structure is the full three-dimensional fold of one chain, driven by hydrophobic interactions (nonpolar side chains buried away from water), hydrogen bonds, ionic interactions, van der Waals contacts, and disulfide bonds; proline breaks helices and cystine cross-links stabilize the fold. Quaternary structure is the assembly of several chains, as in hemoglobin.",
+        "Conformational stability: the folded state is only marginally more stable than the unfolded one. The hydrophobic effect is driven by entropy: water molecules ordered in a solvation layer around exposed nonpolar groups are freed when those groups are buried. Denaturation (heat, extreme pH, urea, detergents, reducing agents) unfolds the protein and usually destroys function without breaking peptide bonds; some proteins refold spontaneously, showing the sequence specifies the fold, and chaperones assist folding in the cell.",
+        "Separation uses charge and size. The isoelectric point (pI) is the pH at which the protein's net charge is zero; below it the protein is positive, above it negative. Electrophoresis moves charged proteins through a gel: SDS–PAGE coats them with negative charge and separates by size alone, native gels separate by size and charge, and isoelectric focusing moves each protein to its pI along a pH gradient."
+       ],
+       "equations": [
+        "\\mathrm{pI} \\approx \\dfrac{\\mathrm{p}K_{a1} + \\mathrm{p}K_{a2}}{2}\\ \\ \\text{(the two } \\mathrm{p}K_a\\text{ values bracketing the neutral form)}"
+       ],
+       "confusions": [
+        "Secondary-structure hydrogen bonds involve the backbone C=O and N–H, not the side chains; side chains drive tertiary structure."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 3.4 Proteins",
+         "url": "https://openstax.org/books/biology-2e/pages/3-4-proteins"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 26.9 Protein Structure",
+         "url": "https://openstax.org/books/organic-chemistry/pages/26-9-protein-structure"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 26.2 Amino Acids and the Henderson–Hasselbalch Equation: Isoelectric Points",
+         "url": "https://openstax.org/books/organic-chemistry/pages/26-2-amino-acids-and-the-henderson-hasselbalch-equation-isoelectric-points"
+        },
+        {
+         "label": "Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 8.3 Electrophoresis",
+         "url": "https://bio.libretexts.org/Bookshelves/Biochemistry/Book%3A_Biochemistry_Free_For_All_(Ahern_Rajagopal_and_Tan)/08%3A_Basic_Techniques/8.03%3A_Electrophoresis"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1A.nonenzymatic-function",
+       "name": "Nonenzymatic protein function: binding, immune system, and motors",
+       "tags": [
+        "BIO",
+        "BC"
+       ],
+       "know": [
+        "Binding proteins hold ligands reversibly and specifically: hemoglobin binds oxygen cooperatively, giving a sigmoidal curve, and myoglobin stores it with a hyperbolic curve; transport proteins such as transferrin and albumin carry iron and fatty acids in blood; receptors bind hormones and transmitters. Affinity is described by the dissociation constant Kd, lower meaning tighter.",
+        "Immune proteins: antibodies (immunoglobulins) are Y-shaped molecules of two heavy and two light chains whose variable regions form two identical antigen-binding sites; binding neutralizes pathogens, marks them for phagocytosis, and activates complement. Each B-cell clone makes one specificity, and the vast repertoire comes from gene rearrangement.",
+        "Motor proteins turn ATP hydrolysis into movement along cytoskeletal tracks: myosin on actin (muscle contraction, cytokinesis), kinesin toward the plus end of microtubules and dynein toward the minus end (vesicle transport, cilia and flagella, chromosome movement). Structural proteins (collagen, keratin, actin, tubulin) provide shape and strength."
+       ],
+       "equations": [],
+       "confusions": [
+        "Kinesin and dynein travel opposite directions on the same microtubule; dynein also powers the beating of cilia by sliding microtubule doublets."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 3.4 Proteins",
+         "url": "https://openstax.org/books/biology-2e/pages/3-4-proteins"
+        },
+        {
+         "label": "OpenStax Biology 2e, 42.3 Antibodies",
+         "url": "https://openstax.org/books/biology-2e/pages/42-3-antibodies"
+        },
+        {
+         "label": "OpenStax Biology 2e, 4.5 The Cytoskeleton",
+         "url": "https://openstax.org/books/biology-2e/pages/4-5-the-cytoskeleton"
+        },
+        {
+         "label": "Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 5.3 Oxygen-Binding Proteins and Allosterism",
+         "url": "https://bio.libretexts.org/Bookshelves/Biochemistry/Fundamentals_of_Biochemistry_(Jakubowski_and_Flatt)/01%3A_Unit_I-_Structure_and_Catalysis/05%3A_Protein_Function/5.03%3A_A._Oxygen-Binding_Proteins_and_Allosterism"
+        },
+        {
+         "label": "Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 5.5 Protein Interactions Modulated by Chemical Energy: Actin, Myosin and Molecular Motors",
+         "url": "https://bio.libretexts.org/Bookshelves/Biochemistry/Fundamentals_of_Biochemistry_(Jakubowski_and_Flatt)/01%3A_Unit_I-_Structure_and_Catalysis/05%3A_Protein_Function/5.05%3A_Protein_Interactions_Modulated_by_Chemical_Energy-_Actin_Myosin_and_Molecular_Motors"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1A.enzymes",
+       "name": "Enzyme structure and function: catalysis, specificity, active site, induced fit, cofactors",
+       "tags": [
+        "BIO",
+        "BC"
+       ],
+       "know": [
+        "Enzymes are biological catalysts, almost all proteins, that speed reactions by lowering the activation energy; they do not change the equilibrium or the ΔG, and they are not consumed. They are classified by reaction type: oxidoreductases, transferases (including kinases), hydrolases, lyases, isomerases, ligases, and translocases.",
+        "The substrate binds at the active site, a pocket whose shape and chemistry match the substrate (specificity). The lock-and-key picture captures the fit; the induced-fit model adds that binding reshapes both enzyme and substrate toward the transition state. Catalysis works by orienting substrates, straining bonds, providing acidic or basic groups, and forming transient covalent intermediates.",
+        "Many enzymes need cofactors: inorganic ions (Mg²⁺, Zn²⁺, Fe²⁺) or organic coenzymes, most derived from water-soluble vitamins (NAD⁺ from niacin, FAD from riboflavin, coenzyme A from pantothenic acid, pyridoxal phosphate from B6, thiamine pyrophosphate from B1). Local conditions matter: each enzyme has an optimal temperature and pH; heat beyond the optimum and extreme pH denature it, and salt and solvent affect activity."
+       ],
+       "equations": [],
+       "confusions": [
+        "An enzyme speeds the forward and reverse reactions equally; it changes how fast equilibrium is reached, not where it lies."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 6.5 Enzymes",
+         "url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 26.10 Enzymes and Coenzymes",
+         "url": "https://openstax.org/books/organic-chemistry/pages/26-10-enzymes-and-coenzymes"
+        },
+        {
+         "label": "IUBMB, EC 7 Translocases (seventh enzyme class, 2018)",
+         "url": "https://iubmb.qmul.ac.uk/enzyme/EC7/"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1A.enzyme-control",
+       "name": "Control of enzyme activity: kinetics, inhibition, and regulatory enzymes",
+       "tags": [
+        "BIO",
+        "BC"
+       ],
+       "know": [
+        "Michaelis–Menten kinetics: the initial rate rises with substrate and saturates at Vmax; Km is the substrate concentration giving half of Vmax and reflects affinity (lower Km, tighter binding). Vmax = kcat[E], so doubling the enzyme doubles Vmax but leaves Km unchanged. A Lineweaver–Burk plot of 1/v against 1/[S] gives a line with y-intercept 1/Vmax and x-intercept −1/Km. Cooperative enzymes with several subunits give a sigmoidal curve instead of a hyperbola.",
+        "Inhibition: competitive inhibitors bind the active site, raise the apparent Km, leave Vmax unchanged, and are overcome by more substrate; noncompetitive inhibitors bind elsewhere whether or not substrate is bound, lower Vmax, and leave Km unchanged; uncompetitive inhibitors bind only the enzyme–substrate complex and lower both Vmax and Km; mixed inhibitors alter both in other ratios. Irreversible inhibitors bond covalently.",
+        "Regulation: feedback inhibition by a pathway's end product acts on an early, committed step. Allosteric enzymes have regulatory sites separate from the active site; effectors shift them between low-activity and high-activity conformations. Covalent modification, most often phosphorylation by kinases and dephosphorylation by phosphatases, switches enzymes on or off reversibly. Zymogens (proenzymes such as pepsinogen, trypsinogen, and the clotting factors) are activated irreversibly by proteolytic cleavage where and when they are needed."
+       ],
+       "equations": [
+        "v_0 = \\dfrac{V_{max}[S]}{K_m + [S]}",
+        "\\dfrac{1}{v_0} = \\dfrac{K_m}{V_{max}}\\cdot\\dfrac{1}{[S]} + \\dfrac{1}{V_{max}}"
+       ],
+       "confusions": [
+        "Only competitive inhibition is overcome by raising substrate. Km is a concentration, not a rate."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 6.5 Enzymes",
+         "url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes"
+        },
+        {
+         "label": "Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 4.1 Basic Principles of Catalysis",
+         "url": "https://bio.libretexts.org/Bookshelves/Biochemistry/Book%3A_Biochemistry_Free_For_All_(Ahern_Rajagopal_and_Tan)/04%3A_Catalysis/4.01%3A_Basic_Principles_of_Catalysis"
+        },
+        {
+         "label": "Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 4.2 Control of Enzymatic Activity",
+         "url": "https://bio.libretexts.org/Bookshelves/Biochemistry/Book%3A_Biochemistry_Free_For_All_(Ahern_Rajagopal_and_Tan)/04%3A_Catalysis/4.02%3A_Control_of_Enzymatic_Activity"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      }
+     ]
+    },
+    {
+     "id": "1B",
+     "name": "Gene to protein",
+     "summary": "The flow of information: DNA structure, how it is copied and repaired, the genetic code, transcription and translation, how chromosomes are packed, how genes are switched on and off in prokaryotes and eukaryotes, and the tools of recombinant DNA.",
+     "topics": [
+      {
+       "id": "1B.nucleic-acid-structure",
+       "name": "Nucleic acid structure and function",
+       "tags": [
+        "BIO",
+        "BC"
+       ],
+       "know": [
+        "A nucleotide is a pentose sugar (ribose or 2′-deoxyribose) with a nitrogenous base at C1′ and one to three phosphates at C5′; a nucleoside lacks the phosphate. Purines (adenine, guanine) have two rings, pyrimidines (cytosine, thymine, uracil) one. Phosphodiester bonds between the 3′-OH of one sugar and the 5′-phosphate of the next build a sugar–phosphate backbone with the bases as side groups, so every strand has a 5′ → 3′ direction.",
+        "The Watson–Crick model: DNA is two antiparallel strands in a right-handed double helix, held by hydrogen bonds between complementary bases (A with T by two bonds, G with C by three) and by stacking of the flat bases, with the backbone outside and major and minor grooves along the surface. Because each strand specifies the other, DNA can be copied faithfully and carries heritable information from generation to generation.",
+        "Heating or alkali separates the strands (denaturation, melting); the melting temperature rises with GC content and length. Cooling lets complementary strands reanneal, and hybridization of a labelled probe to its complement is the basis of blots, microarrays, and PCR primers. RNA is usually single-stranded with internal base pairing, uses ribose and uracil, and is less stable than DNA."
+       ],
+       "equations": [],
+       "confusions": [
+        "The strands are antiparallel: the 5′ end of one lies beside the 3′ end of the other, so complementary sequences are written in opposite directions."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 3.5 Nucleic Acids",
+         "url": "https://openstax.org/books/biology-2e/pages/3-5-nucleic-acids"
+        },
+        {
+         "label": "OpenStax Biology 2e, 14.2 DNA Structure and Sequencing",
+         "url": "https://openstax.org/books/biology-2e/pages/14-2-dna-structure-and-sequencing"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 28.2 Base Pairing in DNA",
+         "url": "https://openstax.org/books/organic-chemistry/pages/28-2-base-pairing-in-dna"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1B.dna-replication",
+       "name": "DNA replication",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Replication is semiconservative: each new double helix keeps one parental strand and gains one new strand, as Meselson and Stahl showed. It begins at origins of replication, a single origin on the circular bacterial chromosome and many along each linear eukaryotic chromosome, and proceeds in both directions from each origin.",
+        "Enzymes: helicase unwinds the helix, single-strand binding proteins keep the strands apart, topoisomerase relieves the twisting ahead of the fork, primase lays down a short RNA primer, and DNA polymerase extends it, adding nucleotides only to a free 3′-OH, so synthesis is 5′ → 3′. The leading strand is made continuously toward the fork; the lagging strand is made in Okazaki fragments away from it, whose primers are replaced with DNA and whose nicks are sealed by DNA ligase. Polymerase proofreads with a 3′ → 5′ exonuclease.",
+        "Linear chromosomes lose a little from each 5′ end at every round because the last primer cannot be replaced. Telomeres, repetitive non-coding ends, absorb the loss, and telomerase, an enzyme with its own RNA template, extends them in germ cells, stem cells, and most cancers; telomere shortening in ordinary cells limits their divisions."
+       ],
+       "equations": [],
+       "confusions": [
+        "Both new strands grow 5′ → 3′; only the direction relative to the fork differs. The lagging strand is not made backward, it is made in pieces."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 14.3 Basics of DNA Replication",
+         "url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication"
+        },
+        {
+         "label": "OpenStax Biology 2e, 14.4 DNA Replication in Prokaryotes",
+         "url": "https://openstax.org/books/biology-2e/pages/14-4-dna-replication-in-prokaryotes"
+        },
+        {
+         "label": "OpenStax Biology 2e, 14.5 DNA Replication in Eukaryotes",
+         "url": "https://openstax.org/books/biology-2e/pages/14-5-dna-replication-in-eukaryotes"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1B.dna-repair",
+       "name": "DNA repair",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "During replication, polymerase proofreading removes a mispaired base at once with its 3′ → 5′ exonuclease; errors that slip through are caught by mismatch repair, which recognizes the distortion, identifies the new strand (in bacteria by its lack of methylation), cuts out the stretch, and resynthesizes it.",
+        "Damage from chemicals, radiation, and spontaneous reactions is handled by base excision repair (a glycosylase removes a single damaged base, then the gap is filled) and nucleotide excision repair (a stretch containing a bulky lesion such as a UV-induced thymine dimer is cut out and replaced). Double-strand breaks are rejoined by non-homologous end joining (error-prone) or repaired accurately by homologous recombination using the sister chromatid.",
+        "Failures of repair cause disease: xeroderma pigmentosum (defective nucleotide excision repair, extreme sun sensitivity and skin cancer), Lynch syndrome (mismatch repair defects, colorectal cancer), and BRCA1/2 mutations (homologous recombination, breast and ovarian cancer). Unrepaired damage that is copied becomes a permanent mutation."
+       ],
+       "equations": [],
+       "confusions": [
+        "Proofreading happens during synthesis; mismatch repair happens afterward on the new strand; excision repair handles damage, not copying errors."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 14.6 DNA Repair",
+         "url": "https://openstax.org/books/biology-2e/pages/14-6-dna-repair"
+        },
+        {
+         "label": "Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal and Tan), 7.4 DNA Repair (BER, NER, NHEJ, HR)",
+         "url": "https://bio.libretexts.org/Bookshelves/Biochemistry/Book%3A_Biochemistry_Free_For_All_(Ahern_Rajagopal_and_Tan)/07%3A_Information_Processing/7.04%3A_DNA_Repair"
+        },
+        {
+         "label": "MedlinePlus Genetics, Lynch syndrome",
+         "url": "https://medlineplus.gov/genetics/condition/lynch-syndrome/"
+        },
+        {
+         "label": "MedlinePlus Genetics, BRCA1 gene",
+         "url": "https://medlineplus.gov/genetics/gene/brca1/"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1B.genetic-code",
+       "name": "The genetic code and messenger RNA",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "The central dogma: information flows from DNA to RNA (transcription) to protein (translation); retroviruses add RNA → DNA by reverse transcription. The code is read in triplets: 64 codons of three nucleotides specify 20 amino acids plus stop. It is unambiguous (each codon means one amino acid), degenerate (most amino acids have several codons, differing mainly at the third position), non-overlapping, read without punctuation from a fixed start, and nearly universal.",
+        "AUG is the initiation codon and encodes methionine; UAA, UAG, and UGA are termination (stop) codons with no tRNA. Each tRNA's anticodon pairs antiparallel with the codon; wobble pairing at the third position lets one tRNA read several synonymous codons.",
+        "Mutations are named by effect: a missense mutation changes one amino acid, a nonsense mutation creates a premature stop, a silent mutation changes the codon but not the amino acid, and an insertion or deletion not divisible by three shifts the reading frame. mRNA is the working copy: in eukaryotes it carries a 5′ cap, a 3′ poly-A tail, and untranslated regions flanking the coding sequence."
+       ],
+       "equations": [],
+       "confusions": [
+        "Degenerate means redundant (several codons per amino acid), not ambiguous. The start codon sets the reading frame; everything downstream is read in threes from there."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 15.1 The Genetic Code",
+         "url": "https://openstax.org/books/biology-2e/pages/15-1-the-genetic-code"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1B.transcription",
+       "name": "Transcription and RNA processing",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "RNA polymerase binds a promoter upstream of the gene (with sigma factor in bacteria, with transcription factors at the TATA box in eukaryotes), unwinds the DNA, and synthesizes RNA 5′ → 3′ complementary to the template strand (so the RNA matches the coding strand, with U for T). It needs no primer. Elongation continues until a terminator; in bacteria a hairpin or rho factor ends it, and in eukaryotes cleavage after the polyadenylation signal does. Eukaryotes use three polymerases: I for rRNA, II for mRNA, III for tRNA and small RNAs.",
+        "Kinds of RNA: mRNA carries the message; tRNA, a cloverleaf with an anticodon and an amino acid attached at its 3′ end by aminoacyl-tRNA synthetase, is the adaptor; rRNA forms the ribosome's structure and catalytic core. Prokaryotic transcription and translation happen together in the cytoplasm; eukaryotic pre-mRNA is processed in the nucleus first.",
+        "Processing: a 7-methylguanosine cap is added to the 5′ end, a poly-A tail to the 3′ end (both protect the message and aid export and translation), and introns are removed by the spliceosome, a complex of small nuclear RNAs and proteins (snRNPs) that joins the exons; some RNAs splice themselves (ribozymes), showing RNA can catalyse. Alternative splicing lets one gene make several proteins, and exons often correspond to protein domains, which may have made it easier for new genes to arise by shuffling domains."
+       ],
+       "equations": [],
+       "confusions": [
+        "The template strand is read 3′ → 5′; the RNA produced has the sequence of the other (coding) strand. Introns are removed from RNA; the gene keeps them."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 15.2 Prokaryotic Transcription",
+         "url": "https://openstax.org/books/biology-2e/pages/15-2-prokaryotic-transcription"
+        },
+        {
+         "label": "OpenStax Biology 2e, 15.3 Eukaryotic Transcription",
+         "url": "https://openstax.org/books/biology-2e/pages/15-3-eukaryotic-transcription"
+        },
+        {
+         "label": "OpenStax Biology 2e, 15.4 RNA Processing in Eukaryotes",
+         "url": "https://openstax.org/books/biology-2e/pages/15-4-rna-processing-in-eukaryotes"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1B.translation",
+       "name": "Translation and post-translational modification",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "The ribosome has a small subunit that reads the mRNA and a large subunit whose rRNA catalyses peptide bond formation (a ribozyme), with three tRNA sites: A (aminoacyl, incoming), P (peptidyl, growing chain), and E (exit). Prokaryotic ribosomes are 70S (30S + 50S), eukaryotic 80S (40S + 60S), which is why some antibiotics hit bacterial ribosomes selectively.",
+        "Initiation: the small subunit binds the mRNA (at the Shine–Dalgarno sequence in bacteria, by scanning from the cap in eukaryotes), the initiator tRNA (formyl-methionine in bacteria, methionine in eukaryotes) sits at AUG in the P site, and initiation factors bring in the large subunit using GTP. Elongation: a charged tRNA enters the A site, the chain is transferred onto it, and the ribosome shifts one codon (elongation factors, GTP). Termination: a stop codon in the A site is recognized by release factors, which free the polypeptide. Many ribosomes read one mRNA at once (a polysome).",
+        "After synthesis, proteins fold (often with chaperones) and may be modified: cleavage of signal peptides and propeptides, disulfide formation, glycosylation in the ER and Golgi, phosphorylation, acetylation, methylation, lipid attachment, and ubiquitination for degradation. A signal sequence directs ribosomes to the rough ER so that secreted and membrane proteins enter the secretory pathway."
+       ],
+       "equations": [],
+       "confusions": [
+        "The amino acid is attached to the tRNA's 3′ end by a specific synthetase; the ribosome does not check the amino acid, only the codon–anticodon match."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 15.5 Ribosomes and Protein Synthesis",
+         "url": "https://openstax.org/books/biology-2e/pages/15-5-ribosomes-and-protein-synthesis"
+        },
+        {
+         "label": "OpenStax Biology 2e, 4.4 The Endomembrane System and Proteins",
+         "url": "https://openstax.org/books/biology-2e/pages/4-4-the-endomembrane-system-and-proteins"
+        },
+        {
+         "label": "Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal and Tan), 7.7 Translation (signal sequences, post-translational modification)",
+         "url": "https://bio.libretexts.org/Bookshelves/Biochemistry/Book%3A_Biochemistry_Free_For_All_(Ahern_Rajagopal_and_Tan)/07%3A_Information_Processing/7.07%3A_Translation"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1B.chromosome-organization",
+       "name": "Eukaryotic chromosome organization",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Eukaryotic DNA is packaged with histone proteins: about 147 base pairs wrap around an octamer of histones to form a nucleosome, nucleosomes coil into a 30 nm fibre, and further looping condenses the chromatin into the chromosomes seen at mitosis. Supercoiling, the twisting of the helix on itself, compacts DNA and is managed by topoisomerases; bacterial chromosomes are negatively supercoiled.",
+        "Euchromatin is loosely packed, accessible, and transcribed; heterochromatin is tightly packed and largely silent, as in centromeres, telomeres, and the inactive X chromosome. Chemical marks on histones (acetylation opens chromatin, some methylations close it) and on DNA (methylation silences) switch regions between the two states.",
+        "Much of the genome is repetitive DNA (transposons, satellite repeats, gene families) rather than single-copy genes. Centromeres are the constricted regions where kinetochores assemble to attach spindle fibres; telomeres cap the ends, protect them from being treated as breaks, and shorten with each division unless telomerase restores them."
+       ],
+       "equations": [],
+       "confusions": [
+        "Histone acetylation generally activates transcription; DNA methylation generally represses it."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 10.1 Cell Division (chromosome structure)",
+         "url": "https://openstax.org/books/biology-2e/pages/10-1-cell-division"
+        },
+        {
+         "label": "OpenStax Biology 2e, 16.3 Eukaryotic Epigenetic Gene Regulation",
+         "url": "https://openstax.org/books/biology-2e/pages/16-3-eukaryotic-epigenetic-gene-regulation"
+        },
+        {
+         "label": "OpenStax Biology 2e, 14.5 DNA Replication in Eukaryotes (telomeres)",
+         "url": "https://openstax.org/books/biology-2e/pages/14-5-dna-replication-in-eukaryotes"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1B.prokaryotic-gene-control",
+       "name": "Control of gene expression in prokaryotes: operons",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Bacteria group related genes into operons transcribed as one mRNA from a shared promoter, with an operator between promoter and genes where a repressor can bind (Jacob and Monod's model). Control is mostly at the start of transcription.",
+        "Repression: the lac operon's repressor sits on the operator and blocks RNA polymerase until lactose (as allolactose) binds and releases it (an inducible operon). The trp operon's repressor binds the operator only when tryptophan, the end product, is attached to it, so the pathway shuts off when the product is plentiful (a repressible operon); attenuation adds fine control.",
+        "Positive control: the lac operon is fully active only when glucose is scarce, because low glucose raises cAMP, and cAMP bound to the catabolite activator protein (CAP) helps polymerase bind the weak promoter. So lac is strongly expressed only when lactose is present and glucose is absent; with both sugars present it runs at a low level."
+       ],
+       "equations": [],
+       "confusions": [
+        "The repressor is made constitutively by a separate gene (lacI); the operator is a DNA site, not a protein."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 16.2 Prokaryotic Gene Regulation",
+         "url": "https://openstax.org/books/biology-2e/pages/16-2-prokaryotic-gene-regulation"
+        },
+        {
+         "label": "Biology LibreTexts, Online Open Genetics (Nickle and Barrette-Ng), 12.1 The lac Operon (Jacob and Monod)",
+         "url": "https://bio.libretexts.org/Bookshelves/Genetics/Online_Open_Genetics_(Nickle_and_Barrette-Ng)/12%3A_Regulation_of_Gene_Expression/12.01%3A_The_lac_Operon"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1B.eukaryotic-gene-control",
+       "name": "Control of gene expression in eukaryotes",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Eukaryotes regulate at every step. Transcription: RNA polymerase II needs general transcription factors at the promoter, and specific transcription factors bind enhancers and silencers, often far from the gene, looping DNA to activate or repress; combinations of factors give each cell type its pattern. Chromatin structure sets access: histone acetylation and DNA demethylation open genes, histone deacetylation and DNA methylation close them (epigenetic marks that can be inherited through cell division). Noncoding RNAs act too: microRNAs and small interfering RNAs pair with mRNAs to block translation or trigger degradation, and long noncoding RNAs such as Xist silence whole chromosomes.",
+        "Post-transcriptional control: alternative splicing of exons gives different proteins from one gene; capping, polyadenylation, nuclear export, and mRNA stability (controlled by 3′ untranslated region sequences and RNA-binding proteins) set how much protein a message yields. Translation is regulated by initiation factors; proteins are regulated after synthesis by modification and ubiquitin-tagged degradation. Gene amplification (extra copies) and gene duplication over evolution increase output and allow new functions.",
+        "Cancer is a failure of these controls. Oncogenes are mutated or overexpressed versions of genes that drive growth (growth factors, receptors, Ras, Myc); one activated copy suffices. Tumour suppressor genes (p53, Rb, BRCA1) normally restrain division or repair DNA; both copies must be lost. p53 halts the cycle or triggers apoptosis after DNA damage, and it is mutated in over half of human cancers."
+       ],
+       "equations": [],
+       "confusions": [
+        "Oncogenes act dominantly (gain of function); tumour suppressors act recessively at the cell level (loss of both copies, often one inherited mutation plus one somatic hit)."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 16.4 Eukaryotic Transcription Gene Regulation",
+         "url": "https://openstax.org/books/biology-2e/pages/16-4-eukaryotic-transcription-gene-regulation"
+        },
+        {
+         "label": "OpenStax Biology 2e, 16.3 Eukaryotic Epigenetic Gene Regulation",
+         "url": "https://openstax.org/books/biology-2e/pages/16-3-eukaryotic-epigenetic-gene-regulation"
+        },
+        {
+         "label": "OpenStax Biology 2e, 16.5 Eukaryotic Post-transcriptional Gene Regulation",
+         "url": "https://openstax.org/books/biology-2e/pages/16-5-eukaryotic-post-transcriptional-gene-regulation"
+        },
+        {
+         "label": "OpenStax Biology 2e, 16.7 Cancer and Gene Regulation",
+         "url": "https://openstax.org/books/biology-2e/pages/16-7-cancer-and-gene-regulation"
+        },
+        {
+         "label": "OpenStax Biology 2e, 10.4 Cancer and the Cell Cycle",
+         "url": "https://openstax.org/books/biology-2e/pages/10-4-cancer-and-the-cell-cycle"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1B.biotechnology",
+       "name": "Recombinant DNA and biotechnology",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Restriction enzymes cut DNA at specific palindromic sites, leaving sticky or blunt ends; DNA ligase joins fragments with matching ends. Gene cloning inserts a fragment into a vector (a plasmid with an origin, a selectable marker such as antibiotic resistance, and a multiple cloning site) and transforms it into bacteria, which copy it; expression vectors add a promoter so the cloned gene is transcribed and translated. A genomic library holds fragments of a whole genome; a cDNA library holds reverse-transcribed mRNA, so it contains only expressed, intron-free sequences.",
+        "The polymerase chain reaction amplifies a target with two primers, a heat-stable polymerase, and cycles of denaturation, annealing, and extension, doubling the copies each cycle. Gel electrophoresis separates DNA by size (smaller fragments run farther); a Southern blot transfers DNA from a gel and probes it by hybridization (Northern for RNA, Western for protein with antibodies). Sanger sequencing reads chain-terminating fragments; next-generation methods sequence millions of fragments in parallel.",
+        "Gene expression is analysed with reverse-transcription PCR, microarrays, and RNA sequencing; gene function with knockouts, RNA interference, reporter genes, and CRISPR–Cas9 editing. Stem cells (embryonic, adult, induced pluripotent) can be guided into tissues. Applications: recombinant drugs such as insulin, vaccines, gene therapy (delivering a working gene, often by viral vector), forensic DNA profiling, genetically modified crops, and bioremediation. Safety and ethics: containment, off-target edits, germline editing, consent, privacy of genetic information, and equitable access."
+       ],
+       "equations": [
+        "\\text{copies after } n \\text{ cycles} \\approx 2^n\\ \\text{(PCR)}"
+       ],
+       "confusions": [
+        "cDNA lacks introns because it is copied from mature mRNA, which is why it is used to express human genes in bacteria, which cannot splice."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 17.1 Biotechnology",
+         "url": "https://openstax.org/books/biology-2e/pages/17-1-biotechnology"
+        },
+        {
+         "label": "OpenStax Biology 2e, 17.4 Applying Genomics",
+         "url": "https://openstax.org/books/biology-2e/pages/17-4-applying-genomics"
+        },
+        {
+         "label": "OpenStax Microbiology, 12.1 Microbes and the Tools of Genetic Engineering",
+         "url": "https://openstax.org/books/microbiology/pages/12-1-microbes-and-the-tools-of-genetic-engineering"
+        },
+        {
+         "label": "OpenStax Microbiology, 12.4 Gene Therapy",
+         "url": "https://openstax.org/books/microbiology/pages/12-4-gene-therapy"
+        },
+        {
+         "label": "MedlinePlus Genetics, What are genome editing and CRISPR-Cas9?",
+         "url": "https://medlineplus.gov/genetics/understanding/genomicresearch/genomeediting/"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      }
+     ]
+    },
+    {
+     "id": "1C",
+     "name": "Heredity and genetic diversity",
+     "summary": "How traits pass between generations and how variation arises: the evidence that DNA is the genetic material, Mendel's rules and their exceptions, meiosis, linkage and mutation, the analytic tools of genetics, and evolution.",
+     "topics": [
+      {
+       "id": "1C.dna-genetic-material",
+       "name": "Evidence that DNA is the genetic material",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Griffith (1928) found that a harmless strain of pneumococcus could be transformed into a deadly one by something in heat-killed deadly bacteria. Avery, MacLeod, and McCarty (1944) showed the transforming substance was DNA: destroying proteins or RNA left it active, destroying DNA abolished it.",
+        "Hershey and Chase (1952) labelled bacteriophage protein with radioactive sulfur and DNA with radioactive phosphorus; only the phosphorus entered the infected bacteria and appeared in new phage, so DNA, not protein, carried the instructions.",
+        "Chargaff's rules (A = T and G = C in every species) and Franklin and Wilkins's X-ray diffraction images gave Watson and Crick the data for the double helix (1953), whose complementary strands explained how genetic information could be copied."
+       ],
+       "equations": [],
+       "confusions": [
+        "Transformation here means uptake of DNA from the environment, not the cancer-biology sense of the word."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 14.1 Historical Basis of Modern Understanding",
+         "url": "https://openstax.org/books/biology-2e/pages/14-1-historical-basis-of-modern-understanding"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1C.mendelian-concepts",
+       "name": "Mendelian concepts",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "A gene is a heritable unit at a fixed locus on a chromosome; alleles are its alternative versions, and a population may carry many (multiple alleles, as for ABO blood type). An individual with two identical alleles is homozygous, with two different ones heterozygous; the genotype is the allele combination, the phenotype the observable trait. The wild type is the common form in nature.",
+        "Mendel's laws: segregation (the two alleles separate into different gametes, so each gamete carries one) and independent assortment (genes on different chromosomes are inherited independently). With complete dominance the heterozygote looks like the dominant homozygote, so a monohybrid cross of heterozygotes gives a 3:1 phenotype ratio and a dihybrid cross 9:3:3:1. A recessive trait appears only in homozygotes and can skip generations.",
+        "Exceptions: incomplete dominance (the heterozygote is intermediate, pink snapdragons), codominance (both alleles show, AB blood), penetrance (the fraction of carriers who show the trait at all) and expressivity (how strongly it shows), leakage (gene flow between species through fertile hybrids), and hybrid viability (crosses between species may give sterile or inviable offspring). A gene pool is all the alleles in a population."
+       ],
+       "equations": [],
+       "confusions": [
+        "Dominant does not mean common or better: Huntington disease is dominant and rare. Incomplete dominance blends the phenotype; codominance shows both."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 12.1 Mendel's Experiments and the Laws of Probability",
+         "url": "https://openstax.org/books/biology-2e/pages/12-1-mendels-experiments-and-the-laws-of-probability"
+        },
+        {
+         "label": "OpenStax Biology 2e, 12.2 Characteristics and Traits",
+         "url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits"
+        },
+        {
+         "label": "OpenStax Biology 2e, 12.3 Laws of Inheritance",
+         "url": "https://openstax.org/books/biology-2e/pages/12-3-laws-of-inheritance"
+        },
+        {
+         "label": "OpenStax Biology 2e, 18.2 Formation of New Species (hybridization, reproductive barriers)",
+         "url": "https://openstax.org/books/biology-2e/pages/18-2-formation-of-new-species"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1C.meiosis-variability",
+       "name": "Meiosis, linkage, recombination, sex-linked traits, and other factors affecting genetic variability",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Meiosis makes haploid gametes from a diploid cell in two divisions after one round of DNA replication. In prophase I homologous chromosomes pair (synapsis) along the synaptonemal complex, forming a tetrad of four chromatids, and non-sister chromatids exchange segments (crossing over) at chiasmata; in metaphase I the pairs line up and assort independently; meiosis I separates homologues (reductional) and meiosis II separates sister chromatids like mitosis. Compared with mitosis, meiosis halves the chromosome number, involves pairing and crossing over, and produces four genetically different cells.",
+        "Genes on the same chromosome are linked and tend to be inherited together; a single crossover between them produces recombinant gametes, and the recombination frequency (up to 50%) grows with the distance between them, which is the basis of gene mapping. A double crossover between two loci restores the parental combination and so is undercounted. Variation also comes from independent assortment (2ⁿ combinations) and random fertilization.",
+        "Sex is determined by the X and Y chromosomes in humans (XY male; the SRY gene on the small, gene-poor Y triggers male development). X-linked recessive traits such as haemophilia and red–green colour blindness appear mostly in males, who have one X; carrier mothers pass them to half their sons. Mitochondrial (cytoplasmic) genes are inherited from the mother only."
+       ],
+       "equations": [
+        "\\text{recombination frequency} = \\dfrac{\\text{recombinant offspring}}{\\text{total offspring}}\\ (1\\% \\approx 1\\ \\text{map unit})"
+       ],
+       "confusions": [
+        "Sister chromatids are identical copies; homologues are the maternal and paternal versions. Crossing over is between homologues' non-sister chromatids."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 11.1 The Process of Meiosis",
+         "url": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis"
+        },
+        {
+         "label": "OpenStax Biology 2e, 11.2 Sexual Reproduction",
+         "url": "https://openstax.org/books/biology-2e/pages/11-2-sexual-reproduction"
+        },
+        {
+         "label": "OpenStax Biology 2e, 13.1 Chromosomal Theory and Genetic Linkage",
+         "url": "https://openstax.org/books/biology-2e/pages/13-1-chromosomal-theory-and-genetic-linkage"
+        },
+        {
+         "label": "OpenStax Biology 2e, 12.2 Characteristics and Traits (X-linked traits)",
+         "url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1C.mutation",
+       "name": "Mutation and genetic drift",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "A mutation is a heritable change in DNA sequence, arising spontaneously from replication errors or induced by mutagens (radiation, chemicals, some viruses); many mutagens are also carcinogens, and nearly all carcinogens are mutagenic, because cancer begins with mutations in growth-control genes. Types: base substitution (point mutations, which may be silent, missense, or nonsense), insertion and deletion (frameshifts if not multiples of three), inversion, translocation between chromosomes, and mispairing of repeats. Errors in transcription or translation affect only that RNA or protein and are not inherited.",
+        "Most mutations are neutral or harmful; a few are advantageous and are the raw material of evolution. Inborn errors of metabolism are inherited enzyme defects (phenylketonuria, galactosemia, lysosomal storage diseases) that block a pathway so a substrate accumulates or a product is missing.",
+        "Genetic drift is random change in allele frequencies from sampling in small populations; it can fix or lose alleles regardless of fitness. It is strong after a bottleneck (a crash in numbers) or a founder event (a few individuals start a new population), which explains the high frequency of some disorders in isolated groups."
+       ],
+       "equations": [],
+       "confusions": [
+        "A mutation in a somatic cell can cause cancer but is not passed to offspring; only germline mutations are inherited."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 14.6 DNA Repair (mutation types)",
+         "url": "https://openstax.org/books/biology-2e/pages/14-6-dna-repair"
+        },
+        {
+         "label": "OpenStax Biology 2e, 19.2 Population Genetics (drift, bottleneck, founder effect)",
+         "url": "https://openstax.org/books/biology-2e/pages/19-2-population-genetics"
+        },
+        {
+         "label": "OpenStax Microbiology, 11.5 Mutations",
+         "url": "https://openstax.org/books/microbiology/pages/11-5-mutations"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1C.analytic-methods",
+       "name": "Analytic methods: Hardy–Weinberg, test crosses, gene mapping, and biometry",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "The Hardy–Weinberg principle: in a large, randomly mating population with no mutation, migration, or selection, allele frequencies do not change and genotype frequencies are p², 2pq, and q². It is the null model: a departure shows that some evolutionary force is acting. Given the frequency of a recessive phenotype (q²), you can find q, p, and the carrier frequency 2pq.",
+        "A test cross mates an individual of unknown genotype with a homozygous recessive; the offspring ratio reveals whether it was homozygous or heterozygous (a backcross mates a hybrid with a parent). Generations are labelled P (parental), F1 (first filial), and F2.",
+        "Gene mapping uses crossover frequencies: one percent recombination between two loci is one map unit (centimorgan), and distances add for nearby loci. Biometry applies statistics to inheritance: the chi-square test compares observed with expected ratios, the product rule multiplies probabilities of independent events, the sum rule adds mutually exclusive ones, and pedigrees track traits through families to infer the mode of inheritance."
+       ],
+       "equations": [
+        "p + q = 1,\\qquad p^2 + 2pq + q^2 = 1",
+        "\\chi^2 = \\sum \\dfrac{(\\text{observed} - \\text{expected})^2}{\\text{expected}}"
+       ],
+       "confusions": [
+        "q² is the frequency of the recessive phenotype, not of the recessive allele; take the square root first."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 19.1 Population Evolution (Hardy–Weinberg)",
+         "url": "https://openstax.org/books/biology-2e/pages/19-1-population-evolution"
+        },
+        {
+         "label": "OpenStax Biology 2e, 12.1 Mendel's Experiments and the Laws of Probability",
+         "url": "https://openstax.org/books/biology-2e/pages/12-1-mendels-experiments-and-the-laws-of-probability"
+        },
+        {
+         "label": "OpenStax Biology 2e, 13.1 Chromosomal Theory and Genetic Linkage (mapping)",
+         "url": "https://openstax.org/books/biology-2e/pages/13-1-chromosomal-theory-and-genetic-linkage"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1C.evolution",
+       "name": "Evolution: natural selection, speciation, and evolutionary time",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Natural selection: individuals vary in heritable traits, more are born than survive, and those whose traits suit the environment leave more offspring, so the traits spread. Fitness is reproductive success relative to others, measured as the share of the next generation's gene pool, not strength or longevity. Selection acts by differential reproduction and can be directional, stabilizing, or disruptive; sexual selection acts on mating success. Group selection (traits favoured for the good of the group) is a weak force compared with selection on individuals and kin.",
+        "Speciation is the splitting of one species into two when gene flow stops: allopatric (geographic separation) or sympatric (within one area, for instance by polyploidy or habitat choice), followed by reproductive isolation. Related ideas: polymorphism (several forms coexisting), adaptation and specialization to a niche, inbreeding (mating among relatives, which raises homozygosity and exposes recessive defects), outbreeding (which restores heterozygosity), and bottlenecks (which cut variation and let drift act).",
+        "Evolutionary time can be read from the genome: mutations accumulate at a roughly steady rate, so sequence differences between species act as a molecular clock once the rate is calibrated against independently dated events such as fossils."
+       ],
+       "equations": [],
+       "confusions": [
+        "Evolution happens to populations over generations, not to individuals; an individual's acquired traits are not inherited."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 18.1 Understanding Evolution",
+         "url": "https://openstax.org/books/biology-2e/pages/18-1-understanding-evolution"
+        },
+        {
+         "label": "OpenStax Biology 2e, 18.2 Formation of New Species",
+         "url": "https://openstax.org/books/biology-2e/pages/18-2-formation-of-new-species"
+        },
+        {
+         "label": "OpenStax Biology 2e, 19.3 Adaptive Evolution",
+         "url": "https://openstax.org/books/biology-2e/pages/19-3-adaptive-evolution"
+        },
+        {
+         "label": "OpenStax Biology 2e, 20.2 Determining Evolutionary Relationships",
+         "url": "https://openstax.org/books/biology-2e/pages/20-2-determining-evolutionary-relationships"
+        },
+        {
+         "label": "UC Berkeley, Understanding Evolution: Molecular clocks",
+         "url": "https://evolution.berkeley.edu/molecular-clocks/"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      }
+     ]
+    },
+    {
+     "id": "1D",
+     "name": "Bioenergetics and fuel metabolism",
+     "summary": "How cells get and spend energy: the thermodynamics and ATP, the sugars themselves, glycolysis and its neighbours, the citric acid cycle, fat and protein metabolism, oxidative phosphorylation, and the hormones that coordinate it all.",
+     "topics": [
+      {
+       "id": "1D.bioenergetics",
+       "name": "Principles of bioenergetics: free energy, ATP, and biological redox",
+       "tags": [
+        "BC",
+        "GC"
+       ],
+       "know": [
+        "A reaction proceeds in the direction that lowers free energy: ΔG = ΔG° + RT ln Q, and at equilibrium ΔG = 0 so ΔG° = −RT ln Keq (biochemists use ΔG°′ at pH 7). Spontaneous means ΔG < 0, not fast. Exothermic reactions release heat (ΔH < 0); endothermic absorb it, and either can be spontaneous depending on entropy and temperature (ΔG = ΔH − TΔS). Concentration matters through Q: by Le Châtelier's principle a cell can push a reaction with positive ΔG°′ forward by keeping reactants high and removing products, as glycolysis does.",
+        "ATP hydrolysis to ADP and Pi has ΔG°′ ≈ −30.5 kJ/mol (about −7.3 kcal/mol) and about −50 to −60 kJ/mol at cellular concentrations, because the products relieve charge repulsion, gain resonance stabilization, and are better solvated. Cells couple it to unfavourable reactions by phosphoryl group transfer, phosphorylating a substrate or protein, rather than by releasing heat; the ΔG°′ values of coupled reactions add, and compounds such as phosphoenolpyruvate and creatine phosphate have higher transfer potential than ATP.",
+        "Biological oxidation–reduction moves electrons in half-reactions ranked by standard reduction potential E°′; electrons flow from the more negative couple to the more positive, releasing ΔG°′ = −nFΔE°′. Soluble carriers NAD⁺ (accepts a hydride, two electrons and one proton) and NADP⁺ shuttle electrons between enzymes; flavoproteins carry FAD or FMN bound to the enzyme and can take electrons one or two at a time."
+       ],
+       "equations": [
+        "\\Delta G = \\Delta G^\\circ + RT\\ln Q,\\qquad \\Delta G^\\circ = -RT\\ln K_{eq}",
+        "\\Delta G^{\\circ\\prime} = -nF\\,\\Delta E^{\\circ\\prime}"
+       ],
+       "confusions": [
+        "ATP's phosphoanhydride bonds are not unusually strong; the energy comes from the products being more stable than ATP. ΔG°′ is fixed; ΔG depends on concentrations."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 6.2 Potential, Kinetic, Free, and Activation Energy",
+         "url": "https://openstax.org/books/biology-2e/pages/6-2-potential-kinetic-free-and-activation-energy"
+        },
+        {
+         "label": "OpenStax Biology 2e, 6.4 ATP: Adenosine Triphosphate",
+         "url": "https://openstax.org/books/biology-2e/pages/6-4-atp-adenosine-triphosphate"
+        },
+        {
+         "label": "OpenStax Biology 2e, 7.1 Energy in Living Systems",
+         "url": "https://openstax.org/books/biology-2e/pages/7-1-energy-in-living-systems"
+        },
+        {
+         "label": "OpenStax Chemistry 2e, 16.4 Free Energy",
+         "url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1D.carbohydrates",
+       "name": "Carbohydrates: structure, configuration, anomers, and glycosidic bonds",
+       "tags": [
+        "BC",
+        "OC"
+       ],
+       "know": [
+        "Monosaccharides are aldoses or ketoses with three to seven carbons (triose, pentose, hexose); glucose, galactose, and mannose are aldohexoses, fructose a ketohexose, ribose an aldopentose. In a Fischer projection the configuration of the stereocentre farthest from the carbonyl sets D or L; almost all natural sugars are D. Epimers differ at one stereocentre (glucose and galactose at C4, glucose and mannose at C2).",
+        "In water a hydroxyl adds to the sugar's own carbonyl to form a cyclic hemiacetal: a six-membered pyranose for glucose (the chair with all substituents equatorial in β-D-glucose) or a five-membered furanose for fructose and ribose. Ring closure creates the anomeric carbon: α has the new OH on the opposite side from the CH₂OH (down in a Haworth projection), β on the same side (up). Anomers interconvert through the open form (mutarotation), and the open aldehyde makes glucose a reducing sugar.",
+        "A glycosidic bond is an acetal between an anomeric carbon and another hydroxyl; it is hydrolysed by acid or by specific enzymes, not by base. Disaccharides: maltose (glucose α-1,4 glucose), lactose (galactose β-1,4 glucose), sucrose (glucose α-1 to fructose β-2, so both anomeric carbons are tied up and it is non-reducing). Polysaccharides: starch (amylose α-1,4; amylopectin with α-1,6 branches), glycogen (like amylopectin but more branched, in liver and muscle), cellulose (β-1,4, indigestible by humans), and chitin."
+       ],
+       "equations": [],
+       "confusions": [
+        "α/β describe the anomeric carbon; D/L describe the stereocentre farthest from the carbonyl. Lactase cuts a β bond, so lactose is digestible even though cellulose is not."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 3.2 Carbohydrates",
+         "url": "https://openstax.org/books/biology-2e/pages/3-2-carbohydrates"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 25.5 Cyclic Structures of Monosaccharides: Anomers",
+         "url": "https://openstax.org/books/organic-chemistry/pages/25-5-cyclic-structures-of-monosaccharides-anomers"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 25.8 Disaccharides",
+         "url": "https://openstax.org/books/organic-chemistry/pages/25-8-disaccharides"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 25.9 Polysaccharides and Their Synthesis",
+         "url": "https://openstax.org/books/organic-chemistry/pages/25-9-polysaccharides-and-their-synthesis"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1D.glycolysis-gluconeogenesis-ppp",
+       "name": "Glycolysis, fermentation, gluconeogenesis, and the pentose phosphate pathway",
+       "tags": [
+        "BIO",
+        "BC"
+       ],
+       "know": [
+        "Glycolysis, in the cytosol of every cell, converts one glucose to two pyruvate with a net gain of 2 ATP (4 made by substrate-level phosphorylation, 2 spent) and 2 NADH. The investment phase traps glucose (hexokinase; glucokinase in liver), isomerizes it, and commits it at phosphofructokinase-1, the rate-limiting step; the payoff phase splits fructose 1,6-bisphosphate (aldolase) into two triose phosphates that are oxidized (NADH) and yield ATP at phosphoglycerate kinase and pyruvate kinase. Feeder pathways bring in other sugars: glycogen and starch are broken to glucose 1-phosphate or glucose, fructose and galactose enter after conversion.",
+        "Without oxygen, NADH must be reoxidized so glycolysis can continue: fermentation reduces pyruvate to lactate (muscle, red blood cells) or to ethanol and CO₂ (yeast), with no further ATP. With oxygen, pyruvate enters mitochondria for the citric acid cycle and respiration yields about 30–32 ATP per glucose in total (counting 2.5 ATP per NADH and 1.5 per FADH₂; older texts, including OpenStax Anatomy and Physiology, count 3 and 2 and quote 36–38).",
+        "Gluconeogenesis, mainly in liver (and kidney), makes glucose from lactate, glycerol, and glucogenic amino acids by reversing glycolysis except at its three irreversible steps, which are bypassed by pyruvate carboxylase and PEP carboxykinase, fructose 1,6-bisphosphatase, and glucose 6-phosphatase; it costs about 6 ATP equivalents per glucose. The pentose phosphate pathway (cytosol) oxidizes glucose 6-phosphate, with glucose 6-phosphate dehydrogenase rate-limiting, to make NADPH for biosynthesis and antioxidant defence and ribose 5-phosphate for nucleotides; its non-oxidative phase interconverts sugar phosphates and returns carbons to glycolysis."
+       ],
+       "equations": [
+        "\\text{glucose} + 2\\,\\mathrm{NAD^+} + 2\\,\\mathrm{ADP} + 2\\,\\mathrm{P_i} \\rightarrow 2\\,\\text{pyruvate} + 2\\,\\mathrm{NADH} + 2\\,\\mathrm{H^+} + 2\\,\\mathrm{ATP} + 2\\,\\mathrm{H_2O}"
+       ],
+       "confusions": [
+        "Fermentation makes no extra ATP; its job is to regenerate NAD⁺. Muscle lacks glucose 6-phosphatase, so its glycogen feeds only itself, while liver glycogen feeds the blood."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 7.2 Glycolysis",
+         "url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis"
+        },
+        {
+         "label": "OpenStax Biology 2e, 7.5 Metabolism without Oxygen",
+         "url": "https://openstax.org/books/biology-2e/pages/7-5-metabolism-without-oxygen"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 24.2 Carbohydrate Metabolism",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/24-2-carbohydrate-metabolism"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 29.5 Catabolism of Carbohydrates: Glycolysis",
+         "url": "https://openstax.org/books/organic-chemistry/pages/29-5-catabolism-of-carbohydrates-glycolysis"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 29.8 Carbohydrate Biosynthesis: Gluconeogenesis",
+         "url": "https://openstax.org/books/organic-chemistry/pages/29-8-carbohydrate-biosynthesis-gluconeogenesis"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1D.metabolic-regulation",
+       "name": "Principles of metabolic regulation: glycolysis, gluconeogenesis, and glycogen",
+       "tags": [
+        "BC",
+        "BIO"
+       ],
+       "know": [
+        "Metabolism runs at a dynamic steady state: concentrations of intermediates stay roughly constant while flux through a pathway changes. Control sits at irreversible, committed steps, which are regulated allosterically (within seconds), by covalent modification such as phosphorylation (minutes), and by hormones changing enzyme amounts (hours). Opposed pathways are reciprocally regulated so that both do not run at once (a futile cycle).",
+        "Glycolysis versus gluconeogenesis: phosphofructokinase-1 is activated by AMP and fructose 2,6-bisphosphate and inhibited by ATP and citrate, while fructose 1,6-bisphosphatase is inhibited by AMP and fructose 2,6-bisphosphate; pyruvate kinase is inhibited by ATP and alanine and, in liver, by glucagon-driven phosphorylation; hexokinase is inhibited by its product glucose 6-phosphate. Insulin raises fructose 2,6-bisphosphate and favours glycolysis; glucagon lowers it and favours gluconeogenesis.",
+        "Glycogen: glycogen synthase builds α-1,4 chains from UDP-glucose and a branching enzyme adds α-1,6 branches; glycogen phosphorylase removes glucose 1-phosphate from the ends and a debranching enzyme handles the branches. Phosphorylation (triggered by glucagon in liver and epinephrine in muscle through cAMP and protein kinase A) activates phosphorylase and inactivates synthase; insulin does the reverse through dephosphorylation. Allosteric signals add local control: AMP activates muscle phosphorylase, glucose 6-phosphate activates synthase, and glucose inhibits liver phosphorylase. Metabolic control analysis quantifies how much each enzyme controls flux; control is usually shared rather than held by one 'rate-limiting' enzyme."
+       ],
+       "equations": [],
+       "confusions": [
+        "Epinephrine mobilizes muscle glycogen for the muscle's own use; glucagon acts on liver (muscle lacks glucagon receptors) to raise blood glucose."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 7.7 Regulation of Cellular Respiration",
+         "url": "https://openstax.org/books/biology-2e/pages/7-7-regulation-of-cellular-respiration"
+        },
+        {
+         "label": "Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 15.2 Glycogenesis",
+         "url": "https://bio.libretexts.org/Bookshelves/Biochemistry/Fundamentals_of_Biochemistry_(Jakubowski_and_Flatt)/02%3A_Unit_II-_Bioenergetics_and_Metabolism/15%3A_Glucose_Glycogen_and_Their_Metabolic_Regulation/15.02%3A_Glycogenesis"
+        },
+        {
+         "label": "Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 15.3 Glycogenolysis and its Regulation by Glucagon and Epinephrine Signaling",
+         "url": "https://bio.libretexts.org/Bookshelves/Biochemistry/Fundamentals_of_Biochemistry_(Jakubowski_and_Flatt)/02%3A_Unit_II-_Bioenergetics_and_Metabolism/15%3A_Glucose_Glycogen_and_Their_Metabolic_Regulation/15.03%3A_15.3_Glycogenolyis_and_its_Regulation_by_Glucagon_and_Epinephrine_Signaling"
+        },
+        {
+         "label": "Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 15.4 Regulation of Glycolysis",
+         "url": "https://bio.libretexts.org/Bookshelves/Biochemistry/Fundamentals_of_Biochemistry_(Jakubowski_and_Flatt)/02%3A_Unit_II-_Bioenergetics_and_Metabolism/15%3A_Glucose_Glycogen_and_Their_Metabolic_Regulation/15.04%3A_Regulation_of_Glycolysis"
+        },
+        {
+         "label": "Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 15.5 Regulation of Gluconeogenesis",
+         "url": "https://bio.libretexts.org/Bookshelves/Biochemistry/Fundamentals_of_Biochemistry_(Jakubowski_and_Flatt)/02%3A_Unit_II-_Bioenergetics_and_Metabolism/15%3A_Glucose_Glycogen_and_Their_Metabolic_Regulation/15.05%3A_Regulation_of_Gluconeogenesis"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1D.citric-acid-cycle",
+       "name": "Acetyl-CoA production and the citric acid cycle",
+       "tags": [
+        "BIO",
+        "BC"
+       ],
+       "know": [
+        "Pyruvate enters the mitochondrial matrix and the pyruvate dehydrogenase complex oxidizes it to acetyl-CoA, CO₂, and NADH (using thiamine pyrophosphate, lipoic acid, CoA, FAD, and NAD⁺); the complex is inhibited by its products acetyl-CoA and NADH and by ATP, and by phosphorylation when energy is plentiful. Acetyl-CoA also arrives from fatty acid oxidation and ketogenic amino acids.",
+        "The cycle: acetyl-CoA condenses with oxaloacetate to citrate (citrate synthase), which is isomerized to isocitrate and oxidatively decarboxylated twice (isocitrate dehydrogenase, α-ketoglutarate dehydrogenase) to succinyl-CoA; substrate-level phosphorylation gives GTP (or ATP) as succinate forms, then succinate dehydrogenase (complex II, FAD) gives fumarate, hydration gives malate, and malate dehydrogenase regenerates oxaloacetate. Per acetyl-CoA: 3 NADH, 1 FADH₂, 1 GTP, 2 CO₂; the two carbons lost are not those that just entered.",
+        "Regulation: citrate synthase, isocitrate dehydrogenase, and α-ketoglutarate dehydrogenase are slowed by NADH and ATP and (for isocitrate dehydrogenase) sped by ADP; the cycle needs NAD⁺ regenerated by the electron transport chain, so it stops without oxygen. Per glucose, respiration yields about 30–32 ATP: 2 from glycolysis, 2 from the cycle, and the rest from oxidative phosphorylation of 10 NADH (about 2.5 ATP each) and 2 FADH₂ (about 1.5 each). Intermediates also feed biosynthesis (amino acids, heme, fatty acids via citrate), and anaplerotic reactions such as pyruvate carboxylase refill them."
+       ],
+       "equations": [
+        "\\text{acetyl-CoA} + 3\\,\\mathrm{NAD^+} + \\mathrm{FAD} + \\mathrm{GDP} + \\mathrm{P_i} + 2\\,\\mathrm{H_2O} \\rightarrow 2\\,\\mathrm{CO_2} + 3\\,\\mathrm{NADH} + \\mathrm{FADH_2} + \\mathrm{GTP} + \\mathrm{CoA}"
+       ],
+       "confusions": [
+        "The cycle uses no oxygen directly, yet it is aerobic because NAD⁺ and FAD are regenerated only by the chain that ends at oxygen."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 7.3 Oxidation of Pyruvate and the Citric Acid Cycle",
+         "url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 29.6 Conversion of Pyruvate to Acetyl CoA",
+         "url": "https://openstax.org/books/organic-chemistry/pages/29-6-conversion-of-pyruvate-to-acetyl-coa"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 29.7 The Citric Acid Cycle",
+         "url": "https://openstax.org/books/organic-chemistry/pages/29-7-the-citric-acid-cycle"
+        },
+        {
+         "label": "Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 16.2 Reactions of the Citric Acid Cycle (ATP equivalents per turn)",
+         "url": "https://bio.libretexts.org/Bookshelves/Biochemistry/Fundamentals_of_Biochemistry_(Jakubowski_and_Flatt)/02%3A_Unit_II-_Bioenergetics_and_Metabolism/16%3A_The_Citric_Acid_Cycle/16.02%3A__Reactions_of_the_Citric_Acid_Cycle"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1D.fatty-acid-protein-metabolism",
+       "name": "Metabolism of fatty acids and proteins",
+       "tags": [
+        "BIO",
+        "BC"
+       ],
+       "know": [
+        "Fatty acids are long hydrocarbon chains with a carboxyl end, mostly even-numbered (16–18 carbons), saturated or with cis double bonds. Dietary fat is emulsified by bile salts and hydrolysed by pancreatic lipase in the small intestine, reassembled into triacylglycerols in the intestinal cells, and shipped in chylomicrons through lymph and blood; lipoprotein lipase on capillary walls releases fatty acids to tissues. In fasting, hormone-sensitive lipase in adipose tissue (activated by glucagon and epinephrine, inhibited by insulin) frees fatty acids, which travel bound to albumin.",
+        "Oxidation: fatty acids are activated to acyl-CoA in the cytosol, carried into the mitochondrial matrix by the carnitine shuttle, and shortened by β-oxidation, each round removing two carbons as acetyl-CoA and yielding one FADH₂ and one NADH; palmitate (16 C) gives 8 acetyl-CoA in 7 rounds, about 106 ATP net. Unsaturated fatty acids need an isomerase and a reductase for their double bonds; odd-chain acids end in propionyl-CoA, which enters the cycle as succinyl-CoA. When acetyl-CoA exceeds the cycle's capacity (fasting, uncontrolled diabetes), the liver makes ketone bodies (acetoacetate, β-hydroxybutyrate, acetone) that the brain and muscle can burn.",
+        "Anabolism: fatty acid synthesis runs in the cytosol from acetyl-CoA exported as citrate, with acetyl-CoA carboxylase (rate-limiting; activated by citrate and insulin, inhibited by glucagon and palmitoyl-CoA) making malonyl-CoA and fatty acid synthase adding two carbons per cycle using NADPH; the product is then esterified to glycerol. Lipids and polysaccharides are built without a template, by enzymes that add units in a defined order rather than by copying a sequence. Protein metabolism: amino acids are transaminated (pyridoxal phosphate) to keto acids, the nitrogen is removed by deamination of glutamate and disposed of as urea in the liver, and the carbon skeletons are glucogenic (enter as pyruvate or cycle intermediates), ketogenic (acetyl-CoA; leucine and lysine), or both."
+       ],
+       "equations": [],
+       "confusions": [
+        "β-oxidation and fatty acid synthesis are not reversals of each other: different enzymes, compartments (matrix versus cytosol), carriers (CoA versus acyl carrier protein), and cofactors (NAD⁺/FAD versus NADPH)."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 24.3 Lipid Metabolism",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/24-3-lipid-metabolism"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 24.4 Protein Metabolism",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/24-4-protein-metabolism"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 29.3 Catabolism of Triacylglycerols: β-Oxidation",
+         "url": "https://openstax.org/books/organic-chemistry/pages/29-3-catabolism-of-triacylglycerols-b-oxidation"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 29.4 Biosynthesis of Fatty Acids",
+         "url": "https://openstax.org/books/organic-chemistry/pages/29-4-biosynthesis-of-fatty-acids"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 29.9 Catabolism of Proteins: Deamination",
+         "url": "https://openstax.org/books/organic-chemistry/pages/29-9-catabolism-of-proteins-deamination"
+        },
+        {
+         "label": "OpenStax Biology 2e, 7.6 Connections of Carbohydrate, Protein, and Lipid Metabolic Pathways",
+         "url": "https://openstax.org/books/biology-2e/pages/7-6-connections-of-carbohydrate-protein-and-lipid-metabolic-pathways"
+        },
+        {
+         "label": "Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 17.1 Digestion, Mobilization and Transport of Fats",
+         "url": "https://bio.libretexts.org/Bookshelves/Biochemistry/Fundamentals_of_Biochemistry_(Jakubowski_and_Flatt)/02%3A_Unit_II-_Bioenergetics_and_Metabolism/17%3A_Fatty_Acid_Catabolism/17.01%3A_Digestion_Mobilization_and_Transport_of_Fats"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1D.oxidative-phosphorylation",
+       "name": "Oxidative phosphorylation: the electron transport chain, chemiosmosis, and mitochondria",
+       "tags": [
+        "BIO",
+        "BC"
+       ],
+       "know": [
+        "The electron transport chain in the inner mitochondrial membrane passes electrons from NADH (complex I) and FADH₂ (complex II and other flavoproteins) to ubiquinone, then through complex III, cytochrome c, and complex IV (cytochrome c oxidase) to oxygen, forming water. Complexes I, III, and IV pump protons from the matrix into the intermembrane space; complex II does not, which is why FADH₂ yields less ATP. Carriers: NADH and NADPH (soluble, two-electron), flavoproteins (FMN/FAD), iron–sulfur centres and cytochromes (heme iron, one electron at a time), and lipid-soluble ubiquinone.",
+        "Chemiosmosis: the proton gradient plus the membrane potential form a proton-motive force; protons flow back through ATP synthase (F₀ channel, F₁ catalytic head) and turn its rotor to make ATP from ADP and Pi, which is exported in exchange for ADP. Cytosolic NADH from glycolysis enters by the malate–aspartate shuttle (as NADH) or the glycerol phosphate shuttle (as FADH₂). Uncouplers such as 2,4-dinitrophenol and the natural protein thermogenin let protons leak back, releasing the energy as heat instead of ATP; cyanide and carbon monoxide block complex IV, oligomycin blocks ATP synthase.",
+        "Regulation is by demand: the rate is set by ADP availability (respiratory control), so a resting cell with high ATP and low ADP slows the chain, which backs up NADH and slows the cycle too. Mitochondria have their own circular DNA and ribosomes and divide independently (evidence of endosymbiotic origin). Electrons that leak to oxygen form superoxide and other reactive oxygen species, which are detoxified by superoxide dismutase, catalase, and glutathione; oxidative stress damages lipids, proteins, and DNA. Mitochondria also launch apoptosis: when the outer membrane is permeabilized, cytochrome c leaks into the cytosol and activates caspases."
+       ],
+       "equations": [
+        "\\mathrm{NADH} + \\mathrm{H^+} + \\tfrac12\\mathrm{O_2} \\rightarrow \\mathrm{NAD^+} + \\mathrm{H_2O}\\qquad \\Delta E^{\\circ\\prime} \\approx 1.14\\ \\mathrm{V}"
+       ],
+       "confusions": [
+        "The chain itself makes no ATP; it builds the proton gradient, and ATP synthase spends it. Oxygen is consumed at complex IV, not at the synthase."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 7.4 Oxidative Phosphorylation",
+         "url": "https://openstax.org/books/biology-2e/pages/7-4-oxidative-phosphorylation"
+        },
+        {
+         "label": "OpenStax Biology 2e, 7.7 Regulation of Cellular Respiration",
+         "url": "https://openstax.org/books/biology-2e/pages/7-7-regulation-of-cellular-respiration"
+        },
+        {
+         "label": "OpenStax Biology 2e, 4.3 Eukaryotic Cells (mitochondria)",
+         "url": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "1D.hormonal-regulation",
+       "name": "Hormonal regulation and integration of metabolism",
+       "tags": [
+        "BC"
+       ],
+       "know": [
+        "Hormones coordinate metabolism across tissues. Insulin (from pancreatic β cells after a meal) is a peptide hormone acting through a receptor tyrosine kinase: it drives glucose uptake into muscle and fat (GLUT4), glycogen and fat synthesis, and protein synthesis, and it suppresses gluconeogenesis and lipolysis. Glucagon (α cells, in fasting) acts through a G protein-coupled receptor and cAMP to raise blood glucose by glycogen breakdown and gluconeogenesis in liver and to release fatty acids from fat. Epinephrine adds the stress response (muscle glycogenolysis, lipolysis); cortisol raises gluconeogenesis and protein breakdown over hours; thyroid hormone sets the basal metabolic rate.",
+        "Tissue-specific metabolism: the liver buffers blood glucose (glycogen, gluconeogenesis, glucose 6-phosphatase), makes ketone bodies, and synthesizes lipoproteins and urea; skeletal muscle stores glycogen for its own use and burns fatty acids and ketones, releasing lactate and alanine; adipose tissue stores and releases fat; the brain depends on glucose and, after days of fasting, on ketone bodies; red blood cells use glycolysis only. Fed state: insulin stores fuel. Fasting: glucagon mobilizes glycogen, then gluconeogenesis and fat; after several days ketones spare protein.",
+        "Body mass reflects energy balance over time. Leptin from adipose tissue signals fat stores to the hypothalamus and lowers intake; ghrelin from the stomach raises it; insulin and gut peptides modulate both. Obesity (body mass index of 30 or more) usually involves leptin resistance and a defended set point rather than leptin deficiency, and it raises the risk of insulin resistance, type 2 diabetes, and cardiovascular disease."
+       ],
+       "equations": [],
+       "confusions": [
+        "Insulin and glucagon act on the same liver enzymes in opposite directions through phosphorylation state; muscle responds to epinephrine, not glucagon."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 24.5 Metabolic States of the Body",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/24-5-metabolic-states-of-the-body"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 17.9 The Endocrine Pancreas",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-9-the-endocrine-pancreas"
+        },
+        {
+         "label": "OpenStax Biology 2e, 37.3 Regulation of Body Processes",
+         "url": "https://openstax.org/books/biology-2e/pages/37-3-regulation-of-body-processes"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 24.6 Energy and Heat Balance",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/24-6-energy-and-heat-balance"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 17.10 Organs with Secondary Endocrine Functions (leptin)",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-10-organs-with-secondary-endocrine-functions"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 24.7 Nutrition and Diet (BMI)",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/24-7-nutrition-and-diet"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "2",
+   "name": "Assemblies of molecules, cells, and organs",
+   "summary": "Foundational Concept 2 (AAMC): cells as organized assemblies. Membranes, organelles, and tissues; prokaryotes and viruses; and how cells divide, differentiate, and specialize.",
+   "categories": [
+    {
+     "id": "2A",
+     "name": "Assemblies of molecules, cells, and tissues",
+     "summary": "The cell as a structure: the plasma membrane and how things cross it, the organelles of eukaryotic cells, the cytoskeleton, and how cells join into epithelial and connective tissue.",
+     "topics": [
+      {
+       "id": "2A.plasma-membrane",
+       "name": "Plasma membrane: composition, fluid mosaic model, and membrane dynamics",
+       "tags": [
+        "BIO",
+        "BC",
+        "OC"
+       ],
+       "know": [
+        "The plasma membrane contains the cell and controls what enters and leaves. It is a bilayer of amphipathic lipids: phospholipids (glycerophospholipids with a phosphate head group, and sphingolipids) with their polar heads facing water and tails inward; cholesterol, a steroid, wedged between them; and glycolipids on the outer face. Waxes are not membrane components but related esters that waterproof surfaces.",
+        "The fluid mosaic model: proteins float in and on the lipid bilayer. Integral proteins span it (channels, carriers, receptors, pumps) with hydrophobic α-helices; peripheral proteins sit on either surface; carbohydrates attached to lipids and proteins form the glycocalyx used in recognition. The two leaflets differ in composition (asymmetry).",
+        "Membrane dynamics: lipids diffuse rapidly sideways but rarely flip between leaflets; fluidity rises with temperature and with unsaturated (kinked) fatty acids and falls with saturated ones, while cholesterol moderates it in both directions (stiffening a warm membrane, keeping a cold one from freezing). Membranes grow, fuse, and bud, which underlies vesicle traffic, endocytosis, and exocytosis."
+       ],
+       "equations": [],
+       "confusions": [
+        "Cholesterol makes membranes less fluid when warm and more fluid when cold; it is a buffer of fluidity, not simply a stiffener."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 5.1 Components and Structure",
+         "url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure"
+        },
+        {
+         "label": "OpenStax Biology 2e, 3.3 Lipids",
+         "url": "https://openstax.org/books/biology-2e/pages/3-3-lipids"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "2A.membrane-transport",
+       "name": "Solute transport across membranes, membrane potential, receptors, and vesicle traffic",
+       "tags": [
+        "BIO",
+        "BC",
+        "GC"
+       ],
+       "know": [
+        "Thermodynamics: a solute moves spontaneously down its electrochemical gradient (concentration and, for ions, charge); moving it up the gradient costs energy. Osmosis is the diffusion of water across a selectively permeable membrane toward the side with more solute; osmotic pressure is a colligative property (it depends on the number of dissolved particles, π = iMRT), so cells shrink in hypertonic and swell or burst in hypotonic solutions. Passive transport needs no energy: simple diffusion of small nonpolar molecules through the bilayer, and facilitated diffusion through channels (ion-selective pores, some gated) and carriers (which bind and flip, saturable, as GLUT transporters do for glucose).",
+        "Active transport uses energy to move solutes against their gradients: primary active transport spends ATP directly (the Na⁺/K⁺-ATPase pumps 3 Na⁺ out and 2 K⁺ in per ATP, keeping Na⁺ low and K⁺ high inside and helping set the membrane potential); secondary active transport couples a solute to the downhill flow of Na⁺ or H⁺ (symport of glucose with Na⁺ in the gut, antiport of Ca²⁺ against Na⁺). The resting membrane potential (about −70 mV in neurons, inside negative) arises mainly from K⁺ leaking out through open channels and from the pump; the Nernst equation gives each ion's equilibrium potential.",
+        "Membrane receptors bind extracellular ligands and change cell behaviour (ion-channel receptors, G protein-coupled receptors, receptor kinases). Bulk transport moves material in vesicles: endocytosis (phagocytosis of particles, pinocytosis of fluid, and receptor-mediated endocytosis of specific ligands such as LDL through clathrin-coated pits) and exocytosis (secretion by fusion of vesicles with the membrane), both requiring ATP."
+       ],
+       "equations": [
+        "\\pi = iMRT\\ \\text{(osmotic pressure)}",
+        "E_{ion} = \\dfrac{RT}{zF}\\ln\\dfrac{[\\text{ion}]_{out}}{[\\text{ion}]_{in}} \\approx \\dfrac{61\\ \\mathrm{mV}}{z}\\log_{10}\\dfrac{[\\text{ion}]_{out}}{[\\text{ion}]_{in}}\\ \\text{(37 °C)}"
+       ],
+       "confusions": [
+        "Facilitated diffusion is passive even though it uses a protein; the test is whether the solute moves down its gradient. Tonicity depends on non-penetrating solutes only."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 5.2 Passive Transport",
+         "url": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport"
+        },
+        {
+         "label": "OpenStax Biology 2e, 5.3 Active Transport",
+         "url": "https://openstax.org/books/biology-2e/pages/5-3-active-transport"
+        },
+        {
+         "label": "OpenStax Biology 2e, 5.4 Bulk Transport",
+         "url": "https://openstax.org/books/biology-2e/pages/5-4-bulk-transport"
+        },
+        {
+         "label": "OpenStax Chemistry 2e, 11.4 Colligative Properties",
+         "url": "https://openstax.org/books/chemistry-2e/pages/11-4-colligative-properties"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 12.4 The Action Potential (membrane potential)",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/12-4-the-action-potential"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "2A.cell-junctions",
+       "name": "Intercellular junctions: gap junctions, tight junctions, and desmosomes",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Tight junctions seal neighbouring epithelial cells together near their apical surface so that nothing passes between them; they force solutes to cross through the cells (gut lining, blood–brain barrier, bladder) and keep apical and basolateral membrane proteins apart.",
+        "Desmosomes are rivet-like anchors: cadherin proteins link to intermediate filaments (keratin) inside each cell, giving mechanical strength to tissues under stress such as skin and heart muscle; hemidesmosomes anchor cells to the basement membrane.",
+        "Gap junctions are channels made of connexin proteins that join the cytoplasm of adjacent cells, letting ions and small molecules pass directly; they synchronize cardiac and smooth muscle and couple cells electrically and metabolically. Plant cells use plasmodesmata for the same purpose."
+       ],
+       "equations": [],
+       "confusions": [
+        "Tight junctions block passage between cells; gap junctions permit passage between cells; desmosomes only hold cells together."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 4.6 Connections between Cells and Cellular Activities",
+         "url": "https://openstax.org/books/biology-2e/pages/4-6-connections-between-cells-and-cellular-activities"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "2A.organelles",
+       "name": "Membrane-bound organelles and the defining features of eukaryotic cells",
+       "tags": [
+        "BIO",
+        "BC"
+       ],
+       "know": [
+        "Eukaryotic cells are defined by a membrane-bound nucleus, internal membrane-bound organelles that compartmentalize functions, and division by mitosis. The nucleus holds the chromosomes, separating transcription from translation; the nucleolus inside it assembles ribosomal subunits; the double-membraned nuclear envelope is pierced by nuclear pores that regulate traffic of RNA and proteins.",
+        "Mitochondria make most of the cell's ATP: a smooth outer membrane, an inner membrane folded into cristae that carries the electron transport chain and ATP synthase, and a matrix with the citric acid cycle enzymes; they have their own circular DNA and ribosomes and replicate by division. Lysosomes are acidic vesicles of hydrolytic enzymes that digest worn organelles and material taken in by endocytosis. Peroxisomes break down fatty acids and detoxify compounds, producing and then destroying hydrogen peroxide with catalase.",
+        "The endoplasmic reticulum is a network of membranes continuous with the nuclear envelope: the rough ER, studded with ribosomes, folds and modifies secreted and membrane proteins; the smooth ER makes lipids and steroids, detoxifies drugs, and stores calcium. The Golgi apparatus receives vesicles from the ER, modifies proteins (glycosylation), sorts them, and packages them into vesicles for secretion, the membrane, or lysosomes. Together these form the endomembrane system."
+       ],
+       "equations": [],
+       "confusions": [
+        "Mitochondria and the nucleus have double membranes; the ER is a single membrane folded into sheets and tubes (its lumen is one continuous space)."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 4.3 Eukaryotic Cells",
+         "url": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells"
+        },
+        {
+         "label": "OpenStax Biology 2e, 4.4 The Endomembrane System and Proteins",
+         "url": "https://openstax.org/books/biology-2e/pages/4-4-the-endomembrane-system-and-proteins"
+        },
+        {
+         "label": "OpenStax Microbiology, 3.4 Unique Characteristics of Eukaryotic Cells (peroxisomes, catalase)",
+         "url": "https://openstax.org/books/microbiology/pages/3-4-unique-characteristics-of-eukaryotic-cells"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "2A.cytoskeleton",
+       "name": "The cytoskeleton: microfilaments, microtubules, intermediate filaments, cilia, flagella, and centrioles",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "The cytoskeleton supports the cell, holds organelles in place, and powers movement. Microfilaments are thin, flexible polymers of actin: they form the cell cortex, drive cell crawling and the contractile ring that pinches a dividing cell in two (cleavage), and with myosin produce contraction in muscle and elsewhere.",
+        "Microtubules are hollow tubes of α- and β-tubulin dimers with a dynamic plus end; they resist compression, form the tracks for kinesin and dynein transport and the mitotic spindle, and are nucleated at the microtubule-organizing centre (centrosome), which in animal cells contains a pair of centrioles (nine triplets of microtubules). Cilia and flagella are microtubule bundles in a 9 + 2 arrangement bent by dynein; cilia line the airways and oviducts, and a flagellum propels sperm. Drugs that disrupt microtubules (colchicine, taxanes, vinca alkaloids) stop mitosis.",
+        "Intermediate filaments (keratins, lamins, neurofilaments, vimentin) are rope-like and permanent; they give tensile strength, anchor desmosomes, and form the nuclear lamina."
+       ],
+       "equations": [],
+       "confusions": [
+        "Bacterial flagella are rotating protein filaments driven by a proton gradient; eukaryotic flagella are microtubule-based and bend. They share only the name."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 4.5 The Cytoskeleton",
+         "url": "https://openstax.org/books/biology-2e/pages/4-5-the-cytoskeleton"
+        },
+        {
+         "label": "OpenStax Microbiology, 3.4 Unique Characteristics of Eukaryotic Cells (centrioles, flagella, nuclear lamina)",
+         "url": "https://openstax.org/books/microbiology/pages/3-4-unique-characteristics-of-eukaryotic-cells"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "2A.tissues",
+       "name": "Tissues formed from eukaryotic cells: epithelial and connective tissue",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Epithelial tissue covers surfaces and lines cavities and glands. Its cells are tightly packed, polarized (an apical surface facing the lumen or outside, a basal surface attached to a basement membrane), avascular, and quickly renewed. It is classified by layers (simple: one layer; stratified: several; pseudostratified) and by shape (squamous, cuboidal, columnar): simple squamous for exchange (alveoli, capillaries), simple columnar for absorption and secretion (gut), stratified squamous for protection (skin, oesophagus), transitional for stretch (bladder). Glands are epithelial: exocrine glands secrete through ducts, endocrine glands into blood.",
+        "Connective tissue binds, supports, and protects; it has few cells in a lot of extracellular matrix, which the cells secrete: ground substance plus fibres (collagen for strength, elastin for recoil, reticular fibres for scaffolding). Cell types include fibroblasts (make the matrix), adipocytes (fat), chondrocytes (cartilage), osteocytes (bone), and the blood cells; macrophages and mast cells patrol it.",
+        "Types: loose connective tissue (areolar, adipose, reticular), dense connective tissue (tendons, ligaments, dermis), cartilage (hyaline, elastic, fibrocartilage), bone, and blood (a connective tissue whose matrix is plasma). Muscle and nervous tissue are the other two primary tissue types."
+       ],
+       "equations": [],
+       "confusions": [
+        "Epithelium has no blood vessels of its own and is fed by diffusion from the connective tissue beneath; most connective tissue is well supplied, though cartilage has no vessels and tendons and ligaments few."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 33.2 Animal Primary Tissues",
+         "url": "https://openstax.org/books/biology-2e/pages/33-2-animal-primary-tissues"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 4.2 Epithelial Tissue",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/4-2-epithelial-tissue"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 4.3 Connective Tissue Supports and Protects",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/4-3-connective-tissue-supports-and-protects"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      }
+     ]
+    },
+    {
+     "id": "2B",
+     "name": "Prokaryotes and viruses",
+     "summary": "Life without a nucleus, and the particles that borrow cells: cell theory, the structure, growth, and genetics of bacteria and archaea, and the structure and life cycles of viruses.",
+     "topics": [
+      {
+       "id": "2B.cell-theory",
+       "name": "Cell theory: history and impact",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Hooke named cells from cork in 1665; Leeuwenhoek saw living microbes with his lenses; Schleiden (plants) and Schwann (animals) concluded in the 1830s that all organisms are made of cells; Virchow added in the 1850s that every cell comes from a pre-existing cell, which, with Pasteur's experiments against spontaneous generation, completed the theory.",
+        "Modern cell theory: all living things are made of one or more cells; the cell is the basic unit of structure and function; and cells arise only from division of existing cells. Later additions: cells carry hereditary information in DNA, have similar chemistry and metabolism, and energy flow occurs within them.",
+        "Impact: it unified biology across plants, animals, and microbes, made disease a problem of cells (cellular pathology, germ theory), and underlies modern cell biology, histology, and cancer biology. Viruses, which are not cells and cannot reproduce alone, sit outside the theory."
+       ],
+       "equations": [],
+       "confusions": [
+        "Cell theory says cells come from cells; it does not explain the origin of the first cell, which is a separate question."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 4.1 Studying Cells",
+         "url": "https://openstax.org/books/biology-2e/pages/4-1-studying-cells"
+        },
+        {
+         "label": "OpenStax Microbiology, 3.2 Foundations of Modern Cell Theory",
+         "url": "https://openstax.org/books/microbiology/pages/3-2-foundations-of-modern-cell-theory"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "2B.prokaryote-structure",
+       "name": "Classification and structure of prokaryotic cells",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Prokaryotes form two domains. Bacteria have peptidoglycan cell walls and ester-linked membrane lipids; Archaea have different walls (no peptidoglycan), ether-linked lipids, and transcription machinery closer to eukaryotes, and many live in extreme environments. Both lack a nucleus and membrane-bound organelles, keep their circular chromosome in a nucleoid, use 70S ribosomes, and divide by binary fission rather than mitosis.",
+        "Bacteria are classified by shape: cocci (spheres, in pairs, chains, or clusters), bacilli (rods), and spirilla or spirochetes (spirals). The cell wall of peptidoglycan protects against osmotic lysis; Gram-positive bacteria have a thick peptidoglycan layer that retains the crystal violet stain, Gram-negative bacteria have a thin layer plus an outer membrane with lipopolysaccharide (endotoxin). Capsules, pili (attachment and conjugation), and endospores (dormant, heat-resistant forms) are found in some species.",
+        "Flagella are rigid helical filaments of flagellin rotated by a motor in the membrane that is powered by the proton-motive force, not ATP; reversing the motor changes swimming from a straight run to a tumble."
+       ],
+       "equations": [],
+       "confusions": [
+        "Prokaryotes lack membrane-bound organelles but not structure: they have a cytoskeleton, a nucleoid, and sometimes internal membranes for photosynthesis."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 4.2 Prokaryotic Cells",
+         "url": "https://openstax.org/books/biology-2e/pages/4-2-prokaryotic-cells"
+        },
+        {
+         "label": "OpenStax Biology 2e, 22.2 Structure of Prokaryotes: Bacteria and Archaea",
+         "url": "https://openstax.org/books/biology-2e/pages/22-2-structure-of-prokaryotes-bacteria-and-archaea"
+        },
+        {
+         "label": "OpenStax Microbiology, 3.3 Unique Characteristics of Prokaryotic Cells",
+         "url": "https://openstax.org/books/microbiology/pages/3-3-unique-characteristics-of-prokaryotic-cells"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "2B.prokaryote-growth",
+       "name": "Growth and physiology of prokaryotic cells",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Bacteria reproduce by binary fission: the chromosome replicates from its single origin, the copies move apart, and the cell pinches in two, giving exponential growth (the population doubles each generation time, as short as 20 minutes). A batch culture passes through lag, exponential (log), stationary (nutrients exhausted, waste accumulates), and death phases.",
+        "Oxygen relationships: obligate aerobes need it, obligate anaerobes are killed by it, facultative anaerobes use it when available and ferment otherwise, and aerotolerant and microaerophilic organisms sit between. Lifestyles range from free-living to symbiotic (mutualists in the gut make vitamin K and digest fibre) and parasitic (pathogens). Chemotaxis: bacteria swim toward attractants and away from repellents by biasing the run-and-tumble pattern, lengthening runs when conditions improve.",
+        "Bacteria adapt genetically fast because of large populations, short generations, and horizontal gene transfer. Antibiotic resistance arises by mutation (altered targets, pumps that expel the drug, enzymes such as β-lactamase that destroy it) and spreads on plasmids; selection by antibiotic use enriches resistant strains."
+       ],
+       "equations": [
+        "N_t = N_0 \\times 2^{n}\\ \\ (n = \\text{number of generations})"
+       ],
+       "confusions": [
+        "Exponential growth is a phase, not a permanent state; in stationary phase division and death balance."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Microbiology, 9.1 How Microbes Grow",
+         "url": "https://openstax.org/books/microbiology/pages/9-1-how-microbes-grow"
+        },
+        {
+         "label": "OpenStax Microbiology, 9.2 Oxygen Requirements for Microbial Growth",
+         "url": "https://openstax.org/books/microbiology/pages/9-2-oxygen-requirements-for-microbial-growth"
+        },
+        {
+         "label": "OpenStax Biology 2e, 10.5 Prokaryotic Cell Division",
+         "url": "https://openstax.org/books/biology-2e/pages/10-5-prokaryotic-cell-division"
+        },
+        {
+         "label": "OpenStax Biology 2e, 22.4 Bacterial Diseases in Humans (antibiotic resistance)",
+         "url": "https://openstax.org/books/biology-2e/pages/22-4-bacterial-diseases-in-humans"
+        },
+        {
+         "label": "OpenStax Microbiology, 14.5 Drug Resistance (mechanisms)",
+         "url": "https://openstax.org/books/microbiology/pages/14-5-drug-resistance"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 23.5 The Small and Large Intestines (gut bacteria and vitamin K)",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-5-the-small-and-large-intestines"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "2B.prokaryote-genetics",
+       "name": "Genetics of prokaryotic cells: plasmids, transformation, conjugation, and transposons",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Besides the chromosome, bacteria carry plasmids, small circular DNA molecules that replicate independently and often carry genes for antibiotic resistance, toxins, or conjugation. Genes move between cells by three routes of horizontal transfer, and recombination then incorporates the new DNA into the chromosome.",
+        "Transformation: a competent cell takes up naked DNA from its surroundings (Griffith's pneumococci; used in the lab to insert plasmids). Conjugation: a donor carrying the F (fertility) plasmid builds a pilus to a recipient and transfers a copy of the plasmid, or, if F is integrated into the chromosome (an Hfr strain), part of the chromosome. Transduction: a bacteriophage carries bacterial DNA from one cell to another.",
+        "Transposons are mobile DNA segments that cut or copy themselves into new positions using a transposase, often carrying resistance genes between plasmids and chromosomes; they also exist in eukaryotic genomes, where they make up a large share of the DNA."
+       ],
+       "equations": [],
+       "confusions": [
+        "Conjugation is not sexual reproduction: no new cell is formed, and transfer is one-way from donor to recipient."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Microbiology, 11.6 How Asexual Prokaryotes Achieve Genetic Diversity",
+         "url": "https://openstax.org/books/microbiology/pages/11-6-how-asexual-prokaryotes-achieve-genetic-diversity"
+        },
+        {
+         "label": "OpenStax Biology 2e, 22.1 Prokaryotic Diversity",
+         "url": "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "2B.virus-structure",
+       "name": "Virus structure",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "A virus is a genome (DNA or RNA, single- or double-stranded, linear or circular) packed in a protein coat, the capsid, built from repeating capsomere subunits in helical or icosahedral form; some viruses add an envelope taken from the host membrane studded with viral glycoproteins used for attachment. Viruses have no ribosomes, no metabolism, and no organelles, so they cannot reproduce outside a host cell.",
+        "Size: most are about 20–250 nm (a few giant viruses are larger), far smaller than bacteria (roughly 0.5–5 µm) and eukaryotic cells (10–100 µm), so they pass through filters that trap bacteria and are seen only by electron microscopy.",
+        "A typical bacteriophage has an icosahedral head holding double-stranded DNA, a tail sheath that contracts to inject the genome, and tail fibres that recognize receptors on the bacterial surface. Classification uses genome type and replication strategy (the Baltimore classes), capsid shape, and the presence of an envelope."
+       ],
+       "equations": [],
+       "confusions": [
+        "Enveloped viruses are more fragile (soap and drying destroy the envelope) but better at hiding from immunity; naked viruses survive longer on surfaces."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 21.1 Viral Evolution, Morphology, and Classification",
+         "url": "https://openstax.org/books/biology-2e/pages/21-1-viral-evolution-morphology-and-classification"
+        },
+        {
+         "label": "OpenStax Microbiology, 6.1 Viruses",
+         "url": "https://openstax.org/books/microbiology/pages/6-1-viruses"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "2B.viral-life-cycle",
+       "name": "Viral life cycles, transduction, retroviruses, prions, and viroids",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Viruses are obligate intracellular parasites that replicate only inside a specific host cell. The general cycle: attachment to a receptor on the host surface (which sets the host range), penetration (phage injection; animal viruses by endocytosis or envelope fusion), uncoating, replication of the genome and synthesis of viral proteins using the host's ribosomes, enzymes, and energy, self-assembly of new particles, and release by lysis (naked viruses) or budding (enveloped viruses, which take their envelope on the way out).",
+        "Phages follow a lytic cycle (replicate and burst the cell) or a lysogenic cycle (integrate as a prophage and replicate passively with the host until induced). Transduction: a phage accidentally packages host DNA and delivers it to the next cell, either random fragments (generalized) or genes next to the prophage site (specialized). Animal viruses can also persist as latent (herpes) or chronic infections.",
+        "Retroviruses such as HIV carry RNA and reverse transcriptase, which copies the RNA into DNA; integrase inserts that DNA into the host genome as a provirus, where it is transcribed into new genomes and mRNAs; HIV infects CD4 T cells and its reverse transcriptase is error-prone, driving rapid evolution. Subviral agents: viroids are small naked circular RNAs that infect plants without coding proteins; prions are misfolded proteins that convert normal copies to the misfolded form, causing transmissible spongiform encephalopathies such as Creutzfeldt–Jakob disease, and they contain no nucleic acid."
+       ],
+       "equations": [],
+       "confusions": [
+        "Reverse transcription violates the usual DNA → RNA direction but not the central dogma's core claim; it is why antiretroviral drugs can target an enzyme human cells lack."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 21.2 Virus Infections and Hosts",
+         "url": "https://openstax.org/books/biology-2e/pages/21-2-virus-infections-and-hosts"
+        },
+        {
+         "label": "OpenStax Biology 2e, 21.4 Other Acellular Entities: Prions and Viroids",
+         "url": "https://openstax.org/books/biology-2e/pages/21-4-other-acellular-entities-prions-and-viroids"
+        },
+        {
+         "label": "OpenStax Microbiology, 6.2 The Viral Life Cycle",
+         "url": "https://openstax.org/books/microbiology/pages/6-2-the-viral-life-cycle"
+        },
+        {
+         "label": "OpenStax Microbiology, 6.4 Viroids, Virusoids, and Prions",
+         "url": "https://openstax.org/books/microbiology/pages/6-4-viroids-virusoids-and-prions"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      }
+     ]
+    },
+    {
+     "id": "2C",
+     "name": "Cell division, differentiation, specialization",
+     "summary": "Making new cells and new kinds of cells: mitosis and the cell cycle, the signals for growth and death, gametes and reproduction, early embryonic development, and the mechanisms that specialize cells.",
+     "topics": [
+      {
+       "id": "2C.mitosis-cell-cycle",
+       "name": "Mitosis and the cell cycle",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "The cell cycle: G₁ (growth), S (DNA replication, giving each chromosome two sister chromatids joined at the centromere), G₂ (preparation), and M (mitosis plus cytokinesis); G₀ is a resting state outside the cycle in which many differentiated cells (neurons, mature muscle) stay permanently (growth arrest). Interphase is G₁ + S + G₂.",
+        "Mitosis: prophase (chromosomes condense, the spindle forms between the two centrosomes, each with a pair of centrioles and radiating asters), prometaphase (the nuclear envelope breaks down and spindle microtubules attach to the kinetochores at each centromere), metaphase (chromosomes line up on the equator), anaphase (sister chromatids separate and are pulled to opposite poles as kinetochore microtubules shorten and motor proteins act, while the poles move apart), telophase (chromosomes decondense and nuclear envelopes re-form), then cytokinesis by an actin–myosin contractile ring in animals or a cell plate in plants.",
+        "Control: checkpoints at G₁/S (cell size, nutrients, DNA damage; the restriction point past which the cycle is committed), G₂/M (replication complete, damage repaired), and the spindle checkpoint in metaphase (all kinetochores attached). Cyclins rise and fall and activate cyclin-dependent kinases that drive each transition; p53 halts the cycle after DNA damage and triggers apoptosis if repair fails, and Rb blocks entry to S phase until phosphorylated. Cancer cells lose these controls, divide without limit, ignore damage, and evade apoptosis."
+       ],
+       "equations": [],
+       "confusions": [
+        "Chromosome number is counted by centromeres: after S phase a human cell has 46 chromosomes with 92 chromatids; after anaphase each pole briefly has 46 single-chromatid chromosomes."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 10.2 The Cell Cycle",
+         "url": "https://openstax.org/books/biology-2e/pages/10-2-the-cell-cycle"
+        },
+        {
+         "label": "OpenStax Biology 2e, 10.3 Control of the Cell Cycle",
+         "url": "https://openstax.org/books/biology-2e/pages/10-3-control-of-the-cell-cycle"
+        },
+        {
+         "label": "OpenStax Biology 2e, 10.4 Cancer and the Cell Cycle",
+         "url": "https://openstax.org/books/biology-2e/pages/10-4-cancer-and-the-cell-cycle"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "2C.biosignaling",
+       "name": "Biosignaling: oncogenes and apoptosis",
+       "tags": [
+        "BC"
+       ],
+       "know": [
+        "Growth signals reach the nucleus through pathways such as growth factor → receptor tyrosine kinase → Ras → MAP kinase cascade → transcription factors that start the cycle. Proto-oncogenes encode these components; a mutation that keeps one permanently on (constitutively active Ras, amplified Myc, overexpressed receptors) makes it an oncogene, and one such allele is enough to drive growth. Tumour suppressors such as p53 and Rb act as brakes and must lose both copies.",
+        "Apoptosis is programmed cell death: the cell shrinks, its DNA is cut into fragments, the membrane blebs, and the remains are packaged for phagocytes without inflammation, unlike necrosis, in which the cell swells and bursts. It is executed by caspases, proteases activated in a cascade.",
+        "Two routes: the intrinsic (mitochondrial) pathway, triggered by DNA damage, stress, or loss of survival signals, in which Bcl-2 family proteins control release of cytochrome c from mitochondria, which assembles the apoptosome and activates caspase-9; and the extrinsic pathway, in which death ligands (Fas ligand, TNF) bind surface receptors and activate caspase-8. Apoptosis sculpts the embryo (removing webbing between digits), deletes self-reactive lymphocytes, and removes damaged cells; its failure contributes to cancer, and its excess to neurodegeneration."
+       ],
+       "equations": [],
+       "confusions": [
+        "Apoptosis is tidy and silent; necrosis spills contents and inflames. A cell with mutant p53 may survive DNA damage it should have died from."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 9.3 Response to the Signal (apoptosis)",
+         "url": "https://openstax.org/books/biology-2e/pages/9-3-response-to-the-signal"
+        },
+        {
+         "label": "OpenStax Biology 2e, 9.2 Propagation of the Signal",
+         "url": "https://openstax.org/books/biology-2e/pages/9-2-propagation-of-the-signal"
+        },
+        {
+         "label": "OpenStax Biology 2e, 10.4 Cancer and the Cell Cycle",
+         "url": "https://openstax.org/books/biology-2e/pages/10-4-cancer-and-the-cell-cycle"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "2C.reproductive-system",
+       "name": "Gametogenesis, ovum and sperm, and the reproductive sequence",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Gametogenesis is meiosis plus maturation. Spermatogenesis, in the seminiferous tubules from puberty on, continuously turns spermatogonia into sperm, each primary spermatocyte yielding four haploid sperm (one cycle takes about 64 days), supported by Sertoli cells and driven by testosterone from Leydig cells. Oogenesis begins before birth: oogonia enter meiosis I and arrest in prophase I as primary oocytes; from puberty, one completes meiosis I each cycle to give a secondary oocyte (arrested in metaphase II) and a polar body, and meiosis II finishes only if a sperm enters, giving one ovum and more polar bodies.",
+        "Sperm are small, mobile, and numerous: a head with condensed DNA and an acrosome of enzymes, a midpiece packed with mitochondria, and a flagellum. The ovum is large and immobile, with cytoplasm, organelles, and stored nutrients. Each gamete contributes one haploid set of nuclear DNA; the ovum also supplies nearly all the cytoplasm, the mitochondria (hence maternal inheritance of mitochondrial DNA), and the first developmental signals, while the sperm supplies the centriole.",
+        "Reproductive sequence: fertilization in the ampulla of the uterine tube within about a day of ovulation; the zygote divides as it travels and implants in the endometrium about six to seven days later; the embryo develops the placenta and organs over the first eight weeks and grows as a fetus until birth (parturition) at about 38 weeks after fertilization, driven by oxytocin and prostaglandins; lactation follows under prolactin and oxytocin."
+       ],
+       "equations": [],
+       "confusions": [
+        "A woman is born with all her primary oocytes; a man makes new sperm throughout life. The egg released at ovulation has not finished meiosis."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 43.3 Human Reproductive Anatomy and Gametogenesis",
+         "url": "https://openstax.org/books/biology-2e/pages/43-3-human-reproductive-anatomy-and-gametogenesis"
+        },
+        {
+         "label": "OpenStax Biology 2e, 43.5 Human Pregnancy and Birth",
+         "url": "https://openstax.org/books/biology-2e/pages/43-5-human-pregnancy-and-birth"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 28.1 Fertilization",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/28-1-fertilization"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 27.1 Anatomy and Physiology of the Testicular Reproductive System (spermatogenesis, about 64 days)",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-1-anatomy-and-physiology-of-the-testicular-reproductive-system"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 27.2 Anatomy and Physiology of the Ovarian Reproductive System (ampulla, oogenesis)",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "2C.embryogenesis",
+       "name": "Embryogenesis: fertilization, cleavage, blastula, gastrulation, germ layers, and neurulation",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Fertilization: the sperm penetrates the corona radiata, the acrosome reaction digests a path through the zona pellucida, membranes fuse, and the egg blocks further sperm (the fast electrical block and the slower cortical reaction that hardens the zona); the egg completes meiosis II and the pronuclei combine. Cleavage follows: rapid mitotic divisions without growth produce ever smaller cells, a solid morula, and then a hollow blastula (in mammals a blastocyst with an outer trophoblast that becomes the placenta and an inner cell mass that becomes the embryo).",
+        "Gastrulation is the first cell movements: cells migrate inward (in mammals through the primitive streak) to form three germ layers. Ectoderm gives the epidermis, hair, nails, lens, and the whole nervous system; mesoderm gives muscle, bone, cartilage, dermis, blood and vessels, heart, kidneys, and gonads; endoderm gives the lining of the gut and respiratory tract and the liver, pancreas, thyroid, and bladder lining.",
+        "Neurulation: the notochord (mesoderm) induces the overlying ectoderm to thicken into the neural plate, fold, and close into the neural tube, which becomes the brain and spinal cord; failure to close causes spina bifida or anencephaly, and folate reduces the risk. Neural crest cells break away from the tube's margins and migrate to form the peripheral nervous system, melanocytes, the adrenal medulla, and parts of the face. Development depends on environment–gene interaction: teratogens (alcohol, thalidomide, rubella, some drugs) disrupt it most during organ formation in weeks 3–8."
+       ],
+       "equations": [],
+       "confusions": [
+        "The nervous system is ectoderm, not mesoderm, even though it lies deep; the adrenal cortex is mesoderm while the adrenal medulla is neural crest."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 43.6 Fertilization and Early Embryonic Development",
+         "url": "https://openstax.org/books/biology-2e/pages/43-6-fertilization-and-early-embryonic-development"
+        },
+        {
+         "label": "OpenStax Biology 2e, 43.7 Organogenesis and Vertebrate Axis Formation",
+         "url": "https://openstax.org/books/biology-2e/pages/43-7-organogenesis-and-vertebrate-axis-formation"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 28.2 Embryonic Development",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 13.1 The Embryologic Perspective (neural crest derivatives)",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-1-the-embryologic-perspective"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "2C.development-mechanisms",
+       "name": "Mechanisms of development: specialization, communication, stem cells, regeneration, and aging",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "All cells of an embryo carry the same genome; they become different by expressing different genes. Determination commits a cell to a fate before any visible change; differentiation then produces the specialized structure and proteins of a tissue type (muscle, neuron, epithelium). Both are driven by gene regulation: transcription factors switched on by position and signals, with master regulators such as the Hox genes setting the body plan along the head-to-tail axis.",
+        "Cells communicate during development by induction: one tissue secretes signalling molecules (morphogens such as Sonic hedgehog or Wnt) whose concentration gradient tells neighbouring cells what to become; cell–cell contact and adhesion molecules guide cell migration, as when neural crest cells travel to their targets. Programmed cell death removes cells that are no longer needed (interdigital webbing, excess neurons).",
+        "Stem cells divide to renew themselves and to produce differentiated cells. Totipotent cells (the zygote and early blastomeres) can form everything including placenta; pluripotent cells (inner cell mass, embryonic stem cells, and induced pluripotent stem cells reprogrammed from adult cells) can form any body tissue; multipotent adult stem cells (hematopoietic, intestinal) replace cells of one lineage. Regeneration varies across species: planarians regrow whole bodies and salamanders regrow limbs, while humans regenerate liver and blood but not neurons or limbs. Senescence is the loss of division capacity with age, linked to telomere shortening (the Hayflick limit), accumulated DNA damage, and oxidative stress; aging reflects these cellular changes plus declining repair."
+       ],
+       "equations": [],
+       "confusions": [
+        "Differentiation usually does not change the DNA sequence; the differences are in expression. The exceptions, such as antibody gene rearrangement in lymphocytes, are rare."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 3.6 Cellular Differentiation",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/3-6-cellular-differentiation"
+        },
+        {
+         "label": "OpenStax Biology 2e, 43.7 Organogenesis and Vertebrate Axis Formation",
+         "url": "https://openstax.org/books/biology-2e/pages/43-7-organogenesis-and-vertebrate-axis-formation"
+        },
+        {
+         "label": "OpenStax Biology 2e, 27.1 Features of the Animal Kingdom (Hox genes and the body plan)",
+         "url": "https://openstax.org/books/biology-2e/pages/27-1-features-of-the-animal-kingdom"
+        },
+        {
+         "label": "OpenStax Biology 2e, 14.5 DNA Replication in Eukaryotes (telomeres and aging)",
+         "url": "https://openstax.org/books/biology-2e/pages/14-5-dna-replication-in-eukaryotes"
+        },
+        {
+         "label": "OpenStax Biology 2e, 28.3 Superphylum Lophotrochozoa: Flatworms, Rotifers, and Nemerteans (planarian regeneration)",
+         "url": "https://openstax.org/books/biology-2e/pages/28-3-superphylum-lophotrochozoa-flatworms-rotifers-and-nemerteans"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "3",
+   "name": "Organ systems and homeostasis",
+   "summary": "Foundational Concept 3 (AAMC): the body as an integrated whole. The nervous and endocrine systems that coordinate it and the organ systems that carry out its functions.",
+   "categories": [
+    {
+     "id": "3A",
+     "name": "Nervous and endocrine systems",
+     "summary": "The two coordinating systems: how the nervous system is organized and how neurons signal, the receptors and ion channels that carry signals into cells, the steroid and terpene lipids, and the glands, hormones, and feedback loops of the endocrine system.",
+     "topics": [
+      {
+       "id": "3A.nervous-system-organization",
+       "name": "Nervous system: organization, reflexes, autonomic control, and integration with the endocrine system",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "The nervous system controls and integrates the other systems and lets the body adapt to the outside world. The central nervous system (brain and spinal cord) processes information; the peripheral nervous system carries it in through sensory (afferent) neurons and out through motor (efferent) neurons to effectors (muscles, glands). The motor division splits into the somatic system (skeletal muscle, voluntary) and the autonomic system (smooth and cardiac muscle, glands, involuntary).",
+        "The sympathetic and parasympathetic divisions act antagonistically on most organs: sympathetic activity (noradrenaline at the target, adrenaline from the adrenal medulla) prepares for action, raising heart rate and blood pressure, dilating airways and pupils, and slowing digestion; parasympathetic activity (acetylcholine, largely via the vagus nerve) slows the heart and promotes digestion and other rest functions. Most organs receive both and the balance sets their state.",
+        "A reflex is an automatic response through a reflex arc: receptor → sensory neuron → (interneuron in the spinal cord) → motor neuron → effector, a negative feedback loop that acts before the brain is involved; supraspinal circuits in the brainstem and cortex modulate, suppress, or build on spinal reflexes. The nervous and endocrine systems are coupled through the hypothalamus, which turns neural signals into hormone release and is itself regulated by feedback from circulating hormones."
+       ],
+       "equations": [],
+       "confusions": [
+        "Autonomic does not mean unregulated: the hypothalamus and brainstem set autonomic tone continuously."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 35.3 The Central Nervous System",
+         "url": "https://openstax.org/books/biology-2e/pages/35-3-the-central-nervous-system"
+        },
+        {
+         "label": "OpenStax Biology 2e, 35.4 The Peripheral Nervous System",
+         "url": "https://openstax.org/books/biology-2e/pages/35-4-the-peripheral-nervous-system"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 15.1 Divisions of the Autonomic Nervous System",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/15-1-divisions-of-the-autonomic-nervous-system"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 15.2 Autonomic Reflexes and Homeostasis",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/15-2-autonomic-reflexes-and-homeostasis"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "3A.nerve-cell",
+       "name": "The nerve cell: structure, resting and action potentials, synapses, summation, and glia",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "A neuron has a cell body (nucleus and organelles), dendrites that receive input, and an axon that carries action potentials to terminals. Myelin, made by Schwann cells in the periphery and oligodendrocytes in the central nervous system, insulates the axon, and the signal jumps between the gaps, the nodes of Ranvier (saltatory conduction), which makes conduction much faster. Other glia: astrocytes (support, blood–brain barrier, ion balance), microglia (immune defence), ependymal cells (cerebrospinal fluid).",
+        "The resting potential (about −70 mV, inside negative) results from the Na⁺/K⁺ pump (3 Na⁺ out, 2 K⁺ in) and from K⁺ leaking out down its gradient. An action potential is all-or-none: if a stimulus depolarizes the membrane to threshold (about −55 mV), voltage-gated Na⁺ channels open and Na⁺ rushes in (depolarization to about +30 mV), they inactivate, voltage-gated K⁺ channels open and K⁺ flows out (repolarization, then a brief hyperpolarization), and the pump restores the gradients. The refractory period keeps it travelling one way; stimulus strength is coded by firing frequency, not amplitude.",
+        "At a chemical synapse the action potential opens Ca²⁺ channels, vesicles release neurotransmitter, and it binds receptors on the postsynaptic cell to produce an excitatory (depolarizing) or inhibitory (hyperpolarizing) postsynaptic potential; it is then removed by reuptake or degradation (acetylcholinesterase). Graded potentials add by spatial summation (many synapses at once) and temporal summation (rapid repeats at one synapse); the neuron fires if the sum at the axon hillock reaches threshold. Electrical synapses use gap junctions for fast, direct coupling."
+       ],
+       "equations": [],
+       "confusions": [
+        "The pump does not cause the action potential; it maintains the gradients the channels use. Hyperpolarization makes a neuron harder to fire; inhibition is not 'no signal'."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 35.1 Neurons and Glial Cells",
+         "url": "https://openstax.org/books/biology-2e/pages/35-1-neurons-and-glial-cells"
+        },
+        {
+         "label": "OpenStax Biology 2e, 35.2 How Neurons Communicate",
+         "url": "https://openstax.org/books/biology-2e/pages/35-2-how-neurons-communicate"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 12.4 The Action Potential",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/12-4-the-action-potential"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 12.5 Communication Between Neurons",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/12-5-communication-between-neurons"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "3A.biosignaling-electrochemistry",
+       "name": "Biosignaling: gated ion channels, receptor enzymes, G protein-coupled receptors, and the Nernst equation",
+       "tags": [
+        "BC",
+        "GC"
+       ],
+       "know": [
+        "Gated ion channels open in response to a signal and let a specific ion flow down its gradient. Voltage-gated channels (Na⁺, K⁺, Ca²⁺) respond to membrane potential and generate action potentials; ligand-gated channels (the nicotinic acetylcholine receptor, GABA-A, glutamate receptors) open when a transmitter binds and produce fast postsynaptic potentials; mechanically gated channels respond to stretch or pressure in sensory cells.",
+        "Receptor enzymes have a ligand-binding domain outside and a catalytic domain inside; receptor tyrosine kinases (insulin, growth factor receptors) dimerize on binding, phosphorylate each other, and recruit signalling proteins (Ras, PI3 kinase). G protein-coupled receptors are seven-pass membrane proteins that, on binding a ligand, activate a trimeric G protein by exchanging GDP for GTP; the α subunit then regulates effectors such as adenylyl cyclase (cAMP → protein kinase A) or phospholipase C (IP₃ releases Ca²⁺, diacylglycerol activates protein kinase C), amplifying the signal through second messengers. Epinephrine, glucagon, and most neurotransmitter and hormone receptors use this route.",
+        "The electrochemistry behind membrane potentials is that of a concentration cell: the same ion at different concentrations on two sides of a membrane gives a potential, with the Nernst equation giving the equilibrium potential at which diffusion and electrical forces balance. For K⁺ it is about −90 mV and for Na⁺ about +60 mV in a typical cell; the resting potential sits near the K⁺ value because the membrane is most permeable to K⁺, and opening Na⁺ channels drives it toward the Na⁺ value. Electrons do not flow across the membrane; ions carry the current."
+       ],
+       "equations": [
+        "E_{ion} = \\dfrac{RT}{zF}\\ln\\dfrac{[\\text{ion}]_{out}}{[\\text{ion}]_{in}}\\approx\\dfrac{61\\ \\mathrm{mV}}{z}\\log_{10}\\dfrac{[\\text{ion}]_{out}}{[\\text{ion}]_{in}}\\ \\text{(37 °C)}"
+       ],
+       "confusions": [
+        "A ligand-gated channel changes the membrane potential in milliseconds; a G protein-coupled receptor acts over seconds through second messengers; a receptor kinase changes gene expression over minutes to hours."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 9.1 Signaling Molecules and Cellular Receptors",
+         "url": "https://openstax.org/books/biology-2e/pages/9-1-signaling-molecules-and-cellular-receptors"
+        },
+        {
+         "label": "OpenStax Biology 2e, 9.2 Propagation of the Signal",
+         "url": "https://openstax.org/books/biology-2e/pages/9-2-propagation-of-the-signal"
+        },
+        {
+         "label": "OpenStax Chemistry 2e, 17.4 Potential, Free Energy, and Equilibrium (Nernst equation, concentration cells)",
+         "url": "https://openstax.org/books/chemistry-2e/pages/17-4-potential-free-energy-and-equilibrium"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 12.4 The Action Potential",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/12-4-the-action-potential"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "3A.steroids-terpenes",
+       "name": "Lipids as signals: steroids, terpenes, and terpenoids",
+       "tags": [
+        "BC",
+        "OC"
+       ],
+       "know": [
+        "Steroids share a core of four fused rings, three six-membered and one five-membered. Cholesterol is the parent: it modulates membrane fluidity and is converted in the adrenal cortex and gonads to the steroid hormones (cortisol and aldosterone, testosterone, estradiol, progesterone), in the liver to bile acids, and in the skin, with sunlight, to vitamin D. Being lipid-soluble, steroid hormones travel on carrier proteins, cross membranes, and act on intracellular receptors that regulate transcription.",
+        "Terpenes are built from five-carbon isoprene units joined head to tail: monoterpenes (10 C, menthol, limonene), sesquiterpenes (15 C), diterpenes (20 C, including vitamin A's retinol, which the body makes by splitting the tetraterpene β-carotene), triterpenes (30 C, squalene, the precursor of cholesterol), and the polyprenyl tail of ubiquinone. Terpenoids are terpenes with added oxygen functions.",
+        "Isoprene units come from the mevalonate pathway (acetyl-CoA → HMG-CoA → mevalonate → isopentenyl pyrophosphate); HMG-CoA reductase is the rate-limiting enzyme of cholesterol synthesis and the target of statins."
+       ],
+       "equations": [],
+       "confusions": [
+        "Cholesterol is not a fat (no glycerol or ester) and is essential; the problem is its transport in LDL, not the molecule itself."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Organic Chemistry, 27.5 Terpenoids",
+         "url": "https://openstax.org/books/organic-chemistry/pages/27-5-terpenoids"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 27.6 Steroids",
+         "url": "https://openstax.org/books/organic-chemistry/pages/27-6-steroids"
+        },
+        {
+         "label": "OpenStax Organic Chemistry, 27.7 Biosynthesis of Steroids",
+         "url": "https://openstax.org/books/organic-chemistry/pages/27-7-biosynthesis-of-steroids"
+        },
+        {
+         "label": "OpenStax Biology 2e, 3.3 Lipids",
+         "url": "https://openstax.org/books/biology-2e/pages/3-3-lipids"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "3A.endocrine-glands",
+       "name": "Endocrine system: glands, hormones, and neuroendocrine links",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "The endocrine system provides specific chemical control at the level of cells, tissues, and organs. An endocrine gland releases its product, a hormone, into the blood (an exocrine gland secretes into a duct); a hormone is a signalling molecule carried by blood to distant target cells that have receptors for it. Hormones are peptides and proteins (insulin, glucagon, growth hormone, pituitary hormones), amino acid derivatives (thyroid hormones, catecholamines, melatonin), or steroids (cortisol, aldosterone, sex hormones).",
+        "Major glands and products: the hypothalamus (releasing and inhibiting hormones to the anterior pituitary; oxytocin and antidiuretic hormone, stored and released by the posterior pituitary); the anterior pituitary (growth hormone, prolactin, TSH, ACTH, FSH, LH); the thyroid (T₃ and T₄ for metabolic rate; calcitonin lowers blood calcium); the parathyroids (parathyroid hormone raises calcium); the adrenal cortex (cortisol, aldosterone, androgens) and medulla (adrenaline, noradrenaline); the pancreatic islets (insulin, glucagon); the gonads (testosterone; estrogen and progesterone); the pineal gland (melatonin); and the thymus, kidney (erythropoietin, renin), heart, gut, and adipose tissue (leptin) as secondary endocrine organs.",
+        "Neuroendocrinology: the hypothalamus is the interface, turning neural input into hormone output through the hypothalamic–pituitary portal vessels and the neurosecretory cells of the posterior pituitary; the adrenal medulla is modified sympathetic nervous tissue. Tropic hormones from the pituitary control other glands in axes (hypothalamus → pituitary → thyroid, adrenal cortex, gonads)."
+       ],
+       "equations": [],
+       "confusions": [
+        "The posterior pituitary stores hormones made in the hypothalamus; the anterior pituitary makes its own, under hypothalamic releasing hormones."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 37.1 Types of Hormones",
+         "url": "https://openstax.org/books/biology-2e/pages/37-1-types-of-hormones"
+        },
+        {
+         "label": "OpenStax Biology 2e, 37.5 Endocrine Glands",
+         "url": "https://openstax.org/books/biology-2e/pages/37-5-endocrine-glands"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 17.3 The Pituitary Gland and Hypothalamus",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-3-the-pituitary-gland-and-hypothalamus"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "3A.hormone-mechanisms",
+       "name": "Endocrine system: mechanisms of hormone action, transport, specificity, second messengers, and feedback",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Hormones act only on cells with matching receptors, which is what gives them specificity despite travelling everywhere in the blood. Water-soluble hormones (peptides, catecholamines) cannot cross membranes: they bind surface receptors and act through second messengers (cAMP, IP₃ and Ca²⁺, cGMP) that activate kinases and change enzyme activity within seconds to minutes; the cascade amplifies one hormone molecule into many product molecules. Lipid-soluble hormones (steroids, thyroid hormone) travel bound to plasma proteins, diffuse into cells, bind intracellular receptors, and alter transcription over hours.",
+        "Transport: hormones reach targets only through the blood supply, so delivery depends on circulation and on carrier proteins that extend a steroid's half-life; peptide hormones are cleared in minutes. The response of a target depends on receptor number (up- and down-regulation) and on the presence of other hormones (permissive, synergistic, and antagonistic effects, as with insulin and glucagon).",
+        "Control is by feedback: in negative feedback the hormone or its effect suppresses further release (thyroid hormone inhibits TSH and TRH; cortisol inhibits ACTH and CRH; calcium inhibits parathyroid hormone), stabilizing the level; in rarer positive feedback the effect amplifies release until an endpoint (oxytocin in labour, the LH surge before ovulation). The nervous system sets many loops through the hypothalamus and can override them under stress."
+       ],
+       "equations": [],
+       "confusions": [
+        "Second messengers are inside the cell; the hormone (first messenger) stays outside. A hormone's effect differs between tissues because the receptors and the downstream machinery differ."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 37.2 How Hormones Work",
+         "url": "https://openstax.org/books/biology-2e/pages/37-2-how-hormones-work"
+        },
+        {
+         "label": "OpenStax Biology 2e, 37.4 Regulation of Hormone Production",
+         "url": "https://openstax.org/books/biology-2e/pages/37-4-regulation-of-hormone-production"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 17.2 Hormones",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-2-hormones"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      }
+     ]
+    },
+    {
+     "id": "3B",
+     "name": "Main organ systems",
+     "summary": "The body's working systems and how they fit together: respiratory, circulatory, lymphatic, immune, digestive, excretory, reproductive, muscular, skeletal, and skin.",
+     "topics": [
+      {
+       "id": "3B.respiratory",
+       "name": "Respiratory system",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Functions: gas exchange (O₂ in, CO₂ out), pH control through CO₂, thermoregulation and water loss through evaporation from the airways (panting in animals), and protection by filtering particles with nasal hairs and the mucus–cilia escalator that sweeps trapped material up to be swallowed. Air passes through the nose and pharynx, larynx, trachea, bronchi, and bronchioles to the alveoli, tiny thin-walled sacs wrapped in capillaries whose enormous total surface area allows exchange.",
+        "Breathing: inhalation is active, the diaphragm contracts and flattens and the external intercostals lift the ribs, enlarging the chest so that intrapulmonary pressure falls below atmospheric and air flows in; quiet exhalation is passive elastic recoil of the lungs and chest wall. Surface tension in the fluid lining the alveoli would collapse them, and the pleural fluid keeps the lungs coupled to the chest; surfactant lowers the surface tension, which is why premature infants lacking it struggle to breathe.",
+        "Alveolar exchange is by diffusion down partial-pressure gradients: alveolar P_O₂ (about 100 mmHg) exceeds venous blood's (about 40), and venous P_CO₂ (about 45) exceeds alveolar (about 40); Henry's law relates the amount of each gas dissolving to its partial pressure. Breathing is regulated by the medulla and pons, driven chiefly by central chemoreceptors sensing the pH change that CO₂ produces in cerebrospinal fluid and, less, by peripheral chemoreceptors sensing low O₂; hyperventilation blows off CO₂ and raises pH (respiratory alkalosis), hypoventilation does the reverse."
+       ],
+       "equations": [],
+       "confusions": [
+        "The main drive to breathe is CO₂ (through pH), not low oxygen; oxygen becomes the driver only when it is very low."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 39.1 Systems of Gas Exchange",
+         "url": "https://openstax.org/books/biology-2e/pages/39-1-systems-of-gas-exchange"
+        },
+        {
+         "label": "OpenStax Biology 2e, 39.2 Gas Exchange across Respiratory Surfaces",
+         "url": "https://openstax.org/books/biology-2e/pages/39-2-gas-exchange-across-respiratory-surfaces"
+        },
+        {
+         "label": "OpenStax Biology 2e, 39.3 Breathing",
+         "url": "https://openstax.org/books/biology-2e/pages/39-3-breathing"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 22.3 The Process of Breathing",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-3-the-process-of-breathing"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 22.4 Gas Exchange",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-4-gas-exchange"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "3B.circulatory",
+       "name": "Circulatory system: heart, vessels, blood, gas transport, and clotting",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "The circulatory system carries oxygen, nutrients, hormones, ions, and fluid, removes wastes, moves heat (dilating skin vessels sheds it, constricting them conserves it), and defends the body. The four-chambered heart keeps two circuits separate: the right side pumps deoxygenated blood through the pulmonary circulation to the lungs; the left side pumps oxygenated blood through the systemic circulation. Valves (tricuspid, pulmonary, mitral, aortic) keep flow one way; the sinoatrial node sets the rhythm. Blood pressure is reported as systolic (contraction) over diastolic (relaxation), about 120/80 mmHg.",
+        "Arteries are thick-walled and elastic and carry blood away from the heart under high pressure; arterioles have muscular walls whose constriction is the main source of peripheral resistance and controls where blood goes; capillaries are one endothelial cell thick, the site where gases, nutrients, wastes, and heat exchange by diffusion and where fluid filters out and is partly reabsorbed; venules and veins are thin-walled, low-pressure, high-volume reservoirs with valves and the help of skeletal muscle to return blood. Endothelial cells line every vessel and release factors that control vessel tone and clotting.",
+        "Blood is plasma (water, proteins such as albumin and clotting factors, electrolytes, nutrients, hormones) plus cells: red cells made in bone marrow under erythropoietin and destroyed after about 120 days in the spleen and liver, white cells, and platelets. Plasma volume is regulated by the kidneys through antidiuretic hormone and aldosterone. Clotting: platelets plug a damaged vessel and a cascade of plasma factors ends in thrombin converting fibrinogen to fibrin, which meshes the clot; vitamin K and calcium are needed. Oxygen travels bound to hemoglobin in red cells (hematocrit is the red-cell fraction, about 45%); hemoglobin's sigmoidal binding curve shifts right (lower affinity, more unloading) with higher CO₂, lower pH, higher temperature, and 2,3-BPG. CO₂ is carried mostly as bicarbonate (via carbonic anhydrase in red cells), some bound to hemoglobin, and a little dissolved; the heart and vessels are regulated by autonomic nerves and by hormones such as adrenaline, angiotensin II, and antidiuretic hormone."
+       ],
+       "equations": [],
+       "confusions": [
+        "Arteries carry blood away from the heart regardless of oxygen content: the pulmonary artery carries deoxygenated blood. The Bohr shift helps active tissue: acid and CO₂ make hemoglobin release oxygen."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 40.1 Overview of the Circulatory System",
+         "url": "https://openstax.org/books/biology-2e/pages/40-1-overview-of-the-circulatory-system"
+        },
+        {
+         "label": "OpenStax Biology 2e, 40.2 Components of the Blood",
+         "url": "https://openstax.org/books/biology-2e/pages/40-2-components-of-the-blood"
+        },
+        {
+         "label": "OpenStax Biology 2e, 40.3 Mammalian Heart and Blood Vessels",
+         "url": "https://openstax.org/books/biology-2e/pages/40-3-mammalian-heart-and-blood-vessels"
+        },
+        {
+         "label": "OpenStax Biology 2e, 40.4 Blood Flow and Blood Pressure Regulation",
+         "url": "https://openstax.org/books/biology-2e/pages/40-4-blood-flow-and-blood-pressure-regulation"
+        },
+        {
+         "label": "OpenStax Biology 2e, 39.4 Transport of Gases in Human Bodily Fluids",
+         "url": "https://openstax.org/books/biology-2e/pages/39-4-transport-of-gases-in-human-bodily-fluids"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 18.5 Hemostasis",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/18-5-hemostasis"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 22.5 Transport of Gases (Bohr effect, 2,3-BPG)",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-5-transport-of-gases"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "3B.lymphatic",
+       "name": "Lymphatic system",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "The lymphatic system is a one-way network of blind-ended lymphatic capillaries, collecting vessels with valves, lymph nodes, and the thoracic and right lymphatic ducts that empty into the veins near the heart. Lymph is the fluid it carries, moved by skeletal muscle contraction and breathing rather than a pump.",
+        "Functions: it returns to the blood the fluid and protein that filter out of capillaries each day (about three litres), keeping tissue fluid balanced (blocked lymphatics cause swelling, lymphedema); it absorbs dietary fats as chylomicrons through the lacteals of the intestinal villi and delivers them to the blood; and it is part of the immune system: lymph nodes filter lymph and house lymphocytes and macrophages, and lymphoid organs (bone marrow, thymus, spleen, tonsils) produce and mature lymphocytes.",
+        "Because lymph flows through nodes before returning to the blood, infection and cancer cells spread along it, which is why nodes swell in infection and are examined for metastasis."
+       ],
+       "equations": [],
+       "confusions": [
+        "Lymph is not a separate fluid; it is interstitial fluid once it has entered a lymphatic vessel."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 21.1 Anatomy of the Lymphatic and Immune Systems",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-1-anatomy-of-the-lymphatic-and-immune-systems"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 20.3 Capillary Exchange",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-3-capillary-exchange"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "3B.immune",
+       "name": "Immune system: innate and adaptive immunity",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Innate (nonspecific) immunity is present from birth and responds the same way to any invader: barriers (skin, mucus, stomach acid), phagocytes (neutrophils, macrophages, dendritic cells) that engulf microbes, natural killer cells that kill infected and tumour cells, complement proteins, inflammation, fever, and interferons. Adaptive (specific) immunity is learned, targets a particular antigen, and remembers it: B lymphocytes (from bone marrow) make antibodies (humoral immunity); T lymphocytes (matured in the thymus) include helper T cells that coordinate the response and cytotoxic T cells that kill infected cells (cell-mediated immunity).",
+        "Tissues: bone marrow (where all blood cells arise and B cells mature), thymus (T-cell maturation and deletion of self-reactive clones), spleen (filters blood, mounts responses to blood-borne antigens, recycles red cells), and lymph nodes (filter lymph, where antigen-presenting cells meet lymphocytes). An antigen is any molecule recognized by a receptor; an antibody is a Y-shaped immunoglobulin whose two variable arms bind one antigen with high specificity. Antigen presentation: cells display peptide fragments on major histocompatibility complex (MHC) molecules; MHC class I on all nucleated cells shows internal peptides to cytotoxic T cells, MHC class II on antigen-presenting cells shows ingested material to helper T cells.",
+        "Clonal selection: each lymphocyte carries one receptor specificity; the antigen selects the matching clone, which proliferates into effector cells (plasma cells secrete antibody) and long-lived memory cells that make the second response faster and stronger (the basis of vaccination). Antibodies neutralize, agglutinate, opsonize for phagocytosis, and activate complement. Tolerance to self is learned by deleting or silencing self-reactive clones; when it fails, autoimmune diseases (type 1 diabetes, rheumatoid arthritis, lupus) result; MHC differences also cause transplant rejection."
+       ],
+       "equations": [],
+       "confusions": [
+        "Helper T cells do not kill; they direct. Cytotoxic T cells kill infected body cells; antibodies act on pathogens outside cells."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 42.1 Innate Immune Response",
+         "url": "https://openstax.org/books/biology-2e/pages/42-1-innate-immune-response"
+        },
+        {
+         "label": "OpenStax Biology 2e, 42.2 Adaptive Immune Response",
+         "url": "https://openstax.org/books/biology-2e/pages/42-2-adaptive-immune-response"
+        },
+        {
+         "label": "OpenStax Biology 2e, 42.3 Antibodies",
+         "url": "https://openstax.org/books/biology-2e/pages/42-3-antibodies"
+        },
+        {
+         "label": "OpenStax Biology 2e, 42.4 Disruptions in the Immune System",
+         "url": "https://openstax.org/books/biology-2e/pages/42-4-disruptions-in-the-immune-system"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 21.4 The Adaptive Immune Response: B-lymphocytes and Antibodies (antibody functions)",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-4-the-adaptive-immune-response-b-lymphocytes-and-antibodies"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "3B.digestive",
+       "name": "Digestive system",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Ingestion: saliva lubricates food and begins starch digestion with amylase; the tongue and pharynx form a bolus that the oesophagus moves to the stomach by peristalsis, waves of smooth-muscle contraction that drive the whole tract. The stomach stores and churns food into chyme; its gastric juice has hydrochloric acid (pH about 2) from parietal cells, which kills microbes and unfolds proteins, pepsinogen from chief cells, activated to pepsin to begin protein digestion, and mucus and bicarbonate from the lining that protect the stomach from digesting itself; it has a fundus, body, and antrum ending at the pyloric sphincter.",
+        "The liver sits above the gut and receives nutrient-rich blood from it through the hepatic portal vein; it makes bile, regulates blood glucose (storing glycogen, releasing glucose, making it from other molecules), synthesizes plasma proteins, and detoxifies drugs and ammonia (to urea). Bile, stored and concentrated in the gall bladder and released into the duodenum, contains bile salts that emulsify fats so lipase can work and bile pigments for excretion. The pancreas secretes digestive enzymes (amylase, lipase, trypsin and chymotrypsin as inactive zymogens, nucleases) and bicarbonate through the pancreatic duct into the duodenum, where the bicarbonate neutralizes stomach acid.",
+        "The small intestine (duodenum, jejunum, ileum) finishes digestion with pancreatic and brush-border enzymes and absorbs nearly all nutrients and most water through villi and microvilli, which hugely expand its surface; sugars and amino acids enter the blood, fats the lymph. The large intestine (caecum, colon, rectum) absorbs water and electrolytes and houses bacteria that ferment fibre and make vitamin K; feces are stored in the rectum and expelled through the anal sphincters. Control: hormones (gastrin stimulates acid secretion; secretin triggers pancreatic bicarbonate; cholecystokinin triggers enzyme release and gall-bladder contraction and slows the stomach), and the enteric nervous system, a local network that coordinates motility and secretion with parasympathetic stimulation and sympathetic inhibition."
+       ],
+       "equations": [],
+       "confusions": [
+        "Most absorption happens in the small intestine, not the stomach (which absorbs little besides alcohol and some drugs). Bile emulsifies fat; it contains no enzymes."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 34.1 Digestive Systems",
+         "url": "https://openstax.org/books/biology-2e/pages/34-1-digestive-systems"
+        },
+        {
+         "label": "OpenStax Biology 2e, 34.3 Digestive System Processes",
+         "url": "https://openstax.org/books/biology-2e/pages/34-3-digestive-system-processes"
+        },
+        {
+         "label": "OpenStax Biology 2e, 34.4 Digestive System Regulation",
+         "url": "https://openstax.org/books/biology-2e/pages/34-4-digestive-system-regulation"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 23.4 The Stomach",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-4-the-stomach"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 23.6 Accessory Organs in Digestion: The Liver, Pancreas, and Gallbladder",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-6-accessory-organs-in-digestion-the-liver-pancreas-and-gallbladder"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 23.5 The Small and Large Intestines",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-5-the-small-and-large-intestines"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "3B.excretory",
+       "name": "Excretory system: the kidney and urine formation",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "The kidneys keep the internal environment stable: they regulate blood pressure and volume (through sodium and water handling and the renin–angiotensin–aldosterone system), osmolarity (osmoregulation), acid–base balance (excreting H⁺ and regenerating bicarbonate), and they remove soluble nitrogenous waste as urea along with drugs and excess ions. Each kidney has an outer cortex and inner medulla; urine collects in the renal pelvis and passes down the ureter to the bladder, where it is stored until the sphincters relax and it leaves through the urethra.",
+        "The nephron is the working unit (about a million per kidney): blood is filtered in the glomerulus, a capillary tuft inside Bowman's capsule, by pressure, so water and small solutes but not cells or proteins enter the tubule. The proximal tubule reabsorbs most of the filtrate, essentially all glucose and amino acids, most sodium, bicarbonate, and water, and secretes H⁺, drugs, and organic acids. The loop of Henle, dipping into the medulla, creates a concentration gradient as a counter-current multiplier: the descending limb lets water out, the ascending limb pumps salt out and is impermeable to water, so the medullary interstitium becomes very salty. The distal tubule fine-tunes sodium, potassium, calcium, and pH under aldosterone and parathyroid hormone; the collecting duct, running back through the salty medulla, reabsorbs water when antidiuretic hormone inserts aquaporins, concentrating the urine.",
+        "Urine formation is therefore filtration, reabsorption, and secretion; the glomerular filtration rate (about 125 mL/min, 180 L/day, nearly all reabsorbed) is held steady by autoregulation. Osmoregulation adjusts final urine from dilute (no ADH) to concentrated (high ADH); aldosterone raises sodium reabsorption and potassium secretion. The bladder's smooth muscle contracts under parasympathetic control, the internal sphincter is involuntary and the external sphincter is skeletal muscle under voluntary control."
+       ],
+       "equations": [],
+       "confusions": [
+        "ADH controls water reabsorption, aldosterone controls sodium; water follows sodium in the proximal tubule but needs ADH in the collecting duct. Glucose appears in urine only when filtered load exceeds the transporters' capacity (as in diabetes)."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 41.2 The Kidneys and Osmoregulatory Organs",
+         "url": "https://openstax.org/books/biology-2e/pages/41-2-the-kidneys-and-osmoregulatory-organs"
+        },
+        {
+         "label": "OpenStax Biology 2e, 41.5 Hormonal Control of Osmoregulatory Functions",
+         "url": "https://openstax.org/books/biology-2e/pages/41-5-hormonal-control-of-osmoregulatory-functions"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 25.5 Physiology of Urine Formation",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-5-physiology-of-urine-formation"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 25.6 Tubular Reabsorption",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-6-tubular-reabsorption"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "3B.reproductive",
+       "name": "Reproductive system: structures and hormonal control",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Male: the testes (gonads) make sperm in the seminiferous tubules and testosterone in Leydig cells; sperm mature in the epididymis, travel through the vas deferens, and mix with fluid from the seminal vesicles, prostate, and bulbourethral glands to form semen, which leaves through the urethra of the penis. Female: the ovaries (gonads) release an oocyte each cycle into the uterine (fallopian) tube, where fertilization occurs; the uterus with its endometrial lining supports the embryo, the cervix opens into the vagina, and the external genitalia include the labia and clitoris. The female gonads are internal and the gametes are produced cyclically rather than continuously.",
+        "Hormonal control: gonadotropin-releasing hormone from the hypothalamus drives FSH and LH from the anterior pituitary. In males, LH stimulates testosterone and FSH with testosterone sustains spermatogenesis; testosterone drives male development, secondary sex characteristics, and libido, with negative feedback (and inhibin on FSH). In females, FSH grows follicles that secrete estrogen; rising estrogen triggers an LH surge that causes ovulation at mid-cycle (about day 14 of 28); the ruptured follicle becomes the corpus luteum, secreting progesterone and estrogen that thicken the endometrium; if no pregnancy occurs, the corpus luteum degenerates, hormone levels fall, and the lining is shed (menstruation). Estrogen directs female sexual development.",
+        "In pregnancy, human chorionic gonadotropin from the embryo maintains the corpus luteum until the placenta takes over progesterone and estrogen production; parturition is driven by positive feedback of oxytocin with prostaglandins; lactation depends on prolactin for milk production and oxytocin for let-down, both released through neural reflexes from suckling. Puberty, the cycle, and sexual behaviour are integrated with the nervous system through the hypothalamus."
+       ],
+       "equations": [],
+       "confusions": [
+        "The LH surge causes ovulation; progesterone dominates the second half of the cycle. Menstruation is caused by the fall in progesterone, not its rise."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 43.3 Human Reproductive Anatomy and Gametogenesis",
+         "url": "https://openstax.org/books/biology-2e/pages/43-3-human-reproductive-anatomy-and-gametogenesis"
+        },
+        {
+         "label": "OpenStax Biology 2e, 43.4 Hormonal Control of Human Reproduction",
+         "url": "https://openstax.org/books/biology-2e/pages/43-4-hormonal-control-of-human-reproduction"
+        },
+        {
+         "label": "OpenStax Biology 2e, 43.5 Human Pregnancy and Birth",
+         "url": "https://openstax.org/books/biology-2e/pages/43-5-human-pregnancy-and-birth"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 28.6 Lactation",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/28-6-lactation"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "3B.muscle",
+       "name": "Muscle system and the muscle cell: types, sarcomere, contraction, control, and fatigue",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Muscle supports and moves the body, helps return venous blood (the skeletal-muscle pump), and generates heat (shivering). Three types: skeletal (striated, multinucleate, voluntary, attached to bone), cardiac (striated, branched cells joined by intercalated discs with gap junctions, involuntary, self-exciting), and smooth (unstriated spindle cells, involuntary, in vessels and hollow organs). Skeletal fibres are slow-twitch (red: many mitochondria and myoglobin, oxidative, fatigue-resistant) or fast-twitch (white: glycolytic, powerful, fatigue quickly); cardiac and smooth muscle contract more slowly than skeletal.",
+        "A skeletal fibre is packed with myofibrils made of repeating sarcomeres: thick myosin filaments in the A band, thin actin filaments anchored at Z lines in the I band, the H zone where only myosin lies, and the M line at the centre. Sliding filament model: myosin heads bind actin, pull (power stroke, releasing ADP and Pi), release when ATP binds, and re-cock as ATP is hydrolysed, so the filaments slide and the sarcomere shortens while the filaments keep their length. Tropomyosin covers the myosin-binding sites on actin until calcium binds troponin and moves it aside.",
+        "Control: a motor neuron releases acetylcholine at the neuromuscular junction (motor end plate), the fibre's action potential runs along the membrane and into the T-tubules, which trigger the sarcoplasmic reticulum to release Ca²⁺; contraction ends when Ca²⁺ is pumped back. A motor neuron and its fibres form a motor unit, and force is graded by recruiting units and raising firing rate. Cardiac contraction is triggered by Ca²⁺ entering from outside plus release from the sarcoplasmic reticulum and is modulated, not initiated, by sympathetic (faster, stronger) and parasympathetic (slower) nerves; smooth muscle is involuntary and autonomic. Oxygen debt: during hard work muscle uses creatine phosphate and anaerobic glycolysis, accumulating lactate; the extra oxygen consumed afterward restores creatine phosphate and clears lactate, and fatigue is now thought to reflect ion shifts, phosphate build-up, and depleted glycogen more than lactate itself (older texts blame lactic acid)."
+       ],
+       "equations": [],
+       "confusions": [
+        "ATP is needed to release myosin from actin, which is why rigor mortis sets in when ATP runs out. The H zone and I band shorten during contraction; the A band does not."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 38.4 Muscle Contraction and Locomotion",
+         "url": "https://openstax.org/books/biology-2e/pages/38-4-muscle-contraction-and-locomotion"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 10.2 Skeletal Muscle",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-2-skeletal-muscle"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 10.3 Muscle Fiber Contraction and Relaxation",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-3-muscle-fiber-contraction-and-relaxation"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 10.5 Types of Muscle Fibers",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-5-types-of-muscle-fibers"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 10.7 Cardiac Muscle Tissue",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-7-cardiac-muscle-tissue"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 10.4 Nervous System Control of Muscle Tension (motor units)",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-4-nervous-system-control-of-muscle-tension"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "3B.skeletal",
+       "name": "Skeletal system: bone, cartilage, joints, and endocrine control",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "The skeleton gives rigidity and support, protects organs (skull, rib cage), anchors muscles for movement, stores calcium and phosphate, and houses the marrow that makes blood. Vertebrates have an endoskeleton of living bone that grows with the body, unlike the external exoskeleton of arthropods that must be moulted. Bones are classified as long (limbs; a shaft of compact bone around a marrow cavity with spongy bone at the ends), short, flat, and irregular.",
+        "Bone is a connective tissue whose matrix is collagen fibres hardened by calcium phosphate crystals (hydroxyapatite): collagen resists tension, mineral resists compression. Cells: osteoblasts build matrix, osteocytes maintain it from within their lacunae, and osteoclasts dissolve it; bone is continually remodelled, and it heals and strengthens in response to load. Cartilage (chondrocytes in a firm, flexible, avascular matrix) covers joint surfaces, forms the nose, ears, and intervertebral discs, and is the template for most bones in development (endochondral ossification). Ligaments join bone to bone; tendons join muscle to bone.",
+        "Joints: fibrous (skull sutures, immovable), cartilaginous (between vertebrae, slightly movable), and synovial (hinge, ball-and-socket, pivot, and others, freely movable, with a fluid-filled capsule). Endocrine control of bone and calcium: parathyroid hormone raises blood calcium by stimulating osteoclasts, kidney reabsorption, and vitamin D activation; calcitonin lowers it; vitamin D promotes intestinal absorption; growth hormone and thyroid hormone drive growth, and estrogen and testosterone close the growth plates at puberty and protect bone mass, which is why bone loss accelerates after menopause."
+       ],
+       "equations": [],
+       "confusions": [
+        "Osteoblasts build and osteoclasts clear; parathyroid hormone's net effect is to raise blood calcium by taking it from bone."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Biology 2e, 38.1 Types of Skeletal Systems",
+         "url": "https://openstax.org/books/biology-2e/pages/38-1-types-of-skeletal-systems"
+        },
+        {
+         "label": "OpenStax Biology 2e, 38.2 Bone",
+         "url": "https://openstax.org/books/biology-2e/pages/38-2-bone"
+        },
+        {
+         "label": "OpenStax Biology 2e, 38.3 Joints and Skeletal Movement",
+         "url": "https://openstax.org/books/biology-2e/pages/38-3-joints-and-skeletal-movement"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 6.7 Calcium Homeostasis",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-7-calcium-homeostasis-interactions-of-the-skeletal-system-and-other-organ-systems"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 6.3 Bone Structure",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-3-bone-structure"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 6.6 Exercise, Nutrition, Hormones, and Bone Tissue",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-6-exercise-nutrition-hormones-and-bone-tissue"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      },
+      {
+       "id": "3B.skin",
+       "name": "Skin system",
+       "tags": [
+        "BIO"
+       ],
+       "know": [
+        "Skin has two layers resting on a fatty hypodermis: the epidermis, a stratified squamous epithelium whose keratinocytes are born at the base and die as they move up into a tough, water-resistant layer of keratin, with melanocytes making pigment and Langerhans cells for immunity; the dermis, connective tissue with blood vessels, nerves, hair follicles, and glands; beneath them the hypodermis, a fat layer that insulates and cushions, is strictly not part of the skin. The keratin and lipids of the outer epidermis make the skin nearly impermeable to water, which prevents dehydration (and so supports osmoregulation).",
+        "Thermoregulation: sweat glands in the dermis secrete watery sweat whose evaporation cools; arterioles in the dermis dilate to shed heat and constrict to keep it; the fat layer insulates; and erector muscles raise hairs (goosebumps), which traps air in furred animals. These responses are run by the hypothalamus through sympathetic nerves and are modified by hormones (adrenaline, thyroid hormone).",
+        "Protection: the keratinized surface, nails, calluses, and hair resist abrasion, and the intact epidermis, its acidic surface, and its immune cells block microbes; melanin absorbs ultraviolet light. Skin also makes vitamin D under sunlight and carries receptors for touch, pressure, temperature, and pain."
+       ],
+       "equations": [],
+       "confusions": [
+        "Sweat cools only when it evaporates; in humid air it drips off without cooling. Vasodilation of skin vessels is a heat-loss response, not a warming one."
+       ],
+       "refs": [
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 5.1 Layers of the Skin",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-1-layers-of-the-skin"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 5.2 Accessory Structures of the Skin",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-2-accessory-structures-of-the-skin"
+        },
+        {
+         "label": "OpenStax Anatomy and Physiology 2e, 5.3 Functions of the Integumentary System",
+         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-3-functions-of-the-integumentary-system"
+        },
+        {
+         "label": "OpenStax Biology 2e, 33.3 Homeostasis (thermoregulation)",
+         "url": "https://openstax.org/books/biology-2e/pages/33-3-homeostasis"
+        }
+       ],
+       "status": "draft",
+       "reviewed_by": null
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "skills": [
+  {
+   "id": "1",
+   "name": "Knowledge of Scientific Concepts and Principles",
+   "pct": 35,
+   "what": "Do you know the concept and can you recognize it in a new setting? These questions test recall and understanding of structures, pathways, and relationships: which enzyme, which organelle, which hormone, which germ layer.",
+   "example": "A question might describe a cell that cannot produce ATP by oxidative phosphorylation and ask which structure is most likely defective, expecting you to recognize the inner mitochondrial membrane."
+  },
+  {
+   "id": "2",
+   "name": "Scientific Reasoning and Problem-solving",
+   "pct": 45,
+   "what": "Can you use the concept to work something out? These questions ask you to predict the effect of a mutation, a drug, or a hormone change, trace a pathway forward or backward, or apply a genetic rule to a pedigree.",
+   "example": "Given that a drug blocks the Na⁺/K⁺ pump, a question might ask what happens to the resting membrane potential over time, expecting you to reason that it decays toward zero as the gradients run down."
+  },
+  {
+   "id": "3",
+   "name": "Reasoning about the Design and Execution of Research",
+   "pct": 10,
+   "what": "Do you understand how the experiment in the passage was done and what it can show? These questions ask about controls, variables, the purpose of a step, sources of error, and whether a conclusion follows.",
+   "example": "After a passage describing a knockout-mouse experiment, a question might ask why the researchers included wild-type littermates, expecting you to identify them as the control that shares genetic background and environment."
+  },
+  {
+   "id": "4",
+   "name": "Data-based and Statistical Reasoning",
+   "pct": 10,
+   "what": "Can you read the data and judge what it supports? These questions ask you to interpret a gel, a growth curve, a kinetics plot, or a table, find a trend, and decide whether a difference is meaningful.",
+   "example": "Given a Lineweaver–Burk plot with and without an inhibitor, a question might ask which type of inhibition the data show, expecting you to compare the intercepts."
+  }
+ ],
+ "research_methods": [
+  {
+   "name": "Study designs in biology",
+   "know": [
+    "Controlled experiments manipulate one variable at a time with everything else held constant; in biology the comparison is often a wild-type or vehicle-treated control, a sham surgery, or an untreated culture. Genetic tools (knockouts, knockdowns, overexpression, rescue by adding the gene back) test whether a gene is necessary and sufficient for a phenotype.",
+    "Observational and epidemiological designs (cohort, case-control, cross-sectional) show association, not cause; model organisms (E. coli, yeast, flies, worms, zebrafish, mice) trade relevance for control, and results may not transfer to humans."
+   ]
+  },
+  {
+   "name": "Variables and controls",
+   "know": [
+    "Independent variable: what the researcher changes. Dependent variable: what is measured. Controlled variables: held constant. A confounding variable changes with the treatment and could explain the result. A negative control should show no effect (buffer alone, a scrambled sequence); a positive control proves the assay can detect an effect (a known activator).",
+    "Blinding and randomization apply to animals and samples as much as to people: cages, plates, and the order of measurement should be randomized and the scorer blinded."
+   ]
+  },
+  {
+   "name": "Measurement: reliability, validity, and error",
+   "know": [
+    "Reliability is reproducibility (replicates agree); validity is whether the assay measures what it claims (an antibody that cross-reacts gives a reliable but invalid signal). Random error scatters measurements and shrinks with replication; systematic error shifts them all one way (a miscalibrated pipette) and does not.",
+    "Biological replicates (different animals or cultures) capture biological variation; technical replicates (the same sample measured again) capture only measurement noise, and treating them as independent inflates significance."
+   ]
+  },
+  {
+   "name": "Sampling and bias",
+   "know": [
+    "Random sampling makes a sample representative; convenience samples (one strain, one sex, one age) limit generalization. Survivorship and selection bias arise when the cells, animals, or patients that remain in a study differ from those that dropped out.",
+    "Sample size sets precision: small groups give wide confidence intervals and miss real effects (low power) or produce chance 'significant' results."
+   ]
+  },
+  {
+   "name": "Correlation and causation",
+   "know": [
+    "A correlation between two measurements (gene expression and tumour size, say) does not show which causes the other or whether a third factor drives both; a manipulation with a proper control is needed for cause.",
+    "A dose–response relationship, consistency across models, temporal order (cause before effect), and a known mechanism strengthen a causal argument."
+   ]
+  },
+  {
+   "name": "Descriptive statistics",
+   "know": [
+    "Mean, median, and mode locate the centre; standard deviation describes spread; the standard error of the mean (SD ÷ √n) describes how precisely the mean is known and shrinks with sample size. In a normal distribution about 68% of values lie within one SD and about 95% within two.",
+    "Skewed data (cell counts, viral loads) are often log-transformed or summarized by the median."
+   ]
+  },
+  {
+   "name": "Reading figures",
+   "know": [
+    "Check the axes and units, whether a scale is linear or logarithmic (bacterial growth and dilutions are usually log), what the bars show (mean or median), and what the error bars are (SD, SEM, or confidence interval). On a gel, size runs from large at the top to small at the bottom, and band intensity tracks amount.",
+    "Survival curves, dose–response curves, and kinetics plots each have standard shapes; a shift to the right on a dose–response curve means less potency, a lower plateau means less efficacy."
+   ]
+  },
+  {
+   "name": "Significance and uncertainty",
+   "know": [
+    "A p-value is the probability of a result at least as extreme as the one observed if there were really no effect; p < 0.05 is the usual threshold for statistical significance. A 95% confidence interval that excludes zero (or a ratio of 1) is significant at that level. Type I error is a false positive, Type II a false negative; power rises with sample size and effect size.",
+    "Significance is not importance: report the effect size. Multiple comparisons inflate false positives unless corrected."
+   ]
+  },
+  {
+   "name": "Research ethics",
+   "know": [
+    "Human studies need informed consent, institutional review board approval, confidentiality, and a favourable balance of benefit to risk; vulnerable groups get extra protection. Animal studies need justification, the fewest animals that give a valid answer, minimization of pain and distress, and oversight by an animal care committee.",
+    "Data must be reported as obtained, with conflicts of interest declared; genetic and biobank data raise privacy and consent issues for relatives as well as participants."
+   ]
+  }
+ ],
+ "math_toolkit": [
+  {
+   "name": "Genetics arithmetic",
+   "know": [
+    "Punnett squares give offspring ratios; for two independent genes multiply the single-gene probabilities (product rule) and add probabilities of mutually exclusive outcomes (sum rule). Hardy–Weinberg: if the recessive phenotype frequency is q², take the square root for q, then p = 1 − q and carriers are 2pq.",
+    "Recombination frequency in percent equals map distance in centimorgans for nearby genes; it cannot exceed 50%."
+   ],
+   "equations": [
+    "p^2 + 2pq + q^2 = 1",
+    "P(A \\text{ and } B) = P(A)\\,P(B)\\ \\text{(independent)}"
+   ],
+   "example": "If 1 in 2,500 newborns has a recessive disease, q² = 0.0004, q = 0.02, p ≈ 0.98, and the carrier frequency 2pq ≈ 0.039, about 1 in 25."
+  },
+  {
+   "name": "Exponential growth and dilution",
+   "know": [
+    "A doubling population follows N = N₀ × 2ⁿ after n generations; the number of generations in time t is t divided by the generation time. Serial dilutions multiply: three 1:10 dilutions give 1:1000, so a count of 50 colonies from 0.1 mL of the final dilution means 50 × 1000 × 10 = 5 × 10⁵ cells per mL of the original.",
+    "On a semi-log plot exponential growth is a straight line; the slope gives the growth rate."
+   ],
+   "equations": [
+    "N_t = N_0 \\times 2^{t/t_d}"
+   ],
+   "example": "A culture with a 30-minute doubling time grows 2⁸ = 256-fold in four hours."
+  },
+  {
+   "name": "Ratios, percentages, and rates",
+   "know": [
+    "Percent change = (new − old) ÷ old × 100. Rates (filtration, flow, reaction velocity) are amounts per time; compare them by ratio. Relative values on a graph (fold change) are read against the control set to 1.",
+    "Keep units: µg to mg divides by 1,000; mL to L divides by 1,000; a 2 mM solution is 2 mmol per litre."
+   ],
+   "equations": [],
+   "example": "If the control enzyme rate is 20 µmol/min and the treated rate is 15 µmol/min, activity fell 25%, to 0.75 of control."
+  },
+  {
+   "name": "Logs and pH",
+   "know": [
+    "pH = −log[H⁺]; each pH unit is a tenfold change in [H⁺]. log 2 ≈ 0.3, log 3 ≈ 0.48, log 5 ≈ 0.7. For [H⁺] = a × 10⁻ⁿ, pH = n − log a. Henderson–Hasselbalch: pH = pKa + log([base]/[acid]), so at pH = pKa the two forms are equal, and one unit away the ratio is 10:1.",
+    "Half-lives: after n half-lives, 1/2ⁿ remains; 10% remaining is a little more than three half-lives."
+   ],
+   "equations": [
+    "\\mathrm{pH} = \\mathrm{p}K_a + \\log_{10}\\dfrac{[\\mathrm{A^-}]}{[\\mathrm{HA}]}"
+   ],
+   "example": "At pH 7.4 with a pKa of 6.1, log(ratio) = 1.3, so bicarbonate to carbonic acid is about 20:1."
+  },
+  {
+   "name": "Reading a kinetics or binding plot",
+   "know": [
+    "On a Michaelis–Menten curve, Vmax is the plateau and Km is the [S] at half of it. On a Lineweaver–Burk plot the y-intercept is 1/Vmax and the x-intercept is −1/Km; a competitive inhibitor shares the y-intercept, a noncompetitive one shares the x-intercept.",
+    "A sigmoidal binding curve means cooperativity; a right shift means lower affinity (higher P₅₀ or Kd)."
+   ],
+   "equations": [
+    "v_0 = \\dfrac{V_{max}[S]}{K_m + [S]}"
+   ],
+   "example": "If Vmax is 100 units and the rate at 2 mM substrate is 50 units, Km is 2 mM; at 6 mM the rate is 100 × 6/(2 + 6) = 75 units."
+  }
+ ]
+}
