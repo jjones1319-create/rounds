@@ -53,11 +53,14 @@ ASSET_V = {"body3d": vhash(ROOT / "js/body3d.js"), "map": vhash(ROOT / "data/mes
            "katex": json.loads((ROOT / "vendor/katex/VERSION.json").read_text(encoding="utf-8"))["version"],  # loaded lazily by the guides
            **{l["file"]: vhash(ROOT / l["file"]) for sc in mesh_map["scenes"].values() for l in sc["layers"].values()}}
 
+BETA_LABEL = False   # "Beta" badge on MCAT items not yet marked reviewed (MCAT_SPEC §7); off by default, owner's call
 src = ROOT / "src"
 out = (src / "shell.html").read_text(encoding="utf-8")
 assert "__QBANK__" not in out, "the question bank is no longer inlined; remove __QBANK__ from src/shell.html"
 assert out.count("__ASSET_V__") == 1, "src/shell.html must contain __ASSET_V__ once"
 out = out.replace("__ASSET_V__", json.dumps(ASSET_V))
+assert out.count("__BUILD__") == 1, "src/shell.html must contain __BUILD__ once"
+out = out.replace("__BUILD__", json.dumps({"beta": BETA_LABEL}))
 for marker, name in [("FIGURE_JS","figure.js"),("CONTENT_JS","content.js"),("PTABLE_JS","ptable.js"),("MODELS_JS","models.js"),("ANAT_JS","anat.js"),("APP_JS","app.js")]:
     out = out.replace(f"/*{marker}*/", (src / name).read_text(encoding="utf-8"))
 (ROOT / "index.html").write_text(out, encoding="utf-8")

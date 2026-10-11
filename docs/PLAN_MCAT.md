@@ -112,6 +112,7 @@ Content: one science passage (4–6 questions) for each science section, and two
   overflow test passes on every new screen.
 
 ### Phase M4: review workflow and corrections
+**Done 2026-10-11** (Progress → Content review: review mode, question list by status and section, Mark reviewed with reviewer and note on questions and passages, topic ticks; Copy/Download review JSON → `tools/apply_review.py` writes `status`/`reviewed_by` into the content; `rev` badge on corrected items; Beta label behind `BETA_LABEL` in build.py, off).
 In-app support for the owner's review sessions (filter items by `status`, mark `reviewed` with `reviewed_by`) and
 a corrections log (`rev` increments recorded in the spec changelog; showing recent corrections in the app is
 optional). Optional, off by default, and only if the site is ever promoted: a "Beta" label on unreviewed items and

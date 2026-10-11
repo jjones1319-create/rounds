@@ -83,7 +83,8 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
 - `Sync` in `app.js` uses `window.claude` (claude.ai only). Off claude.ai it is a no-op; leave it, it's harmless.
 - The 3D/Diagram choice per tab is in `rounds.view3d` and the selected exam in `rounds.exam` (conveniences, not progress).
 - MCAT progress lives in `rounds.mcat.v1` (same shape as the boards record plus `reviewed: {topicId: ts}` for the
-  guides' Reviewed ticks; created only once something is saved). Theme and text size stay in the boards record
+  guides' Reviewed ticks, `review: {id: {s, by, ts, note}}` for the owner's question/passage marks, `reviewer` and
+  `reviewMode`; created only once something is saved). Export → `tools/apply_review.py` writes marks into the content. Theme and text size stay in the boards record
   whichever exam is selected (`Store.settings()`). Which guide groups are expanded is in `rounds.guide.v1`.
 
 ## Current state (2026-10-11)
@@ -100,12 +101,14 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
   (phone: sticky Passage | Question toggle; ≥800 px: two panes), tap-drag highlights kept with the block (`hl` in the
   session), figures drawn from passage data (tables, line/bar/scatter SVG, KaTeX equations, RDKit structures at build
   time via `tools/structures.py`, `pip install rdkit`), passage sets travel together in blocks; blocks M4–M7 (3 science
-  passages, 2 original CARS passages, 22 items).
+  passages, 2 original CARS passages, 22 items). Phase M4 done 2026-10-11: in-app content review (Progress → Content
+  review; `tools/apply_review.py`), `rev` badge, Beta label flag off.
 - Open gaps: many 3D structures show a name-only card; write verified cards for the important ones.
 
 ## Work order
 Work on one track at a time and finish its current phase before switching. Report at each phase boundary.
 - Track A, 3D anatomy: `docs/PLAN_3D.md`. Phases 0–2 are done; Phase 3 (progress export/import, installable PWA) remains.
-- Track B, MCAT: `docs/PLAN_MCAT.md`. M0–M3 are done; M4 (review workflow) is next, then M5 (ongoing growth).
+- Track B, MCAT: `docs/PLAN_MCAT.md`. M0–M4 are done; M5 is ongoing growth (passages and discretes toward the AAMC
+  mix, coverage report first).
 - Track C, content: new board blocks (`/new-board-block`, boards spec) and MCAT blocks (MCAT spec).
 - If the site is ever to be promoted: `docs/PUBLIC_RELEASE.md` checklist first.

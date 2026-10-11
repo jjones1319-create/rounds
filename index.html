@@ -269,6 +269,8 @@ details[open].gc>summary::before,details[open].gcat>summary::before,details[open
 .struct svg{max-width:320px; height:auto; display:block; margin:0 auto}
 .struct svg path[style*="stroke:#000000"]{stroke:var(--ink) !important}
 .struct svg path[style*="fill:#000000"], .struct svg text[style*="fill:#000000"]{fill:var(--ink) !important}
+.rvbox{margin-top:18px; padding:12px 14px; border-radius:14px; border:1px dashed var(--line); background:var(--surface2)}
+.rvbox textarea{width:100%; min-height:64px; margin-top:4px; border:1px solid var(--line); border-radius:12px; padding:10px 12px; font:inherit; font-size:15px; background:var(--surface); color:var(--ink); resize:vertical}
 .navsep{grid-column:1/-1; font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin-top:4px}
 @media (min-width:800px){
   .rbody.split{flex-direction:row}
@@ -451,7 +453,7 @@ details.bgroup[open] summary::after{transform:rotate(-135deg)}
 <div class="runner" id="runner" hidden role="dialog" aria-modal="true" aria-label="Question block"></div>
 <div id="sheetroot"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script>const ASSET_V = {"body3d": "64e615e1c2", "map": "64bdaa918d", "data/boards.json": "10d3b1e7b9", "data/mcat.json": "a242b4fc1f", "katex": "0.19.0", "models/skeleton.glb": "8b64aa61f7", "models/organs.glb": "eca00964bc", "models/muscles.glb": "5781f0b454", "models/arteries.glb": "af3bbb5999", "models/veins.glb": "53a3a0c905", "models/nerves.glb": "8af742eafb", "models/lymph.glb": "8b7f51010d", "models/brain_cortex.glb": "1974b39599", "models/brain_deep.glb": "cdca5a7156", "models/brain_arteries.glb": "45b2909462", "models/brain_nerves.glb": "8a0660696b", "models/brain_skull.glb": "60b3976b71", "models/heart_wall.glb": "d09d25e840", "models/heart_valves.glb": "37b965357c", "models/heart_coronary.glb": "5d3d252113", "models/heart_veins.glb": "b94b3381fe", "models/heart_vessels.glb": "5f2a5b42e3"}; /* content hashes of the 3D files, from build.py */</script>
+<script>const ASSET_V = {"body3d": "64e615e1c2", "map": "64bdaa918d", "data/boards.json": "10d3b1e7b9", "data/mcat.json": "a242b4fc1f", "katex": "0.19.0", "models/skeleton.glb": "8b64aa61f7", "models/organs.glb": "eca00964bc", "models/muscles.glb": "5781f0b454", "models/arteries.glb": "af3bbb5999", "models/veins.glb": "53a3a0c905", "models/nerves.glb": "8af742eafb", "models/lymph.glb": "8b7f51010d", "models/brain_cortex.glb": "1974b39599", "models/brain_deep.glb": "cdca5a7156", "models/brain_arteries.glb": "45b2909462", "models/brain_nerves.glb": "8a0660696b", "models/brain_skull.glb": "60b3976b71", "models/heart_wall.glb": "d09d25e840", "models/heart_valves.glb": "37b965357c", "models/heart_coronary.glb": "5d3d252113", "models/heart_veins.glb": "b94b3381fe", "models/heart_vessels.glb": "5f2a5b42e3"}; /* content hashes of the 3D files, from build.py */ const BUILD = {"beta": false}; /* build-time flags: beta label (MCAT_SPEC §7) */</script>
 <script>
 /* Anatomy figure v2: original stylized drawing with FRONT and BACK views.
    viewBox 0 0 400 920, midline x=200. Paired structures are defined on the patient's RIGHT
@@ -2321,7 +2323,7 @@ const Anat = (function () {
     settings() { return this.all.boards.settings; },
     read(exam) { let d = null; try { d = JSON.parse(localStorage.getItem(EXAMS[exam].key) || "null"); } catch (e) { d = null; } return normalize(d, MAPS[exam]); },
     load() { for (const exam in EXAMS) this.all[exam] = this.read(exam); },
-    pristine(d) { return !d.updatedAt && !d.settings.ts && !d.sessions.length && !Object.keys(d.answers).length && !Object.keys(d.flags).length && !Object.keys(d.notes).length && !Object.keys(d.reviewed || {}).length; },
+    pristine(d) { return !d.updatedAt && !d.settings.ts && !d.sessions.length && !Object.keys(d.answers).length && !Object.keys(d.flags).length && !Object.keys(d.notes).length && !Object.keys(d.reviewed || {}).length && !Object.keys(d.review || {}).length && !d.reviewMode; },
     local() {                                           // an exam that has never been used gets no record at all
       if (this.pristine(this.d)) return;
       try { localStorage.setItem(EXAMS[EXAM].key, JSON.stringify(this.d)); } catch (e) { /* storage unavailable */ }
@@ -2464,7 +2466,7 @@ const Anat = (function () {
     else v.innerHTML = EXAM === "mcat" ? mcatProgress() : viewProgress();
     renderMath(v);
   }
-  function go(tab) { UI.tab = tab; render(); window.scrollTo(0, 0); }
+  function go(tab) { UI.tab = tab; UI.rview = false; render(); window.scrollTo(0, 0); }
 
   /* ---------------- shared bits ---------------- */
   function qmapHTML() {
@@ -2539,6 +2541,7 @@ const Anat = (function () {
     return h;
   }
   function mcatProgress() {
+    if (UI.rview) return reviewListHTML();
     const rows = Bank.mcat.sections.map((s) => { const g = guideOf(s.k); if (!g || !guideTopics(g).length) return ""; const n = guideTopics(g).length, r = reviewedCount(g), pct = n ? Math.round((100 * r) / n) : 0; return `<div class="bar-row"><div class="lab"><span>${esc(s.short)} topics reviewed</span><span class="muted">${r} of ${n}</span></div><div class="bar" role="img" aria-label="${pct}% reviewed"><i style="width:${pct}%"></i></div></div>`; }).join("");
     const stat = (qs) => { const ans = qs.filter((q) => A(q.id)), ok = ans.filter((q) => firstOk(q.id)).length; return { n: qs.length, ans: ans.length, ok, pct: ans.length ? Math.round((100 * ok) / ans.length) : 0 }; };
     const row = (label, qs) => { const t = stat(qs); return t.n ? `<div class="bar-row"><div class="lab"><span>${label}</span><span class="muted">${t.ans ? `${t.ok} of ${t.ans} right` : `${t.n} question${t.n === 1 ? "" : "s"}, not started`}</span></div><div class="bar" role="img" aria-label="${t.pct}% correct"><i style="width:${t.pct}%"></i></div></div>` : ""; };
@@ -2555,7 +2558,7 @@ const Anat = (function () {
         <h2>By content category</h2><div class="panel bars">${Object.keys(Bank.mcat.categories || {}).map((c) => row(`${esc(c)} · ${esc(Bank.mcat.categories[c])}`, QB.filter((q) => q.category === c))).join("")}</div>
         <h2>By difficulty</h2><div class="panel bars">${[2, 3, 4, 5].map((d) => row(stars(d), QB.filter((q) => q.difficulty === d))).join("")}</div>`;
     }
-    h += `${rows ? `<h2>What's tested</h2><div class="panel bars">${rows}</div>` : ""}
+    h += `${rows ? `<h2>What's tested</h2><div class="panel bars">${rows}</div>` : ""}${reviewPanelHTML()}
       <p class="hint" style="margin-top:18px" data-sync>${syncText()}</p>${QB.length ? `<button class="btn ghost" style="margin-top:6px" data-act="reset">Reset MCAT progress</button>` : ""}`;
     return h;
   }
@@ -2901,6 +2904,67 @@ const Anat = (function () {
     startSession(mode, qs.slice(0, 40), { perQ: 90 });
   }
 
+
+  /* ---------------- content review (docs/PLAN_MCAT.md, Phase M4; MCAT_SPEC §7) ----------------
+     The owner reviews questions, passages and guide topics in the app. Marks live in the MCAT record (review: {id: {s, by,
+     ts, note}}; topic ticks in reviewed: {id: ts}) and are exported as JSON for tools/apply_review.py, which writes status
+     and reviewed_by into the content files so the marks survive a rebuild. Review mode is off unless switched on. */
+  const RV = () => (Store.all.mcat.review = Store.all.mcat.review || {});
+  const effStatus = (x) => (RV()[x.id] && RV()[x.id].s) || x.status || "draft";
+  const reviewMode = () => !!Store.all.mcat.reviewMode;
+  const betaBadge = (q) => (typeof BUILD === "object" && BUILD.beta && EXAM === "mcat" && effStatus(q) !== "reviewed") ? `<span class="badge flag">Beta</span>` : "";
+  function saveMcat() { if (EXAM === "mcat") Store.save(); else { try { if (!Store.pristine(Store.all.mcat)) localStorage.setItem(EXAMS.mcat.key, JSON.stringify(Store.all.mcat)); } catch (e) { /* ignore */ } } }
+  function setReviewStatus(id, s, note) {
+    const m = RV(), cur = m[id] || {};
+    m[id] = { s, by: s === "reviewed" ? (Store.all.mcat.reviewer || "owner") : cur.by || null, ts: Date.now(), note: note != null ? note : cur.note || "" };
+    saveMcat();
+  }
+  function reviewPanelHTML() {
+    const items = Bank.mcat.items || [], pas = Bank.mcat.passages || [], topics = Object.values(Bank.mcat.guides || {}).flatMap((g) => guideTopics(g));
+    const done = (xs) => xs.filter((x) => effStatus(x) === "reviewed").length, pct = (a, b) => (b ? Math.round((100 * a) / b) : 0);
+    const tr = Object.keys(reviewedMap()).length, on = reviewMode();
+    return `<h2>Content review</h2><div class="panel" id="rvpanel">
+      <p class="hint" style="margin:0 0 10px">For the owner's review sessions. Marks are kept in this browser's MCAT record; export them and run <code>tools/apply_review.py</code> to write them into the content files.</p>
+      <div class="field switch" style="margin-top:0"><span class="lab" style="margin:0">Review mode (adds review controls to explanations and passages)</span><button class="toggle" role="switch" aria-checked="${on}" aria-label="Review mode" data-act="rv-mode"></button></div>
+      ${on ? `<div class="field"><label class="lab" for="rv-name">Reviewer name (written into reviewed_by)</label><input id="rv-name" class="search" type="text" value="${esc(Store.all.mcat.reviewer || "")}" placeholder="Your name" data-reviewer></div>` : ""}
+      <div class="bars" style="margin-top:12px">${[["Questions", items], ["Passages", pas]].map(([n, xs]) => `<div class="bar-row"><div class="lab"><span>${n}</span><span class="muted">${done(xs)} of ${xs.length} reviewed</span></div><div class="bar" role="img" aria-label="${pct(done(xs), xs.length)}% reviewed"><i style="width:${pct(done(xs), xs.length)}%"></i></div></div>`).join("")}
+        <div class="bar-row"><div class="lab"><span>Guide topics</span><span class="muted">${tr} of ${topics.length} ticked</span></div><div class="bar" role="img" aria-label="${pct(tr, topics.length)}% ticked"><i style="width:${pct(tr, topics.length)}%"></i></div></div></div>
+      ${on ? `<div class="row wrap" style="margin-top:14px"><button class="btn" data-act="rv-list">Review questions</button><button class="btn ghost" data-act="rv-copy">Copy review JSON</button><button class="btn ghost" data-act="rv-download">Download</button></div>` : ""}</div>`;
+  }
+  const RVF = { status: "draft", sec: "all" };
+  function reviewListHTML() {
+    const all = Bank.mcat.items || [], secs = Bank.mcat.sections;
+    const list = all.filter((q) => (RVF.status === "all" || effStatus(q) === RVF.status) && (RVF.sec === "all" || q.section === RVF.sec));
+    return `${examSeg()}<p style="margin:14px 0 0"><button class="btn quiet sm" data-act="rv-back">${ICON.left} Progress</button></p><h1>Review questions</h1>
+      <div class="chips" style="margin-top:12px">${[["draft", "Draft"], ["reviewed", "Reviewed"], ["all", "All"]].map(([k, n]) => `<button class="chip" data-act="rv-filter" data-v="${k}" aria-pressed="${RVF.status === k}">${n} <span class="n">${all.filter((q) => k === "all" || effStatus(q) === k).length}</span></button>`).join("")}</div>
+      <div class="chips" style="margin-top:8px">${[["all", "All sections"], ...secs.map((s) => [s.k, s.short])].map(([k, n]) => `<button class="chip" data-act="rv-sec" data-v="${k}" aria-pressed="${RVF.sec === k}">${esc(n)}</button>`).join("")}</div>
+      <p class="hint" style="margin:12px 2px 8px">${list.length} question${list.length === 1 ? "" : "s"}. Open one to read it with its explanation, then mark it.</p>
+      <div class="list">${list.map((q) => { const st = effStatus(q), r = RV()[q.id]; return `<button class="li" data-act="rv-open" data-id="${q.id}"><div class="t"><b>${q.id}${q.passage ? ` · ${esc(q.passage)}` : ""}${q.rev > 1 ? ` · rev ${q.rev}` : ""}</b><span>${esc(q.stem.slice(0, 90))}${q.stem.length > 90 ? "…" : ""}${r && r.note ? ` · note: ${esc(r.note.slice(0, 40))}` : ""}</span></div><span class="badge ${st === "reviewed" ? "correct" : ""}">${st === "reviewed" ? "Reviewed" : "Draft"}</span>${ICON.right}</button>`; }).join("") || `<p class="hint" style="padding:14px; margin:0">Nothing here.</p>`}</div>`;
+  }
+  function openForReview(id) {
+    const q = MAPS.mcat[id]; if (!q) return;
+    const ids = q.passage ? (Bank.mcat.items || []).filter((x) => x.passage === q.passage).map((x) => x.id) : [id];
+    const resp = {}; ids.forEach((x) => { const a = A(x); if (a) resp[x] = { c: a.c, ok: a.ok }; });
+    const s = { id: uid(), mode: "tutor", temp: true, done: true, qids: ids, resp, sel: {}, strike: {}, hl: {}, qtime: {}, elapsed: 0, idx: 0 };
+    openRunner(s, { review: true, idx: ids.indexOf(id) });
+  }
+  function reviewBoxHTML(x, kind) {
+    if (EXAM !== "mcat" || !reviewMode()) return "";
+    const st = effStatus(x), r = RV()[x.id] || {}, by = r.by || x.reviewed_by;
+    return `<div class="rvbox"><div class="row wrap"><span class="badge ${st === "reviewed" ? "correct" : "flag"}">${kind} ${st === "reviewed" ? "reviewed" : "draft"}</span><span class="small muted">${esc(x.id)}${x.rev ? ` · rev ${x.rev}` : ""}${by ? ` · ${esc(by)}` : ""}${r.ts ? ` · ${new Date(r.ts).toLocaleDateString()}` : ""}</span><span class="spacer"></span>${st === "reviewed" ? `<button class="btn ghost sm" data-act="rv-set" data-id="${esc(x.id)}" data-v="draft">Back to draft</button>` : `<button class="btn sm" data-act="rv-set" data-id="${esc(x.id)}" data-v="reviewed">Mark reviewed</button>`}</div>
+      <label for="rvn-${esc(x.id)}" class="lab" style="margin-top:10px">Reviewer note (exported with the mark)</label><textarea id="rvn-${esc(x.id)}" data-rnote="${esc(x.id)}" placeholder="Corrections needed, sources to check…">${esc(r.note || "")}</textarea></div>`;
+  }
+  function reviewExport() {
+    const m = RV(), items = {}, passages = {};
+    for (const id in m) { if (MAPS.mcat[id]) items[id] = m[id]; else if (PMAP[id]) passages[id] = m[id]; }
+    return JSON.stringify({ app: "rounds", exported: new Date().toISOString(), reviewer: Store.all.mcat.reviewer || "owner", items, passages, topics: reviewedMap() }, null, 1);
+  }
+  function copyReview() { const t = reviewExport(); (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject(new Error("no clipboard"))).then(() => toast("Review JSON copied"), () => downloadReview()); }
+  function downloadReview() {
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([reviewExport()], { type: "application/json" })); a.download = `rounds-review-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000); toast("Review JSON downloaded");
+  }
+
   /* ---------------- runner ---------------- */
   const R = { s: null, idx: 0, review: false, results: false, tick: null, lastSave: 0, pane: "question", lastPassage: null, scroll: {} };
   function openRunner(s, o = {}) {
@@ -2968,7 +3032,7 @@ const Anat = (function () {
       ${EXAM === "mcat" ? (q.section !== "cars" ? `<button class="iconbtn" data-act="r-ptable" aria-label="Periodic table">${ICON.table}</button>` : `<span style="width:44px"></span>`) : `<button class="iconbtn" data-act="r-labs" aria-label="Lab reference values">${ICON.labs}</button>`}
       <button class="iconbtn" data-act="r-more" aria-label="All questions and options">${ICON.more}</button></div>
       ${open}
-      <div class="qhead">${stars(q.difficulty)}${rev ? `<span>Question ${QNUM[id]} in the bank</span>` : ""}</div>
+      <div class="qhead">${stars(q.difficulty)}${rev ? `<span>Question ${QNUM[id]} in the bank</span>` : ""}${betaBadge(q)}</div>
       <div class="vig">${q.vignette.map((p) => `<p>${p}</p>`).join("")}</div>`;
     if (q.labs.length) h += `<div class="labs"><table>${q.labs.map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join("")}</table></div>`;
     h += q.after_labs.map((p) => `<div class="vig"><p>${p}</p></div>`).join("");
@@ -3005,6 +3069,7 @@ const Anat = (function () {
     p.text.forEach((para, i) => { h += `<p data-pi="${i}">${markHTML(para, hl.filter((r) => r[0] === i))}</p>`; });
     h += `</div>${(p.figures || []).map((f, i) => figureHTML(f, i + 1)).join("")}`;
     if (p.source) h += `<p class="hint psrc">${esc(p.source)}</p>`;
+    h += reviewBoxHTML(p, "Passage");
     h += `<p class="hint" style="margin-top:6px">Press and drag on the text to highlight it; tap a highlight to clear it. Highlights are kept with this block.</p></div>`;
     return h;
   }
@@ -3113,7 +3178,7 @@ const Anat = (function () {
       <div class="objective"><h4>${EXAM === "mcat" ? "Takeaway" : "Educational objective"}</h4><p>${q.objective}</p></div>
       <div class="notes"><label for="note-${id}">My notes</label><textarea id="note-${id}" data-note="${id}" placeholder="Anything you want to remember about this one">${esc(note)}</textarea></div>
       <details class="src"><summary>Sources</summary><ul>${q.sources.map((x) => `<li>${x}</li>`).join("")}</ul></details>
-      <div class="tagline"><span class="badge">${esc(q.sys)}</span>${q.discipline ? `<span class="badge">${esc(q.discipline)}</span>` : ""}${EXAM === "mcat" ? `${q.section === "cars" ? "" : `<span class="badge">${esc(q.category)}</span><span class="badge">Skill ${esc(q.skill)}</span>`}${(q.topics || []).map((t) => `<button class="badge" data-act="g-go" data-sec="${esc(q.section)}" data-id="${esc(t)}" style="border:0;cursor:pointer">Guide: ${esc(t)}</button>`).join("")}` : ""}</div></div>`;
+      <div class="tagline"><span class="badge">${esc(q.sys)}</span>${q.discipline ? `<span class="badge">${esc(q.discipline)}</span>` : ""}${EXAM === "mcat" ? `${q.section === "cars" ? "" : `<span class="badge">${esc(q.category)}</span><span class="badge">Skill ${esc(q.skill)}</span>`}${(q.topics || []).map((t) => `<button class="badge" data-act="g-go" data-sec="${esc(q.section)}" data-id="${esc(t)}" style="border:0;cursor:pointer">Guide: ${esc(t)}</button>`).join("")}${q.rev > 1 ? `<span class="badge">rev ${q.rev}</span>` : ""}${betaBadge(q)}` : ""}</div>${EXAM === "mcat" ? reviewBoxHTML(q, "Question") : ""}</div>`;
   }
   function resultsHTML() {
     const s = R.s, sc = sessionScore(s);
@@ -3285,6 +3350,15 @@ const Anat = (function () {
       case "r-labs": openLabs(); break;
       case "r-more": openNavigator(); break;
       case "r-pane": setPane(v); break;
+      case "rv-mode": Store.all.mcat.reviewMode = !reviewMode(); saveMcat(); render(); break;
+      case "rv-list": UI.rview = true; render(); window.scrollTo(0, 0); break;
+      case "rv-back": UI.rview = false; render(); window.scrollTo(0, 0); break;
+      case "rv-filter": RVF.status = v; render(); break;
+      case "rv-sec": RVF.sec = v; render(); break;
+      case "rv-open": openForReview(t.dataset.id); break;
+      case "rv-set": { const id = t.dataset.id, ta = $(`[data-rnote="${id}"]`); setReviewStatus(id, v, ta ? ta.value : undefined); if (R.s) renderRunnerKeepScroll(); else render(); break; }
+      case "rv-copy": copyReview(); break;
+      case "rv-download": downloadReview(); break;
       case "r-prev": moveTo(R.idx - 1); break;
       case "r-next": moveTo(R.idx + 1); break;
       case "r-goto": closeSheet(true); moveTo(+t.dataset.i); break;
@@ -3310,6 +3384,11 @@ const Anat = (function () {
     else Anat.input(t);
   });
   document.addEventListener("change", (e) => { const t = e.target; if (t.dataset && t.dataset.reviewed) setReviewed(t.dataset.reviewed, t.checked); });
+  document.addEventListener("input", (e) => {
+    const t = e.target; if (!t.dataset) return;
+    if (t.dataset.rnote) { const id = t.dataset.rnote, x = MAPS.mcat[id] || PMAP[id] || { status: "draft" }, m = RV(); m[id] = Object.assign({ s: x.status || "draft", by: x.reviewed_by || null }, m[id] || {}, { note: t.value, ts: Date.now() }); saveMcat(); }
+    else if (t.dataset.reviewer != null) { Store.all.mcat.reviewer = t.value.trim(); saveMcat(); }
+  });
   document.addEventListener("toggle", (e) => { const d = e.target; if (d && d.dataset && d.dataset.okey) { G.open[d.dataset.okey] = d.open; saveGuideUI(); } }, true);
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && $("#sheetroot").firstChild) { closeSheet(); return; }

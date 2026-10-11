@@ -141,6 +141,14 @@ biology, chemistry, mathematics, and physics and has PhD colleagues in each fiel
 section and marks it `reviewed`; no second reviewer is required. A "Beta" label for unreviewed items is optional
 and off by default (a build-time flag), so unreviewed items display without a label unless the owner turns it on.
 
+**In the app** (Phase M4): Progress (MCAT) → Content review → Review mode. The list shows questions by status and
+section; opening one shows it with its explanation and a review box (Mark reviewed / Back to draft, reviewer note);
+passages get the same box below their text, and guide topics keep their Reviewed ticks. Marks live in the browser's MCAT
+record until exported (Copy or Download review JSON) and applied with `py tools/apply_review.py review.json`, which
+writes `status` and `reviewed_by` into the content files and prints the notes as a correction list. A correction to a
+published item keeps its ID, increments `rev` (shown as a badge in the explanation) and is logged in §11. The Beta label
+is `BETA_LABEL` in `build.py`.
+
 ## 8. Data schema (one JSON file per block in `content/mcat/`)
 
 ```json

@@ -269,6 +269,8 @@ details[open].gc>summary::before,details[open].gcat>summary::before,details[open
 .struct svg{max-width:320px; height:auto; display:block; margin:0 auto}
 .struct svg path[style*="stroke:#000000"]{stroke:var(--ink) !important}
 .struct svg path[style*="fill:#000000"], .struct svg text[style*="fill:#000000"]{fill:var(--ink) !important}
+.rvbox{margin-top:18px; padding:12px 14px; border-radius:14px; border:1px dashed var(--line); background:var(--surface2)}
+.rvbox textarea{width:100%; min-height:64px; margin-top:4px; border:1px solid var(--line); border-radius:12px; padding:10px 12px; font:inherit; font-size:15px; background:var(--surface); color:var(--ink); resize:vertical}
 .navsep{grid-column:1/-1; font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin-top:4px}
 @media (min-width:800px){
   .rbody.split{flex-direction:row}
@@ -451,7 +453,7 @@ details.bgroup[open] summary::after{transform:rotate(-135deg)}
 <div class="runner" id="runner" hidden role="dialog" aria-modal="true" aria-label="Question block"></div>
 <div id="sheetroot"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script>const ASSET_V = __ASSET_V__; /* content hashes of the 3D files, from build.py */</script>
+<script>const ASSET_V = __ASSET_V__; /* content hashes of the 3D files, from build.py */ const BUILD = __BUILD__; /* build-time flags: beta label (MCAT_SPEC §7) */</script>
 <script>
 /*FIGURE_JS*/
 </script>
