@@ -1,6 +1,6 @@
 # MCAT Question Generator — Master Spec
 
-**Version:** 1.2 · **Created:** 2026-10-10 · **Updated:** 2026-10-10 · **Blocks produced so far:** 0
+**Version:** 1.5 · **Created:** 2026-10-10 · **Updated:** 2026-10-11 · **Blocks produced so far:** 8 (M1–M7, M4B)
 
 The single source of truth for writing MCAT-style practice content for Rounds. It mirrors
 `docs/board_question_generator_spec.md`, adapted to how the MCAT actually works: four sections,
@@ -248,6 +248,16 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 | M7-Q10 | cars | CARS / within | M7-P02 | B | ★★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
 | M7-Q11 | cars | CARS / beyond | M7-P02 | D | ★★★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
 | M7-Q12 | cars | CARS / beyond | M7-P02 | D | ★★★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
+| M4B-Q01 | chem_phys | 4B / S2 | 4B.density-buoyancy | A | ★★★ | draft | OpenStax College Physics 2e, 11.7 Archimedes' Principle |
+| M4B-Q02 | chem_phys | 4B / S4 | 4B.hydrostatic-pressure | B | ★★★ | draft | OpenStax College Physics 2e, 11.4 Variation of Pressure with Depth in a Fluid |
+| M4B-Q03 | chem_phys | 4B / S2 | 4B.viscosity-poiseuille | A | ★★★ | draft | OpenStax College Physics 2e, 12.4 Viscosity and Laminar Flow; Poiseuille's Law |
+| M4B-Q04 | chem_phys | 4B / S2 | 4B.continuity-bernoulli | C | ★★ | draft | OpenStax College Physics 2e, 12.1 Flow Rate and Its Relation to Velocity |
+| M4B-Q05 | chem_phys | 4B / S4 | 4B.continuity-bernoulli | B | ★★★★ | draft | OpenStax College Physics 2e, 12.2 Bernoulli's Equation |
+| M4B-Q06 | chem_phys | 4B / S1 | 4B.turbulence-surface-tension | C | ★★ | draft | OpenStax College Physics 2e, 12.5 The Onset of Turbulence |
+| M4B-Q07 | chem_phys | 4B / S2 | 4B.circulation | A | ★★★ | draft | OpenStax College Physics 2e, 12.1 Flow Rate and Its Relation to Velocity |
+| M4B-Q08 | chem_phys | 4B / S2 | 4B.ideal-gas | D | ★★★ | draft | OpenStax Chemistry 2e, 9.2 Relating Pressure, Volume, Amount, and Temperature |
+| M4B-Q09 | chem_phys | 4B / S1 | 4B.kinetic-theory | C | ★★★ | draft | OpenStax Chemistry 2e, 9.5 The Kinetic-Molecular Theory |
+| M4B-Q10 | chem_phys | 4B / S3 | 4B.partial-pressure | D | ★★★ | draft | OpenStax Chemistry 2e, 9.3 Stoichiometry of Gaseous Substances, Mixtures, and Reactions |
 
 ## 11. Changelog
 
@@ -258,3 +268,4 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 | 1.2 | 2026-10-10 | Owner decisions applied: §3.4 now bans taking questions from any website or prep source (official samples may be read only for structure, style, and difficulty); §7 makes the owner the reviewer of all content, drops the second-reviewer requirement, and makes the Beta label optional and off by default; §9 wording updated. |
 | 1.3 | 2026-10-11 | Phase M2 starter blocks M1 (Chem/Phys), M2 (Bio/Biochem), M3 (Psych/Soc): 8 discrete items each, all `draft`, each re-derived and fact-checked against the cited open textbooks before commit; §10 item log started. |
 | 1.4 | 2026-10-11 | Phase M3: passage blocks M4 (Chem/Phys), M5 (Bio/Biochem), M6 (Psych/Soc) and M7 (two original CARS passages, humanities and social sciences), 22 items; figure data shapes documented in §8; letter-share warning applies to blocks of 8 or more items. |
+| 1.5 | 2026-10-11 | Block M4B (`content/mcat/4B.json`): 10 discrete Chem/Phys questions covering every 4B topic but real gases, each re-derived and checked against OpenStax; the validator accepts `4B.json` for block `M4B`. Phase M4 review workflow documented in §7. |

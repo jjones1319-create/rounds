@@ -121,6 +121,8 @@ a per-item "Report a problem" link (see PUBLIC_RELEASE §3).
   a corrected item keeps its ID and shows its new `rev`.
 
 ### Phase M5: growth
+**Ongoing from 2026-10-11.** Bank at this date: 61 items (M1–M7 and the single-category block M4B); `work/mcat_coverage.md`
+(rewritten by every validate run) lists the topics still without questions, which come first.
 Blocks of passages and discretes toward the AAMC mix in MCAT_SPEC §2, prioritized by the validator's
 coverage report (topics with no questions first).
 

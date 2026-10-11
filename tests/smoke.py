@@ -65,7 +65,8 @@ with sync_playwright() as p:
     check("guide search finds topics", len(hits) >= 1 and "Poiseuille" in hits[0].inner_text())
     hits[0].click(); pg.wait_for_timeout(300)
     check("a search result opens that topic", bool(pg.query_selector("[id='t-4B.viscosity-poiseuille'][open]")) and ev("document.querySelector('[data-gsearch]').value") == "")
-    check("'Practice this topic' stays hidden while a topic has no questions", not pg.query_selector("[id='t-4B.viscosity-poiseuille'] [data-act=g-practice]") and "No questions yet" in pg.inner_text("[id='t-4B.viscosity-poiseuille']") and bool(pg.query_selector("[id='t-4A.energy'] [data-act=g-practice]")))
+    pg.click("[id='t-4B.real-gases'] > summary"); pg.wait_for_timeout(200)   # a topic that still has no questions (coverage report)
+    check("'Practice this topic' stays hidden while a topic has no questions", not pg.query_selector("[id='t-4B.real-gases'] [data-act=g-practice]") and "No questions yet" in pg.inner_text("[id='t-4B.real-gases']") and bool(pg.query_selector("[id='t-4A.energy'] [data-act=g-practice]")))
     # the other guides: Bio/Biochem and Psych/Soc have content maps, CARS has skill areas instead
     for sec, first in (("bio_biochem", "1A"), ("psych_soc", "6A")):
         ev("document.querySelector('[data-act=msec][data-v=\"\"]').click()"); pg.wait_for_timeout(200)

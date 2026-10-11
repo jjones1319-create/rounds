@@ -1,0 +1,456 @@
+{
+ "block": "M4B",
+ "section": "chem_phys",
+ "passages": [],
+ "items": [
+  {
+   "id": "M4B-Q01",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4B",
+   "topics": [
+    "4B.density-buoyancy"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "A block of wood with a density of 600 kg/m³ and a volume of 0.020 m³ floats at rest in fresh water (density 1,000 kg/m³). The volume of the block that is above the waterline is:",
+   "options": {
+    "A": "0.008 m³",
+    "B": "0.012 m³",
+    "C": "0.020 m³",
+    "D": "0.033 m³"
+   },
+   "answer": "A",
+   "why_correct": [
+    "A floating object displaces its own weight of fluid. Weight of block = buoyant force: ρ_wood V g = ρ_water V_sub g, so the submerged fraction is V_sub/V = ρ_wood/ρ_water = 600/1,000 = 0.60.",
+    "Submerged volume = 0.60 × 0.020 m³ = 0.012 m³, so the part above water is 0.020 − 0.012 = 0.008 m³.",
+    "Sense check: a block less dense than water floats with a fraction equal to its relative density under water; 60% under, 40% above."
+   ],
+   "why_wrong": {
+    "B": "0.012 m³ is the volume below the waterline (60% of the block), not the volume above it.",
+    "C": "0.020 m³ is the whole block; a floating block must have part of its volume submerged to displace enough water to support its weight.",
+    "D": "0.033 m³ comes from inverting the density ratio (1,000/600 × 0.020); the submerged volume cannot exceed the block's volume."
+   },
+   "error_types": {
+    "B": "reversed relationship: submerged volume given instead of the exposed volume",
+    "C": "wrong formula: no displacement considered",
+    "D": "reversed relationship: density ratio inverted"
+   },
+   "takeaway": "For a floating object, the submerged fraction equals the ratio of its density to the fluid's density.",
+   "sources": [
+    "OpenStax College Physics 2e, 11.7 Archimedes' Principle (2022): a floating object displaces a weight of fluid equal to its own weight; fraction submerged = ρ_object/ρ_fluid."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M4B-Q02",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4B",
+   "topics": [
+    "4B.hydrostatic-pressure"
+   ],
+   "skill": "4",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "A pressure sensor lowered into a lake records absolute pressures of 101 kPa at the surface, 150 kPa at 5.0 m, 199 kPa at 10.0 m and 248 kPa at 15.0 m. Taking g = 9.8 m/s², the density of the lake water is closest to:",
+   "options": {
+    "A": "100 kg/m³",
+    "B": "1,000 kg/m³",
+    "C": "1,025 kg/m³",
+    "D": "9,800 kg/m³"
+   },
+   "answer": "B",
+   "why_correct": [
+    "Pressure in a fluid at rest rises linearly with depth: P = P₀ + ρgh. The readings rise by 49 kPa for every 5.0 m, a slope of 9.8 kPa/m, and the constant slope confirms the linear model.",
+    "ρg = 9,800 Pa/m, so ρ = 9,800 / 9.8 = 1,000 kg/m³.",
+    "Check one point: 101 kPa + 1,000 × 9.8 × 10.0 = 101 + 98 = 199 kPa, as recorded."
+   ],
+   "why_wrong": {
+    "A": "100 kg/m³ would give only 4.9 kPa per 5 m; the readings rise ten times faster.",
+    "C": "1,025 kg/m³ is typical of sea water; it would give 50.2 kPa per 5 m, and the data (49.0 kPa per 5 m) fit fresh water, as expected for a lake.",
+    "D": "9,800 is the slope in Pa/m, that is, ρg; dividing by g is still needed to get the density."
+   },
+   "error_types": {
+    "A": "sign or unit error: a factor of ten lost converting kPa/m to Pa/m",
+    "C": "true but irrelevant: a sea-water value applied to a lake",
+    "D": "wrong formula: ρg reported as ρ"
+   },
+   "takeaway": "Gauge pressure in a static fluid is ρgh: the slope of pressure against depth is ρg.",
+   "sources": [
+    "OpenStax College Physics 2e, 11.4 Variation of Pressure with Depth in a Fluid (2022): P = hρg for a fluid of uniform density; fluid pressures add.",
+    "OpenStax College Physics 2e, 11.6 Gauge Pressure, Absolute Pressure, and Pressure Measurement (2022): absolute pressure = gauge pressure + atmospheric pressure."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M4B-Q03",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4B",
+   "topics": [
+    "4B.viscosity-poiseuille",
+    "4B.circulation"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "Blood flows through an arteriole under a fixed pressure difference. If smooth-muscle contraction reduces the arteriole's radius by 20% while its length and the blood's viscosity stay the same, the volume flow rate becomes about:",
+   "options": {
+    "A": "41% of the original",
+    "B": "64% of the original",
+    "C": "80% of the original",
+    "D": "125% of the original"
+   },
+   "answer": "A",
+   "why_correct": [
+    "Poiseuille's law for laminar flow: Q = πr⁴ΔP/(8ηL). With ΔP, η and L fixed, Q is proportional to r⁴.",
+    "The new radius is 0.80 r, so Q_new/Q_old = 0.80⁴ = 0.64 × 0.64 = 0.41. The flow falls to about 41%.",
+    "This fourth-power dependence is why small changes in arteriolar radius give the body powerful control over blood flow and resistance."
+   ],
+   "why_wrong": {
+    "B": "64% is 0.80², the change in cross-sectional area; flow through a tube depends on the fourth power of the radius, not the second.",
+    "C": "80% assumes flow is proportional to radius; it is proportional to r⁴.",
+    "D": "125% is 1/0.80, as if a narrower vessel carried more flow at the same pressure difference; narrowing raises resistance and lowers flow."
+   },
+   "error_types": {
+    "B": "wrong formula: r² (area) used instead of r⁴",
+    "C": "wrong formula: linear dependence on r assumed",
+    "D": "reversed relationship: flow taken to rise when the vessel narrows"
+   },
+   "takeaway": "Laminar flow through a tube scales with r⁴ (Poiseuille): a 20% narrowing cuts flow to about 41% at the same pressure difference.",
+   "sources": [
+    "OpenStax College Physics 2e, 12.4 Viscosity and Laminar Flow; Poiseuille's Law (2022): Q = (P₂ − P₁)πr⁴/(8ηl); resistance varies as 1/r⁴, which is how the body regulates blood flow."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M4B-Q04",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4B",
+   "topics": [
+    "4B.continuity-bernoulli"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 2,
+   "stem": "Water flows steadily through a horizontal pipe whose diameter narrows from 4.0 cm to 2.0 cm. If the speed in the wide section is 1.0 m/s, the speed in the narrow section is:",
+   "options": {
+    "A": "0.25 m/s",
+    "B": "2.0 m/s",
+    "C": "4.0 m/s",
+    "D": "8.0 m/s"
+   },
+   "answer": "C",
+   "why_correct": [
+    "For an incompressible fluid the volume flow rate is the same everywhere along the pipe: A₁v₁ = A₂v₂ (the continuity equation).",
+    "Area scales with the square of the diameter, so halving the diameter divides the area by 4 and the speed must rise by 4: v₂ = 1.0 m/s × (4.0/2.0)² = 4.0 m/s.",
+    "Check: Q = A₁v₁ = π(0.020 m)² × 1.0 m/s ≈ 1.26 × 10⁻³ m³/s, and π(0.010 m)² × 4.0 m/s gives the same value."
+   ],
+   "why_wrong": {
+    "A": "0.25 m/s would be the speed if the pipe widened by this ratio; the narrow section must carry the same flow through a smaller area, so the fluid speeds up.",
+    "B": "2.0 m/s uses the ratio of diameters rather than of areas; area goes as diameter squared.",
+    "D": "8.0 m/s uses the cube of the diameter ratio; area, not volume, sets the speed."
+   },
+   "error_types": {
+    "A": "reversed relationship: speed decreased in the narrower section",
+    "B": "wrong formula: diameter ratio used instead of area ratio",
+    "D": "wrong formula: diameter ratio cubed"
+   },
+   "takeaway": "Continuity: A₁v₁ = A₂v₂, and area scales with diameter squared, so halving the diameter quadruples the speed.",
+   "sources": [
+    "OpenStax College Physics 2e, 12.1 Flow Rate and Its Relation to Velocity (2022): Q = Av; for an incompressible fluid A₁v₁ = A₂v₂."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M4B-Q05",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4B",
+   "topics": [
+    "4B.continuity-bernoulli"
+   ],
+   "skill": "4",
+   "cars_skill": null,
+   "difficulty": 4,
+   "stem": "A student records readings along a horizontal pipe carrying water (density 1,000 kg/m³): in section 1 the pressure is 150 kPa and the speed 1.0 m/s; in section 2 the speed is 5.0 m/s. Assuming ideal flow, the pressure in section 2 is closest to:",
+   "options": {
+    "A": "126 kPa",
+    "B": "138 kPa",
+    "C": "150 kPa",
+    "D": "162 kPa"
+   },
+   "answer": "B",
+   "why_correct": [
+    "Bernoulli's equation for a horizontal pipe (no height change): P₁ + ½ρv₁² = P₂ + ½ρv₂².",
+    "P₂ = P₁ − ½ρ(v₂² − v₁²) = 150,000 Pa − ½ × 1,000 × (25 − 1) = 150,000 − 12,000 = 138,000 Pa = 138 kPa.",
+    "Sense check: the fluid speeds up in section 2, so its pressure must be lower there; the drop in pressure is what accelerates the water."
+   ],
+   "why_wrong": {
+    "A": "126 kPa subtracts 24 kPa, leaving out the factor of ½ in the kinetic-energy term.",
+    "C": "150 kPa assumes the pressure is unchanged; where the speed rises, the pressure falls.",
+    "D": "162 kPa adds the kinetic term instead of subtracting it, as if the faster section were at higher pressure."
+   },
+   "error_types": {
+    "A": "wrong formula: the ½ dropped from ½ρv²",
+    "C": "wrong formula: pressure assumed constant along a pipe with changing speed",
+    "D": "reversed relationship: sign of the pressure change reversed"
+   },
+   "takeaway": "Along a horizontal streamline, P + ½ρv² is constant: faster flow means lower pressure.",
+   "sources": [
+    "OpenStax College Physics 2e, 12.2 Bernoulli's Equation (2022): P + ½ρv² + ρgh = constant; for constant height, P₁ + ½ρv₁² = P₂ + ½ρv₂²."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M4B-Q06",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4B",
+   "topics": [
+    "4B.turbulence-surface-tension",
+    "4B.circulation"
+   ],
+   "skill": "1",
+   "cars_skill": null,
+   "difficulty": 2,
+   "stem": "According to the Reynolds number for flow in a tube, which single change makes the onset of turbulence in a blood vessel more likely?",
+   "options": {
+    "A": "A decrease in the flow speed",
+    "B": "An increase in the viscosity of the blood",
+    "C": "An increase in the vessel's diameter at the same flow speed",
+    "D": "A decrease in the density of the blood"
+   },
+   "answer": "C",
+   "why_correct": [
+    "The Reynolds number for flow in a tube is Re = 2ρvr/η (ρ density, v mean speed, r radius, η viscosity). Flow is laminar below about 2,000 and turbulent above about 3,000.",
+    "Re grows with density, speed and radius and falls with viscosity, so a wider vessel at the same speed raises Re and favours turbulence.",
+    "This is why turbulence (and the sounds it makes) appears in the aorta and at narrowings or damaged valves rather than in capillaries; because anaemia lowers blood viscosity, it also makes turbulent flow more likely."
+   ],
+   "why_wrong": {
+    "A": "Lower speed lowers Re and makes laminar flow more likely.",
+    "B": "Higher viscosity is in the denominator of Re; thicker fluid damps turbulence.",
+    "D": "Lower density lowers Re, since inertial forces, which drive turbulence, scale with density."
+   },
+   "error_types": {
+    "A": "reversed relationship: speed lowers Re, not raises it",
+    "B": "reversed relationship: viscosity opposes turbulence",
+    "D": "reversed relationship: density favours turbulence"
+   },
+   "takeaway": "Re = 2ρvr/η: turbulence is favoured by high density, speed and radius and by low viscosity.",
+   "sources": [
+    "OpenStax College Physics 2e, 12.5 The Onset of Turbulence (2022): Reynolds number N_R = 2ρvr/η; laminar below 2,000, turbulent above 3,000; turbulence in blood flow and its sounds.",
+    "OpenStax Anatomy and Physiology 2e, 20.2 Blood Flow, Blood Pressure, and Resistance (2022): conditions such as anemia or polycythemia change blood viscosity."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M4B-Q07",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4B",
+   "topics": [
+    "4B.circulation",
+    "4B.continuity-bernoulli"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "The combined cross-sectional area of all the body's capillaries is roughly 1,000 times the cross-sectional area of the aorta. If blood leaves the heart through the aorta at a mean speed of about 30 cm/s, the mean speed of blood in a capillary is about:",
+   "options": {
+    "A": "0.03 cm/s",
+    "B": "0.3 cm/s",
+    "C": "3 cm/s",
+    "D": "30 cm/s"
+   },
+   "answer": "A",
+   "why_correct": [
+    "The volume flow rate is conserved: all the blood that passes through the aorta each second passes through the capillaries together. Continuity gives A_aorta v_aorta = A_cap v_cap.",
+    "v_cap = v_aorta × (A_aorta/A_cap) = 30 cm/s ÷ 1,000 = 0.03 cm/s, about 0.3 mm/s.",
+    "The slow capillary flow gives time for exchange of gases and nutrients across the capillary wall; the speed rises again in the veins as the total area falls."
+   ],
+   "why_wrong": {
+    "B": "0.3 cm/s would need an area ratio of 100, ten times smaller than stated.",
+    "C": "3 cm/s divides by only 10; the question states a factor of 1,000.",
+    "D": "30 cm/s assumes the speed is unchanged; the same flow spread over a far larger area must move much more slowly."
+   },
+   "error_types": {
+    "B": "sign or unit error: a factor of 10 lost",
+    "C": "sign or unit error: a factor of 100 lost",
+    "D": "wrong formula: continuity ignored"
+   },
+   "takeaway": "Blood speed is inversely proportional to total cross-sectional area; it is slowest in the capillaries, where the total area is greatest.",
+   "sources": [
+    "OpenStax College Physics 2e, 12.1 Flow Rate and Its Relation to Velocity (2022): the continuity equation applied to branching vessels; flow speed falls as total cross-sectional area rises.",
+    "OpenStax Anatomy and Physiology 2e, 20.2 Blood Flow, Blood Pressure, and Resistance (2022): the total cross-sectional area of the capillary beds is far greater than that of any other vessel type; blood velocity falls dramatically from arteries to capillaries, allowing time for exchange, and rises again in the veins as total area falls."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M4B-Q08",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "general chemistry",
+   "fc": "4",
+   "category": "4B",
+   "topics": [
+    "4B.ideal-gas",
+    "4B.temperature-pressure"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "A 2.0 L sample of an ideal gas at 300 K and 2.0 atm is warmed to 450 K while its pressure is reduced to 1.0 atm. The amount of gas is unchanged. Its new volume is:",
+   "options": {
+    "A": "0.67 L",
+    "B": "1.5 L",
+    "C": "3.0 L",
+    "D": "6.0 L"
+   },
+   "answer": "D",
+   "why_correct": [
+    "For a fixed amount of ideal gas, PV/T is constant (combined gas law): V₂ = V₁ × (P₁/P₂) × (T₂/T₁).",
+    "V₂ = 2.0 L × (2.0/1.0) × (450/300) = 2.0 × 2 × 1.5 = 6.0 L.",
+    "Both changes expand the gas: halving the pressure doubles the volume and raising the absolute temperature by half enlarges it by half again."
+   ],
+   "why_wrong": {
+    "A": "0.67 L inverts both ratios, as if higher temperature and lower pressure both shrank the gas.",
+    "B": "1.5 L applies the pressure ratio upside down (1.0/2.0) and keeps the temperature ratio right.",
+    "C": "3.0 L accounts for the temperature rise but ignores the halving of the pressure."
+   },
+   "error_types": {
+    "A": "reversed relationship: both ratios inverted",
+    "B": "reversed relationship: pressure ratio inverted",
+    "C": "wrong formula: pressure change omitted"
+   },
+   "takeaway": "Combined gas law: P₁V₁/T₁ = P₂V₂/T₂ with temperatures in kelvin; lower pressure and higher temperature both increase volume.",
+   "sources": [
+    "OpenStax Chemistry 2e, 9.2 Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law (2019): combined gas law P₁V₁/T₁ = P₂V₂/T₂."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M4B-Q09",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "general chemistry",
+   "fc": "4",
+   "category": "4B",
+   "topics": [
+    "4B.kinetic-theory"
+   ],
+   "skill": "1",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "At the same temperature, the root-mean-square speed of hydrogen molecules (H₂, molar mass 2 g/mol) compared with that of oxygen molecules (O₂, molar mass 32 g/mol) is:",
+   "options": {
+    "A": "1/16 as large",
+    "B": "1/4 as large",
+    "C": "4 times as large",
+    "D": "16 times as large"
+   },
+   "answer": "C",
+   "why_correct": [
+    "Kinetic theory gives the same average translational kinetic energy, (3/2)kT, to every molecule at a given temperature, so lighter molecules move faster: v_rms = √(3RT/M).",
+    "v_rms(H₂)/v_rms(O₂) = √(M_O₂/M_H₂) = √(32/2) = √16 = 4.",
+    "The same √(1/M) dependence underlies Graham's law of effusion: hydrogen effuses four times as fast as oxygen."
+   ],
+   "why_wrong": {
+    "A": "1/16 inverts the ratio and also forgets the square root.",
+    "B": "1/4 has the right size but the wrong direction; the lighter gas is the faster one.",
+    "D": "16 is the molar-mass ratio itself; speed depends on the square root of the mass ratio."
+   },
+   "error_types": {
+    "A": "reversed relationship: inverted and square root omitted",
+    "B": "reversed relationship: lighter molecules are faster, not slower",
+    "D": "wrong formula: square root omitted"
+   },
+   "takeaway": "v_rms = √(3RT/M): at equal temperature, speeds scale with 1/√M, so H₂ moves four times as fast as O₂.",
+   "sources": [
+    "OpenStax Chemistry 2e, 9.5 The Kinetic-Molecular Theory (2019): u_rms = √(3RT/M); molecules of lighter gases have higher speeds at the same temperature; Graham's law.",
+    "OpenStax College Physics 2e, 13.4 Kinetic Theory: Atomic and Molecular Explanation of Pressure and Temperature (2022): average kinetic energy (3/2)kT; v_rms = √(3kT/m)."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M4B-Q10",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": null,
+   "discipline": "general chemistry",
+   "fc": "4",
+   "category": "4B",
+   "topics": [
+    "4B.partial-pressure"
+   ],
+   "skill": "3",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "A researcher wants to test the hypothesis that the rate at which oxygen dissolves into a stirred solution depends on the partial pressure of O₂ above it and not on the total gas pressure. Which pair of conditions most directly tests whether total pressure has an effect of its own?",
+   "options": {
+    "A": "Pure O₂ at 1.0 atm versus air (21% O₂) at 1.0 atm",
+    "B": "Air at 1.0 atm versus a 21% O₂ in helium mixture at 1.0 atm",
+    "C": "Air at 1.0 atm versus air at 5.0 atm",
+    "D": "Air at 1.0 atm versus a 4.2% O₂ in nitrogen mixture at 5.0 atm"
+   },
+   "answer": "D",
+   "why_correct": [
+    "To show that partial pressure, not total pressure, is what matters, hold the partial pressure of O₂ fixed while changing the total pressure. By Dalton's law P_O₂ = x_O₂ × P_total: air at 1.0 atm gives 0.21 × 1.0 = 0.21 atm, and 4.2% O₂ at 5.0 atm gives 0.042 × 5.0 = 0.21 atm.",
+    "If the dissolution rate is the same in both, total pressure has no effect of its own and the hypothesis survives; if it differs, total pressure matters.",
+    "This is the logic of a controlled comparison: change only the variable you want to rule out."
+   ],
+   "why_wrong": {
+    "A": "This changes the O₂ partial pressure (1.0 versus 0.21 atm) at constant total pressure. It can show that partial pressure matters, but it never varies total pressure, so it cannot test whether total pressure matters too.",
+    "B": "Both mixtures have the same O₂ partial pressure and the same total pressure; this tests whether the other gas (nitrogen versus helium) matters, not the role of total pressure.",
+    "C": "Raising the total pressure of air five-fold also raises the O₂ partial pressure five-fold, so the two variables change together and cannot be separated."
+   },
+   "error_types": {
+    "A": "true but irrelevant: tests the first half of the hypothesis only",
+    "B": "out of scope: varies the diluent gas, not the pressures",
+    "C": "wrong formula: P_O₂ treated as independent of total pressure"
+   },
+   "takeaway": "Dalton's law: P_gas = mole fraction × P_total; to isolate partial pressure, vary total pressure while holding the partial pressure fixed.",
+   "sources": [
+    "OpenStax Chemistry 2e, 9.3 Stoichiometry of Gaseous Substances, Mixtures, and Reactions (2019): Dalton's law of partial pressures, P_A = X_A × P_total.",
+    "OpenStax Biology 2e, 1.1 The Science of Biology (2018): a control group has every feature of the experimental group except the hypothesized manipulation, so any difference must come from that manipulation."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  }
+ ]
+}

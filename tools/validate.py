@@ -150,11 +150,11 @@ def validate_guides(ck):
 def validate_blocks(ck, topics):
     """Returns (passages, items) across all blocks, in file order."""
     passages, items, seen = [], [], set()
-    for path in sorted(CONTENT.glob("M*.json")) if CONTENT.is_dir() else []:
+    for path in sorted(CONTENT.glob("*.json")) if CONTENT.is_dir() else []:   # blocks live at the top level (guides are in guides/)
         b = load_json(path, ck)
         if b is None: continue
         block = b.get("block")
-        if not ck.require(isinstance(block, str) and ID_BLOCK.match(block) and block == path.stem, path.name, "'block' must match the file name, e.g. M1"): continue
+        if not ck.require(isinstance(block, str) and ID_BLOCK.match(block) and block in (path.stem, "M" + path.stem), path.name, "'block' must match the file name, e.g. M1 (a single-category block may be named without the M, e.g. 4B.json for block M4B)"): continue
         local_passages = {}
         for p in b.get("passages") or []:
             pid = p.get("id"); where = f"{block} passage {pid}"
