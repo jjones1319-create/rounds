@@ -1,0 +1,465 @@
+{
+ "block": "M5",
+ "section": "bio_biochem",
+ "passages": [
+  {
+   "id": "M5-P01",
+   "section": "bio_biochem",
+   "kind": "science",
+   "title": "Growth of two Escherichia coli strains in ampicillin",
+   "text": [
+    "Students compared two strains of Escherichia coli. Strain W is a laboratory wild type. Strain R is the same strain carrying a plasmid, pBLA, that encodes a β-lactamase, an enzyme that hydrolyses the β-lactam ring of penicillin-type antibiotics. Each strain was grown overnight, diluted into fresh broth to an optical density at 600 nm (OD600) of 0.05, and incubated at 37 °C with shaking, with or without ampicillin (100 µg/mL). OD600 was recorded every 30 minutes for 3 hours (Table 1 and Figure 1). Over this range OD600 is roughly proportional to the number of cells per millilitre; the students estimated that an OD600 of 1.0 corresponded to about 1 × 10⁹ cells/mL.",
+    "In a second experiment, the students tested how resistance could spread. Strain R is sensitive to streptomycin, whereas a third strain, S, carries a chromosomal mutation that makes it resistant to streptomycin but is sensitive to ampicillin. Equal numbers of R and S cells were mixed in broth without antibiotics for 2 hours and then spread on agar containing both ampicillin and streptomycin. Several hundred colonies grew. No colonies grew when either strain was plated alone on the double-antibiotic agar. Adding DNase, which destroys free DNA, to the broth during mixing did not reduce the number of colonies. When the two strains were kept in the same flask but separated by a membrane filter whose pores let broth and DNA pass but not cells, no colonies grew.",
+    "At the end of the first experiment the students diluted the 180-minute culture of strain W (no ampicillin) by a factor of 10⁶ in sterile saline, spread 0.1 mL of this dilution on antibiotic-free agar, and counted 120 colonies the next day."
+   ],
+   "figures": [
+    {
+     "id": "tab1",
+     "type": "table",
+     "caption": "Table 1. OD600 of each culture at 30-minute intervals. Amp = ampicillin 100 µg/mL.",
+     "alt": "Table of OD600 readings at 0, 30, 60, 90, 120, 150 and 180 minutes. Strain W without ampicillin: 0.05, 0.05, 0.10, 0.20, 0.40, 0.80, 1.20. Strain W with ampicillin: 0.05, 0.05, 0.05, 0.04, 0.03, 0.03, 0.03. Strain R without ampicillin: 0.05, 0.05, 0.10, 0.20, 0.40, 0.80, 1.20. Strain R with ampicillin: 0.05, 0.05, 0.09, 0.18, 0.36, 0.72, 1.15.",
+     "data": {
+      "columns": [
+       "Time (min)",
+       "W, no amp",
+       "W + amp",
+       "R, no amp",
+       "R + amp"
+      ],
+      "rows": [
+       [
+        "0",
+        "0.05",
+        "0.05",
+        "0.05",
+        "0.05"
+       ],
+       [
+        "30",
+        "0.05",
+        "0.05",
+        "0.05",
+        "0.05"
+       ],
+       [
+        "60",
+        "0.10",
+        "0.05",
+        "0.10",
+        "0.09"
+       ],
+       [
+        "90",
+        "0.20",
+        "0.04",
+        "0.20",
+        "0.18"
+       ],
+       [
+        "120",
+        "0.40",
+        "0.03",
+        "0.40",
+        "0.36"
+       ],
+       [
+        "150",
+        "0.80",
+        "0.03",
+        "0.80",
+        "0.72"
+       ],
+       [
+        "180",
+        "1.20",
+        "0.03",
+        "1.20",
+        "1.15"
+       ]
+      ]
+     }
+    },
+    {
+     "id": "fig1",
+     "type": "line",
+     "caption": "Figure 1. OD600 against time for the four cultures in Table 1.",
+     "alt": "Line graph of OD600 against time in minutes for four cultures. Strain W and strain R without ampicillin follow the same curve: flat at 0.05 for 30 minutes, then doubling every 30 minutes to 0.80 at 150 minutes and 1.20 at 180 minutes. Strain R with ampicillin follows just below them, reaching 1.15 at 180 minutes. Strain W with ampicillin stays flat then falls slightly to 0.03.",
+     "data": {
+      "x": {
+       "label": "Time (min)",
+       "min": 0,
+       "max": 180
+      },
+      "y": {
+       "label": "OD600",
+       "min": 0,
+       "max": 1.25
+      },
+      "series": [
+       {
+        "name": "W, no amp",
+        "points": [
+         [
+          0,
+          0.05
+         ],
+         [
+          30,
+          0.05
+         ],
+         [
+          60,
+          0.1
+         ],
+         [
+          90,
+          0.2
+         ],
+         [
+          120,
+          0.4
+         ],
+         [
+          150,
+          0.8
+         ],
+         [
+          180,
+          1.2
+         ]
+        ]
+       },
+       {
+        "name": "W + amp",
+        "points": [
+         [
+          0,
+          0.05
+         ],
+         [
+          30,
+          0.05
+         ],
+         [
+          60,
+          0.05
+         ],
+         [
+          90,
+          0.04
+         ],
+         [
+          120,
+          0.03
+         ],
+         [
+          150,
+          0.03
+         ],
+         [
+          180,
+          0.03
+         ]
+        ]
+       },
+       {
+        "name": "R, no amp",
+        "points": [
+         [
+          0,
+          0.05
+         ],
+         [
+          30,
+          0.05
+         ],
+         [
+          60,
+          0.1
+         ],
+         [
+          90,
+          0.2
+         ],
+         [
+          120,
+          0.4
+         ],
+         [
+          150,
+          0.8
+         ],
+         [
+          180,
+          1.2
+         ]
+        ]
+       },
+       {
+        "name": "R + amp",
+        "points": [
+         [
+          0,
+          0.05
+         ],
+         [
+          30,
+          0.05
+         ],
+         [
+          60,
+          0.09
+         ],
+         [
+          90,
+          0.18
+         ],
+         [
+          120,
+          0.36
+         ],
+         [
+          150,
+          0.72
+         ],
+         [
+          180,
+          1.15
+         ]
+        ]
+       }
+      ]
+     }
+    }
+   ],
+   "source": "Hypothetical experiment written for this app; the biology follows OpenStax Microbiology, 9.1 How Microbes Grow, 11.6 How Asexual Prokaryotes Achieve Genetic Diversity, and 14.3 Mechanisms of Antibacterial Drugs.",
+   "status": "draft",
+   "reviewed_by": null
+  }
+ ],
+ "items": [
+  {
+   "id": "M5-Q01",
+   "rev": 1,
+   "section": "bio_biochem",
+   "passage": "M5-P01",
+   "discipline": "biology",
+   "fc": "2",
+   "category": "2B",
+   "topics": [
+    "2B.prokaryote-growth"
+   ],
+   "skill": "4",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "Based on Table 1, the generation (doubling) time of strain W without ampicillin during its exponential phase is closest to:",
+   "options": {
+    "A": "15 min",
+    "B": "30 min",
+    "C": "60 min",
+    "D": "90 min"
+   },
+   "answer": "B",
+   "why_correct": [
+    "Read the W, no amp column after the lag: 0.10 at 60 min, 0.20 at 90 min, 0.40 at 120 min, 0.80 at 150 min. The OD, and so the cell number, doubles every 30 minutes.",
+    "The first 30 minutes (0.05 to 0.05) are a lag phase, when cells adapt to fresh medium without dividing, and must be excluded from the estimate.",
+    "Check: three doublings from 60 to 150 min should give 2³ = 8 times the OD, and 0.10 × 8 = 0.80, as observed."
+   ],
+   "why_wrong": {
+    "A": "A 15-minute generation time would give four doublings (16-fold) every hour; the OD rose only 4-fold per hour (two doublings).",
+    "C": "60 minutes is how long it took to get from 0.05 to 0.10, but that interval includes the 30-minute lag; during exponential growth the OD doubles twice an hour.",
+    "D": "90 minutes is the time from the start to the first reading of 0.20, which spans the lag plus two doublings, not one."
+   },
+   "error_types": {
+    "A": "misread graph: doublings per hour overcounted",
+    "C": "misread graph: lag phase included in the doubling interval",
+    "D": "misread graph: elapsed time from inoculation used instead of one doubling"
+   },
+   "takeaway": "Generation time is read from the exponential phase only, as the interval over which cell number (or OD) doubles.",
+   "sources": [
+    "OpenStax Microbiology, 9.1 How Microbes Grow (2016): lag, log (exponential), stationary and death phases; generation time; turbidity (OD) as a measure of growth."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M5-Q02",
+   "rev": 1,
+   "section": "bio_biochem",
+   "passage": "M5-P01",
+   "discipline": "biology",
+   "fc": "2",
+   "category": "2B",
+   "topics": [
+    "2B.prokaryote-growth"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "During its exponential phase, the number of strain W cells (no ampicillin) at 150 minutes compared with the number at 60 minutes was about:",
+   "options": {
+    "A": "3 times as many",
+    "B": "4 times as many",
+    "C": "8 times as many",
+    "D": "16 times as many"
+   },
+   "answer": "C",
+   "why_correct": [
+    "From 60 to 150 minutes is 90 minutes, which at a 30-minute generation time is 90/30 = 3 generations.",
+    "Each generation doubles the population, so N = N₀ × 2ⁿ = N₀ × 2³ = 8 N₀.",
+    "The table agrees: OD 0.10 at 60 min and 0.80 at 150 min, an 8-fold increase."
+   ],
+   "why_wrong": {
+    "A": "3 is the number of generations, not the growth factor; each generation multiplies the population by 2, giving 2³ = 8.",
+    "B": "4-fold corresponds to two generations (60 minutes), not the three that fit in 90 minutes.",
+    "D": "16-fold would need four generations (120 minutes); only 90 minutes elapsed."
+   },
+   "error_types": {
+    "A": "wrong formula: generations counted instead of doublings applied",
+    "B": "wrong formula: one generation too few",
+    "D": "wrong formula: one generation too many"
+   },
+   "takeaway": "Exponential growth: N = N₀ × 2ⁿ, where n is elapsed time divided by the generation time.",
+   "sources": [
+    "OpenStax Microbiology, 9.1 How Microbes Grow (2016): N = N₀ × 2ⁿ for n generations of binary fission."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M5-Q03",
+   "rev": 1,
+   "section": "bio_biochem",
+   "passage": "M5-P01",
+   "discipline": "biology",
+   "fc": "2",
+   "category": "2B",
+   "topics": [
+    "2B.prokaryote-genetics"
+   ],
+   "skill": "3",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "The DNase added to the broth in the second experiment was included to rule out transfer of the resistance gene by:",
+   "options": {
+    "A": "transformation",
+    "B": "transduction",
+    "C": "conjugation",
+    "D": "transposition"
+   },
+   "answer": "A",
+   "why_correct": [
+    "Transformation is the uptake of free DNA from the surroundings. If cells of strain S had become ampicillin-resistant by taking up pBLA DNA released from dead R cells, destroying that free DNA with DNase would have cut the number of resistant colonies.",
+    "The colony count was unchanged, so free DNA was not the vehicle. Together with the filter result (no transfer without cell contact), this points to conjugation, the plasmid moving through direct cell-to-cell contact.",
+    "The double-antibiotic plate selects only S cells that received the plasmid (streptomycin resistance from their own chromosome, ampicillin resistance from pBLA); neither parent alone can grow, as the controls showed."
+   ],
+   "why_wrong": {
+    "B": "Transduction moves DNA inside a bacteriophage, where it is protected from DNase; a DNase control cannot rule it out. The filter experiment argues against transduction, since phage particles would pass through the pores.",
+    "C": "Conjugation transfers DNA through direct contact between cells, so DNase in the medium has no effect on it; the DNase control is not aimed at conjugation.",
+    "D": "Transposition is the movement of a DNA segment within a cell's own genome; it does not move genes between cells and is not tested by DNase."
+   },
+   "error_types": {
+    "B": "reversed relationship: DNase-protected transfer mistaken for DNase-sensitive transfer",
+    "C": "reversed relationship: the mechanism the control leaves standing, not the one it excludes",
+    "D": "true but irrelevant: a real process, but intracellular, so not a transfer between cells"
+   },
+   "takeaway": "DNase-insensitive, contact-dependent gene transfer is conjugation; DNase-sensitive transfer is transformation; phage-mediated transfer is transduction.",
+   "sources": [
+    "OpenStax Microbiology, 11.6 How Asexual Prokaryotes Achieve Genetic Diversity (2016): transformation (free DNA), transduction (phage) and conjugation (direct contact via a pilus); F plasmids and R plasmids.",
+    "OpenStax Biology 2e, 22.2 Structure of Prokaryotes: Bacteria and Archaea (2018): horizontal gene transfer by transformation, transduction and conjugation."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M5-Q04",
+   "rev": 1,
+   "section": "bio_biochem",
+   "passage": "M5-P01",
+   "discipline": "biology",
+   "fc": "2",
+   "category": "2B",
+   "topics": [
+    "2B.prokaryote-structure",
+    "2B.prokaryote-growth"
+   ],
+   "skill": "1",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "The fall in OD600 of strain W in ampicillin (Table 1) is best explained by ampicillin:",
+   "options": {
+    "A": "blocking transcription, so that cells stop making protein and shrink",
+    "B": "dissolving the plasma membrane in the manner of a detergent",
+    "C": "inhibiting DNA gyrase, so that chromosome replication stalls",
+    "D": "preventing cross-linking of peptidoglycan, so that growing cells lyse"
+   },
+   "answer": "D",
+   "why_correct": [
+    "Ampicillin is a β-lactam. β-Lactams bind the penicillin-binding proteins (transpeptidases) that cross-link peptidoglycan, so new cell wall is laid down without cross-links.",
+    "Cells trying to grow in a hypotonic broth then cannot withstand their own turgor pressure and burst. Lysed cells no longer scatter light, which is why the OD fell below its starting value rather than simply staying flat.",
+    "The passage's own clue is consistent: strain R survives because its plasmid-encoded β-lactamase opens the β-lactam ring before the drug reaches its target."
+   ],
+   "why_wrong": {
+    "A": "Rifampin-type drugs block bacterial RNA polymerase; a transcription block halts growth but does not break cells open, and ampicillin does not act on transcription.",
+    "B": "Membrane-disrupting agents such as polymyxins act on the lipid bilayer; ampicillin's target is the cell wall, and the lysis is a consequence of a weakened wall, not of dissolved membrane.",
+    "C": "Fluoroquinolones inhibit DNA gyrase; ampicillin does not, and a replication block would stop division rather than cause lysis."
+   },
+   "error_types": {
+    "A": "true but irrelevant: rifampin's mechanism, not ampicillin's",
+    "B": "true but irrelevant: polymyxins' mechanism, not ampicillin's",
+    "C": "true but irrelevant: fluoroquinolones' mechanism, not ampicillin's"
+   },
+   "takeaway": "β-Lactams block peptidoglycan cross-linking; growing bacteria lyse, and β-lactamases confer resistance by hydrolysing the ring.",
+   "sources": [
+    "OpenStax Microbiology, 14.3 Mechanisms of Antibacterial Drugs (2016): β-lactams inhibit transpeptidase cross-linking of peptidoglycan, leading to lysis; polymyxins target membranes, rifampin targets RNA polymerase, fluoroquinolones target DNA gyrase.",
+    "OpenStax Microbiology, 14.5 Drug Resistance (2016): β-lactamases hydrolyse the β-lactam ring; resistance genes are often carried on plasmids."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M5-Q05",
+   "rev": 1,
+   "section": "bio_biochem",
+   "passage": "M5-P01",
+   "discipline": "biology",
+   "fc": "2",
+   "category": "2B",
+   "topics": [
+    "2B.prokaryote-growth"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "From the plate count described in the final paragraph, the concentration of viable cells in the undiluted 180-minute culture of strain W was about:",
+   "options": {
+    "A": "1.2 × 10⁷ cells/mL",
+    "B": "1.2 × 10⁸ cells/mL",
+    "C": "1.2 × 10⁹ cells/mL",
+    "D": "1.2 × 10¹⁰ cells/mL"
+   },
+   "answer": "C",
+   "why_correct": [
+    "Each colony grew from one viable cell. 120 colonies came from 0.1 mL of the diluted sample, so the diluted sample held 120 / 0.1 = 1,200 cells per mL.",
+    "The sample had been diluted 10⁶-fold, so the original culture held 1,200 × 10⁶ = 1.2 × 10⁹ cells/mL.",
+    "Consistency check: the culture's OD600 was 1.20, and the passage says OD600 1.0 corresponds to about 10⁹ cells/mL, so 1.2 × 10⁹ is the expected order of magnitude."
+   ],
+   "why_wrong": {
+    "A": "1.2 × 10⁷ treats the dilution as 10⁵ and ignores the plating volume; both the 10⁶ dilution and the 0.1 mL must be undone.",
+    "B": "1.2 × 10⁸ undoes the dilution (120 × 10⁶) but forgets that only 0.1 mL was plated, which adds another factor of 10.",
+    "D": "1.2 × 10¹⁰ multiplies by an extra factor of 10, as if 0.01 mL had been plated."
+   },
+   "error_types": {
+    "A": "sign or unit error: dilution factor and plating volume both mishandled",
+    "B": "sign or unit error: plating volume (0.1 mL) not converted to per-millilitre",
+    "D": "sign or unit error: an extra factor of 10"
+   },
+   "takeaway": "Viable count per mL = colonies ÷ volume plated × dilution factor; check it against the OD.",
+   "sources": [
+    "OpenStax Microbiology, 9.1 How Microbes Grow (2016): serial dilution and plate counts; colony-forming units per millilitre = colonies × dilution factor ÷ volume plated; turbidity as an indirect measure."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  }
+ ]
+}

@@ -234,7 +234,7 @@ def validate_blocks(ck, topics):
         for i in range(2, len(answers)):
             if answers[i] == answers[i - 1] == answers[i - 2]:
                 ck.err(f"{block}", f"answer {answers[i]} appears three times in a row (items {i - 1}–{i + 1})")
-        if answers:
+        if len(answers) >= 8:   # a short passage block cannot keep every letter at 20–30%
             counts = collections.Counter(answers)
             for L in "ABCD":
                 share = 100 * counts[L] / len(answers)

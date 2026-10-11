@@ -115,8 +115,8 @@ Start blocks at ★★–★★★ while the app's MCAT section is new; move tow
 
 **Answer choices:** exactly four, parallel in grammar and length, ordered logically (numeric choices ascending).
 No "all of the above" or "none of the above." Each wrong choice embodies one named error: sign or unit error,
-wrong formula, misread graph, reversed relationship, true but irrelevant, too extreme (CARS), out of scope (CARS),
-outside knowledge contradicting the passage (CARS). Across a block, each letter is the answer 20–30% of the
+wrong formula, misread graph, reversed relationship, true but irrelevant, too extreme, out of scope,
+outside knowledge contradicting the passage (these three are typical of CARS but may be used wherever they fit). Across a block, each letter is the answer 20–30% of the
 time, never the same letter three times in a row.
 
 **Figures:** generated from the data stored with the question (SVG), never hand-typed separately, so figure and
@@ -171,6 +171,8 @@ and off by default (a build-time flag), so unreviewed items display without a la
 
 IDs are permanent (progress is keyed by them). Corrections increment `rev` and are logged in §11.
 
+Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], rows: [[..]]}; `line` / `scatter` {x: {label, min?, max?}, y: {label, min?, max?}, series: [{name, points: [[x, y], ..]}]}; `bar` {x: {label}, y: {label, min?, max?}, series: [{name, points: [[category, value], ..]}]}; `equation` {tex}; `structure` {smiles} (build.py adds `svg`, drawn with RDKit). The app draws charts from these numbers; `alt` describes the figure for screen readers. Block ids may carry a category letter for single-category blocks (`M4B`, items `M4B-Q01`).
+
 ## 9. Self-audit before delivering (all must be "yes")
 
 - [ ] Each fact verified against a named source this session; each numeric answer re-derived independently
@@ -211,6 +213,33 @@ IDs are permanent (progress is keyed by them). Corrections increment `rev` and a
 | M3-Q06 | psych_soc | 8B / S2 | 8B.attribution | C | ★★★ | draft | OpenStax Psychology 2e, 12.1 What Is Social Psychology? |
 | M3-Q07 | psych_soc | 9A / S2 | 9A.theoretical-approaches | A | ★★★ | draft | OpenStax Introduction to Sociology 3e, 1.3 Theoretical Perspectives in Sociology |
 | M3-Q08 | psych_soc | 10A / S4 | 10A.social-class | D | ★★★ | draft | OpenStax Introduction to Sociology 3e, 19.3 Health in the United States |
+| M4-Q01 | chem_phys | 4C / S4 | 4C.current-voltage | C | ★★★ | draft | OpenStax College Physics 2e, 21.2 Electromotive Force |
+| M4-Q02 | chem_phys | 4C / S2 | 4C.current-voltage | B | ★★★ | draft | OpenStax College Physics 2e, 21.2 Electromotive Force |
+| M4-Q03 | chem_phys | 4C / S2 | 4C.resistance | A | ★★★★ | draft | OpenStax College Physics 2e, 21.2 Electromotive Force |
+| M4-Q04 | chem_phys | 4C / S2 | 4C.resistance | C | ★★★ | draft | OpenStax College Physics 2e, 21.2 Electromotive Force |
+| M4-Q05 | chem_phys | 4C / S1 | 4C.current-voltage | D | ★★ | draft | OpenStax College Physics 2e, 21.2 Electromotive Force |
+| M5-Q01 | bio_biochem | 2B / S4 | 2B.prokaryote-growth | B | ★★★ | draft | OpenStax Microbiology, 9.1 How Microbes Grow |
+| M5-Q02 | bio_biochem | 2B / S2 | 2B.prokaryote-growth | C | ★★★ | draft | OpenStax Microbiology, 9.1 How Microbes Grow |
+| M5-Q03 | bio_biochem | 2B / S3 | 2B.prokaryote-genetics | A | ★★★ | draft | OpenStax Microbiology, 11.6 How Asexual Prokaryotes Achieve Genetic Diversity |
+| M5-Q04 | bio_biochem | 2B / S1 | 2B.prokaryote-structure | D | ★★★ | draft | OpenStax Microbiology, 14.3 Mechanisms of Antibacterial Drugs |
+| M5-Q05 | bio_biochem | 2B / S2 | 2B.prokaryote-growth | C | ★★★ | draft | OpenStax Microbiology, 9.1 How Microbes Grow |
+| M6-Q01 | psych_soc | 6B / S3 | 6B.memory-encoding-storage | A | ★★ | draft | OpenStax Psychology 2e, 2.3 Analyzing Findings |
+| M6-Q02 | psych_soc | 6B / S4 | 6B.memory-retrieval-forgetting | C | ★★★ | draft | OpenStax Psychology 2e, 2.3 Analyzing Findings |
+| M6-Q03 | psych_soc | 6B / S2 | 6B.memory-encoding-storage | B | ★★★ | draft | OpenStax Psychology 2e, 8.4 Ways to Enhance Memory |
+| M6-Q04 | psych_soc | 6B / S4 | 6B.memory-retrieval-forgetting | A | ★★★★ | draft | OpenStax Introductory Statistics 2e, 9.4 Rare Events, the Sample, and the Decision and Conclusion |
+| M6-Q05 | psych_soc | 6B / S2 | 6B.memory-retrieval-forgetting | D | ★★★ | draft | OpenStax Psychology 2e, 8.3 Problems with Memory |
+| M7-Q01 | cars | CARS / foundations | M7-P01 | C | ★★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
+| M7-Q02 | cars | CARS / foundations | M7-P01 | B | ★★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
+| M7-Q03 | cars | CARS / within | M7-P01 | A | ★★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
+| M7-Q04 | cars | CARS / within | M7-P01 | D | ★★★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
+| M7-Q05 | cars | CARS / beyond | M7-P01 | C | ★★★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
+| M7-Q06 | cars | CARS / beyond | M7-P01 | C | ★★★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
+| M7-Q07 | cars | CARS / foundations | M7-P02 | B | ★★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
+| M7-Q08 | cars | CARS / foundations | M7-P02 | A | ★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
+| M7-Q09 | cars | CARS / within | M7-P02 | A | ★★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
+| M7-Q10 | cars | CARS / within | M7-P02 | B | ★★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
+| M7-Q11 | cars | CARS / beyond | M7-P02 | D | ★★★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
+| M7-Q12 | cars | CARS / beyond | M7-P02 | D | ★★★★ | draft | AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview |
 
 ## 11. Changelog
 
@@ -220,3 +249,4 @@ IDs are permanent (progress is keyed by them). Corrections increment `rev` and a
 | 1.1 | 2026-10-10 | Added topic tagging to section guides (§3.10, §8) and the no-recalled-content rule (§3.9). |
 | 1.2 | 2026-10-10 | Owner decisions applied: §3.4 now bans taking questions from any website or prep source (official samples may be read only for structure, style, and difficulty); §7 makes the owner the reviewer of all content, drops the second-reviewer requirement, and makes the Beta label optional and off by default; §9 wording updated. |
 | 1.3 | 2026-10-11 | Phase M2 starter blocks M1 (Chem/Phys), M2 (Bio/Biochem), M3 (Psych/Soc): 8 discrete items each, all `draft`, each re-derived and fact-checked against the cited open textbooks before commit; §10 item log started. |
+| 1.4 | 2026-10-11 | Phase M3: passage blocks M4 (Chem/Phys), M5 (Bio/Biochem), M6 (Psych/Soc) and M7 (two original CARS passages, humanities and social sciences), 22 items; figure data shapes documented in §8; letter-share warning applies to blocks of 8 or more items. |

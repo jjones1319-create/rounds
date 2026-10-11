@@ -37,6 +37,11 @@ DATA = ROOT / "data"; DATA.mkdir(exist_ok=True)
 sys.path.insert(0, str(ROOT / "tools"))
 from validate import build_bundle  # stops the build with a list of problems if any MCAT content is invalid
 mcat = build_bundle()
+# Chemical structures are drawn from SMILES at build time (tools/structures.py, RDKit), so a figure can never disagree with its data.
+structs = [f for p in mcat["passages"] for f in (p.get("figures") or []) if f.get("type") == "structure"]
+if structs:
+    from structures import render_svg
+    for f in structs: f["svg"] = render_svg(f["data"]["smiles"])
 (DATA / "mcat.json").write_text(json.dumps(mcat, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
 # Version stamps for the separately served files: the page asks for js/body3d.js?v=<hash> and data/*.json?v=<hash>,

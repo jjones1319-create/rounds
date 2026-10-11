@@ -6,7 +6,7 @@
   const EXAM_KEY = "rounds.exam";                       // which exam is selected (a convenience, not progress)
   const Bank = { boards: [], mcat: { sections: [], items: [], passages: [], guides: {} } };
   const MAPS = { boards: {}, mcat: {} };                 // id -> question, per exam
-  let EXAM = "boards", QB = [], QMAP = {}, QNUM = {}, SYSTEMS = [], ready = false;
+  let EXAM = "boards", QB = [], QMAP = {}, QNUM = {}, SYSTEMS = [], ready = false, PMAP = {};
   function activate(exam) {
     EXAM = exam; QB = exam === "boards" ? Bank.boards : Bank.mcat.items; QMAP = MAPS[exam];
     QNUM = Object.fromEntries(QB.map((q, i) => [q.id, i + 1])); SYSTEMS = [...new Set(QB.map((q) => q.sys))];
@@ -14,7 +14,8 @@
     if (exam === "mcat") { P.sections = new Set(Bank.mcat.sections.map((s) => s.k)); P.skills = new Set(["1", "2", "3", "4"]); P.diffs = new Set([2, 3, 4, 5]); P.perQ = 96; }
     else { P.diffs = new Set([3, 4, 5]); P.perQ = 90; }
   }
-  const MCAT_PERQ = { chem_phys: 96, bio_biochem: 96, psych_soc: 96, cars: 102 };   // seconds: 95 min / 59 questions, 90 min / 53
+  const MCAT_PERQ = { chem_phys: 96, bio_biochem: 96, psych_soc: 96, cars: 102 };
+  const CARS_SKILL = { foundations: "Foundations of comprehension", within: "Reasoning within the text", beyond: "Reasoning beyond the text" };   // seconds: 95 min / 59 questions, 90 min / 53
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -298,6 +299,7 @@
         <h2>Question map</h2><div class="panel">${qmapHTML()}</div>
         <h2>By section</h2><div class="panel bars">${Bank.mcat.sections.map((sec) => row(esc(sec.short), QB.filter((q) => q.section === sec.k))).join("")}</div>
         <h2>By skill</h2><div class="panel bars">${["1", "2", "3", "4"].map((k) => row(`Skill ${k} · ${skillNames[k]}`, QB.filter((q) => String(q.skill) === k))).join("")}</div>
+        ${QB.some((q) => q.section === "cars") ? `<h2>CARS skills</h2><div class="panel bars">${Object.keys(CARS_SKILL).map((k) => row(CARS_SKILL[k], QB.filter((q) => q.cars_skill === k))).join("")}</div>` : ""}
         <h2>By content category</h2><div class="panel bars">${Object.keys(Bank.mcat.categories || {}).map((c) => row(`${esc(c)} · ${esc(Bank.mcat.categories[c])}`, QB.filter((q) => q.category === c))).join("")}</div>
         <h2>By difficulty</h2><div class="panel bars">${[2, 3, 4, 5].map((d) => row(stars(d), QB.filter((q) => q.difficulty === d))).join("")}</div>`;
     }
@@ -504,7 +506,7 @@
 
   /* ---------------- practice ---------------- */
   function available() {
-    if (EXAM === "mcat") return pool(P.pool).filter((q) => P.sections.has(q.section) && P.skills.has(String(q.skill)) && P.diffs.has(q.difficulty));
+    if (EXAM === "mcat") return pool(P.pool).filter((q) => P.sections.has(q.section) && (q.section === "cars" || P.skills.has(String(q.skill))) && P.diffs.has(q.difficulty));
     return pool(P.pool).filter((q) => P.systems.has(q.sys) && P.diffs.has(q.difficulty));
   }
   function viewPractice() {
@@ -622,13 +624,25 @@
       return;
     }
     if (act) Store.d.sessions = Store.d.sessions.filter((s) => s !== act);
-    const ids = (opts.shuffle === false ? qs : shuffle(qs)).map((q) => q.id);
-    const s = { id: uid(), mode, created: Date.now(), updated: Date.now(), qids: ids, idx: 0, resp: {}, sel: {}, strike: {}, qtime: {}, elapsed: 0,
+    const ids = withPassages(opts.shuffle === false ? qs : shuffle(qs), !!opts.temp).map((q) => q.id);
+    const s = { id: uid(), mode, created: Date.now(), updated: Date.now(), qids: ids, idx: 0, resp: {}, sel: {}, strike: {}, hl: {}, qtime: {}, elapsed: 0,
       limit: mode === "timed" ? ids.length * (opts.perQ || 90) : null, done: false, temp: !!opts.temp };
     if (!s.temp) { Store.d.sessions.unshift(s); Store.d.sessions = Store.d.sessions.slice(0, 60); Store.save(); }
     openRunner(s, { idx: 0 });
   }
   let pendingStart = null;
+  /* Passage sets travel together: picking any question of a passage brings its whole set, in order, placed where the first
+     member fell (docs/PLAN_MCAT.md, Phase M3). Temporary review sessions keep exactly the ids they were given. */
+  function withPassages(qs, temp) {
+    if (temp || EXAM !== "mcat") return qs;
+    const out = [], seen = new Set();
+    for (const q of qs) {
+      if (seen.has(q.id)) continue;
+      const set = q.passage ? QB.filter((x) => x.passage === q.passage) : [q];
+      for (const x of set) if (!seen.has(x.id)) { seen.add(x.id); out.push(x); }
+    }
+    return out;
+  }
   function quickStart(mode) {
     let qs = pool("unused");
     if (!qs.length) qs = pool("all");
@@ -636,9 +650,9 @@
   }
 
   /* ---------------- runner ---------------- */
-  const R = { s: null, idx: 0, review: false, results: false, tick: null, lastSave: 0 };
+  const R = { s: null, idx: 0, review: false, results: false, tick: null, lastSave: 0, pane: "question", lastPassage: null, scroll: {} };
   function openRunner(s, o = {}) {
-    R.s = s; R.idx = o.idx != null ? o.idx : s.idx || 0; R.review = !!o.review; R.results = !!o.results;
+    R.s = s; R.idx = o.idx != null ? o.idx : s.idx || 0; R.review = !!o.review; R.results = !!o.results; R.pane = "question"; R.lastPassage = null; R.scroll = {};
     const el = $("#runner"); el.hidden = false; document.body.style.overflow = "hidden";
     renderRunner(); startTick();
   }
@@ -684,13 +698,24 @@
     const struck = s.strike[id] || [];
     const c = clockText();
     const ctext = typeof c === "string" ? c : c.t;
+    const pas = EXAM === "mcat" && q.passage ? PMAP[q.passage] || null : null;
+    if (pas && pas.id !== R.lastPassage) R.pane = "passage";   // a new passage opens on its text; its questions keep the last pane
+    R.lastPassage = pas ? pas.id : null;
+    let open = `<div class="rbody"><div class="rcontent">`, close = `</div></div>`;
+    if (pas) {
+      const set = s.qids.filter((x) => QMAP[x] && QMAP[x].passage === pas.id), k = set.indexOf(id) + 1;
+      open = `<div class="rbody split" data-pane="${R.pane}"><div class="ptoggle"><div class="seg" role="tablist" aria-label="Passage or question">
+        <button role="tab" data-act="r-pane" data-v="passage" aria-selected="${R.pane === "passage"}" aria-pressed="${R.pane === "passage"}">Passage</button><button role="tab" data-act="r-pane" data-v="question" aria-selected="${R.pane === "question"}" aria-pressed="${R.pane === "question"}">Question ${k} of ${set.length}</button></div></div>
+        <div class="pane passage"><div class="rcontent">${passageHTML(pas, s)}</div></div><div class="pane question"><div class="rcontent">`;
+      close = `</div></div></div>`;
+    }
     let h = `<div class="rbar">
       <button class="iconbtn" data-act="r-exit" aria-label="${R.review ? "Close review" : "Pause and exit"}">${ICON.x}</button>
       <div class="pos"><b>Question ${R.idx + 1} of ${n}</b><span id="rclock" class="${typeof c !== "string" && c.low ? "low" : ""}">${ctext}</span></div>
       <button class="iconbtn" data-act="r-flag" aria-pressed="${isFlag(id)}" aria-label="Flag this question">${ICON.flag}</button>
       ${EXAM === "mcat" ? (q.section !== "cars" ? `<button class="iconbtn" data-act="r-ptable" aria-label="Periodic table">${ICON.table}</button>` : `<span style="width:44px"></span>`) : `<button class="iconbtn" data-act="r-labs" aria-label="Lab reference values">${ICON.labs}</button>`}
       <button class="iconbtn" data-act="r-more" aria-label="All questions and options">${ICON.more}</button></div>
-      <div class="rbody"><div class="rcontent">
+      ${open}
       <div class="qhead">${stars(q.difficulty)}${rev ? `<span>Question ${QNUM[id]} in the bank</span>` : ""}</div>
       <div class="vig">${q.vignette.map((p) => `<p>${p}</p>`).join("")}</div>`;
     if (q.labs.length) h += `<div class="labs"><table>${q.labs.map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join("")}</table></div>`;
@@ -711,7 +736,7 @@
     h += `</div>`;
     if (!rev) h += `<p class="hint" style="margin-top:12px">Tip: press and hold a choice, or use its strike button, to cross it out.</p>`;
     if (rev) h += explanationHTML(q, chosen);
-    h += `</div></div>`;
+    h += close;
     // footer
     let main = "";
     if (R.review) main = R.idx < n - 1 ? `<button class="btn main" data-act="r-next">Next question</button>` : (s.temp ? `<button class="btn main" data-act="r-exit">Done</button>` : `<button class="btn main" data-act="r-results">Back to results</button>`);
@@ -719,6 +744,109 @@
     else main = R.idx < n - 1 ? `<button class="btn main" data-act="r-next">Next</button>` : `<button class="btn main" data-act="r-end">End block</button>`;
     h += `<div class="rfoot"><div class="in"><button class="navbtn" data-act="r-prev" aria-label="Previous question" ${R.idx === 0 ? "disabled" : ""}>${ICON.left}</button>${main}<button class="navbtn" data-act="r-next" aria-label="Next question" ${R.idx >= n - 1 ? "disabled" : ""}>${ICON.right}</button></div></div>`;
     el.innerHTML = h;
+    renderMath(el);
+  }
+  /* ---- passages (docs/PLAN_MCAT.md, Phase M3) ---- */
+  function passageHTML(p, s) {
+    const hl = ((s && s.hl) || {})[p.id] || [];
+    let h = `<div class="passage" data-pid="${esc(p.id)}">${p.title ? `<h3 class="ptitle">${esc(p.title)}</h3>` : ""}<div class="ptext">`;
+    p.text.forEach((para, i) => { h += `<p data-pi="${i}">${markHTML(para, hl.filter((r) => r[0] === i))}</p>`; });
+    h += `</div>${(p.figures || []).map((f, i) => figureHTML(f, i + 1)).join("")}`;
+    if (p.source) h += `<p class="hint psrc">${esc(p.source)}</p>`;
+    h += `<p class="hint" style="margin-top:6px">Press and drag on the text to highlight it; tap a highlight to clear it. Highlights are kept with this block.</p></div>`;
+    return h;
+  }
+  function markHTML(text, ranges) {
+    const rs = ranges.map((r) => [r[1], r[2]]).sort((a, b) => a[0] - b[0]);
+    let out = "", pos = 0;
+    for (const [a, b] of rs) { if (a < pos || b > text.length) continue; out += esc(text.slice(pos, a)) + `<mark data-hl="${a}:${b}">${esc(text.slice(a, b))}</mark>`; pos = b; }
+    return out + esc(text.slice(pos));
+  }
+  /* Figures are drawn from the data stored with the passage (MCAT_SPEC §5), so a figure can never disagree with its numbers. */
+  function figureHTML(f, n) {
+    let body = "";
+    if (f.type === "table") body = `<div class="scrollx"><table class="ftab"><thead><tr>${f.data.columns.map((c) => `<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${f.data.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    else if (f.type === "equation") body = `<div class="eq" data-tex="${esc(f.data.tex)}">${esc(f.data.tex)}</div>`;
+    else if (f.type === "structure") body = `<div class="struct" role="img" aria-label="${esc(f.alt)}">${f.svg || `<p class="hint">${esc(f.data.smiles)}</p>`}</div>`;
+    else body = chartSVG(f);
+    const cap = esc(f.caption || `Figure ${n}.`).replace(/^((?:Table|Figure) \d+\.)/, "<b>$1</b>");
+    return `<figure class="pfig"><figcaption>${cap}</figcaption>${body}</figure>`;
+  }
+  function chartSVG(f) {
+    const d = f.data, W = 340, H = 240, L = 52, RR = 14, T = 14, B = 44, pw = W - L - RR, ph = H - T - B;
+    const col = ["var(--accent)", "var(--bad)", "var(--ok)", "var(--flag)"];
+    const nice = (lo, hi) => { if (hi <= lo) hi = lo + 1; const span = hi - lo, mag = Math.pow(10, Math.floor(Math.log10(span / 4))); const step = [1, 2, 2.5, 5, 10].map((m) => m * mag).find((st) => span / st <= 5.5) || mag * 10; return { lo: Math.floor(lo / step + 1e-9) * step, hi: Math.ceil(hi / step - 1e-9) * step, step }; };
+    const fmtN = (v) => String(+v.toFixed(4));
+    const series = d.series; let h = "";
+    const yTicks = (y, sy) => { for (let v = y.lo; v <= y.hi + y.step / 2; v += y.step) h += `<line x1="${L}" x2="${L + pw}" y1="${sy(v)}" y2="${sy(v)}" class="grid"/><text x="${L - 6}" y="${sy(v) + 4}" text-anchor="end" class="tick">${fmtN(v)}</text>`; };
+    if (f.type === "bar") {
+      const cats = series[0].points.map((p) => p[0]), vals = series.flatMap((sr) => sr.points.map((p) => p[1]));
+      const y = nice(Math.min(0, ...vals), Math.max(0, ...vals)), sy = (v) => T + ph - (v - y.lo) / (y.hi - y.lo) * ph;
+      yTicks(y, sy);
+      const gw = pw / cats.length, bw = Math.min(30, gw * 0.72 / series.length);
+      cats.forEach((cat, i) => {
+        h += `<text x="${L + gw * (i + 0.5)}" y="${T + ph + 16}" text-anchor="middle" class="tick">${esc(cat)}</text>`;
+        series.forEach((sr, j) => { const pt = sr.points.find((p) => p[0] === cat), v = pt ? pt[1] : 0, x = L + gw * (i + 0.5) - bw * series.length / 2 + bw * j; h += `<rect x="${x}" y="${Math.min(sy(v), sy(0))}" width="${bw}" height="${Math.abs(sy(v) - sy(0))}" rx="2" style="fill:${col[j % 4]}"/>`; });
+      });
+    } else {
+      const xs = series.flatMap((sr) => sr.points.map((p) => p[0])), ys = series.flatMap((sr) => sr.points.map((p) => p[1]));
+      const x = nice(d.x.min != null ? d.x.min : Math.min(...xs), d.x.max != null ? d.x.max : Math.max(...xs)), y = nice(d.y.min != null ? d.y.min : Math.min(...ys), d.y.max != null ? d.y.max : Math.max(...ys));
+      const sx = (v) => L + (v - x.lo) / (x.hi - x.lo) * pw, sy = (v) => T + ph - (v - y.lo) / (y.hi - y.lo) * ph;
+      yTicks(y, sy);
+      for (let v = x.lo; v <= x.hi + x.step / 2; v += x.step) h += `<text x="${sx(v)}" y="${T + ph + 16}" text-anchor="middle" class="tick">${fmtN(v)}</text>`;
+      series.forEach((sr, j) => {
+        const pts = sr.points.slice().sort((a, b) => a[0] - b[0]);
+        if (f.type === "line") h += `<polyline points="${pts.map((p) => `${sx(p[0]).toFixed(1)},${sy(p[1]).toFixed(1)}`).join(" ")}" fill="none" stroke-width="2" style="stroke:${col[j % 4]}"/>`;
+        h += pts.map((p) => `<circle cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="3.2" style="fill:${col[j % 4]}"/>`).join("");
+      });
+    }
+    h += `<line x1="${L}" x2="${L}" y1="${T}" y2="${T + ph}" class="axis"/><line x1="${L}" x2="${L + pw}" y1="${T + ph}" y2="${T + ph}" class="axis"/>`;
+    h += `<text x="${L + pw / 2}" y="${H - 4}" text-anchor="middle" class="lab">${esc(d.x.label)}</text><text transform="translate(12 ${T + ph / 2}) rotate(-90)" text-anchor="middle" class="lab">${esc(d.y.label)}</text>`;
+    const legend = series.length > 1 ? `<div class="legend">${series.map((sr, j) => `<span><i style="background:${col[j % 4]}"></i>${esc(sr.name)}</span>`).join("")}</div>` : "";
+    return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(f.alt)}"><title>${esc(f.alt)}</title>${h}</svg>${legend}`;
+  }
+  /* Highlighting: a selection inside the passage text that stays still for a moment becomes a highlight (merged with any it
+     touches); tapping a highlight removes it. Ranges are [paragraph, start, end] character offsets, saved in the session. */
+  let hlTimer = null, hlStamp = 0;
+  document.addEventListener("selectionchange", () => { if (!R.s || $("#runner").hidden) return; clearTimeout(hlTimer); hlTimer = setTimeout(captureHighlight, 650); });
+  function captureHighlight() {
+    const sel = window.getSelection(); if (!R.s || !sel || sel.isCollapsed || !sel.rangeCount) return;
+    const range = sel.getRangeAt(0), box = $("[data-pid] .ptext"); if (!box || !box.contains(range.commonAncestorContainer)) return;
+    const s = R.s, pid = $("[data-pid]").dataset.pid, list = (s.hl || (s.hl = {}))[pid] || (s.hl[pid] = []);
+    let added = 0;
+    $$("p[data-pi]", box).forEach((p) => {
+      if (!range.intersectsNode(p)) return;
+      const r = document.createRange(); r.selectNodeContents(p);
+      const a = range.compareBoundaryPoints(Range.START_TO_START, r) > 0 ? offsetIn(p, range.startContainer, range.startOffset) : 0;
+      const b = range.compareBoundaryPoints(Range.END_TO_END, r) < 0 ? offsetIn(p, range.endContainer, range.endOffset) : p.textContent.length;
+      if (b > a) { addRange(list, +p.dataset.pi, a, b); added++; }
+    });
+    sel.removeAllRanges();
+    if (added) { hlStamp = Date.now(); s.updated = Date.now(); Store.local(); repaintPassage(); }
+  }
+  function offsetIn(p, node, off) { const r = document.createRange(); r.selectNodeContents(p); r.setEnd(node, off); return r.toString().length; }
+  function addRange(list, pi, a, b) {
+    const keep = [];
+    for (const r of list) { if (r[0] === pi && r[2] >= a && r[1] <= b) { a = Math.min(a, r[1]); b = Math.max(b, r[2]); } else keep.push(r); }
+    keep.push([pi, a, b]); list.splice(0, list.length, ...keep);
+  }
+  function removeHighlight(mk) {
+    const s = R.s, pid = mk.closest("[data-pid]").dataset.pid, pi = +mk.closest("p[data-pi]").dataset.pi, [a, b] = mk.dataset.hl.split(":").map(Number);
+    if (!s.hl || !s.hl[pid]) return;
+    s.hl[pid] = s.hl[pid].filter((r) => !(r[0] === pi && r[1] === a && r[2] === b)); s.updated = Date.now(); Store.local(); repaintPassage();
+  }
+  function repaintPassage() {
+    const old = $("[data-pid]"); if (!old || !PMAP[old.dataset.pid]) return;
+    const pane = old.closest(".pane"), y = pane ? pane.scrollTop : 0;
+    old.outerHTML = passageHTML(PMAP[old.dataset.pid], R.s);
+    const np = $("[data-pid]"); const pn = np && np.closest(".pane"); if (pn) pn.scrollTop = y; if (np) renderMath(np);
+  }
+  function setPane(v) {
+    const b = $(".rbody.split"); if (!b) return;
+    const cur = $(`.pane.${R.pane}`); if (cur) R.scroll[R.pane] = cur.scrollTop;
+    R.pane = v; b.dataset.pane = v;
+    $$(".ptoggle [role=tab]").forEach((t) => { t.setAttribute("aria-selected", String(t.dataset.v === v)); t.setAttribute("aria-pressed", String(t.dataset.v === v)); });
+    const nx = $(`.pane.${v}`); if (nx) nx.scrollTop = R.scroll[v] || 0;
   }
   function explanationHTML(q, chosen) {
     const id = q.id, s = R.s;
@@ -733,7 +861,7 @@
       <div class="objective"><h4>${EXAM === "mcat" ? "Takeaway" : "Educational objective"}</h4><p>${q.objective}</p></div>
       <div class="notes"><label for="note-${id}">My notes</label><textarea id="note-${id}" data-note="${id}" placeholder="Anything you want to remember about this one">${esc(note)}</textarea></div>
       <details class="src"><summary>Sources</summary><ul>${q.sources.map((x) => `<li>${x}</li>`).join("")}</ul></details>
-      <div class="tagline"><span class="badge">${esc(q.sys)}</span><span class="badge">${esc(q.discipline)}</span>${EXAM === "mcat" ? `<span class="badge">${esc(q.category)}</span><span class="badge">Skill ${esc(q.skill)}</span>${(q.topics || []).map((t) => `<button class="badge" data-act="g-go" data-sec="${esc(q.section)}" data-id="${esc(t)}" style="border:0;cursor:pointer">Guide: ${esc(t)}</button>`).join("")}` : ""}</div></div>`;
+      <div class="tagline"><span class="badge">${esc(q.sys)}</span>${q.discipline ? `<span class="badge">${esc(q.discipline)}</span>` : ""}${EXAM === "mcat" ? `${q.section === "cars" ? "" : `<span class="badge">${esc(q.category)}</span><span class="badge">Skill ${esc(q.skill)}</span>`}${(q.topics || []).map((t) => `<button class="badge" data-act="g-go" data-sec="${esc(q.section)}" data-id="${esc(t)}" style="border:0;cursor:pointer">Guide: ${esc(t)}</button>`).join("")}` : ""}</div></div>`;
   }
   function resultsHTML() {
     const s = R.s, sc = sessionScore(s);
@@ -754,8 +882,12 @@
   }
   function moveTo(i) {
     const s = R.s; if (i < 0 || i >= s.qids.length) return;
+    const from = QMAP[s.qids[R.idx]], to = QMAP[s.qids[i]], same = !!(from && to && to.passage && from.passage === to.passage);
+    const pp = $(".pane.passage"), keep = same ? (R.pane === "passage" && pp ? pp.scrollTop : R.scroll.passage || 0) : 0;
     R.idx = i; if (!R.review && !s.done) { s.idx = i; s.updated = Date.now(); Store.local(); }
     renderRunner(); const b = $(".rbody"); if (b) b.scrollTop = 0;
+    const qp = $(".pane.question"); if (qp) qp.scrollTop = 0;
+    const np = $(".pane.passage"); if (np) np.scrollTop = keep; R.scroll = { passage: keep };
   }
   function pick(L) {
     const s = R.s, id = s.qids[R.idx];
@@ -770,7 +902,7 @@
     if (i >= 0) arr.splice(i, 1); else { arr.push(L); if (s.sel[id] === L) delete s.sel[id]; }
     Store.local(); renderRunnerKeepScroll();
   }
-  function renderRunnerKeepScroll() { const b = $(".rbody"); const y = b ? b.scrollTop : 0; renderRunner(); const nb = $(".rbody"); if (nb) nb.scrollTop = y; }
+  function renderRunnerKeepScroll() { const ys = [".rbody", ".pane.passage", ".pane.question"].map((sel) => [sel, $(sel) ? $(sel).scrollTop : 0]); renderRunner(); ys.forEach(([sel, y]) => { const el = $(sel); if (el) el.scrollTop = y; }); }
   function submit() {
     const s = R.s, id = s.qids[R.idx], c = s.sel[id]; if (!c || s.resp[id]) return;
     const ok = record(id, c, s.qtime[id] || 0);
@@ -797,11 +929,15 @@
   }
   function openNavigator() {
     const s = R.s;
+    const pids = [...new Set(s.qids.map((id) => QMAP[id] && QMAP[id].passage).filter(Boolean))];
+    let lastP = null;
     const cells = s.qids.map((id, i) => {
-      let cls = "";
+      let cls = "", sep = "";
+      const pid = (QMAP[id] && QMAP[id].passage) || null;
+      if (pid !== lastP) { if (pid) sep = `<span class="navsep">Passage ${pids.indexOf(pid) + 1}</span>`; else if (lastP) sep = `<span class="navsep">Discrete questions</span>`; lastP = pid; }
       if (R.review || (s.mode === "tutor" && s.resp[id])) cls = s.resp[id] ? (s.resp[id].ok ? "correct" : "incorrect") : "";
       else if (s.sel[id]) cls = "ans";
-      return `<button class="${cls} ${i === R.idx ? "cur" : ""} ${isFlag(id) ? "flagged" : ""}" data-act="r-goto" data-i="${i}" aria-label="Question ${i + 1}">${i + 1}</button>`;
+      return `${sep}<button class="${cls} ${i === R.idx ? "cur" : ""} ${isFlag(id) ? "flagged" : ""}" data-act="r-goto" data-i="${i}" aria-label="Question ${i + 1}">${i + 1}</button>`;
     }).join("");
     const f = Store.settings().font;
     openSheet("Questions in this block", `<div class="navgrid">${cells}</div>
@@ -846,6 +982,8 @@
   document.addEventListener("contextmenu", (e) => { if (e.target.closest && e.target.closest(".opt")) e.preventDefault(); });
 
   document.addEventListener("click", (e) => {
+    const mk = e.target.closest && e.target.closest("mark[data-hl]");
+    if (mk && R.s && !$("#runner").hidden) { if (Date.now() - hlStamp > 300) removeHighlight(mk); return; }
     const t = e.target.closest("[data-act]"); if (!t) return;
     if (suppressClick && t.dataset.act === "pick") { suppressClick = false; return; }
     suppressClick = false;
@@ -894,6 +1032,7 @@
       case "r-flag": { const id = R.s.qids[R.idx]; Store.d.flags[id] = { on: !isFlag(id), ts: Date.now() }; Store.save(); t.setAttribute("aria-pressed", isFlag(id)); toast(isFlag(id) ? "Flagged for review." : "Flag removed."); break; }
       case "r-labs": openLabs(); break;
       case "r-more": openNavigator(); break;
+      case "r-pane": setPane(v); break;
       case "r-prev": moveTo(R.idx - 1); break;
       case "r-next": moveTo(R.idx + 1); break;
       case "r-goto": closeSheet(true); moveTo(+t.dataset.i); break;
@@ -930,6 +1069,7 @@
     else if (e.key === "ArrowRight") moveTo(R.idx + 1);
     else if (e.key === "ArrowLeft") moveTo(R.idx - 1);
     else if (k === "F") $("[data-act=r-flag]")?.click();
+    else if (k === "P" && $(".ptoggle")) setPane(R.pane === "passage" ? "question" : "passage");
     else if (e.key === "Enter" && !e.target.closest("button")) { const m = $(".rfoot .btn.main"); if (m && !m.disabled) { m.click(); e.preventDefault(); } }
   });
   document.addEventListener("click", (e) => { if (!e.target.closest(".search-wrap")) { const b = $("#bresults"); if (b) b.innerHTML = ""; } }, true);
@@ -957,7 +1097,8 @@
     }
     MAPS.boards = Object.fromEntries(Bank.boards.map((q) => [q.id, q]));
     /* MCAT items (docs/MCAT_SPEC.md §8) are given the few fields the shared runner and lists expect from a boards question. */
-    (Bank.mcat.items || []).forEach((q) => { q.sys = (Bank.mcat.categories || {})[q.category] || q.category; q.objective = q.takeaway; q.topic = q.sys; q.vignette = q.vignette || []; q.labs = []; q.after_labs = []; });
+    (Bank.mcat.items || []).forEach((q) => { q.sys = q.section === "cars" ? `CARS · ${CARS_SKILL[q.cars_skill] || q.cars_skill}` : (Bank.mcat.categories || {})[q.category] || q.category; q.objective = q.takeaway; q.topic = q.sys; q.vignette = q.vignette || []; q.labs = []; q.after_labs = []; });
+    PMAP = Object.fromEntries((Bank.mcat.passages || []).map((p) => [p.id, p]));
     MAPS.mcat = Object.fromEntries((Bank.mcat.items || []).map((q) => [q.id, q]));
     let exam = "boards"; try { if (localStorage.getItem(EXAM_KEY) === "mcat") exam = "mcat"; } catch (e) { /* ignore */ }
     activate(exam); if (exam === "mcat") UI.ptab = "sections";

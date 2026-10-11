@@ -96,12 +96,16 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
   "What's tested" guides (Chem/Phys 96 topics, Bio/Biochem 62, Psych/Soc 61, CARS skill areas; all topics `draft`,
   references to OpenStax/LibreTexts, every fact independently checked). Phase M2 done 2026-10-11: blocks
   `M1`–`M3` (8 discrete items per science section, all `draft`), MCAT runner (periodic table `src/ptable.js` instead of
-  labs, Takeaway + guide links), block builder by section/skill/difficulty, progress by section/skill/category.
+  labs, Takeaway + guide links), block builder by section/skill/difficulty, progress by section/skill/category. Phase M3 done 2026-10-11: passage runner
+  (phone: sticky Passage | Question toggle; ≥800 px: two panes), tap-drag highlights kept with the block (`hl` in the
+  session), figures drawn from passage data (tables, line/bar/scatter SVG, KaTeX equations, RDKit structures at build
+  time via `tools/structures.py`, `pip install rdkit`), passage sets travel together in blocks; blocks M4–M7 (3 science
+  passages, 2 original CARS passages, 22 items).
 - Open gaps: many 3D structures show a name-only card; write verified cards for the important ones.
 
 ## Work order
 Work on one track at a time and finish its current phase before switching. Report at each phase boundary.
 - Track A, 3D anatomy: `docs/PLAN_3D.md`. Phases 0–2 are done; Phase 3 (progress export/import, installable PWA) remains.
-- Track B, MCAT: `docs/PLAN_MCAT.md`. M0–M2 are done; M3 (passages) is next, then M4–M5.
+- Track B, MCAT: `docs/PLAN_MCAT.md`. M0–M3 are done; M4 (review workflow) is next, then M5 (ongoing growth).
 - Track C, content: new board blocks (`/new-board-block`, boards spec) and MCAT blocks (MCAT spec).
 - If the site is ever to be promoted: `docs/PUBLIC_RELEASE.md` checklist first.

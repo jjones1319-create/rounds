@@ -1,0 +1,556 @@
+{
+ "block": "M7",
+ "section": "cars",
+ "passages": [
+  {
+   "id": "M7-P01",
+   "section": "cars",
+   "kind": "cars",
+   "text": [
+    "Every few decades a famous painting goes behind scaffolding and comes back brighter. The public response follows a script. Some viewers are delighted to see colours they never suspected; others complain that a familiar face has been scrubbed of its mystery. Both reactions assume that there is a single correct state of the picture, the one the artist left on the easel, and that the conservator's job is to find it. I want to suggest that this assumption, however natural, cannot bear the weight placed on it.",
+    "Consider what a conservator actually confronts. Varnish yellows; pigments shift as they age, some fading and others darkening; earlier restorers have added paint of their own, sometimes to hide damage and sometimes to improve on what they found. Beneath all this lies a surface that the artist may have altered several times before declaring it finished, and that the artist expected to be seen under candlelight, or in a chapel, or, as some have argued, through a tinted varnish applied on the day of delivery. There is no layer at which the picture is simply itself. To choose a layer is to make an argument about what mattered most, and arguments can be good or bad, but they cannot be neutral.",
+    "The usual reply is that science settles the matter. Cross-sections, infrared imaging and pigment analysis can tell us, often with great precision, what was applied and in what order. I do not doubt this. But knowing what is on the canvas does not tell us what to do about it. Analysis can establish that a glaze was added a century after the artist's death; whether to remove it depends on whether we value the painting as an object made by one person at one moment or as something that has lived in the world and been altered by it. That is a question of value, and no microscope can answer it.",
+    "None of this means that anything goes. A restoration can be careless, dishonest, or irreversible, and those are real faults. The best conservators I know are not timid; they clean, retouch, and consolidate. What distinguishes them is that they treat each intervention as a claim that must be defended in writing, that can be undone by a successor, and that leaves visible, to anyone who looks closely, the boundary between the artist's hand and their own. Restoration done this way is less like recovering a lost original than like editing a text whose author is dead: one does one's best, says what one did, and expects to be corrected.",
+    "The critic who protests that a cleaned painting no longer looks like itself is therefore not simply wrong. He is reporting the loss of something he valued, the picture as it had looked for as long as anyone could remember, and that is a loss, even if it was also the removal of grime. What he cannot claim is that his preferred state was the true one and the conservator's a fabrication. Both are versions. The honest position is not that we must never touch old paintings, but that we must stop pretending that touching them returns them to a state that exists somewhere, waiting to be found."
+   ],
+   "figures": [],
+   "source": "Original essay written for this app (humanities: art conservation); not adapted from any published text.",
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M7-P02",
+   "section": "cars",
+   "kind": "cars",
+   "text": [
+    "A number between zero and one hundred now attaches to almost every address in the United States. It is meant to tell you how easily you could live there without a car, and it is consulted by renters, by property websites, and increasingly by the planners whose decisions shape the places being scored. The index is computed mostly from distances: how far the nearest grocery store is, the nearest school, the nearest park, with closer destinations earning more points. Its appeal is obvious. It is cheap, it is comparable across cities, and it turns a vague virtue into a figure that can be ranked.",
+    "The trouble begins with the word nearest. A supermarket four hundred metres away raises a score whether or not the residents can afford to shop in it, whether the route passes along a lit sidewalk or the shoulder of a four-lane road, and whether the store will still be there next year. The index measures the presence of destinations, not access to them, and it treats a neighbourhood as a set of points on a map rather than as a place where particular people, with particular incomes, schedules and bodies, try to get through the day.",
+    "Sociologists who have gone and asked those people find a different geography. Picture a study of a dense inner-city district with an enviable score: residents report walking less than residents of a lower-scoring suburb, and say why. They do not feel safe after dark, the crossings are timed for cars, and the shops that count toward the score sell things they do not buy. The number has described a neighbourhood that is walkable for someone, but not for them. A measure that cannot see this is not merely incomplete; it can mislead, because a high score becomes a reason not to invest in the very things that would make walking possible.",
+    "It would be unfair to blame the index for everything done in its name. Before such measures existed, the case for walkable neighbourhoods was made in prose, and prose is easy for a budget committee to ignore. The score gave the idea a seat at the table. Nor is the solution to abandon measurement. It is to measure what matters: not the distance to a grocery store but the share of households that reach one on foot each week; not the existence of a crossing but the time a person has to wait at it; not the average but the experience of those for whom walking is not a lifestyle choice but the only option.",
+    "Such measures are harder to collect. They require asking people rather than consulting a map, and they vary from one group to the next in ways a single number conceals. That is exactly why they are needed. An index that is easy to compute is easy to game, and a city can raise its score by permitting a convenience store near every apartment block while its residents go on driving to the places they actually need. The question a good measure should answer is not whether a neighbourhood looks walkable from above, but whether it is walked, by whom, and at what cost."
+   ],
+   "figures": [],
+   "source": "Original essay written for this app (social sciences: urban sociology); the study it pictures is illustrative, not a citation.",
+   "status": "draft",
+   "reviewed_by": null
+  }
+ ],
+ "items": [
+  {
+   "id": "M7-Q01",
+   "rev": 1,
+   "section": "cars",
+   "passage": "M7-P01",
+   "discipline": null,
+   "fc": null,
+   "category": null,
+   "topics": [],
+   "skill": null,
+   "cars_skill": "foundations",
+   "difficulty": 3,
+   "stem": "The central claim of the passage is that:",
+   "options": {
+    "A": "old paintings should not be cleaned, because every cleaning destroys evidence of their history",
+    "B": "scientific analysis has made disputes about restoration obsolete",
+    "C": "a painting has no single original state for restoration to recover, so a restoration is a defensible choice rather than a discovery",
+    "D": "critics who object to cleaned paintings are reacting to the loss of grime that they mistook for mystery"
+   },
+   "answer": "C",
+   "why_correct": [
+    "The thesis is stated at the end of the first paragraph and restated at the end: the assumption of 'a single correct state of the picture' cannot bear the weight placed on it, and we must stop pretending that restoration 'returns them to a state that exists somewhere, waiting to be found.'",
+    "Paragraph 2 argues there is 'no layer at which the picture is simply itself'; paragraph 4 describes good restoration as a claim 'that must be defended in writing', that is, a choice to be argued for.",
+    "Every other paragraph serves this claim: science cannot settle a question of value (3), and the critic's preferred state is also only a version (5)."
+   ],
+   "why_wrong": {
+    "A": "Too extreme. The author explicitly says the honest position 'is not that we must never touch old paintings' and praises conservators who 'clean, retouch, and consolidate.'",
+    "B": "Reversed. Paragraph 3 concedes what science can establish and then argues that it 'does not tell us what to do about it.'",
+    "D": "A distortion of a minor point. The author grants that the critic's loss is real and says he is 'not simply wrong'; the critic's reaction is discussed to show that his state is one version among others, not to dismiss it."
+   },
+   "error_types": {
+    "A": "too extreme: forbids what the author permits",
+    "B": "reversed relationship: the author argues the opposite",
+    "D": "true but irrelevant: a supporting point mistaken for the thesis"
+   },
+   "takeaway": "Find the sentence the whole passage returns to; here it is the denial of a single recoverable original.",
+   "sources": [
+    "AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview: Foundations of Comprehension (main idea and purpose).",
+    "Original passage written for this app."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M7-Q02",
+   "rev": 1,
+   "section": "cars",
+   "passage": "M7-P01",
+   "discipline": null,
+   "fc": null,
+   "category": null,
+   "topics": [],
+   "skill": null,
+   "cars_skill": "foundations",
+   "difficulty": 3,
+   "stem": "As used at the end of the second paragraph, 'neutral' most nearly means:",
+   "options": {
+    "A": "scientifically accurate",
+    "B": "free of any judgement about what matters",
+    "C": "unaffected by ageing",
+    "D": "invisible to viewers"
+   },
+   "answer": "B",
+   "why_correct": [
+    "The sentence reads: 'To choose a layer is to make an argument about what mattered most, and arguments can be good or bad, but they cannot be neutral.' Neutral is contrasted with making an argument about what mattered most.",
+    "So a neutral choice would be one that involved no judgement of value, which the author says is impossible.",
+    "Paragraph 3 confirms the sense by calling the decision 'a question of value'."
+   ],
+   "why_wrong": {
+    "A": "The author allows that analysis can be accurate 'often with great precision'; accuracy is not what is denied. What cannot be avoided is a judgement about what matters.",
+    "C": "Ageing is discussed earlier in the paragraph, but the sentence is about the conservator's choice of layer, not about the paint's physical stability.",
+    "D": "Nothing in the sentence concerns visibility; later, in paragraph 4, the author wants the boundary of restoration to be visible, which is a different point."
+   },
+   "error_types": {
+    "A": "out of scope: accuracy is not the contrast being drawn",
+    "C": "out of scope: an earlier topic in the paragraph",
+    "D": "out of scope: borrowed from a later paragraph"
+   },
+   "takeaway": "Define a word from the clause it sits in and the contrast it completes, not from the surrounding topic.",
+   "sources": [
+    "AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview: Foundations of Comprehension (meaning of words and phrases in context).",
+    "Original passage written for this app."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M7-Q03",
+   "rev": 1,
+   "section": "cars",
+   "passage": "M7-P01",
+   "discipline": null,
+   "fc": null,
+   "category": null,
+   "topics": [],
+   "skill": null,
+   "cars_skill": "within",
+   "difficulty": 3,
+   "stem": "The author mentions cross-sections, infrared imaging and pigment analysis (paragraph 3) primarily in order to:",
+   "options": {
+    "A": "concede the power of technical analysis before arguing that it cannot settle a question of value",
+    "B": "show that conservators now have the tools to identify a painting's original surface",
+    "C": "argue that scientific methods of examining paintings are unreliable",
+    "D": "explain why earlier restorers made so many mistakes"
+   },
+   "answer": "A",
+   "why_correct": [
+    "The paragraph opens with an objection ('The usual reply is that science settles the matter'), grants it ('I do not doubt this'), and then turns: 'But knowing what is on the canvas does not tell us what to do about it.'",
+    "The list of techniques makes the concession concrete; its function is to set up the distinction between fact and value that the paragraph ends on.",
+    "This concede-then-limit structure is a standard move for anticipating a counterargument."
+   ],
+   "why_wrong": {
+    "B": "Reversed. The author's point is that even with these tools the choice of surface remains a judgement; paragraph 2 denies that there is an original surface to identify.",
+    "C": "Too extreme and contradicted: 'often with great precision' and 'I do not doubt this'.",
+    "D": "Out of scope. Earlier restorers are mentioned in paragraph 2 as part of what a conservator confronts; their mistakes are never explained."
+   },
+   "error_types": {
+    "B": "reversed relationship: the concession read as the conclusion",
+    "C": "too extreme: contradicts the author's explicit concession",
+    "D": "out of scope: a topic the passage does not pursue"
+   },
+   "takeaway": "When an author grants a point and then says 'but', the granted point is a concession; ask what the 'but' is setting up.",
+   "sources": [
+    "AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview: Reasoning Within the Text (function of a detail in the argument).",
+    "Original passage written for this app."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M7-Q04",
+   "rev": 1,
+   "section": "cars",
+   "passage": "M7-P01",
+   "discipline": null,
+   "fc": null,
+   "category": null,
+   "topics": [],
+   "skill": null,
+   "cars_skill": "within",
+   "difficulty": 4,
+   "stem": "The author's attitude toward the critic described in the final paragraph is best described as:",
+   "options": {
+    "A": "contemptuous of his ignorance of conservation science",
+    "B": "fully in agreement with his objection",
+    "C": "indifferent, because the question is purely technical",
+    "D": "sympathetic to his sense of loss, but unwilling to grant his claim to authenticity"
+   },
+   "answer": "D",
+   "why_correct": [
+    "The author grants the critic something real: he 'is therefore not simply wrong', and what he reports 'is a loss, even if it was also the removal of grime.'",
+    "The author then withholds the larger claim: 'What he cannot claim is that his preferred state was the true one and the conservator's a fabrication. Both are versions.'",
+    "That combination, partial sympathy with a firm limit, is the attitude of the whole paragraph."
+   ],
+   "why_wrong": {
+    "A": "Too extreme. Nothing in the paragraph mocks the critic or calls him ignorant; the author treats his loss as genuine.",
+    "B": "Reversed in part. The author agrees that a loss occurred but rejects the critic's central assumption that the older appearance was the true one.",
+    "C": "Contradicted. The author's whole argument is that restoration is a question of value, not a purely technical one, and the final paragraph engages the critic seriously."
+   },
+   "error_types": {
+    "A": "too extreme: hostility the text does not show",
+    "B": "reversed relationship: partial agreement read as full agreement",
+    "C": "outside knowledge contradicting the passage: 'purely technical' is what the author denies"
+   },
+   "takeaway": "Attitude questions often hinge on a 'yes, but' structure; the answer must capture both halves.",
+   "sources": [
+    "AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview: Reasoning Within the Text (author's tone and attitude).",
+    "Original passage written for this app."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M7-Q05",
+   "rev": 1,
+   "section": "cars",
+   "passage": "M7-P01",
+   "discipline": null,
+   "fc": null,
+   "category": null,
+   "topics": [],
+   "skill": null,
+   "cars_skill": "beyond",
+   "difficulty": 4,
+   "stem": "Which of the following practices would the author most likely endorse?",
+   "options": {
+    "A": "removing every later addition so that only paint applied by the artist remains",
+    "B": "leaving old paintings untouched so that their full history is preserved",
+    "C": "retouching losses with a material that can be dissolved later and publishing a record of each step",
+    "D": "returning a painting to the appearance it had when the public first came to love it"
+   },
+   "answer": "C",
+   "why_correct": [
+    "Paragraph 4 sets out the author's criteria: each intervention should be 'defended in writing', should be one 'that can be undone by a successor', and should leave the boundary between the artist's hand and the restorer's visible.",
+    "A reversible retouching material and a published record meet the first two criteria directly.",
+    "The author also describes the best conservators as ones who 'clean, retouch, and consolidate', so retouching itself is not objectionable."
+   ],
+   "why_wrong": {
+    "A": "This assumes there is a pure authorial layer to return to, which paragraph 2 denies, and it treats removal as the obvious choice, which paragraph 3 says is a question of value.",
+    "B": "Too extreme. The author says the honest position 'is not that we must never touch old paintings' and criticises timidity.",
+    "D": "This is the critic's preferred state, which the author says is only one version with no special claim to be the true one."
+   },
+   "error_types": {
+    "A": "outside knowledge contradicting the passage: assumes a recoverable original",
+    "B": "too extreme: forbids what the author permits",
+    "D": "reversed relationship: the position the author rejects"
+   },
+   "takeaway": "To apply an author's view, use the criteria the author states, not the position of the people the author argues against.",
+   "sources": [
+    "AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview: Reasoning Beyond the Text (applying the author's ideas to a new situation).",
+    "Original passage written for this app."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M7-Q06",
+   "rev": 1,
+   "section": "cars",
+   "passage": "M7-P01",
+   "discipline": null,
+   "fc": null,
+   "category": null,
+   "topics": [],
+   "skill": null,
+   "cars_skill": "beyond",
+   "difficulty": 4,
+   "stem": "Which finding, if true, would most weaken the argument of the second paragraph?",
+   "options": {
+    "A": "Modern synthetic varnishes do not yellow with age",
+    "B": "Surveys show that most museum visitors prefer paintings that have been cleaned",
+    "C": "Conservators can usually identify the moment the artist stopped work and recover the surface exactly as it then appeared",
+    "D": "Earlier restorers rarely documented what they added"
+   },
+   "answer": "C",
+   "why_correct": [
+    "Paragraph 2 argues that 'there is no layer at which the picture is simply itself', because the artist altered the surface repeatedly and expected it to be seen under particular conditions.",
+    "If a single moment of completion could usually be identified and its surface recovered exactly, the premise that there is no privileged layer would be in serious doubt.",
+    "The author would still have the value argument of paragraph 3, but the specific claim of paragraph 2 would be weakened."
+   ],
+   "why_wrong": {
+    "A": "Irrelevant to old paintings, whose varnishes have already yellowed; the paragraph concerns what has happened to them, not what new materials do.",
+    "B": "Public preference has no bearing on whether there is a single original state; the author's point is about what exists on the canvas and what choosing among layers involves.",
+    "D": "This would support the author's description of a layered, altered surface rather than weaken it."
+   },
+   "error_types": {
+    "A": "out of scope: concerns new materials, not old paintings",
+    "B": "true but irrelevant: preference does not bear on the premise",
+    "D": "reversed relationship: strengthens rather than weakens"
+   },
+   "takeaway": "To weaken an argument, attack the premise the paragraph rests on, not a nearby fact.",
+   "sources": [
+    "AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview: Reasoning Beyond the Text (assessing the effect of new information on the argument).",
+    "Original passage written for this app."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M7-Q07",
+   "rev": 1,
+   "section": "cars",
+   "passage": "M7-P02",
+   "discipline": null,
+   "fc": null,
+   "category": null,
+   "topics": [],
+   "skill": null,
+   "cars_skill": "foundations",
+   "difficulty": 3,
+   "stem": "The author's primary purpose is to:",
+   "options": {
+    "A": "argue that walkability indices should be abandoned",
+    "B": "show that a popular index measures the presence of destinations rather than people's access to them, and to propose measuring use instead",
+    "C": "explain how walkability scores are calculated",
+    "D": "demonstrate that suburbs are more walkable than inner-city districts"
+   },
+   "answer": "B",
+   "why_correct": [
+    "The diagnosis is stated in paragraph 2: 'The index measures the presence of destinations, not access to them'. The remedy is stated in paragraph 4: 'not the distance to a grocery store but the share of households that reach one on foot each week'.",
+    "Paragraphs 3 and 5 supply the evidence and the warning; paragraph 1 describes the index to set up the critique.",
+    "The passage ends by restating the purpose: a good measure should ask 'whether it is walked, by whom, and at what cost.'"
+   ],
+   "why_wrong": {
+    "A": "Too extreme. The author says plainly, 'Nor is the solution to abandon measurement', and credits the index with giving the idea 'a seat at the table'.",
+    "C": "The calculation is described in one sentence of paragraph 1 only as background; the passage is an argument, not an explanation.",
+    "D": "The suburb in paragraph 3 is one illustrative case; the author does not generalise about suburbs, and the point of the example is that the score misdescribed both places."
+   },
+   "error_types": {
+    "A": "too extreme: the author rejects abandoning measurement",
+    "C": "true but irrelevant: background mistaken for purpose",
+    "D": "too extreme: one example generalised"
+   },
+   "takeaway": "Purpose questions ask what the whole passage does; a diagnosis plus a proposed remedy is a common shape.",
+   "sources": [
+    "AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview: Foundations of Comprehension (main idea and purpose).",
+    "Original passage written for this app."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M7-Q08",
+   "rev": 1,
+   "section": "cars",
+   "passage": "M7-P02",
+   "discipline": null,
+   "fc": null,
+   "category": null,
+   "topics": [],
+   "skill": null,
+   "cars_skill": "foundations",
+   "difficulty": 2,
+   "stem": "According to the passage, the index awards more points when:",
+   "options": {
+    "A": "destinations are closer to the address",
+    "B": "residents report walking more often",
+    "C": "the route to a destination has a lit sidewalk",
+    "D": "residents can afford what nearby shops sell"
+   },
+   "answer": "A",
+   "why_correct": [
+    "Paragraph 1: 'The index is computed from distances ... with closer destinations earning more points.'",
+    "That is the only input the passage describes; everything else the author discusses is what the index leaves out.",
+    "The question tests careful reading of the setup, not the argument."
+   ],
+   "why_wrong": {
+    "B": "Reported walking is what the sociologists in paragraph 3 measured, and what the author wants measured; the index does not use it.",
+    "C": "Paragraph 2 says a destination raises the score 'whether the route passes along a lit sidewalk or the shoulder of a four-lane road'; the sidewalk does not count.",
+    "D": "Paragraph 2 says a supermarket raises the score 'whether or not the residents can afford to shop in it'."
+   },
+   "error_types": {
+    "B": "reversed relationship: the author's proposed measure, not the index's input",
+    "C": "outside knowledge contradicting the passage: the passage says this is ignored",
+    "D": "outside knowledge contradicting the passage: the passage says this is ignored"
+   },
+   "takeaway": "Detail questions are answered by the sentence that states the fact; the author's criticisms list what the index does not do.",
+   "sources": [
+    "AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview: Foundations of Comprehension (locating stated information).",
+    "Original passage written for this app."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M7-Q09",
+   "rev": 1,
+   "section": "cars",
+   "passage": "M7-P02",
+   "discipline": null,
+   "fc": null,
+   "category": null,
+   "topics": [],
+   "skill": null,
+   "cars_skill": "within",
+   "difficulty": 3,
+   "stem": "The author's claim that a high score 'becomes a reason not to invest' (paragraph 3) serves to:",
+   "options": {
+    "A": "show that the index is not merely incomplete but actively harmful",
+    "B": "argue that spending on walking infrastructure is usually wasted",
+    "C": "praise the index for directing investment to the neighbourhoods that need it",
+    "D": "suggest that residents of high-scoring districts exaggerate their fears"
+   },
+   "answer": "A",
+   "why_correct": [
+    "The sentence is introduced with 'A measure that cannot see this is not merely incomplete; it can mislead, because ...'. The clause explains how misleading turns into harm.",
+    "The harm is specific: a good number removes the case for fixing 'the very things that would make walking possible', so the index's blind spot perpetuates itself.",
+    "The paragraph thus escalates from a limitation (the index is incomplete) to a harm (it misleads and blocks investment)."
+   ],
+   "why_wrong": {
+    "B": "Reversed. The author wants investment in crossings, lighting and the like; the complaint is that the score discourages it.",
+    "C": "Reversed. The sentence criticises the index for steering investment away from where it is needed.",
+    "D": "Nothing in the passage doubts the residents' reports; the author treats them as the better evidence."
+   },
+   "error_types": {
+    "B": "reversed relationship: the author favours the investment",
+    "C": "reversed relationship: criticism read as praise",
+    "D": "reversed relationship: the residents' reports are the trusted evidence"
+   },
+   "takeaway": "Ask what a sentence adds to the paragraph's movement; here it turns a limitation into a harm.",
+   "sources": [
+    "AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview: Reasoning Within the Text (function of a claim within the argument).",
+    "Original passage written for this app."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M7-Q10",
+   "rev": 1,
+   "section": "cars",
+   "passage": "M7-P02",
+   "discipline": null,
+   "fc": null,
+   "category": null,
+   "topics": [],
+   "skill": null,
+   "cars_skill": "within",
+   "difficulty": 3,
+   "stem": "It can be inferred that the author believes the suburb mentioned in paragraph 3:",
+   "options": {
+    "A": "has a higher walkability score than the inner-city district",
+    "B": "is walked more by its residents despite its lower score",
+    "C": "lacks a grocery store within walking distance",
+    "D": "was scored incorrectly by the index"
+   },
+   "answer": "B",
+   "why_correct": [
+    "Paragraph 3 says residents of the high-scoring district 'report walking less than residents of a lower-scoring suburb'. So the suburb scores lower and is walked more.",
+    "The author uses the comparison to show that the score and actual walking come apart, which is the passage's central complaint.",
+    "No claim is made that the suburb's score was miscalculated; the point is that the score measures the wrong thing."
+   ],
+   "why_wrong": {
+    "A": "Contradicted by the text: the suburb is 'lower-scoring'.",
+    "C": "Not stated. The passage says nothing about the suburb's shops; the shops discussed are in the inner-city district.",
+    "D": "The author's argument is that the index computed its distances correctly but measured the wrong thing; 'scored incorrectly' misstates the criticism."
+   },
+   "error_types": {
+    "A": "reversed relationship: the comparison inverted",
+    "C": "out of scope: a detail the passage does not give",
+    "D": "outside knowledge contradicting the passage: the index is accurate but misdirected"
+   },
+   "takeaway": "An inference must follow from what is stated; 'lower-scoring' and 'walking less' fix the comparison.",
+   "sources": [
+    "AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview: Reasoning Within the Text (drawing inferences).",
+    "Original passage written for this app."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M7-Q11",
+   "rev": 1,
+   "section": "cars",
+   "passage": "M7-P02",
+   "discipline": null,
+   "fc": null,
+   "category": null,
+   "topics": [],
+   "skill": null,
+   "cars_skill": "beyond",
+   "difficulty": 4,
+   "stem": "Which proposed measure is most consistent with the author's recommendation in paragraph 4?",
+   "options": {
+    "A": "the number of shops within 500 metres of each home",
+    "B": "the average distance from homes to the nearest park",
+    "C": "the total length of sidewalk per square kilometre",
+    "D": "the proportion of residents over 65 who walk to a pharmacy at least once a week"
+   },
+   "answer": "D",
+   "why_correct": [
+    "Paragraph 4 asks for measures of use rather than availability ('the share of households that reach one on foot each week') and for attention to 'the experience of those for whom walking is ... the only option.'",
+    "A weekly walking rate among older residents measures actual trips by a group with limited alternatives, matching both criteria.",
+    "The other options are all map-based counts of what exists, exactly the kind of measure the author criticises."
+   ],
+   "why_wrong": {
+    "A": "A count of nearby destinations is the index's own logic, 'the presence of destinations, not access to them'.",
+    "B": "A distance to the nearest facility is precisely the input the author rejects in favour of 'the share of households that reach one on foot'.",
+    "C": "Sidewalk length is infrastructure that exists, not evidence that anyone walks on it; the author warns that such measures are 'easy to game'."
+   },
+   "error_types": {
+    "A": "reversed relationship: the index's logic, not the author's",
+    "B": "reversed relationship: the input the author rejects",
+    "C": "true but irrelevant: availability, not use"
+   },
+   "takeaway": "Apply the author's stated criteria (use, not availability; the experience of those with no alternative) to each option.",
+   "sources": [
+    "AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview: Reasoning Beyond the Text (applying the author's ideas to new cases).",
+    "Original passage written for this app."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M7-Q12",
+   "rev": 1,
+   "section": "cars",
+   "passage": "M7-P02",
+   "discipline": null,
+   "fc": null,
+   "category": null,
+   "topics": [],
+   "skill": null,
+   "cars_skill": "beyond",
+   "difficulty": 4,
+   "stem": "Suppose a city raises its average score from 60 to 75 over five years while surveys show its residents walk no more than before. The author would most likely view this as:",
+   "options": {
+    "A": "evidence that the index works, because the scores improved",
+    "B": "proof that the residents are behaving irrationally",
+    "C": "irrelevant, because surveys of residents are unreliable",
+    "D": "an example of the index being gamed, as warned in the final paragraph"
+   },
+   "answer": "D",
+   "why_correct": [
+    "The final paragraph predicts this exact situation: 'a city can raise its score by permitting a convenience store near every apartment block while its residents go on driving to the places they actually need.'",
+    "A rising score with unchanged walking is the gap between 'looks walkable from above' and 'is walked' that the author says a good measure should expose.",
+    "The author trusts surveys of residents over map-based scores (paragraph 3), so the survey result would be taken as the real outcome."
+   ],
+   "why_wrong": {
+    "A": "Reversed. For the author, the score is the suspect measure; a higher score with no more walking is a failure of the index, not a success.",
+    "B": "Nothing in the passage blames residents; their choices are treated as reasonable responses to their surroundings.",
+    "C": "Contradicted. The author's preferred measures 'require asking people rather than consulting a map'."
+   },
+   "error_types": {
+    "A": "reversed relationship: the score treated as the outcome",
+    "B": "outside knowledge contradicting the passage: residents are not criticised",
+    "C": "outside knowledge contradicting the passage: surveys are the author's preferred evidence"
+   },
+   "takeaway": "When new information matches a scenario the author has already described, the author's stated reaction to that scenario is the answer.",
+   "sources": [
+    "AAMC, What's on the MCAT Exam?, Critical Analysis and Reasoning Skills section overview: Reasoning Beyond the Text (assessing new information).",
+    "Original passage written for this app."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  }
+ ]
+}

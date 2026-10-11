@@ -49,6 +49,10 @@ examples are our own, verified against the open textbooks each topic links to (O
 link to those references and never reproduce their text. MCAT® is a registered trademark of the AAMC, which is not
 affiliated with and does not endorse this app.
 
+## Chemical structures
+Structures in MCAT passages are drawn at build time from SMILES with RDKit (BSD-3-Clause licence, https://www.rdkit.org/) by
+`tools/structures.py`; the app ships only the resulting SVG.
+
 ## Periodic table
 `src/ptable.js` lists the 118 elements with IUPAC standard atomic weights (CIAAW 2024, abridged to one decimal;
 elements without a standard weight show the mass number of their longest-lived isotope in brackets, as IUPAC does),

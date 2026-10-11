@@ -99,6 +99,7 @@ with sync_playwright() as p:
     pg.fill("[data-ptsearch]", "Cl"); pg.wait_for_timeout(150)
     check("periodic table search finds chlorine", "Chlorine" in pg.inner_text("#ptfound") and "35.5" in pg.inner_text("#ptfound"))
     pg.click("#sheetroot button[data-act=sheet-close]"); pg.wait_for_timeout(300)
+    if pg.query_selector("[data-act=r-pane][data-v=question]"): pg.click("[data-act=r-pane][data-v=question]"); pg.wait_for_timeout(200)   # a passage question opens on its passage
     pg.click(".opt[data-l=B]"); pg.click("[data-act=r-submit]"); pg.wait_for_timeout(300)
     check("MCAT answer shows a verdict, a takeaway and the guide topic badge", bool(pg.query_selector("#verdict")) and "Takeaway" in pg.inner_text("#runner") and bool(pg.query_selector("#runner [data-act=g-go]")))
     pg.click(".rbar [data-act=r-exit]"); pg.wait_for_timeout(300)
@@ -110,7 +111,38 @@ with sync_playwright() as p:
     ev("document.querySelector('[data-tab=practice]').click()"); pg.wait_for_timeout(200)  # second tap leaves the section screen
     ev("document.querySelector('[data-act=ptab][data-v=new]').click()"); pg.wait_for_timeout(200)
     check("MCAT block builder offers sections, skills and difficulty 2–5", bool(pg.query_selector("[data-act=p-section]")) and len(pg.query_selector_all("[data-act=p-skill]")) == 4 and len(pg.query_selector_all("[data-act=p-diff]")) == 4)
-    ev("document.querySelector('[data-act=msec][data-v=chem_phys]') || document.querySelector('[data-act=ptab][data-v=sections]').click()"); pg.wait_for_timeout(200)
+    # passage runner (Phase M3): CARS block at phone width
+    ev("document.querySelector('[data-act=ptab][data-v=sections]').click()"); pg.wait_for_timeout(150)
+    ev("document.querySelector('[data-act=msec][data-v=cars]').click()"); pg.wait_for_timeout(200)
+    ev("document.querySelector('[data-act=mtab][data-v=practice]').click()"); pg.wait_for_timeout(200)
+    pg.click("[data-act=msec-start][data-mode=tutor]"); pg.wait_for_timeout(400)
+    if pg.query_selector("[data-act=force-start]"): pg.click("[data-act=force-start]"); pg.wait_for_timeout(500)   # the chem block above is still in progress
+    check("a CARS block opens on the passage pane with the Passage | Question toggle and no periodic table", pg.get_attribute(".rbody", "data-pane") == "passage" and pg.is_visible(".ptoggle") and pg.is_visible(".pane.passage") and not pg.is_visible(".pane.question") and not pg.query_selector("[data-act=r-ptable]"))
+    check("every question of a passage travels with it", ev("(() => { const s = JSON.parse(localStorage.getItem('rounds.mcat.v1')).sessions[0]; const ps = s.qids.map((id) => id.slice(0, 2) === 'M7' ? (+id.slice(4) <= 6 ? 'a' : 'b') : 'x'); return s.qids.length === 12 && ps.slice(0, 6).every((p) => p === ps[0]) && ps.slice(6).every((p) => p === ps[6]) && ps[0] !== ps[6]; })()"))
+    ev("(() => { const t = document.querySelector('.ptext p[data-pi=\"1\"]').firstChild; const r = document.createRange(); r.setStart(t, 4); r.setEnd(t, 30); const s = getSelection(); s.removeAllRanges(); s.addRange(r); })()")
+    pg.wait_for_timeout(900)
+    hl = json.loads(stored("rounds.mcat.v1")).get("sessions", [{}])[0].get("hl") or {}
+    check("a selection in the passage becomes a highlight saved with the session", len(pg.query_selector_all(".ptext mark")) == 1 and list(hl.values()) == [[[1, 4, 30]]])
+    pg.click("[data-act=r-pane][data-v=question]"); pg.wait_for_timeout(200)
+    check("the toggle shows the question and hides the passage", not pg.is_visible(".pane.passage") and pg.is_visible(".pane.question") and len(pg.query_selector_all(".opt")) == 4)
+    pg.click("[data-act=r-pane][data-v=passage]"); pg.wait_for_timeout(400)
+    pg.click(".ptext mark"); pg.wait_for_timeout(200)
+    check("tapping a highlight clears it", len(pg.query_selector_all(".ptext mark")) == 0 and not any(json.loads(stored("rounds.mcat.v1"))["sessions"][0]["hl"].values()))
+    ev("document.querySelector('.pane.passage').scrollTop = 200"); pg.click("[data-act=r-next]"); pg.wait_for_timeout(300)
+    check("moving within a passage keeps the passage's scroll position", ev("document.querySelector('.pane.passage').scrollTop") == 200)
+    pg.click("[data-act=r-more]"); pg.wait_for_timeout(300)
+    check("the question navigator groups questions by passage", [e.text_content() for e in pg.query_selector_all(".navsep")] == ["Passage 1", "Passage 2"])
+    pg.click("#sheetroot button[data-act=sheet-close]"); pg.wait_for_timeout(300)
+    pg.click(".rbar [data-act=r-exit]"); pg.wait_for_timeout(300)
+    ev("document.querySelector('[data-tab=practice]').click()"); pg.wait_for_timeout(150); ev("document.querySelector('[data-tab=practice]').click()"); pg.wait_for_timeout(150)
+    ev("document.querySelector('[data-act=msec][data-v=chem_phys]').click()"); pg.wait_for_timeout(200)
+    ev("document.querySelector('[data-act=mtab][data-v=practice]').click()"); pg.wait_for_timeout(200)
+    ev("document.querySelector('[data-act=q-open][data-id=\"M4-Q01\"]').click()"); pg.wait_for_timeout(500)
+    if pg.query_selector("[data-act=read-exp]"): pg.click("[data-act=read-exp]"); pg.wait_for_timeout(500)   # already answered in the chem block above
+    check("a science passage shows its table and a chart drawn from the data", len(pg.query_selector_all(".pfig")) == 2 and bool(pg.query_selector(".ftab")) and len(pg.query_selector_all(".chart circle")) == 5 and "Table 1." in pg.inner_text(".pfig figcaption") and bool(pg.query_selector("[data-act=r-ptable]")))
+    pg.click(".rbar [data-act=r-exit]"); pg.wait_for_timeout(300)
+    ev("(document.querySelector('[data-act=msec][data-v=\"\"]') || document.querySelector('[data-act=ptab][data-v=sections]') || { click() {} }).click()"); pg.wait_for_timeout(200)   # back to the section list
+    mrec = stored("rounds.mcat.v1")   # the MCAT record after the passage checks; it must not change while Boards is used
     ev("document.querySelector('[data-act=exam][data-v=boards]').click()"); pg.wait_for_timeout(200)
     check("boards progress record is byte-for-byte unchanged after using the MCAT tab", stored("rounds.progress.v1") == SEED)
     # tutor block (as before)

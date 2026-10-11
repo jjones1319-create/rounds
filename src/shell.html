@@ -13,7 +13,7 @@
   --paper:#EEF1F5; --surface:#FFFFFF; --surface2:#F6F8FA; --ink:#162033; --muted:#5A6577; --line:#D8DEE7;
   --accent:#2C5BCB; --accent-ink:#FFFFFF; --accent-soft:#E3EBFB;
   --ok:#17845A; --ok-soft:#E1F3EA; --bad:#C2342D; --bad-soft:#FBE7E5; --flag:#C98A08; --flag-soft:#FBF0D6;
-  --star:#D99A0B; --star-off:#CBD3DE; --hl:#2C5BCB;
+  --star:#D99A0B; --star-off:#CBD3DE; --hl:#2C5BCB; --mark:#FFE98A;
   --qfs:17px; --radius:14px;
   --font:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   box-sizing:border-box;
@@ -25,14 +25,14 @@
     --paper:#0E1420; --surface:#161F30; --surface2:#1C2639; --ink:#E7EBF2; --muted:#9BA6B9; --line:#2A3549;
     --accent:#7398F2; --accent-ink:#0E1420; --accent-soft:#1F2E50;
     --ok:#3FBF86; --ok-soft:#14352A; --bad:#F06C63; --bad-soft:#3D1D1D; --flag:#F0C04A; --flag-soft:#3A3014;
-    --star:#F0C04A; --star-off:#3A465C; --hl:#9DB8FF; color-scheme:dark;
+    --star:#F0C04A; --star-off:#3A465C; --hl:#9DB8FF; --mark:#6B5A12; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --paper:#0E1420; --surface:#161F30; --surface2:#1C2639; --ink:#E7EBF2; --muted:#9BA6B9; --line:#2A3549;
   --accent:#7398F2; --accent-ink:#0E1420; --accent-soft:#1F2E50;
   --ok:#3FBF86; --ok-soft:#14352A; --bad:#F06C63; --bad-soft:#3D1D1D; --flag:#F0C04A; --flag-soft:#3A3014;
-  --star:#F0C04A; --star-off:#3A465C; --hl:#9DB8FF; color-scheme:dark;
+  --star:#F0C04A; --star-off:#3A465C; --hl:#9DB8FF; --mark:#6B5A12; color-scheme:dark;
 }
 html{scroll-padding-top:env(safe-area-inset-top,0px); height:100%}
 *,*::before,*::after{box-sizing:inherit}
@@ -240,6 +240,43 @@ details[open].gc>summary::before,details[open].gcat>summary::before,details[open
 .rfoot .btn.main{flex:1}
 .navbtn{width:52px; min-height:48px; border-radius:12px; border:1px solid var(--line); background:var(--surface); display:grid; place-items:center}
 .navbtn:disabled{opacity:.35}
+
+/* passages (Phase M3): one pane at a time on phones with a sticky Passage | Question toggle; side by side from 800px */
+.rbody.split{display:flex; flex-direction:column; overflow:hidden}
+.ptoggle{flex:none; background:var(--surface); border-bottom:1px solid var(--line); padding:8px 12px}
+.ptoggle .seg{max-width:760px; margin:0 auto}
+.pane{flex:1; min-height:0; overflow-y:auto; -webkit-overflow-scrolling:touch}
+.rbody.split[data-pane="passage"] .pane.question, .rbody.split[data-pane="question"] .pane.passage{display:none}
+.passage .ptitle{margin:0 0 10px; font-size:18px}
+.ptext{user-select:text; -webkit-user-select:text; -webkit-touch-callout:none}
+.ptext p{font-size:var(--qfs); line-height:1.66; margin:0 0 14px}
+.ptext mark{background:var(--mark); color:inherit; border-radius:3px; padding:1px 0; cursor:pointer}
+.psrc{margin:10px 0 0; font-style:italic}
+.pfig{margin:16px 0; padding:12px; border:1px solid var(--line); border-radius:14px; background:var(--surface)}
+.pfig figcaption{font-size:14px; color:var(--muted); margin:0 0 8px; line-height:1.4}
+.ftab{border-collapse:collapse; min-width:100%; font-size:calc(var(--qfs) - 1px); font-variant-numeric:tabular-nums}
+.ftab th,.ftab td{padding:6px 10px; border-bottom:1px solid var(--line); text-align:right; white-space:nowrap}
+.ftab th:first-child,.ftab td:first-child{text-align:left}
+.ftab th{font-weight:700; border-bottom:2px solid var(--line); vertical-align:bottom}
+.pfig .scrollx{display:block}
+.chart{width:100%; height:auto; display:block; max-width:520px; margin:0 auto}
+.chart .grid{stroke:var(--line); stroke-width:1}
+.chart .axis{stroke:var(--ink); stroke-width:1.2}
+.chart .tick{font-size:11px; fill:var(--muted)}
+.chart .lab{font-size:12px; fill:var(--ink); font-weight:700}
+.legend{display:flex; flex-wrap:wrap; justify-content:center; gap:6px 14px; font-size:13px; color:var(--muted); margin-top:6px}
+.legend i{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px}
+.struct svg{max-width:320px; height:auto; display:block; margin:0 auto}
+.struct svg path[style*="stroke:#000000"]{stroke:var(--ink) !important}
+.struct svg path[style*="fill:#000000"], .struct svg text[style*="fill:#000000"]{fill:var(--ink) !important}
+.navsep{grid-column:1/-1; font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin-top:4px}
+@media (min-width:800px){
+  .rbody.split{flex-direction:row}
+  .ptoggle{display:none}
+  .rbody.split .pane{display:block !important; flex:1 1 50%; min-width:0}
+  .rbody.split .pane.passage{border-right:1px solid var(--line)}
+  .rbody.split .rcontent{max-width:none}
+}
 
 .verdict{margin:22px 0 4px; padding:14px 16px; border-radius:14px; display:flex; gap:12px; align-items:center}
 .verdict.ok{background:var(--ok-soft); color:var(--ok)}

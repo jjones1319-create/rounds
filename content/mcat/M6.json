@@ -1,0 +1,294 @@
+{
+ "block": "M6",
+ "section": "psych_soc",
+ "passages": [
+  {
+   "id": "M6-P01",
+   "section": "psych_soc",
+   "kind": "science",
+   "title": "Rereading versus retrieval practice",
+   "text": [
+    "Researchers tested whether the way students study a text affects how much of it they remember later. In a hypothetical experiment, 128 undergraduates read a 600-word passage about tidal ecosystems for 6 minutes. They were then randomly assigned to one of two study conditions. In the rereading condition, participants read the passage twice more, 6 minutes each time. In the retrieval-practice condition, participants spent the same two 6-minute periods writing down from memory as much of the passage as they could, with no feedback. Immediately afterward every participant predicted, on a 0–100 scale, what percentage of the passage they would remember in one week.",
+    "Within each study condition, half of the participants (32 per group) took a final free-recall test 5 minutes later and half took it one week later. Two raters, blind to condition, scored each recall protocol for the percentage of the passage's 25 idea units it contained (inter-rater agreement r = 0.91). Figure 1 shows the mean percentage recalled in each of the four groups; standard deviations were about 11 points in every group.",
+    "A 2 × 2 analysis of variance found a main effect of retention interval, F(1, 124) = 139.9, p < .001, and an interaction between study condition and retention interval, F(1, 124) = 16.9, p < .001. The main effect of study condition was not significant (F < 1). Participants in the rereading condition predicted that they would recall 70% of the passage after one week; those in the retrieval-practice condition predicted 50%."
+   ],
+   "figures": [
+    {
+     "id": "fig1",
+     "type": "bar",
+     "caption": "Figure 1. Mean percentage of idea units recalled, by study condition and retention interval (standard deviations about 11 points in every group).",
+     "alt": "Bar chart with two pairs of bars. After 5 minutes: rereading 71 percent, retrieval practice 63 percent. After one week: rereading 40 percent, retrieval practice 48 percent.",
+     "data": {
+      "x": {
+       "label": "Retention interval"
+      },
+      "y": {
+       "label": "Idea units recalled (%)",
+       "min": 0,
+       "max": 100
+      },
+      "series": [
+       {
+        "name": "Rereading",
+        "points": [
+         [
+          "5 minutes",
+          71
+         ],
+         [
+          "1 week",
+          40
+         ]
+        ]
+       },
+       {
+        "name": "Retrieval practice",
+        "points": [
+         [
+          "5 minutes",
+          63
+         ],
+         [
+          "1 week",
+          48
+         ]
+        ]
+       }
+      ]
+     }
+    }
+   ],
+   "source": "Hypothetical experiment written for this app. Its design resembles published retrieval-practice studies (e.g., Roediger HL, Karpicke JD. Test-enhanced learning. Psychological Science. 2006;17:249–255); the numbers are invented.",
+   "status": "draft",
+   "reviewed_by": null
+  }
+ ],
+ "items": [
+  {
+   "id": "M6-Q01",
+   "rev": 1,
+   "section": "psych_soc",
+   "passage": "M6-P01",
+   "discipline": "psychology",
+   "fc": "6",
+   "category": "6B",
+   "topics": [
+    "6B.memory-encoding-storage"
+   ],
+   "skill": "3",
+   "cars_skill": null,
+   "difficulty": 2,
+   "stem": "The independent variables in the experiment are:",
+   "options": {
+    "A": "study condition and retention interval",
+    "B": "study condition and percentage of idea units recalled",
+    "C": "retention interval and predicted recall",
+    "D": "percentage recalled and predicted recall"
+   },
+   "answer": "A",
+   "why_correct": [
+    "An independent variable is one the researchers set. They assigned participants to a study condition (rereading or retrieval practice) and to a retention interval (5 minutes or one week), giving a 2 × 2 design with four groups.",
+    "Percentage recalled is the dependent variable, measured to see the effect of those manipulations; predicted recall is an additional measured variable.",
+    "The passage's own analysis confirms the structure: the ANOVA tests the effects of study condition, retention interval, and their interaction."
+   ],
+   "why_wrong": {
+    "B": "Percentage recalled was measured, not manipulated; it is the dependent variable.",
+    "C": "Predicted recall was a rating participants gave, not something the researchers assigned.",
+    "D": "Both of these are outcomes recorded from participants; neither was manipulated."
+   },
+   "error_types": {
+    "B": "reversed relationship: a dependent variable listed as independent",
+    "C": "reversed relationship: a measured rating treated as a manipulation",
+    "D": "reversed relationship: two measured outcomes treated as manipulations"
+   },
+   "takeaway": "Independent variables are the ones the experimenter manipulates; what is measured afterward is the dependent variable.",
+   "sources": [
+    "OpenStax Psychology 2e, 2.3 Analyzing Findings (2020): independent variable (manipulated by the experimenter) versus dependent variable (measured); random assignment."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M6-Q02",
+   "rev": 1,
+   "section": "psych_soc",
+   "passage": "M6-P01",
+   "discipline": "psychology",
+   "fc": "6",
+   "category": "6B",
+   "topics": [
+    "6B.memory-retrieval-forgetting",
+    "6B.memory-encoding-storage"
+   ],
+   "skill": "4",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "Which statement best describes the pattern of results in Figure 1?",
+   "options": {
+    "A": "Retrieval practice produced better recall at both intervals",
+    "B": "Rereading produced better recall at both intervals",
+    "C": "Rereading was better after 5 minutes, but retrieval practice was better after one week",
+    "D": "The two study methods did not differ at either interval"
+   },
+   "answer": "C",
+   "why_correct": [
+    "Read the bars: at 5 minutes rereading (71%) is above retrieval practice (63%); at one week the order reverses, retrieval practice (48%) above rereading (40%).",
+    "This crossover is what the significant interaction in the passage reports: the effect of study method depends on when memory is tested.",
+    "The non-significant main effect of study condition fits too: averaged over both intervals the methods come out equal (55.5% each), because the 8-point advantage runs in opposite directions at the two intervals."
+   ],
+   "why_wrong": {
+    "A": "At 5 minutes the rereading group recalled more (71% versus 63%), so retrieval practice was not better at both intervals.",
+    "B": "At one week the rereading group recalled less (40% versus 48%).",
+    "D": "The groups differed by 8 points at each interval, in opposite directions, and the interaction was significant."
+   },
+   "error_types": {
+    "A": "misread graph: the 5-minute bars reversed",
+    "B": "misread graph: the one-week bars reversed",
+    "D": "misread graph: clear differences ignored"
+   },
+   "takeaway": "A crossover between conditions across levels of a second variable is an interaction: the effect of one variable depends on the other.",
+   "sources": [
+    "OpenStax Psychology 2e, 2.3 Analyzing Findings (2020): reading experimental results; interpreting group differences.",
+    "OpenStax Introductory Statistics 2e, 13.1 One-Way ANOVA (2023): analysis of variance compares group means using an F statistic."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M6-Q03",
+   "rev": 1,
+   "section": "psych_soc",
+   "passage": "M6-P01",
+   "discipline": "psychology",
+   "fc": "6",
+   "category": "6B",
+   "topics": [
+    "6B.memory-encoding-storage"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "The gap between what the rereading group predicted (70%) and what it actually recalled after one week (40%) best illustrates:",
+   "options": {
+    "A": "the spacing effect",
+    "B": "a metacognitive illusion in which the fluency of rereading is mistaken for durable learning",
+    "C": "state-dependent memory",
+    "D": "proactive interference from the first reading"
+   },
+   "answer": "B",
+   "why_correct": [
+    "Rereading makes a text feel familiar and easy to process. People read that fluency as a sign that the material is well learned, and so they overestimate how much will survive a delay.",
+    "The retrieval-practice group, who had just struggled to recall the passage, had direct evidence of what they did not know; their prediction (50%) was close to their actual one-week recall (48%).",
+    "Judgements of learning that track familiarity rather than retrievability are a well-documented source of poor study choices."
+   ],
+   "why_wrong": {
+    "A": "The spacing effect is better retention when study sessions are spread out over time; the sessions here were back to back in both conditions, and the gap concerns prediction versus performance.",
+    "C": "State-dependent memory is better recall when a person's internal state at retrieval matches the state at encoding; nothing in the design manipulated internal state.",
+    "D": "Proactive interference is older material hindering recall of newer material; rereading the same passage does not create competing content, and interference would not explain an over-confident prediction."
+   },
+   "error_types": {
+    "A": "out of scope: a scheduling effect, not a judgement error",
+    "C": "out of scope: no state manipulation in the design",
+    "D": "wrong formula: interference requires competing material"
+   },
+   "takeaway": "Ease of processing during restudy inflates judgements of learning; retrieval practice gives more accurate self-assessment and better long-term retention.",
+   "sources": [
+    "OpenStax Psychology 2e, 8.4 Ways to Enhance Memory (2020): rehearsal, practice quizzes and spaced study as memory strategies.",
+    "Koriat A, Bjork RA. Illusions of competence in monitoring one's knowledge during study. Journal of Experimental Psychology: Learning, Memory, and Cognition. 2005;31(2):187–194: judgements of learning made while the material is in view instil an unwarranted sense of competence.",
+    "Roediger HL, Karpicke JD. Test-enhanced learning: taking memory tests improves long-term retention. Psychological Science. 2006;17(3):249–255: repeated study produced higher predicted recall but lower delayed recall than repeated testing."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M6-Q04",
+   "rev": 1,
+   "section": "psych_soc",
+   "passage": "M6-P01",
+   "discipline": "psychology",
+   "fc": "6",
+   "category": "6B",
+   "topics": [
+    "6B.memory-retrieval-forgetting"
+   ],
+   "skill": "4",
+   "cars_skill": null,
+   "difficulty": 4,
+   "stem": "The reported interaction, F(1, 124) = 16.9, p < .001, means that:",
+   "options": {
+    "A": "the effect of study method depended on the retention interval, and a difference in pattern this large would be very unlikely if there were no true interaction",
+    "B": "the probability that the null hypothesis is true is less than 0.001",
+    "C": "retrieval practice improved recall by 16.2 percentage points",
+    "D": "the result would be obtained in 99.9% of replications"
+   },
+   "answer": "A",
+   "why_correct": [
+    "An interaction term tests whether the effect of one independent variable differs across levels of the other. Here the study-method difference reversed between 5 minutes and one week.",
+    "The p-value is the probability of observing an interaction at least this strong if, in the population, there were none. Below .001, the observed crossover is very unlikely to be a chance pattern.",
+    "The F statistic is a ratio of the variance explained by the interaction to the error variance; it is not a percentage or an effect size."
+   ],
+   "why_wrong": {
+    "B": "A p-value is the probability of the data (or more extreme data) given the null hypothesis, not the probability that the null hypothesis is true; the latter would require a Bayesian analysis with prior probabilities.",
+    "C": "F = 16.9 is a variance ratio, not a difference in recall; the one-week advantage of retrieval practice in Figure 1 is 8 points, and averaged across intervals the two methods tie.",
+    "D": "A p-value says nothing about the probability of replication; replication depends on effect size, sample size and the study's design."
+   },
+   "error_types": {
+    "B": "reversed relationship: the conditional probability inverted",
+    "C": "misread graph: a test statistic read as an effect size",
+    "D": "wrong formula: p-value confused with replication probability"
+   },
+   "takeaway": "p is the chance of data this extreme if the null were true; it is not the chance the null is true, an effect size, or a replication rate.",
+   "sources": [
+    "OpenStax Introductory Statistics 2e, 9.4 Rare Events, the Sample, and the Decision and Conclusion (2023): the p-value is the probability, if the null hypothesis is true, of a sample result at least as extreme as the one observed.",
+    "OpenStax Introductory Statistics 2e, 13.2 The F Distribution and the F-Ratio (2023): F is the ratio of between-group to within-group variance.",
+    "OpenStax Psychology 2e, 2.3 Analyzing Findings (2020): statistical significance."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M6-Q05",
+   "rev": 1,
+   "section": "psych_soc",
+   "passage": "M6-P01",
+   "discipline": "psychology",
+   "fc": "6",
+   "category": "6B",
+   "topics": [
+    "6B.memory-retrieval-forgetting"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "The decline in recall between 5 minutes and one week seen in both study conditions is best described as:",
+   "options": {
+    "A": "retroactive interference caused by the final test",
+    "B": "encoding failure, because the passage never entered long-term memory",
+    "C": "anterograde amnesia for material learned in the laboratory",
+    "D": "normal forgetting of the kind described by the forgetting curve"
+   },
+   "answer": "D",
+   "why_correct": [
+    "Memory for newly learned material drops quickly in the hours and days after learning and then declines more slowly, the pattern Ebbinghaus first charted as the forgetting curve. A week is long enough for much of that early loss.",
+    "Both groups show it; retrieval practice slowed the loss (63% to 48%) more than rereading did (71% to 40%), but did not prevent it.",
+    "The decline is ordinary storage decay plus interference from everything learned in the intervening week, not a defect of the participants or the design."
+   ],
+   "why_wrong": {
+    "A": "Retroactive interference is newer learning hindering recall of older material; the final test is the measurement itself, taken once, and cannot interfere with what it measures.",
+    "B": "Participants recalled 40–48% of the idea units a week later, so much of the passage clearly did enter long-term memory; encoding failure would mean the material was never stored.",
+    "C": "Anterograde amnesia is an inability to form new long-term memories after brain injury; healthy undergraduates forming and retaining memories over a week show normal forgetting, not amnesia."
+   },
+   "error_types": {
+    "A": "wrong formula: the measurement cannot interfere with itself",
+    "B": "too extreme: partial forgetting mistaken for no storage",
+    "C": "out of scope: a clinical condition applied to normal forgetting"
+   },
+   "takeaway": "Normal forgetting is fastest soon after learning and slows over time (the forgetting curve); good study methods flatten the curve, they do not abolish it.",
+   "sources": [
+    "OpenStax Psychology 2e, 8.3 Problems with Memory (2020): Ebbinghaus's forgetting curve, storage decay, proactive and retroactive interference, encoding failure, anterograde and retrograde amnesia."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  }
+ ]
+}

@@ -1,2 +1,3 @@
 playwright>=1.40
+rdkit>=2024.3   # build-time chemical structures for MCAT passages (tools/structures.py)
 # then run once:  python -m playwright install chromium

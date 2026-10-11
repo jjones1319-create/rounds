@@ -104,6 +104,7 @@ Every item is marked `draft` until the owner reviews it.
   tutor and timed modes; stats split by section and category; periodic table in science sections only.
 
 ### Phase M3: passages
+**Done 2026-10-11** (passage runner with Passage | Question toggle on phones and two panes from 800 px, highlights saved with the block, figures drawn from data, structures via RDKit at build time; blocks M4–M7).
 Passage runner (phone and wide layouts), highlighting, KaTeX, build-time structures, SVG charts.
 Content: one science passage (4–6 questions) for each science section, and two CARS passages
 (5–7 questions each: one humanities, one social sciences).

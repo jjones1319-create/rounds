@@ -1,0 +1,344 @@
+{
+ "block": "M4",
+ "section": "chem_phys",
+ "passages": [
+  {
+   "id": "M4-P01",
+   "section": "chem_phys",
+   "kind": "science",
+   "title": "Terminal voltage of a battery pack",
+   "text": [
+    "A group of students investigated how the voltage available from a small rechargeable battery pack depends on the current drawn from it. The pack was connected to a resistance box, with an ammeter in series and a voltmeter across the pack's terminals. For each setting of the resistance box the students waited until both readings were steady, then recorded the current I and the terminal voltage V (Table 1). The voltmeter's own resistance was large enough that the current it drew could be ignored, and the pack was allowed to rest between readings so that its temperature stayed close to room temperature.",
+    "The students modelled the pack as an ideal source of emf ε in series with a fixed internal resistance r, so that the terminal voltage is V = ε − Ir. Figure 1 plots the terminal voltage against the current. The students also calculated the power delivered to the resistance box, P = I²R, for each setting (last column of Table 1).",
+    "After the run at the smallest resistance, the students noticed that the pack was slightly warm to the touch. One student proposed that the internal resistance had risen during that measurement. Another argued that warmth alone did not show this, because the pack dissipates heat at a rate I²r even if r does not change, and the last point still lay on the same straight line as the others."
+   ],
+   "figures": [
+    {
+     "id": "tab1",
+     "type": "table",
+     "caption": "Table 1. Resistance-box setting R, measured current I and terminal voltage V, and the calculated power P delivered to the box.",
+     "alt": "Table with five rows. R 11.5 ohms: I 0.50 A, V 5.75 V, P 2.9 W. R 5.5 ohms: I 1.00 A, V 5.50 V, P 5.5 W. R 3.5 ohms: I 1.50 A, V 5.25 V, P 7.9 W. R 2.5 ohms: I 2.00 A, V 5.00 V, P 10.0 W. R 1.5 ohms: I 3.00 A, V 4.50 V, P 13.5 W.",
+     "data": {
+      "columns": [
+       "R (Ω)",
+       "I (A)",
+       "V (V)",
+       "P (W)"
+      ],
+      "rows": [
+       [
+        "11.5",
+        "0.50",
+        "5.75",
+        "2.9"
+       ],
+       [
+        "5.5",
+        "1.00",
+        "5.50",
+        "5.5"
+       ],
+       [
+        "3.5",
+        "1.50",
+        "5.25",
+        "7.9"
+       ],
+       [
+        "2.5",
+        "2.00",
+        "5.00",
+        "10.0"
+       ],
+       [
+        "1.5",
+        "3.00",
+        "4.50",
+        "13.5"
+       ]
+      ]
+     }
+    },
+    {
+     "id": "fig1",
+     "type": "line",
+     "caption": "Figure 1. Terminal voltage V against current I for the five settings in Table 1.",
+     "alt": "Line graph of terminal voltage in volts against current in amperes. Five points fall on a straight line sloping downward: 0.50 A at 5.75 V, 1.00 A at 5.50 V, 1.50 A at 5.25 V, 2.00 A at 5.00 V and 3.00 A at 4.50 V. Extended to zero current the line would reach 6.0 V.",
+     "data": {
+      "x": {
+       "label": "Current I (A)",
+       "min": 0,
+       "max": 3.5
+      },
+      "y": {
+       "label": "Terminal voltage V (V)",
+       "min": 4.0,
+       "max": 6.5
+      },
+      "series": [
+       {
+        "name": "Measured",
+        "points": [
+         [
+          0.5,
+          5.75
+         ],
+         [
+          1.0,
+          5.5
+         ],
+         [
+          1.5,
+          5.25
+         ],
+         [
+          2.0,
+          5.0
+         ],
+         [
+          3.0,
+          4.5
+         ]
+        ]
+       }
+      ]
+     }
+    }
+   ],
+   "source": "Hypothetical experiment written for this app; the physics follows OpenStax College Physics 2e, 21.2 Electromotive Force: Terminal Voltage.",
+   "status": "draft",
+   "reviewed_by": null
+  }
+ ],
+ "items": [
+  {
+   "id": "M4-Q01",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": "M4-P01",
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4C",
+   "topics": [
+    "4C.current-voltage",
+    "4C.resistance"
+   ],
+   "skill": "4",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "According to Figure 1, the emf and the internal resistance of the battery pack are closest to:",
+   "options": {
+    "A": "4.5 V and 0.50 Ω",
+    "B": "5.75 V and 0.25 Ω",
+    "C": "6.0 V and 0.50 Ω",
+    "D": "6.0 V and 2.0 Ω"
+   },
+   "answer": "C",
+   "why_correct": [
+    "The passage's model, V = ε − Ir, is a straight line whose intercept on the voltage axis is the emf ε and whose slope is −r. Extending the line in Figure 1 back to I = 0 gives 6.0 V.",
+    "Slope from the end points: (4.50 − 5.75) V / (3.00 − 0.50) A = −1.25 V / 2.50 A = −0.50 V/A, so r = 0.50 Ω.",
+    "Check with any row of Table 1: at 2.00 A, 6.0 V − 2.00 A × 0.50 Ω = 5.0 V, as measured."
+   ],
+   "why_wrong": {
+    "A": "4.5 V is the terminal voltage at the largest current, not the intercept at zero current; the emf is what the pack would show with no current flowing.",
+    "B": "5.75 V is simply the first measured voltage, and 0.25 Ω comes from dividing the 0.25 V drop between the first two rows by a current change of 1.0 A; the current actually changed by only 0.50 A, so the slope magnitude is 0.50 Ω.",
+    "D": "2.0 Ω is the reciprocal of the slope magnitude (ΔI/ΔV = 2.0 A/V); the internal resistance is ΔV/ΔI, in volts per ampere."
+   },
+   "error_types": {
+    "A": "misread graph: an end point read as the intercept",
+    "B": "misread graph: the current change between points misread",
+    "D": "wrong formula: slope inverted"
+   },
+   "takeaway": "On a terminal-voltage versus current graph, the intercept is the emf and the slope magnitude is the internal resistance (V = ε − Ir).",
+   "sources": [
+    "OpenStax College Physics 2e, 21.2 Electromotive Force: Terminal Voltage (2022): V = emf − Ir; the internal resistance causes the terminal voltage to fall as current rises."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M4-Q02",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": "M4-P01",
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4C",
+   "topics": [
+    "4C.current-voltage",
+    "4A.energy"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "With the resistance box set to 2.5 Ω, the power dissipated inside the battery pack itself is closest to:",
+   "options": {
+    "A": "1.0 W",
+    "B": "2.0 W",
+    "C": "10 W",
+    "D": "12 W"
+   },
+   "answer": "B",
+   "why_correct": [
+    "Table 1 gives I = 2.00 A at this setting, and from Figure 1 the internal resistance is r = 0.50 Ω. Power dissipated in a resistance is I²r = (2.00 A)² × 0.50 Ω = 4.0 × 0.50 = 2.0 W.",
+    "Energy check: the emf supplies εI = 6.0 V × 2.00 A = 12 W in total; the box receives 10.0 W (Table 1) and the remaining 2.0 W is lost inside the pack, consistent.",
+    "The same 2.0 W follows from the internal voltage drop: (ε − V) × I = (6.0 − 5.0) V × 2.00 A = 2.0 W."
+   ],
+   "why_wrong": {
+    "A": "1.0 W is the number you get from I × r = 2.00 × 0.50, which is the internal voltage drop in volts, not a power; power needs the current squared (I²r) or the drop times the current.",
+    "C": "10 W is the power delivered to the 2.5 Ω box (I²R, last column of Table 1), not the power lost inside the pack.",
+    "D": "12 W is the total power supplied by the emf (εI); only the part not delivered to the box, 12 − 10 = 2 W, is dissipated inside the pack."
+   },
+   "error_types": {
+    "A": "wrong formula: current not squared (Ir is a voltage, not a power)",
+    "C": "true but irrelevant: load power given for an internal-power question",
+    "D": "wrong formula: total power from the emf instead of the internal share"
+   },
+   "takeaway": "Power lost inside a source is I²r, the difference between the power the emf supplies (εI) and the power the load receives (I²R).",
+   "sources": [
+    "OpenStax College Physics 2e, 21.2 Electromotive Force: Terminal Voltage (2022): V = emf − Ir and I = emf/(R + r); the internal resistance dissipates energy as the current passes through it.",
+    "OpenStax College Physics 2e, 20.4 Electric Power and Energy (2022): the power dissipated in any resistance is P = I²R, so the internal loss is I²r.",
+    "OpenStax University Physics Volume 2, 10.1 Electromotive Force (2016): power dissipated by the internal resistance can overheat a battery driving a large current."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M4-Q03",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": "M4-P01",
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4C",
+   "topics": [
+    "4C.resistance",
+    "4C.current-voltage"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 4,
+   "stem": "If the students could set the resistance box to any value, the power delivered to the box would be greatest when its resistance is set to:",
+   "options": {
+    "A": "0.50 Ω",
+    "B": "1.5 Ω",
+    "C": "2.5 Ω",
+    "D": "11.5 Ω"
+   },
+   "answer": "A",
+   "why_correct": [
+    "The load power is P = I²R with I = ε/(R + r), so P = ε²R/(R + r)². This is largest when the load resistance equals the internal resistance, R = r (the maximum-power condition): making R smaller than r raises the current but an ever larger share of the power is lost inside the source, and making R larger cuts the current faster than it raises R.",
+    "No calculus is needed to see it with numbers. At R = 0.50 Ω: I = 6.0/1.0 = 6.0 A and P = 36 × 0.50 = 18 W. At R = 0.25 Ω: I = 6.0/0.75 = 8.0 A and P = 64 × 0.25 = 16 W. At R = 1.5 Ω (Table 1): 13.5 W. The peak is at 0.50 Ω, the internal resistance found from Figure 1.",
+    "At that setting only half the emf appears across the box (3.0 V), so maximum power transfer is not the same as maximum efficiency."
+   ],
+   "why_wrong": {
+    "B": "1.5 Ω gives the largest power in Table 1 (13.5 W), but the table stops there; a lower setting, down to R = r, delivers more.",
+    "C": "2.5 Ω delivers 10.0 W, less than the 13.5 W at 1.5 Ω and the 18 W available at 0.50 Ω.",
+    "D": "11.5 Ω gives the highest terminal voltage but the smallest current, and the power (2.9 W) is the lowest in the table; a high voltage reading is not the same as high power."
+   },
+   "error_types": {
+    "B": "true but irrelevant: the table's maximum is not the physical maximum",
+    "C": "misread graph: a mid-table value chosen without checking the trend",
+    "D": "reversed relationship: highest voltage mistaken for highest power"
+   },
+   "takeaway": "A source delivers maximum power to a load when the load resistance equals the source's internal resistance (P = ε²R/(R + r)² peaks at R = r).",
+   "sources": [
+    "OpenStax College Physics 2e, 21.2 Electromotive Force: Terminal Voltage (2022): current I = emf/(R + r); terminal voltage and internal losses.",
+    "Physics LibreTexts, Tatum, Electricity and Magnetism, 4.8 Power Delivered to an External Resistance (2022): P = E²R/(R + r)², greatest (E²/4r) when R = r.",
+    "OpenStax University Physics Volume 2, Chapter 10 exercises (2016): show that the power dissipated by the load is maximum when the load resistance equals the internal resistance."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M4-Q04",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": "M4-P01",
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4C",
+   "topics": [
+    "4C.resistance",
+    "4C.concentration-cells-batteries"
+   ],
+   "skill": "2",
+   "cars_skill": null,
+   "difficulty": 3,
+   "stem": "Two identical battery packs are connected in series and used to drive the resistance box at its 5.5 Ω setting. The current is closest to:",
+   "options": {
+    "A": "0.92 A",
+    "B": "1.0 A",
+    "C": "1.8 A",
+    "D": "2.2 A"
+   },
+   "answer": "C",
+   "why_correct": [
+    "Sources in series add their emfs and their internal resistances: ε = 2 × 6.0 = 12 V and r = 2 × 0.50 = 1.0 Ω.",
+    "I = ε/(R + r) = 12 V / (5.5 + 1.0) Ω = 12/6.5 ≈ 1.85 A, closest to 1.8 A.",
+    "Sense check: the current is less than double the single-pack value (1.00 A) because the extra internal resistance is now a larger share of the circuit's total resistance."
+   ],
+   "why_wrong": {
+    "A": "0.92 A is 6.0 V / 6.5 Ω: the internal resistance was doubled but the emf was left at 6.0 V. Series packs add both.",
+    "B": "1.0 A is the single-pack current from Table 1; a second pack in series doubles the driving emf.",
+    "D": "2.2 A is 12 V / 5.5 Ω, ignoring the 1.0 Ω of internal resistance that the two packs add."
+   },
+   "error_types": {
+    "A": "wrong formula: internal resistance doubled but not the emf",
+    "B": "true but irrelevant: the single-pack value reused",
+    "D": "wrong formula: internal resistance dropped"
+   },
+   "takeaway": "Cells in series add emfs and add internal resistances; the current is the total emf over the total resistance, load plus internal.",
+   "sources": [
+    "OpenStax College Physics 2e, 21.2 Electromotive Force: Terminal Voltage (2022): multiple voltage sources in series add emfs and internal resistances.",
+    "OpenStax College Physics 2e, 21.1 Resistors in Series and Parallel (2022): resistances in series add."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  },
+  {
+   "id": "M4-Q05",
+   "rev": 1,
+   "section": "chem_phys",
+   "passage": "M4-P01",
+   "discipline": "physics",
+   "fc": "4",
+   "category": "4C",
+   "topics": [
+    "4C.current-voltage"
+   ],
+   "skill": "1",
+   "cars_skill": null,
+   "difficulty": 2,
+   "stem": "The terminal voltage of a real battery falls as the current drawn from it rises because:",
+   "options": {
+    "A": "the battery's emf decreases in proportion to the current",
+    "B": "the external resistance rises as the circuit warms",
+    "C": "the ammeter adds resistance in series with the battery",
+    "D": "part of the emf is used to drive the current through the battery's own internal resistance"
+   },
+   "answer": "D",
+   "why_correct": [
+    "A real source behaves like an ideal emf in series with an internal resistance r. The current must pass through r, which costs a voltage Ir, so the voltage left at the terminals is V = ε − Ir and falls linearly with current.",
+    "This is the model the students used and Figure 1 confirms it: the points lie on a straight line of slope −r.",
+    "The lost voltage shows up as heat inside the source (I²r), which is why the pack felt warm after the high-current run."
+   ],
+   "why_wrong": {
+    "A": "The emf is set by the chemistry of the cells and is treated as constant; what falls with current is the terminal voltage, not the emf.",
+    "B": "The external resistance is whatever the resistance box is set to; in this experiment it was deliberately decreased, and the drop in terminal voltage is explained without any change in it.",
+    "C": "A good ammeter has very small resistance and simply forms part of the external circuit; it would not make the voltage measured across the pack's own terminals depend on current."
+   },
+   "error_types": {
+    "A": "wrong formula: emf confused with terminal voltage",
+    "B": "reversed relationship: the change is in the source, not the load",
+    "C": "true but irrelevant: meter resistance does not create the Ir drop"
+   },
+   "takeaway": "Terminal voltage = emf − Ir: the drop with current comes from the source's own internal resistance.",
+   "sources": [
+    "OpenStax College Physics 2e, 21.2 Electromotive Force: Terminal Voltage (2022): a source has an emf and an internal resistance; V = emf − Ir."
+   ],
+   "status": "draft",
+   "reviewed_by": null
+  }
+ ]
+}
