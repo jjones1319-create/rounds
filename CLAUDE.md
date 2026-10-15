@@ -111,4 +111,6 @@ Work on one track at a time and finish its current phase before switching. Repor
 - Track B, MCAT: `docs/PLAN_MCAT.md`. M0–M4 are done; M5 is ongoing growth (passages and discretes toward the AAMC
   mix, coverage report first).
 - Track C, content: new board blocks (`/new-board-block`, boards spec) and MCAT blocks (MCAT spec).
+  Chem/Phys: `docs/CHEM_PHYS_250.md` is the approved blueprint (250 questions, 40 passages, 10 batches, ids CP-001…/CP-P01…);
+  write batches in order, update its status columns and changelog, widen `tools/validate.py` for the CP ids before batch 1.
 - If the site is ever to be promoted: `docs/PUBLIC_RELEASE.md` checklist first.

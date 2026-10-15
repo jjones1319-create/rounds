@@ -1,0 +1,728 @@
+# Chem/Phys 250: question blueprint
+
+**Created:** 2026-10-15 · **Plan status:** approved by the owner 2026-10-15; batch 1 next · **Rules:** `docs/MCAT_SPEC.md` · **Topic ids:** `docs/MCAT_GUIDES_SPEC.md` and `content/mcat/guides/chem_phys.json`
+
+A plan for 250 original Chemical and Physical Foundations questions in ten batches of 25, each batch a mini section: four passages (190 questions in all, ten passages of four questions and thirty of five) plus six standalone questions, mixing physics, general chemistry, biochemistry and organic chemistry. Every question has a permanent id (CP-001 to CP-250; passages CP-P01 to CP-P40) assigned here, before writing, so progress saved on a phone never breaks. Writing follows MCAT_SPEC §3: every experiment hypothetical and labelled, every fact verified against a named source, every number re-derived, every item fact-checked by a second pass before commit, all items `draft` until the owner marks them reviewed.
+
+## 1. Targets and what this plan delivers
+
+| Dimension | Target | This plan |
+|---|---|---|
+| General chemistry | 75 (30%) | 75 |
+| Biochemistry | 62 (25%) | 62 |
+| Physics | 63 (25%) | 63 |
+| Organic chemistry | 38 (15%) | 38 |
+| Biology | 12 (5%) | 12 |
+| Foundational Concept 4 | 100 (40%) | 100 |
+| Foundational Concept 5 | 150 (60%) | 150 |
+| Passage-based | about 188 (about 38 passages of 4–6) | 190 in 40 passages |
+| Standalone | 62 | 60 (six per batch) |
+| Skill 1 Knowledge | about 88 | 88 |
+| Skill 2 Reasoning | about 112 | 112 |
+| Skill 3 Research design | about 25 | 25 |
+| Skill 4 Data and statistics | about 25 | 25 |
+| ★★ | about 37 | 37 |
+| ★★★ | about 125 | 125 |
+| ★★★★ | about 75 | 75 |
+| ★★★★★ | about 13 | 13 |
+| Guide topics covered at least once | all 96 | 96 of 96 |
+
+Each question's discipline is one of its guide topic's tags; the twelve biology items are the physiology-flavoured ones (circulation, the nerve cell, gas exchange, surfactant, thermoregulation, nucleic acids, enzyme physiology). Every ★★★★★ item is the Skill 3 or Skill 4 capstone of its passage. Each passage has at least one Skill 1 question and one Skill 3 or Skill 4 question. Letter balance and the no-three-in-a-row rule are checked per batch file by `tools/validate.py` when the questions are written.
+
+## 2. How the plan is used
+
+- **Files.** One block file per batch, `content/mcat/CP1.json` … `CP10.json` (block ids `CP1`–`CP10`); passages keep the ids below (`CP-P01` …) and questions keep `CP-001` …. `tools/validate.py` must be widened to accept these ids before batch 1 is saved (today it accepts `M<n>-Qnn` and `M<n><letter>-Qnn`).
+- **Order.** Batches are written in order, one per session: write → fact-check by background agents (every number re-derived, every citation fetched, originality search) → fixes → `py tools/validate.py`, `py build.py`, the three tests → MCAT_SPEC §10 and §11 → commit `Add Chem/Phys batch N (CP-xxx to CP-yyy)` → push.
+- **Status.** Each batch header and each question carries a status: `planned` → `written` → `checked` (fact-check applied) → `pushed` → `reviewed` (owner, through the in-app review and `tools/apply_review.py`). Update them as each step completes and add a changelog line (§5).
+- **Figures.** Every figure is drawn from data stored with the passage (tables, line and bar charts, KaTeX equations, RDKit structures from SMILES), per MCAT_SPEC §5 and §8; the figure types below are commitments, not suggestions.
+- **Settings never repeat.** Each of the forty settings is used once. A batch that needs a replacement passage takes a setting not in this list and records it here.
+- **Existing items.** Blocks M1, M4 and M4B already hold 23 Chem/Phys questions; the plan does not count them and avoids their specific scenarios (battery internal resistance, the 4B fluids set).
+
+## 3. Batches
+
+### Batch 1 · CP-001 to CP-025 · status: planned
+
+Mix: general chemistry 7, biochemistry 8, physics 8, organic chemistry 0, biology 2 · skills 1/2/3/4: 9/10/3/3 · ★★/★★★/★★★★/★★★★★: 6/11/6/2
+
+**CP-P01 · Cardiology: a stenosed coronary artery** · status: planned  
+Topic: Blood flow through a narrowing. Scenario: Hypothetical catheter study: pressure and mean velocity measured proximal to, within and distal to a 50% stenosis; a murmur is recorded over the segment; the vessel is then dilated. Figure: line chart (pressure along the vessel) + table (radius, speed).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-001 | `4B.continuity-bernoulli` | physics | 2 | ★★★ | speed in the narrowed segment from continuity | planned |
+| CP-002 | `4B.continuity-bernoulli` | physics | 4 | ★★★★★ | read the pressure dip from the chart and account for it with Bernoulli | planned |
+| CP-003 | `4B.viscosity-poiseuille` | physics | 2 | ★★★★ | flow at fixed pressure difference after the radius halves (r⁴) | planned |
+| CP-004 | `4B.turbulence-surface-tension` | physics | 1 | ★★★ | Reynolds number and why the murmur appears | planned |
+| CP-005 | `4B.circulation` | biology | 3 | ★★★ | which measurement after dilation shows the stenosis caused the drop in distal perfusion | planned |
+
+**CP-P02 · Emergency medicine: metabolic acidosis** · status: planned  
+Topic: The bicarbonate buffer. Scenario: Hypothetical: arterial blood gases from three patients and a laboratory titration of carbonic acid used to calibrate the analyser. Figure: table (pH, PCO₂, HCO₃⁻ for three patients) + line chart (carbonic acid titration curve).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-006 | `5A.buffers` | biochemistry | 2 | ★★★★ | pH from the HCO₃⁻/PCO₂ ratio with Henderson–Hasselbalch (CO₂ solubility conversion) | planned |
+| CP-007 | `5A.acids-bases` | general chemistry | 1 | ★★ | conjugate pairs and Kw at body temperature | planned |
+| CP-008 | `5A.titration` | general chemistry | 4 | ★★★★ | read pKa from the half-equivalence point of the curve | planned |
+| CP-009 | `5A.buffers` | biochemistry | 2 | ★★★★ | which patient's buffer is nearest exhaustion (ratio far from 1) | planned |
+| CP-010 | `5A.weak-acid-equilibria` | general chemistry | 3 | ★★★ | why the analyser is thermostatted: pKa depends on temperature | planned |
+
+**CP-P03 · Pharmacology: a kinase inhibitor screen** · status: planned  
+Topic: Enzyme kinetics and inhibition. Scenario: Hypothetical assay of a kinase with Mg-ATP; a candidate inhibitor is tested at one concentration; a dialysis step is described. Figure: table (v at six [S], with and without inhibitor).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-011 | `5E.enzyme-kinetics` | biochemistry | 4 | ★★★ | Km and Vmax from the table | planned |
+| CP-012 | `5E.enzyme-kinetics` | biochemistry | 2 | ★★★★ | what the Lineweaver–Burk intercepts would show | planned |
+| CP-013 | `5E.enzyme-inhibition-regulation` | biochemistry | 2 | ★★★ | inhibitor type from the change in Km and Vmax | planned |
+| CP-014 | `5E.enzymes-mechanism` | biology | 1 | ★★ | the role of Mg²⁺ as a cofactor for ATP | planned |
+| CP-015 | `5E.enzyme-inhibition-regulation` | biochemistry | 3 | ★★★★★ | what the dialysis result says about reversibility, and the missing control | planned |
+
+**CP-P04 · Nuclear medicine: an FDG PET scan** · status: planned  
+Topic: Positron emitters and half-life. Scenario: Hypothetical: a fluorine-18 dose is calibrated, transported and injected; two annihilation photons are detected in coincidence. Figure: table (activity at four times).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-016 | `4E.radioactive-decay` | general chemistry | 2 | ★★★ | activity remaining after whole half-lives | planned |
+| CP-017 | `4E.radioactive-decay` | physics | 2 | ★★★★ | decay constant and the fraction left after a non-integer number of half-lives | planned |
+| CP-018 | `4E.nucleus-isotopes` | physics | 1 | ★★★ | how positron emission changes Z and A; annihilation | planned |
+| CP-019 | `4D.em-radiation` | physics | 2 | ★★ | wavelength of a 511 keV photon and where it sits in the spectrum | planned |
+
+**Standalone questions**
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-020 | `4A.units-vectors` | physics | 1 | ★★ | unit analysis: which combination is a pressure | planned |
+| CP-021 | `4E.periodic-groups` | general chemistry | 1 | ★★ | a halogen's valence and typical ion | planned |
+| CP-022 | `5B.lewis-structures` | general chemistry | 1 | ★★★ | formal charges in a resonance structure | planned |
+| CP-023 | `5D.lipids` | biochemistry | 1 | ★★★ | which lipid is a signalling molecule | planned |
+| CP-024 | `5E.rate-laws` | general chemistry | 2 | ★★★ | reaction order from initial rates | planned |
+| CP-025 | `5D.amino-acids` | biochemistry | 1 | ★★ | classify a side chain as acidic, basic or hydrophobic | planned |
+
+### Batch 2 · CP-026 to CP-050 · status: planned
+
+Mix: general chemistry 8, biochemistry 5, physics 8, organic chemistry 2, biology 2 · skills 1/2/3/4: 9/10/3/3 · ★★/★★★/★★★★/★★★★★: 4/12/9/0
+
+**CP-P05 · Neurology: demyelination** · status: planned  
+Topic: The axon as an electrical cable. Scenario: Hypothetical recordings from myelinated and demyelinated axons modelled as a resistor–capacitor cable. Figure: table (axon diameter, myelin, conduction velocity, time constant).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-026 | `4C.nerve-cell` | biology | 1 | ★★★ | the resting potential and the direction of ion flow at threshold | planned |
+| CP-027 | `4C.capacitance` | physics | 2 | ★★★★ | why myelin lowers membrane capacitance (C ∝ A/d) | planned |
+| CP-028 | `4C.resistance` | physics | 2 | ★★★ | axial resistance and axon diameter (R ∝ L/A) | planned |
+| CP-029 | `4C.current-voltage` | physics | 4 | ★★★★ | read the RC time constant and relate it to conduction speed | planned |
+| CP-030 | `4C.nerve-cell` | biology | 3 | ★★★★ | the control needed to attribute slowing to myelin loss | planned |
+
+**CP-P06 · Pharmacology: oral drug absorption** · status: planned  
+Topic: pKa, pH and membrane partition. Scenario: Hypothetical: four drugs with different pKa values are dosed; plasma levels and log P are tabulated. Figure: bar chart (fraction un-ionized in stomach and intestine for four drugs).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-031 | `5A.weak-acid-equilibria` | general chemistry | 2 | ★★★ | fraction ionized at a given pH from pKa | planned |
+| CP-032 | `5A.ions-in-solution` | general chemistry | 1 | ★★ | why hydrated ions cross membranes poorly | planned |
+| CP-033 | `5A.solubility` | general chemistry | 2 | ★★★★ | why the sodium salt dissolves faster than the free acid | planned |
+| CP-034 | `5B.intermolecular-forces` | general chemistry | 3 | ★★★ | the control that separates absorption from first-pass metabolism | planned |
+| CP-035 | `5A.weak-acid-equilibria` | general chemistry | 4 | ★★★★ | read the chart to pick the drug best absorbed in the stomach | planned |
+
+**CP-P07 · Biochemistry lab: purifying a His-tagged enzyme** · status: planned  
+Topic: Protein purification. Scenario: Hypothetical purification table across lysate, affinity column and gel filtration; native and denaturing gels are compared. Figure: table (step, total protein, total activity, specific activity, yield) + SDS-PAGE description.
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-036 | `5C.protein-purification` | biochemistry | 4 | ★★★★ | fold purification and yield from the table | planned |
+| CP-037 | `5C.chromatography` | biochemistry | 1 | ★★★ | how imidazole elutes a His-tagged protein from the nickel column | planned |
+| CP-038 | `5D.peptides-proteins` | biochemistry | 1 | ★★ | what SDS-PAGE separates by | planned |
+| CP-039 | `5D.protein-3d-structure` | biochemistry | 2 | ★★★★ | a dimer on the native gel and a monomer on SDS-PAGE: quaternary structure | planned |
+| CP-040 | `5C.protein-purification` | biochemistry | 3 | ★★★★ | why specific activity can fall after a step | planned |
+
+**CP-P08 · Obstetrics: fetal Doppler ultrasound** · status: planned  
+Topic: Sound and the Doppler effect. Scenario: Hypothetical: a 3 MHz probe records shifts from fetal arterial flow toward and away from the probe. Figure: equation (Doppler shift) + table (transmitted and received frequencies).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-041 | `4D.doppler` | physics | 2 | ★★★ | sign of the frequency shift for flow toward the probe | planned |
+| CP-042 | `4D.sound-basics` | physics | 2 | ★★★ | wavelength in tissue from frequency and speed of sound | planned |
+| CP-043 | `4D.resonance-ultrasound` | physics | 1 | ★★ | piezoelectric transducers and why higher frequency gives finer resolution but less depth | planned |
+| CP-044 | `4D.doppler` | physics | 2 | ★★★★ | estimate blood speed from Δf/f | planned |
+
+**Standalone questions**
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-045 | `4A.kinematics` | physics | 2 | ★★★ | stopping distance from speed and deceleration | planned |
+| CP-046 | `5A.acids-bases` | general chemistry | 1 | ★★★ | identify the conjugate base in an acid–base reaction | planned |
+| CP-047 | `5D.carbohydrates` | organic chemistry | 1 | ★★★ | anomers of glucose | planned |
+| CP-048 | `5E.enthalpy-hess` | general chemistry | 2 | ★★★ | ΔH from bond energies | planned |
+| CP-049 | `4B.real-gases` | general chemistry | 1 | ★★ | when a gas deviates from ideality and why | planned |
+| CP-050 | `5D.alcohols` | organic chemistry | 1 | ★★★ | product of oxidizing a secondary alcohol | planned |
+
+### Batch 3 · CP-051 to CP-075 · status: planned
+
+Mix: general chemistry 10, biochemistry 5, physics 7, organic chemistry 2, biology 1 · skills 1/2/3/4: 8/11/3/3 · ★★/★★★/★★★★/★★★★★: 3/13/8/1
+
+**CP-P09 · Nutrition science: bomb calorimetry of a meal bar** · status: planned  
+Topic: Calorimetry, Hess's law and metabolic energy. Scenario: Hypothetical: a bar is burned in a bomb calorimeter calibrated with benzoic acid; results are compared with the Atwater fuel values and with ATP yield. Figure: table (masses, ΔT, calorimeter constant, fuel values).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-051 | `5E.calorimetry-heat-transfer` | general chemistry | 2 | ★★★ | heat released from q = CΔT | planned |
+| CP-052 | `5E.enthalpy-hess` | general chemistry | 2 | ★★★★ | ΔH of a reaction from combustion enthalpies | planned |
+| CP-053 | `5E.thermodynamic-laws` | general chemistry | 1 | ★★ | state functions and the sign convention of the first law | planned |
+| CP-054 | `5E.bioenergetics` | biochemistry | 3 | ★★★ | why the calorimeter is calibrated with a standard before the sample | planned |
+| CP-055 | `5E.calorimetry-heat-transfer` | physics | 4 | ★★★★ | read the heating curve to get the heat capacity | planned |
+
+**CP-P10 · Proteomics: mass spectrometry of a tryptic peptide** · status: planned  
+Topic: Mass spectrometry and peptide chemistry. Scenario: Hypothetical time-of-flight spectrum of a peptide after trypsin digestion, with an isotope peak; a second protease is used to confirm. Figure: bar chart (m/z spectrum).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-056 | `4E.mass-spectrometry` | organic chemistry | 1 | ★★★ | how ions are made and what m/z means | planned |
+| CP-057 | `4E.mass-spectrometry` | physics | 2 | ★★★★ | why lighter ions of equal kinetic energy arrive first | planned |
+| CP-058 | `5D.peptides-proteins` | biochemistry | 3 | ★★★ | why a second protease with different specificity is run | planned |
+| CP-059 | `5D.amino-acids` | biochemistry | 4 | ★★★★★ | identify a residue from the mass difference between peaks | planned |
+| CP-060 | `4E.nucleus-isotopes` | general chemistry | 2 | ★★★★ | the M+1 peak from carbon-13 abundance and the number of carbons | planned |
+
+**CP-P11 · Optometry: presbyopia** · status: planned  
+Topic: Lenses and the eye. Scenario: Hypothetical clinic data on accommodation loss with age and the reading lenses prescribed. Figure: table (near point, far point, prescribed lens power for three patients).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-061 | `4D.lenses` | physics | 2 | ★★★ | lens power in diopters from focal length | planned |
+| CP-062 | `4D.eye-optical-instruments` | physics | 2 | ★★★★ | the lens that brings a 100 cm near point to 25 cm | planned |
+| CP-063 | `4D.reflection-refraction` | physics | 1 | ★★ | refraction at the cornea and Snell's law | planned |
+| CP-064 | `4D.lenses` | physics | 4 | ★★★ | read the table: who needs a converging lens | planned |
+
+**CP-P12 · Medical devices: an electrochemical glucose sensor** · status: planned  
+Topic: Galvanic cells, Nernst and Faraday. Scenario: Hypothetical sensor in which glucose oxidase reduces a mediator that is re-oxidized at an electrode; current is measured. Figure: table (standard reduction potentials).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-065 | `4C.galvanic-cells` | general chemistry | 2 | ★★★★ | E°cell and spontaneity from the half reactions | planned |
+| CP-066 | `4C.concentration-cells-batteries` | general chemistry | 2 | ★★★★ | how the Nernst equation makes E depend on glucose concentration | planned |
+| CP-067 | `4C.electrolytic-cells` | general chemistry | 2 | ★★★★ | moles of electrons from the charge passed (Faraday) | planned |
+| CP-068 | `5E.biological-redox` | biochemistry | 1 | ★★★ | glucose oxidase as an oxidoreductase: which species is reduced and which carrier is used | planned |
+| CP-069 | `4C.galvanic-cells` | general chemistry | 3 | ★★★ | a control for oxygen interference | planned |
+
+**Standalone questions**
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-070 | `4C.charge-coulomb` | physics | 2 | ★★★ | Coulomb force between two ions | planned |
+| CP-071 | `5B.polarity` | general chemistry | 1 | ★★ | which bond is most polar | planned |
+| CP-072 | `5D.nucleotides-nucleic-acids` | biochemistry | 1 | ★★★ | nucleoside versus nucleotide | planned |
+| CP-073 | `4D.ir-spectroscopy` | organic chemistry | 1 | ★★★ | which functional group a band indicates | planned |
+| CP-074 | `5E.free-energy-phases` | general chemistry | 2 | ★★★ | reading a phase diagram | planned |
+| CP-075 | `5E.enzyme-inhibition-regulation` | biology | 1 | ★★★ | feedback inhibition of a pathway's first enzyme | planned |
+
+### Batch 4 · CP-076 to CP-100 · status: planned
+
+Mix: general chemistry 6, biochemistry 7, physics 6, organic chemistry 5, biology 1 · skills 1/2/3/4: 10/11/2/2 · ★★/★★★/★★★★/★★★★★: 3/13/8/1
+
+**CP-P13 · Physiology: fetal and adult haemoglobin** · status: planned  
+Topic: Oxygen binding and cooperativity. Scenario: Hypothetical oxygen-binding curves measured with and without 2,3-BPG and at two pH values. Figure: line chart (saturation curves at two pH values and for fetal Hb).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-076 | `5D.nonenzymatic-proteins` | biochemistry | 4 | ★★★ | read P50 from the curves | planned |
+| CP-077 | `5D.nonenzymatic-proteins` | biochemistry | 1 | ★★★★ | what a Hill coefficient above 1 means | planned |
+| CP-078 | `5D.protein-3d-structure` | biochemistry | 1 | ★★★ | the T-to-R quaternary shift | planned |
+| CP-079 | `5A.acids-bases` | biochemistry | 2 | ★★★★ | the Bohr effect: protonation and affinity | planned |
+| CP-080 | `5D.nonenzymatic-proteins` | biochemistry | 3 | ★★★★★ | design an experiment to isolate the 2,3-BPG effect | planned |
+
+**CP-P14 · Emergency medicine: a defibrillator** · status: planned  
+Topic: Capacitors and discharge. Scenario: Hypothetical: a capacitor is charged and discharged through the chest; the current waveform is described. Figure: equation (stored energy) + table (capacitance, voltage, chest resistance).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-081 | `4C.capacitance` | physics | 2 | ★★★ | energy stored from ½CV² | planned |
+| CP-082 | `4C.electric-field-potential` | physics | 2 | ★★★★ | field between the plates and the work on a charge | planned |
+| CP-083 | `4C.current-voltage` | physics | 2 | ★★★★ | initial current and the RC time constant through the chest | planned |
+| CP-084 | `4A.energy` | physics | 1 | ★★ | average power from energy and pulse duration | planned |
+
+**CP-P15 · Organic lab: aspirin synthesis** · status: planned  
+Topic: Acid derivatives, phenols and recrystallization. Scenario: Hypothetical synthesis, bicarbonate extraction, recrystallization and melting-point check. Figure: structure (salicylic acid, acetic anhydride, aspirin) + table (masses, melting points, yield).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-085 | `5D.acid-derivatives` | organic chemistry | 1 | ★★★ | the anhydride as an acylating agent and the leaving group | planned |
+| CP-086 | `5D.phenols-quinones` | organic chemistry | 1 | ★★★ | phenol acidity and the ferric chloride test | planned |
+| CP-087 | `5C.extraction-distillation` | organic chemistry | 2 | ★★★★ | choosing a recrystallization solvent from solubility data | planned |
+| CP-088 | `5D.carboxylic-acids` | organic chemistry | 2 | ★★★ | why bicarbonate pulls the acid into the aqueous layer | planned |
+| CP-089 | `4E.chemical-equations` | general chemistry | 2 | ★★★★ | limiting reagent and percent yield | planned |
+
+**CP-P16 · Diving medicine: gas exchange at depth** · status: planned  
+Topic: Partial pressures and the gas laws. Scenario: Hypothetical dive profile with air and with a helium mix; symptoms on ascent are described. Figure: table (depth, total pressure, PO₂, PN₂, alveolar PO₂).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-090 | `4B.partial-pressure` | general chemistry | 2 | ★★★ | PO₂ at depth from mole fraction and total pressure | planned |
+| CP-091 | `4B.ideal-gas` | general chemistry | 2 | ★★★★ | lung volume change on ascent (Boyle, absolute pressures) | planned |
+| CP-092 | `4B.temperature-pressure` | general chemistry | 1 | ★★ | absolute temperature and molar volume at STP | planned |
+| CP-093 | `5A.solubility` | general chemistry | 3 | ★★★ | the control that shows nitrogen uptake follows Henry's law (PN₂) rather than total pressure | planned |
+| CP-094 | `4B.partial-pressure` | biology | 4 | ★★★★ | read the table: alveolar versus inspired PO₂ | planned |
+
+**Standalone questions**
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-095 | `4A.friction` | physics | 2 | ★★★ | minimum coefficient to hold a patient on an incline | planned |
+| CP-096 | `5E.enzyme-kinetics` | biochemistry | 1 | ★★ | what Vmax depends on and what doubling the enzyme does to it | planned |
+| CP-097 | `5B.isomers` | organic chemistry | 1 | ★★★ | counting stereoisomers | planned |
+| CP-098 | `5D.aromatic-heterocycles` | biochemistry | 1 | ★★★ | which base is a purine | planned |
+| CP-099 | `4C.conductivity-meters` | physics | 1 | ★★★ | how an ammeter and a voltmeter are connected | planned |
+| CP-100 | `5E.equilibrium` | general chemistry | 2 | ★★★ | Le Châtelier with a pressure change | planned |
+
+### Batch 5 · CP-101 to CP-125 · status: planned
+
+Mix: general chemistry 7, biochemistry 4, physics 7, organic chemistry 7, biology 0 · skills 1/2/3/4: 7/13/2/3 · ★★/★★★/★★★★/★★★★★: 4/11/8/2
+
+**CP-P17 · Metabolism: free energies of glycolysis** · status: planned  
+Topic: Bioenergetics and equilibrium. Scenario: Hypothetical cellular concentrations used to compute actual ΔG for each step. Figure: table (ΔG°′ and actual ΔG for glycolytic steps).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-101 | `5E.bioenergetics` | biochemistry | 2 | ★★★ | ΔG from ΔG°′ and the reaction quotient | planned |
+| CP-102 | `5E.equilibrium` | general chemistry | 2 | ★★★★ | Keq from ΔG°′ | planned |
+| CP-103 | `5E.free-energy-phases` | general chemistry | 3 | ★★★ | what must be held fixed to compare ΔG values across steps (temperature, ionic strength, pH) | planned |
+| CP-104 | `5D.carbohydrates` | biochemistry | 1 | ★★★ | aldose-to-ketose isomerization of glucose 6-phosphate | planned |
+| CP-105 | `5E.bioenergetics` | biochemistry | 4 | ★★★★★ | pick the regulated steps from the large negative actual ΔG values | planned |
+
+**CP-P18 · Orthopaedics: the hip and a cane** · status: planned  
+Topic: Torque and equilibrium in the body. Scenario: Hypothetical biomechanics model of one-legged stance; a cane on the opposite side is added. Figure: table (lever arms, body weight, abductor force with and without a cane).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-106 | `4A.equilibrium-torque` | physics | 2 | ★★★★ | abductor force from torque balance about the hip | planned |
+| CP-107 | `4A.newtons-laws` | physics | 2 | ★★★ | joint reaction force from force balance | planned |
+| CP-108 | `4A.center-of-mass` | physics | 1 | ★★ | where the centre of mass sits and how it moves with a lean | planned |
+| CP-109 | `4A.friction` | physics | 2 | ★★★★ | the friction the cane tip needs for the force it carries | planned |
+| CP-110 | `4A.equilibrium-torque` | physics | 4 | ★★★★ | read the table: fraction by which the cane cuts hip load | planned |
+
+**CP-P19 · Clinical chemistry: identifying a urinary metabolite** · status: planned  
+Topic: IR, NMR and UV spectroscopy. Scenario: Hypothetical spectra of an unknown C₄ metabolite isolated from urine; two candidate structures remain. Figure: table (IR bands, ¹H NMR shifts with integration and splitting, λmax).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-111 | `4D.ir-spectroscopy` | organic chemistry | 2 | ★★★ | assign the 1,710 cm⁻¹ and broad 3,000 cm⁻¹ bands | planned |
+| CP-112 | `4D.nmr` | organic chemistry | 2 | ★★★★ | the n + 1 rule and integration | planned |
+| CP-113 | `4D.uv-vis-spectroscopy` | organic chemistry | 1 | ★★★ | why conjugation shifts λmax | planned |
+| CP-114 | `5B.hybridization-vsepr` | organic chemistry | 3 | ★★★ | which additional measurement distinguishes the two candidates | planned |
+| CP-115 | `4D.nmr` | organic chemistry | 4 | ★★★★★ | deduce the structure from the table | planned |
+
+**CP-P20 · Nephrology: haemodialysis** · status: planned  
+Topic: Concentration, osmosis and ultrafiltration. Scenario: Hypothetical dialysis session; urea, potassium and albumin are tracked. Figure: table (solute concentrations in blood and dialysate; pressures).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-116 | `5A.solubility` | general chemistry | 2 | ★★★ | converting mg/dL to molarity | planned |
+| CP-117 | `5A.ions-in-solution` | general chemistry | 1 | ★★ | osmolarity counts particles, not formula units | planned |
+| CP-118 | `4B.hydrostatic-pressure` | physics | 2 | ★★★★ | transmembrane pressure that drives ultrafiltration | planned |
+| CP-119 | `5B.intermolecular-forces` | general chemistry | 2 | ★★★★ | why urea crosses the membrane and albumin does not | planned |
+
+**Standalone questions**
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-120 | `5E.thermodynamic-laws` | physics | 2 | ★★★ | work done by a gas in an isobaric expansion and its sign | planned |
+| CP-121 | `4E.moles-formulas` | general chemistry | 2 | ★★ | empirical formula from percent composition | planned |
+| CP-122 | `5C.enantiomer-resolution` | organic chemistry | 1 | ★★★ | why a racemate is optically inactive | planned |
+| CP-123 | `5D.enolate-chemistry` | organic chemistry | 2 | ★★★★ | which α-hydrogen is most acidic | planned |
+| CP-124 | `5E.activation-energy` | general chemistry | 1 | ★★★ | what a catalyst changes on an energy profile | planned |
+| CP-125 | `5A.buffers` | biochemistry | 1 | ★★ | which pair makes a buffer | planned |
+
+### Batch 6 · CP-126 to CP-150 · status: planned
+
+Mix: general chemistry 9, biochemistry 5, physics 7, organic chemistry 3, biology 1 · skills 1/2/3/4: 8/12/3/2 · ★★/★★★/★★★★/★★★★★: 4/12/7/2
+
+**CP-P21 · Mitochondria: the electron transport chain** · status: planned  
+Topic: Biological redox and electrochemical potential. Scenario: Hypothetical inhibitor experiments on isolated mitochondria; the proton gradient is measured. Figure: table (standard reduction potentials of carriers).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-126 | `5E.biological-redox` | biochemistry | 2 | ★★★ | ΔE°′ and ΔG°′ = −nFΔE°′ for a carrier pair | planned |
+| CP-127 | `5E.biological-redox` | biochemistry | 1 | ★★★ | NADH as a two-electron donor; the half reactions | planned |
+| CP-128 | `5D.phenols-quinones` | biochemistry | 1 | ★★★ | ubiquinone as a two-electron, two-proton carrier | planned |
+| CP-129 | `4C.concentration-cells-batteries` | general chemistry | 2 | ★★★★ | the proton gradient as a concentration cell (Nernst) | planned |
+| CP-130 | `5E.biological-redox` | biochemistry | 3 | ★★★★★ | which inhibitor result locates the block | planned |
+
+**CP-P22 · Structural biology: X-ray crystallography** · status: planned  
+Topic: Diffraction and X-rays. Scenario: Hypothetical diffraction from a protein crystal; the X-ray source is described. Figure: equation (Bragg's law) + table (angles, spacings).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-131 | `4D.interference-diffraction` | physics | 2 | ★★★★ | Bragg's condition and the spacing for a given angle | planned |
+| CP-132 | `4D.em-radiation` | physics | 1 | ★★ | why X-ray wavelengths suit atomic spacings | planned |
+| CP-133 | `4D.interference-diffraction` | physics | 2 | ★★★★ | path difference for constructive versus destructive interference | planned |
+| CP-134 | `4E.line-spectra-bohr` | physics | 2 | ★★★ | the shortest X-ray wavelength from the tube voltage | planned |
+
+**CP-P23 · Anaesthesia: local anaesthetics in inflamed tissue** · status: planned  
+Topic: Weak bases and ion trapping. Scenario: Hypothetical comparison of two anaesthetics injected into normal and inflamed (acidic) tissue. Figure: table (pKa, tissue pH, fraction neutral).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-135 | `5A.weak-acid-equilibria` | general chemistry | 2 | ★★★ | fraction neutral at pH 7.4 versus 6.4 | planned |
+| CP-136 | `4C.nerve-cell` | biology | 1 | ★★★ | how blocking Na⁺ channels stops the action potential | planned |
+| CP-137 | `5D.aromatic-heterocycles` | organic chemistry | 3 | ★★★ | why dose, volume and injection site are matched between tissues | planned |
+| CP-138 | `5A.ions-in-solution` | general chemistry | 2 | ★★★★ | ion trapping across the membrane | planned |
+| CP-139 | `5A.weak-acid-equilibria` | general chemistry | 4 | ★★★★ | read the table: the better drug for inflamed tissue | planned |
+
+**CP-P24 · Pharmaceutics: shelf life of an ester prodrug** · status: planned  
+Topic: Rate laws and Arrhenius. Scenario: Hypothetical stability study in buffered solution at 25 °C and 40 °C. Figure: line chart (ln[drug] against time at two temperatures).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-140 | `5E.rate-laws` | general chemistry | 4 | ★★★★ | first order from the straight ln plot; k and its units from the slope | planned |
+| CP-141 | `5E.rate-laws` | general chemistry | 2 | ★★★ | half-life of a first-order process | planned |
+| CP-142 | `5E.activation-energy` | organic chemistry | 2 | ★★★★ | rate ratio at two temperatures (Arrhenius) | planned |
+| CP-143 | `5D.acid-derivatives` | organic chemistry | 1 | ★★★ | base-catalysed ester hydrolysis and why it is not reversible | planned |
+| CP-144 | `5E.rate-laws` | general chemistry | 3 | ★★★★★ | why the buffer matters: pseudo-first-order conditions | planned |
+
+**Standalone questions**
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-145 | `4A.periodic-motion` | physics | 2 | ★★★ | period of a pendulum-like swing | planned |
+| CP-146 | `4B.density-buoyancy` | physics | 2 | ★★★ | specific gravity of urine | planned |
+| CP-147 | `4E.chemical-equations` | general chemistry | 2 | ★★ | balancing a combustion equation | planned |
+| CP-148 | `5B.multiple-bonds` | general chemistry | 1 | ★★ | bond length versus bond order | planned |
+| CP-149 | `5D.nonenzymatic-proteins` | biochemistry | 1 | ★★★ | which protein is a motor protein | planned |
+| CP-150 | `5E.thermodynamic-laws` | physics | 1 | ★★ | entropy and the second law | planned |
+
+### Batch 7 · CP-151 to CP-175 · status: planned
+
+Mix: general chemistry 4, biochemistry 7, physics 6, organic chemistry 7, biology 1 · skills 1/2/3/4: 8/13/2/2 · ★★/★★★/★★★★/★★★★★: 2/14/8/1
+
+**CP-P25 · Pharmacology: a chiral drug** · status: planned  
+Topic: Chirality, isomers and resolution. Scenario: Hypothetical: one enantiomer is active, the other causes side effects; racemization in vivo is described. Figure: structure (both enantiomers of a hypothetical drug).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-151 | `5B.chirality-configuration` | organic chemistry | 2 | ★★★ | assign R or S at the stereocentre | planned |
+| CP-152 | `5B.isomers` | organic chemistry | 1 | ★★ | enantiomers versus diastereomers | planned |
+| CP-153 | `5C.enantiomer-resolution` | organic chemistry | 2 | ★★★★ | resolution with a chiral acid via diastereomeric salts | planned |
+| CP-154 | `5B.chirality-configuration` | organic chemistry | 2 | ★★★★ | racemization through an enol and loss of optical rotation | planned |
+| CP-155 | `5D.amino-acids` | organic chemistry | 2 | ★★★ | assign D or L to a drawn amino acid and relate it to R/S | planned |
+
+**CP-P26 · Gastroenterology: lactose intolerance and a hydrogen breath test** · status: planned  
+Topic: Carbohydrate chemistry and a diagnostic gas. Scenario: Hypothetical breath-test data after a lactose load; lactase and bacterial fermentation are described. Figure: table (breath H₂ in ppm against time for two subjects).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-156 | `5D.carbohydrates` | organic chemistry | 1 | ★★★ | the glycosidic bond in lactose and the monosaccharides it joins | planned |
+| CP-157 | `5D.carbohydrates` | biochemistry | 2 | ★★★★ | why lactose is a reducing sugar and sucrose is not | planned |
+| CP-158 | `5E.enzymes-mechanism` | biology | 1 | ★★★ | what lactase does and why undigested lactose yields hydrogen | planned |
+| CP-159 | `4B.partial-pressure` | general chemistry | 2 | ★★★★ | ppm of H₂ to its partial pressure in exhaled breath | planned |
+
+**CP-P27 · Clinical chemistry: isoelectric focusing of plasma proteins** · status: planned  
+Topic: Charge, pI and electrophoresis. Scenario: Hypothetical 2D gel: proteins focus in a pH gradient, then separate by size. Figure: table (proteins, pI, charge at pH 7.4).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-160 | `5D.amino-acids` | biochemistry | 2 | ★★★★ | net charge of a residue at a given pH from its pKa values | planned |
+| CP-161 | `5C.protein-purification` | biochemistry | 4 | ★★★ | where each protein stops in the gradient | planned |
+| CP-162 | `4C.electric-field-potential` | physics | 1 | ★★★ | force on a charged protein in the field and its direction | planned |
+| CP-163 | `5D.peptides-proteins` | biochemistry | 2 | ★★★★ | estimate the pI of a tripeptide | planned |
+| CP-164 | `5C.protein-purification` | biochemistry | 3 | ★★★★ | why a second dimension is needed | planned |
+
+**CP-P28 · Infection control: a UV germicidal lamp** · status: planned  
+Topic: Photons, the photoelectric effect and spectra. Scenario: Hypothetical mercury lamp; a photoelectric sensor is used to monitor output. Figure: table (wavelengths, photon energies, work functions).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-165 | `4E.line-spectra-bohr` | physics | 2 | ★★★ | photon energy from E = hc/λ | planned |
+| CP-166 | `4E.line-spectra-bohr` | general chemistry | 2 | ★★★★ | threshold frequency and the kinetic energy of ejected electrons | planned |
+| CP-167 | `4E.quantum-numbers-orbitals` | general chemistry | 1 | ★★★ | emission lines as electron transitions; the ground-state configuration of mercury | planned |
+| CP-168 | `4D.em-radiation` | physics | 3 | ★★★ | why the sensor must be shielded from visible light | planned |
+| CP-169 | `4E.line-spectra-bohr` | physics | 4 | ★★★★★ | read the table: which sensor metal responds to the lamp | planned |
+
+**Standalone questions**
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-170 | `4B.viscosity-poiseuille` | physics | 1 | ★★ | what viscosity measures | planned |
+| CP-171 | `4C.magnetism` | physics | 2 | ★★★ | force on a current-carrying wire | planned |
+| CP-172 | `5A.titration` | general chemistry | 2 | ★★★ | choosing an indicator | planned |
+| CP-173 | `5D.carbonyl-addition` | organic chemistry | 1 | ★★★ | hemiacetal formation | planned |
+| CP-174 | `5D.peptides-proteins` | biochemistry | 2 | ★★★ | the product of peptide hydrolysis | planned |
+| CP-175 | `5E.bioenergetics` | biochemistry | 1 | ★★★ | why ATP hydrolysis is strongly exergonic | planned |
+
+### Batch 8 · CP-176 to CP-200 · status: planned
+
+Mix: general chemistry 9, biochemistry 8, physics 4, organic chemistry 2, biology 2 · skills 1/2/3/4: 9/9/4/3 · ★★/★★★/★★★★/★★★★★: 5/10/9/1
+
+**CP-P29 · Neonatology: pulmonary surfactant** · status: planned  
+Topic: Surface tension, lipids and intermolecular forces. Scenario: Hypothetical measurements on lung lavage fluid from term and preterm infants, with and without lipid extraction. Figure: table (surface tension with and without surfactant; alveolar radii).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-176 | `5D.lipids` | biochemistry | 1 | ★★★ | the amphipathic structure of the phospholipid in surfactant | planned |
+| CP-177 | `4B.turbulence-surface-tension` | physics | 2 | ★★★★ | pressure needed to keep a small alveolus open (Laplace) | planned |
+| CP-178 | `5B.intermolecular-forces` | general chemistry | 3 | ★★★ | the lipid-extracted control and what it shows | planned |
+| CP-179 | `5B.polarity` | general chemistry | 1 | ★★ | the dipole of the polar head group | planned |
+| CP-180 | `5D.lipids` | biology | 4 | ★★★★ | read the table: which infant's lungs collapse at end-expiration | planned |
+
+**CP-P30 · Rheumatology: collagen and scurvy** · status: planned  
+Topic: Protein structure and post-translational hydroxylation. Scenario: Hypothetical: collagen from a vitamin-C-deficient animal is compared with normal collagen; prolyl hydroxylase is assayed with and without ascorbate. Figure: table (hydroxyproline content and melting temperature of collagen from three sources).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-181 | `5D.protein-3d-structure` | biochemistry | 1 | ★★★ | the triple helix and why glycine sits at every third position | planned |
+| CP-182 | `5D.amino-acids` | biochemistry | 1 | ★★★ | hydroxyproline as a modified residue and the cofactor its synthesis needs | planned |
+| CP-183 | `5B.intermolecular-forces` | general chemistry | 2 | ★★★★ | how hydroxyl groups add hydrogen bonds that raise the melting temperature | planned |
+| CP-184 | `5D.peptides-proteins` | biochemistry | 3 | ★★★★ | design: show that ascorbate, not iron, restores hydroxylation | planned |
+
+**CP-P31 · Molecular biology: DNA melting** · status: planned  
+Topic: Nucleic acids and UV absorbance. Scenario: Hypothetical melting curves for a GC-rich and an AT-rich fragment at two salt concentrations. Figure: line chart (A260 against temperature for two DNAs).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-185 | `5D.nucleotides-nucleic-acids` | biochemistry | 1 | ★★★ | why GC content raises Tm | planned |
+| CP-186 | `4D.uv-vis-spectroscopy` | general chemistry | 2 | ★★★ | DNA concentration from A260 (Beer–Lambert) | planned |
+| CP-187 | `5B.multiple-bonds` | general chemistry | 1 | ★★ | planarity and stacking of the aromatic bases | planned |
+| CP-188 | `5D.nucleotides-nucleic-acids` | biochemistry | 4 | ★★★★★ | read Tm from the chart and explain the hyperchromic rise | planned |
+| CP-189 | `5D.nucleotides-nucleic-acids` | biology | 3 | ★★★★ | why salt concentration must be controlled | planned |
+
+**CP-P32 · Critical care: a mechanical ventilator** · status: planned  
+Topic: Gas laws and the work of breathing. Scenario: Hypothetical ventilator settings; gas warms and humidifies on its way to the alveoli. Figure: table (tidal volume, pressure, temperature, humidity).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-190 | `4B.ideal-gas` | general chemistry | 2 | ★★★★ | moles delivered per breath from PV = nRT with unit conversions | planned |
+| CP-191 | `4B.temperature-pressure` | physics | 2 | ★★★ | volume change on warming to body temperature (Charles) | planned |
+| CP-192 | `4B.kinetic-theory` | general chemistry | 1 | ★★ | average kinetic energy depends on temperature only | planned |
+| CP-193 | `4A.work` | physics | 2 | ★★★★ | work of inflation from PΔV | planned |
+| CP-194 | `4B.ideal-gas` | general chemistry | 4 | ★★★★ | read the table: water vapour's share of the delivered gas | planned |
+
+**Standalone questions**
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-195 | `4C.resistance` | physics | 2 | ★★ | equivalent resistance of a simple network | planned |
+| CP-196 | `5D.nonenzymatic-proteins` | biochemistry | 2 | ★★★ | myoglobin versus haemoglobin: saturation at a given PO₂ from the shapes of their curves | planned |
+| CP-197 | `4E.oxidation-numbers` | general chemistry | 1 | ★★ | oxidation number of manganese in permanganate | planned |
+| CP-198 | `5B.hybridization-vsepr` | organic chemistry | 1 | ★★★ | shape and hybridization of a molecule | planned |
+| CP-199 | `5D.carboxylic-acids` | organic chemistry | 2 | ★★★ | acidity ranking with substituents | planned |
+| CP-200 | `5E.enzyme-inhibition-regulation` | biochemistry | 3 | ★★★★ | the experiment that tells allosteric from competitive regulation | planned |
+
+### Batch 9 · CP-201 to CP-225 · status: planned
+
+Mix: general chemistry 7, biochemistry 6, physics 5, organic chemistry 5, biology 2 · skills 1/2/3/4: 10/12/1/2 · ★★/★★★/★★★★/★★★★★: 4/13/7/1
+
+**CP-P33 · Biosynthesis: an aldol-type condensation** · status: planned  
+Topic: Enolates, carbonyls and alcohols. Scenario: Hypothetical enzyme-free model reaction run at low and high temperature. Figure: structure (substrates and the β-hydroxy product).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-201 | `5D.enolate-chemistry` | organic chemistry | 1 | ★★★ | the enolate as nucleophile and the electrophilic carbonyl | planned |
+| CP-202 | `5D.carbonyl-addition` | organic chemistry | 1 | ★★ | why aldehydes are more electrophilic than ketones | planned |
+| CP-203 | `5D.alcohols` | organic chemistry | 2 | ★★★ | oxidation and dehydration of the β-hydroxy product | planned |
+| CP-204 | `5E.activation-energy` | organic chemistry | 2 | ★★★★ | kinetic versus thermodynamic product and temperature | planned |
+| CP-205 | `5D.enolate-chemistry` | organic chemistry | 2 | ★★★★ | α-hydrogen acidity and which base suffices | planned |
+
+**CP-P34 · Endocrinology: ketone bodies in fasting** · status: planned  
+Topic: Fatty acid oxidation, redox carriers and ketoacidosis. Scenario: Hypothetical fasting study; the energetics of β-oxidation are compared with glucose oxidation. Figure: table (plasma glucose, free fatty acids, β-hydroxybutyrate, pH over a fast).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-206 | `5D.lipids` | biochemistry | 1 | ★★★ | the structure of a saturated fatty acid and how it is stored | planned |
+| CP-207 | `5E.bioenergetics` | biochemistry | 2 | ★★★★ | ATP per carbon from palmitate versus glucose | planned |
+| CP-208 | `5E.biological-redox` | biochemistry | 1 | ★★★ | why FAD rather than NAD⁺ takes the first pair of electrons in β-oxidation | planned |
+| CP-209 | `5A.acids-bases` | general chemistry | 2 | ★★★ | why ketone bodies lower plasma pH (pKa and the bicarbonate consumed) | planned |
+
+**CP-P35 · Urology: kidney stones** · status: planned  
+Topic: Solubility, Ksp and pH. Scenario: Hypothetical urine analyses from patients forming calcium oxalate or uric acid stones. Figure: table (urinary calcium, oxalate, pH, Ksp values).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-210 | `5A.solubility` | general chemistry | 2 | ★★★★ | molar solubility from Ksp | planned |
+| CP-211 | `5A.solubility` | general chemistry | 2 | ★★★★ | the common-ion effect of a calcium supplement | planned |
+| CP-212 | `5A.acids-bases` | general chemistry | 1 | ★★★ | why alkalinizing urine dissolves uric acid stones | planned |
+| CP-213 | `4E.moles-formulas` | general chemistry | 2 | ★★ | moles of calcium oxalate in a stone of given mass | planned |
+| CP-214 | `5A.solubility` | general chemistry | 4 | ★★★★★ | read the table: compare Q with Ksp for each patient | planned |
+
+**CP-P36 · Infectious disease: fever and heat loss** · status: planned  
+Topic: Heat transfer and the first law. Scenario: Hypothetical heat-balance study of a febrile patient and of cooling methods. Figure: table (heat loss by each mode at two temperatures).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-215 | `5E.calorimetry-heat-transfer` | physics | 2 | ★★★ | heat removed by evaporating sweat (latent heat) | planned |
+| CP-216 | `5E.calorimetry-heat-transfer` | physics | 1 | ★★★ | conduction, convection and radiation | planned |
+| CP-217 | `5E.thermodynamic-laws` | biology | 3 | ★★★ | how to separate evaporative from radiative loss experimentally | planned |
+| CP-218 | `4A.energy` | physics | 2 | ★★★★ | power needed to raise body temperature by 1 °C in an hour | planned |
+| CP-219 | `5E.calorimetry-heat-transfer` | general chemistry | 4 | ★★★★ | read the table: which cooling method does most | planned |
+
+**Standalone questions**
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-220 | `4A.center-of-mass` | physics | 1 | ★★ | centre of mass of two masses | planned |
+| CP-221 | `4D.mirrors` | physics | 2 | ★★★ | image in a convex mirror | planned |
+| CP-222 | `5E.enzymes-mechanism` | biochemistry | 1 | ★★ | the enzyme class that catalyses a transfer of a functional group | planned |
+| CP-223 | `5D.protein-3d-structure` | biochemistry | 2 | ★★★ | which interaction stabilizes a tertiary structure | planned |
+| CP-224 | `5E.biological-redox` | biochemistry | 1 | ★★★ | identify the oxidizing agent in a half reaction | planned |
+| CP-225 | `4B.circulation` | biology | 1 | ★★★ | where the largest pressure drop occurs in the circulation and why | planned |
+
+### Batch 10 · CP-226 to CP-250 · status: planned
+
+Mix: general chemistry 8, biochemistry 7, physics 5, organic chemistry 5, biology 0 · skills 1/2/3/4: 10/11/2/2 · ★★/★★★/★★★★/★★★★★: 2/16/5/2
+
+**CP-P37 · Enzymology: carbonic anhydrase** · status: planned  
+Topic: Enzyme mechanism and catalytic efficiency. Scenario: Hypothetical active-site mutants compared; the zinc cofactor is removed and restored. Figure: table (kcat, Km, kcat/Km for wild type and mutants).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-226 | `5E.enzymes-mechanism` | biochemistry | 1 | ★★★ | zinc as a Lewis acid that activates water | planned |
+| CP-227 | `5E.enzyme-kinetics` | biochemistry | 2 | ★★★★ | compare mutants by kcat/Km | planned |
+| CP-228 | `5D.protein-3d-structure` | biochemistry | 1 | ★★★ | the histidine ligands and tertiary structure | planned |
+| CP-229 | `5A.acids-bases` | general chemistry | 2 | ★★★ | CO₂ hydration and bicarbonate as a buffer | planned |
+| CP-230 | `5E.enzyme-kinetics` | biochemistry | 3 | ★★★★★ | an experiment to show the enzyme is diffusion-limited | planned |
+
+**CP-P38 · Ophthalmology: mirrors and endoscopes** · status: planned  
+Topic: Mirrors, refraction and fibres. Scenario: Hypothetical: a concave examination mirror and a fibre-optic endoscope are described. Figure: table (mirror radii, object distances, image distances).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-231 | `4D.mirrors` | physics | 2 | ★★★ | image position from the mirror equation | planned |
+| CP-232 | `4D.mirrors` | physics | 2 | ★★★★ | magnification and whether the image is upright | planned |
+| CP-233 | `4D.reflection-refraction` | physics | 2 | ★★★ | critical angle of the fibre core | planned |
+| CP-234 | `4D.lenses` | physics | 1 | ★★ | converging versus diverging elements in the eyepiece | planned |
+
+**CP-P39 · Peptide chemistry: solid-phase synthesis** · status: planned  
+Topic: Peptides, acid derivatives and HPLC. Scenario: Hypothetical synthesis of a short peptide with protecting groups, then reverse-phase HPLC. Figure: structure (activated ester coupling step) + table (HPLC retention and purity).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-235 | `5D.peptides-proteins` | biochemistry | 1 | ★★★ | why the peptide bond is planar (resonance) | planned |
+| CP-236 | `5D.acid-derivatives` | organic chemistry | 2 | ★★★★ | the activated ester and nucleophilic acyl substitution | planned |
+| CP-237 | `5D.amino-acids` | organic chemistry | 1 | ★★★ | which side chains need protection and why | planned |
+| CP-238 | `5C.chromatography` | organic chemistry | 2 | ★★★★ | elution order on reverse-phase HPLC | planned |
+| CP-239 | `5D.peptides-proteins` | biochemistry | 4 | ★★★★ | read the HPLC table: purity and the main impurity | planned |
+
+**CP-P40 · Pharmaceutical QC: assaying an iron supplement** · status: planned  
+Topic: Redox stoichiometry and periodic trends. Scenario: Hypothetical permanganate titration of dissolved tablets to check the labelled iron content. Figure: table (tablet masses, permanganate titres).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-240 | `4E.oxidation-numbers` | general chemistry | 1 | ★★ | oxidation states: Fe²⁺ to Fe³⁺, MnO₄⁻ to Mn²⁺ | planned |
+| CP-241 | `4E.chemical-equations` | general chemistry | 2 | ★★★ | balance the redox equation and get the mole ratio | planned |
+| CP-242 | `4E.moles-formulas` | general chemistry | 2 | ★★★ | mass of iron from the titre | planned |
+| CP-243 | `4E.periodic-trends` | general chemistry | 1 | ★★★ | ionic radius and ionization energy of Fe²⁺ versus Fe³⁺ | planned |
+| CP-244 | `4E.chemical-equations` | general chemistry | 4 | ★★★★★ | read the table: which tablets fail the label claim | planned |
+
+**Standalone questions**
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-245 | `4C.electric-field-potential` | physics | 2 | ★★★ | potential energy of a charge in a field | planned |
+| CP-246 | `4C.galvanic-cells` | general chemistry | 1 | ★★★ | which electrode is the cathode | planned |
+| CP-247 | `5C.extraction-distillation` | biochemistry | 2 | ★★★ | which layer a weak acid occupies after extraction at pH 2 | planned |
+| CP-248 | `5B.chirality-configuration` | organic chemistry | 1 | ★★★ | E or Z of a substituted alkene | planned |
+| CP-249 | `5D.phenols-quinones` | organic chemistry | 1 | ★★★ | quinone-hydroquinone redox | planned |
+| CP-250 | `5E.calorimetry-heat-transfer` | general chemistry | 3 | ★★★ | which control shows heat was not lost to the cup when mixing two samples | planned |
+
+## 4. Topic coverage (every guide topic with its planned question ids)
+
+| Topic | Questions |
+|---|---|
+| `4A.units-vectors` Units, dimensions, and vectors | CP-020 |
+| `4A.kinematics` Speed, velocity, and acceleration | CP-045 |
+| `4A.newtons-laws` Newton's laws of motion | CP-107 |
+| `4A.friction` Friction | CP-095, CP-109 |
+| `4A.center-of-mass` Center of mass | CP-108, CP-220 |
+| `4A.equilibrium-torque` Equilibrium and torque | CP-106, CP-110 |
+| `4A.work` Work, the work–energy theorem, and mechanical advantage | CP-193 |
+| `4A.energy` Kinetic and potential energy, conservation, and power | CP-084, CP-218 |
+| `4A.periodic-motion` Periodic motion and waves | CP-145 |
+| `4B.density-buoyancy` Density, specific gravity, and buoyancy | CP-146 |
+| `4B.hydrostatic-pressure` Hydrostatic pressure and Pascal's law | CP-118 |
+| `4B.viscosity-poiseuille` Viscosity and Poiseuille flow | CP-003, CP-170 |
+| `4B.continuity-bernoulli` Continuity, Bernoulli's equation, and the Venturi effect | CP-001, CP-002 |
+| `4B.turbulence-surface-tension` Turbulence and surface tension | CP-004, CP-177 |
+| `4B.circulation` Pressure and flow in the circulatory system | CP-005, CP-225 |
+| `4B.temperature-pressure` Absolute temperature, pressure, and molar volume | CP-092, CP-191 |
+| `4B.ideal-gas` The ideal gas law and the simple gas laws | CP-091, CP-190, CP-194 |
+| `4B.kinetic-theory` Kinetic molecular theory and heat capacities of gases | CP-192 |
+| `4B.real-gases` Real gases and the van der Waals equation | CP-049 |
+| `4B.partial-pressure` Partial pressure, mole fraction, and Dalton's law | CP-090, CP-094, CP-159 |
+| `4C.charge-coulomb` Charge, conductors, insulators, and Coulomb's law | CP-070 |
+| `4C.electric-field-potential` Electric field, potential, and electrostatic energy | CP-082, CP-162, CP-245 |
+| `4C.current-voltage` Current, electromotive force, and voltage | CP-029, CP-083 |
+| `4C.resistance` Resistance, Ohm's law, resistivity, and resistor networks | CP-028, CP-195 |
+| `4C.capacitance` Capacitors and dielectrics | CP-027, CP-081 |
+| `4C.conductivity-meters` Conductivity and electrical meters | CP-099 |
+| `4C.magnetism` Magnetic fields and the Lorentz force | CP-171 |
+| `4C.electrolytic-cells` Electrolytic cells and Faraday's law | CP-067 |
+| `4C.galvanic-cells` Galvanic cells, reduction potentials, and cell potential | CP-065, CP-069, CP-246 |
+| `4C.concentration-cells-batteries` The Nernst equation, concentration cells, and batteries | CP-066, CP-129 |
+| `4C.nerve-cell` The nerve cell as an electrical conductor | CP-026, CP-030, CP-136 |
+| `4D.sound-basics` Sound: production, speed, intensity, and decibels | CP-042 |
+| `4D.doppler` The Doppler effect | CP-041, CP-044 |
+| `4D.resonance-ultrasound` Resonance in pipes and strings, ultrasound, and shock waves | CP-043 |
+| `4D.interference-diffraction` Interference, diffraction, thin films, and X-ray diffraction | CP-131, CP-133 |
+| `4D.em-radiation` Electromagnetic radiation, the spectrum, colour, and polarization | CP-019, CP-132, CP-168 |
+| `4D.ir-spectroscopy` Infrared spectroscopy | CP-073, CP-111 |
+| `4D.uv-vis-spectroscopy` Visible and ultraviolet spectroscopy | CP-113, CP-186 |
+| `4D.nmr` Proton NMR spectroscopy | CP-112, CP-115 |
+| `4D.reflection-refraction` Reflection, refraction, dispersion, and total internal reflection | CP-063, CP-233 |
+| `4D.mirrors` Spherical mirrors | CP-221, CP-231, CP-232 |
+| `4D.lenses` Thin lenses, lens power, combinations, and aberration | CP-061, CP-064, CP-234 |
+| `4D.eye-optical-instruments` The eye and optical instruments | CP-062 |
+| `4E.nucleus-isotopes` The nucleus, isotopes, and binding energy | CP-018, CP-060 |
+| `4E.radioactive-decay` Radioactive decay and half-life | CP-016, CP-017 |
+| `4E.mass-spectrometry` Mass spectrometry | CP-056, CP-057 |
+| `4E.quantum-numbers-orbitals` Quantum numbers, orbitals, and electron configurations | CP-167 |
+| `4E.line-spectra-bohr` Line spectra, the Bohr atom, the photoelectric effect, and uncertainty | CP-134, CP-165, CP-166, CP-169 |
+| `4E.periodic-groups` The periodic table: groups and families | CP-021 |
+| `4E.periodic-trends` Periodic trends | CP-243 |
+| `4E.moles-formulas` Moles, molar mass, formulas, and percent composition | CP-121, CP-213, CP-242 |
+| `4E.oxidation-numbers` Oxidation numbers, redox agents, and disproportionation | CP-197, CP-240 |
+| `4E.chemical-equations` Chemical equations, balancing, limiting reactants, and yield | CP-089, CP-147, CP-241, CP-244 |
+| `5A.acids-bases` Brønsted–Lowry acids and bases, Kw, and pH | CP-007, CP-046, CP-079, CP-209, CP-212, CP-229 |
+| `5A.weak-acid-equilibria` Weak acids and bases: Ka, Kb, pKa, and salt hydrolysis | CP-010, CP-031, CP-035, CP-135, CP-139 |
+| `5A.buffers` Buffers and the Henderson–Hasselbalch equation | CP-006, CP-009, CP-125 |
+| `5A.ions-in-solution` Common ions, hydration, and hydronium | CP-032, CP-117, CP-138 |
+| `5A.solubility` Concentration units, Ksp, the common-ion effect, complex ions, and pH | CP-033, CP-093, CP-116, CP-210, CP-211, CP-214 |
+| `5A.titration` Titrations, indicators, and titration curves | CP-008, CP-172 |
+| `5B.lewis-structures` Lewis structures, formal charge, resonance, and Lewis acids and bases | CP-022 |
+| `5B.polarity` Bond polarity, partial ionic character, and dipole moments | CP-071, CP-179 |
+| `5B.hybridization-vsepr` VSEPR shapes, hybridization, σ and π bonds, and structural formulas | CP-114, CP-198 |
+| `5B.multiple-bonds` Multiple bonds: length, strength, and rigidity | CP-148, CP-187 |
+| `5B.isomers` Isomers: structural, stereo, and conformational | CP-097, CP-152 |
+| `5B.chirality-configuration` Chirality, optical activity, and R/S, D/L, and E/Z configuration | CP-151, CP-154, CP-248 |
+| `5B.intermolecular-forces` Intermolecular forces: hydrogen bonding, dipole forces, and dispersion | CP-034, CP-119, CP-178, CP-183 |
+| `5C.extraction-distillation` Extraction, distillation, and recrystallization | CP-087, CP-247 |
+| `5C.chromatography` Chromatography: TLC, paper, column, gas, and HPLC | CP-037, CP-238 |
+| `5C.protein-purification` Protein purification and electrophoresis | CP-036, CP-040, CP-161, CP-164 |
+| `5C.enantiomer-resolution` Racemic mixtures and the resolution of enantiomers | CP-122, CP-153 |
+| `5D.nucleotides-nucleic-acids` Nucleotides and nucleic acids | CP-072, CP-185, CP-188, CP-189 |
+| `5D.amino-acids` Amino acids: structure, classification, and synthesis | CP-025, CP-059, CP-155, CP-160, CP-182, CP-237 |
+| `5D.peptides-proteins` Peptides and proteins: the peptide bond, hydrolysis, structure levels, and pI | CP-038, CP-058, CP-163, CP-174, CP-184, CP-235, CP-239 |
+| `5D.protein-3d-structure` Three-dimensional protein structure, stability, and folding | CP-039, CP-078, CP-181, CP-223, CP-228 |
+| `5D.nonenzymatic-proteins` Nonenzymatic protein function: binding, immune, and motor proteins | CP-076, CP-077, CP-080, CP-149, CP-196 |
+| `5D.lipids` Lipids: storage, structural, and signalling lipids | CP-023, CP-176, CP-180, CP-206 |
+| `5D.carbohydrates` Carbohydrates: monosaccharides, rings, anomers, and polysaccharides | CP-047, CP-104, CP-156, CP-157 |
+| `5D.carbonyl-addition` Aldehydes and ketones: properties, nucleophilic addition, and oxidation | CP-173, CP-202 |
+| `5D.enolate-chemistry` Enols, enolates, aldol chemistry, and kinetic versus thermodynamic enolates | CP-123, CP-201, CP-205 |
+| `5D.alcohols` Alcohols: acidity, oxidation, substitution, protection, and sulfonate esters | CP-050, CP-203 |
+| `5D.carboxylic-acids` Carboxylic acids: acidity, derivatives, reduction, decarboxylation, and α-substitution | CP-088, CP-199 |
+| `5D.acid-derivatives` Acid derivatives: nucleophilic acyl substitution, relative reactivity, and strain | CP-085, CP-143, CP-236 |
+| `5D.phenols-quinones` Phenols, hydroquinones, and ubiquinones as two-electron redox centres | CP-086, CP-128, CP-249 |
+| `5D.aromatic-heterocycles` Polycyclic and heterocyclic aromatic compounds in biology | CP-098, CP-137 |
+| `5E.enzymes-mechanism` Enzymes: classification, mechanism, and cofactors | CP-014, CP-158, CP-222, CP-226 |
+| `5E.enzyme-kinetics` Enzyme kinetics: Michaelis–Menten, Lineweaver–Burk, cooperativity, and conditions | CP-011, CP-012, CP-096, CP-227, CP-230 |
+| `5E.enzyme-inhibition-regulation` Enzyme inhibition and regulation | CP-013, CP-015, CP-075, CP-200 |
+| `5E.bioenergetics` Bioenergetics: free energy, Keq, and ATP | CP-054, CP-101, CP-105, CP-175, CP-207 |
+| `5E.biological-redox` Biological oxidation–reduction: half-reactions, electron carriers, and flavoproteins | CP-068, CP-126, CP-127, CP-130, CP-208, CP-224 |
+| `5E.thermodynamic-laws` Systems, state functions, and the laws of thermodynamics | CP-053, CP-120, CP-150, CP-217 |
+| `5E.calorimetry-heat-transfer` Heat capacity, calorimetry, heat transfer, and thermal expansion | CP-051, CP-055, CP-215, CP-216, CP-219, CP-250 |
+| `5E.enthalpy-hess` Enthalpy, heats of formation, Hess's law, and bond energies | CP-048, CP-052 |
+| `5E.free-energy-phases` Gibbs free energy, spontaneity, phase changes, and phase diagrams | CP-074, CP-103 |
+| `5E.rate-laws` Reaction rates, rate laws, reaction order, and the rate-determining step | CP-024, CP-140, CP-141, CP-144 |
+| `5E.activation-energy` Activation energy, energy profiles, Arrhenius, catalysts, and kinetic versus thermodynamic control | CP-124, CP-142, CP-204 |
+| `5E.equilibrium` Chemical equilibrium: the equilibrium constant, Le Châtelier, and ΔG° | CP-100, CP-102 |
+
+## 5. Changelog
+
+| Date | Change |
+|---|---|
+| 2026-10-15 | Plan created: 250 questions, 40 passages, 10 batches, ids CP-001–CP-250 and CP-P01–CP-P40. Approved by the owner the same day. |
