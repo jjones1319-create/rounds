@@ -1,0 +1,1049 @@
+# Review packet (key): block CP4
+
+Plan: docs/CHEM_PHYS_250.md batch 4 (CP-076 to CP-100, passages CP-P13 to CP-P16); checks in review/chem_phys_batch_04_check.py
+
+25 questions, 4 passages. Answers: 076C 077B 078D 079D 080A 081B 082C 083D 084B 085A 086B 087D 088A 089C 090C 091B 092C 093A 094B 095B 096D 097C 098A 099D 100A
+
+Answer letters: A 6, B 7, C 6, D 6
+
+## How this batch is reviewed
+
+An independent blind re-solve (MCAT_SPEC §7): a fresh session answers every item from the blind packet; its answers and objections are compared with this key. Agreement with no objection passes the item (reviewed_by: independent blind re-solve); anything else is checked against the sources, fixed and re-solved. The batch is committed and pushed only after every item passes.
+
+## Passage CP-P13: Fetal and adult haemoglobin
+
+Haemoglobin A (HbA), the adult protein, is a tetramer of two α and two β chains, each holding one haem whose iron(II) binds one O₂. Its fractional saturation Y rises with the partial pressure of oxygen along a sigmoidal curve that is described empirically by the Hill equation, Y = P^n/(P50^n + P^n), where P50 is the partial pressure at which half of the haems are occupied and n, the Hill coefficient, measures the steepness of the curve. Myoglobin, a single chain with one haem, gives a hyperbolic curve with n = 1. Deoxyhaemoglobin sits in the low-affinity T (tense) state. When O₂ binds, the iron moves into the plane of the haem and pulls the proximal histidine and its helix with it; the movement is transmitted to the interfaces between subunits, salt bridges that hold the T state break, and the subunits shift relative to one another into the high-affinity R (relaxed) state, so that O₂ bound at one haem raises the affinity of the others.
+
+Two of the effectors that lower the affinity of HbA are considered here. 2,3-Bisphosphoglycerate (BPG), a small polyanion made by red cells, binds in the central cavity between the two β chains of the T state, where the positively charged residues His2, Lys82 and His143 of each β chain surround its phosphate groups, and so stabilizes T. Protons act through the Bohr effect: in a simple model, one Bohr group per β chain, the imidazole of His146, has a pKa of 7.8 in the T state, where it forms a salt bridge with Asp94, but only 7.0 in the R state, where the salt bridge is broken. Fetal haemoglobin (HbF) has γ chains in place of β chains; residue 143 of the γ chain is serine, which carries no charge.
+
+In a hypothetical study, purified HbA and HbF were equilibrated with oxygen at 37 °C in buffer containing BPG at a physiological concentration, and saturation curves were measured for HbA at pH 7.4 and pH 7.2 and for HbF at pH 7.4 (Figure 1). All three curves fitted the Hill equation with n = 2.8. When BPG was removed from the HbA solution by dialysis at pH 7.4, the P50 fell to 12 mmHg; the HbF solution had not yet been measured without BPG. In the mother, blood leaving the placenta has a PO₂ of roughly 35 to 50 mmHg, while fetal blood entering it is nearer 20 mmHg.
+
+**Figure 1. Oxygen saturation of purified HbA and HbF at 37 °C with BPG present, fitted with the Hill equation (n = 2.8).**
+
+Chart (line): x = PO₂ (mmHg); y = Saturation (%).
+- HbA, pH 7.4: (0, 0.0), (5, 1.0), (10, 6.4), (15, 17.7), (20, 32.4), (25, 47.3), (30, 59.9), (35, 69.7), (40, 77.0), (45, 82.3), (50, 86.2), (55, 89.1), (60, 91.2), (65, 92.9), (70, 94.1), (75, 95.1), (80, 95.9), (85, 96.5), (90, 97.0), (95, 97.4), (100, 97.8)
+- HbA, pH 7.2: (0, 0.0), (5, 0.5), (10, 3.7), (15, 10.7), (20, 21.1), (25, 33.4), (30, 45.5), (35, 56.2), (40, 65.1), (45, 72.2), (50, 77.7), (55, 82.0), (60, 85.3), (65, 87.9), (70, 90.0), (75, 91.6), (80, 92.9), (85, 93.9), (90, 94.8), (95, 95.5), (100, 96.0)
+- HbF, pH 7.4: (0, 0.0), (5, 2.0), (10, 12.6), (15, 30.9), (20, 50.0), (25, 65.1), (30, 75.7), (35, 82.7), (40, 87.4), (45, 90.6), (50, 92.9), (55, 94.4), (60, 95.6), (65, 96.4), (70, 97.1), (75, 97.6), (80, 98.0), (85, 98.3), (90, 98.5), (95, 98.7), (100, 98.9)
+
+*Alt text:* Line graph of saturation in percent against oxygen partial pressure in mmHg from 0 to 100, with three sigmoidal curves. HbA, pH 7.4: 6.4% at 10 mmHg, 32.4% at 20, 59.9% at 30, 77.0% at 40, 91.2% at 60 and 97.8% at 100 mmHg; HbA, pH 7.2: 3.7% at 10 mmHg, 21.1% at 20, 45.5% at 30, 65.1% at 40, 85.3% at 60 and 96.0% at 100 mmHg; HbF, pH 7.4: 12.6% at 10 mmHg, 50.0% at 20, 75.7% at 30, 87.4% at 40, 95.6% at 60 and 98.9% at 100 mmHg. The HbF curve lies to the left of the HbA pH 7.4 curve, and the HbA pH 7.2 curve lies to its right.
+
+*Source:* Hypothetical study written for this app. Hill equation, P50, T and R states (iron moving into the haem plane, the proximal histidine and F helix, breaking of the T-state salt bridges), the BPG pocket lined by β-chain Lys82, His2 and His143, the His146–Asp94 salt bridge of the Bohr effect and the Hill coefficient of 2.8 from Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 5.3 Oxygen-Binding Proteins and Allosterism (2021). Bohr effect direction (lower pH promotes dissociation), BPG as a glycolytic by-product of red cells that promotes dissociation, the placental partial pressures (35–50 mmHg maternal, about 20 mmHg fetal) and HbF's greater affinity from OpenStax Anatomy and Physiology 2e, 22.5 Transport of Gases (2022). P50 values of about 26–27 mmHg for adult and 19 mmHg for fetal haemoglobin, and the γ-chain serine replacing a β-chain histidine so that BPG binds HbF weakly, from Deranged Physiology, Physiology and consequences of foetal haemoglobin (CICM primary notes); the γ143 serine from the UCSB Hb F structure overview (biosci.mcdb.ucsb.edu). The passage's pKa values for His146 (7.8 in T, 7.0 in R) are model values chosen near the measured 8.0 (deoxy) and 7.1 (carbonmonoxy) of Kilmartin et al. (1973) in phosphate buffer; measured values depend on ionic strength. The curves are generated from the stated P50 values and n = 2.8; the P50 of 32 mmHg at pH 7.2 (0.09 log units per 0.2 pH) is consistent with the Bohr shift of whole blood. The P50 of 12 mmHg without BPG is a hypothetical measurement: published values for BPG-free haemoglobin solutions range from about 8 to 14 mmHg depending on species, buffer and ionic strength.
+
+*Status:* reviewed
+
+### CP-076  ·  ★★★  ·  Skill 4 Data and statistics
+
+According to Figure 1, the P50 of HbA at pH 7.2 is closest to:
+
+- **A.** 20 mmHg
+- **B.** 26 mmHg
+- **C.** 32 mmHg
+- **D.** 50 mmHg
+
+**Answer: C**
+
+*Worked solution*
+
+- Passage: "P50 is the partial pressure at which half of the haems are occupied." Find where the HbA, pH 7.2 curve crosses 50% saturation.
+- That curve reads about 45% at 30 mmHg and about 56% at 35 mmHg, so it passes through 50% a little above 30 mmHg, at about 32 mmHg.
+- Check with the Hill equation: at P = 32 mmHg the ratio (P/P50)^n is 1, so Y = 1/2 exactly. The other two curves cross 50% at 26 mmHg (HbA, pH 7.4) and 20 mmHg (HbF).
+
+*Why the other choices are wrong*
+
+- **A.** 20 mmHg is where the HbF curve, the leftmost, crosses 50%; the question asks about HbA at the lower pH, the rightmost curve. *(misread graph: the wrong curve (HbF) read)*
+- **B.** 26 mmHg is the P50 of HbA at pH 7.4; at pH 7.2 the curve has shifted right and 26 mmHg gives only about 36% saturation. *(misread graph: the pH 7.4 curve read instead of pH 7.2)*
+- **D.** The '50' in P50 is the percent saturation on the y-axis, not a pressure; at 50 mmHg the pH 7.2 curve is already near 78% saturation. *(wrong formula: the 50 of P50 taken as a pressure on the x-axis)*
+
+*Tags:* chem_phys · biochemistry · FC5 5D · topics: 5D.nonenzymatic-proteins
+
+*Takeaway:* P50 is read from a saturation curve as the PO₂ at 50% saturation; a right-shifted curve has a higher P50 and a lower affinity.
+
+*Sources*
+
+- Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 5.3 Oxygen-Binding Proteins and Allosterism (2021): P50 defined as the oxygen pressure at which Y = 0.5; lower pH shifts the curve to the right (decreased affinity).
+- OpenStax Anatomy and Physiology 2e, 22.5 Transport of Gases (2022): a lower, more acidic pH promotes oxygen dissociation from haemoglobin.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-077  ·  ★★★★  ·  Skill 1 Knowledge
+
+All three curves in Figure 1 fit the Hill equation with n = 2.8. Which of the following is the correct interpretation of this value?
+
+- **A.** Each tetramer binds, on average, only 2.8 molecules of O₂ at saturation, because BPG in the central cavity blocks access to one of the four haems.
+- **B.** Oxygen binding is positively cooperative: binding at one haem raises the affinity of the others, and n is below 4 because the cooperativity is not perfect.
+- **C.** Oxygen binding is negatively cooperative: each O₂ bound makes the next harder to bind, which is why the curve is sigmoidal rather than hyperbolic.
+- **D.** Exactly 2.8 of the four subunits change from the T to the R state when the first O₂ binds; the remaining subunits stay in the T state.
+
+**Answer: B**
+
+*Worked solution*
+
+- The Hill coefficient measures the steepness of the binding curve. n = 1 gives a hyperbola (myoglobin, one independent site); n > 1 gives a sigmoidal curve and means that binding at one site increases the affinity of the others, positive cooperativity.
+- For haemoglobin the empirical n is about 2.8 even though there are four haems: n would reach 4 only if all four sites switched from T to R together with no partially liganded intermediates. Because that limit is not reached, n is between 1 and the number of sites.
+- The passage's structural account is the mechanism: O₂ binding at one haem moves the iron and the proximal histidine, breaks T-state salt bridges and shifts the subunits toward R, "so that O₂ bound at one haem raises the affinity of the others."
+
+*Why the other choices are wrong*
+
+- **A.** n is not a stoichiometry. Every haem binds O₂ at saturation, so a saturated tetramer carries four O₂; BPG binds in the central cavity between the β chains, not at a haem, and it is released as the protein shifts to R. *(wrong formula: the Hill coefficient read as the number of ligands bound)*
+- **C.** Negative cooperativity would give n < 1 and a curve flatter than a hyperbola; a sigmoidal curve with n > 1 is the signature of positive cooperativity. *(reversed relationship: positive and negative cooperativity swapped)*
+- **D.** n is an empirical fit parameter, not a count of subunits in one state; the T-to-R switch is a concerted change of the tetramer's quaternary structure, not 2.8 subunits at a time. *(out of scope: a fit parameter read as a literal count of subunits)*
+
+*Tags:* chem_phys · biochemistry · FC5 5D · topics: 5D.nonenzymatic-proteins, 5E.enzyme-kinetics
+
+*Takeaway:* A Hill coefficient above 1 means positive cooperativity; it is smaller than the number of binding sites because cooperativity is never perfect.
+
+*Sources*
+
+- Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 5.3 Oxygen-Binding Proteins and Allosterism (2021): Y = P^n/(P50^n + P^n); n = 1 for myoglobin; n = 2.8 gives the best, though not perfect, fit for haemoglobin.
+- Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 4.1 Basic Principles of Catalysis: cooperativity gives sigmoidal rather than hyperbolic binding curves.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-078  ·  ★★★  ·  Skill 1 Knowledge
+
+The passage describes how O₂ binding converts haemoglobin from the T state to the R state. This conversion is best described as a change in:
+
+- **A.** primary structure, because the salt bridges that hold the T state are covalent links between residues that must be broken.
+- **B.** secondary structure, because the helix attached to the proximal histidine unwinds into a β strand when the iron moves.
+- **C.** tertiary structure only, because the movement of the iron and the proximal histidine is confined to the subunit whose haem has bound O₂.
+- **D.** quaternary structure, because the subunits move relative to one another, which is how binding at one haem alters the affinity of the other haems.
+
+**Answer: D**
+
+*Worked solution*
+
+- Quaternary structure is the arrangement of the separate chains of a multi-subunit protein. Passage: "the subunits shift relative to one another into the high-affinity R (relaxed) state." A rearrangement of subunits at their interfaces, with salt bridges between subunits breaking, is by definition a quaternary change.
+- The trigger is tertiary: within one subunit the iron moves into the haem plane and pulls the proximal histidine and its helix. But the question asks about the T-to-R conversion itself, which is the concerted repositioning of all four subunits, and this is what lets one subunit's binding event alter the others' affinity.
+- Myoglobin, with one chain, has tertiary structure but no quaternary structure, which is why it shows no cooperativity.
+
+*Why the other choices are wrong*
+
+- **A.** Salt bridges are ionic interactions between side chains, not covalent bonds, and primary structure (the sequence of amide-linked residues) is unchanged by ligand binding. *(wrong formula: salt bridges treated as covalent bonds of the primary structure)*
+- **B.** The helices stay helical; they shift position. No secondary structure is converted during the T-to-R transition. *(out of scope: helices do not unwind during the transition)*
+- **C.** The change is not confined to one subunit; it is transmitted across the subunit interfaces, and that transmission is what cooperativity requires. *(true but irrelevant: the tertiary trigger within one subunit is real but is not the T-to-R transition asked about)*
+
+*Tags:* chem_phys · biochemistry · FC5 5D · topics: 5D.protein-3d-structure
+
+*Takeaway:* The T-to-R switch is a quaternary change: subunits move relative to each other, and that is what makes O₂ binding cooperative.
+
+*Sources*
+
+- OpenStax Biology 2e, 3.4 Proteins (2018): quaternary structure is the interaction of two or more polypeptide subunits; haemoglobin is the example.
+- Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 5.3 Oxygen-Binding Proteins and Allosterism (2021): the deoxy T form is stabilized by salt bridges that break on the transition to R; the helices slide past each other.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-079  ·  ★★★★  ·  Skill 2 Reasoning
+
+Using the model pKa values in the passage, the ratio of protonated to unprotonated His146 in the T state at pH 7.4 is closest to which value, and what does this predict for the saturation curve when the pH falls from 7.4 to 7.2?
+
+- **A.** 0.4 : 1; the curve shifts to the left
+- **B.** 0.4 : 1; the curve shifts to the right
+- **C.** 2.5 : 1; the curve shifts to the left
+- **D.** 2.5 : 1; the curve shifts to the right
+
+**Answer: D**
+
+*Worked solution*
+
+- Henderson–Hasselbalch: pH = pKa + log([base]/[acid]), so log([protonated]/[unprotonated]) = pKa − pH = 7.8 − 7.4 = 0.4, and 10^0.4 ≈ 2.5 (log 2.5 = log 10 − log 4 = 1 − 0.60 = 0.40). In the T state about 2.5 of every 3.5 His146 groups carry the proton; in the R state (pKa 7.0) the ratio is 10^−0.4 ≈ 0.4 : 1.
+- Because T binds protons more tightly than R, adding protons (lowering the pH) pulls the equilibrium toward T, the low-affinity state. Lower affinity means a higher P50 and a curve shifted to the right, which is what Figure 1 shows for pH 7.2 (P50 32 mmHg against 26 mmHg).
+- The reverse is the Haldane effect: oxygenation converts T to R, lowers the pKa, and releases protons.
+
+*Why the other choices are wrong*
+
+- **A.** 0.4 : 1 is the R-state ratio (pKa 7.0); and a left shift would mean higher affinity at lower pH, the opposite of the Bohr effect. *(wrong formula and reversed relationship: R-state pKa used, and shift direction inverted)*
+- **B.** 0.4 : 1 uses the R-state pKa of 7.0, or subtracts in the wrong order (pH − pKa); the direction of the shift is right. *(sign or unit error: pH − pKa instead of pKa − pH)*
+- **C.** The ratio is right, but the conclusion is reversed: protons stabilize T, the low-affinity state, so the curve moves right, not left. *(reversed relationship: stabilizing T read as raising affinity)*
+
+*Tags:* chem_phys · biochemistry · FC5 5A · topics: 5A.acids-bases, 5D.nonenzymatic-proteins
+
+*Takeaway:* Protons bind more tightly to the T state (higher pKa), so a lower pH stabilizes T, raises P50 and shifts the curve right (Bohr effect).
+
+*Sources*
+
+- OpenStax Chemistry 2e, 14.6 Buffers (2019): Henderson–Hasselbalch equation pH = pKa + log([A⁻]/[HA]).
+- Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 5.3 Oxygen-Binding Proteins and Allosterism (2021): His146β forms a salt bridge with Asp94β in the T state, which raises its pKa compared with the oxy state; decreasing pH shifts the curve to the right.
+- Kilmartin et al., Biochemistry 1973 (via PubMed 4020866 abstract): the pKa of His146β is 8.0 in deoxyhaemoglobin and 7.1 in the carbonmonoxy form in phosphate buffer (the passage's model values are 7.8 and 7.0).
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-080  ·  ★★★★★  ·  Skill 3 Research design
+
+The investigators want to test the hypothesis that HbF's lower P50 in Figure 1 is caused by weaker binding of BPG to HbF rather than by an intrinsically higher affinity of the γ-chain haems for O₂. Which additional measurement would test this most directly?
+
+- **A.** The P50 of HbF after BPG is removed by dialysis, under the same conditions as for BPG-free HbA; if it is also about 12 mmHg, the difference in Figure 1 is due to BPG.
+- **B.** The P50 of whole blood drawn from a mother and from the umbilical cord of her newborn, each measured at its own pH, PCO₂ and BPG concentration, since these are the physiological conditions.
+- **C.** The P50 of HbF with BPG added at ten times the physiological concentration, to see whether a high enough dose can raise HbF's P50 to the 26 mmHg of HbA at the same pH.
+- **D.** The P50 of HbF with BPG present at pH 7.2, to see whether HbF shows the same Bohr shift as HbA, which would indicate the same T-state salt bridges.
+
+**Answer: A**
+
+*Worked solution*
+
+- The hypothesis separates two possible causes of HbF's higher affinity: an effector (BPG) that binds the two proteins differently, or a difference in the haem pockets themselves. The clean test removes the effector and compares the proteins with everything else held constant: the passage already gives BPG-free HbA (P50 12 mmHg) but says "the HbF solution had not yet been measured without BPG."
+- If BPG-free HbF also has a P50 near 12 mmHg, the two proteins have the same intrinsic affinity and the whole difference in Figure 1 must come from BPG, which binds HbA's β chains through His143 but finds Ser143 in the γ chain. If BPG-free HbF instead has a P50 well below 12 mmHg, part of the difference is intrinsic.
+- This is the classic structure: remove one variable (BPG), keep the rest (pH, temperature, buffer, protein concentration) identical, and compare.
+
+*Why the other choices are wrong*
+
+- **B.** Whole blood from mother and newborn differs in BPG concentration, pH, CO₂, temperature at sampling and the mixture of haemoglobins present, so a difference in P50 cannot be attributed to BPG binding alone. *(out of scope: a confounded comparison in which several variables differ between the two blood samples)*
+- **C.** Showing that a large excess of BPG can shift HbF tells you HbF responds to BPG at some dose, but not whether the difference at the physiological concentration is due to BPG or to the haems; the comparison without the effector is what isolates the cause. *(true but irrelevant: a dose response does not identify the cause of the physiological difference)*
+- **D.** Changing the pH tests the Bohr effect in HbF, a different effector; it does not separate the BPG effect from the intrinsic affinity, and it changes two things at once relative to Figure 1. *(wrong formula: the proton effect tested instead of the BPG effect)*
+
+*Tags:* chem_phys · biochemistry · FC5 5D · topics: 5D.nonenzymatic-proteins
+
+*Takeaway:* To attribute a difference between two proteins to an effector, measure both without the effector under identical conditions; the comparison the passage leaves undone is the test.
+
+*Sources*
+
+- Deranged Physiology, Physiology and consequences of foetal haemoglobin (CICM primary notes): the main effect of the γ subunits is reduced affinity for 2,3-DPG because a histidine is replaced by serine in the γ chain; P50 19 mmHg (HbF) against 26.7 mmHg (adult).
+- OpenStax Anatomy and Physiology 2e, 22.5 Transport of Gases (2022): the fetus's haemoglobin has a greater affinity for oxygen because two of its subunits have a different structure; BPG promotes dissociation.
+- OpenStax Biology 2e, 1.1 The Science of Biology (2018): a controlled experiment changes one variable and holds the others constant.
+
+*Status:* reviewed · rev 1
+
+---
+
+## Passage CP-P14: A defibrillator
+
+In ventricular fibrillation the ventricles quiver without pumping. A defibrillator passes a brief, large current through the chest to depolarize most of the myocardium at once, after which the heart's own pacemaker can resume. The energy for the shock is stored in a capacitor: a battery and a step-up converter charge it to about 2,000 V, and a switch then connects it across two electrodes on the chest. Clinical doses are set in joules of delivered energy, 120 to 200 J for modern biphasic devices and 360 J for older monophasic ones.
+
+In a hypothetical bench test, engineers set a monophasic device to 200 J and discharged it into a resistor that stood in for the chest (Table 1); the transthoracic resistance of adults averages 70 to 80 Ω. The stored energy is given by Equation 1. Once the switch closes, the capacitor discharges through the resistance R with the voltage decaying exponentially, V(t) = V₀e^(−t/τ), where the time constant is τ = RC, and the current at any instant is I = V/R. The device truncates the pulse with a second switch at 20 ms, by which time more than 99% of the stored energy has been delivered, so the delivered energy was taken as equal to the stored energy. The capacitor is wound from two metallized polypropylene films (dielectric constant 2.2) separated by 20 µm of film; the field between the plates is uniform.
+
+**Equation 1. Energy stored in a capacitor of capacitance C charged to voltage V.**
+
+Equation: `U = \tfrac{1}{2} C V^{2}`
+
+*Alt text:* U equals one half C V squared.
+
+**Table 1. Bench-test settings for the monophasic device.**
+
+| Quantity | Value |
+|---|---|
+| Capacitance | 100 µF |
+| Charging voltage | 2,000 V |
+| Chest resistance | 80 Ω |
+| Pulse truncated at | 20 ms |
+| Film thickness | 20 µm |
+
+*Alt text:* Table with five rows. Capacitance 100 microfarads. Charging voltage 2,000 volts. Chest (test) resistance 80 ohms. Pulse truncated at 20 milliseconds. Film thickness between plates 20 micrometres.
+
+*Source:* Hypothetical bench test written for this app. Energy stored in a capacitor (U = ½CV²), defibrillators storing their energy in a capacitor and the heart's pacemaker resuming after the shock from OpenStax College Physics 2e, 19.7 Energy Stored in Capacitors (2022); exponential discharge V = V₀e^(−t/RC), τ = RC and the defibrillator discharge example from OpenStax College Physics 2e, 21.6 DC Circuits Containing Resistors and Capacitors; parallel-plate field E = V/d and C = κε₀A/d from OpenStax College Physics 2e, 19.5 Capacitors and Dielectrics. Energy doses (biphasic 120–200 J, monophasic 360 J) from the Merck Manual Professional, Direct Current (DC) Cardioversion-Defibrillation (2024). Adult transthoracic impedance averaging 70–80 Ω (range 25–180 Ω) from the Fluke Biomedical application note on defibrillator analysers, citing the AHA. Metallized polypropylene film as the usual dielectric of external defibrillator capacitors from the Cornell Dubilier CARTS 2007 paper on metallized film pulse capacitors; polypropylene's dielectric constant of 2.2 and DC strength of about 650 V/µm from WIMA film capacitor data, so the test's 100 V/µm is well within the film's rating. With C = 100 µF, d = 20 µm and κ = 2.2 the plate area is about 100 m² of film, a wound roll of about 2 L, the size of a real defibrillator capacitor. Fraction of the energy delivered by 20 ms = 1 − e^(−2t/τ) = 1 − e^(−5) = 99.3%.
+
+*Status:* reviewed
+
+### CP-081  ·  ★★★  ·  Skill 2 Reasoning
+
+Using Equation 1 and Table 1, the energy stored in the capacitor when it is fully charged is closest to:
+
+- **A.** 0.10 J
+- **B.** 200 J
+- **C.** 400 J
+- **D.** 2.0 × 10⁵ J
+
+**Answer: B**
+
+*Worked solution*
+
+- U = ½CV² with C = 100 µF = 1.0 × 10⁻⁴ F and V = 2,000 V = 2.0 × 10³ V.
+- V² = 4.0 × 10⁶ V²; CV² = 1.0 × 10⁻⁴ × 4.0 × 10⁶ = 400 J; half of that is 200 J, within the 120–200 J range the passage gives for a biphasic dose and consistent with the bench test's delivered energy.
+- Check through the charge: Q = CV = 1.0 × 10⁻⁴ × 2,000 = 0.20 C, and U = ½QV = ½ × 0.20 × 2,000 = 200 J.
+
+*Why the other choices are wrong*
+
+- **A.** 0.10 J is ½CV, which leaves out one factor of the voltage; the stored energy grows with V², not V. *(wrong formula: ½CV instead of ½CV²)*
+- **C.** 400 J is CV², without the ½: the voltage rises from 0 to V during charging, so the average voltage against which charge is moved is V/2. *(wrong formula: the factor of ½ dropped)*
+- **D.** 2.0 × 10⁵ J treats the 100 µF as 100 mF (10⁻¹ F instead of 10⁻⁴ F), a thousandfold error in the prefix. *(sign or unit error: µ (10⁻⁶) read as m (10⁻³))*
+
+*Tags:* chem_phys · physics · FC4 4C · topics: 4C.capacitance
+
+*Takeaway:* A capacitor stores U = ½CV² = ½QV; a 100 µF capacitor at 2 kV holds 200 J, a defibrillator dose.
+
+*Sources*
+
+- OpenStax College Physics 2e, 19.7 Energy Stored in Capacitors (2022): E = QV/2 = CV²/2 = Q²/2C; the ½ arises because the average voltage during charging is V/2; defibrillator example.
+- Merck Manual Professional, Direct Current (DC) Cardioversion-Defibrillation (2024): biphasic 120–200 J, monophasic 360 J.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-082  ·  ★★★★  ·  Skill 2 Reasoning
+
+With the capacitor charged to 2,000 V, what are the magnitude of the electric field in the 20 µm film between the plates and the work done by that field on an electron that crosses from one plate to the other? (e = 1.6 × 10⁻¹⁹ C)
+
+- **A.** 1.0 × 10⁵ V/m; 3.2 × 10⁻¹⁶ J
+- **B.** 1.0 × 10⁵ V/m; 2.0 × 10³ J
+- **C.** 1.0 × 10⁸ V/m; 3.2 × 10⁻¹⁶ J
+- **D.** 1.0 × 10⁸ V/m; 2.0 × 10³ J
+
+**Answer: C**
+
+*Worked solution*
+
+- Passage: "the field between the plates is uniform," so E = V/d = 2,000 V / (20 × 10⁻⁶ m) = 2.0 × 10³ / 2.0 × 10⁻⁵ = 1.0 × 10⁸ V/m (100 V per micrometre, below the film's rating of several hundred V/µm).
+- The work done by the field on a charge moved through a potential difference V is W = qV, independent of the path and of the plate separation: W = 1.6 × 10⁻¹⁹ C × 2,000 V = 3.2 × 10⁻¹⁶ J, which is 2,000 eV.
+- Check the units: V/m = N/C, and (N/C) × C × m = N·m = J; W = eEd = 1.6 × 10⁻¹⁹ × 1.0 × 10⁸ × 2.0 × 10⁻⁵ = 3.2 × 10⁻¹⁶ J, the same number.
+
+*Why the other choices are wrong*
+
+- **A.** 1.0 × 10⁵ V/m divides by 0.020 m, treating 20 µm as 20 mm; the work is right but the field is a thousand times too small. *(sign or unit error: µm read as mm)*
+- **B.** Both values are wrong: the field uses 20 mm for the film thickness, and 2.0 × 10³ J is the work on a full coulomb of charge rather than on one electron. *(sign or unit error and wrong formula: µm read as mm, and q = 1 C)*
+- **D.** 2.0 × 10³ J would be the work on one coulomb of charge (W = qV with q = 1 C); an electron carries 1.6 × 10⁻¹⁹ C. It also exceeds the 200 J stored in the whole capacitor. *(wrong formula: q = 1 C instead of the electron's charge)*
+
+*Tags:* chem_phys · physics · FC4 4C · topics: 4C.electric-field-potential, 4C.capacitance
+
+*Takeaway:* Between parallel plates E = V/d is uniform, and the work on a charge crossing the gap is qV, whatever the separation.
+
+*Sources*
+
+- OpenStax College Physics 2e, 19.5 Capacitors and Dielectrics (2022): E = V/d between parallel plates; dielectric strengths in V/m.
+- OpenStax College Physics 2e, 19.1 Electric Potential Energy: Potential Difference: ΔPE = qΔV; 1 eV = 1.60 × 10⁻¹⁹ J.
+- WIMA film capacitor data: metallized polypropylene has a dielectric constant of about 2.2 and a DC dielectric strength of about 650 V/µm.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-083  ·  ★★★★  ·  Skill 2 Reasoning
+
+At the instant the switch closes, the current through the 80 Ω chest resistance and the time constant of the discharge are closest to:
+
+- **A.** 0.040 A; 1.25 µs
+- **B.** 0.040 A; 8.0 ms
+- **C.** 25 A; 1.25 µs
+- **D.** 25 A; 8.0 ms
+
+**Answer: D**
+
+*Worked solution*
+
+- Passage: "the current at any instant is I = V/R." At t = 0 the capacitor voltage is the full 2,000 V, so I₀ = 2,000 V / 80 Ω = 25 A, far above the milliamp currents of normal physiology.
+- τ = RC = 80 Ω × 1.0 × 10⁻⁴ F = 8.0 × 10⁻³ s = 8.0 ms (Ω × F = (V/A) × (C/V) = C/A = s).
+- After one time constant the voltage and current have fallen to e⁻¹ ≈ 37% of their initial values; after 20 ms (2.5τ) they are at e^(−2.5) ≈ 8%, and the remaining energy, which goes as V², is e^(−5) ≈ 0.7%, which is why the passage says more than 99% has been delivered.
+
+*Why the other choices are wrong*
+
+- **A.** Both values are wrong: 0.040 A inverts Ohm's law (R/V), and 1.25 µs is C/R rather than RC. *(wrong formula: I = R/V and τ = C/R)*
+- **B.** 0.040 A inverts Ohm's law (R/V instead of V/R); 80 Ω across 2,000 V passes tens of amperes, not milliamperes. The time constant is right. *(wrong formula: I = R/V)*
+- **C.** 1.25 µs is C/R; the time constant of an RC circuit is the product RC, and only the product has units of seconds (Ω × F = s). The current is right. *(wrong formula: τ = C/R instead of RC)*
+
+*Tags:* chem_phys · physics · FC4 4C · topics: 4C.current-voltage, 4C.capacitance
+
+*Takeaway:* A discharging capacitor starts at I₀ = V₀/R and decays with τ = RC; 80 Ω and 100 µF give 25 A and 8 ms.
+
+*Sources*
+
+- OpenStax College Physics 2e, 21.6 DC Circuits Containing Resistors and Capacitors (2022): V = V₀e^(−t/RC), τ = RC, 36.8% remaining after one time constant; defibrillator discharge example with τ = 8.00 ms.
+- OpenStax College Physics 2e, 20.2 Ohm's Law: Resistance and Simple Circuits: I = V/R.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-084  ·  ★★  ·  Skill 1 Knowledge
+
+The device delivers 200 J during the 20 ms pulse. The average power delivered to the chest during the pulse is:
+
+- **A.** 10 W
+- **B.** 10 kW
+- **C.** 50 kW
+- **D.** 10 MW
+
+**Answer: B**
+
+*Worked solution*
+
+- Average power is energy divided by time: P = U/t = 200 J / 0.020 s = 1.0 × 10⁴ W = 10 kW.
+- Mental route: 200 J per 20 ms is 10 J per millisecond, and 10 J/ms × 1,000 ms/s = 10,000 W.
+- For comparison, the instantaneous power at the start of the pulse is V₀²/R = (2,000)²/80 = 50 kW, and it decays with the discharge, so the average over the pulse is lower.
+
+*Why the other choices are wrong*
+
+- **A.** 10 W divides by 20 s instead of 20 ms; the pulse is a thousand times shorter, so the power is a thousand times greater. *(sign or unit error: ms read as s)*
+- **C.** 50 kW is the peak power at the instant the switch closes (V₀²/R), not the average over the whole pulse. *(wrong formula: peak power reported as the average)*
+- **D.** 10 MW divides by 20 µs, a thousand times too short. *(sign or unit error: ms read as µs)*
+
+*Tags:* chem_phys · physics · FC4 4A · topics: 4A.energy, 4C.current-voltage
+
+*Takeaway:* Average power is energy over time; a 200 J shock delivered in 20 ms is 10 kW.
+
+*Sources*
+
+- OpenStax College Physics 2e, 7.7 Power (2022): P = W/t, watts are joules per second.
+- OpenStax College Physics 2e, 20.4 Electric Power and Energy: P = IV = V²/R.
+
+*Status:* reviewed · rev 1
+
+---
+
+## Passage CP-P15: Aspirin synthesis
+
+Salicylic acid (2-hydroxybenzoic acid, Figure 1) carries a carboxylic acid and a phenol on the same ring. Aspirin (acetylsalicylic acid, Figure 3) is made by acetylating the phenolic hydroxyl with acetic anhydride (Figure 2) in the presence of a few drops of phosphoric acid; the by-product is acetic acid. The ester formed is an ordinary ester of a phenol: it hydrolyses slowly in water at room temperature and much faster when the water is hot, giving back salicylic acid and acetic acid.
+
+In a hypothetical teaching-laboratory preparation, 6.90 g of salicylic acid was heated with 10.2 g of acetic anhydride and the catalyst in a water bath for 15 minutes. Water was then added to destroy the excess anhydride and the crude solid was collected by vacuum filtration. To remove neutral impurities, the crude solid was dissolved in diethyl ether and shaken with aqueous sodium bicarbonate; gas was evolved, and the aqueous layer was separated and acidified with hydrochloric acid, which precipitated the product. This solid was recrystallized from the solvent chosen with the help of Table 2, dried and weighed (Table 1). Table 2 lists the lab's own solubility measurements for aspirin at 20 °C and at 60 °C, the highest temperature the students were willing to use because of the hydrolysis described above.
+
+Two tests were run on the purified product. Its melting point was 134 to 136 °C. A few drops of 1% iron(III) chloride solution added to a little of the product in water gave no colour change, whereas the same test on salicylic acid gave a deep violet colour.
+
+**Figure 1. Salicylic acid.**
+
+Structure (SMILES): `OC(=O)c1ccccc1O`
+
+*Alt text:* Structure of salicylic acid: a benzene ring with a carboxylic acid group and, on the adjacent carbon, a hydroxyl group.
+
+**Figure 2. Acetic anhydride.**
+
+Structure (SMILES): `CC(=O)OC(C)=O`
+
+*Alt text:* Structure of acetic anhydride: two acetyl groups joined through one oxygen atom.
+
+**Figure 3. Aspirin (acetylsalicylic acid).**
+
+Structure (SMILES): `CC(=O)Oc1ccccc1C(=O)O`
+
+*Alt text:* Structure of aspirin: a benzene ring with a carboxylic acid group and, on the adjacent carbon, an acetate ester (O–C(=O)CH₃).
+
+**Table 1. Reagents used and purified product obtained. Literature melting points: salicylic acid 159 °C, aspirin 135 °C; acetic anhydride is a liquid (boiling point 140 °C).**
+
+| Compound | M (g/mol) | Mass (g) |
+|---|---|---|
+| Salicylic acid | 138 | 6.90 |
+| Acetic anhydride | 102 | 10.2 |
+| Aspirin | 180 | 7.20 |
+
+*Alt text:* Table with three rows. Salicylic acid: molar mass 138 g/mol, mass used 6.90 g. Acetic anhydride: molar mass 102 g/mol, mass used 10.2 g. Aspirin: molar mass 180 g/mol, mass obtained after purification 7.20 g.
+
+**Table 2. Solubility of aspirin measured by the lab (g per 100 mL of solvent) at 20 °C and at 60 °C. Ethanol–water is a 1:3 mixture by volume.**
+
+| Solvent | 20 °C | 60 °C |
+|---|---|---|
+| Ethanol | 20 | 65 |
+| Hexane | < 0.1 | 0.2 |
+| Water | 0.3 | 1.5 |
+| Ethanol–water | 0.5 | 10 |
+
+*Alt text:* Table with four rows. Ethanol: 20 g per 100 mL at 20 °C, 65 at 60 °C. Hexane: less than 0.1 at 20 °C, 0.2 at 60 °C. Water: 0.3 at 20 °C, 1.5 at 60 °C. Ethanol–water, 1 to 3 by volume: 0.5 at 20 °C, 10 at 60 °C.
+
+*Source:* Hypothetical preparation written for this app. Aspirin prepared commercially by acetylating salicylic acid with acetic anhydride, and the second acyl half of an anhydride acting as the leaving group in nucleophilic acyl substitution, from OpenStax Organic Chemistry, 21.5 Chemistry of Acid Anhydrides (2023); acid- and base-promoted ester hydrolysis through a tetrahedral intermediate from OpenStax Organic Chemistry, 21.6 Chemistry of Esters; phenol pKa 9.89 against 16 for ethanol, phenoxide resonance and the solubility of phenols in aqueous NaOH from OpenStax Organic Chemistry, 17.2 Properties of Alcohols and Phenols. Bicarbonate taking carboxylic acids but not phenols into the aqueous layer, and recrystallization needing a solvent that dissolves the compound hot but not cold, from Chemistry LibreTexts, Organic Chemistry Lab Techniques (Nichols), 4 Extraction and 3.3 Choice of Solvent. Ferric chloride colour test for phenols (3 ArOH + FeCl₃ → Fe(OAr)₃ + 3 HCl; aspirin used as the negative control) from the University of Colorado lecture demonstration manual, O638 Identification of Phenols. Molar masses computed with RDKit (138.12, 102.09, 180.16 g/mol). Melting points: aspirin 135 °C (Merck Index via PubChem CID 2244; DrugBank gives 138–140 °C), salicylic acid 158–159 °C (PubChem CID 338); acetic anhydride density 1.08 g/mL (CRC Handbook via PubChem CID 7918). pKa values: aspirin 3.49, salicylic acid 2.97 (carboxyl) and 13.6 (phenol) from PubChem; carbonic acid Ka 4.3 × 10⁻⁷ (pKa 6.4) from OpenStax Chemistry 2e, Appendix H. Aspirin's solubility of 1 g in 300 mL of water at 25 °C, 100 mL at 37 °C and 5 mL of ethanol (Merck Index) anchors Table 2; the 60 °C and mixed-solvent entries are the hypothetical lab's measurements.
+
+*Status:* reviewed
+
+### CP-085  ·  ★★★  ·  Skill 1 Knowledge
+
+In the acetylation step, the phenolic oxygen of salicylic acid attacks one carbonyl carbon of acetic anhydride to form a tetrahedral intermediate. The group expelled from that intermediate, and the reason acetic anhydride is used instead of acetic acid, are:
+
+- **A.** acetate ion; acetate is a weak base and a good leaving group, whereas acetic acid would have to expel hydroxide, or water after protonation in a slow equilibrium.
+- **B.** hydroxide ion; the second carbonyl of the anhydride stabilizes the departing hydroxide by resonance, which the single carbonyl of acetic acid cannot do.
+- **C.** methoxide ion; the anhydride's methyl groups are lost as methoxide, whereas acetic acid has no group that can leave as an alkoxide.
+- **D.** water; the phosphoric acid converts the anhydride into a protonated species that loses water, whereas acetic acid is already hydrated and cannot.
+
+**Answer: A**
+
+*Worked solution*
+
+- Acyl derivatives react by nucleophilic acyl substitution: the nucleophile adds to the carbonyl, and the tetrahedral intermediate collapses by expelling the group Z of RCO–Z. In an anhydride, Z is a carboxylate: the other half of the anhydride leaves as acetate (CH₃COO⁻), which is then protonated to the acetic acid by-product the passage mentions.
+- Leaving-group ability tracks base strength: the weaker the base, the better it leaves. Acetate (conjugate acid pKa about 4.8) is a weak base and leaves readily; hydroxide (conjugate acid water, pKa 15.7) is a strong base and does not. With the acid catalyst, acetic acid could instead lose water after protonation (Fischer esterification), but that is a slow equilibrium that must be driven by removing water, and phenols esterify poorly this way; so the acid is converted to the anhydride (or an acid chloride) first.
+- Reactivity order for the derivatives: acid chloride > anhydride > ester ≈ acid > amide; the anhydride sits above the ester it makes, so the reaction runs downhill.
+
+*Why the other choices are wrong*
+
+- **B.** Hydroxide is a strong base and a poor leaving group; nothing in the anhydride stabilizes it. The anhydride avoids expelling hydroxide altogether by expelling acetate instead. *(wrong formula: hydroxide named as the anhydride's leaving group)*
+- **C.** Acetic anhydride, (CH₃CO)₂O, has no methoxy group; it is two acetyl groups sharing one oxygen. *(out of scope: a methoxy group the anhydride does not contain)*
+- **D.** The catalyst protonates a carbonyl oxygen of the anhydride, making it more electrophilic; it does not create a species that loses water. Water is the leaving group only in the acid-catalysed esterification of the free acid, the slow equilibrium route the anhydride replaces. *(wrong formula: the leaving group of Fischer esterification attributed to the anhydride)*
+
+*Tags:* chem_phys · organic chemistry · FC5 5D · topics: 5D.acid-derivatives
+
+*Takeaway:* An anhydride acylates by expelling a carboxylate, a weak base and good leaving group; the free acid would have to expel hydroxide.
+
+*Sources*
+
+- OpenStax Organic Chemistry, 21.5 Chemistry of Acid Anhydrides (2023): in an anhydride the second acyl half acts as the leaving group during nucleophilic acyl substitution; aspirin is made by acetylating salicylic acid with acetic anhydride.
+- OpenStax Organic Chemistry, 21.2 Nucleophilic Acyl Substitution Reactions: reactivity order acid chloride > anhydride > ester > amide follows leaving-group basicity.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-086  ·  ★★★  ·  Skill 1 Knowledge
+
+The iron(III) chloride test gave a violet colour with salicylic acid but no colour with the purified product. The best explanation is that:
+
+- **A.** the carboxylic acid group of salicylic acid, which chelates Fe³⁺ together with the ring oxygen, has been converted to an ester in the product.
+- **B.** the phenolic hydroxyl of salicylic acid, which forms a coloured complex with Fe³⁺, has been converted to an ester in the product, so no free phenol remains.
+- **C.** the product is a stronger acid than salicylic acid and protonates the chloride ions, which prevents Fe³⁺ from forming any complex.
+- **D.** the product is insoluble in cold water, so almost none of it reaches the Fe³⁺ ions, whereas salicylic acid dissolves well enough to react.
+
+**Answer: B**
+
+*Worked solution*
+
+- Aqueous iron(III) chloride gives an intensely coloured complex with phenols (3 ArOH + FeCl₃ → Fe(OAr)₃ + 3 HCl), so the test detects a free phenolic OH. Salicylic acid has one; in aspirin that oxygen is acylated, O–C(=O)CH₃ (Figure 3), and an ester oxygen does not complex iron in this way.
+- The carboxylic acid is present in both compounds, so it cannot be what distinguishes them. The test therefore doubles as a purity check: residual salicylic acid in the product would give a violet colour, which is why the passage runs it on the purified aspirin.
+- Phenol acidity for context: a phenol has pKa about 10 (the phenoxide is resonance-stabilized into the ring), between an alcohol (about 16) and a carboxylic acid (about 3–5).
+
+*Why the other choices are wrong*
+
+- **A.** Both compounds carry the same carboxylic acid group (Figures 1 and 3); it is the phenol, not the acid, that acetylation removes. *(wrong formula: the acid group blamed for a test that detects phenols)*
+- **C.** Aspirin (pKa 3.5) is a weaker acid than salicylic acid (pKa 3.0), and neither protonates chloride; the absence of colour is about the missing phenol, not about chloride. *(reversed relationship: aspirin called the stronger acid, and an irrelevant mechanism)*
+- **D.** Salicylic acid is also only sparingly soluble in cold water, yet it gives the colour; the few milligrams that dissolve suffice, and the same is true of aspirin. *(true but irrelevant: solubility differences do not explain a negative phenol test)*
+
+*Tags:* chem_phys · organic chemistry · FC5 5D · topics: 5D.phenols-quinones
+
+*Takeaway:* FeCl₃ colours phenols; acetylating the phenolic OH of salicylic acid abolishes the test, so a negative result shows the aspirin is free of starting material.
+
+*Sources*
+
+- University of Colorado lecture demonstration manual, O638 Identification of Phenols, Ferric Chloride Test: compounds with a phenol group form a blue, violet, purple, green or red-brown colour with aqueous FeCl₃; aspirin serves as the control.
+- OpenStax Organic Chemistry, 17.2 Properties of Alcohols and Phenols (2023): phenol pKa 9.89 against 16 for ethanol; the phenoxide charge is delocalized into the ring.
+- PubChem CID 2244 and CID 338: pKa 3.49 (aspirin) and 2.97 (salicylic acid, carboxyl).
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-087  ·  ★★★★  ·  Skill 2 Reasoning
+
+Based on Table 2 and the passage, the best solvent for recrystallizing about 7.5 g of the crude aspirin is:
+
+- **A.** ethanol
+- **B.** hexane
+- **C.** water
+- **D.** ethanol–water
+
+**Answer: D**
+
+*Worked solution*
+
+- A recrystallization solvent must dissolve the compound well when hot and poorly when cold, so that most of it comes back out as crystals on cooling while the impurities stay in solution; and it must not react with the compound.
+- Ethanol–water (1:3 by volume): 10 g per 100 mL at 60 °C against 0.5 g at 20 °C, a twentyfold drop. About 75 mL of hot solvent dissolves the 7.5 g, and on cooling only about 0.4 g stays dissolved, so roughly 95% is recovered.
+- Each of the others fails one criterion. Ethanol dissolves 20 g per 100 mL even at 20 °C, a hot-to-cold ratio of only about 3: the 12 mL of hot ethanol that dissolves the sample still holds about 2.3 g when cold, so nearly a third of the product is lost, and any extra solvent loses more. Hexane dissolves almost nothing even hot (0.2 g per 100 mL would need nearly 4 L). Water dissolves only 1.5 g per 100 mL at 60 °C, so about 500 mL would be needed, and the passage warns that aspirin hydrolyses in hot water, so neither a larger volume nor a higher temperature is acceptable.
+
+*Why the other choices are wrong*
+
+- **A.** Ethanol is too good a cold solvent: 20 g per 100 mL at 20 °C, a hot-to-cold ratio of only about 3, so a large part of the product stays in solution on cooling. *(reversed relationship: a solvent chosen for high solubility, ignoring the cold solubility)*
+- **B.** Hexane is too poor a solvent at both temperatures; the compound never dissolves, so it cannot be purified by crystallization from it. *(too extreme: insoluble at both temperatures)*
+- **C.** Water needs an impractical volume at 60 °C and would need to be hotter to do better, which the passage rules out because the ester hydrolyses in hot water. *(outside knowledge contradicting the passage: hotter water would hydrolyse the ester, and the volume is impractical)*
+
+*Tags:* chem_phys · organic chemistry · FC5 5C · topics: 5C.extraction-distillation
+
+*Takeaway:* Choose a recrystallization solvent with a large hot-to-cold solubility difference that leaves the compound intact; a mixed solvent often gives it.
+
+*Sources*
+
+- Chemistry LibreTexts, Organic Chemistry Lab Techniques (Nichols), 3.3 Choice of Solvent: the compound should be soluble in the hot solvent and as insoluble as possible in the cold solvent; mixed solvents when no single solvent fits.
+- OpenStax Organic Chemistry, 21.6 Chemistry of Esters (2023): esters are hydrolysed by aqueous acid or base through a tetrahedral intermediate.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-088  ·  ★★★  ·  Skill 2 Reasoning
+
+Why did shaking the ether solution with aqueous sodium bicarbonate move the aspirin into the aqueous layer, with gas evolution, while leaving neutral impurities in the ether?
+
+- **A.** Bicarbonate (the conjugate base of carbonic acid, pKa 6.4) deprotonates the carboxylic acid (pKa 3.5) almost completely; the carboxylate salt is ionic and water-soluble, and the carbonic acid formed decomposes to CO₂ and water.
+- **B.** Bicarbonate deprotonates both the carboxylic acid and the ester's acetyl group, giving a doubly charged anion that is far more water-soluble than the neutral impurities.
+- **C.** Bicarbonate hydrolyses the ester to salicylate and acetate during the extraction, and it is these smaller ions that dissolve in water and release CO₂.
+- **D.** Aspirin is intrinsically more soluble in water than in ether, so it partitions into the aqueous layer whatever the pH; the bicarbonate serves only to neutralize the phosphoric acid catalyst carried over from the synthesis.
+
+**Answer: A**
+
+*Worked solution*
+
+- An acid–base extraction sorts compounds by converting the acidic one into a salt. The equilibrium RCOOH + HCO₃⁻ ⇌ RCOO⁻ + H₂CO₃ lies to the right by about 10^(6.4 − 3.5) = 10^2.9, nearly a thousand to one, because the carboxylic acid (pKa 3.5) is a much stronger acid than carbonic acid (pKa 6.4). The carboxylate is ionic, so it dissolves in water and not in ether.
+- The carbonic acid formed decomposes to CO₂ and water, which is the gas the passage mentions; bubbling is the sign that an acid strong enough to protonate bicarbonate is present. Neutral impurities have no proton to give up, so they stay in the ether.
+- Acidifying the aqueous layer with HCl reverses the equilibrium and precipitates the neutral acid, which is how the product was recovered.
+
+*Why the other choices are wrong*
+
+- **B.** An ester has no acidic proton that bicarbonate can remove; the acetyl CH₃ protons have pKa about 25 and are untouched by a base as weak as bicarbonate. *(wrong formula: a non-acidic group treated as a second acidic site)*
+- **C.** Ester hydrolysis by a weak base in a brief cold extraction is negligible; the product later melts at the literature value for aspirin, so the ester survived. The gas is from protonation of bicarbonate, not from hydrolysis. *(too extreme: hydrolysis invoked where a simple proton transfer explains the observation)*
+- **D.** Neutral aspirin is poorly soluble in water (Table 2: 0.3 g per 100 mL at 20 °C) and dissolves well in ether; it moves into water only as its carboxylate salt. *(outside knowledge contradicting the passage: Table 2 shows aspirin is poorly soluble in water)*
+
+*Tags:* chem_phys · organic chemistry · FC5 5D · topics: 5D.carboxylic-acids, 5A.acids-bases
+
+*Takeaway:* A base whose conjugate acid has a higher pKa than the acid being extracted converts it to a water-soluble salt; bicarbonate takes carboxylic acids (with CO₂ evolution) but not phenols or esters.
+
+*Sources*
+
+- Chemistry LibreTexts, Organic Chemistry Lab Techniques (Nichols), 4 Extraction: washing an organic layer with aqueous bicarbonate removes carboxylic acids as their salts, with CO₂ evolution; hydroxide is needed for phenols.
+- OpenStax Chemistry 2e, Appendix H (2019): carbonic acid Ka 4.3 × 10⁻⁷ (pKa 6.4); PubChem CID 2244: aspirin pKa 3.49.
+- OpenStax Organic Chemistry, 20.2 Structure and Properties of Carboxylic Acids (2023): carboxylic acids dissolve in aqueous bicarbonate as their salts.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-089  ·  ★★★★  ·  Skill 2 Reasoning
+
+Salicylic acid and acetic anhydride react in a 1 : 1 mole ratio to give aspirin and acetic acid. Using Table 1, the percent yield of purified aspirin is closest to:
+
+- **A.** 40%
+- **B.** 71%
+- **C.** 80%
+- **D.** 104%
+
+**Answer: C**
+
+*Worked solution*
+
+- Moles of each reactant: salicylic acid 6.90 g / 138 g/mol = 0.0500 mol; acetic anhydride 10.2 g / 102 g/mol = 0.100 mol. The reaction needs them 1 : 1, so salicylic acid runs out first and is the limiting reactant; the anhydride is in twofold excess.
+- Theoretical yield = 0.0500 mol × 180 g/mol = 9.00 g of aspirin. Percent yield = actual/theoretical × 100 = 7.20/9.00 × 100 = 80%.
+- Mental route: 7.20/9.00 = 0.80 because 9 × 0.8 = 7.2.
+
+*Why the other choices are wrong*
+
+- **A.** 40% uses acetic anhydride as the limiting reactant (0.100 mol × 180 g/mol = 18.0 g theoretical); the anhydride is in excess, as the passage says, and salicylic acid limits. *(wrong formula: the excess reactant taken as limiting)*
+- **B.** 71% divides the product mass by the anhydride mass (7.20/10.2); yields are compared through moles of the limiting reactant converted to product mass, not by masses of different compounds. *(wrong formula: a mass ratio of two different compounds used as a yield)*
+- **D.** 104% divides the product mass by the mass of salicylic acid (7.20/6.90); a yield above 100% signals that the theoretical yield was never computed. Aspirin is heavier than salicylic acid by the acetyl group, so 0.0500 mol of it weighs 9.00 g, not 6.90 g. *(wrong formula: product mass compared with reactant mass without stoichiometry)*
+
+*Tags:* chem_phys · general chemistry · FC4 4E · topics: 4E.chemical-equations
+
+*Takeaway:* Find the limiting reactant by moles per coefficient, convert it to product mass for the theoretical yield, then divide the actual mass by it.
+
+*Sources*
+
+- OpenStax Chemistry 2e, 4.4 Reaction Yields (2019): limiting reactant, theoretical yield, percent yield = actual/theoretical × 100%.
+- Molar masses (RDKit, from the structures in Figures 1–3): salicylic acid 138.12, acetic anhydride 102.09, aspirin 180.16 g/mol.
+
+*Status:* reviewed · rev 1
+
+---
+
+## Passage CP-P16: Gas exchange at depth
+
+At the surface a diver is under 1 atm. Each 10 m of seawater adds about 1 atm more (the approximation used throughout this passage), and a regulator delivers breathing gas at the ambient pressure, so the gas in the lungs is at the same pressure as the surrounding water. By Dalton's law each gas in the mixture contributes its mole fraction of the total pressure, and by Henry's law the amount of a gas dissolved in blood and tissue at equilibrium is proportional to its partial pressure. Air is treated here as 21% O₂ and 79% N₂. Table 1 gives the pressures for a diver breathing air. Table 2 gives the inspired PO₂ of dry air and the alveolar PO₂ calculated from the alveolar gas equation, PAO₂ = FO₂(P − 47 mmHg) − PaCO₂/R, with the arterial PCO₂ held at 40 mmHg, the respiratory exchange ratio R at 0.8 and the water vapour pressure at body temperature at 47 mmHg; 1 atm = 760 mmHg.
+
+Nitrogen dissolves slowly into fatty tissue at depth and leaves it slowly on ascent. If the ambient pressure falls faster than the tissues can unload nitrogen through the lungs, the dissolved gas comes out of solution as bubbles, producing joint pain and other symptoms of decompression sickness; the standard treatment is recompression in a chamber followed by slow decompression. Nitrogen at high partial pressure is also narcotic: judgement becomes impaired in many divers breathing air from about 30 m. Helium is not narcotic, so deep dives use heliox, a helium–oxygen mixture. A separate hazard is a breath-hold ascent: the gas in the lungs expands as the pressure falls, and if the airway is closed the lungs can tear.
+
+In a hypothetical observational study, four recreational dives were logged. Diver 1 breathed air at 30 m for 40 minutes, ascended at 18 m/min without a stop, and an hour later developed pain in both shoulders that resolved during recompression. Diver 2 breathed air at 30 m for 15 minutes and ascended at the same rate without a stop, and had no symptoms. Diver 3 breathed heliox (21% O₂, 79% He) at 40 m and reported none of the euphoria and slowed thinking that Diver 1 had noticed at 30 m. Diver 4 took a breath from a regulator at 10 m, held it and swam to the surface, and surfaced with chest pain.
+
+**Table 1. Total pressure P and the partial pressures of O₂ and N₂, all in atm, for a diver breathing air (21% O₂, 79% N₂).**
+
+| Depth (m) | P (atm) | PO₂ | PN₂ |
+|---|---|---|---|
+| 0 | 1.0 | 0.21 | 0.79 |
+| 10 | 2.0 | 0.42 | 1.58 |
+| 20 | 3.0 | 0.63 | 2.37 |
+| 30 | 4.0 | 0.84 | 3.16 |
+| 40 | 5.0 | 1.05 | 3.95 |
+
+*Alt text:* Table with five rows: depth in metres, total pressure, oxygen partial pressure and nitrogen partial pressure in atmospheres. 0 m: total 1.0, PO₂ 0.21, PN₂ 0.79; 10 m: total 2.0, PO₂ 0.42, PN₂ 1.58; 20 m: total 3.0, PO₂ 0.63, PN₂ 2.37; 30 m: total 4.0, PO₂ 0.84, PN₂ 3.16; 40 m: total 5.0, PO₂ 1.05, PN₂ 3.95.
+
+**Table 2. Inspired PO₂ of dry air and calculated alveolar PO₂ (mmHg) at each depth, with PaCO₂ = 40 mmHg, R = 0.8 and water vapour 47 mmHg.**
+
+| Depth (m) | Inspired | Alveolar |
+|---|---|---|
+| 0 | 160 | 100 |
+| 10 | 319 | 259 |
+| 20 | 479 | 419 |
+| 30 | 638 | 579 |
+| 40 | 798 | 738 |
+
+*Alt text:* Table with five rows: depth in metres, inspired oxygen partial pressure and alveolar oxygen partial pressure in mmHg. 0 m: inspired 160, alveolar 100; 10 m: inspired 319, alveolar 259; 20 m: inspired 479, alveolar 419; 30 m: inspired 638, alveolar 579; 40 m: inspired 798, alveolar 738.
+
+*Source:* Hypothetical dive log written for this app. Dalton's law and partial pressure as mole fraction times total pressure from OpenStax Chemistry 2e, 9.3 Stoichiometry of Gaseous Substances, Mixtures, and Reactions (2019); Boyle's law, Amontons's law, STP (273.15 K, 1 atm) and the 22.4 L molar volume, and the diving statement that every 33 feet of seawater adds 1 atm, from OpenStax Chemistry 2e, 9.2 The Ideal Gas Law; Henry's law (C = kP), the pressure rising by about 1 atm per 10 m, and decompression sickness from gases coming out of solution on a fast ascent from OpenStax Chemistry 2e, 11.3 Solubility. Pressure with depth, P = ρgh, and 10.3 m of fresh water equalling 1 atm from OpenStax College Physics 2e, 11.4 Variation of Pressure with Depth in a Fluid (the passage's 10 m per atm is the rounded seawater figure). Atmospheric and alveolar partial pressures at sea level (O₂ 159 and 104 mmHg, water vapour 47 mmHg, CO₂ 40 mmHg) from OpenStax Anatomy and Physiology 2e, 22.4 Gas Exchange; the alveolar gas equation with R = 0.8 and its sea-level result of about 100 mmHg from StatPearls, Alveolar Gas Equation (statpearls.com). Nitrogen narcosis beginning at about 30 m on air, and helium (heliox) being non-narcotic, from StatPearls, Nitrogen Narcosis (statpearls.com point-of-care 930). Table values: PO₂ = 0.21 × total, PN₂ = 0.79 × total; PAO₂ = 0.21 × (760n − 47) − 50 mmHg for n atm, rounded to whole mmHg.
+
+*Status:* reviewed
+
+### CP-090  ·  ★★★  ·  Skill 2 Reasoning
+
+A diver at 30 m breathes an enriched-air mixture of 32% O₂ and 68% N₂ instead of air. The partial pressure of oxygen in the gas delivered by the regulator is closest to:
+
+- **A.** 0.84 atm
+- **B.** 0.96 atm
+- **C.** 1.28 atm
+- **D.** 1.60 atm
+
+**Answer: C**
+
+*Worked solution*
+
+- Passage: the regulator delivers gas "at the ambient pressure," and "each gas in the mixture contributes its mole fraction of the total pressure." At 30 m the total pressure is 1 atm + 3 atm = 4.0 atm (Table 1).
+- PO₂ = X(O₂) × P = 0.32 × 4.0 atm = 1.28 atm.
+- Compare air at the same depth: 0.21 × 4.0 = 0.84 atm (Table 1). The enriched mixture raises PO₂ by 0.44 atm, which is why such mixtures have a depth limit set by oxygen toxicity.
+
+*Why the other choices are wrong*
+
+- **A.** 0.84 atm is the PO₂ for air (21%) at 30 m, read from Table 1; the question specifies a 32% mixture. *(misread graph: the air value taken from Table 1)*
+- **B.** 0.96 atm multiplies 0.32 by the 3 atm of water pressure alone, forgetting the 1 atm of air above the sea; partial pressures use the absolute total pressure. *(wrong formula: gauge pressure used instead of absolute pressure)*
+- **D.** 1.60 atm uses 5.0 atm, the total pressure at 40 m, not 30 m. *(misread graph: the wrong depth row)*
+
+*Tags:* chem_phys · general chemistry · FC4 4B · topics: 4B.partial-pressure
+
+*Takeaway:* Partial pressure is mole fraction times absolute total pressure; at 30 m (4 atm) a 32% mixture gives 1.28 atm of O₂.
+
+*Sources*
+
+- OpenStax Chemistry 2e, 9.3 Stoichiometry of Gaseous Substances, Mixtures, and Reactions (2019): P_A = X_A × P_total.
+- OpenStax Chemistry 2e, 9.2 The Ideal Gas Law: every 33 feet of seawater adds 1 atm; at 33 feet the pressure is 2 ATA.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-091  ·  ★★★★  ·  Skill 2 Reasoning
+
+At 30 m a diver fills the lungs with 6.0 L of air from the regulator, then holds that breath while rising to 10 m. Treating the gas as ideal at constant temperature and the chest as free to expand, the volume the lung gas would occupy at 10 m is:
+
+- **A.** 3.0 L
+- **B.** 12 L
+- **C.** 18 L
+- **D.** 24 L
+
+**Answer: B**
+
+*Worked solution*
+
+- Boyle's law at constant n and T: P₁V₁ = P₂V₂. The pressures must be absolute: 4.0 atm at 30 m and 2.0 atm at 10 m (Table 1).
+- V₂ = V₁ × P₁/P₂ = 6.0 L × 4.0/2.0 = 12 L, double the starting volume although the diver is still 10 m down. This is the breath-hold hazard the passage describes for Diver 4: the lungs cannot hold twice their volume, so gas must be exhaled continuously during ascent.
+- Mental check: halving the absolute pressure doubles the volume.
+
+*Why the other choices are wrong*
+
+- **A.** 3.0 L inverts the ratio (P₂/P₁); rising lowers the pressure, so the gas expands rather than contracts. *(reversed relationship: pressure ratio inverted)*
+- **C.** 18 L uses the gauge pressures 3.0 and 1.0 atm (the water pressure alone); Boyle's law needs absolute pressures, which include the atmosphere above the sea. *(wrong formula: gauge pressures used in Boyle's law)*
+- **D.** 24 L is the volume at the surface (4.0/1.0), not at 10 m. *(misread graph: the surface row used instead of 10 m)*
+
+*Tags:* chem_phys · general chemistry · FC4 4B · topics: 4B.ideal-gas
+
+*Takeaway:* Boyle's law uses absolute pressures: from 4 atm to 2 atm a held breath doubles in volume, long before the diver reaches the surface.
+
+*Sources*
+
+- OpenStax Chemistry 2e, 9.2 Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law (2019): P₁V₁ = P₂V₂ at constant n and T; at 33 feet the pressure is 2 ATA and air is compressed to half its volume.
+- OpenStax College Physics 2e, 11.4 Variation of Pressure with Depth in a Fluid (2022): total pressure at depth is the fluid's pressure plus atmospheric pressure.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-092  ·  ★★  ·  Skill 1 Knowledge
+
+The air in a diver's full tank would occupy about 2,400 L if released at STP (0 °C and 1 atm). The amount of gas in the tank is closest to:
+
+- **A.** 1.1 mol
+- **B.** 11 mol
+- **C.** 110 mol
+- **D.** 1,100 mol
+
+**Answer: C**
+
+*Worked solution*
+
+- At STP one mole of an ideal gas occupies 22.4 L (from PV = nRT with T = 273 K and P = 1 atm).
+- n = 2,400 L / 22.4 L/mol ≈ 2,400/22 ≈ 107 mol, closest to 110 mol.
+- Mental route: 22.4 × 100 = 2,240, and the remaining 160 L is about 7 more moles.
+
+*Why the other choices are wrong*
+
+- **A.** 1.1 mol would correspond to about 25 L of gas at STP, a hundredth of the tank's contents. *(sign or unit error: a factor of 100)*
+- **B.** 11 mol would be about 250 L at STP; this divides by 224 instead of 22.4. *(sign or unit error: a factor of 10)*
+- **D.** 1,100 mol would be 25,000 L at STP, ten times the stated volume; this divides by 2.24. *(sign or unit error: a factor of 10 the other way)*
+
+*Tags:* chem_phys · general chemistry · FC4 4B · topics: 4B.temperature-pressure
+
+*Takeaway:* At STP (273 K, 1 atm) a mole of ideal gas fills 22.4 L; divide a gas volume at STP by 22.4 to get moles.
+
+*Sources*
+
+- OpenStax Chemistry 2e, 9.2 Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law (2019): STP is 273.15 K and 1 atm, where one mole of an ideal gas occupies about 22.4 L.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-093  ·  ★★★  ·  Skill 3 Research design
+
+The investigators attribute Diver 1's shoulder pain to nitrogen that dissolved in the tissues at depth (Henry's law) and came out of solution during the fast ascent, rather than to the fall in ambient pressure acting on the body directly. Which observation in the passage most strongly supports the dissolved-nitrogen explanation over the direct-pressure explanation?
+
+- **A.** Diver 2, who made the same ascent from the same depth after a shorter bottom time, had no symptoms.
+- **B.** Diver 3, who breathed heliox rather than air and went deeper, to 40 m, had none of the narcosis that Diver 1 noticed.
+- **C.** Diver 1's symptoms resolved when the ambient pressure was raised again during recompression in a chamber.
+- **D.** Diver 4, who held a breath while ascending from 10 m, surfaced with chest pain rather than joint pain.
+
+**Answer: A**
+
+*Worked solution*
+
+- The two explanations differ in what they predict for time at depth. The direct-pressure explanation depends only on the pressure change, which was identical for Divers 1 and 2 (4 atm to 1 atm at the same rate). The dissolved-gas explanation depends on how much nitrogen had entered the tissues, which, as the passage says, "dissolves slowly into fatty tissue at depth," so a 40-minute dive loads far more nitrogen than a 15-minute dive.
+- Diver 2 is therefore the control that holds pressure change constant and varies only the nitrogen load; the absence of symptoms after the short dive is what the dissolved-gas explanation predicts and the direct-pressure explanation does not.
+- Henry's law sets the equilibrium amount dissolved (proportional to PN₂, 3.16 atm at 30 m against 0.79 atm at the surface, Table 1); the bottom time sets how close to that equilibrium the tissues get.
+
+*Why the other choices are wrong*
+
+- **B.** Diver 3's dive tests narcosis, a different effect, and changes two things at once (the gas and the depth); helium also dissolves in tissue, so a heliox dive does not separate dissolved gas from pressure change. *(out of scope: a confounded comparison in which gas and depth both changed, and a different symptom)*
+- **C.** Recompression is consistent with both explanations: it reverses the pressure change and it also redissolves bubbles, so it cannot distinguish them. *(true but irrelevant: consistent with both explanations)*
+- **D.** Diver 4's chest pain is lung over-expansion from a held breath (Boyle's law), a different mechanism that says nothing about dissolved nitrogen. *(out of scope: a different mechanism (Boyle's law) from a different diver)*
+
+*Tags:* chem_phys · general chemistry · FC5 5A · topics: 5A.solubility, 4B.partial-pressure
+
+*Takeaway:* To support a dissolved-gas (Henry's law) cause over a pressure-change cause, find the comparison that holds the pressure change constant and varies the gas load.
+
+*Sources*
+
+- OpenStax Chemistry 2e, 11.3 Solubility (2019): Henry's law C = kP; on a fast ascent gases escaping from the diver's blood may form bubbles, causing joint pain and worse; slow ascents and decompression stops prevent it.
+- OpenStax Biology 2e, 1.1 The Science of Biology (2018): a controlled experiment varies one factor and holds the others constant.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-094  ·  ★★★★  ·  Skill 4 Data and statistics
+
+In Table 2 the alveolar PO₂ is about 60 mmHg below the inspired PO₂ at every depth, even though the inspired PO₂ rises fivefold. The best explanation for a difference that stays constant is that:
+
+- **A.** the lungs extract a fixed fraction of the inspired oxygen at every depth, so the amount removed from the alveolar gas scales with the inspired value.
+- **B.** the water vapour added in the airways and the CO₂ added from the blood, the two terms subtracted from the inspired PO₂, are set by body physiology, not by ambient pressure.
+- **C.** nitrogen displaces a growing share of oxygen from the alveolar gas as its own partial pressure rises with depth, because it is the more abundant of the two gases.
+- **D.** haemoglobin is fully saturated once the alveolar PO₂ exceeds about 100 mmHg, so any oxygen supplied beyond that is left behind in the alveolar gas.
+
+**Answer: B**
+
+*Worked solution*
+
+- The alveolar gas equation in the passage subtracts two terms from the dry inspired PO₂: FO₂ × 47 mmHg for the water vapour that humidifies the gas (0.21 × 47 ≈ 10 mmHg) and PaCO₂/R for the CO₂ that enters the alveoli from the blood (40/0.8 = 50 mmHg). Together they are about 60 mmHg.
+- Water vapour pressure depends only on temperature (47 mmHg at 37 °C), and the CO₂ term depends on the arterial PCO₂ the body regulates and on the metabolic exchange ratio. None of these scales with ambient pressure, so the gap is the same 60 mmHg at the surface (160 to 100) and at 40 m (798 to 738).
+- Check with the table: 319 − 259 = 60; 638 − 579 = 59; the small variation is rounding.
+
+*Why the other choices are wrong*
+
+- **A.** A fixed fraction removed would make the gap grow in proportion to the inspired PO₂ (about 60 mmHg at the surface would become 300 mmHg at 40 m); the table shows it does not. *(wrong formula: a proportional loss assumed where the table shows a constant one)*
+- **C.** Nitrogen's partial pressure rises in the same proportion as oxygen's (Table 1), so it does not take a growing share; mole fractions in the inspired gas are fixed. *(reversed relationship: fixed mole fractions treated as changing with depth)*
+- **D.** Oxygen that saturates haemoglobin is not returned to the gas, and the alveolar PO₂ in the table keeps rising far above 100 mmHg, so no ceiling is operating. *(out of scope: haemoglobin saturation does not set alveolar PO₂)*
+
+*Tags:* chem_phys · biology · FC4 4B · topics: 4B.partial-pressure
+
+*Takeaway:* Alveolar PO₂ is inspired PO₂ minus a roughly constant 60 mmHg from water vapour and CO₂, terms fixed by physiology rather than by ambient pressure.
+
+*Sources*
+
+- StatPearls, Alveolar Gas Equation (statpearls.com): PAO₂ = FiO₂ × (Patm − 47) − PaCO₂/R, giving about 100 mmHg at sea level with R = 0.8.
+- OpenStax Anatomy and Physiology 2e, 22.4 Gas Exchange (2022): alveolar air contains 47 mmHg of water vapour and 40 mmHg of CO₂, with PO₂ 104 mmHg against 159 mmHg in atmospheric air.
+
+*Status:* reviewed · rev 1
+
+---
+
+## Standalone questions
+
+### CP-095  ·  ★★★  ·  Skill 2 Reasoning
+
+During a tilt-table test an 80 kg patient lies on the table, which is raised to an angle θ with sin θ = 0.60 and cos θ = 0.80. Ignoring the safety straps, the minimum coefficient of static friction between the patient and the table surface that will keep the patient from sliding is:
+
+- **A.** 0.60
+- **B.** 0.75
+- **C.** 0.80
+- **D.** 1.33
+
+**Answer: B**
+
+*Worked solution*
+
+- Resolve the weight along and perpendicular to the incline. Along it, gravity pulls with mg sin θ; perpendicular to it, the normal force is N = mg cos θ. Static friction can supply at most μ_s N = μ_s mg cos θ.
+- The patient stays put when μ_s mg cos θ ≥ mg sin θ, so μ_s ≥ sin θ / cos θ = tan θ = 0.60/0.80 = 0.75. The mass cancels: an 80 kg and a 50 kg patient need the same coefficient.
+- Below this angle static friction adjusts to whatever is needed (it is not μ_s N until sliding is about to begin); above it the patient slides.
+
+*Why the other choices are wrong*
+
+- **A.** 0.60 is sin θ, the fraction of the weight acting along the incline; it would be the answer only if the normal force equalled the full weight, but the normal force is mg cos θ. *(wrong formula: N taken as mg instead of mg cos θ)*
+- **C.** 0.80 is cos θ, the fraction of the weight pressing into the table, not the ratio of the two components. *(wrong formula: cos θ reported instead of tan θ)*
+- **D.** 1.33 is cos θ / sin θ, the inverted ratio; the coefficient needed is the down-slope component over the normal component, tan θ. *(reversed relationship: the ratio inverted)*
+
+*Tags:* chem_phys · physics · FC4 4A · topics: 4A.friction
+
+*Takeaway:* On an incline, static friction holds an object as long as μ_s ≥ tan θ, independent of the mass.
+
+*Sources*
+
+- OpenStax College Physics 2e, 5.1 Friction (2022): f_s ≤ μ_s N; on an incline N = mg cos θ and the down-slope component is mg sin θ, so an object slides when tan θ exceeds the coefficient.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-096  ·  ★★  ·  Skill 1 Knowledge
+
+An enzyme assay is repeated with twice the enzyme concentration, with substrate, buffer and temperature unchanged. Compared with the first assay, the second will show:
+
+- **A.** double the Vmax and double the Km.
+- **B.** the same Vmax and half the Km.
+- **C.** the same Vmax and the same Km, because both are constants of the enzyme.
+- **D.** double the Vmax and the same Km.
+
+**Answer: D**
+
+*Worked solution*
+
+- Vmax = kcat × [E]total: the maximum rate is reached when every enzyme molecule is saturated with substrate, so it is proportional to the amount of enzyme present. Doubling the enzyme doubles Vmax.
+- Km is the substrate concentration at which the rate is half of Vmax; it reflects how the enzyme binds its substrate and does not depend on how much enzyme is present. With twice the enzyme the whole curve is twice as high, but half-maximal rate is still reached at the same [S].
+- The constant of the enzyme itself is kcat (Vmax per enzyme molecule), not Vmax.
+
+*Why the other choices are wrong*
+
+- **A.** Km is a property of the enzyme–substrate pair, not of the enzyme concentration; it stays the same. *(wrong formula: Km treated as scaling with enzyme concentration)*
+- **B.** Vmax rises in proportion to the enzyme, and Km does not change; this reverses both effects. *(reversed relationship: the effects on Vmax and Km swapped)*
+- **C.** kcat and Km are constants of the enzyme under given conditions; Vmax is not, because it contains [E]total. *(wrong formula: Vmax mistaken for an enzyme constant (kcat))*
+
+*Tags:* chem_phys · biochemistry · FC5 5E · topics: 5E.enzyme-kinetics
+
+*Takeaway:* Vmax is proportional to the enzyme concentration (Vmax = kcat[E]); Km is independent of it.
+
+*Sources*
+
+- Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 4.1 Basic Principles of Catalysis: Vmax depends on the amount of enzyme used, doubling the enzyme doubles Vmax; kcat = Vmax/[E] is a constant for an enzyme; Km is the substrate concentration giving Vmax/2.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-097  ·  ★★★  ·  Skill 1 Knowledge
+
+Isoleucine, 2-amino-3-methylpentanoic acid, has stereocentres at C2 and C3. The protein amino acid is L-isoleucine, (2S,3S). How many stereoisomers of isoleucine exist, and how are the others related to L-isoleucine?
+
+- **A.** Two: the other is its enantiomer, and there are no diastereomers.
+- **B.** Three: one is its enantiomer, and the third is an achiral meso form.
+- **C.** Four: one is its enantiomer and the other two are its diastereomers.
+- **D.** Four: all three are its enantiomers, since each differs from it at one or both stereocentres.
+
+**Answer: C**
+
+*Worked solution*
+
+- A molecule with n stereocentres has up to 2ⁿ stereoisomers; with two, 2² = 4: (2S,3S), (2R,3R), (2S,3R) and (2R,3S).
+- The enantiomer of (2S,3S) is the molecule with both centres inverted, (2R,3R), D-isoleucine. The two with only one centre inverted, (2S,3R) and (2R,3S), are not mirror images of L-isoleucine, so they are its diastereomers (called the alloisoleucines) and have different physical properties.
+- No meso form is possible: C2 carries an amino group and C3 a methyl and an ethyl, so the two stereocentres have different substituents and the molecule has no internal mirror plane.
+
+*Why the other choices are wrong*
+
+- **A.** Two stereoisomers would follow from a single stereocentre; isoleucine has two, and inverting just one of them gives a new compound. *(wrong formula: one stereocentre counted instead of two)*
+- **B.** A meso form requires two identically substituted stereocentres related by an internal mirror plane; C2 and C3 of isoleucine carry different groups, so no meso isomer exists. *(wrong formula: a meso form assumed for non-equivalent stereocentres)*
+- **D.** A molecule has exactly one enantiomer, the isomer with every stereocentre inverted; isomers that differ at only some centres are diastereomers. *(reversed relationship: diastereomers called enantiomers)*
+
+*Tags:* chem_phys · organic chemistry · FC5 5B · topics: 5B.isomers, 5D.amino-acids
+
+*Takeaway:* Two different stereocentres give four stereoisomers: one enantiomer (all centres inverted) and two diastereomers (some centres inverted).
+
+*Sources*
+
+- OpenStax Organic Chemistry, 5.6 Diastereomers (2023): a molecule with n chirality centres can have up to 2ⁿ stereoisomers; with two centres, the pairs that differ at both are enantiomers and those that differ at one are diastereomers.
+- OpenStax Organic Chemistry, 26.1 Structures of Amino Acids: threonine and isoleucine have two chirality centres (Table 26.1); stereocentres and the stereoisomer count confirmed with RDKit (CC[C@H](C)[C@H](N)C(=O)O, 4 distinct stereoisomers).
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-098  ·  ★★  ·  Skill 1 Knowledge
+
+In double-stranded DNA each base pair contains one purine (a fused six- and five-membered aromatic ring system) and one pyrimidine (a single six-membered ring), which keeps the width of the helix constant. Which of the following is a purine–pyrimidine pair that is also a Watson–Crick base pair?
+
+- **A.** guanine–cytosine
+- **B.** adenine–guanine
+- **C.** cytosine–thymine
+- **D.** adenine–cytosine
+
+**Answer: A**
+
+*Worked solution*
+
+- Purines are adenine and guanine (two fused rings); pyrimidines are cytosine, thymine and uracil (one ring). Watson–Crick pairing is A with T (two hydrogen bonds) and G with C (three).
+- Guanine (purine) with cytosine (pyrimidine) satisfies both conditions.
+- Mnemonic: the pyrimidines have the letter y in their names (cytosine, thymine, uracil); the purines are the other two.
+
+*Why the other choices are wrong*
+
+- **B.** Adenine and guanine are both purines; two fused-ring bases would be too wide for the helix, and they do not pair in DNA. *(wrong formula: two purines)*
+- **C.** Cytosine and thymine are both pyrimidines; two single-ring bases would be too narrow, and they do not pair. *(wrong formula: two pyrimidines)*
+- **D.** Adenine is a purine and cytosine a pyrimidine, so the pair has the right width, but their hydrogen-bonding groups do not match: adenine pairs with thymine (or uracil in RNA), not cytosine. *(true but irrelevant: right ring sizes, wrong hydrogen-bonding partner)*
+
+*Tags:* chem_phys · biochemistry · FC5 5D · topics: 5D.aromatic-heterocycles, 5D.nucleotides-nucleic-acids
+
+*Takeaway:* Purines (A, G) are bicyclic and pyrimidines (C, T, U) monocyclic; DNA pairs a purine with a pyrimidine, G with C and A with T.
+
+*Sources*
+
+- OpenStax Biology 2e, 3.5 Nucleic Acids (2018): adenine and guanine are purines with two carbon–nitrogen rings; cytosine, thymine and uracil are pyrimidines with one ring; A pairs with T and G with C, a purine always with a pyrimidine.
+- Ring counts confirmed with RDKit: guanine 2 rings, cytosine 1 ring.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-099  ·  ★★★  ·  Skill 1 Knowledge
+
+A student wants to measure both the current passing through a gel in an electrophoresis tank and the voltage across its electrodes while the power supply runs. The meters should be connected as follows:
+
+- **A.** the ammeter in parallel with the gel and the voltmeter in series with it, each with a resistance comparable to the gel's.
+- **B.** both meters in series with the gel, each with a very low resistance so that neither changes the current.
+- **C.** the ammeter in series with the gel, with a very high resistance, and the voltmeter in parallel across the electrodes, with a very low resistance.
+- **D.** the ammeter in series with the gel, with a very low resistance, and the voltmeter in parallel across the electrodes, with a very high resistance.
+
+**Answer: D**
+
+*Worked solution*
+
+- An ammeter measures the current through an element, so the same current must flow through the meter: it goes in series. To leave that current unchanged its own resistance must be negligible compared with the gel's.
+- A voltmeter measures the potential difference across an element, so it is placed in parallel with it (both ends of the meter at the two electrodes). To draw almost no current of its own, and so not alter the circuit, its resistance must be very high.
+- Ideal values: zero for the ammeter, infinite for the voltmeter.
+
+*Why the other choices are wrong*
+
+- **A.** This reverses both connections: a voltmeter in series would nearly stop the current, and an ammeter in parallel would short-circuit the gel. *(reversed relationship: series and parallel swapped)*
+- **B.** A voltmeter in series carries the whole current and, if low in resistance, measures nothing useful; it must sit across the element, not in line with it. *(wrong formula: a voltmeter placed in series)*
+- **C.** The resistances are swapped: a high-resistance ammeter would reduce the current it is meant to measure, and a low-resistance voltmeter would divert current around the gel. *(reversed relationship: the ideal resistances swapped)*
+
+*Tags:* chem_phys · physics · FC4 4C · topics: 4C.conductivity-meters
+
+*Takeaway:* Ammeters go in series with low resistance; voltmeters go in parallel with high resistance, so that neither disturbs the circuit.
+
+*Sources*
+
+- OpenStax College Physics 2e, 21.4 DC Voltmeters and Ammeters (2022): voltmeters are connected in parallel and need a resistance much greater than the device's; ammeters are connected in series and need a resistance much smaller; an ammeter in parallel would carry most of the current and could be damaged.
+
+*Status:* reviewed · rev 1
+
+---
+
+### CP-100  ·  ★★★  ·  Skill 2 Reasoning
+
+Each of the following mixtures is at equilibrium in a cylinder at constant temperature, and the volume of each is then halved. In which does the equilibrium shift toward the products? I: 2 CO(g) + O₂(g) ⇌ 2 CO₂(g). II: CO(g) + H₂O(g) ⇌ CO₂(g) + H₂(g). III: NH₄Cl(s) ⇌ NH₃(g) + HCl(g).
+
+- **A.** I only
+- **B.** II only
+- **C.** I and II
+- **D.** I and III
+
+**Answer: A**
+
+*Worked solution*
+
+- Halving the volume doubles every partial pressure. The reaction quotient changes only if the two sides contain different numbers of moles of gas, and the equilibrium then shifts toward the side with fewer moles of gas, which partly relieves the rise in pressure (Le Châtelier).
+- I: 3 mol of gas → 2 mol of gas, so compression shifts it toward CO₂, the products. II: 2 mol → 2 mol; doubling every partial pressure leaves Q unchanged, so there is no shift. III: a solid gives 2 mol of gas (0 → 2), so compression shifts it toward the solid, the reactant.
+- Only I shifts toward products. Solids and liquids are not counted; only the gaseous moles matter.
+
+*Why the other choices are wrong*
+
+- **B.** Reaction II has equal moles of gas on both sides; compressing it changes Q by the same factor in numerator and denominator, so nothing shifts. *(wrong formula: a shift expected despite equal moles of gas)*
+- **C.** II does not shift at all, so it cannot be part of the answer. *(wrong formula: equal-mole reaction counted as shifting)*
+- **D.** III shifts toward the reactant (the solid, with no gas) because the product side carries the gas; the shift is away from products. *(reversed relationship: direction of the shift for III inverted)*
+
+*Tags:* chem_phys · general chemistry · FC5 5E · topics: 5E.equilibrium
+
+*Takeaway:* Compressing a gaseous equilibrium shifts it toward the side with fewer moles of gas; equal moles means no shift, and solids do not count.
+
+*Sources*
+
+- OpenStax Chemistry 2e, 13.3 Shifting Equilibria: Le Châtelier's Principle (2019): decreasing the volume shifts the equilibrium toward the side with fewer moles of gas (2 NO₂ ⇌ 2 NO + O₂ shifts left on compression); H₂ + I₂ ⇌ 2 HI does not shift with volume.
+
+*Status:* reviewed · rev 1
+
+---

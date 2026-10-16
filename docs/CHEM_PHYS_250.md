@@ -1,6 +1,6 @@
 # Chem/Phys 250: question blueprint
 
-**Created:** 2026-10-15 · **Plan status:** approved by the owner 2026-10-15; batch 3 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_03.json`; key `review/chem_phys_batch_03.md`, blind packet `review/chem_phys_batch_03_blind.md`); batch 1 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_01.json`; key `review/chem_phys_batch_01.md`, blind packet `review/chem_phys_batch_01_blind.md`); batch 2 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_02.json`; key `review/chem_phys_batch_02.md`, blind packet `review/chem_phys_batch_02_blind.md`) · **Rules:** `docs/MCAT_SPEC.md` · **Topic ids:** `docs/MCAT_GUIDES_SPEC.md` and `content/mcat/guides/chem_phys.json`
+**Created:** 2026-10-15 · **Plan status:** approved by the owner 2026-10-15; batch 4 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_04.json`; key `review/chem_phys_batch_04.md`, blind packet `review/chem_phys_batch_04_blind.md`); batch 3 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_03.json`; key `review/chem_phys_batch_03.md`, blind packet `review/chem_phys_batch_03_blind.md`); batch 1 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_01.json`; key `review/chem_phys_batch_01.md`, blind packet `review/chem_phys_batch_01_blind.md`); batch 2 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_02.json`; key `review/chem_phys_batch_02.md`, blind packet `review/chem_phys_batch_02_blind.md`) · **Rules:** `docs/MCAT_SPEC.md` · **Topic ids:** `docs/MCAT_GUIDES_SPEC.md` and `content/mcat/guides/chem_phys.json`
 
 A plan for 250 original Chemical and Physical Foundations questions in ten batches of 25, each batch a mini section: four passages (190 questions in all, ten passages of four questions and thirty of five) plus six standalone questions, mixing physics, general chemistry, biochemistry and organic chemistry. Every question has a permanent id (CP-001 to CP-250; passages CP-P01 to CP-P40) assigned here, before writing, so progress saved on a phone never breaks. Writing follows MCAT_SPEC §3: every experiment hypothetical and labelled, every fact verified against a named source, every number re-derived, every item fact-checked by a second pass, and every batch gated by an independent blind re-solve (a fresh session re-solves every item from the blind packet) before it is committed or pushed; items are `draft` until they pass.
 
@@ -214,63 +214,63 @@ Topic: Galvanic cells, Nernst and Faraday. Scenario: Hypothetical sensor in whic
 | CP-074 | `5E.free-energy-phases` | general chemistry | 2 | ★★★ | reading a phase diagram | pushed |
 | CP-075 | `5E.enzyme-inhibition-regulation` | biology | 1 | ★★★ | feedback inhibition of a pathway's first enzyme | pushed |
 
-### Batch 4 · CP-076 to CP-100 · status: planned
+### Batch 4 · CP-076 to CP-100 · status: pushed (written and fact-checked 2026-10-15; independent blind re-solve passed 2026-10-15, 25 of 25 answers agreed; CP-085 rationale and two passage phrasings tightened, CP-098 re-rated ★★ at review, see changelog)
 
-Mix: general chemistry 6, biochemistry 7, physics 6, organic chemistry 5, biology 1 · skills 1/2/3/4: 10/11/2/2 · ★★/★★★/★★★★/★★★★★: 3/13/8/1
+Mix: general chemistry 6, biochemistry 7, physics 6, organic chemistry 5, biology 1 · skills 1/2/3/4: 10/11/2/2 · ★★/★★★/★★★★/★★★★★: 4/12/8/1
 
-**CP-P13 · Physiology: fetal and adult haemoglobin** · status: planned  
+**CP-P13 · Physiology: fetal and adult haemoglobin** · status: pushed  
 Topic: Oxygen binding and cooperativity. Scenario: Hypothetical oxygen-binding curves measured with and without 2,3-BPG and at two pH values. Figure: line chart (saturation curves at two pH values and for fetal Hb).
 
 | ID | Topic | Discipline | Skill | Diff | Asks | Status |
 |---|---|---|---|---|---|---|
-| CP-076 | `5D.nonenzymatic-proteins` | biochemistry | 4 | ★★★ | read P50 from the curves | planned |
-| CP-077 | `5D.nonenzymatic-proteins` | biochemistry | 1 | ★★★★ | what a Hill coefficient above 1 means | planned |
-| CP-078 | `5D.protein-3d-structure` | biochemistry | 1 | ★★★ | the T-to-R quaternary shift | planned |
-| CP-079 | `5A.acids-bases` | biochemistry | 2 | ★★★★ | the Bohr effect: protonation and affinity | planned |
-| CP-080 | `5D.nonenzymatic-proteins` | biochemistry | 3 | ★★★★★ | design an experiment to isolate the 2,3-BPG effect | planned |
+| CP-076 | `5D.nonenzymatic-proteins` | biochemistry | 4 | ★★★ | read P50 from the curves | pushed |
+| CP-077 | `5D.nonenzymatic-proteins` | biochemistry | 1 | ★★★★ | what a Hill coefficient above 1 means | pushed |
+| CP-078 | `5D.protein-3d-structure` | biochemistry | 1 | ★★★ | the T-to-R quaternary shift | pushed |
+| CP-079 | `5A.acids-bases` | biochemistry | 2 | ★★★★ | the Bohr effect: protonation and affinity | pushed |
+| CP-080 | `5D.nonenzymatic-proteins` | biochemistry | 3 | ★★★★★ | design an experiment to isolate the 2,3-BPG effect | pushed |
 
-**CP-P14 · Emergency medicine: a defibrillator** · status: planned  
-Topic: Capacitors and discharge. Scenario: Hypothetical: a capacitor is charged and discharged through the chest; the current waveform is described. Figure: equation (stored energy) + table (capacitance, voltage, chest resistance).
-
-| ID | Topic | Discipline | Skill | Diff | Asks | Status |
-|---|---|---|---|---|---|---|
-| CP-081 | `4C.capacitance` | physics | 2 | ★★★ | energy stored from ½CV² | planned |
-| CP-082 | `4C.electric-field-potential` | physics | 2 | ★★★★ | field between the plates and the work on a charge | planned |
-| CP-083 | `4C.current-voltage` | physics | 2 | ★★★★ | initial current and the RC time constant through the chest | planned |
-| CP-084 | `4A.energy` | physics | 1 | ★★ | average power from energy and pulse duration | planned |
-
-**CP-P15 · Organic lab: aspirin synthesis** · status: planned  
-Topic: Acid derivatives, phenols and recrystallization. Scenario: Hypothetical synthesis, bicarbonate extraction, recrystallization and melting-point check. Figure: structure (salicylic acid, acetic anhydride, aspirin) + table (masses, melting points, yield).
+**CP-P14 · Emergency medicine: a defibrillator** · status: pushed  
+Topic: Capacitors and discharge. Scenario: Hypothetical: a capacitor is charged and discharged through the chest; the current waveform is described. Figure: equation (stored energy) + table (capacitance, voltage, chest resistance, pulse length, film thickness).
 
 | ID | Topic | Discipline | Skill | Diff | Asks | Status |
 |---|---|---|---|---|---|---|
-| CP-085 | `5D.acid-derivatives` | organic chemistry | 1 | ★★★ | the anhydride as an acylating agent and the leaving group | planned |
-| CP-086 | `5D.phenols-quinones` | organic chemistry | 1 | ★★★ | phenol acidity and the ferric chloride test | planned |
-| CP-087 | `5C.extraction-distillation` | organic chemistry | 2 | ★★★★ | choosing a recrystallization solvent from solubility data | planned |
-| CP-088 | `5D.carboxylic-acids` | organic chemistry | 2 | ★★★ | why bicarbonate pulls the acid into the aqueous layer | planned |
-| CP-089 | `4E.chemical-equations` | general chemistry | 2 | ★★★★ | limiting reagent and percent yield | planned |
+| CP-081 | `4C.capacitance` | physics | 2 | ★★★ | energy stored from ½CV² | pushed |
+| CP-082 | `4C.electric-field-potential` | physics | 2 | ★★★★ | field between the plates and the work on a charge | pushed |
+| CP-083 | `4C.current-voltage` | physics | 2 | ★★★★ | initial current and the RC time constant through the chest | pushed |
+| CP-084 | `4A.energy` | physics | 1 | ★★ | average power from energy and pulse duration | pushed |
 
-**CP-P16 · Diving medicine: gas exchange at depth** · status: planned  
-Topic: Partial pressures and the gas laws. Scenario: Hypothetical dive profile with air and with a helium mix; symptoms on ascent are described. Figure: table (depth, total pressure, PO₂, PN₂, alveolar PO₂).
+**CP-P15 · Organic lab: aspirin synthesis** · status: pushed  
+Topic: Acid derivatives, phenols and recrystallization. Scenario: Hypothetical synthesis, bicarbonate extraction, recrystallization and melting-point check. Figure: structure (salicylic acid, acetic anhydride, aspirin) + table (molar masses and masses; literature melting points in the caption) + table (solubility of aspirin in four solvents at 20 and 60 °C, for CP-087).
 
 | ID | Topic | Discipline | Skill | Diff | Asks | Status |
 |---|---|---|---|---|---|---|
-| CP-090 | `4B.partial-pressure` | general chemistry | 2 | ★★★ | PO₂ at depth from mole fraction and total pressure | planned |
-| CP-091 | `4B.ideal-gas` | general chemistry | 2 | ★★★★ | lung volume change on ascent (Boyle, absolute pressures) | planned |
-| CP-092 | `4B.temperature-pressure` | general chemistry | 1 | ★★ | absolute temperature and molar volume at STP | planned |
-| CP-093 | `5A.solubility` | general chemistry | 3 | ★★★ | the control that shows nitrogen uptake follows Henry's law (PN₂) rather than total pressure | planned |
-| CP-094 | `4B.partial-pressure` | biology | 4 | ★★★★ | read the table: alveolar versus inspired PO₂ | planned |
+| CP-085 | `5D.acid-derivatives` | organic chemistry | 1 | ★★★ | the anhydride as an acylating agent and the leaving group | pushed |
+| CP-086 | `5D.phenols-quinones` | organic chemistry | 1 | ★★★ | phenol acidity and the ferric chloride test | pushed |
+| CP-087 | `5C.extraction-distillation` | organic chemistry | 2 | ★★★★ | choosing a recrystallization solvent from solubility data | pushed |
+| CP-088 | `5D.carboxylic-acids` | organic chemistry | 2 | ★★★ | why bicarbonate pulls the acid into the aqueous layer | pushed |
+| CP-089 | `4E.chemical-equations` | general chemistry | 2 | ★★★★ | limiting reagent and percent yield | pushed |
+
+**CP-P16 · Diving medicine: gas exchange at depth** · status: pushed  
+Topic: Partial pressures and the gas laws. Scenario: Hypothetical dive profile with air and with a helium mix; symptoms on ascent are described. Figure: table (depth, total pressure, PO₂, PN₂) + table (depth, inspired PO₂, alveolar PO₂ from the alveolar gas equation).
+
+| ID | Topic | Discipline | Skill | Diff | Asks | Status |
+|---|---|---|---|---|---|---|
+| CP-090 | `4B.partial-pressure` | general chemistry | 2 | ★★★ | PO₂ at depth from mole fraction and total pressure | pushed |
+| CP-091 | `4B.ideal-gas` | general chemistry | 2 | ★★★★ | lung volume change on ascent (Boyle, absolute pressures) | pushed |
+| CP-092 | `4B.temperature-pressure` | general chemistry | 1 | ★★ | absolute temperature and molar volume at STP | pushed |
+| CP-093 | `5A.solubility` | general chemistry | 3 | ★★★ | which logged observation supports dissolved-nitrogen loading (Henry's law) over the pressure change alone: same depth and ascent, shorter bottom time, no symptoms (ask changed at writing: the planned PN₂-versus-total-pressure control duplicated M4B-Q10's design, see changelog) | pushed |
+| CP-094 | `4B.partial-pressure` | biology | 4 | ★★★★ | read the table: alveolar versus inspired PO₂ | pushed |
 
 **Standalone questions**
 
 | ID | Topic | Discipline | Skill | Diff | Asks | Status |
 |---|---|---|---|---|---|---|
-| CP-095 | `4A.friction` | physics | 2 | ★★★ | minimum coefficient to hold a patient on an incline | planned |
-| CP-096 | `5E.enzyme-kinetics` | biochemistry | 1 | ★★ | what Vmax depends on and what doubling the enzyme does to it | planned |
-| CP-097 | `5B.isomers` | organic chemistry | 1 | ★★★ | counting stereoisomers | planned |
-| CP-098 | `5D.aromatic-heterocycles` | biochemistry | 1 | ★★★ | which base is a purine | planned |
-| CP-099 | `4C.conductivity-meters` | physics | 1 | ★★★ | how an ammeter and a voltmeter are connected | planned |
-| CP-100 | `5E.equilibrium` | general chemistry | 2 | ★★★ | Le Châtelier with a pressure change | planned |
+| CP-095 | `4A.friction` | physics | 2 | ★★★ | minimum coefficient to hold a patient on an incline | pushed |
+| CP-096 | `5E.enzyme-kinetics` | biochemistry | 1 | ★★ | what Vmax depends on and what doubling the enzyme does to it | pushed |
+| CP-097 | `5B.isomers` | organic chemistry | 1 | ★★★ | counting stereoisomers | pushed |
+| CP-098 | `5D.aromatic-heterocycles` | biochemistry | 1 | ★★ | which base is a purine (re-rated ★★ at review: one-step recall) | pushed |
+| CP-099 | `4C.conductivity-meters` | physics | 1 | ★★★ | how an ammeter and a voltmeter are connected | pushed |
+| CP-100 | `5E.equilibrium` | general chemistry | 2 | ★★★ | Le Châtelier with a pressure change | pushed |
 
 ### Batch 5 · CP-101 to CP-125 · status: planned
 
@@ -733,3 +733,5 @@ Topic: Redox stoichiometry and periodic trends. Scenario: Hypothetical permangan
 | 2026-10-15 | Batch 1 reviewed: an independent blind re-solve agreed with the key on all 25 items. Fixes made at review: CP-P01 Figure 1 now declines linearly along the narrowed segment, 84.6 mmHg at x = 20 mm to 83.6 mmHg at x = 30 mm (Poiseuille), and CP-002 reads the entry pressure at x = 20 mm; CP-005 choice B no longer calls the 1.2 m/s speed "recorded" (Table 1 says it was not measured); CP-013 rewritten to ask for Ki (the inhibitor-type item duplicated M1-Q08) and CP-016 rewritten to bracket when the second vial fell below 250 MBq (the activity-after-whole-half-lives item duplicated M1-Q04), both ★★★★; CP-023 re-rated ★★ (one-step recall). All 25 items and 4 passages `reviewed` (`reviewed_by: "independent blind re-solve"`); committed and pushed. |
 | 2026-10-15 | Batch 3 written and checked (CP-051–CP-075, CP-P09–CP-P12; all items `draft` until they pass the blind re-solve). Numbers re-derived in `review/chem_phys_batch_03_check.py` (RDKit for residue masses, peptide and y-ion masses, glucose/gluconolactone, acetone, adenosine/AMP); packets `review/chem_phys_batch_03.md` and `_blind.md`. CP-054's ask changed from 'why the calorimeter is calibrated with a standard before the sample' to the protocol that measures metabolizable energy directly (gross energy less the bomb energy of faeces and urine): the calibration rationale has no bioenergetics content for its `5E.bioenergetics` tag and is already exercised numerically by CP-051 and CP-055, whereas the excreta balance is a Skill 3 design question with the bioenergetics content the tag names. CP-P09's figure set changed from one table to a heating curve plus two tables so that CP-055 can read the heat capacity from data (electrical calibration at 110 W for 300 s, ΔT 3.00 K; the benzoic acid run gives the same 11.0 kJ/K). CP-P09 states the rounded combustion enthalpies it uses (glucose −2,800, lactic acid −1,360 kJ/mol) because published lactic acid values range from −1,338 to −1,363 kJ/mol. CP-P12 states the ferricyanide potential it uses (+0.36 V, the standard value; biosensor tables quote formal potentials up to +0.45 V) and uses the free-coenzyme FAD/FADH₂ value (−0.22 V), saying that enzyme-bound FAD differs. CP-P11 neglects the 1.5 cm lens–eye separation that OpenStax's examples include and says so. CP-057's ∝ m distractor corrected from 54 to 55 µs and CP-067's ampere-for-microampere distractor from 2.6 × 10⁻⁵ to 2.6 × 10⁻⁴ mol by the check script, and CP-059's 'tyrosine' distractor replaced by unmodified 'serine' at self-check (the passage names residue 3 as Ser, so a single serine option was a clue), all before the packets were generated. Phone check at 412 px: four tables and the spectrum's axis labels were shortened to fit (one- or two-word headers, qualifiers moved to captions). |
 | 2026-10-15 | Batch 3 reviewed: an independent blind re-solve agreed with the key on all 25 items (every table, chart and ladder value re-derived). Fixes made at review: CP-073's stem now reports no broad absorption anywhere between 2,500 and 3,600 cm⁻¹ (it said 3,200–3,600, which left most of a carboxylic acid's broad O–H band, 2,500–3,300 cm⁻¹, unexcluded, so choice A was not wrong for the stated reason); CP-P10 now says five peptides were detected in Figure 1 (it read as though a 21 kDa protein gave only five tryptic peptides); CP-051's explanation now gives the per-bar energy for the 48 g of dry matter (about 1,060 kJ), since the sample was dried. No answers, choices or ratings changed, no `rev` increments. All 25 items and 4 passages `reviewed` (`reviewed_by: "independent blind re-solve"`); committed and pushed. |
+| 2026-10-15 | Batch 4 written and checked (CP-076–CP-100, CP-P13–CP-P16; all items `draft` until they pass the blind re-solve). Numbers re-derived in `review/chem_phys_batch_04_check.py` (Hill curves regenerated from P50 and n, defibrillator energy, field, current and power, aspirin molar masses, functional groups and yield with RDKit, dive tables from the alveolar gas equation, isoleucine stereoisomers and nucleobase ring counts with RDKit); packets `review/chem_phys_batch_04.md` and `_blind.md`. CP-093's ask changed: the planned 'control showing nitrogen uptake follows PN₂ rather than total pressure' is the design of M4B-Q10 (same PO₂ at two total pressures), so CP-093 now asks which logged observation supports dissolved-nitrogen loading over the pressure change alone (Diver 2: same depth and ascent, shorter bottom time, no symptoms). Values stated where sources differ: HbA P50 26 mmHg (literature 26–27), HbF 20 mmHg (literature about 19), pH 7.2 P50 32 mmHg (hypothetical; 0.09 log units per 0.2 pH, consistent with whole blood), BPG-free HbA P50 12 mmHg (hypothetical; published BPG-free values range about 8–14 mmHg with species and buffer), model His146 pKa 7.8 (T) and 7.0 (R) near Kilmartin's 8.0/7.1 (deoxy/carbonmonoxy, phosphate buffer); defibrillator 100 µF at 2,000 V (200 J, the biphasic dose range), chest resistance 80 Ω (adult average 70–80 Ω), polypropylene film κ 2.2 and 650 V/µm; aspirin mp 135 °C (Merck; DrugBank 138–140), salicylic acid pKa 2.97 (CRC 2.98), carbonic acid pKa 6.4; the dive uses 10 m per atm (10.3 m of fresh water) and the alveolar gas equation with R = 0.8. By plan, CP-P14 (skills 2, 2, 2, 1) and CP-P15 (1, 1, 2, 2, 2) have no Skill 3/4 item, like CP-P08; the batch totals (10/11/2/2) hold and the check script records the exceptions. Self-check fixes before the packets: the longest option was the answer in CP-077, CP-078, CP-080, CP-085, CP-086, CP-093 and CP-094 (options rebalanced); CP-082 and CP-083 repeated the correct value in three choices (now 2 × 2 pairs; CP-083's answer moved to D); CP-087's ethanol arithmetic was wrong (12 mL of hot ethanol dissolves the sample, so about a third is lost, not all). Phone check at 412 px: CP-P15 Table 1 lost its melting-point column (moved to the caption) and CP-P16 Table 1 its PN₂ column (headers shortened); all four passages now fit. |
+| 2026-10-15 | Batch 4 reviewed: an independent blind re-solve (a fresh agent given only the blind packet and the guide) agreed with the key on all 25 items, every chart point and table value re-derived. Fixes made at review: CP-085's option A and explanation now say acetic acid would have to expel hydroxide or, after protonation by the catalyst, water in a slow equilibrium (the first draft ignored the acid catalyst); CP-P13 no longer implies BPG and protons are the only effectors that lower affinity (CO₂ and Cl⁻ also do); CP-P14 says the monophasic device was set to 200 J for the test (it had quoted 360 J as the monophasic clinical dose); CP-080's option A shortened (it was the longest choice). CP-098 re-rated ★★ (one-step recall), batch mix now 4/12/8/1. No answers changed, no `rev` increments. All 25 items and 4 passages `reviewed` (`reviewed_by: "independent blind re-solve"`); committed and pushed. |

@@ -1,6 +1,6 @@
 # MCAT Question Generator — Master Spec
 
-**Version:** 2.2 · **Created:** 2026-10-10 · **Updated:** 2026-10-15 · **Blocks produced so far:** 11 (M1–M7, M4B, CP1–CP3)
+**Version:** 2.4 · **Created:** 2026-10-10 · **Updated:** 2026-10-15 · **Blocks produced so far:** 12 (M1–M7, M4B, CP1–CP4)
 
 The single source of truth for writing MCAT-style practice content for Rounds. It mirrors
 `docs/board_question_generator_spec.md`, adapted to how the MCAT actually works: four sections,
@@ -336,6 +336,31 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 | CP-073 | chem_phys | 4D / S1 | 4D.ir-spectroscopy | D | ★★★ | reviewed | OpenStax Organic Chemistry, 12.8 Infrared Spectra of Some Common Functional Groups |
 | CP-074 | chem_phys | 5E / S2 | 5E.free-energy-phases | B | ★★★ | reviewed | OpenStax Chemistry 2e, 10.4 Phase Diagrams |
 | CP-075 | chem_phys | 5E / S1 | 5E.enzyme-inhibition-regulation | A | ★★★ | reviewed | OpenStax Biology 2e, 6.5 Enzymes |
+| CP-076 | chem_phys | 5D / S4 | 5D.nonenzymatic-proteins | C | ★★★ | reviewed | Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 5.3 Oxygen-Binding Proteins and Allosterism |
+| CP-077 | chem_phys | 5D / S1 | 5D.nonenzymatic-proteins | B | ★★★★ | reviewed | Biology LibreTexts, Fundamentals of Biochemistry (Jakubowski and Flatt), 5.3 Oxygen-Binding Proteins and Allosterism |
+| CP-078 | chem_phys | 5D / S1 | 5D.protein-3d-structure | D | ★★★ | reviewed | OpenStax Biology 2e, 3.4 Proteins |
+| CP-079 | chem_phys | 5A / S2 | 5A.acids-bases | D | ★★★★ | reviewed | OpenStax Chemistry 2e, 14.6 Buffers |
+| CP-080 | chem_phys | 5D / S3 | 5D.nonenzymatic-proteins | A | ★★★★★ | reviewed | Deranged Physiology, Physiology and consequences of foetal haemoglobin |
+| CP-081 | chem_phys | 4C / S2 | 4C.capacitance | B | ★★★ | reviewed | OpenStax College Physics 2e, 19.7 Energy Stored in Capacitors |
+| CP-082 | chem_phys | 4C / S2 | 4C.electric-field-potential | C | ★★★★ | reviewed | OpenStax College Physics 2e, 19.5 Capacitors and Dielectrics |
+| CP-083 | chem_phys | 4C / S2 | 4C.current-voltage | D | ★★★★ | reviewed | OpenStax College Physics 2e, 21.6 DC Circuits Containing Resistors and Capacitors |
+| CP-084 | chem_phys | 4A / S1 | 4A.energy | B | ★★ | reviewed | OpenStax College Physics 2e, 7.7 Power |
+| CP-085 | chem_phys | 5D / S1 | 5D.acid-derivatives | A | ★★★ | reviewed | OpenStax Organic Chemistry, 21.5 Chemistry of Acid Anhydrides |
+| CP-086 | chem_phys | 5D / S1 | 5D.phenols-quinones | B | ★★★ | reviewed | University of Colorado lecture demonstration manual, O638 Identification of Phenols, Ferric Chloride Test |
+| CP-087 | chem_phys | 5C / S2 | 5C.extraction-distillation | D | ★★★★ | reviewed | Chemistry LibreTexts, Organic Chemistry Lab Techniques (Nichols), 3.3 Choice of Solvent |
+| CP-088 | chem_phys | 5D / S2 | 5D.carboxylic-acids | A | ★★★ | reviewed | Chemistry LibreTexts, Organic Chemistry Lab Techniques (Nichols), 4 Extraction |
+| CP-089 | chem_phys | 4E / S2 | 4E.chemical-equations | C | ★★★★ | reviewed | OpenStax Chemistry 2e, 4.4 Reaction Yields |
+| CP-090 | chem_phys | 4B / S2 | 4B.partial-pressure | C | ★★★ | reviewed | OpenStax Chemistry 2e, 9.3 Stoichiometry of Gaseous Substances, Mixtures, and Reactions |
+| CP-091 | chem_phys | 4B / S2 | 4B.ideal-gas | B | ★★★★ | reviewed | OpenStax Chemistry 2e, 9.2 Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law |
+| CP-092 | chem_phys | 4B / S1 | 4B.temperature-pressure | C | ★★ | reviewed | OpenStax Chemistry 2e, 9.2 Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law |
+| CP-093 | chem_phys | 5A / S3 | 5A.solubility | A | ★★★ | reviewed | OpenStax Chemistry 2e, 11.3 Solubility |
+| CP-094 | chem_phys | 4B / S4 | 4B.partial-pressure | B | ★★★★ | reviewed | StatPearls, Alveolar Gas Equation |
+| CP-095 | chem_phys | 4A / S2 | 4A.friction | B | ★★★ | reviewed | OpenStax College Physics 2e, 5.1 Friction |
+| CP-096 | chem_phys | 5E / S1 | 5E.enzyme-kinetics | D | ★★ | reviewed | Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 4.1 Basic Principles of Catalysis |
+| CP-097 | chem_phys | 5B / S1 | 5B.isomers | C | ★★★ | reviewed | OpenStax Organic Chemistry, 5.6 Diastereomers |
+| CP-098 | chem_phys | 5D / S1 | 5D.aromatic-heterocycles | A | ★★ | reviewed | OpenStax Biology 2e, 3.5 Nucleic Acids |
+| CP-099 | chem_phys | 4C / S1 | 4C.conductivity-meters | D | ★★★ | reviewed | OpenStax College Physics 2e, 21.4 DC Voltmeters and Ammeters |
+| CP-100 | chem_phys | 5E / S2 | 5E.equilibrium | A | ★★★ | reviewed | OpenStax Chemistry 2e, 13.3 Shifting Equilibria: Le Châtelier's Principle |
 
 ## 11. Changelog
 
@@ -354,3 +379,5 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 | 2.0 | 2026-10-15 | Chem/Phys batch 2 passed the independent blind re-solve (25 of 25 agreed) and was pushed; all CP-026–CP-050 and CP-P05–CP-P08 `reviewed`. Fixes at review, explanations only: CP-026 (electrical force on Na⁺ opposes entry once the inside is positive, not only above +60 mV), CP-033 (unmeasured "redissolves quickly" claim removed), CP-037 (no elution-buffer pH stated in the passage), CP-050 (dehydration leaves the average carbon oxidation state unchanged); CP-046 re-rated ★★. No `rev` increments: the items had not been published. |
 | 2.1 | 2026-10-15 | Chem/Phys batch 3 (`content/mcat/chem_phys/batch_03.json`, block `CP3`): passages CP-P09–CP-P12 (bomb calorimetry of a meal bar, MALDI-TOF of a phosphorylated tryptic peptide, presbyopia and reading lenses, a ferricyanide-mediated glucose test strip) and items CP-051–CP-075 per `docs/CHEM_PHYS_250.md`, all `draft` pending the independent blind re-solve; every number re-derived in `review/chem_phys_batch_03_check.py` (230 checks; residue masses, peptide and y-ion masses, glucose/lactone oxidation states and formulas with RDKit), facts verified against the cited sources (NIST SRM 39j, NIST WebBook, CODATA 2022, Unimod, CIAAW, OpenStax, FAO, USDA Handbook 74); packets `review/chem_phys_batch_03.md` and `review/chem_phys_batch_03_blind.md`. CP-054's planned ask changed (logged in the plan's changelog). |
 | 2.2 | 2026-10-15 | Chem/Phys batch 3 passed the independent blind re-solve (25 of 25 agreed) and was pushed; all CP-051–CP-075 and CP-P09–CP-P12 `reviewed`. Fixes at review: CP-073 stem (no broad absorption anywhere between 2,500 and 3,600 cm⁻¹, so the carboxylic acid distractor is excluded for the stated reason), CP-P10 passage (five peptides detected in Figure 1), CP-051 explanation (per-bar energy for the dried sample). No `rev` increments: the items had not been published. |
+| 2.3 | 2026-10-15 | Chem/Phys batch 4 (`content/mcat/chem_phys/batch_04.json`, block `CP4`): passages CP-P13–CP-P16 (fetal and adult haemoglobin with Hill curves, a defibrillator bench test, an aspirin synthesis with structures drawn from SMILES, gas exchange at depth) and items CP-076–CP-100 per `docs/CHEM_PHYS_250.md`, all `draft` pending the independent blind re-solve; every number re-derived in `review/chem_phys_batch_04_check.py` (about 220 checks; molar masses, functional groups, stereoisomer and ring counts with RDKit), facts verified against the cited sources (OpenStax, LibreTexts, PubChem, Merck Manual, StatPearls, WIMA and Fluke data); packets `review/chem_phys_batch_04.md` and `review/chem_phys_batch_04_blind.md`. CP-093's planned ask changed (logged in the plan's changelog). First batch with structure figures (three RDKit drawings in CP-P15). |
+| 2.4 | 2026-10-15 | Chem/Phys batch 4 passed the independent blind re-solve (25 of 25 agreed) and was pushed; all CP-076–CP-100 and CP-P13–CP-P16 `reviewed`. Fixes at review: CP-085 option A and explanation (acetic acid would expel hydroxide, or water after protonation, in a slow equilibrium), CP-P13 passage (two of the effectors, not the only two), CP-P14 passage (device set to 200 J), CP-080 option A shortened; CP-098 re-rated ★★. No `rev` increments: the items had not been published. |
