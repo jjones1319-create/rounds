@@ -1,6 +1,6 @@
 # Chem/Phys 250: question blueprint
 
-**Created:** 2026-10-15 · **Plan status:** approved by the owner 2026-10-15; batch 1 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_01.json`; key `review/chem_phys_batch_01.md`, blind packet `review/chem_phys_batch_01_blind.md`); batch 2 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_02.json`; key `review/chem_phys_batch_02.md`, blind packet `review/chem_phys_batch_02_blind.md`); batch 3 next · **Rules:** `docs/MCAT_SPEC.md` · **Topic ids:** `docs/MCAT_GUIDES_SPEC.md` and `content/mcat/guides/chem_phys.json`
+**Created:** 2026-10-15 · **Plan status:** approved by the owner 2026-10-15; batch 3 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_03.json`; key `review/chem_phys_batch_03.md`, blind packet `review/chem_phys_batch_03_blind.md`); batch 1 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_01.json`; key `review/chem_phys_batch_01.md`, blind packet `review/chem_phys_batch_01_blind.md`); batch 2 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_02.json`; key `review/chem_phys_batch_02.md`, blind packet `review/chem_phys_batch_02_blind.md`) · **Rules:** `docs/MCAT_SPEC.md` · **Topic ids:** `docs/MCAT_GUIDES_SPEC.md` and `content/mcat/guides/chem_phys.json`
 
 A plan for 250 original Chemical and Physical Foundations questions in ten batches of 25, each batch a mini section: four passages (190 questions in all, ten passages of four questions and thirty of five) plus six standalone questions, mixing physics, general chemistry, biochemistry and organic chemistry. Every question has a permanent id (CP-001 to CP-250; passages CP-P01 to CP-P40) assigned here, before writing, so progress saved on a phone never breaks. Writing follows MCAT_SPEC §3: every experiment hypothetical and labelled, every fact verified against a named source, every number re-derived, every item fact-checked by a second pass, and every batch gated by an independent blind re-solve (a fresh session re-solves every item from the blind packet) before it is committed or pushed; items are `draft` until they pass.
 
@@ -156,63 +156,63 @@ Topic: Sound and the Doppler effect. Scenario: Hypothetical: a 3 MHz probe recor
 | CP-049 | `4B.real-gases` | general chemistry | 1 | ★★ | when a gas deviates from ideality and why | pushed |
 | CP-050 | `5D.alcohols` | organic chemistry | 1 | ★★★ | product of oxidizing a secondary alcohol | pushed |
 
-### Batch 3 · CP-051 to CP-075 · status: planned
+### Batch 3 · CP-051 to CP-075 · status: pushed (written and fact-checked 2026-10-15; independent blind re-solve passed 2026-10-15, 25 of 25 answers agreed; CP-073 stem tightened, one passage and one explanation fix at review, see changelog)
 
 Mix: general chemistry 10, biochemistry 5, physics 7, organic chemistry 2, biology 1 · skills 1/2/3/4: 8/11/3/3 · ★★/★★★/★★★★/★★★★★: 3/13/8/1
 
-**CP-P09 · Nutrition science: bomb calorimetry of a meal bar** · status: planned  
-Topic: Calorimetry, Hess's law and metabolic energy. Scenario: Hypothetical: a bar is burned in a bomb calorimeter calibrated with benzoic acid; results are compared with the Atwater fuel values and with ATP yield. Figure: table (masses, ΔT, calorimeter constant, fuel values).
+**CP-P09 · Nutrition science: bomb calorimetry of a meal bar** · status: pushed  
+Topic: Calorimetry, Hess's law and metabolic energy. Scenario: Hypothetical: a bar is burned in a bomb calorimeter calibrated both electrically (heating curve) and with benzoic acid; the gross energy is compared with the Atwater metabolizable energy and the combustion enthalpies of glucose and lactate. Figure: line chart (electrical heating curve) + table (calibration and sample runs) + table (composition and Atwater factors). (At writing, the calorimeter constant was left out of the tables so that CP-055 derives it from the heating curve.)
 
 | ID | Topic | Discipline | Skill | Diff | Asks | Status |
 |---|---|---|---|---|---|---|
-| CP-051 | `5E.calorimetry-heat-transfer` | general chemistry | 2 | ★★★ | heat released from q = CΔT | planned |
-| CP-052 | `5E.enthalpy-hess` | general chemistry | 2 | ★★★★ | ΔH of a reaction from combustion enthalpies | planned |
-| CP-053 | `5E.thermodynamic-laws` | general chemistry | 1 | ★★ | state functions and the sign convention of the first law | planned |
-| CP-054 | `5E.bioenergetics` | biochemistry | 3 | ★★★ | why the calorimeter is calibrated with a standard before the sample | planned |
-| CP-055 | `5E.calorimetry-heat-transfer` | physics | 4 | ★★★★ | read the heating curve to get the heat capacity | planned |
+| CP-051 | `5E.calorimetry-heat-transfer` | general chemistry | 2 | ★★★ | heat released from q = CΔT | pushed |
+| CP-052 | `5E.enthalpy-hess` | general chemistry | 2 | ★★★★ | ΔH of a reaction from combustion enthalpies | pushed |
+| CP-053 | `5E.thermodynamic-laws` | general chemistry | 1 | ★★ | state functions and the sign convention of the first law | pushed |
+| CP-054 | `5E.bioenergetics` | biochemistry | 3 | ★★★ | the protocol that measures metabolizable energy directly: gross energy less the bomb energy of faeces and urine (ask changed at writing, see changelog) | pushed |
+| CP-055 | `5E.calorimetry-heat-transfer` | physics | 4 | ★★★★ | read the heating curve to get the heat capacity | pushed |
 
-**CP-P10 · Proteomics: mass spectrometry of a tryptic peptide** · status: planned  
+**CP-P10 · Proteomics: mass spectrometry of a tryptic peptide** · status: pushed  
 Topic: Mass spectrometry and peptide chemistry. Scenario: Hypothetical time-of-flight spectrum of a peptide after trypsin digestion, with an isotope peak; a second protease is used to confirm. Figure: bar chart (m/z spectrum).
 
 | ID | Topic | Discipline | Skill | Diff | Asks | Status |
 |---|---|---|---|---|---|---|
-| CP-056 | `4E.mass-spectrometry` | organic chemistry | 1 | ★★★ | how ions are made and what m/z means | planned |
-| CP-057 | `4E.mass-spectrometry` | physics | 2 | ★★★★ | why lighter ions of equal kinetic energy arrive first | planned |
-| CP-058 | `5D.peptides-proteins` | biochemistry | 3 | ★★★ | why a second protease with different specificity is run | planned |
-| CP-059 | `5D.amino-acids` | biochemistry | 4 | ★★★★★ | identify a residue from the mass difference between peaks | planned |
-| CP-060 | `4E.nucleus-isotopes` | general chemistry | 2 | ★★★★ | the M+1 peak from carbon-13 abundance and the number of carbons | planned |
+| CP-056 | `4E.mass-spectrometry` | organic chemistry | 1 | ★★★ | how ions are made and what m/z means | pushed |
+| CP-057 | `4E.mass-spectrometry` | physics | 2 | ★★★★ | why lighter ions of equal kinetic energy arrive first | pushed |
+| CP-058 | `5D.peptides-proteins` | biochemistry | 3 | ★★★ | why a second protease with different specificity is run | pushed |
+| CP-059 | `5D.amino-acids` | biochemistry | 4 | ★★★★★ | identify a residue from the mass difference between peaks | pushed |
+| CP-060 | `4E.nucleus-isotopes` | general chemistry | 2 | ★★★★ | the M+1 peak from carbon-13 abundance and the number of carbons | pushed |
 
-**CP-P11 · Optometry: presbyopia** · status: planned  
+**CP-P11 · Optometry: presbyopia** · status: pushed  
 Topic: Lenses and the eye. Scenario: Hypothetical clinic data on accommodation loss with age and the reading lenses prescribed. Figure: table (near point, far point, prescribed lens power for three patients).
 
 | ID | Topic | Discipline | Skill | Diff | Asks | Status |
 |---|---|---|---|---|---|---|
-| CP-061 | `4D.lenses` | physics | 2 | ★★★ | lens power in diopters from focal length | planned |
-| CP-062 | `4D.eye-optical-instruments` | physics | 2 | ★★★★ | the lens that brings a 100 cm near point to 25 cm | planned |
-| CP-063 | `4D.reflection-refraction` | physics | 1 | ★★ | refraction at the cornea and Snell's law | planned |
-| CP-064 | `4D.lenses` | physics | 4 | ★★★ | read the table: who needs a converging lens | planned |
+| CP-061 | `4D.lenses` | physics | 2 | ★★★ | lens power in diopters from focal length | pushed |
+| CP-062 | `4D.eye-optical-instruments` | physics | 2 | ★★★★ | the lens that brings a 100 cm near point to 25 cm | pushed |
+| CP-063 | `4D.reflection-refraction` | physics | 1 | ★★ | refraction at the cornea and Snell's law | pushed |
+| CP-064 | `4D.lenses` | physics | 4 | ★★★ | read the table: who needs a converging lens | pushed |
 
-**CP-P12 · Medical devices: an electrochemical glucose sensor** · status: planned  
+**CP-P12 · Medical devices: an electrochemical glucose sensor** · status: pushed  
 Topic: Galvanic cells, Nernst and Faraday. Scenario: Hypothetical sensor in which glucose oxidase reduces a mediator that is re-oxidized at an electrode; current is measured. Figure: table (standard reduction potentials).
 
 | ID | Topic | Discipline | Skill | Diff | Asks | Status |
 |---|---|---|---|---|---|---|
-| CP-065 | `4C.galvanic-cells` | general chemistry | 2 | ★★★★ | E°cell and spontaneity from the half reactions | planned |
-| CP-066 | `4C.concentration-cells-batteries` | general chemistry | 2 | ★★★★ | how the Nernst equation makes E depend on glucose concentration | planned |
-| CP-067 | `4C.electrolytic-cells` | general chemistry | 2 | ★★★★ | moles of electrons from the charge passed (Faraday) | planned |
-| CP-068 | `5E.biological-redox` | biochemistry | 1 | ★★★ | glucose oxidase as an oxidoreductase: which species is reduced and which carrier is used | planned |
-| CP-069 | `4C.galvanic-cells` | general chemistry | 3 | ★★★ | a control for oxygen interference | planned |
+| CP-065 | `4C.galvanic-cells` | general chemistry | 2 | ★★★★ | E°cell and spontaneity from the half reactions | pushed |
+| CP-066 | `4C.concentration-cells-batteries` | general chemistry | 2 | ★★★★ | how the Nernst equation makes E depend on glucose concentration | pushed |
+| CP-067 | `4C.electrolytic-cells` | general chemistry | 2 | ★★★★ | moles of electrons from the charge passed (Faraday) | pushed |
+| CP-068 | `5E.biological-redox` | biochemistry | 1 | ★★★ | glucose oxidase as an oxidoreductase: which species is reduced and which carrier is used | pushed |
+| CP-069 | `4C.galvanic-cells` | general chemistry | 3 | ★★★ | a control for oxygen interference | pushed |
 
 **Standalone questions**
 
 | ID | Topic | Discipline | Skill | Diff | Asks | Status |
 |---|---|---|---|---|---|---|
-| CP-070 | `4C.charge-coulomb` | physics | 2 | ★★★ | Coulomb force between two ions | planned |
-| CP-071 | `5B.polarity` | general chemistry | 1 | ★★ | which bond is most polar | planned |
-| CP-072 | `5D.nucleotides-nucleic-acids` | biochemistry | 1 | ★★★ | nucleoside versus nucleotide | planned |
-| CP-073 | `4D.ir-spectroscopy` | organic chemistry | 1 | ★★★ | which functional group a band indicates | planned |
-| CP-074 | `5E.free-energy-phases` | general chemistry | 2 | ★★★ | reading a phase diagram | planned |
-| CP-075 | `5E.enzyme-inhibition-regulation` | biology | 1 | ★★★ | feedback inhibition of a pathway's first enzyme | planned |
+| CP-070 | `4C.charge-coulomb` | physics | 2 | ★★★ | Coulomb force between two ions | pushed |
+| CP-071 | `5B.polarity` | general chemistry | 1 | ★★ | which bond is most polar | pushed |
+| CP-072 | `5D.nucleotides-nucleic-acids` | biochemistry | 1 | ★★★ | nucleoside versus nucleotide | pushed |
+| CP-073 | `4D.ir-spectroscopy` | organic chemistry | 1 | ★★★ | which functional group a band indicates | pushed |
+| CP-074 | `5E.free-energy-phases` | general chemistry | 2 | ★★★ | reading a phase diagram | pushed |
+| CP-075 | `5E.enzyme-inhibition-regulation` | biology | 1 | ★★★ | feedback inhibition of a pathway's first enzyme | pushed |
 
 ### Batch 4 · CP-076 to CP-100 · status: planned
 
@@ -731,3 +731,5 @@ Topic: Redox stoichiometry and periodic trends. Scenario: Hypothetical permangan
 | 2026-10-15 | Batch 2 written and checked (CP-026–CP-050, CP-P05–CP-P08; all items `draft` until they pass the blind re-solve). Numbers re-derived in `review/chem_phys_batch_02_check.py` (RDKit for structures); packets `review/chem_phys_batch_02.md` and `_blind.md`. CP-034's ask changed from the first-pass-metabolism control to why log P is measured on the un-ionized form: the first-pass design has no intermolecular-forces content for its `5B.intermolecular-forces` tag, and the partition measurement is a Skill 3 design question that does. CP-P05's cable model (τ = RC per internode, v ≈ L/τ) follows Tasaki and Matsumoto (2002); axoplasm resistivity stated as 1.0 Ω·m because sources range 70–110 Ω·cm. CP-P08's ultrasound uses 1,540 m/s for tissue and blood (blood is about 1,570 m/s), stated in the passage. Note: the plan gives CP-P08 skills 2, 2, 1, 2, so that passage has no Skill 3/4 item although §1 says every passage has one; the item-level plan was kept so the batch totals (9/10/3/3) hold, and the check script records the exception. |
 | 2026-10-15 | Batch 2 reviewed: an independent blind re-solve agreed with the key on all 25 items (every table and chart value re-derived). Fixes made at review, all in explanations: CP-026 no longer says the electrical force on Na⁺ opposes entry only above +60 mV (it opposes entry once the inside is positive; net entry stops at the Na⁺ equilibrium potential); CP-033 drops the unmeasured claim that precipitated free acid "redissolves quickly"; CP-037 no longer states an elution-buffer pH the passage does not give; CP-050 choice D's note now says dehydration leaves the average oxidation state of carbon unchanged (individual carbons do change). CP-046 re-rated ★★ (one-step recall), batch mix now 5/11/9/0. No stems or choices changed, no `rev` increments. All 25 items and 4 passages `reviewed` (`reviewed_by: "independent blind re-solve"`); committed and pushed. |
 | 2026-10-15 | Batch 1 reviewed: an independent blind re-solve agreed with the key on all 25 items. Fixes made at review: CP-P01 Figure 1 now declines linearly along the narrowed segment, 84.6 mmHg at x = 20 mm to 83.6 mmHg at x = 30 mm (Poiseuille), and CP-002 reads the entry pressure at x = 20 mm; CP-005 choice B no longer calls the 1.2 m/s speed "recorded" (Table 1 says it was not measured); CP-013 rewritten to ask for Ki (the inhibitor-type item duplicated M1-Q08) and CP-016 rewritten to bracket when the second vial fell below 250 MBq (the activity-after-whole-half-lives item duplicated M1-Q04), both ★★★★; CP-023 re-rated ★★ (one-step recall). All 25 items and 4 passages `reviewed` (`reviewed_by: "independent blind re-solve"`); committed and pushed. |
+| 2026-10-15 | Batch 3 written and checked (CP-051–CP-075, CP-P09–CP-P12; all items `draft` until they pass the blind re-solve). Numbers re-derived in `review/chem_phys_batch_03_check.py` (RDKit for residue masses, peptide and y-ion masses, glucose/gluconolactone, acetone, adenosine/AMP); packets `review/chem_phys_batch_03.md` and `_blind.md`. CP-054's ask changed from 'why the calorimeter is calibrated with a standard before the sample' to the protocol that measures metabolizable energy directly (gross energy less the bomb energy of faeces and urine): the calibration rationale has no bioenergetics content for its `5E.bioenergetics` tag and is already exercised numerically by CP-051 and CP-055, whereas the excreta balance is a Skill 3 design question with the bioenergetics content the tag names. CP-P09's figure set changed from one table to a heating curve plus two tables so that CP-055 can read the heat capacity from data (electrical calibration at 110 W for 300 s, ΔT 3.00 K; the benzoic acid run gives the same 11.0 kJ/K). CP-P09 states the rounded combustion enthalpies it uses (glucose −2,800, lactic acid −1,360 kJ/mol) because published lactic acid values range from −1,338 to −1,363 kJ/mol. CP-P12 states the ferricyanide potential it uses (+0.36 V, the standard value; biosensor tables quote formal potentials up to +0.45 V) and uses the free-coenzyme FAD/FADH₂ value (−0.22 V), saying that enzyme-bound FAD differs. CP-P11 neglects the 1.5 cm lens–eye separation that OpenStax's examples include and says so. CP-057's ∝ m distractor corrected from 54 to 55 µs and CP-067's ampere-for-microampere distractor from 2.6 × 10⁻⁵ to 2.6 × 10⁻⁴ mol by the check script, and CP-059's 'tyrosine' distractor replaced by unmodified 'serine' at self-check (the passage names residue 3 as Ser, so a single serine option was a clue), all before the packets were generated. Phone check at 412 px: four tables and the spectrum's axis labels were shortened to fit (one- or two-word headers, qualifiers moved to captions). |
+| 2026-10-15 | Batch 3 reviewed: an independent blind re-solve agreed with the key on all 25 items (every table, chart and ladder value re-derived). Fixes made at review: CP-073's stem now reports no broad absorption anywhere between 2,500 and 3,600 cm⁻¹ (it said 3,200–3,600, which left most of a carboxylic acid's broad O–H band, 2,500–3,300 cm⁻¹, unexcluded, so choice A was not wrong for the stated reason); CP-P10 now says five peptides were detected in Figure 1 (it read as though a 21 kDa protein gave only five tryptic peptides); CP-051's explanation now gives the per-bar energy for the 48 g of dry matter (about 1,060 kJ), since the sample was dried. No answers, choices or ratings changed, no `rev` increments. All 25 items and 4 passages `reviewed` (`reviewed_by: "independent blind re-solve"`); committed and pushed. |

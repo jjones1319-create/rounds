@@ -1,6 +1,6 @@
 # MCAT Question Generator — Master Spec
 
-**Version:** 2.0 · **Created:** 2026-10-10 · **Updated:** 2026-10-15 · **Blocks produced so far:** 10 (M1–M7, M4B, CP1, CP2)
+**Version:** 2.2 · **Created:** 2026-10-10 · **Updated:** 2026-10-15 · **Blocks produced so far:** 11 (M1–M7, M4B, CP1–CP3)
 
 The single source of truth for writing MCAT-style practice content for Rounds. It mirrors
 `docs/board_question_generator_spec.md`, adapted to how the MCAT actually works: four sections,
@@ -311,6 +311,31 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 | CP-048 | chem_phys | 5E / S2 | 5E.enthalpy-hess | B | ★★★ | reviewed | OpenStax Chemistry 2e, 7.5 Strengths of Ionic and Covalent Bonds |
 | CP-049 | chem_phys | 4B / S1 | 4B.real-gases | C | ★★ | reviewed | OpenStax Chemistry 2e, 9.6 Non-Ideal Gas Behavior |
 | CP-050 | chem_phys | 5D / S1 | 5D.alcohols | A | ★★★ | reviewed | OpenStax Organic Chemistry, 17.7 Oxidation of Alcohols |
+| CP-051 | chem_phys | 5E / S2 | 5E.calorimetry-heat-transfer | B | ★★★ | reviewed | OpenStax Chemistry 2e, 5.2 Calorimetry |
+| CP-052 | chem_phys | 5E / S2 | 5E.enthalpy-hess | C | ★★★★ | reviewed | OpenStax Chemistry 2e, 5.3 Enthalpy |
+| CP-053 | chem_phys | 5E / S1 | 5E.thermodynamic-laws | A | ★★ | reviewed | OpenStax Chemistry 2e, 5.3 Enthalpy |
+| CP-054 | chem_phys | 5E / S3 | 5E.bioenergetics | D | ★★★ | reviewed | Merrill and Watt, Energy Value of Foods |
+| CP-055 | chem_phys | 5E / S4 | 5E.calorimetry-heat-transfer | B | ★★★★ | reviewed | OpenStax Chemistry 2e, 5.1 Energy Basics |
+| CP-056 | chem_phys | 4E / S1 | 4E.mass-spectrometry | C | ★★★ | reviewed | OpenStax Organic Chemistry, 12.4 Mass Spectrometry in Biological Chemistry |
+| CP-057 | chem_phys | 4E / S2 | 4E.mass-spectrometry | C | ★★★★ | reviewed | OpenStax Organic Chemistry, 12.4 Mass Spectrometry in Biological Chemistry |
+| CP-058 | chem_phys | 5D / S3 | 5D.peptides-proteins | A | ★★★ | reviewed | OpenStax Organic Chemistry, 26.6 Peptide Sequencing |
+| CP-059 | chem_phys | 5D / S4 | 5D.amino-acids | B | ★★★★★ | reviewed | University of Washington Proteomics Resource, residue mass table (Unimod elemental masses) |
+| CP-060 | chem_phys | 4E / S2 | 4E.nucleus-isotopes | C | ★★★★ | reviewed | IUPAC CIAAW, Carbon |
+| CP-061 | chem_phys | 4D / S2 | 4D.lenses | A | ★★★ | reviewed | OpenStax College Physics 2e, 26.2 Vision Correction |
+| CP-062 | chem_phys | 4D / S2 | 4D.eye-optical-instruments | B | ★★★★ | reviewed | OpenStax College Physics 2e, 26.2 Vision Correction |
+| CP-063 | chem_phys | 4D / S1 | 4D.reflection-refraction | D | ★★ | reviewed | OpenStax College Physics 2e, 26.1 Physics of the Eye |
+| CP-064 | chem_phys | 4D / S4 | 4D.lenses | B | ★★★ | reviewed | OpenStax College Physics 2e, 26.2 Vision Correction |
+| CP-065 | chem_phys | 4C / S2 | 4C.galvanic-cells | C | ★★★★ | reviewed | OpenStax Chemistry 2e, 17.3 Electrode and Cell Potentials |
+| CP-066 | chem_phys | 4C / S2 | 4C.concentration-cells-batteries | B | ★★★★ | reviewed | OpenStax Chemistry 2e, 17.4 Potential, Free Energy, and Equilibrium |
+| CP-067 | chem_phys | 4C / S2 | 4C.electrolytic-cells | A | ★★★★ | reviewed | OpenStax Chemistry 2e, 17.7 Electrolysis |
+| CP-068 | chem_phys | 5E / S1 | 5E.biological-redox | D | ★★★ | reviewed | ExPASy ENZYME, EC 1.1.3.4 glucose oxidase |
+| CP-069 | chem_phys | 4C / S3 | 4C.galvanic-cells | D | ★★★ | reviewed | Lowry, McAteer, El Atrash, Duff and O'Neill, Analytical Chemistry 66:1754–1761 |
+| CP-070 | chem_phys | 4C / S2 | 4C.charge-coulomb | C | ★★★ | reviewed | OpenStax College Physics 2e, 18.3 Coulomb's Law |
+| CP-071 | chem_phys | 5B / S1 | 5B.polarity | C | ★★ | reviewed | OpenStax Organic Chemistry, 2.1 Polar Covalent Bonds and Electronegativity |
+| CP-072 | chem_phys | 5D / S1 | 5D.nucleotides-nucleic-acids | A | ★★★ | reviewed | OpenStax Biology 2e, 3.5 Nucleic Acids |
+| CP-073 | chem_phys | 4D / S1 | 4D.ir-spectroscopy | D | ★★★ | reviewed | OpenStax Organic Chemistry, 12.8 Infrared Spectra of Some Common Functional Groups |
+| CP-074 | chem_phys | 5E / S2 | 5E.free-energy-phases | B | ★★★ | reviewed | OpenStax Chemistry 2e, 10.4 Phase Diagrams |
+| CP-075 | chem_phys | 5E / S1 | 5E.enzyme-inhibition-regulation | A | ★★★ | reviewed | OpenStax Biology 2e, 6.5 Enzymes |
 
 ## 11. Changelog
 
@@ -327,3 +352,5 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 | 1.8 | 2026-10-15 | Chem/Phys batch 1 passed the independent blind re-solve (25 of 25 agreed) and was pushed; all CP-001–CP-025 and CP-P01–CP-P04 `reviewed`. Fixes at review: CP-P01 Figure 1 made linear along the narrowed segment and CP-002 reads the entry at x = 20 mm; CP-005 choice B reworded; CP-013 rewritten to ask for Ki and CP-016 to bracket when a vial fell below the prescribed dose (both duplicated starter items M1-Q08 and M1-Q04); CP-023 re-rated ★★. No `rev` increments: the items had not been published. |
 | 1.9 | 2026-10-15 | Chem/Phys batch 2 (`content/mcat/chem_phys/batch_02.json`, block `CP2`): passages CP-P05–CP-P08 (demyelination cable model, pH-partition drug absorption, His-tag purification, umbilical Doppler) and items CP-026–CP-050 per `docs/CHEM_PHYS_250.md`, all `draft`; every number re-derived in `review/chem_phys_batch_02_check.py`, structures and stereocentres checked with RDKit, facts verified against the cited sources; packets `review/chem_phys_batch_02.md` and `review/chem_phys_batch_02_blind.md`. CP-034's planned ask changed (logged in the plan's changelog). |
 | 2.0 | 2026-10-15 | Chem/Phys batch 2 passed the independent blind re-solve (25 of 25 agreed) and was pushed; all CP-026–CP-050 and CP-P05–CP-P08 `reviewed`. Fixes at review, explanations only: CP-026 (electrical force on Na⁺ opposes entry once the inside is positive, not only above +60 mV), CP-033 (unmeasured "redissolves quickly" claim removed), CP-037 (no elution-buffer pH stated in the passage), CP-050 (dehydration leaves the average carbon oxidation state unchanged); CP-046 re-rated ★★. No `rev` increments: the items had not been published. |
+| 2.1 | 2026-10-15 | Chem/Phys batch 3 (`content/mcat/chem_phys/batch_03.json`, block `CP3`): passages CP-P09–CP-P12 (bomb calorimetry of a meal bar, MALDI-TOF of a phosphorylated tryptic peptide, presbyopia and reading lenses, a ferricyanide-mediated glucose test strip) and items CP-051–CP-075 per `docs/CHEM_PHYS_250.md`, all `draft` pending the independent blind re-solve; every number re-derived in `review/chem_phys_batch_03_check.py` (230 checks; residue masses, peptide and y-ion masses, glucose/lactone oxidation states and formulas with RDKit), facts verified against the cited sources (NIST SRM 39j, NIST WebBook, CODATA 2022, Unimod, CIAAW, OpenStax, FAO, USDA Handbook 74); packets `review/chem_phys_batch_03.md` and `review/chem_phys_batch_03_blind.md`. CP-054's planned ask changed (logged in the plan's changelog). |
+| 2.2 | 2026-10-15 | Chem/Phys batch 3 passed the independent blind re-solve (25 of 25 agreed) and was pushed; all CP-051–CP-075 and CP-P09–CP-P12 `reviewed`. Fixes at review: CP-073 stem (no broad absorption anywhere between 2,500 and 3,600 cm⁻¹, so the carboxylic acid distractor is excluded for the stated reason), CP-P10 passage (five peptides detected in Figure 1), CP-051 explanation (per-bar energy for the dried sample). No `rev` increments: the items had not been published. |

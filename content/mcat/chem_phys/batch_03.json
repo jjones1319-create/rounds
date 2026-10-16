@@ -1,0 +1,1570 @@
+{
+  "block": "CP3",
+  "plan": "docs/CHEM_PHYS_250.md batch 3 (CP-051 to CP-075, passages CP-P09 to CP-P12); checks in review/chem_phys_batch_03_check.py",
+  "passages": [
+    {
+      "id": "CP-P09",
+      "section": "chem_phys",
+      "kind": "science",
+      "title": "Bomb calorimetry of a meal bar",
+      "text": [
+        "A bomb calorimeter measures the energy released when a sample burns completely. A weighed sample is sealed in a steel bomb under about 30 atm of oxygen, the bomb is submerged in a known mass of water, and the sample is ignited by a fuse wire. The temperature of the whole assembly (bomb, water and bucket) rises, and the heat released is q = CΔT, where C is the heat capacity of the assembly. C cannot be calculated from the parts with enough accuracy, so it is found by calibration, either by burning a reference material of certified heat of combustion or by delivering a measured quantity of electrical energy from a heater inside the bucket. Because the bomb's volume is fixed, the heat it releases equals the decrease in the internal energy of its contents; for foods the difference between this and the enthalpy change is well under 1% and is ignored.",
+        "In a hypothetical study, a nutrition laboratory measured the gross energy of a 50 g meal bar. The assembly was first calibrated electrically: a heater delivering a constant 110 W was switched on at t = 60 s and off at t = 360 s while the temperature was recorded (Figure 1). It was then calibrated chemically by burning a 1.000 g pellet of benzoic acid, a certified reference material with a heat of combustion of 26.4 kJ/g (Table 1). Finally a 1.000 g sample of the dried, ground bar was burned under identical conditions (Table 1). The small corrections for the fuse wire were applied before the values in Table 1 were recorded.",
+        "Food labels do not report gross energy. The Atwater general factors (Table 2) estimate the metabolizable energy: the gross energy less the energy lost in faeces and urine. Fat and available carbohydrate are oxidized in the body to the same final products as in the bomb, carbon dioxide and water, so for them only incomplete digestion is deducted. Protein is different: in the bomb its nitrogen ends up mainly as N₂, whereas the body excretes nitrogen chiefly as urea, which still has combustion energy, so protein's gross energy of about 23.6 kJ/g is reduced to 17 kJ/g. Dietary fibre is not digested by human enzymes and is only partly fermented by colonic bacteria. Because enthalpy is a state function, the energy released when glucose is oxidized to carbon dioxide and water is the same whether it burns in the bomb in a fraction of a second or passes through glycolysis, the citric acid cycle and the electron transport chain. To compare pathways, the investigators used rounded standard enthalpies of combustion of −2,800 kJ/mol for glucose and −1,360 kJ/mol for lactic acid."
+      ],
+      "figures": [
+        {
+          "id": "fig1",
+          "type": "line",
+          "caption": "Figure 1. Temperature of the calorimeter assembly during the electrical calibration. The 110 W heater was switched on at t = 60 s and off at t = 360 s.",
+          "alt": "Line graph of temperature in degrees Celsius against time in seconds. The temperature is 25.00 °C from 0 to 60 s, rises in a straight line while the heater runs, reaching 25.60 at 120 s, 26.20 at 180 s, 26.80 at 240 s, 27.40 at 300 s and 28.00 °C at 360 s, then stays at 28.00 °C to 480 s.",
+          "data": {
+            "x": {
+              "label": "Time (s)",
+              "min": 0,
+              "max": 480
+            },
+            "y": {
+              "label": "Temperature (°C)",
+              "min": 24.5,
+              "max": 28.5
+            },
+            "series": [
+              {
+                "name": "Assembly temperature",
+                "points": [
+                  [
+                    0,
+                    25.0
+                  ],
+                  [
+                    60,
+                    25.0
+                  ],
+                  [
+                    120,
+                    25.6
+                  ],
+                  [
+                    180,
+                    26.2
+                  ],
+                  [
+                    240,
+                    26.8
+                  ],
+                  [
+                    300,
+                    27.4
+                  ],
+                  [
+                    360,
+                    28.0
+                  ],
+                  [
+                    420,
+                    28.0
+                  ],
+                  [
+                    480,
+                    28.0
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "tab1",
+          "type": "table",
+          "caption": "Table 1. Combustion runs in the same assembly.",
+          "alt": "Table with two rows. Calibration run: benzoic acid, 1.000 g, temperature rise 2.40 K. Sample run: meal bar, 1.000 g, temperature rise 2.00 K.",
+          "data": {
+            "columns": [
+              "Run",
+              "Sample",
+              "Mass (g)",
+              "ΔT (K)"
+            ],
+            "rows": [
+              [
+                "Calibration",
+                "benzoic acid",
+                "1.000",
+                "2.40"
+              ],
+              [
+                "Sample",
+                "meal bar",
+                "1.000",
+                "2.00"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "tab2",
+          "type": "table",
+          "caption": "Table 2. Composition of one 50 g bar and the Atwater general factor (kJ/g) applied to each component for the label.",
+          "alt": "Table with five rows. Available carbohydrate 25 g, factor 17 kJ/g. Dietary fibre 5 g, factor 8 kJ/g. Fat 10 g, factor 37 kJ/g. Protein 8 g, factor 17 kJ/g. Water and minerals 2 g, factor 0.",
+          "data": {
+            "columns": [
+              "Component",
+              "Mass (g)",
+              "kJ/g"
+            ],
+            "rows": [
+              [
+                "Available carbohydrate",
+                "25",
+                "17"
+              ],
+              [
+                "Dietary fibre",
+                "5",
+                "8"
+              ],
+              [
+                "Fat",
+                "10",
+                "37"
+              ],
+              [
+                "Protein",
+                "8",
+                "17"
+              ],
+              [
+                "Water and minerals",
+                "2",
+                "0"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": "Hypothetical study written for this app. Bomb calorimetry (constant volume, steel bomb under oxygen, calibration by burning benzoic acid, the nutritional Calorie) from OpenStax Chemistry 2e, 5.2 Calorimetry (2019); first law, state functions, Hess's law and standard enthalpy of combustion from OpenStax Chemistry 2e, 5.3 Enthalpy. Benzoic acid heat of combustion 26,434 J/g from the NIST SRM 39j certificate (Standard Reference Material 39j, Benzoic Acid, Calorimetric Standard), rounded to 26.4 kJ/g; NIST notes that its own value for benzoic acid is measured in electrical units, which is why the passage calibrates both ways. Standard enthalpies of combustion: α-D-glucose (solid) −2,805.0 ± 1.3 kJ/mol (Ponomarev and Migarskaya 1960, reanalysed by Cox and Pilcher 1970) and DL-lactic acid (solid) −1,362.8 kJ/mol (Meyerhof 1922), both from the NIST Chemistry WebBook, condensed-phase thermochemistry; the passage rounds them to −2,800 and −1,360 kJ/mol and states them because published values for lactic acid range from −1,338 (S-lactic acid) to −1,363 kJ/mol. Atwater general factors 17, 37 and 17 kJ/g, the fibre factor of 8 kJ/g (FAO 1998 recommendation) and the definition of metabolizable energy from FAO Food and Nutrition Paper 77, Food energy: methods of analysis and conversion factors (2003), chapter 3. Protein's heat of combustion of 5.65 kcal/g (23.6 kJ/g) and the 1.25 kcal/g deduction for unoxidized urinary nitrogen compounds, and available energy as gross energy less the energy of urine and faeces, from Merrill and Watt, Energy Value of Foods: Basis and Derivation, USDA Agriculture Handbook 74 (1955, revised 1973). The heat capacity of 11.0 kJ/K and the 2.40 K rise for 1 g of benzoic acid are typical of a bomb calorimeter with about 2 L of water. Figure 1 and both tables are generated and cross-checked in review/chem_phys_batch_03_check.py.",
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-P10",
+      "section": "chem_phys",
+      "kind": "science",
+      "title": "Mass spectrometry of a tryptic peptide",
+      "text": [
+        "In matrix-assisted laser desorption/ionization (MALDI) mass spectrometry, the sample is co-crystallized with a matrix, an aromatic acid that absorbs the laser's wavelength. A laser pulse vaporizes a little of the crystal, and the matrix transfers a proton to most sample molecules, giving [M + H]⁺ ions; a few molecules gain two protons. The ions are accelerated through a potential difference V, so a singly charged ion acquires kinetic energy eV, where e is the elementary charge, and an ion of charge number z acquires zeV. They then drift down a field-free tube of length L and reach the detector after a time t = L/v, the time of flight. The spectrum plots detector signal against m/z, the mass in daltons (1 Da = 1.66 × 10⁻²⁷ kg) divided by the charge number. The most intense peak of a small peptide is its monoisotopic peak, in which every atom is the lightest isotope; the peak one unit higher comes from molecules containing one heavy atom, mostly carbon-13, whose natural abundance the investigators took as 1.1%.",
+        "In a hypothetical study, a 21 kDa recombinant protein expressed in insect cells was suspected of carrying a post-translational modification. The protein was digested with trypsin, which cleaves on the carboxyl side of lysine and arginine, and the peptides were analysed by MALDI time-of-flight at V = 20 kV with L = 2.0 m; singly charged ions of m/z 900 reached the detector 30.5 µs after the laser pulse. Five peptides were detected (Figure 1). Four of them, T1, T2, T4 and T5, matched the masses predicted from the gene sequence within 0.1 Da. T3, whose predicted sequence is Ala-Tyr-Ser-Leu-Gln-Asp-Val-Phe-Lys with a predicted [M + H]⁺ of 1,070.55, instead appeared at 1,150.52, a difference of 79.97 Da. Phosphorylation of a serine, threonine or tyrosine side chain adds HPO₃, 79.97 Da, and the investigators adopted this as their working hypothesis.",
+        "To locate the modification, T3 ions were selected, fragmented along the peptide backbone, and the fragments were analysed in a second stage. Fragments that retain the C-terminal lysine (the y series) form a ladder in which each member differs from the next by the mass of one amino acid residue (Table 2; residue masses in Table 1). The neutral mass of any peptide is the sum of its residue masses plus the mass of water (18.01 Da) for the two termini, and the [M + H]⁺ ion is one unit heavier still. A second sample of the protein was digested with chymotrypsin, which cleaves on the carboxyl side of phenylalanine, tyrosine and tryptophan, and its peptides were analysed in the same way."
+      ],
+      "figures": [
+        {
+          "id": "fig1",
+          "type": "bar",
+          "caption": "Figure 1. MALDI time-of-flight spectrum of the tryptic digest. Monoisotopic peaks: T1 at 575.3, T2 at 861.4, T3 at 1,150.5, T4 at 1,290.7 and T5 at 1,625.8; the bars at 862.4 and 863.4 are the first two isotope peaks of T2. The other peptides' isotope peaks are omitted.",
+          "alt": "Bar chart of relative intensity against m/z for seven peaks. T1 at 575.3, 65%. T2 at 861.4, 100%, with isotope peaks at 862.4, 44%, and 863.4, 10%. T3 at 1150.5, 80%. T4 at 1290.7, 55%. T5 at 1625.8, 35%.",
+          "data": {
+            "x": {
+              "label": "m/z"
+            },
+            "y": {
+              "label": "Relative intensity (%)",
+              "min": 0,
+              "max": 100
+            },
+            "series": [
+              {
+                "name": "Tryptic digest",
+                "points": [
+                  [
+                    "575.3",
+                    65
+                  ],
+                  [
+                    "861.4",
+                    100
+                  ],
+                  [
+                    "862.4",
+                    44
+                  ],
+                  [
+                    "863.4",
+                    10
+                  ],
+                  [
+                    "1150.5",
+                    80
+                  ],
+                  [
+                    "1290.7",
+                    55
+                  ],
+                  [
+                    "1625.8",
+                    35
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "tab1",
+          "type": "table",
+          "caption": "Table 1. Monoisotopic residue masses of the amino acids (the mass each contributes inside a peptide), in daltons. The last entry, H₂O, is the mass added for the two termini of a peptide.",
+          "alt": "Table of residue masses in daltons. Gly 57.02, Ala 71.04, Ser 87.03, Pro 97.05, Val 99.07, Thr 101.05, Cys 103.01, Leu or Ile 113.08, Arg 156.10, Trp 186.08, Asn 114.04, Asp 115.03, Gln 128.06, Lys 128.09, Glu 129.04, Met 131.04, His 137.06, Phe 147.07, Tyr 163.06; water added for the two termini 18.01.",
+          "data": {
+            "columns": [
+              "Residue",
+              "Mass",
+              "Residue",
+              "Mass"
+            ],
+            "rows": [
+              [
+                "Gly",
+                "57.02",
+                "Asn",
+                "114.04"
+              ],
+              [
+                "Ala",
+                "71.04",
+                "Asp",
+                "115.03"
+              ],
+              [
+                "Ser",
+                "87.03",
+                "Gln",
+                "128.06"
+              ],
+              [
+                "Pro",
+                "97.05",
+                "Lys",
+                "128.09"
+              ],
+              [
+                "Val",
+                "99.07",
+                "Glu",
+                "129.04"
+              ],
+              [
+                "Thr",
+                "101.05",
+                "Met",
+                "131.04"
+              ],
+              [
+                "Cys",
+                "103.01",
+                "His",
+                "137.06"
+              ],
+              [
+                "Leu/Ile",
+                "113.08",
+                "Phe",
+                "147.07"
+              ],
+              [
+                "Arg",
+                "156.10",
+                "Tyr",
+                "163.06"
+              ],
+              [
+                "Trp",
+                "186.08",
+                "H₂O",
+                "18.01"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "tab2",
+          "type": "table",
+          "caption": "Table 2. Fragments of T3 that retain the C-terminal lysine (y ions), singly charged.",
+          "alt": "Table with five rows. y8, residues 2 to 9, m/z 1,079.5. y7, residues 3 to 9, m/z 916.4. y6, residues 4 to 9, m/z 749.4. y5, residues 5 to 9, m/z 636.3. y4, residues 6 to 9, m/z 508.3.",
+          "data": {
+            "columns": [
+              "Fragment",
+              "Residues",
+              "m/z"
+            ],
+            "rows": [
+              [
+                "y8",
+                "2–9",
+                "1,079.5"
+              ],
+              [
+                "y7",
+                "3–9",
+                "916.4"
+              ],
+              [
+                "y6",
+                "4–9",
+                "749.4"
+              ],
+              [
+                "y5",
+                "5–9",
+                "636.3"
+              ],
+              [
+                "y4",
+                "6–9",
+                "508.3"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": "Hypothetical study written for this app. MALDI and electrospray ionization ([M + H]⁺ ions, 'soft' methods), the time-of-flight analyser (every ion given the same kinetic energy, lighter ions move faster, v = √(2E/m)) and the use of MALDI-TOF for peptides from OpenStax Organic Chemistry, 12.4 Mass Spectrometry in Biological Chemistry: Time-of-Flight (TOF) Instruments (2023); isotope peaks and m/z from OpenStax Organic Chemistry, 12.2 Interpreting Mass Spectra. Trypsin (after Lys and Arg) and chymotrypsin (after Phe, Tyr and Trp) specificities and the overlap strategy from OpenStax Organic Chemistry, 26.6 Peptide Sequencing: The Edman Degradation. Elementary charge 1.602 176 634 × 10⁻¹⁹ C and atomic mass constant 1.660 539 068 92 × 10⁻²⁷ kg from NIST CODATA 2022. Monoisotopic residue masses computed from the amino-acid formulas with RDKit in review/chem_phys_batch_03_check.py and matched to the University of Washington Proteomics Resource residue mass table (Unimod elemental masses; e.g. Gly 57.021464, Ser 87.032028, Tyr 163.063329). Phosphorylation adds HPO₃, monoisotopic 79.966331 Da, on Ser, Thr or Tyr: Unimod entry 21 (Phospho). Carbon-13 natural abundance interval 0.0096–0.0116 (1.1% as a representative value) from IUPAC CIAAW, Carbon: isotopic abundances (2009). The flight time of 30.5 µs for m/z 900 at 20 kV over 2.0 m, the T3 masses and every y-ion value are computed from these constants in review/chem_phys_batch_03_check.py. The 44% M+1 intensity of T2 is the hypothetical observation; CP-060's explanation notes that ¹⁵N, ²H and ¹⁷O also contribute to it.",
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-P11",
+      "section": "chem_phys",
+      "kind": "science",
+      "title": "Presbyopia and reading lenses",
+      "text": [
+        "The cornea and the lens of the eye together form a real, inverted image on the retina, about 2.0 cm behind the lens. Light is bent at each boundary according to Snell's law, n₁ sin θ₁ = n₂ sin θ₂, where the refractive indices are about 1.00 for air, 1.38 for the cornea, 1.34 for the aqueous humour in front of the lens, 1.41 for the lens itself and 1.34 for the vitreous humour behind it. The power of a lens is P = 1/f, in diopters (D) when the focal length f is in metres, and the powers of thin lenses in contact add. The relaxed eye has a total power of about 50 D; to focus an object 25 cm away it must reach about 54 D, which it does by accommodation, the ciliary muscle thickening the lens. The far point is the greatest distance at which an object is seen sharply with the eye relaxed (infinity for a normal eye) and the near point the smallest distance at which it is seen sharply with full accommodation. The amplitude of accommodation, in diopters, is 1/(near point) − 1/(far point), with distances in metres. With age the lens stiffens, the amplitude falls and the near point recedes beyond comfortable reading distance: presbyopia.",
+        "In a hypothetical clinic study, the near point and far point of three patients were measured without lenses (Table 1). The clinic takes 25 cm as the standard reading distance and treats a spectacle lens as a thin lens placed at the eye, neglecting the small separation between them. Lenses are prescribed with the thin-lens equation 1/dₒ + 1/dᵢ = 1/f, in which a virtual image, formed on the same side of the lens as the object, has a negative image distance. A reading lens must form a virtual image of the page, held at 25 cm, at the patient's near point, where the eye can focus it; a distance lens must form a virtual image of a distant object at the patient's far point.",
+        "Patient C, who is myopic, reported reading comfortably without spectacles but seeing distant objects blurred."
+      ],
+      "figures": [
+        {
+          "id": "tab1",
+          "type": "table",
+          "caption": "Table 1. Near point and far point, in centimetres, of the three patients, measured with the eye unaided (∞ = infinity).",
+          "alt": "Table with three rows. Patient A, age 48, near point 50 cm, far point infinity. Patient B, age 58, near point 100 cm, far point infinity. Patient C, age 50, near point 25 cm, far point 50 cm.",
+          "data": {
+            "columns": [
+              "Patient",
+              "Age (y)",
+              "Near (cm)",
+              "Far (cm)"
+            ],
+            "rows": [
+              [
+                "A",
+                "48",
+                "50",
+                "∞"
+              ],
+              [
+                "B",
+                "58",
+                "100",
+                "∞"
+              ],
+              [
+                "C",
+                "50",
+                "25",
+                "50"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": "Hypothetical study written for this app. Refractive indices of air, cornea, aqueous humour, lens and vitreous humour (Table 26.1), the cornea providing about two-thirds of the eye's power because light's speed changes most at the air–cornea boundary, the eye's power of 50.0 D relaxed and 54.0 D for an object at 25 cm (Example 26.2, image distance 2.00 cm), the near point and presbyopia from OpenStax College Physics 2e, 26.1 Physics of the Eye (2022). Correction of myopia with a diverging lens that forms a virtual image at the far point, of hyperopia with a converging lens that forms a virtual image at the near point, the sign convention (virtual image distance negative) and the use of P = 1/dₒ + 1/dᵢ from OpenStax College Physics 2e, 26.2 Vision Correction (Examples 26.3 and 26.4; the clinic in this passage neglects the 1.5 cm lens–eye separation those examples include, and says so). Thin-lens equation and lens power from OpenStax College Physics 2e, 25.6 Image Formation by Lenses; Snell's law from 25.3 The Law of Refraction. The patients' amplitudes of accommodation (2.0 D at 48, 1.0 D at 58, 2.0 D at 50) lie within the range of published age curves (Duane's 1922 subjective data give larger values, objective measurements about 1.5 D lower). Every prescription is re-derived in review/chem_phys_batch_03_check.py.",
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-P12",
+      "section": "chem_phys",
+      "kind": "science",
+      "title": "An electrochemical glucose test strip",
+      "text": [
+        "Glucose oxidase is a flavoprotein oxidoreductase: each subunit holds one tightly bound flavin adenine dinucleotide (FAD). It oxidizes β-D-glucose at C1 to D-glucono-1,5-lactone in two half-steps. First, glucose reduces the enzyme's FAD: glucose + GOx·FAD → gluconolactone + GOx·FADH₂. Second, the natural electron acceptor, oxygen, re-oxidizes the flavin: GOx·FADH₂ + O₂ → GOx·FAD + H₂O₂. First-generation glucose sensors oxidized the hydrogen peroxide at a platinum electrode held near +0.6 V against a reference electrode and measured the current, but the reading depended on the oxygen content of the sample, and at that potential ascorbate, urate and acetaminophen in blood are also oxidized.",
+        "In a hypothetical second-generation strip, glucose oxidase and a large excess of potassium ferricyanide, K₃Fe(CN)₆, are dried onto a carbon working electrode. A 1 µL drop of blood rehydrates the layer. Glucose reduces the enzyme's FAD as before, but ferricyanide now takes the electrons: GOx·FADH₂ + 2 Fe(CN)₆³⁻ → GOx·FAD + 2 Fe(CN)₆⁴⁻ + 2 H⁺. After a 5.0 s incubation the meter applies +0.3 V between the working electrode and the reference electrode, re-oxidizing the ferrocyanide formed, Fe(CN)₆⁴⁻ → Fe(CN)₆³⁻ + e⁻, and records the current for 5.0 s; each glucose molecule therefore delivers two electrons to the electrode. For a calibration sample the average current over the measurement was 10 µA. Table 1 lists the standard reduction potentials at pH 7 that the investigators used; for FAD they used the value for the free coenzyme, noting that the potential of enzyme-bound FAD differs.",
+        "The investigators also made open-circuit measurements, in which no current flows and the electrode potential follows the Nernst equation for the ferricyanide/ferrocyanide couple: E = E°′ − (0.0592 V) log([Fe(CN)₆⁴⁻]/[Fe(CN)₆³⁻]). In a fresh strip the ferrocyanide:ferricyanide ratio is about 1:100. Dissolved oxygen can still compete with ferricyanide for the reduced enzyme, diverting electrons into hydrogen peroxide, which is not oxidized at +0.3 V; the ferricyanide is loaded in excess so that it outcompetes oxygen, and the investigators planned a test of the residual interference. Venous blood carries less oxygen than arterial blood, and capillary blood from a fingertip lies between the two."
+      ],
+      "figures": [
+        {
+          "id": "tab1",
+          "type": "table",
+          "caption": "Table 1. Standard reduction potentials at pH 7 and 25 °C used by the investigators, in volts against the standard hydrogen electrode. The FAD value is that of the free coenzyme.",
+          "alt": "Table with three rows. Oxygen plus two protons plus two electrons to hydrogen peroxide, plus 0.30 V. Ferricyanide plus one electron to ferrocyanide, plus 0.36 V. FAD plus two protons plus two electrons to FADH₂ (free coenzyme), minus 0.22 V.",
+          "data": {
+            "columns": [
+              "Half-reaction",
+              "E°′ (V)"
+            ],
+            "rows": [
+              [
+                "O₂ + 2 H⁺ + 2 e⁻ → H₂O₂",
+                "+0.30"
+              ],
+              [
+                "Fe(CN)₆³⁻ + e⁻ → Fe(CN)₆⁴⁻",
+                "+0.36"
+              ],
+              [
+                "FAD + 2 H⁺ + 2 e⁻ → FADH₂",
+                "−0.22"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": "Hypothetical study written for this app. Glucose oxidase reaction β-D-glucose + O₂ = D-glucono-1,5-lactone + H₂O₂ from ExPASy ENZYME entry EC 1.1.3.4; the two half-steps with GOx/FAD and GOx/FADH₂, the oxygen dependence of first-generation H₂O₂-detecting electrodes, second-generation mediated electrodes that are 'relatively insensitive to changes in dioxygen tension' and run at lower potentials, and ascorbate interference from Lowry, McAteer, El Atrash, Duff and O'Neill, Characterization of glucose oxidase-modified poly(phenylenediamine)-coated electrodes in vitro and in vivo, Analytical Chemistry 66:1754–1761 (1994). The three generations of biosensors, the mediated scheme glucose + GOD(ox) → gluconolactone + GOD(red) + 2H⁺, GOD(red) + 2 mediator(ox) → GOD(ox) + 2 mediator(red), mediator re-oxidation at the electrode, ferricyanide and ferrocene as mediators, the requirement that a mediator 'should not react with oxygen', and the H₂O₂ oxidation potential of about +0.65 V from Eggins, Chemical Sensors and Biosensors (Wiley 2002), chapter 5, Amperometric biosensors. Standard reduction potential of Fe(CN)₆³⁻/Fe(CN)₆⁴⁻ +0.356 V from Chemistry LibreTexts, P1: Standard Reduction Potentials by Element (rounded to +0.36; the formal potential depends on the medium and is quoted as high as +0.45 V in some biosensor tables, so the passage states the value it uses). FAD/FADH₂ (free coenzyme) −0.22 V and O₂/H₂O₂ +0.30 V at pH 7 from the standard reduction potential table in Jakubowski, Biochemistry Online (CSB/SJU), Oxidative Phosphorylation: Dehydrogenases (free FAD is −0.219 V in other biochemistry tables; enzyme-bound FAD ranges from about 0.00 to −0.09 V, as the passage notes; O₂/H₂O₂ is +0.695 V at pH 0 in the LibreTexts table, which gives +0.28 V when shifted to pH 7). Nernst equation at 25 °C, E = E° − (0.0592 V/n) log Q, and ΔG° = −nFE° from OpenStax Chemistry 2e, 17.4 Potential, Free Energy, and Equilibrium (2019); Q = It and n = Q/F with F = 96,485 C/mol from OpenStax Chemistry 2e, 17.7 Electrolysis; Faraday constant 96,485.332 C/mol from NIST CODATA 2022. Every potential and charge in the items is re-derived in review/chem_phys_batch_03_check.py.",
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    }
+  ],
+  "items": [
+    {
+      "id": "CP-051",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P09",
+      "discipline": "general chemistry",
+      "fc": "5",
+      "category": "5E",
+      "topics": [
+        "5E.calorimetry-heat-transfer"
+      ],
+      "skill": "2",
+      "cars_skill": null,
+      "difficulty": 3,
+      "stem": "Using Table 1 and the heat of combustion of benzoic acid given in the passage, the gross energy of the bar is closest to:",
+      "options": {
+        "A": "11.0 kJ/g",
+        "B": "22.0 kJ/g",
+        "C": "31.7 kJ/g",
+        "D": "52.8 kJ/g"
+      },
+      "answer": "B",
+      "why_correct": [
+        "Passage: \"the heat released is q = CΔT, where C is the heat capacity of the assembly.\" The same assembly was used for both runs, so C is the same and, for equal 1.000 g masses, q(bar)/q(benzoic acid) = ΔT(bar)/ΔT(benzoic acid).",
+        "q(bar) = 26.4 kJ × (2.00 K / 2.40 K) = 26.4 × 5/6 = 22.0 kJ per gram.",
+        "Two-step check: C = 26.4 kJ / 2.40 K = 11.0 kJ/K, then q = 11.0 kJ/K × 2.00 K = 22.0 kJ. The sample was dried, so the 48 g of dry matter in a 50 g bar (Table 2) hold about 1,060 kJ, roughly 250 kcal (1 kcal = 4.184 kJ)."
+      ],
+      "why_wrong": {
+        "A": "11.0 is the heat capacity of the assembly in kJ/K, not an energy per gram of sample.",
+        "C": "31.7 kJ/g inverts the ratio of the temperature rises (2.40/2.00); the bar raised the temperature less than benzoic acid did, so it released less energy per gram.",
+        "D": "52.8 kJ/g multiplies 26.4 kJ by the bar's 2.00 K rise without dividing by the 2.40 K rise of the calibration run."
+      },
+      "error_types": {
+        "A": "sign or unit error: a heat capacity (kJ/K) reported as an energy per gram",
+        "C": "reversed relationship: ratio of temperature rises inverted",
+        "D": "wrong formula: q = (26.4 kJ) × ΔT instead of C × ΔT with C from the calibration"
+      },
+      "takeaway": "In a calibrated bomb calorimeter q = CΔT; with the same assembly and equal masses, the energies of two samples are in the ratio of their temperature rises.",
+      "sources": [
+        "OpenStax Chemistry 2e, 5.2 Calorimetry (2019): bomb calorimeters are calibrated by burning a known mass of benzoic acid, and the energy of a sample is calculated from the temperature rise and the calorimeter's heat capacity.",
+        "NIST Standard Reference Material 39j certificate: benzoic acid heat of combustion 26,434 J/g."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-052",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P09",
+      "discipline": "general chemistry",
+      "fc": "5",
+      "category": "5E",
+      "topics": [
+        "5E.enthalpy-hess"
+      ],
+      "skill": "2",
+      "cars_skill": null,
+      "difficulty": 4,
+      "stem": "In exercising muscle, glucose can be converted anaerobically to lactic acid: C₆H₁₂O₆ → 2 C₃H₆O₃. Using the standard enthalpies of combustion given in the passage, ΔH° for this conversion, per mole of glucose, is closest to:",
+      "options": {
+        "A": "−4,160 kJ/mol",
+        "B": "−1,440 kJ/mol",
+        "C": "−80 kJ/mol",
+        "D": "+80 kJ/mol"
+      },
+      "answer": "C",
+      "why_correct": [
+        "Hess's law: glucose and two lactic acids burn to the same products, 6 CO₂ + 6 H₂O. Write glucose → 2 lactic acid as (glucose + 6 O₂ → 6 CO₂ + 6 H₂O) minus 2 × (lactic acid + 3 O₂ → 3 CO₂ + 3 H₂O).",
+        "ΔH° = ΔcH°(glucose) − 2 ΔcH°(lactic acid) = (−2,800) − 2(−1,360) = −2,800 + 2,720 = −80 kJ/mol.",
+        "Sense check: lactic acid still holds almost all of glucose's combustion energy (2 × 1,360 = 2,720 of 2,800 kJ), so the anaerobic step releases only about 3% of it; the rest is released when lactate is later oxidized completely."
+      ],
+      "why_wrong": {
+        "A": "−4,160 kJ/mol adds the two combustion enthalpies (−2,800 − 1,360); Hess's law subtracts the products' combustion enthalpies from the reactants'.",
+        "B": "−1,440 kJ/mol subtracts the combustion enthalpy of one mole of lactic acid; the equation forms two moles.",
+        "D": "+80 kJ/mol has the right magnitude but the wrong sign: the reactants' combustion enthalpy (−2,800) is more negative than the products' (−2,720), so the conversion is exothermic."
+      },
+      "error_types": {
+        "A": "wrong formula: combustion enthalpies added instead of reactants minus products",
+        "B": "wrong formula: stoichiometric coefficient of 2 dropped",
+        "D": "sign or unit error: products and reactants interchanged"
+      },
+      "takeaway": "For a reaction whose reactants and products all burn to the same products, ΔH°rxn = Σ ΔcH°(reactants) − Σ ΔcH°(products), each weighted by its coefficient.",
+      "sources": [
+        "OpenStax Chemistry 2e, 5.3 Enthalpy (2019): Hess's law (the enthalpy change of a process equals the sum of the enthalpy changes of its steps, because enthalpy is a state function) and the standard enthalpy of combustion.",
+        "NIST Chemistry WebBook, condensed-phase thermochemistry: α-D-glucose ΔcH°(solid) = −2,805.0 ± 1.3 kJ/mol; lactic acid ΔcH°(solid) = −1,362.8 kJ/mol (Meyerhof 1922). With the unrounded values the result is −79.4 kJ/mol."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-053",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P09",
+      "discipline": "general chemistry",
+      "fc": "5",
+      "category": "5E",
+      "topics": [
+        "5E.thermodynamic-laws"
+      ],
+      "skill": "1",
+      "cars_skill": null,
+      "difficulty": 2,
+      "stem": "Taking the reacting contents of the sealed bomb as the system, which statement about the combustion measurement is correct?",
+      "options": {
+        "A": "Because the volume is fixed, no pressure–volume work is done, and the heat that flows out equals the decrease in the system's internal energy.",
+        "B": "Because the bomb sits in water at atmospheric pressure, the heat measured equals the system's enthalpy change rather than its internal energy change.",
+        "C": "Because the sample releases a large amount of energy, the heat q for the combustion is a large positive quantity in the first law.",
+        "D": "Because faster combustion loses less heat to the surroundings, the internal energy change depends on how quickly the sample burns."
+      },
+      "answer": "A",
+      "why_correct": [
+        "First law: ΔU = q + w, with q the heat entering the system and w the work done on it. In a rigid bomb ΔV = 0, so w = −PΔV = 0 and ΔU = q.",
+        "The reaction releases heat, so q is negative for the system, and the heat that warms the water and bomb, which the passage calls q = CΔT, equals −ΔU of the contents.",
+        "Passage: \"the heat it releases equals the decrease in the internal energy of its contents.\" Internal energy is a state function, so this ΔU is the same however fast the sample burns."
+      ],
+      "why_wrong": {
+        "B": "The water outside the bomb is at constant pressure, but the system is the bomb's contents, whose volume cannot change; constant-volume heat equals ΔU, and ΔH differs from it by Δ(PV), small for foods but not zero.",
+        "C": "Heat leaves the reacting system, so by the convention ΔU = q + w the system's q is negative; the surroundings' q is positive.",
+        "D": "Internal energy is a state function: ΔU depends only on the initial and final states of the contents, not on the rate or path of the reaction."
+      },
+      "error_types": {
+        "B": "wrong formula: constant-pressure relation q = ΔH applied to a constant-volume system",
+        "C": "sign or unit error: heat released by the system given a positive sign",
+        "D": "wrong formula: a state function treated as path dependent"
+      },
+      "takeaway": "At constant volume w = 0 and q = ΔU; at constant pressure q = ΔH. Heat released by the system is negative, and state functions such as U and H do not depend on the path.",
+      "sources": [
+        "OpenStax Chemistry 2e, 5.3 Enthalpy (2019): ΔU = q + w with q positive for heat flowing into the system and w positive for work done on it; U and H are state functions; at constant pressure q = ΔH, whereas a bomb calorimeter's constant-volume heat is not equal to ΔH.",
+        "OpenStax Chemistry 2e, 5.2 Calorimetry (2019): bomb calorimeters operate at constant volume."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-054",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P09",
+      "discipline": "biochemistry",
+      "fc": "5",
+      "category": "5E",
+      "topics": [
+        "5E.bioenergetics",
+        "5E.calorimetry-heat-transfer"
+      ],
+      "skill": "3",
+      "cars_skill": null,
+      "difficulty": 3,
+      "stem": "The gross energy measured in the bomb exceeded the Atwater estimate from Table 2. The investigators wished to measure directly the energy that a person actually obtains from the bar. Which protocol most directly measures this quantity?",
+      "options": {
+        "A": "Burn the bar in a constant-pressure (coffee-cup) calorimeter rather than in the bomb, so that the heat measured is the enthalpy change, as it is in the body.",
+        "B": "Measure volunteers' resting oxygen consumption for one hour after they eat the bar, and convert the volume of oxygen used to energy at about 20 kJ per litre.",
+        "C": "Measure the rise in volunteers' core temperature during the hours after they eat the bar, and multiply it by the heat capacity of the body.",
+        "D": "Feed volunteers a known mass of the bar as their only food, collect all faeces and urine, burn these in the bomb, and subtract their energy from the bar's gross energy."
+      },
+      "answer": "D",
+      "why_correct": [
+        "Passage: metabolizable energy is \"the gross energy less the energy lost in faeces and urine.\" The direct measurement is therefore a balance: energy in (bomb value of the food eaten) minus energy out in excreta (bomb values of faeces and urine).",
+        "This is how the Atwater factors were derived: the energy of unabsorbed food appears in the faeces, and the energy of incompletely oxidized protein appears in the urine as urea and other nitrogen compounds.",
+        "Design points: the bar must be the only food so that the excreta can be attributed to it, and collection must be complete over the whole transit time."
+      ],
+      "why_wrong": {
+        "A": "The constant-volume and constant-pressure values differ by Δ(PV), well under 1% for foods (passage); the gap between the bomb and the Atwater estimate comes from losses in excreta, not from the pressure–volume term.",
+        "B": "Indirect calorimetry gives the energy the body expends during that hour, drawn from all its fuels, mostly stored ones; it does not measure how much of the bar's energy was absorbed, which is used or stored over days.",
+        "C": "Core temperature is held nearly constant by thermoregulation, and the heat produced is lost to the surroundings; the body is not an insulated calorimeter, so its temperature does not record energy absorbed."
+      },
+      "error_types": {
+        "A": "true but irrelevant: ΔH and ΔU differ, but not enough to explain the gap",
+        "B": "true but irrelevant: energy expenditure measured in place of energy absorbed from the food",
+        "C": "wrong formula: the body treated as an insulated calorimeter with q = CΔT"
+      },
+      "takeaway": "Metabolizable energy = gross energy of the food − energy of faeces − energy of urine, each measured by bomb calorimetry; that balance, not a different calorimeter, is the direct measurement.",
+      "sources": [
+        "Merrill and Watt, Energy Value of Foods: Basis and Derivation, USDA Agriculture Handbook 74 (1955, revised 1973), Part II: available energy of a food is its heat of combustion less that of the urinary and faecal residues; protein's heat of combustion of 5.65 kcal/g is reduced by 1.25 kcal/g for unoxidized urinary compounds.",
+        "FAO Food and Nutrition Paper 77, Food energy: methods of analysis and conversion factors (2003), chapter 3: metabolizable energy as gross energy less faecal, urinary (and gaseous and surface) losses; the Atwater general factors and the 8 kJ/g fibre factor."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-055",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P09",
+      "discipline": "physics",
+      "fc": "5",
+      "category": "5E",
+      "topics": [
+        "5E.calorimetry-heat-transfer",
+        "4A.energy"
+      ],
+      "skill": "4",
+      "cars_skill": null,
+      "difficulty": 4,
+      "stem": "Based on Figure 1 and the heater power stated in the passage, the heat capacity of the calorimeter assembly is closest to:",
+      "options": {
+        "A": "0.037 kJ/K",
+        "B": "11 kJ/K",
+        "C": "13 kJ/K",
+        "D": "33 kJ/K"
+      },
+      "answer": "B",
+      "why_correct": [
+        "Energy delivered = power × time. The heater ran from t = 60 s to t = 360 s, 300 s, at 110 W: E = 110 J/s × 300 s = 33,000 J = 33.0 kJ.",
+        "From Figure 1 the temperature rose from 25.00 °C to 28.00 °C, ΔT = 3.00 K (a kelvin and a degree Celsius are the same size for a difference).",
+        "C = E/ΔT = 33.0 kJ / 3.00 K = 11.0 kJ/K. Cross-check with Table 1: 26.4 kJ / 2.40 K = 11.0 kJ/K. The flat segments before and after heating show that heat loss to the room was negligible over the run."
+      ],
+      "why_wrong": {
+        "A": "0.037 kJ/K divides the power (110 W) by ΔT without multiplying by the 300 s the heater ran; it has units of W/K, a rate, not a heat capacity.",
+        "C": "13 kJ/K uses 360 s, the clock time when the heater was switched off, instead of the 300 s it was on (it started at 60 s): 110 × 360 / 3.00 = 13.2 kJ/K.",
+        "D": "33 kJ is the energy delivered; a heat capacity divides this by the temperature rise, which was 3.00 K, not 1 K."
+      },
+      "error_types": {
+        "A": "wrong formula: power divided by ΔT, time omitted",
+        "C": "misread graph: heater-off time used as the heating duration",
+        "D": "sign or unit error: energy reported in place of energy per kelvin"
+      },
+      "takeaway": "Electrical calibration: C = Pt/ΔT, with the heating time read from when the heater was on, not from the clock, and ΔT read between the two plateaus.",
+      "sources": [
+        "OpenStax Chemistry 2e, 5.1 Energy Basics (2019): heat capacity C = q/ΔT in J/°C (equivalently J/K); the watt as a joule per second.",
+        "OpenStax Chemistry 2e, 5.2 Calorimetry (2019): a bomb calorimeter's heat capacity is determined by calibration before the sample is burned."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-056",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P10",
+      "discipline": "organic chemistry",
+      "fc": "4",
+      "category": "4E",
+      "topics": [
+        "4E.mass-spectrometry"
+      ],
+      "skill": "1",
+      "cars_skill": null,
+      "difficulty": 3,
+      "stem": "In Figure 1 each peptide appears mainly as a single peak. Which statement correctly describes how these ions are formed and what the horizontal axis reports?",
+      "options": {
+        "A": "The laser ejects an electron from each peptide, leaving a radical cation that fragments extensively; the axis reports the mass of each fragment in daltons, with no charge involved.",
+        "B": "Each peptide gains a proton from the matrix, giving an [M + H]⁺ ion; the axis reports mass in daltons, so a doubly protonated peptide appears two units higher than a singly protonated one.",
+        "C": "Each peptide gains a proton from the matrix, giving an [M + H]⁺ ion; the axis reports mass divided by charge number, so a doubly protonated peptide appears near half this value.",
+        "D": "Each peptide loses a proton to the basic matrix, giving an [M − H]⁻ ion one unit lighter than the neutral peptide; the axis reports mass divided by charge number."
+      },
+      "answer": "C",
+      "why_correct": [
+        "Passage: \"the matrix transfers a proton to most sample molecules, giving [M + H]⁺ ions.\" Protonation adds one hydrogen (about 1.007 Da) and one positive charge; MALDI is a soft method, so the intact peptide is seen rather than fragments.",
+        "The axis is m/z, mass divided by charge number. For z = 1 the peak sits at M + 1.007; a doubly protonated peptide has mass M + 2.015 and z = 2, so it appears at (M + 2.015)/2, close to half the singly charged value.",
+        "This is why Figure 1 can be read as peptide masses: every main peak is singly charged."
+      ],
+      "why_wrong": {
+        "A": "Electron ejection to a radical cation with extensive fragmentation describes electron-impact ionization of small volatile molecules; the passage's laser-matrix method protonates intact peptides.",
+        "B": "A second proton adds one more unit of mass but also a second charge, and the axis is m/z, not mass, so the doubly charged ion appears near half the m/z value, not two units higher.",
+        "D": "The matrix is an acid that donates protons, and the passage states that positive [M + H]⁺ ions are formed; deprotonation to [M − H]⁻ describes negative-ion mode, not this experiment."
+      },
+      "error_types": {
+        "A": "outside knowledge contradicting the passage: electron-impact ionization substituted for proton transfer from the matrix",
+        "B": "wrong formula: the axis treated as mass rather than mass-to-charge ratio",
+        "D": "reversed relationship: proton loss instead of proton gain"
+      },
+      "takeaway": "MALDI gives intact [M + H]⁺ ions; the spectrum's axis is m/z, so a doubly charged ion appears at about half the m/z of the singly charged ion of the same molecule.",
+      "sources": [
+        "OpenStax Organic Chemistry, 12.4 Mass Spectrometry in Biological Chemistry: Time-of-Flight (TOF) Instruments (2023): in MALDI the matrix absorbs the laser energy and protonates the sample; electrospray and MALDI are soft methods that give M + Hₙⁿ⁺ ions with little fragmentation.",
+        "OpenStax Organic Chemistry, 12.1 Mass Spectrometry of Small Molecules: Magnetic-Sector Instruments (2023): electron-impact ionization produces a cation radical that fragments; the mass spectrum plots intensity against m/z."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-057",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P10",
+      "discipline": "physics",
+      "fc": "4",
+      "category": "4E",
+      "topics": [
+        "4E.mass-spectrometry",
+        "4A.energy"
+      ],
+      "skill": "2",
+      "cars_skill": null,
+      "difficulty": 4,
+      "stem": "Singly charged ions of m/z 900 reached the detector 30.5 µs after the laser pulse. Under the same conditions, the singly charged T5 ions (m/z 1,626) would arrive after approximately:",
+      "options": {
+        "A": "17 µs",
+        "B": "23 µs",
+        "C": "41 µs",
+        "D": "55 µs"
+      },
+      "answer": "C",
+      "why_correct": [
+        "Passage: every singly charged ion acquires the same kinetic energy eV, so ½mv² = eV gives v = √(2eV/m), and t = L/v = L√(m/2eV). With L and V fixed, t ∝ √m: heavier ions are slower and arrive later.",
+        "t(T5) = 30.5 µs × √(1,626/900). Estimate 1,626/900 ≈ 1,600/900 = 16/9, whose square root is 4/3, so t ≈ 30.5 × 4/3 ≈ 40.7 µs; the exact ratio (√1.807 = 1.344) gives 41.0 µs.",
+        "Check from first principles: at 20 kV an ion of 900 Da has v = √(2 × 1.6 × 10⁻¹⁹ × 2 × 10⁴ / (900 × 1.66 × 10⁻²⁷)) ≈ 6.5 × 10⁴ m/s, so a 2.0 m tube is crossed in 2.0/6.5 × 10⁴ ≈ 3.1 × 10⁻⁵ s = 31 µs, consistent with the passage."
+      ],
+      "why_wrong": {
+        "A": "17 µs scales the time as 1/m (30.5 × 900/1,626); heavier ions take longer, not less time, and the dependence is on the square root.",
+        "B": "23 µs scales the time as 1/√m (30.5 × 3/4), the inverse of the correct dependence: a heavier ion at the same kinetic energy is slower.",
+        "D": "55 µs scales the time directly with m (30.5 × 1,626/900); because kinetic energy depends on v², the speed, and hence the time, depends on the square root of the mass."
+      },
+      "error_types": {
+        "A": "reversed relationship: time taken as inversely proportional to mass",
+        "B": "reversed relationship: time taken as inversely proportional to the square root of mass",
+        "D": "wrong formula: time taken as proportional to mass instead of its square root"
+      },
+      "takeaway": "In a time-of-flight analyser all ions of the same charge share the same kinetic energy, so v ∝ 1/√m and the flight time t ∝ √(m/z): lighter ions arrive first.",
+      "sources": [
+        "OpenStax Organic Chemistry, 12.4 Mass Spectrometry in Biological Chemistry: Time-of-Flight (TOF) Instruments (2023): each ion in the packet is given the same energy; lighter molecules move faster and heavier ones slower, v = √(2E/m).",
+        "NIST CODATA 2022: elementary charge 1.602 176 634 × 10⁻¹⁹ C; atomic mass constant 1.660 539 068 92 × 10⁻²⁷ kg."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-058",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P10",
+      "discipline": "biochemistry",
+      "fc": "5",
+      "category": "5D",
+      "topics": [
+        "5D.peptides-proteins"
+      ],
+      "skill": "3",
+      "cars_skill": null,
+      "difficulty": 3,
+      "stem": "The investigators' main purpose in digesting a second sample of the protein with chymotrypsin was to:",
+      "options": {
+        "A": "obtain peptides with different end points, so that the extra 79.97 Da could be assigned to one part of T3 independently of the fragmentation data.",
+        "B": "remove the phosphate group from T3, because chymotrypsin hydrolyses phosphate esters as well as peptide bonds.",
+        "C": "cleave T3 after its lysine into smaller pieces, which fly faster down the tube and are therefore detected with greater sensitivity.",
+        "D": "confirm that the protein contains lysine and arginine, the residues after which trypsin cleaves, by showing that the two digests differ."
+      },
+      "answer": "A",
+      "why_correct": [
+        "Passage: chymotrypsin \"cleaves on the carboxyl side of phenylalanine, tyrosine and tryptophan.\" Within the T3 region (Ala-Tyr-Ser-Leu-Gln-Asp-Val-Phe-Lys) it cuts after Tyr-2 and after Phe-8, so Tyr-2 and Ser-3, the two candidate sites, end up in different chymotryptic peptides.",
+        "If the peptide ending at Tyr-2 has its predicted mass and the peptide beginning at Ser-3 is 79.97 Da heavier, the modification is on Ser-3, not Tyr-2. This is a second, independent line of evidence, with different peptide boundaries, that must agree with the y-ion ladder.",
+        "Using two proteases of different specificity is the general strategy for ordering and cross-checking peptide fragments, because each enzyme alone gives pieces whose relation to one another is ambiguous."
+      ],
+      "why_wrong": {
+        "B": "Chymotrypsin is a protease; it hydrolyses peptide bonds after aromatic residues and does not remove phosphate. Removing the phosphate would be the job of a phosphatase, a different control.",
+        "C": "Trypsin, not chymotrypsin, cleaves after lysine, and T3 already ends at its lysine; faster flight has nothing to do with the purpose of a second digest.",
+        "D": "The trypsin digest already produced peptides ending in lysine or arginine; confirming trypsin's specificity was not in question and would not locate the modification."
+      },
+      "error_types": {
+        "B": "outside knowledge contradicting the passage: a protease treated as a phosphatase",
+        "C": "outside knowledge contradicting the passage: chymotrypsin given trypsin's specificity",
+        "D": "true but irrelevant: trypsin's specificity was never the question"
+      },
+      "takeaway": "A second protease with different specificity gives peptides with different boundaries, so an unexpected mass can be assigned to a region, and overlapping fragments can be ordered.",
+      "sources": [
+        "OpenStax Organic Chemistry, 26.6 Peptide Sequencing: The Edman Degradation (2023): trypsin cleaves only on the carboxyl side of arginine and lysine; chymotrypsin only on the carboxyl side of phenylalanine, tyrosine and tryptophan; fragments are fitted together by their overlaps.",
+        "Unimod entry 21 (Phospho): HPO₃, monoisotopic mass shift 79.966331 Da, on Ser, Thr or Tyr."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-059",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P10",
+      "discipline": "biochemistry",
+      "fc": "5",
+      "category": "5D",
+      "topics": [
+        "5D.amino-acids",
+        "4E.mass-spectrometry"
+      ],
+      "skill": "4",
+      "cars_skill": null,
+      "difficulty": 5,
+      "stem": "In Table 2 the difference between consecutive y ions equals the mass of one residue of T3. The residue between fragments y7 and y6 is best identified as:",
+      "options": {
+        "A": "serine",
+        "B": "phosphoserine",
+        "C": "phosphothreonine",
+        "D": "phosphotyrosine"
+      },
+      "answer": "B",
+      "why_correct": [
+        "y7 − y6 = 916.4 − 749.4 = 167.0 Da. Fragment y7 holds residues 3–9 and y6 holds 4–9, so this is residue 3, predicted to be serine (87.03); 167.0 matches no unmodified residue in Table 1 (the nearest are Tyr 163.06 and Trp 186.08), so residue 3 is modified.",
+        "Passage: phosphorylation adds HPO₃, 79.97 Da. 167.0 − 80.0 = 87.0 = serine, so residue 3 is phosphoserine, which also accounts for the 79.97 Da excess of the whole peptide.",
+        "Check the alternative, phosphorylation of Tyr-2: y8 − y7 = 1,079.5 − 916.4 = 163.1 = unmodified tyrosine, so the phosphate is not there. The rest of the ladder reads y6 − y5 = 113.1 = Leu and y5 − y4 = 128.0 = Gln, as the sequence predicts."
+      ],
+      "why_wrong": {
+        "A": "Unmodified serine would give a step of 87.0 Da; the observed 167.0 is 80 Da more. Choosing serine amounts to placing the phosphate elsewhere, on Tyr-2, but the y8 − y7 step of 163.1 shows tyrosine unmodified.",
+        "C": "Phosphothreonine would weigh 101.05 + 79.97 = 181.0 Da; the observed step is 167.0, and the sequence has no threonine at position 3.",
+        "D": "Phosphotyrosine would weigh 163.06 + 79.97 = 243.0 Da, which is not a step in the ladder; the tyrosine step (y8 − y7 = 163.1) shows Tyr-2 unmodified."
+      },
+      "error_types": {
+        "A": "misread graph: the 167.0 Da step read as serine's 87.0, placing the 80 Da elsewhere",
+        "C": "wrong formula: 80 Da added to threonine rather than to the residue that gives 167",
+        "D": "wrong formula: 80 Da added to tyrosine rather than subtracted from the observed 167"
+      },
+      "takeaway": "Consecutive y (or b) ions differ by one residue mass; a step that matches no residue but equals a residue plus 80.0 Da marks a phosphorylated Ser, Thr or Tyr.",
+      "sources": [
+        "University of Washington Proteomics Resource, residue mass table (Unimod elemental masses): Ser 87.032028, Thr 101.047679, Tyr 163.063329, Leu 113.084064, Gln 128.058578.",
+        "Unimod entry 21 (Phospho): HPO₃, monoisotopic mass 79.966331 Da, sites S, T, Y.",
+        "OpenStax Organic Chemistry, 26.6 Peptide Sequencing: The Edman Degradation (2023): most peptide sequencing is now done by mass spectrometry with electrospray or MALDI sources and time-of-flight analysers."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-060",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P10",
+      "discipline": "general chemistry",
+      "fc": "4",
+      "category": "4E",
+      "topics": [
+        "4E.nucleus-isotopes",
+        "4E.mass-spectrometry"
+      ],
+      "skill": "2",
+      "cars_skill": null,
+      "difficulty": 4,
+      "stem": "In Figure 1 the peak one unit above the monoisotopic peak of T2 has 44% of its intensity. Treating this peak as due to carbon-13 alone, as the investigators did, the number of carbon atoms in T2 is closest to:",
+      "options": {
+        "A": "4",
+        "B": "22",
+        "C": "40",
+        "D": "44"
+      },
+      "answer": "C",
+      "why_correct": [
+        "Each carbon atom has a 1.1% chance of being ¹³C (passage). In a molecule with n carbons the chance that exactly one of them is ¹³C is about n × 0.011 when that product is well below 1, so the M+1 peak has about n × 1.1% of the monoisotopic peak's intensity.",
+        "0.44 = n × 0.011 → n = 0.44/0.011 = 40 carbon atoms.",
+        "Mental math: 1.1% per carbon means 11% per 10 carbons, so 44% corresponds to 40 carbons. The explanation of the method also shows its limit: ¹⁵N (0.37%), ²H and ¹⁷O add to M+1 too, so the true carbon count is a little below this estimate."
+      ],
+      "why_wrong": {
+        "A": "4 treats the abundance as 11% rather than 1.1% (0.44/0.11); it is a factor-of-ten slip in converting the percentage.",
+        "B": "22 halves the result as though T2 were doubly charged; the isotope ratio does not depend on the ion's charge, and the passage's peaks are singly charged.",
+        "D": "44 treats the carbon-13 abundance as exactly 1%; with the passage's 1.1% the count is 40."
+      },
+      "error_types": {
+        "A": "sign or unit error: percentage misconverted by a factor of ten",
+        "B": "wrong formula: the charge state applied to an isotope ratio",
+        "D": "wrong formula: 1.1% abundance rounded to 1%"
+      },
+      "takeaway": "The M+1 peak of an organic molecule is about n × 1.1% of the M peak, where n is the number of carbons, so n ≈ (M+1 intensity, %) / 1.1.",
+      "sources": [
+        "IUPAC CIAAW, Carbon: isotopic abundances (2009): ¹³C amount fraction interval 0.0096–0.0116, so 1.1% is a representative value.",
+        "OpenStax Organic Chemistry, 12.2 Interpreting Mass Spectra (2023): the M+1 peak arises from molecules containing a ¹³C atom, with natural abundance about 1.1%."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-061",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P11",
+      "discipline": "physics",
+      "fc": "4",
+      "category": "4D",
+      "topics": [
+        "4D.lenses"
+      ],
+      "skill": "2",
+      "cars_skill": null,
+      "difficulty": 3,
+      "stem": "For Patient C, the spectacle lens that corrects distance vision must have a focal length and power of:",
+      "options": {
+        "A": "−50 cm and −2.0 D",
+        "B": "−50 cm and −0.02 D",
+        "C": "+50 cm and +2.0 D",
+        "D": "+25 cm and +4.0 D"
+      },
+      "answer": "A",
+      "why_correct": [
+        "Passage: \"a distance lens must form a virtual image of a distant object at the patient's far point.\" For C the far point is 50 cm (Table 1), so with dₒ → ∞ the image must be at dᵢ = −0.50 m (virtual, on the object's side).",
+        "1/f = 1/dₒ + 1/dᵢ = 0 + 1/(−0.50 m) = −2.0 m⁻¹, so f = −0.50 m = −50 cm and P = 1/f = −2.0 D: a diverging lens, as myopia requires.",
+        "Rule: a distance lens for a myope has a focal length equal to minus the far point, so its power is −1/(far point in metres)."
+      ],
+      "why_wrong": {
+        "B": "−0.02 D divides 1 by 50 with the focal length left in centimetres; power in diopters requires f in metres (1/0.50 m = 2.0 m⁻¹).",
+        "C": "+2.0 D has the right magnitude but is a converging lens; it would make rays from a distant object converge before they reach the eye, worsening the overconvergence of a myopic eye.",
+        "D": "+4.0 D is 1/0.25 m, the power associated with the 25 cm reading distance, not with C's far point; it is a converging lens, the opposite of what distance correction for myopia needs."
+      },
+      "error_types": {
+        "B": "sign or unit error: centimetres used in P = 1/f",
+        "C": "sign or unit error: sign of the virtual image distance dropped",
+        "D": "wrong formula: the reading distance used in place of the far point"
+      },
+      "takeaway": "Lens power P = 1/f with f in metres; a myope's distance lens is diverging with f = −(far point), so a 50 cm far point needs −2.0 D.",
+      "sources": [
+        "OpenStax College Physics 2e, 26.2 Vision Correction (2022): the correction for nearsightedness is a diverging spectacle lens that forms an image no farther than the far point; a virtual image on the same side as the object has a negative image distance; P = 1/dₒ + 1/dᵢ with distances in metres gives diopters (Example 26.3).",
+        "OpenStax College Physics 2e, 25.6 Image Formation by Lenses (2022): the thin-lens equation and P = 1/f; a diverging lens has negative f and negative power."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-062",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P11",
+      "discipline": "physics",
+      "fc": "4",
+      "category": "4D",
+      "topics": [
+        "4D.eye-optical-instruments",
+        "4D.lenses"
+      ],
+      "skill": "2",
+      "cars_skill": null,
+      "difficulty": 4,
+      "stem": "The reading lens prescribed for Patient B should have a power closest to:",
+      "options": {
+        "A": "+1.0 D",
+        "B": "+3.0 D",
+        "C": "+4.0 D",
+        "D": "+5.0 D"
+      },
+      "answer": "B",
+      "why_correct": [
+        "Passage: \"A reading lens must form a virtual image of the page, held at 25 cm, at the patient's near point.\" For B the near point is 100 cm (Table 1): dₒ = +0.25 m, dᵢ = −1.00 m (virtual).",
+        "P = 1/f = 1/dₒ + 1/dᵢ = 1/0.25 − 1/1.00 = 4.0 − 1.0 = +3.0 D (f = 0.33 m), a converging lens.",
+        "Why it works: B's eye can focus anything at 100 cm or beyond with its remaining accommodation (amplitude 1.0 D); the lens makes the page at 25 cm look as though it were at 100 cm. Compare A: 4.0 − 2.0 = +2.0 D for a 50 cm near point."
+      ],
+      "why_wrong": {
+        "A": "+1.0 D is 1/1.00 m alone, the term for the image at the near point; it omits the object term 1/0.25 m.",
+        "C": "+4.0 D is 1/0.25 m alone, the power that would focus the page at infinity, as if B had no accommodation left; B can still focus at 100 cm, which reduces the lens needed by 1.0 D.",
+        "D": "+5.0 D adds 4.0 and 1.0, treating the image distance as positive; the image is virtual and on the same side as the page, so its term is negative."
+      },
+      "error_types": {
+        "A": "wrong formula: object term omitted",
+        "C": "wrong formula: image term omitted",
+        "D": "sign or unit error: virtual image distance taken as positive"
+      },
+      "takeaway": "Reading-lens power = 1/(reading distance) − 1/(near point), both in metres; a near point of 100 cm and a 25 cm page need 4 − 1 = +3 D.",
+      "sources": [
+        "OpenStax College Physics 2e, 26.2 Vision Correction (2022): Example 26.4, a person with a near point of 100 cm reading at 25 cm needs a converging lens of about +3.2 D when the 1.5 cm lens–eye separation is included (+3.0 D when it is neglected, as the passage does).",
+        "OpenStax College Physics 2e, 26.1 Physics of the Eye (2022): presbyopia is corrected with converging lenses of about 1.0 to 3.5 D."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-063",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P11",
+      "discipline": "physics",
+      "fc": "4",
+      "category": "4D",
+      "topics": [
+        "4D.reflection-refraction",
+        "4D.eye-optical-instruments"
+      ],
+      "skill": "1",
+      "cars_skill": null,
+      "difficulty": 2,
+      "stem": "Most of the eye's refracting power comes from the front surface of the cornea rather than from the lens, even though the lens has the higher refractive index. By Snell's law, this is because:",
+      "options": {
+        "A": "the cornea is thicker than the lens, so light travels a longer path inside it and is deviated more.",
+        "B": "the cornea's front surface is flatter than the surfaces of the lens, and a flatter surface bends light through a larger angle.",
+        "C": "the lens lies behind the pupil, where the beam is narrowest, so fewer rays reach it and less bending is needed.",
+        "D": "the air–cornea boundary has the largest change in refractive index in the eye, whereas the lens is bathed in fluids of nearly its own index."
+      },
+      "answer": "D",
+      "why_correct": [
+        "Snell's law, n₁ sin θ₁ = n₂ sin θ₂, bends a ray only where n changes, and the bending grows with the ratio n₂/n₁. Passage indices: air 1.00 → cornea 1.38 is a step of 0.38; aqueous humour 1.34 → lens 1.41 is a step of only 0.07.",
+        "So the first surface of the cornea does most of the work (about two-thirds of the eye's roughly 50 D), and the lens, surrounded by aqueous and vitreous humour of index 1.34, adds the rest and provides the adjustable part through accommodation.",
+        "This is also why the eye cannot focus under water: with water (1.33) in place of air, the index step at the cornea almost vanishes."
+      ],
+      "why_wrong": {
+        "A": "Refraction happens at the boundary, not along the path; the thickness of a medium does not change the angle through which a ray is bent at its surface.",
+        "B": "Curvature matters in the opposite direction: for a given index step, a more curved surface has a shorter focal length and more power. The cornea's advantage is its index step, not flatness.",
+        "C": "The width of the beam has no bearing on the angle through which each ray is refracted; Snell's law applies to every ray at the surface it crosses."
+      },
+      "error_types": {
+        "A": "wrong formula: deviation attributed to path length rather than to the index change at a boundary",
+        "B": "reversed relationship: flatter surface claimed to bend light more",
+        "C": "true but irrelevant: beam width does not set refraction"
+      },
+      "takeaway": "Refraction depends on the change in refractive index at a boundary; the air–cornea step (1.00 to 1.38) dwarfs the fluid–lens step (1.34 to 1.41), so the cornea supplies about two-thirds of the eye's power.",
+      "sources": [
+        "OpenStax College Physics 2e, 26.1 Physics of the Eye (2022): Table 26.1 refractive indices (cornea 1.38, aqueous humour 1.34, lens 1.41, vitreous humour 1.34); the cornea provides about two-thirds of the eye's power because the speed of light changes considerably from air into the cornea.",
+        "OpenStax College Physics 2e, 25.3 The Law of Refraction (2022): Snell's law and the dependence of bending on the two indices."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-064",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P11",
+      "discipline": "physics",
+      "fc": "4",
+      "category": "4D",
+      "topics": [
+        "4D.lenses",
+        "4D.eye-optical-instruments"
+      ],
+      "skill": "4",
+      "cars_skill": null,
+      "difficulty": 3,
+      "stem": "Based on Table 1, which patients cannot read a page at the clinic's 25 cm reading distance with the unaided eye, and therefore need a converging (positive-power) lens to do so?",
+      "options": {
+        "A": "Patient A only",
+        "B": "Patients A and B",
+        "C": "Patients A, B and C",
+        "D": "Patient C only"
+      },
+      "answer": "B",
+      "why_correct": [
+        "The unaided eye can focus only between its near point and its far point. A page at 25 cm is readable unaided only if the near point is at 25 cm or less.",
+        "Table 1: A's near point is 50 cm and B's is 100 cm, both beyond 25 cm, so each needs a converging lens that makes the page appear at their near point (+2.0 D and +3.0 D). C's near point is 25 cm, so C reads the page unaided, as the passage reports.",
+        "C's problem is the opposite one: a far point of 50 cm, corrected for distance with a diverging lens of −2.0 D. (Wearing that lens, C's near point would move out to 50 cm, which is why myopes often take their glasses off to read.)"
+      ],
+      "why_wrong": {
+        "A": "B's near point (100 cm) is even farther from the page than A's; B needs the stronger reading lens of the two.",
+        "C": "C's near point of 25 cm already reaches the page, so C needs no converging lens for reading with the unaided eye; a myope whose near point is still close reads without spectacles.",
+        "D": "C needs a diverging lens, for distance; the patients who cannot see the page are A and B, whose near points lie beyond it."
+      },
+      "error_types": {
+        "A": "misread graph: Patient B's 100 cm near point overlooked",
+        "C": "misread graph: a near point of 25 cm treated as beyond the 25 cm page",
+        "D": "reversed relationship: myopia (short far point) taken to need a converging lens"
+      },
+      "takeaway": "A reading (converging) lens is needed when the near point lies beyond the reading distance; a short far point calls for a diverging distance lens instead.",
+      "sources": [
+        "OpenStax College Physics 2e, 26.2 Vision Correction (2022): hyperopia and presbyopia are corrected with converging lenses forming an image at or beyond the near point; myopia with diverging lenses forming an image no farther than the far point.",
+        "OpenStax College Physics 2e, 26.1 Physics of the Eye (2022): the near point as the shortest distance at which a sharp focus can be obtained, which increases with age."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-065",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P12",
+      "discipline": "general chemistry",
+      "fc": "4",
+      "category": "4C",
+      "topics": [
+        "4C.galvanic-cells",
+        "5E.biological-redox"
+      ],
+      "skill": "2",
+      "cars_skill": null,
+      "difficulty": 4,
+      "stem": "Using Table 1, the standard potential at pH 7 for the re-oxidation of FADH₂ by ferricyanide, FADH₂ + 2 Fe(CN)₆³⁻ → FAD + 2 Fe(CN)₆⁴⁻ + 2 H⁺, and the direction in which the reaction proceeds under standard conditions, are:",
+      "options": {
+        "A": "−0.58 V; it does not proceed as written",
+        "B": "+0.14 V; it proceeds as written",
+        "C": "+0.58 V; it proceeds as written",
+        "D": "+0.94 V; it proceeds as written"
+      },
+      "answer": "C",
+      "why_correct": [
+        "Ferricyanide is reduced (cathode half-reaction, E°′ = +0.36 V) and FADH₂ is oxidized, the reverse of FAD + 2 H⁺ + 2 e⁻ → FADH₂ (E°′ = −0.22 V). E°′cell = E°′(cathode) − E°′(anode) = 0.36 − (−0.22) = +0.58 V.",
+        "The ferricyanide half-reaction is doubled to balance the two electrons, but a potential is energy per unit charge and is not multiplied by the coefficient.",
+        "A positive cell potential means ΔG°′ = −nFE°′ = −2 × 96,485 C/mol × 0.58 V ≈ −1.1 × 10⁵ J/mol = −112 kJ/mol, so the reaction proceeds as written; this is what makes ferricyanide a usable substitute for oxygen (O₂/H₂O₂ gives 0.30 − (−0.22) = +0.52 V)."
+      ],
+      "why_wrong": {
+        "A": "−0.58 V subtracts cathode from anode; the species with the more positive reduction potential, ferricyanide, is the one reduced, so the cell potential is positive.",
+        "B": "+0.14 V computes 0.36 − 0.22, dropping the minus sign of the FAD potential; subtracting −0.22 adds 0.22.",
+        "D": "+0.94 V doubles the ferricyanide potential (2 × 0.36 + 0.22) to match its coefficient of 2; potentials are intensive and are never scaled by stoichiometric coefficients."
+      },
+      "error_types": {
+        "A": "sign or unit error: anode and cathode potentials interchanged",
+        "B": "sign or unit error: negative reduction potential subtracted as if positive",
+        "D": "wrong formula: a reduction potential multiplied by its stoichiometric coefficient"
+      },
+      "takeaway": "E°cell = E°(cathode) − E°(anode) using reduction potentials as tabulated, never scaled by coefficients; a positive E°cell means ΔG° = −nFE° is negative and the reaction is spontaneous.",
+      "sources": [
+        "OpenStax Chemistry 2e, 17.3 Electrode and Cell Potentials (2019): E°cell = E°cathode − E°anode; potentials are not multiplied when half-reactions are scaled.",
+        "OpenStax Chemistry 2e, 17.4 Potential, Free Energy, and Equilibrium (2019): ΔG° = −nFE°cell with F = 96,485 C/mol.",
+        "Jakubowski, Biochemistry Online (CSB/SJU), Oxidative Phosphorylation: Dehydrogenases, standard reduction potential table at pH 7: FAD/FADH₂ (free) −0.22 V; O₂/H₂O₂ +0.30 V. Chemistry LibreTexts, P1: Standard Reduction Potentials by Element: Fe(CN)₆³⁻/Fe(CN)₆⁴⁻ +0.356 V."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-066",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P12",
+      "discipline": "general chemistry",
+      "fc": "4",
+      "category": "4C",
+      "topics": [
+        "4C.concentration-cells-batteries"
+      ],
+      "skill": "2",
+      "cars_skill": null,
+      "difficulty": 4,
+      "stem": "In an open-circuit measurement on one strip, the ferrocyanide:ferricyanide ratio rose from 1:100 in the fresh strip to 1:1 after a glucose sample had reacted completely. Over this change the electrode potential:",
+      "options": {
+        "A": "fell by about 0.06 V",
+        "B": "fell by about 0.12 V",
+        "C": "fell by about 0.24 V",
+        "D": "rose by about 0.12 V"
+      },
+      "answer": "B",
+      "why_correct": [
+        "Passage: E = E°′ − (0.0592 V) log([Fe(CN)₆⁴⁻]/[Fe(CN)₆³⁻]), a one-electron couple (n = 1).",
+        "Fresh strip: ratio 1/100, log(0.01) = −2, so E = E°′ − 0.0592 × (−2) = E°′ + 0.118 V. After reaction: ratio 1, log 1 = 0, so E = E°′. The potential fell by 0.118 V, about 0.12 V.",
+        "Sense check: converting ferricyanide to ferrocyanide makes the couple more reduced, so its potential drops; each tenfold change in the ratio shifts a one-electron couple by 59 mV, and here the ratio changed a hundredfold, 2 × 59 mV."
+      ],
+      "why_wrong": {
+        "A": "0.06 V is one tenfold step, or the result of wrongly using n = 2 (0.0592/2 per decade over two decades); the ferricyanide/ferrocyanide couple transfers one electron and the ratio changed by two decades.",
+        "C": "0.24 V would need a 10⁴-fold change in the ratio (four decades at 59 mV each); the change here was from 10⁻² to 10⁰, two decades.",
+        "D": "The potential falls, not rises: more of the reduced form (ferrocyanide) makes Q larger and E = E°′ − 0.0592 log Q smaller."
+      },
+      "error_types": {
+        "A": "wrong formula: n = 2 used for a one-electron couple",
+        "C": "misread graph: two decades of ratio change counted as four",
+        "D": "reversed relationship: sign of the Nernst shift inverted"
+      },
+      "takeaway": "At 25 °C a one-electron couple's potential changes by 59 mV for each tenfold change in [reduced]/[oxidized]; more reduced form means a lower potential.",
+      "sources": [
+        "OpenStax Chemistry 2e, 17.4 Potential, Free Energy, and Equilibrium (2019): the Nernst equation E = E° − (0.0592 V/n) log Q at 25 °C, and its application to concentration cells (Example 17.8).",
+        "Chemistry LibreTexts, P1: Standard Reduction Potentials by Element: Fe(CN)₆³⁻ + e⁻ → Fe(CN)₆⁴⁻, +0.356 V (a one-electron couple)."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-067",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P12",
+      "discipline": "general chemistry",
+      "fc": "4",
+      "category": "4C",
+      "topics": [
+        "4C.electrolytic-cells"
+      ],
+      "skill": "2",
+      "cars_skill": null,
+      "difficulty": 4,
+      "stem": "For the calibration sample, the average current of 10 µA over the 5.0 s measurement corresponds to the oxidation of how many moles of glucose? (Faraday constant F = 96,485 C/mol)",
+      "options": {
+        "A": "2.6 × 10⁻¹⁰ mol",
+        "B": "5.2 × 10⁻¹⁰ mol",
+        "C": "1.0 × 10⁻⁹ mol",
+        "D": "2.6 × 10⁻⁴ mol"
+      },
+      "answer": "A",
+      "why_correct": [
+        "Charge: Q = It = 10 × 10⁻⁶ A × 5.0 s = 5.0 × 10⁻⁵ C.",
+        "Moles of electrons: n = Q/F = 5.0 × 10⁻⁵ C / 9.65 × 10⁴ C/mol ≈ 5.2 × 10⁻¹⁰ mol. Mental math: 5.0/9.65 ≈ 0.52 and 10⁻⁵/10⁴ = 10⁻⁹, so 0.52 × 10⁻⁹.",
+        "Passage: \"each glucose molecule therefore delivers two electrons to the electrode,\" so moles of glucose = 5.2 × 10⁻¹⁰ / 2 = 2.6 × 10⁻¹⁰ mol. Scale check: 1 µL of blood at 5 mmol/L holds 5 × 10⁻⁹ mol of glucose, so about 5% of it was oxidized during the measurement."
+      ],
+      "why_wrong": {
+        "B": "5.2 × 10⁻¹⁰ mol is the number of moles of electrons; each glucose supplies two of them.",
+        "C": "1.0 × 10⁻⁹ mol multiplies the moles of electrons by 2 instead of dividing by 2.",
+        "D": "2.6 × 10⁻⁴ mol treats the current as 10 A rather than 10 µA, a factor of 10⁶; that much glucose (about 47 mg) could not be in a 1 µL drop of blood."
+      },
+      "error_types": {
+        "B": "wrong formula: two electrons per glucose not applied",
+        "C": "reversed relationship: multiplied by 2 instead of divided",
+        "D": "sign or unit error: microamperes read as amperes"
+      },
+      "takeaway": "Moles of analyte = It/(zF): charge is current × time, divide by Faraday's constant for moles of electrons, then by the electrons transferred per molecule.",
+      "sources": [
+        "OpenStax Chemistry 2e, 17.7 Electrolysis (2019): Q = It, and the moles of electrons n = Q/F with F = 96,485 C/mol e⁻ (Example 17.9).",
+        "NIST CODATA 2022: Faraday constant 96,485.332 12 C/mol."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-068",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P12",
+      "discipline": "biochemistry",
+      "fc": "5",
+      "category": "5E",
+      "topics": [
+        "5E.biological-redox",
+        "5E.enzymes-mechanism"
+      ],
+      "skill": "1",
+      "cars_skill": null,
+      "difficulty": 3,
+      "stem": "In the first half-step of the enzyme's catalytic cycle described in the passage, which statement is correct?",
+      "options": {
+        "A": "Glucose is reduced at C1, and the enzyme's FAD is oxidized to supply the electrons that glucose gains.",
+        "B": "Glucose is oxidized at C1, and a molecule of NAD⁺ bound to the enzyme accepts the electrons as a hydride ion.",
+        "C": "Oxygen is reduced to water at the active site, and the energy released is used to phosphorylate glucose.",
+        "D": "Glucose is oxidized at C1, and the enzyme's FAD accepts the two electrons, becoming FADH₂."
+      },
+      "answer": "D",
+      "why_correct": [
+        "Passage: \"glucose + GOx·FAD → gluconolactone + GOx·FADH₂.\" C1 of glucose, a hemiacetal carbon bonded to one oxygen with one hydrogen, becomes the carbonyl carbon of a lactone (a cyclic ester) bonded to two oxygens: it has lost a hydrogen and gained a bond to oxygen, so glucose is oxidized.",
+        "Electrons lost by glucose must be gained by something: the flavin (FAD) is the acceptor, taking two electrons (and two protons) to become FADH₂. Glucose oxidase is a flavoprotein, so its redox carrier is FAD, not NAD⁺.",
+        "Oxygen appears only in the second half-step, where it re-oxidizes FADH₂ and is reduced to hydrogen peroxide, not to water."
+      ],
+      "why_wrong": {
+        "A": "The direction is reversed: glucose loses electrons (its C1 goes from hemiacetal to ester oxidation level) and FAD gains them.",
+        "B": "Glucose oxidase is a flavoprotein; its bound cofactor is FAD. NAD⁺ is the hydride acceptor of soluble dehydrogenases, and the passage names FAD throughout.",
+        "C": "Oxygen is consumed in the second half-step and is reduced to H₂O₂, not water; nothing in the cycle phosphorylates glucose, which hexokinase does elsewhere using ATP."
+      },
+      "error_types": {
+        "A": "reversed relationship: oxidation and reduction interchanged",
+        "B": "outside knowledge contradicting the passage: NAD⁺ substituted for the enzyme's FAD",
+        "C": "outside knowledge contradicting the passage: O₂ reduced to water and glucose phosphorylated"
+      },
+      "takeaway": "An oxidase oxidizes its substrate and reduces its bound flavin (FAD → FADH₂); the flavin is then re-oxidized by O₂, which becomes H₂O₂.",
+      "sources": [
+        "ExPASy ENZYME, EC 1.1.3.4 glucose oxidase: β-D-glucose + O₂ = D-glucono-1,5-lactone + H₂O₂.",
+        "Lowry, McAteer, El Atrash, Duff and O'Neill, Analytical Chemistry 66:1754–1761 (1994): β-D-glucose + GOx/FAD → D-glucono-δ-lactone + GOx/FADH₂; GOx/FADH₂ + O₂ → GOx/FAD + H₂O₂, with FAD the oxidized form of the prosthetic group.",
+        "OpenStax Biology 2e, 7.1 Energy in Living Systems (2018): oxidation as loss of electrons; NAD⁺ and FAD as electron carriers, FAD remaining bound to its enzyme."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-069",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": "CP-P12",
+      "discipline": "general chemistry",
+      "fc": "4",
+      "category": "4C",
+      "topics": [
+        "4C.galvanic-cells",
+        "5E.biological-redox"
+      ],
+      "skill": "3",
+      "cars_skill": null,
+      "difficulty": 3,
+      "stem": "To test whether dissolved oxygen in a sample lowers the strip's current reading, which comparison is most appropriate?",
+      "options": {
+        "A": "Glucose standards at 5 and 10 mmol/L, both in air-equilibrated buffer, to check that the current doubles when the glucose doubles.",
+        "B": "Venous and arterial blood drawn from the same volunteer at the same time, measured on strips from the same lot.",
+        "C": "The same glucose standard measured with the working electrode held at +0.3 V and then at +0.6 V against the reference.",
+        "D": "The same glucose standard in air-equilibrated buffer and in buffer deoxygenated with nitrogen, with everything else held identical."
+      },
+      "answer": "D",
+      "why_correct": [
+        "Passage: \"Dissolved oxygen can still compete with ferricyanide for the reduced enzyme, diverting electrons into hydrogen peroxide, which is not oxidized at +0.3 V.\" The hypothesis is that oxygen lowers the current, so oxygen must be the only variable that changes.",
+        "Measuring one glucose standard with and without dissolved oxygen (air-equilibrated versus nitrogen-purged buffer), with the same strip lot, temperature and timing, isolates the oxygen effect; a lower current in the air-equilibrated sample would confirm interference, and its size tells whether the excess ferricyanide suppresses it enough.",
+        "A buffer standard, rather than blood, removes the other variables that differ between blood samples."
+      ],
+      "why_wrong": {
+        "A": "Comparing two glucose concentrations in the same oxygenated buffer tests linearity of the response; oxygen is the same in both, so it says nothing about oxygen interference.",
+        "B": "Venous and arterial blood differ in oxygen, but also in glucose (tissues extract it), carbon dioxide and pH, so a difference in reading could not be attributed to oxygen; the comparison is confounded.",
+        "C": "Changing the applied potential tests which species are oxidized at the electrode (at +0.6 V, hydrogen peroxide and interferents such as ascorbate); it does not vary the oxygen available to compete for FADH₂."
+      },
+      "error_types": {
+        "A": "true but irrelevant: linearity tested, oxygen unchanged",
+        "B": "true but irrelevant: oxygen differs, but so do glucose, CO₂ and pH, so the comparison is confounded",
+        "C": "out of scope: electrode potential, not sample oxygen, is varied"
+      },
+      "takeaway": "To test a suspected interferent, measure the same standard with and without it and hold every other condition fixed; paired biological samples that differ in several ways cannot isolate one cause.",
+      "sources": [
+        "Lowry, McAteer, El Atrash, Duff and O'Neill, Analytical Chemistry 66:1754–1761 (1994): first-generation glucose electrodes were affected by the ambient oxygen concentration of the sample; mediated electrodes are relatively insensitive to changes in oxygen tension, depending on the mediator's kinetic interaction with the reduced enzyme.",
+        "Eggins, Chemical Sensors and Biosensors (Wiley 2002), chapter 5: the ambient oxygen level had to be controlled in first-generation sensors; a mediator should not react with oxygen; hydrogen peroxide is oxidized at about +0.65 V, where ascorbic acid interferes."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-070",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": null,
+      "discipline": "physics",
+      "fc": "4",
+      "category": "4C",
+      "topics": [
+        "4C.charge-coulomb"
+      ],
+      "skill": "2",
+      "cars_skill": null,
+      "difficulty": 3,
+      "stem": "In a crystal of sodium chloride the centres of neighbouring Na⁺ and Cl⁻ ions are about 0.30 nm apart. Treating each ion as a point charge of magnitude e = 1.6 × 10⁻¹⁹ C and taking k = 9.0 × 10⁹ N·m²/C², the magnitude of the electrostatic force between the two ions is closest to:",
+      "options": {
+        "A": "2.6 × 10⁻²⁷ N",
+        "B": "7.7 × 10⁻¹⁹ N",
+        "C": "2.6 × 10⁻⁹ N",
+        "D": "5.1 × 10⁻⁹ N"
+      },
+      "answer": "C",
+      "why_correct": [
+        "Coulomb's law: F = k|q₁q₂|/r² with q₁ = q₂ = e and r = 0.30 nm = 3.0 × 10⁻¹⁰ m.",
+        "Numerator: 9.0 × 10⁹ × (1.6 × 10⁻¹⁹)² = 9.0 × 10⁹ × 2.56 × 10⁻³⁸ = 2.3 × 10⁻²⁸ N·m². Denominator: (3.0 × 10⁻¹⁰)² = 9.0 × 10⁻²⁰ m². F = 2.3 × 10⁻²⁸ / 9.0 × 10⁻²⁰ = 2.6 × 10⁻⁹ N.",
+        "Shortcut: the 9.0 in k cancels the 9.0 in r², leaving F = 2.56 × 10⁻³⁸ × 10⁹ / 10⁻²⁰ = 2.56 × 10⁻⁹ N. The force is attractive (opposite charges) and acts along the line joining the ions."
+      ],
+      "why_wrong": {
+        "A": "2.6 × 10⁻²⁷ N uses r = 0.30 m instead of 0.30 nm, a factor of (10⁹)² = 10¹⁸ in the denominator.",
+        "B": "7.7 × 10⁻¹⁹ N divides by r rather than r² (2.3 × 10⁻²⁸ / 3.0 × 10⁻¹⁰); Coulomb's law is an inverse-square law.",
+        "D": "5.1 × 10⁻⁹ N doubles the correct value, as if the product of the charges were 2e²; each ion carries one elementary charge, so the product is e²."
+      },
+      "error_types": {
+        "A": "sign or unit error: nanometres entered as metres",
+        "B": "wrong formula: 1/r instead of 1/r²",
+        "D": "wrong formula: charge product doubled"
+      },
+      "takeaway": "F = kq₁q₂/r² with r in metres; between two single charges 0.3 nm apart the force is a few nanonewtons, enormous on an atomic scale.",
+      "sources": [
+        "OpenStax College Physics 2e, 18.3 Coulomb's Law (2022): F = k|q₁q₂|/r², k = 8.99 × 10⁹ N·m²/C², the force acting along the line joining the charges (Example 18.1 computes the electron–proton force in hydrogen).",
+        "OpenStax Chemistry 2e, 10.6 Lattice Structures in Crystalline Solids (2019): in NaCl the ions touch along the cell edge, with ionic radii Na⁺ 102 pm and Cl⁻ 181 pm, so neighbouring centres are about 283 pm (0.28 nm) apart; the item rounds this to 0.30 nm.",
+        "NIST CODATA 2022: elementary charge 1.602 176 634 × 10⁻¹⁹ C."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-071",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": null,
+      "discipline": "general chemistry",
+      "fc": "5",
+      "category": "5B",
+      "topics": [
+        "5B.polarity"
+      ],
+      "skill": "1",
+      "cars_skill": null,
+      "difficulty": 2,
+      "stem": "Pauling electronegativities: H 2.1, C 2.5, N 3.0, O 3.5, S 2.5. Of the following bonds found in proteins, which is the most polar?",
+      "options": {
+        "A": "C–H",
+        "B": "N–H",
+        "C": "O–H",
+        "D": "S–H"
+      },
+      "answer": "C",
+      "why_correct": [
+        "Bond polarity grows with the difference in electronegativity between the bonded atoms. The differences are: C–H 2.5 − 2.1 = 0.4; N–H 3.0 − 2.1 = 0.9; O–H 3.5 − 2.1 = 1.4; S–H 2.5 − 2.1 = 0.4.",
+        "O–H has the largest difference, so it is the most polar: the shared pair sits closest to oxygen, giving a large δ⁻ on O and δ⁺ on H. This is why hydroxyl groups (serine, threonine, tyrosine) and water are strong hydrogen-bond donors.",
+        "Rule of thumb from the same scale: differences below about 0.4 are nearly nonpolar, 0.4 to 1.8 polar covalent, above 1.8 largely ionic."
+      ],
+      "why_wrong": {
+        "A": "C–H, difference 0.4, is nearly nonpolar, which is why hydrocarbon side chains are hydrophobic.",
+        "B": "N–H, difference 0.9, is polar and hydrogen-bonds (backbone amides, lysine, arginine), but less strongly than O–H.",
+        "D": "S–H, difference 0.4, is about as nonpolar as C–H, because sulfur's electronegativity is close to carbon's; thiols are poor hydrogen-bond donors despite sulfur's size."
+      },
+      "error_types": {
+        "A": "reversed relationship: the smallest electronegativity difference chosen as most polar",
+        "B": "true but irrelevant: N–H is polar, but its 0.9 difference is smaller than O–H's 1.4",
+        "D": "wrong formula: polarity attributed to the heavier atom rather than to the electronegativity difference"
+      },
+      "takeaway": "Rank bond polarity by electronegativity difference: O–H (1.4) > N–H (0.9) > C–H ≈ S–H (0.4), which is why O–H and N–H are hydrogen-bond donors and C–H and S–H are not.",
+      "sources": [
+        "OpenStax Organic Chemistry, 2.1 Polar Covalent Bonds and Electronegativity (2023): electronegativities H 2.1, C 2.5, N 3.0, O 3.5; C–H bonds are relatively nonpolar; a difference under 0.5 is nonpolar covalent, 0.5 to 2 polar covalent.",
+        "OpenStax Chemistry 2e, 7.2 Covalent Bonding (2019): electronegativity differences C–H 0.4, S–H 0.4, N–H 0.9, O–H 1.4; bonds with a difference below about 0.4 are nearly nonpolar, 0.4 to 1.8 polar covalent."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-072",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": null,
+      "discipline": "biochemistry",
+      "fc": "5",
+      "category": "5D",
+      "topics": [
+        "5D.nucleotides-nucleic-acids"
+      ],
+      "skill": "1",
+      "cars_skill": null,
+      "difficulty": 3,
+      "stem": "A nucleoside analogue used as an antiviral drug is inactive as given and is converted by cellular kinases, in three steps, into the corresponding nucleotide triphosphate. In the active form, the phosphate groups are attached to the:",
+      "options": {
+        "A": "5′-carbon of the sugar, through a phosphate ester to its hydroxyl group",
+        "B": "3′-carbon of the sugar, the position through which nucleotides are joined in a chain",
+        "C": "N9 nitrogen of the purine base, displacing the sugar from the base",
+        "D": "1′-carbon of the sugar, in place of the nitrogenous base"
+      },
+      "answer": "A",
+      "why_correct": [
+        "A nucleoside is a sugar (ribose or 2′-deoxyribose) joined at C1′ to a base; a nucleotide is a nucleoside with one to three phosphates on the 5′-hydroxyl, forming a phosphate ester at C5′. Kinases add phosphate there, giving the mono-, di- and then triphosphate.",
+        "The antiviral triphosphate mimics a natural nucleoside 5′-triphosphate (such as dGTP) so that a polymerase can take it up; that is why the 5′ position is the one phosphorylated.",
+        "Mnemonic: in a nucleic acid chain the 5′-phosphate of one nucleotide links to the 3′-hydroxyl of the previous one (a phosphodiester), so the free building block carries its phosphates at 5′ and keeps 3′-OH free."
+      ],
+      "why_wrong": {
+        "B": "The 3′-hydroxyl is where the next nucleotide's 5′-phosphate attaches during chain growth; a free nucleotide (and the active drug) carries its phosphates at the 5′ position, leaving 3′-OH available.",
+        "C": "N9 of a purine (N1 of a pyrimidine) is the atom bonded to C1′ of the sugar through the N-glycosidic bond; phosphate is never attached to the base in a nucleotide.",
+        "D": "C1′, the anomeric carbon, carries the base; replacing the base with phosphate would destroy the base pairing on which the drug's action depends."
+      },
+      "error_types": {
+        "B": "true but irrelevant: the 3′ position is a chain-linking site, not where a nucleotide's own phosphates sit",
+        "C": "wrong formula: the N-glycosidic bond site mistaken for the phosphate site",
+        "D": "wrong formula: the anomeric carbon, which carries the base, mistaken for the phosphate site"
+      },
+      "takeaway": "Nucleoside = sugar + base (C1′ to N9 or N1); nucleotide = nucleoside + phosphate(s) on the 5′-hydroxyl; chains link 5′-phosphate to 3′-hydroxyl.",
+      "sources": [
+        "OpenStax Biology 2e, 3.5 Nucleic Acids (2018): a nucleotide is a pentose sugar, a nitrogenous base attached at the 1′ position and a phosphate attached at the 5′ position; phosphodiester linkages join the 5′-phosphate of one sugar to the 3′-hydroxyl of the next.",
+        "OpenStax Organic Chemistry, 28.1 Nucleotides and Nucleic Acids (2023): a nucleoside is an aldopentose linked through its anomeric carbon to a purine or pyrimidine base; a nucleotide is a nucleoside bonded to a phosphate group; chains have a free 3′-hydroxyl at one end and a phosphate at C5′ at the other."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-073",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": null,
+      "discipline": "organic chemistry",
+      "fc": "4",
+      "category": "4D",
+      "topics": [
+        "4D.ir-spectroscopy"
+      ],
+      "skill": "1",
+      "cars_skill": null,
+      "difficulty": 3,
+      "stem": "A small volatile compound collected from the breath of a patient in diabetic ketoacidosis gives an infrared spectrum with a strong, sharp absorption at 1,715 cm⁻¹, C–H stretches just below 3,000 cm⁻¹, and no broad absorption anywhere between 2,500 and 3,600 cm⁻¹. The compound most likely contains:",
+      "options": {
+        "A": "a carboxylic acid group",
+        "B": "an alcohol hydroxyl group",
+        "C": "a carbon–carbon triple bond",
+        "D": "a ketone carbonyl group"
+      },
+      "answer": "D",
+      "why_correct": [
+        "A strong, sharp band near 1,715 cm⁻¹ is a C=O stretch; 1,715 is the value for a saturated ketone (aldehydes about 1,730, esters about 1,735, acids about 1,710).",
+        "The absence of any broad band between 2,500 and 3,600 cm⁻¹ rules out O–H and N–H: an alcohol's O–H is a broad band at about 3,200 to 3,650 cm⁻¹, and a carboxylic acid's is broader still, from about 2,500 to 3,300 cm⁻¹, overlapping the C–H region.",
+        "C–H stretches just below 3,000 cm⁻¹ are sp³ C–H. Together: a saturated ketone, consistent with acetone, the ketone body exhaled in ketoacidosis that gives the breath its sweet smell."
+      ],
+      "why_wrong": {
+        "A": "A carboxylic acid has a C=O near 1,710 cm⁻¹ but also a very broad O–H band spanning roughly 2,500 to 3,300 cm⁻¹; the stem reports only sharp C–H stretches in that region and no broad absorption anywhere from 2,500 to 3,600 cm⁻¹.",
+        "B": "An alcohol shows a broad O–H band at about 3,200 to 3,650 cm⁻¹ and no C=O; this spectrum has the reverse.",
+        "C": "A C≡C stretch appears at about 2,100 to 2,260 cm⁻¹, weak and sharp; nothing there is reported, and 1,715 cm⁻¹ is far from the triple-bond region."
+      },
+      "error_types": {
+        "A": "misread graph: the broad acid O–H band, which is absent, overlooked",
+        "B": "misread graph: C=O band ignored and an absent O–H band assumed",
+        "C": "wrong formula: C=O band misassigned to the C≡C region"
+      },
+      "takeaway": "A sharp C=O near 1,715 cm⁻¹ with no broad O–H band (alcohol 3,200–3,650, acid 2,500–3,300 cm⁻¹) points to a ketone.",
+      "sources": [
+        "OpenStax Organic Chemistry, 12.8 Infrared Spectra of Some Common Functional Groups (2023): ketone C=O 1,715 cm⁻¹ (saturated), aldehyde 1,730, ester 1,735; alcohol O–H 3,400–3,650 cm⁻¹; alkane C–H 2,850–2,960; alkyne C≡C 2,100–2,260.",
+        "OpenStax Organic Chemistry, 12.7 Interpreting Infrared Spectra (2023): the broad carboxylic acid O–H absorption from about 2,500 to 3,100 cm⁻¹ and the diagnostic C=O region.",
+        "OpenStax Anatomy and Physiology 2e, 24.3 Lipid Metabolism (2022): in uncontrolled diabetes ketone bodies accumulate and acetone is removed by exhalation, giving the breath a sweet smell."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-074",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": null,
+      "discipline": "general chemistry",
+      "fc": "5",
+      "category": "5E",
+      "topics": [
+        "5E.free-energy-phases"
+      ],
+      "skill": "2",
+      "cars_skill": null,
+      "difficulty": 3,
+      "stem": "On the phase diagram of carbon dioxide the triple point is at −56.6 °C and 5.1 atm, and the critical point at 31 °C and 73 atm. A block of dry ice (solid CO₂) is left in an open container at 1 atm and warms from −100 °C to room temperature, 20 °C. Which statement describes what happens?",
+      "options": {
+        "A": "It melts at −56.6 °C, and the liquid then boils before the temperature reaches 20 °C.",
+        "B": "It sublimes directly to gas, because at 1 atm no liquid phase of CO₂ exists at any temperature.",
+        "C": "It melts to a liquid that remains stable up to 20 °C, because 20 °C is below the critical temperature.",
+        "D": "It becomes a supercritical fluid as soon as its temperature passes the triple point."
+      },
+      "answer": "B",
+      "why_correct": [
+        "Liquid CO₂ exists only above the triple-point pressure, 5.1 atm: below it the solid–gas line is the only boundary, so a horizontal path at 1 atm from −100 °C to 20 °C crosses from solid straight into gas.",
+        "That crossing is sublimation, which for CO₂ at 1 atm occurs at about −78 °C; the block shrinks and the 'smoke' seen is water vapour condensed by the cold gas.",
+        "Compare water, whose triple-point pressure is 0.006 atm: at 1 atm the path crosses the solid–liquid line, so ice melts."
+      ],
+      "why_wrong": {
+        "A": "Melting at the triple-point temperature happens only at the triple-point pressure (5.1 atm) or above; at 1 atm the path lies below the triple point and never meets the solid–liquid line.",
+        "C": "A liquid needs a pressure above 5.1 atm; being below the critical temperature is necessary for a liquid but not sufficient. The critical point only marks where liquid and gas cease to be distinct.",
+        "D": "A supercritical fluid requires both T > 31 °C and P > 73 atm; at 1 atm and 20 °C the CO₂ is an ordinary gas, and the triple point has nothing to do with the supercritical region."
+      },
+      "error_types": {
+        "A": "misread graph: the triple-point temperature treated as a melting point at any pressure",
+        "C": "wrong formula: the critical temperature treated as the condition for a liquid",
+        "D": "too extreme: supercritical conditions claimed far below the critical pressure"
+      },
+      "takeaway": "Below the triple-point pressure a solid sublimes rather than melts; CO₂'s triple point is 5.1 atm, so dry ice at 1 atm goes straight to gas, while water's 0.006 atm triple point lets ice melt.",
+      "sources": [
+        "OpenStax Chemistry 2e, 10.4 Phase Diagrams (2019): solid carbon dioxide does not melt at 1 atm but sublimes; the triple point and critical point of CO₂ (critical point about 31 °C and 73 atm); a supercritical fluid exists above the critical temperature and pressure.",
+        "Engineering LibreTexts, Introduction to Engineering Thermodynamics (Yan), Appendix F: triple point of carbon dioxide 216.55 K (−56.60 °C), 517 kPa (5.10 atm).",
+        "Chemeurope, Carbon dioxide (data page): critical point 304.18 K (31.03 °C), 7.38 MPa (72.8 atm)."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    },
+    {
+      "id": "CP-075",
+      "rev": 1,
+      "section": "chem_phys",
+      "passage": null,
+      "discipline": "biology",
+      "fc": "5",
+      "category": "5E",
+      "topics": [
+        "5E.enzyme-inhibition-regulation"
+      ],
+      "skill": "1",
+      "cars_skill": null,
+      "difficulty": 3,
+      "stem": "In a hypothetical biosynthetic pathway, A is converted to the end product E in four enzyme-catalysed steps, A → B → C → D → E, and E regulates the pathway by inhibiting one of the enzymes. The most effective arrangement for the cell is for E to inhibit:",
+      "options": {
+        "A": "enzyme 1 (A → B), binding at a regulatory site distinct from the active site, so that no intermediates accumulate when E is abundant.",
+        "B": "enzyme 4 (D → E), competing with D for the active site, so that only the final step is slowed when E is abundant.",
+        "C": "enzyme 1 (A → B), competing with A for the active site, because the end product E closely resembles the first substrate A.",
+        "D": "all four enzymes equally, so that the concentrations of B, C and D stay constant whatever the level of E."
+      },
+      "answer": "A",
+      "why_correct": [
+        "Feedback inhibition: the end product of a pathway inhibits an enzyme early in that pathway, usually the first committed step. Blocking enzyme 1 stops the flow of A into the pathway, so no B, C or D is made and no ATP or carbon is wasted on intermediates that would not be used.",
+        "E is several reactions removed from A and does not resemble it, so E cannot compete at A's active site; it binds a separate regulatory (allosteric) site and shifts the enzyme to a less active conformation. Feedback inhibition operates by allosterism.",
+        "Examples: isoleucine inhibits threonine deaminase, the first enzyme of its synthesis; CTP inhibits aspartate transcarbamoylase; cholesterol inhibits HMG-CoA reductase."
+      ],
+      "why_wrong": {
+        "B": "Blocking the last step lets B, C and D pile up, wasting the material and ATP spent making them; an inhibitor at the final step controls nothing upstream.",
+        "C": "The end product of a multistep pathway generally differs in structure from the first substrate, so it cannot act as a competitive inhibitor at that active site; end-product control is allosteric.",
+        "D": "Inhibiting every enzyme equally would still let intermediates form and would waste the resources used to build them; one well-placed allosteric block at the entry to the pathway is sufficient and economical."
+      },
+      "error_types": {
+        "B": "reversed relationship: the exit of the pathway blocked instead of its entry",
+        "C": "wrong formula: the end product treated as a structural analogue of the first substrate",
+        "D": "too extreme: every enzyme inhibited"
+      },
+      "takeaway": "Feedback inhibition is allosteric and acts on an early (committed) step, so an abundant end product shuts the whole pathway off without accumulating intermediates.",
+      "sources": [
+        "OpenStax Biology 2e, 6.5 Enzymes (2018): feedback inhibition uses a reaction product to regulate its own further production, binding an allosteric site on an upstream enzyme (isoleucine and threonine deaminase, Figure 6.21).",
+        "Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 4.2 Control of Enzymatic Activity: inhibiting an early enzyme in a pathway stops the flow of materials and the ATP needed to process them; feedback inhibition always operates by allosterism; HMG-CoA reductase and cholesterol, ATCase and CTP."
+      ],
+      "status": "reviewed",
+      "reviewed_by": "independent blind re-solve"
+    }
+  ]
+}

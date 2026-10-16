@@ -105,7 +105,7 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
   passages, 2 original CARS passages, 22 items). Phase M4 done 2026-10-11: in-app content review (Progress → Content
   review), `rev` badge, Beta label flag off. Superseded 2026-10-15 by the independent blind re-solve gate (see Review):
   the Content review screen stays in the app but is unused and can be removed; `tools/apply_review.py` was deleted.
-  Chem/Phys 250 batch 1 (CP-001–CP-025) passed the independent blind re-solve and was pushed 2026-10-15 (25 items and 4 passages `reviewed`); batch 2 is next.
+  Chem/Phys 250 batches 1–3 (CP-001–CP-075) passed the independent blind re-solve and were pushed 2026-10-15 (75 items and 12 passages `reviewed`); batch 4 (CP-076–CP-100) is next.
 - Open gaps: many 3D structures show a name-only card; write verified cards for the important ones.
 
 ## Work order
