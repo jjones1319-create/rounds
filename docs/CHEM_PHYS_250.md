@@ -1,6 +1,6 @@
 # Chem/Phys 250: question blueprint
 
-**Created:** 2026-10-15 · **Plan status:** approved by the owner 2026-10-15; batch 1 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_01.json`; key `review/chem_phys_batch_01.md`, blind packet `review/chem_phys_batch_01_blind.md`); batch 2 next · **Rules:** `docs/MCAT_SPEC.md` · **Topic ids:** `docs/MCAT_GUIDES_SPEC.md` and `content/mcat/guides/chem_phys.json`
+**Created:** 2026-10-15 · **Plan status:** approved by the owner 2026-10-15; batch 1 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_01.json`; key `review/chem_phys_batch_01.md`, blind packet `review/chem_phys_batch_01_blind.md`); batch 2 passed the independent blind re-solve and was pushed 2026-10-15 (`content/mcat/chem_phys/batch_02.json`; key `review/chem_phys_batch_02.md`, blind packet `review/chem_phys_batch_02_blind.md`); batch 3 next · **Rules:** `docs/MCAT_SPEC.md` · **Topic ids:** `docs/MCAT_GUIDES_SPEC.md` and `content/mcat/guides/chem_phys.json`
 
 A plan for 250 original Chemical and Physical Foundations questions in ten batches of 25, each batch a mini section: four passages (190 questions in all, ten passages of four questions and thirty of five) plus six standalone questions, mixing physics, general chemistry, biochemistry and organic chemistry. Every question has a permanent id (CP-001 to CP-250; passages CP-P01 to CP-P40) assigned here, before writing, so progress saved on a phone never breaks. Writing follows MCAT_SPEC §3: every experiment hypothetical and labelled, every fact verified against a named source, every number re-derived, every item fact-checked by a second pass, and every batch gated by an independent blind re-solve (a fresh session re-solves every item from the blind packet) before it is committed or pushed; items are `draft` until they pass.
 
@@ -98,63 +98,63 @@ Topic: Positron emitters and half-life. Scenario: Hypothetical: a fluorine-18 do
 | CP-024 | `5E.rate-laws` | general chemistry | 2 | ★★★ | reaction order from initial rates | pushed |
 | CP-025 | `5D.amino-acids` | biochemistry | 1 | ★★ | classify a side chain as acidic, basic or hydrophobic | pushed |
 
-### Batch 2 · CP-026 to CP-050 · status: planned
+### Batch 2 · CP-026 to CP-050 · status: pushed (written and fact-checked 2026-10-15; independent blind re-solve passed 2026-10-15, 25 of 25 answers agreed; explanation fixes and one re-rating at review, see changelog)
 
-Mix: general chemistry 8, biochemistry 5, physics 8, organic chemistry 2, biology 2 · skills 1/2/3/4: 9/10/3/3 · ★★/★★★/★★★★/★★★★★: 4/12/9/0
+Mix: general chemistry 8, biochemistry 5, physics 8, organic chemistry 2, biology 2 · skills 1/2/3/4: 9/10/3/3 · ★★/★★★/★★★★/★★★★★: 5/11/9/0
 
-**CP-P05 · Neurology: demyelination** · status: planned  
+**CP-P05 · Neurology: demyelination** · status: pushed  
 Topic: The axon as an electrical cable. Scenario: Hypothetical recordings from myelinated and demyelinated axons modelled as a resistor–capacitor cable. Figure: table (axon diameter, myelin, conduction velocity, time constant).
 
 | ID | Topic | Discipline | Skill | Diff | Asks | Status |
 |---|---|---|---|---|---|---|
-| CP-026 | `4C.nerve-cell` | biology | 1 | ★★★ | the resting potential and the direction of ion flow at threshold | planned |
-| CP-027 | `4C.capacitance` | physics | 2 | ★★★★ | why myelin lowers membrane capacitance (C ∝ A/d) | planned |
-| CP-028 | `4C.resistance` | physics | 2 | ★★★ | axial resistance and axon diameter (R ∝ L/A) | planned |
-| CP-029 | `4C.current-voltage` | physics | 4 | ★★★★ | read the RC time constant and relate it to conduction speed | planned |
-| CP-030 | `4C.nerve-cell` | biology | 3 | ★★★★ | the control needed to attribute slowing to myelin loss | planned |
+| CP-026 | `4C.nerve-cell` | biology | 1 | ★★★ | the resting potential and the direction of ion flow at threshold | pushed |
+| CP-027 | `4C.capacitance` | physics | 2 | ★★★★ | why myelin lowers membrane capacitance (C ∝ A/d) | pushed |
+| CP-028 | `4C.resistance` | physics | 2 | ★★★ | axial resistance and axon diameter (R ∝ L/A) | pushed |
+| CP-029 | `4C.current-voltage` | physics | 4 | ★★★★ | read the RC time constant and relate it to conduction speed | pushed |
+| CP-030 | `4C.nerve-cell` | biology | 3 | ★★★★ | the control needed to attribute slowing to myelin loss | pushed |
 
-**CP-P06 · Pharmacology: oral drug absorption** · status: planned  
+**CP-P06 · Pharmacology: oral drug absorption** · status: pushed  
 Topic: pKa, pH and membrane partition. Scenario: Hypothetical: four drugs with different pKa values are dosed; plasma levels and log P are tabulated. Figure: bar chart (fraction un-ionized in stomach and intestine for four drugs).
 
 | ID | Topic | Discipline | Skill | Diff | Asks | Status |
 |---|---|---|---|---|---|---|
-| CP-031 | `5A.weak-acid-equilibria` | general chemistry | 2 | ★★★ | fraction ionized at a given pH from pKa | planned |
-| CP-032 | `5A.ions-in-solution` | general chemistry | 1 | ★★ | why hydrated ions cross membranes poorly | planned |
-| CP-033 | `5A.solubility` | general chemistry | 2 | ★★★★ | why the sodium salt dissolves faster than the free acid | planned |
-| CP-034 | `5B.intermolecular-forces` | general chemistry | 3 | ★★★ | the control that separates absorption from first-pass metabolism | planned |
-| CP-035 | `5A.weak-acid-equilibria` | general chemistry | 4 | ★★★★ | read the chart to pick the drug best absorbed in the stomach | planned |
+| CP-031 | `5A.weak-acid-equilibria` | general chemistry | 2 | ★★★ | fraction ionized at a given pH from pKa | pushed |
+| CP-032 | `5A.ions-in-solution` | general chemistry | 1 | ★★ | why hydrated ions cross membranes poorly | pushed |
+| CP-033 | `5A.solubility` | general chemistry | 2 | ★★★★ | why the sodium salt dissolves faster than the free acid | pushed |
+| CP-034 | `5B.intermolecular-forces` | general chemistry | 3 | ★★★ | why log P is measured on the un-ionized form (partitioning as a molecular property; was: the first-pass control) | pushed |
+| CP-035 | `5A.weak-acid-equilibria` | general chemistry | 4 | ★★★★ | read the chart to pick the drug best absorbed in the stomach | pushed |
 
-**CP-P07 · Biochemistry lab: purifying a His-tagged enzyme** · status: planned  
+**CP-P07 · Biochemistry lab: purifying a His-tagged enzyme** · status: pushed  
 Topic: Protein purification. Scenario: Hypothetical purification table across lysate, affinity column and gel filtration; native and denaturing gels are compared. Figure: table (step, total protein, total activity, specific activity, yield) + SDS-PAGE description.
 
 | ID | Topic | Discipline | Skill | Diff | Asks | Status |
 |---|---|---|---|---|---|---|
-| CP-036 | `5C.protein-purification` | biochemistry | 4 | ★★★★ | fold purification and yield from the table | planned |
-| CP-037 | `5C.chromatography` | biochemistry | 1 | ★★★ | how imidazole elutes a His-tagged protein from the nickel column | planned |
-| CP-038 | `5D.peptides-proteins` | biochemistry | 1 | ★★ | what SDS-PAGE separates by | planned |
-| CP-039 | `5D.protein-3d-structure` | biochemistry | 2 | ★★★★ | a dimer on the native gel and a monomer on SDS-PAGE: quaternary structure | planned |
-| CP-040 | `5C.protein-purification` | biochemistry | 3 | ★★★★ | why specific activity can fall after a step | planned |
+| CP-036 | `5C.protein-purification` | biochemistry | 4 | ★★★★ | fold purification and yield from the table | pushed |
+| CP-037 | `5C.chromatography` | biochemistry | 1 | ★★★ | how imidazole elutes a His-tagged protein from the nickel column | pushed |
+| CP-038 | `5D.peptides-proteins` | biochemistry | 1 | ★★ | what SDS-PAGE separates by | pushed |
+| CP-039 | `5D.protein-3d-structure` | biochemistry | 2 | ★★★★ | a dimer on the native gel and a monomer on SDS-PAGE: quaternary structure | pushed |
+| CP-040 | `5C.protein-purification` | biochemistry | 3 | ★★★★ | why specific activity can fall after a step | pushed |
 
-**CP-P08 · Obstetrics: fetal Doppler ultrasound** · status: planned  
+**CP-P08 · Obstetrics: fetal Doppler ultrasound** · status: pushed  
 Topic: Sound and the Doppler effect. Scenario: Hypothetical: a 3 MHz probe records shifts from fetal arterial flow toward and away from the probe. Figure: equation (Doppler shift) + table (transmitted and received frequencies).
 
 | ID | Topic | Discipline | Skill | Diff | Asks | Status |
 |---|---|---|---|---|---|---|
-| CP-041 | `4D.doppler` | physics | 2 | ★★★ | sign of the frequency shift for flow toward the probe | planned |
-| CP-042 | `4D.sound-basics` | physics | 2 | ★★★ | wavelength in tissue from frequency and speed of sound | planned |
-| CP-043 | `4D.resonance-ultrasound` | physics | 1 | ★★ | piezoelectric transducers and why higher frequency gives finer resolution but less depth | planned |
-| CP-044 | `4D.doppler` | physics | 2 | ★★★★ | estimate blood speed from Δf/f | planned |
+| CP-041 | `4D.doppler` | physics | 2 | ★★★ | sign of the frequency shift for flow toward the probe | pushed |
+| CP-042 | `4D.sound-basics` | physics | 2 | ★★★ | wavelength in tissue from frequency and speed of sound | pushed |
+| CP-043 | `4D.resonance-ultrasound` | physics | 1 | ★★ | piezoelectric transducers and why higher frequency gives finer resolution but less depth | pushed |
+| CP-044 | `4D.doppler` | physics | 2 | ★★★★ | estimate blood speed from Δf/f | pushed |
 
 **Standalone questions**
 
 | ID | Topic | Discipline | Skill | Diff | Asks | Status |
 |---|---|---|---|---|---|---|
-| CP-045 | `4A.kinematics` | physics | 2 | ★★★ | stopping distance from speed and deceleration | planned |
-| CP-046 | `5A.acids-bases` | general chemistry | 1 | ★★★ | identify the conjugate base in an acid–base reaction | planned |
-| CP-047 | `5D.carbohydrates` | organic chemistry | 1 | ★★★ | anomers of glucose | planned |
-| CP-048 | `5E.enthalpy-hess` | general chemistry | 2 | ★★★ | ΔH from bond energies | planned |
-| CP-049 | `4B.real-gases` | general chemistry | 1 | ★★ | when a gas deviates from ideality and why | planned |
-| CP-050 | `5D.alcohols` | organic chemistry | 1 | ★★★ | product of oxidizing a secondary alcohol | planned |
+| CP-045 | `4A.kinematics` | physics | 2 | ★★★ | stopping distance from speed and deceleration | pushed |
+| CP-046 | `5A.acids-bases` | general chemistry | 1 | ★★ | identify the conjugate base in an acid–base reaction | pushed |
+| CP-047 | `5D.carbohydrates` | organic chemistry | 1 | ★★★ | anomers of glucose | pushed |
+| CP-048 | `5E.enthalpy-hess` | general chemistry | 2 | ★★★ | ΔH from bond energies | pushed |
+| CP-049 | `4B.real-gases` | general chemistry | 1 | ★★ | when a gas deviates from ideality and why | pushed |
+| CP-050 | `5D.alcohols` | organic chemistry | 1 | ★★★ | product of oxidizing a secondary alcohol | pushed |
 
 ### Batch 3 · CP-051 to CP-075 · status: planned
 
@@ -728,4 +728,6 @@ Topic: Redox stoichiometry and periodic trends. Scenario: Hypothetical permangan
 | 2026-10-15 | Plan created: 250 questions, 40 passages, 10 batches, ids CP-001–CP-250 and CP-P01–CP-P40. Approved by the owner the same day. |
 | 2026-10-15 | Batch 1 written and checked (CP-001–CP-025, CP-P01–CP-P04; all items `draft` until they pass the blind re-solve). `tools/validate.py` widened for `content/mcat/chem_phys/batch_NN.json`; `tools/review_packet.py` added; numbers re-derived in `review/chem_phys_batch_01_check.py` (RDKit for structures). CP-P01's setting changed from a coronary to a carotid artery so that the systolic Reynolds number in the narrowing exceeds 3000. |
 | 2026-10-15 | Review gate changed by the owner: no in-app review; each batch passes an independent blind re-solve (fresh session, `review/chem_phys_batch_NN_blind.md`) before commit and push; passing items get `reviewed_by: "independent blind re-solve"`. Status chain is now planned → written → checked → reviewed → pushed. |
+| 2026-10-15 | Batch 2 written and checked (CP-026–CP-050, CP-P05–CP-P08; all items `draft` until they pass the blind re-solve). Numbers re-derived in `review/chem_phys_batch_02_check.py` (RDKit for structures); packets `review/chem_phys_batch_02.md` and `_blind.md`. CP-034's ask changed from the first-pass-metabolism control to why log P is measured on the un-ionized form: the first-pass design has no intermolecular-forces content for its `5B.intermolecular-forces` tag, and the partition measurement is a Skill 3 design question that does. CP-P05's cable model (τ = RC per internode, v ≈ L/τ) follows Tasaki and Matsumoto (2002); axoplasm resistivity stated as 1.0 Ω·m because sources range 70–110 Ω·cm. CP-P08's ultrasound uses 1,540 m/s for tissue and blood (blood is about 1,570 m/s), stated in the passage. Note: the plan gives CP-P08 skills 2, 2, 1, 2, so that passage has no Skill 3/4 item although §1 says every passage has one; the item-level plan was kept so the batch totals (9/10/3/3) hold, and the check script records the exception. |
+| 2026-10-15 | Batch 2 reviewed: an independent blind re-solve agreed with the key on all 25 items (every table and chart value re-derived). Fixes made at review, all in explanations: CP-026 no longer says the electrical force on Na⁺ opposes entry only above +60 mV (it opposes entry once the inside is positive; net entry stops at the Na⁺ equilibrium potential); CP-033 drops the unmeasured claim that precipitated free acid "redissolves quickly"; CP-037 no longer states an elution-buffer pH the passage does not give; CP-050 choice D's note now says dehydration leaves the average oxidation state of carbon unchanged (individual carbons do change). CP-046 re-rated ★★ (one-step recall), batch mix now 5/11/9/0. No stems or choices changed, no `rev` increments. All 25 items and 4 passages `reviewed` (`reviewed_by: "independent blind re-solve"`); committed and pushed. |
 | 2026-10-15 | Batch 1 reviewed: an independent blind re-solve agreed with the key on all 25 items. Fixes made at review: CP-P01 Figure 1 now declines linearly along the narrowed segment, 84.6 mmHg at x = 20 mm to 83.6 mmHg at x = 30 mm (Poiseuille), and CP-002 reads the entry pressure at x = 20 mm; CP-005 choice B no longer calls the 1.2 m/s speed "recorded" (Table 1 says it was not measured); CP-013 rewritten to ask for Ki (the inhibitor-type item duplicated M1-Q08) and CP-016 rewritten to bracket when the second vial fell below 250 MBq (the activity-after-whole-half-lives item duplicated M1-Q04), both ★★★★; CP-023 re-rated ★★ (one-step recall). All 25 items and 4 passages `reviewed` (`reviewed_by: "independent blind re-solve"`); committed and pushed. |

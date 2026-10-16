@@ -65,8 +65,14 @@ with sync_playwright() as p:
     check("guide search finds topics", len(hits) >= 1 and "Poiseuille" in hits[0].inner_text())
     hits[0].click(); pg.wait_for_timeout(300)
     check("a search result opens that topic", bool(pg.query_selector("[id='t-4B.viscosity-poiseuille'][open]")) and ev("document.querySelector('[data-gsearch]').value") == "")
-    pg.click("[id='t-4B.real-gases'] > summary"); pg.wait_for_timeout(200)   # a topic that still has no questions (coverage report)
-    check("'Practice this topic' stays hidden while a topic has no questions", not pg.query_selector("[id='t-4B.real-gases'] [data-act=g-practice]") and "No questions yet" in pg.inner_text("[id='t-4B.real-gases']") and bool(pg.query_selector("[id='t-4A.energy'] [data-act=g-practice]")))
+    # a Chem/Phys topic that still has no questions (found from the bank, since each new batch fills more topics)
+    empty = ev("fetch('data/mcat.json').then(r => r.json()).then((d) => { const used = new Set(d.items.flatMap((q) => q.topics || [])); const g = d.guides.chem_phys; for (const c of g.concepts) for (const cat of c.categories) for (const t of cat.topics) if (!used.has(t.id)) return t.id; return null; })")
+    if empty:
+        ev(f"document.querySelector(\"details.gcat[data-okey='k:{empty.split('.')[0]}']\").open = true"); pg.wait_for_timeout(150)   # its category may be collapsed
+        pg.click(f"[id='t-{empty}'] > summary"); pg.wait_for_timeout(200)
+        check(f"'Practice this topic' stays hidden while a topic has no questions ({empty})", not pg.query_selector(f"[id='t-{empty}'] [data-act=g-practice]") and "No questions yet" in pg.inner_text(f"[id='t-{empty}']") and bool(pg.query_selector("[id='t-4A.energy'] [data-act=g-practice]")))
+    else:
+        check("every Chem/Phys topic has questions, so the empty-topic check is skipped", True)
     # the other guides: Bio/Biochem and Psych/Soc have content maps, CARS has skill areas instead
     for sec, first in (("bio_biochem", "1A"), ("psych_soc", "6A")):
         ev("document.querySelector('[data-act=msec][data-v=\"\"]').click()"); pg.wait_for_timeout(200)
@@ -114,7 +120,8 @@ with sync_playwright() as p:
     pg.fill("[data-reviewer]", "Owner"); pg.wait_for_timeout(100)
     pg.click("[data-act=rv-list]"); pg.wait_for_timeout(300)
     n_draft = len(pg.query_selector_all("[data-act=rv-open]"))
-    check("the review list shows every draft question", n_draft == len(json.loads(pg.evaluate("fetch('data/mcat.json').then(r => r.text())"))["items"]))
+    n_bank_draft = len([q for q in json.loads(pg.evaluate("fetch('data/mcat.json').then(r => r.text())"))["items"] if q.get("status") != "reviewed"])   # the list opens on its Draft filter
+    check(f"the review list shows every draft question ({n_draft} of the bank's {n_bank_draft})", n_draft == n_bank_draft)
     pg.click("[data-act=rv-open][data-id='M1-Q01']"); pg.wait_for_timeout(400)
     check("opening a question for review shows its explanation and the review box", bool(pg.query_selector("#runner .rvbox")) and "Question draft" in pg.inner_text("#runner .rvbox") and "Why C is correct" in pg.inner_text("#runner"))
     pg.fill("[data-rnote='M1-Q01']", "looks right"); pg.click("[data-act=rv-set][data-v=reviewed]"); pg.wait_for_timeout(300)

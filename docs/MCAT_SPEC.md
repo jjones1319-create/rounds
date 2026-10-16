@@ -1,6 +1,6 @@
 # MCAT Question Generator — Master Spec
 
-**Version:** 1.8 · **Created:** 2026-10-10 · **Updated:** 2026-10-15 · **Blocks produced so far:** 9 (M1–M7, M4B, CP1)
+**Version:** 2.0 · **Created:** 2026-10-10 · **Updated:** 2026-10-15 · **Blocks produced so far:** 10 (M1–M7, M4B, CP1, CP2)
 
 The single source of truth for writing MCAT-style practice content for Rounds. It mirrors
 `docs/board_question_generator_spec.md`, adapted to how the MCAT actually works: four sections,
@@ -286,6 +286,31 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 | CP-023 | chem_phys | 5D / S1 | 5D.lipids | C | ★★ | reviewed | OpenStax Organic Chemistry, 27.4 Prostaglandins and Other Eicosanoids |
 | CP-024 | chem_phys | 5E / S2 | 5E.rate-laws | B | ★★★ | reviewed | OpenStax Chemistry 2e, 12.3 Rate Laws |
 | CP-025 | chem_phys | 5D / S1 | 5D.amino-acids | D | ★★ | reviewed | OpenStax Biology 2e, 3.4 Proteins |
+| CP-026 | chem_phys | 4C / S1 | 4C.nerve-cell | D | ★★★ | reviewed | OpenStax Anatomy and Physiology 2e, 12.4 The Action Potential |
+| CP-027 | chem_phys | 4C / S2 | 4C.capacitance | A | ★★★★ | reviewed | OpenStax College Physics 2e, 19.5 Capacitors and Dielectrics |
+| CP-028 | chem_phys | 4C / S2 | 4C.resistance | C | ★★★ | reviewed | OpenStax College Physics 2e, 20.3 Resistance and Resistivity |
+| CP-029 | chem_phys | 4C / S4 | 4C.current-voltage | C | ★★★★ | reviewed | Tasaki and Matsumoto, On the Cable Theory of Nerve Conduction, Bulletin of Mathematical Biology 64 |
+| CP-030 | chem_phys | 4C / S3 | 4C.nerve-cell | D | ★★★★ | reviewed | OpenStax Anatomy and Physiology 2e, 12.4 The Action Potential |
+| CP-031 | chem_phys | 5A / S2 | 5A.weak-acid-equilibria | C | ★★★ | reviewed | OpenStax Chemistry 2e, 14.6 Buffers |
+| CP-032 | chem_phys | 5A / S1 | 5A.ions-in-solution | A | ★★ | reviewed | OpenStax Chemistry 2e, 11.2 Electrolytes |
+| CP-033 | chem_phys | 5A / S2 | 5A.solubility | D | ★★★★ | reviewed | Serajuddin, Salt formation to improve drug solubility, Advanced Drug Delivery Reviews 59 |
+| CP-034 | chem_phys | 5B / S3 | 5B.intermolecular-forces | B | ★★★ | reviewed | ACD/Labs, LogP vs LogD application note |
+| CP-035 | chem_phys | 5A / S4 | 5A.weak-acid-equilibria | A | ★★★★ | reviewed | Hogben, Schanker, Tocco and Brodie, Absorption of drugs from the stomach II. The human, J Pharmacol Exp Ther 120 |
+| CP-036 | chem_phys | 5C / S4 | 5C.protein-purification | B | ★★★★ | reviewed | Colorado State University, Preparing a Summary Purification Table (handout) |
+| CP-037 | chem_phys | 5C / S1 | 5C.chromatography | D | ★★★ | reviewed | Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 8.2 Fractionation and Chromatography Techniques |
+| CP-038 | chem_phys | 5D / S1 | 5D.peptides-proteins | C | ★★ | reviewed | Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 8.3 Electrophoresis |
+| CP-039 | chem_phys | 5D / S2 | 5D.protein-3d-structure | A | ★★★★ | reviewed | OpenStax Biology 2e, 3.4 Proteins |
+| CP-040 | chem_phys | 5C / S3 | 5C.protein-purification | D | ★★★★ | reviewed | OpenStax Biology 2e, 6.5 Enzymes |
+| CP-041 | chem_phys | 4D / S2 | 4D.doppler | C | ★★★ | reviewed | OpenStax College Physics 2e, 17.7 Ultrasound |
+| CP-042 | chem_phys | 4D / S2 | 4D.sound-basics | B | ★★★ | reviewed | OpenStax College Physics 2e, 17.2 Speed of Sound, Frequency, and Wavelength |
+| CP-043 | chem_phys | 4D / S1 | 4D.resonance-ultrasound | D | ★★ | reviewed | OpenStax College Physics 2e, 17.7 Ultrasound |
+| CP-044 | chem_phys | 4D / S2 | 4D.doppler | B | ★★★★ | reviewed | British Medical Ultrasound Society, Concepts of Doppler (teaching notes) |
+| CP-045 | chem_phys | 4A / S2 | 4A.kinematics | B | ★★★ | reviewed | OpenStax College Physics 2e, 2.5 Motion Equations for Constant Acceleration in One Dimension |
+| CP-046 | chem_phys | 5A / S1 | 5A.acids-bases | A | ★★ | reviewed | OpenStax Chemistry 2e, 14.1 Brønsted-Lowry Acids and Bases |
+| CP-047 | chem_phys | 5D / S1 | 5D.carbohydrates | D | ★★★ | reviewed | OpenStax Organic Chemistry, 25.5 Cyclic Structures of Monosaccharides |
+| CP-048 | chem_phys | 5E / S2 | 5E.enthalpy-hess | B | ★★★ | reviewed | OpenStax Chemistry 2e, 7.5 Strengths of Ionic and Covalent Bonds |
+| CP-049 | chem_phys | 4B / S1 | 4B.real-gases | C | ★★ | reviewed | OpenStax Chemistry 2e, 9.6 Non-Ideal Gas Behavior |
+| CP-050 | chem_phys | 5D / S1 | 5D.alcohols | A | ★★★ | reviewed | OpenStax Organic Chemistry, 17.7 Oxidation of Alcohols |
 
 ## 11. Changelog
 
@@ -300,3 +325,5 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 | 1.6 | 2026-10-15 | Chem/Phys batch 1 (`content/mcat/chem_phys/batch_01.json`, block `CP1`): passages CP-P01–CP-P04 and items CP-001–CP-025 per `docs/CHEM_PHYS_250.md`, all `draft`; every number re-derived in `review/chem_phys_batch_01_check.py`, structures checked with RDKit, facts verified against the cited sources; review packet `review/chem_phys_batch_01.md` from `tools/review_packet.py`; validator widened for batch files (§8). |
 | 1.7 | 2026-10-15 | Review gate (§7) changed by the owner: the independent blind re-solve replaces the in-app review; passing items get `reviewed_by: "independent blind re-solve"`; a batch is committed and pushed only after it passes. `tools/apply_review.py` removed; `tools/review_packet.py --blind` added. §9 checklist item added. |
 | 1.8 | 2026-10-15 | Chem/Phys batch 1 passed the independent blind re-solve (25 of 25 agreed) and was pushed; all CP-001–CP-025 and CP-P01–CP-P04 `reviewed`. Fixes at review: CP-P01 Figure 1 made linear along the narrowed segment and CP-002 reads the entry at x = 20 mm; CP-005 choice B reworded; CP-013 rewritten to ask for Ki and CP-016 to bracket when a vial fell below the prescribed dose (both duplicated starter items M1-Q08 and M1-Q04); CP-023 re-rated ★★. No `rev` increments: the items had not been published. |
+| 1.9 | 2026-10-15 | Chem/Phys batch 2 (`content/mcat/chem_phys/batch_02.json`, block `CP2`): passages CP-P05–CP-P08 (demyelination cable model, pH-partition drug absorption, His-tag purification, umbilical Doppler) and items CP-026–CP-050 per `docs/CHEM_PHYS_250.md`, all `draft`; every number re-derived in `review/chem_phys_batch_02_check.py`, structures and stereocentres checked with RDKit, facts verified against the cited sources; packets `review/chem_phys_batch_02.md` and `review/chem_phys_batch_02_blind.md`. CP-034's planned ask changed (logged in the plan's changelog). |
+| 2.0 | 2026-10-15 | Chem/Phys batch 2 passed the independent blind re-solve (25 of 25 agreed) and was pushed; all CP-026–CP-050 and CP-P05–CP-P08 `reviewed`. Fixes at review, explanations only: CP-026 (electrical force on Na⁺ opposes entry once the inside is positive, not only above +60 mV), CP-033 (unmeasured "redissolves quickly" claim removed), CP-037 (no elution-buffer pH stated in the passage), CP-050 (dehydration leaves the average carbon oxidation state unchanged); CP-046 re-rated ★★. No `rev` increments: the items had not been published. |
