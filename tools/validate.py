@@ -1,7 +1,8 @@
 """Validate MCAT content and bundle it for the app (docs/PLAN_MCAT.md, Phase M0).
 
-Checks every block in content/mcat/M*.json against docs/MCAT_SPEC.md §8 and every guide in
-content/mcat/guides/*.json against docs/MCAT_GUIDES_SPEC.md §4, then writes a coverage report.
+Checks every block in content/mcat/*.json and every planned batch in content/mcat/<section>/batch_NN.json
+(docs/CHEM_PHYS_250.md) against docs/MCAT_SPEC.md §8, and every guide in content/mcat/guides/*.json against
+docs/MCAT_GUIDES_SPEC.md §4, then writes a coverage report.
 
     py tools/validate.py          # report problems; exit 1 on any error
 build.py imports build_bundle(), which raises SystemExit on errors so a broken block never ships.
@@ -59,6 +60,12 @@ FIGURE_TYPES = {"line", "bar", "scatter", "table", "structure", "equation"}
 STATUSES = {"draft", "reviewed"}
 # Block ids are M<n> (one section per block in practice) or M<n><category letter> for single-category blocks such as M4B.
 ID_BLOCK, ID_ITEM, ID_PASSAGE = re.compile(r"^M\d+[A-E]?$"), re.compile(r"^(M\d+[A-E]?)-Q\d{2}$"), re.compile(r"^(M\d+[A-E]?)-P\d{2}$")
+# Planned batches (docs/CHEM_PHYS_250.md): content/mcat/<section>/batch_NN.json is block <prefix>N and holds the permanent ids
+# <prefix>-001… (25 per batch) and <prefix>-P01… (4 passages per batch), so batch 1 is CP-001–CP-025 and CP-P01–CP-P04.
+BATCH_PREFIX = {"chem_phys": "CP"}
+BATCH_ITEMS, BATCH_PASSAGES = 25, 4
+ID_BATCH_FILE = re.compile(r"^batch_(\d{2})$")
+ID_BATCH_ITEM, ID_BATCH_PASSAGE = re.compile(r"^([A-Z]{2})-(\d{3})$"), re.compile(r"^([A-Z]{2})-P(\d{2})$")
 WORDS = {"science": (200, 550), "cars": (450, 650)}  # passage length (words) per MCAT_SPEC §5, warned when outside
 ID_TOPIC = re.compile(r"^(\d{1,2}[A-E])\.[a-z0-9]+(?:-[a-z0-9]+)*$")
 
@@ -150,15 +157,34 @@ def validate_guides(ck):
 def validate_blocks(ck, topics):
     """Returns (passages, items) across all blocks, in file order."""
     passages, items, seen = [], [], set()
-    for path in sorted(CONTENT.glob("*.json")) if CONTENT.is_dir() else []:   # blocks live at the top level (guides are in guides/)
+    files = [(path, None) for path in sorted(CONTENT.glob("*.json"))] if CONTENT.is_dir() else []   # blocks live at the top level (guides are in guides/)
+    for sec, prefix in BATCH_PREFIX.items():                                                        # planned batches live in content/mcat/<section>/
+        files += [(path, sec) for path in sorted((CONTENT / sec).glob("*.json"))] if (CONTENT / sec).is_dir() else []
+    for path, batch_sec in files:
         b = load_json(path, ck)
         if b is None: continue
         block = b.get("block")
-        if not ck.require(isinstance(block, str) and ID_BLOCK.match(block) and block in (path.stem, "M" + path.stem), path.name, "'block' must match the file name, e.g. M1 (a single-category block may be named without the M, e.g. 4B.json for block M4B)"): continue
+        if batch_sec is None:
+            if not ck.require(isinstance(block, str) and ID_BLOCK.match(block) and block in (path.stem, "M" + path.stem), path.name, "'block' must match the file name, e.g. M1 (a single-category block may be named without the M, e.g. 4B.json for block M4B)"): continue
+            batch = None
+        else:
+            m = ID_BATCH_FILE.match(path.stem); prefix = BATCH_PREFIX[batch_sec]
+            if not ck.require(m is not None, f"{batch_sec}/{path.name}", "batch files are named batch_NN.json"): continue
+            batch = int(m.group(1))
+            if not ck.require(block == f"{prefix}{batch}", f"{batch_sec}/{path.name}", f"'block' must be {prefix}{batch}"): continue
+
+        def in_batch(pattern, sid, per_batch):
+            m = pattern.match(sid or "")
+            return bool(m) and m.group(1) == prefix and per_batch * (batch - 1) < int(m.group(2)) <= per_batch * batch
+
         local_passages = {}
         for p in b.get("passages") or []:
             pid = p.get("id"); where = f"{block} passage {pid}"
-            if not ck.require(isinstance(pid, str) and ID_PASSAGE.match(pid) and ID_PASSAGE.match(pid).group(1) == block, where, "id must be <block>-Pnn"): continue
+            if batch is None:
+                if not ck.require(isinstance(pid, str) and ID_PASSAGE.match(pid) and ID_PASSAGE.match(pid).group(1) == block, where, "id must be <block>-Pnn"): continue
+            else:
+                if not ck.require(in_batch(ID_BATCH_PASSAGE, pid, BATCH_PASSAGES), where, f"id must be {prefix}-Pnn within batch {batch} ({BATCH_PASSAGES} passages per batch)"): continue
+                ck.require(p.get("section") == batch_sec, where, f"section must be {batch_sec}")
             if pid in seen: ck.err(where, "duplicate id"); continue
             seen.add(pid)
             ck.require(p.get("section") in SECTION, where, "unknown section")
@@ -182,7 +208,11 @@ def validate_blocks(ck, topics):
         answers = []
         for q in b.get("items") or []:
             qid = q.get("id"); where = f"{block} item {qid}"
-            if not ck.require(isinstance(qid, str) and ID_ITEM.match(qid) and ID_ITEM.match(qid).group(1) == block, where, "id must be <block>-Qnn"): continue
+            if batch is None:
+                if not ck.require(isinstance(qid, str) and ID_ITEM.match(qid) and ID_ITEM.match(qid).group(1) == block, where, "id must be <block>-Qnn"): continue
+            else:
+                if not ck.require(in_batch(ID_BATCH_ITEM, qid, BATCH_ITEMS), where, f"id must be {prefix}-nnn within batch {batch} ({BATCH_ITEMS} items per batch)"): continue
+                ck.require(q.get("section") == batch_sec, where, f"section must be {batch_sec}")
             if qid in seen: ck.err(where, "duplicate id"); continue
             seen.add(qid)
             ck.require(isinstance(q.get("rev"), int) and q["rev"] >= 1, where, "rev must be an integer >= 1")

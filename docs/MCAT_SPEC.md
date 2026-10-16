@@ -1,6 +1,6 @@
 # MCAT Question Generator — Master Spec
 
-**Version:** 1.5 · **Created:** 2026-10-10 · **Updated:** 2026-10-11 · **Blocks produced so far:** 8 (M1–M7, M4B)
+**Version:** 1.8 · **Created:** 2026-10-10 · **Updated:** 2026-10-15 · **Blocks produced so far:** 9 (M1–M7, M4B, CP1)
 
 The single source of truth for writing MCAT-style practice content for Rounds. It mirrors
 `docs/board_question_generator_spec.md`, adapted to how the MCAT actually works: four sections,
@@ -136,18 +136,20 @@ Chemical structures come from SMILES rendered at build time (see `docs/PLAN_MCAT
 
 ## 7. Review workflow
 
-Every item carries `status` (`draft` → `reviewed`) and `reviewed_by`. The project owner, who holds degrees in
-biology, chemistry, mathematics, and physics and has PhD colleagues in each field, reviews every item in every
-section and marks it `reviewed`; no second reviewer is required. A "Beta" label for unreviewed items is optional
-and off by default (a build-time flag), so unreviewed items display without a label unless the owner turns it on.
+Every item and passage carries `status` (`draft` → `reviewed`) and `reviewed_by`. The review gate is an **independent blind re-solve**: a fresh Claude Code session that has not seen the batch re-solves every item from the blind packet (`review/<section>_batch_NN_blind.md`, questions only), and its answers and reasoning are compared with the key in `review/<section>_batch_NN.md`. Items that agree, with no flaw found in the stem, choices, or solution, get `status: reviewed` and `reviewed_by: "independent blind re-solve"`; a disagreement is resolved by checking the sources, the item is fixed, and it is re-solved blind again. A batch is committed and pushed only after every item passes.
 
-**In the app** (Phase M4): Progress (MCAT) → Content review → Review mode. The list shows questions by status and
-section; opening one shows it with its explanation and a review box (Mark reviewed / Back to draft, reviewer note);
-passages get the same box below their text, and guide topics keep their Reviewed ticks. Marks live in the browser's MCAT
-record until exported (Copy or Download review JSON) and applied with `py tools/apply_review.py review.json`, which
-writes `status` and `reviewed_by` into the content files and prints the notes as a correction list. A correction to a
-published item keeps its ID, increments `rev` (shown as a badge in the explanation) and is logged in §11. The Beta label
-is `BETA_LABEL` in `build.py`.
+**How it runs.** `py tools/review_packet.py <block.json> review/<name>.md` writes the key (every question with its answer,
+worked solution, why each wrong choice is wrong, tags and sources); `--blind` writes the questions-only packet
+`review/<name>_blind.md`. The re-solving session is given only the blind packet and the guide, re-solves every item with
+its own worked reasoning, and reports an answer and any objection per item (ambiguity, a second defensible choice, a
+number that needs a calculator, a clue in the choices, a resemblance to a published question). The writing session then
+compares against the key: agreement with no objection passes; anything else is checked against the sources, fixed with
+`rev` incremented if the item had been published, logged in §11, and re-solved blind again. Guide topics are reviewed the
+same way (a fresh session checks each topic's statements against the cited sources) and keep their Reviewed ticks.
+
+The owner, who holds degrees in biology, chemistry, mathematics, and physics, does not review items in the app; the
+Phase M4 Content review screen (Progress → Content review) is unused. A "Beta" label for unreviewed items is optional
+and off by default (`BETA_LABEL` in `build.py`), so unreviewed items display without a label unless it is turned on.
 
 ## 8. Data schema (one JSON file per block in `content/mcat/`)
 
@@ -177,7 +179,7 @@ is `BETA_LABEL` in `build.py`.
 }
 ```
 
-IDs are permanent (progress is keyed by them). Corrections increment `rev` and are logged in §11.
+IDs are permanent (progress is keyed by them). Corrections increment `rev` and are logged in §11. Planned Chem/Phys batches (`docs/CHEM_PHYS_250.md`) live in `content/mcat/chem_phys/batch_NN.json` with block id `CP<N>` and the permanent ids `CP-001`… and `CP-P01`… assigned in the plan; `tools/validate.py` checks that each batch file holds exactly its own ids.
 
 Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], rows: [[..]]}; `line` / `scatter` {x: {label, min?, max?}, y: {label, min?, max?}, series: [{name, points: [[x, y], ..]}]}; `bar` {x: {label}, y: {label, min?, max?}, series: [{name, points: [[category, value], ..]}]}; `equation` {tex}; `structure` {smiles} (build.py adds `svg`, drawn with RDKit). The app draws charts from these numbers; `alt` describes the figure for screen readers. Block ids may carry a category letter for single-category blocks (`M4B`, items `M4B-Q01`).
 
@@ -192,6 +194,7 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 - [ ] Original wording; nothing taken from, paraphrased from, or adapted from any published question
 - [ ] `tools/validate.py` passes; app builds; tests pass
 - [ ] §10 log and §11 changelog updated
+- [ ] Independent blind re-solve passed for every item (§7) before any commit or push
 
 ## 10. Item log
 
@@ -258,6 +261,31 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 | M4B-Q08 | chem_phys | 4B / S2 | 4B.ideal-gas | D | ★★★ | draft | OpenStax Chemistry 2e, 9.2 Relating Pressure, Volume, Amount, and Temperature |
 | M4B-Q09 | chem_phys | 4B / S1 | 4B.kinetic-theory | C | ★★★ | draft | OpenStax Chemistry 2e, 9.5 The Kinetic-Molecular Theory |
 | M4B-Q10 | chem_phys | 4B / S3 | 4B.partial-pressure | D | ★★★ | draft | OpenStax Chemistry 2e, 9.3 Stoichiometry of Gaseous Substances, Mixtures, and Reactions |
+| CP-001 | chem_phys | 4B / S2 | 4B.continuity-bernoulli | C | ★★★ | reviewed | OpenStax College Physics 2e, 12.1 Flow Rate and Its Relation to Velocity |
+| CP-002 | chem_phys | 4B / S4 | 4B.continuity-bernoulli | A | ★★★★★ | reviewed | OpenStax College Physics 2e, 12.2 Bernoulli's Equation |
+| CP-003 | chem_phys | 4B / S2 | 4B.viscosity-poiseuille | A | ★★★★ | reviewed | OpenStax College Physics 2e, 12.4 Viscosity and Laminar Flow; Poiseuille's Law |
+| CP-004 | chem_phys | 4B / S1 | 4B.turbulence-surface-tension | B | ★★★ | reviewed | OpenStax College Physics 2e, 12.5 The Onset of Turbulence |
+| CP-005 | chem_phys | 4B / S3 | 4B.circulation | D | ★★★ | reviewed | OpenStax Anatomy and Physiology 2e, 20.2 Blood Flow, Blood Pressure, and Resistance |
+| CP-006 | chem_phys | 5A / S2 | 5A.buffers | B | ★★★★ | reviewed | Acid-Base Physiology (Brandis), 2.2 Buffering (anaesthesiamcq.com) |
+| CP-007 | chem_phys | 5A / S1 | 5A.acids-bases | A | ★★ | reviewed | OpenStax Chemistry 2e, 14.1 Brønsted-Lowry Acids and Bases |
+| CP-008 | chem_phys | 5A / S4 | 5A.titration | A | ★★★★ | reviewed | OpenStax Chemistry 2e, 14.7 Acid-Base Titrations |
+| CP-009 | chem_phys | 5A / S2 | 5A.buffers | B | ★★★★ | reviewed | OpenStax Chemistry 2e, 14.6 Buffers |
+| CP-010 | chem_phys | 5A / S3 | 5A.weak-acid-equilibria | C | ★★★ | reviewed | OpenStax Chemistry 2e, 13.3 Shifting Equilibria |
+| CP-011 | chem_phys | 5E / S4 | 5E.enzyme-kinetics | D | ★★★ | reviewed | Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 4.1 Basic Principles of Catalysis |
+| CP-012 | chem_phys | 5E / S2 | 5E.enzyme-kinetics | C | ★★★★ | reviewed | Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 4.1 Basic Principles of Catalysis |
+| CP-013 | chem_phys | 5E / S2 | 5E.enzyme-inhibition-regulation | A | ★★★★ | reviewed | Chemistry LibreTexts, Biochemistry Online (Jakubowski), Competitive Inhibition: Kmapp = Km(1 + I/Kis) |
+| CP-014 | chem_phys | 5E / S1 | 5E.enzymes-mechanism | B | ★★ | reviewed | OpenStax Biology 2e, 6.5 Enzymes |
+| CP-015 | chem_phys | 5E / S3 | 5E.enzyme-inhibition-regulation | A | ★★★★★ | reviewed | Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 4.2 Control of Enzymatic Activity |
+| CP-016 | chem_phys | 4E / S2 | 4E.radioactive-decay | B | ★★★★ | reviewed | OpenStax College Physics 2e, 31.5 Half-Life and Activity |
+| CP-017 | chem_phys | 4E / S2 | 4E.radioactive-decay | D | ★★★★ | reviewed | OpenStax College Physics 2e, 31.5 Half-Life and Activity |
+| CP-018 | chem_phys | 4E / S1 | 4E.nucleus-isotopes | C | ★★★ | reviewed | OpenStax College Physics 2e, 31.4 Nuclear Decay and Conservation Laws |
+| CP-019 | chem_phys | 4D / S2 | 4D.em-radiation | A | ★★ | reviewed | OpenStax College Physics 2e, 29.3 Photon Energies and the Electromagnetic Spectrum |
+| CP-020 | chem_phys | 4A / S1 | 4A.units-vectors | B | ★★ | reviewed | NIST Special Publication 811, Guide for the Use of the International System of Units, Table 3 |
+| CP-021 | chem_phys | 4E / S1 | 4E.periodic-groups | D | ★★ | reviewed | OpenStax Chemistry 2e, 2.5 The Periodic Table |
+| CP-022 | chem_phys | 5B / S1 | 5B.lewis-structures | C | ★★★ | reviewed | OpenStax Chemistry 2e, 7.4 Formal Charges and Resonance |
+| CP-023 | chem_phys | 5D / S1 | 5D.lipids | C | ★★ | reviewed | OpenStax Organic Chemistry, 27.4 Prostaglandins and Other Eicosanoids |
+| CP-024 | chem_phys | 5E / S2 | 5E.rate-laws | B | ★★★ | reviewed | OpenStax Chemistry 2e, 12.3 Rate Laws |
+| CP-025 | chem_phys | 5D / S1 | 5D.amino-acids | D | ★★ | reviewed | OpenStax Biology 2e, 3.4 Proteins |
 
 ## 11. Changelog
 
@@ -269,3 +297,6 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 | 1.3 | 2026-10-11 | Phase M2 starter blocks M1 (Chem/Phys), M2 (Bio/Biochem), M3 (Psych/Soc): 8 discrete items each, all `draft`, each re-derived and fact-checked against the cited open textbooks before commit; §10 item log started. |
 | 1.4 | 2026-10-11 | Phase M3: passage blocks M4 (Chem/Phys), M5 (Bio/Biochem), M6 (Psych/Soc) and M7 (two original CARS passages, humanities and social sciences), 22 items; figure data shapes documented in §8; letter-share warning applies to blocks of 8 or more items. |
 | 1.5 | 2026-10-11 | Block M4B (`content/mcat/4B.json`): 10 discrete Chem/Phys questions covering every 4B topic but real gases, each re-derived and checked against OpenStax; the validator accepts `4B.json` for block `M4B`. Phase M4 review workflow documented in §7. |
+| 1.6 | 2026-10-15 | Chem/Phys batch 1 (`content/mcat/chem_phys/batch_01.json`, block `CP1`): passages CP-P01–CP-P04 and items CP-001–CP-025 per `docs/CHEM_PHYS_250.md`, all `draft`; every number re-derived in `review/chem_phys_batch_01_check.py`, structures checked with RDKit, facts verified against the cited sources; review packet `review/chem_phys_batch_01.md` from `tools/review_packet.py`; validator widened for batch files (§8). |
+| 1.7 | 2026-10-15 | Review gate (§7) changed by the owner: the independent blind re-solve replaces the in-app review; passing items get `reviewed_by: "independent blind re-solve"`; a batch is committed and pushed only after it passes. `tools/apply_review.py` removed; `tools/review_packet.py --blind` added. §9 checklist item added. |
+| 1.8 | 2026-10-15 | Chem/Phys batch 1 passed the independent blind re-solve (25 of 25 agreed) and was pushed; all CP-001–CP-025 and CP-P01–CP-P04 `reviewed`. Fixes at review: CP-P01 Figure 1 made linear along the narrowed segment and CP-002 reads the entry at x = 20 mm; CP-005 choice B reworded; CP-013 rewritten to ask for Ki and CP-016 to bracket when a vial fell below the prescribed dose (both duplicated starter items M1-Q08 and M1-Q04); CP-023 re-rated ★★. No `rev` increments: the items had not been published. |

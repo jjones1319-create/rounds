@@ -64,8 +64,9 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
   and keep any private copy used for checking in `work/` (gitignored).
 - **MCAT items** have exactly four choices, are tagged per MCAT_SPEC §2 and §8, and pass `tools/validate.py`.
 - **Never show or imply** a predicted MCAT scaled score (118–132) or a predicted board score.
-- **Review.** Every item and guide topic carries `status` (`draft` → `reviewed`) and `reviewed_by`. The owner reviews
-  all content; no second reviewer is required. A "Beta" label for unreviewed items is optional and off by default.
+- **Review.** Every item, passage, and guide topic carries `status` (`draft` → `reviewed`) and `reviewed_by`. The review gate is an **independent blind re-solve**: a fresh Claude Code session that has not seen the batch re-solves every item from the blind packet (`review/<section>_batch_NN_blind.md`, questions only), and its answers and reasoning are compared with the key in `review/<section>_batch_NN.md`. Items that agree, with no flaw found in the stem, choices, or solution, get `status: reviewed` and `reviewed_by: "independent blind re-solve"`; a disagreement is resolved by checking the sources, the item is fixed, and it is re-solved blind again. A batch is committed and pushed only after every item passes.
+  The owner does not review items in the app (the Phase M4 Content review screen is unused). A "Beta" label for
+  unreviewed items is optional and off by default.
 - **Question IDs are permanent** (`B1-Q01`…, `M1-Q01`…). Saved progress is keyed by ID. Never renumber; add board
   blocks as `questions/questionsN.py`, import them in `build.py`, and add each ID to `SYS` in `build.py`.
 - **Phone first.** Her phone is a **Samsung Galaxy S25 Ultra** (Chrome viewport about 412 × 891 CSS px at 3.5×;
@@ -84,7 +85,7 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
 - The 3D/Diagram choice per tab is in `rounds.view3d` and the selected exam in `rounds.exam` (conveniences, not progress).
 - MCAT progress lives in `rounds.mcat.v1` (same shape as the boards record plus `reviewed: {topicId: ts}` for the
   guides' Reviewed ticks, `review: {id: {s, by, ts, note}}` for the owner's question/passage marks, `reviewer` and
-  `reviewMode`; created only once something is saved). Export → `tools/apply_review.py` writes marks into the content. Theme and text size stay in the boards record
+  `reviewMode`; created only once something is saved; the in-app review is no longer part of the workflow, see Review above). Theme and text size stay in the boards record
   whichever exam is selected (`Store.settings()`). Which guide groups are expanded is in `rounds.guide.v1`.
 
 ## Current state (2026-10-11)
@@ -102,7 +103,9 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
   session), figures drawn from passage data (tables, line/bar/scatter SVG, KaTeX equations, RDKit structures at build
   time via `tools/structures.py`, `pip install rdkit`), passage sets travel together in blocks; blocks M4–M7 (3 science
   passages, 2 original CARS passages, 22 items). Phase M4 done 2026-10-11: in-app content review (Progress → Content
-  review; `tools/apply_review.py`), `rev` badge, Beta label flag off.
+  review), `rev` badge, Beta label flag off. Superseded 2026-10-15 by the independent blind re-solve gate (see Review):
+  the Content review screen stays in the app but is unused and can be removed; `tools/apply_review.py` was deleted.
+  Chem/Phys 250 batch 1 (CP-001–CP-025) passed the independent blind re-solve and was pushed 2026-10-15 (25 items and 4 passages `reviewed`); batch 2 is next.
 - Open gaps: many 3D structures show a name-only card; write verified cards for the important ones.
 
 ## Work order
@@ -112,5 +115,7 @@ Work on one track at a time and finish its current phase before switching. Repor
   mix, coverage report first).
 - Track C, content: new board blocks (`/new-board-block`, boards spec) and MCAT blocks (MCAT spec).
   Chem/Phys: `docs/CHEM_PHYS_250.md` is the approved blueprint (250 questions, 40 passages, 10 batches, ids CP-001…/CP-P01…);
-  write batches in order, update its status columns and changelog, widen `tools/validate.py` for the CP ids before batch 1.
+  write batches in order, update its status columns and changelog. Per batch: `content/mcat/chem_phys/batch_NN.json`,
+  `review/chem_phys_batch_NN_check.py` (every number re-derived, RDKit for structures), `py tools/review_packet.py` for the
+  key and blind packets, then the independent blind re-solve, then commit and push.
 - If the site is ever to be promoted: `docs/PUBLIC_RELEASE.md` checklist first.

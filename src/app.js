@@ -652,9 +652,9 @@
 
 
   /* ---------------- content review (docs/PLAN_MCAT.md, Phase M4; MCAT_SPEC §7) ----------------
-     The owner reviews questions, passages and guide topics in the app. Marks live in the MCAT record (review: {id: {s, by,
-     ts, note}}; topic ticks in reviewed: {id: ts}) and are exported as JSON for tools/apply_review.py, which writes status
-     and reviewed_by into the content files so the marks survive a rebuild. Review mode is off unless switched on. */
+     Unused since 2026-10-15: the review gate is an independent blind re-solve (MCAT_SPEC §7), not marks made here.
+     The screen is kept for now. Marks live in the MCAT record (review: {id: {s, by, ts, note}}; topic ticks in
+     reviewed: {id: ts}) and can still be exported as JSON. Review mode is off unless switched on. */
   const RV = () => (Store.all.mcat.review = Store.all.mcat.review || {});
   const effStatus = (x) => (RV()[x.id] && RV()[x.id].s) || x.status || "draft";
   const reviewMode = () => !!Store.all.mcat.reviewMode;
@@ -670,7 +670,7 @@
     const done = (xs) => xs.filter((x) => effStatus(x) === "reviewed").length, pct = (a, b) => (b ? Math.round((100 * a) / b) : 0);
     const tr = Object.keys(reviewedMap()).length, on = reviewMode();
     return `<h2>Content review</h2><div class="panel" id="rvpanel">
-      <p class="hint" style="margin:0 0 10px">For the owner's review sessions. Marks are kept in this browser's MCAT record; export them and run <code>tools/apply_review.py</code> to write them into the content files.</p>
+      <p class="hint" style="margin:0 0 10px">Not part of the review workflow: batches are reviewed by an independent blind re-solve (docs/MCAT_SPEC.md §7). Marks made here stay in this browser's MCAT record.</p>
       <div class="field switch" style="margin-top:0"><span class="lab" style="margin:0">Review mode (adds review controls to explanations and passages)</span><button class="toggle" role="switch" aria-checked="${on}" aria-label="Review mode" data-act="rv-mode"></button></div>
       ${on ? `<div class="field"><label class="lab" for="rv-name">Reviewer name (written into reviewed_by)</label><input id="rv-name" class="search" type="text" value="${esc(Store.all.mcat.reviewer || "")}" placeholder="Your name" data-reviewer></div>` : ""}
       <div class="bars" style="margin-top:12px">${[["Questions", items], ["Passages", pas]].map(([n, xs]) => `<div class="bar-row"><div class="lab"><span>${n}</span><span class="muted">${done(xs)} of ${xs.length} reviewed</span></div><div class="bar" role="img" aria-label="${pct(done(xs), xs.length)}% reviewed"><i style="width:${pct(done(xs), xs.length)}%"></i></div></div>`).join("")}

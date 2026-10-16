@@ -453,7 +453,7 @@ details.bgroup[open] summary::after{transform:rotate(-135deg)}
 <div class="runner" id="runner" hidden role="dialog" aria-modal="true" aria-label="Question block"></div>
 <div id="sheetroot"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script>const ASSET_V = {"body3d": "64e615e1c2", "map": "64bdaa918d", "data/boards.json": "10d3b1e7b9", "data/mcat.json": "deb255f682", "katex": "0.19.0", "models/skeleton.glb": "8b64aa61f7", "models/organs.glb": "eca00964bc", "models/muscles.glb": "5781f0b454", "models/arteries.glb": "af3bbb5999", "models/veins.glb": "53a3a0c905", "models/nerves.glb": "8af742eafb", "models/lymph.glb": "8b7f51010d", "models/brain_cortex.glb": "1974b39599", "models/brain_deep.glb": "cdca5a7156", "models/brain_arteries.glb": "45b2909462", "models/brain_nerves.glb": "8a0660696b", "models/brain_skull.glb": "60b3976b71", "models/heart_wall.glb": "d09d25e840", "models/heart_valves.glb": "37b965357c", "models/heart_coronary.glb": "5d3d252113", "models/heart_veins.glb": "b94b3381fe", "models/heart_vessels.glb": "5f2a5b42e3"}; /* content hashes of the 3D files, from build.py */ const BUILD = {"beta": false}; /* build-time flags: beta label (MCAT_SPEC §7) */</script>
+<script>const ASSET_V = {"body3d": "64e615e1c2", "map": "64bdaa918d", "data/boards.json": "10d3b1e7b9", "data/mcat.json": "92e6c81293", "katex": "0.19.0", "models/skeleton.glb": "8b64aa61f7", "models/organs.glb": "eca00964bc", "models/muscles.glb": "5781f0b454", "models/arteries.glb": "af3bbb5999", "models/veins.glb": "53a3a0c905", "models/nerves.glb": "8af742eafb", "models/lymph.glb": "8b7f51010d", "models/brain_cortex.glb": "1974b39599", "models/brain_deep.glb": "cdca5a7156", "models/brain_arteries.glb": "45b2909462", "models/brain_nerves.glb": "8a0660696b", "models/brain_skull.glb": "60b3976b71", "models/heart_wall.glb": "d09d25e840", "models/heart_valves.glb": "37b965357c", "models/heart_coronary.glb": "5d3d252113", "models/heart_veins.glb": "b94b3381fe", "models/heart_vessels.glb": "5f2a5b42e3"}; /* content hashes of the 3D files, from build.py */ const BUILD = {"beta": false}; /* build-time flags: beta label (MCAT_SPEC §7) */</script>
 <script>
 /* Anatomy figure v2: original stylized drawing with FRONT and BACK views.
    viewBox 0 0 400 920, midline x=200. Paired structures are defined on the patient's RIGHT
@@ -2906,9 +2906,9 @@ const Anat = (function () {
 
 
   /* ---------------- content review (docs/PLAN_MCAT.md, Phase M4; MCAT_SPEC §7) ----------------
-     The owner reviews questions, passages and guide topics in the app. Marks live in the MCAT record (review: {id: {s, by,
-     ts, note}}; topic ticks in reviewed: {id: ts}) and are exported as JSON for tools/apply_review.py, which writes status
-     and reviewed_by into the content files so the marks survive a rebuild. Review mode is off unless switched on. */
+     Unused since 2026-10-15: the review gate is an independent blind re-solve (MCAT_SPEC §7), not marks made here.
+     The screen is kept for now. Marks live in the MCAT record (review: {id: {s, by, ts, note}}; topic ticks in
+     reviewed: {id: ts}) and can still be exported as JSON. Review mode is off unless switched on. */
   const RV = () => (Store.all.mcat.review = Store.all.mcat.review || {});
   const effStatus = (x) => (RV()[x.id] && RV()[x.id].s) || x.status || "draft";
   const reviewMode = () => !!Store.all.mcat.reviewMode;
@@ -2924,7 +2924,7 @@ const Anat = (function () {
     const done = (xs) => xs.filter((x) => effStatus(x) === "reviewed").length, pct = (a, b) => (b ? Math.round((100 * a) / b) : 0);
     const tr = Object.keys(reviewedMap()).length, on = reviewMode();
     return `<h2>Content review</h2><div class="panel" id="rvpanel">
-      <p class="hint" style="margin:0 0 10px">For the owner's review sessions. Marks are kept in this browser's MCAT record; export them and run <code>tools/apply_review.py</code> to write them into the content files.</p>
+      <p class="hint" style="margin:0 0 10px">Not part of the review workflow: batches are reviewed by an independent blind re-solve (docs/MCAT_SPEC.md §7). Marks made here stay in this browser's MCAT record.</p>
       <div class="field switch" style="margin-top:0"><span class="lab" style="margin:0">Review mode (adds review controls to explanations and passages)</span><button class="toggle" role="switch" aria-checked="${on}" aria-label="Review mode" data-act="rv-mode"></button></div>
       ${on ? `<div class="field"><label class="lab" for="rv-name">Reviewer name (written into reviewed_by)</label><input id="rv-name" class="search" type="text" value="${esc(Store.all.mcat.reviewer || "")}" placeholder="Your name" data-reviewer></div>` : ""}
       <div class="bars" style="margin-top:12px">${[["Questions", items], ["Passages", pas]].map(([n, xs]) => `<div class="bar-row"><div class="lab"><span>${n}</span><span class="muted">${done(xs)} of ${xs.length} reviewed</span></div><div class="bar" role="img" aria-label="${pct(done(xs), xs.length)}% reviewed"><i style="width:${pct(done(xs), xs.length)}%"></i></div></div>`).join("")}
