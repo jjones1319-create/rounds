@@ -185,20 +185,20 @@
       },
       {
        "id": "4A.center-of-mass",
-       "name": "Center of mass",
+       "name": "Centre of mass",
        "tags": [
         "PHY"
        ],
        "know": [
-        "The center of mass is the mass-weighted average position of a system. Gravity acts as if applied there, and an object balances when it is supported under it.",
+        "The centre of mass is the mass-weighted average position of a system. Gravity acts as if applied there, and an object balances when it is supported under it.",
         "For point masses, each coordinate is Σ mᵢxᵢ / Σ mᵢ. Uniform symmetric objects have it at their geometric centre, which can lie outside the material (a ring, a boomerang).",
-        "Stability: an object tips when the vertical line through its center of mass falls outside its base of support, so a lower center of mass and a wider base both increase stability."
+        "Stability: an object tips when the vertical line through its centre of mass falls outside its base of support, so a lower centre of mass and a wider base both increase stability."
        ],
        "equations": [
         "x_{cm} = \\dfrac{\\sum m_i x_i}{\\sum m_i}"
        ],
        "confusions": [
-        "The center of mass of a system moves as if all external forces acted on it there, whatever the parts do internally."
+        "The centre of mass of a system moves as if all external forces acted on it there, whatever the parts do internally."
        ],
        "refs": [
         {
@@ -2925,7 +2925,7 @@
        ],
        "know": [
         "Tertiary structure is held by many weak interactions: the hydrophobic effect (nonpolar side chains cluster inside, away from water), hydrogen bonds, ionic salt bridges between charged side chains, van der Waals contacts, and sometimes covalent disulfide bonds. The hydrophobic effect is driven by entropy: water molecules that would be ordered in a solvation layer around exposed nonpolar groups are set free when those groups are buried, so the water's entropy rises even though the chain becomes more ordered.",
-        "Quaternary structure is the assembly of two or more folded chains (subunits) into one protein, as in hemoglobin (α₂β₂) and many enzymes; it makes cooperativity and allosteric regulation possible.",
+        "Quaternary structure is the assembly of two or more folded chains (subunits) into one protein, as in haemoglobin (α₂β₂) and many enzymes; it makes cooperativity and allosteric regulation possible.",
         "Denaturation unfolds a protein (losing secondary, tertiary, and quaternary structure but not its sequence) through heat, extreme pH, urea or guanidinium, detergents such as SDS, organic solvents, or heavy metals, and usually destroys function. Some proteins refold when the stress is removed: Anfinsen's ribonuclease experiment showed that the sequence alone can specify the fold. Chaperones assist folding in the crowded cell, and misfolded aggregates underlie prion and amyloid diseases."
        ],
        "equations": [],
@@ -2956,13 +2956,13 @@
         "BC"
        ],
        "know": [
-        "Binding proteins carry or store ligands reversibly: hemoglobin binds O₂ cooperatively (a sigmoidal curve) while myoglobin stores it (a hyperbolic curve); transferrin carries iron, albumin carries fatty acids and drugs; membrane receptors and transporters bind signals and substrates. Binding strength is described by the dissociation constant Kd: the lower the Kd, the tighter the binding.",
+        "Binding proteins carry or store ligands reversibly: haemoglobin binds O₂ cooperatively (a sigmoidal curve) while myoglobin stores it (a hyperbolic curve); transferrin carries iron, albumin carries fatty acids and drugs; membrane receptors and transporters bind signals and substrates. Binding strength is described by the dissociation constant Kd: the lower the Kd, the tighter the binding.",
         "Immune system: antibodies (immunoglobulins) are Y-shaped proteins of two heavy and two light chains joined by disulfides. The variable regions at the two tips form identical antigen-binding sites, while the constant region recruits complement and immune cells. Each B-cell clone makes antibodies of one specificity; binding can neutralize a pathogen, tag it for phagocytosis, or trigger complement.",
         "Motor proteins convert ATP hydrolysis into movement: myosin walks along actin filaments (muscle contraction, cytokinesis); kinesin carries cargo toward the plus end of microtubules and dynein toward the minus end (vesicle transport, and the bending of cilia and flagella). Each has an ATP-binding head and a tail that holds cargo or another filament. Structural proteins (collagen, keratin, actin, tubulin) give shape and strength."
        ],
        "equations": [],
        "confusions": [
-        "Myoglobin's oxygen affinity is higher than hemoglobin's at low partial pressures, which is why it can take oxygen from the blood. Kinesin and dynein travel in opposite directions along the same microtubule."
+        "Myoglobin's oxygen affinity is higher than haemoglobin's at low partial pressures, which is why it can take oxygen from the blood. Kinesin and dynein travel in opposite directions along the same microtubule."
        ],
        "refs": [
         {
@@ -3465,7 +3465,7 @@
        "know": [
         "At a fixed enzyme concentration the initial rate v₀ rises with substrate concentration and levels off at Vmax when every active site is occupied. Michaelis–Menten: v₀ = Vmax[S]/(Km + [S]). Km is the substrate concentration that gives half of Vmax and reflects affinity (lower Km, tighter binding). Vmax = kcat[E]total, where kcat, the turnover number, is reactions per enzyme molecule per second, and kcat/Km measures catalytic efficiency. When [S] ≪ Km the rate is proportional to [S]; when [S] ≫ Km it is independent of [S] (saturation).",
         "A Lineweaver–Burk (double-reciprocal) plot of 1/v₀ against 1/[S] is a straight line with y-intercept 1/Vmax, x-intercept −1/Km, and slope Km/Vmax, which makes the effect of an inhibitor easy to read.",
-        "Cooperativity: in multi-subunit enzymes (and hemoglobin) one subunit's binding changes the others' affinity, giving a sigmoidal rather than hyperbolic curve; a Hill coefficient above 1 means positive cooperativity. Local conditions matter: each enzyme has an optimal temperature and pH (pepsin near 2, trypsin near 8); rate rises with temperature until the enzyme unfolds, and pH changes the protonation of catalytic groups. Salt concentration and solvent also affect activity."
+        "Cooperativity: in multi-subunit enzymes (and haemoglobin) one subunit's binding changes the others' affinity, giving a sigmoidal rather than hyperbolic curve; a Hill coefficient above 1 means positive cooperativity. Local conditions matter: each enzyme has an optimal temperature and pH (pepsin near 2, trypsin near 8); rate rises with temperature until the enzyme unfolds, and pH changes the protonation of catalytic groups. Salt concentration and solvent also affect activity."
        ],
        "equations": [
         "v_0 = \\dfrac{V_{max}[S]}{K_m + [S]}",

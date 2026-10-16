@@ -1,6 +1,6 @@
 # MCAT Question Generator — Master Spec
 
-**Version:** 2.4 · **Created:** 2026-10-10 · **Updated:** 2026-10-15 · **Blocks produced so far:** 12 (M1–M7, M4B, CP1–CP4)
+**Version:** 2.5 · **Created:** 2026-10-10 · **Updated:** 2026-10-15 · **Blocks produced so far:** 12 (M1–M7, M4B, CP1–CP4)
 
 The single source of truth for writing MCAT-style practice content for Rounds. It mirrors
 `docs/board_question_generator_spec.md`, adapted to how the MCAT actually works: four sections,
@@ -261,9 +261,9 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 | M4B-Q08 | chem_phys | 4B / S2 | 4B.ideal-gas | D | ★★★ | draft | OpenStax Chemistry 2e, 9.2 Relating Pressure, Volume, Amount, and Temperature |
 | M4B-Q09 | chem_phys | 4B / S1 | 4B.kinetic-theory | C | ★★★ | draft | OpenStax Chemistry 2e, 9.5 The Kinetic-Molecular Theory |
 | M4B-Q10 | chem_phys | 4B / S3 | 4B.partial-pressure | D | ★★★ | draft | OpenStax Chemistry 2e, 9.3 Stoichiometry of Gaseous Substances, Mixtures, and Reactions |
-| CP-001 | chem_phys | 4B / S2 | 4B.continuity-bernoulli | C | ★★★ | reviewed | OpenStax College Physics 2e, 12.1 Flow Rate and Its Relation to Velocity |
+| CP-001 | chem_phys | 4B / S2 | 4B.continuity-bernoulli | D | ★★★ | reviewed | OpenStax College Physics 2e, 12.1 Flow Rate and Its Relation to Velocity |
 | CP-002 | chem_phys | 4B / S4 | 4B.continuity-bernoulli | A | ★★★★★ | reviewed | OpenStax College Physics 2e, 12.2 Bernoulli's Equation |
-| CP-003 | chem_phys | 4B / S2 | 4B.viscosity-poiseuille | A | ★★★★ | reviewed | OpenStax College Physics 2e, 12.4 Viscosity and Laminar Flow; Poiseuille's Law |
+| CP-003 | chem_phys | 4B / S2 | 4B.viscosity-poiseuille | D | ★★★★ | reviewed | OpenStax College Physics 2e, 12.4 Viscosity and Laminar Flow; Poiseuille's Law |
 | CP-004 | chem_phys | 4B / S1 | 4B.turbulence-surface-tension | B | ★★★ | reviewed | OpenStax College Physics 2e, 12.5 The Onset of Turbulence |
 | CP-005 | chem_phys | 4B / S3 | 4B.circulation | D | ★★★ | reviewed | OpenStax Anatomy and Physiology 2e, 20.2 Blood Flow, Blood Pressure, and Resistance |
 | CP-006 | chem_phys | 5A / S2 | 5A.buffers | B | ★★★★ | reviewed | Acid-Base Physiology (Brandis), 2.2 Buffering (anaesthesiamcq.com) |
@@ -315,12 +315,12 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 | CP-052 | chem_phys | 5E / S2 | 5E.enthalpy-hess | C | ★★★★ | reviewed | OpenStax Chemistry 2e, 5.3 Enthalpy |
 | CP-053 | chem_phys | 5E / S1 | 5E.thermodynamic-laws | A | ★★ | reviewed | OpenStax Chemistry 2e, 5.3 Enthalpy |
 | CP-054 | chem_phys | 5E / S3 | 5E.bioenergetics | D | ★★★ | reviewed | Merrill and Watt, Energy Value of Foods |
-| CP-055 | chem_phys | 5E / S4 | 5E.calorimetry-heat-transfer | B | ★★★★ | reviewed | OpenStax Chemistry 2e, 5.1 Energy Basics |
+| CP-055 | chem_phys | 5E / S4 | 5E.calorimetry-heat-transfer | D | ★★★★ | reviewed | OpenStax Chemistry 2e, 5.1 Energy Basics |
 | CP-056 | chem_phys | 4E / S1 | 4E.mass-spectrometry | C | ★★★ | reviewed | OpenStax Organic Chemistry, 12.4 Mass Spectrometry in Biological Chemistry |
 | CP-057 | chem_phys | 4E / S2 | 4E.mass-spectrometry | C | ★★★★ | reviewed | OpenStax Organic Chemistry, 12.4 Mass Spectrometry in Biological Chemistry |
 | CP-058 | chem_phys | 5D / S3 | 5D.peptides-proteins | A | ★★★ | reviewed | OpenStax Organic Chemistry, 26.6 Peptide Sequencing |
 | CP-059 | chem_phys | 5D / S4 | 5D.amino-acids | B | ★★★★★ | reviewed | University of Washington Proteomics Resource, residue mass table (Unimod elemental masses) |
-| CP-060 | chem_phys | 4E / S2 | 4E.nucleus-isotopes | C | ★★★★ | reviewed | IUPAC CIAAW, Carbon |
+| CP-060 | chem_phys | 4E / S2 | 4E.nucleus-isotopes | D | ★★★★ | reviewed | IUPAC CIAAW, Carbon |
 | CP-061 | chem_phys | 4D / S2 | 4D.lenses | A | ★★★ | reviewed | OpenStax College Physics 2e, 26.2 Vision Correction |
 | CP-062 | chem_phys | 4D / S2 | 4D.eye-optical-instruments | B | ★★★★ | reviewed | OpenStax College Physics 2e, 26.2 Vision Correction |
 | CP-063 | chem_phys | 4D / S1 | 4D.reflection-refraction | D | ★★ | reviewed | OpenStax College Physics 2e, 26.1 Physics of the Eye |
@@ -351,7 +351,7 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 | CP-088 | chem_phys | 5D / S2 | 5D.carboxylic-acids | A | ★★★ | reviewed | Chemistry LibreTexts, Organic Chemistry Lab Techniques (Nichols), 4 Extraction |
 | CP-089 | chem_phys | 4E / S2 | 4E.chemical-equations | C | ★★★★ | reviewed | OpenStax Chemistry 2e, 4.4 Reaction Yields |
 | CP-090 | chem_phys | 4B / S2 | 4B.partial-pressure | C | ★★★ | reviewed | OpenStax Chemistry 2e, 9.3 Stoichiometry of Gaseous Substances, Mixtures, and Reactions |
-| CP-091 | chem_phys | 4B / S2 | 4B.ideal-gas | B | ★★★★ | reviewed | OpenStax Chemistry 2e, 9.2 Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law |
+| CP-091 | chem_phys | 4B / S2 | 4B.ideal-gas | D | ★★★★ | reviewed | OpenStax Chemistry 2e, 9.2 Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law |
 | CP-092 | chem_phys | 4B / S1 | 4B.temperature-pressure | C | ★★ | reviewed | OpenStax Chemistry 2e, 9.2 Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law |
 | CP-093 | chem_phys | 5A / S3 | 5A.solubility | A | ★★★ | reviewed | OpenStax Chemistry 2e, 11.3 Solubility |
 | CP-094 | chem_phys | 4B / S4 | 4B.partial-pressure | B | ★★★★ | reviewed | StatPearls, Alveolar Gas Equation |
@@ -381,3 +381,4 @@ Figure `data` by type (checked by `tools/validate.py`): `table` {columns: [..], 
 | 2.2 | 2026-10-15 | Chem/Phys batch 3 passed the independent blind re-solve (25 of 25 agreed) and was pushed; all CP-051–CP-075 and CP-P09–CP-P12 `reviewed`. Fixes at review: CP-073 stem (no broad absorption anywhere between 2,500 and 3,600 cm⁻¹, so the carboxylic acid distractor is excluded for the stated reason), CP-P10 passage (five peptides detected in Figure 1), CP-051 explanation (per-bar energy for the dried sample). No `rev` increments: the items had not been published. |
 | 2.3 | 2026-10-15 | Chem/Phys batch 4 (`content/mcat/chem_phys/batch_04.json`, block `CP4`): passages CP-P13–CP-P16 (fetal and adult haemoglobin with Hill curves, a defibrillator bench test, an aspirin synthesis with structures drawn from SMILES, gas exchange at depth) and items CP-076–CP-100 per `docs/CHEM_PHYS_250.md`, all `draft` pending the independent blind re-solve; every number re-derived in `review/chem_phys_batch_04_check.py` (about 220 checks; molar masses, functional groups, stereoisomer and ring counts with RDKit), facts verified against the cited sources (OpenStax, LibreTexts, PubChem, Merck Manual, StatPearls, WIMA and Fluke data); packets `review/chem_phys_batch_04.md` and `review/chem_phys_batch_04_blind.md`. CP-093's planned ask changed (logged in the plan's changelog). First batch with structure figures (three RDKit drawings in CP-P15). |
 | 2.4 | 2026-10-15 | Chem/Phys batch 4 passed the independent blind re-solve (25 of 25 agreed) and was pushed; all CP-076–CP-100 and CP-P13–CP-P16 `reviewed`. Fixes at review: CP-085 option A and explanation (acetic acid would expel hydroxide, or water after protonation, in a slow equilibrium), CP-P13 passage (two of the effectors, not the only two), CP-P14 passage (device set to 200 J), CP-080 option A shortened; CP-098 re-rated ★★. No `rev` increments: the items had not been published. |
+| 2.5 | 2026-10-15 | Audit fixes for Chem/Phys batches 1–4 (details in the plan's changelog). Five items moved their key to D so that ascending numeric choices no longer avoid D, each with `rev` 2 and re-solved blind (5 of 5 agreed): CP-001, CP-055, CP-060, CP-091 (one or two distractors replaced) and CP-003 (rewritten: pressure difference needed to keep the flow after the radius halves; the old ask duplicated M4B-Q03). Notation harmonized (thousands separators in batch 1; e = 1.60 × 10⁻¹⁹ C and k = 9.00 × 10⁹ N·m²/C²; carbonic acid pKa clarified in CP-088) and the Chem/Phys guide's spelling normalized (haemoglobin, centre, colour); no `rev` increments for those. |

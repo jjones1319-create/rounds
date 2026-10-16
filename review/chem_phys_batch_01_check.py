@@ -27,7 +27,7 @@ v2 = v1 * (r1 / r2) ** 2             # continuity
 v2_peak = v1_peak * (r1 / r2) ** 2
 check("CP-001 v2 from continuity (m/s)", v2, 1.2)
 check("CP-001 distractor v1*(r1/r2)", v1 * (r1 / r2), 0.60)
-check("CP-001 distractor v1*(r1/r2)^4", v1 * (r1 / r2) ** 4, 4.8)
+check("CP-001 distractor speed unchanged (m/s)", v1, 0.30)
 check("CP-001 distractor v1/(r1/r2)^2", v1 / (r1 / r2) ** 2, 0.075)
 dP_bern = 0.5 * rho * (v2 ** 2 - v1 ** 2)
 check("CP-002 Bernoulli drop (Pa)", dP_bern, 720, 0.01)
@@ -47,7 +47,10 @@ want = [[0, 90.0], [10, 90.0], [19, 90.0], [20, 84.6], [25, 84.1], [30, 83.6], [
 print(f"{'ok  ' if fig1 == want else 'FAIL'} chart: Figure 1 points in batch_01.json match the derived values")
 if fig1 != want:
     fails.append("Figure 1 points")
-check("CP-003 Poiseuille flow ratio (r2/r1)^4", (r2 / r1) ** 4, 1 / 16, 1e-9)
+check("CP-003 Poiseuille pressure ratio at fixed flow (r1/r2)^4", (r1 / r2) ** 4, 16, 1e-9)
+check("CP-003 distractor 1/r (r1/r2)", r1 / r2, 2, 1e-9)
+check("CP-003 distractor area (r1/r2)^2", (r1 / r2) ** 2, 4, 1e-9)
+check("CP-003 distractor r^3", (r1 / r2) ** 3, 8, 1e-9)
 
 
 def Re(v, r):

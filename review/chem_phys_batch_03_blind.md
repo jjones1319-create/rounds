@@ -95,9 +95,9 @@ Answer: ____   Confidence (sure / likely / guess): ____   Objection, if any: ___
 Based on Figure 1 and the heater power stated in the passage, the heat capacity of the calorimeter assembly is closest to:
 
 - **A.** 0.037 kJ/K
-- **B.** 11 kJ/K
-- **C.** 13 kJ/K
-- **D.** 33 kJ/K
+- **B.** 0.11 kJ/K
+- **C.** 1.2 kJ/K
+- **D.** 11 kJ/K
 
 Answer: ____   Confidence (sure / likely / guess): ____   Objection, if any: ____
 
@@ -203,10 +203,10 @@ Answer: ____   Confidence (sure / likely / guess): ____   Objection, if any: ___
 
 In Figure 1 the peak one unit above the monoisotopic peak of T2 has 44% of its intensity. Treating this peak as due to carbon-13 alone, as the investigators did, the number of carbon atoms in T2 is closest to:
 
-- **A.** 4
-- **B.** 22
-- **C.** 40
-- **D.** 44
+- **A.** 0.4
+- **B.** 4
+- **C.** 22
+- **D.** 40
 
 Answer: ____   Confidence (sure / likely / guess): ____   Objection, if any: ____
 
@@ -369,7 +369,7 @@ Answer: ____   Confidence (sure / likely / guess): ____   Objection, if any: ___
 
 ### CP-070
 
-In a crystal of sodium chloride the centres of neighbouring Na⁺ and Cl⁻ ions are about 0.30 nm apart. Treating each ion as a point charge of magnitude e = 1.6 × 10⁻¹⁹ C and taking k = 9.0 × 10⁹ N·m²/C², the magnitude of the electrostatic force between the two ions is closest to:
+In a crystal of sodium chloride the centres of neighbouring Na⁺ and Cl⁻ ions are about 0.30 nm apart. Treating each ion as a point charge of magnitude e = 1.60 × 10⁻¹⁹ C and taking k = 9.00 × 10⁹ N·m²/C², the magnitude of the electrostatic force between the two ions is closest to:
 
 - **A.** 2.6 × 10⁻²⁷ N
 - **B.** 7.7 × 10⁻¹⁹ N

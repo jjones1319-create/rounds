@@ -607,7 +607,7 @@
     },
     {
       "id": "CP-055",
-      "rev": 1,
+      "rev": 2,
       "section": "chem_phys",
       "passage": "CP-P09",
       "discipline": "physics",
@@ -623,11 +623,11 @@
       "stem": "Based on Figure 1 and the heater power stated in the passage, the heat capacity of the calorimeter assembly is closest to:",
       "options": {
         "A": "0.037 kJ/K",
-        "B": "11 kJ/K",
-        "C": "13 kJ/K",
-        "D": "33 kJ/K"
+        "B": "0.11 kJ/K",
+        "C": "1.2 kJ/K",
+        "D": "11 kJ/K"
       },
-      "answer": "B",
+      "answer": "D",
       "why_correct": [
         "Energy delivered = power × time. The heater ran from t = 60 s to t = 360 s, 300 s, at 110 W: E = 110 J/s × 300 s = 33,000 J = 33.0 kJ.",
         "From Figure 1 the temperature rose from 25.00 °C to 28.00 °C, ΔT = 3.00 K (a kelvin and a degree Celsius are the same size for a difference).",
@@ -635,13 +635,13 @@
       ],
       "why_wrong": {
         "A": "0.037 kJ/K divides the power (110 W) by ΔT without multiplying by the 300 s the heater ran; it has units of W/K, a rate, not a heat capacity.",
-        "C": "13 kJ/K uses 360 s, the clock time when the heater was switched off, instead of the 300 s it was on (it started at 60 s): 110 × 360 / 3.00 = 13.2 kJ/K.",
-        "D": "33 kJ is the energy delivered; a heat capacity divides this by the temperature rise, which was 3.00 K, not 1 K."
+        "B": "0.11 kJ/K divides the 33.0 kJ by the final temperature expressed in kelvin (about 301 K) instead of by the temperature rise; a heat capacity relates energy to a change in temperature, and a difference of 3.00 °C is 3.00 K.",
+        "C": "1.2 kJ/K divides the 33.0 kJ by the final reading, 28.00 °C, instead of by the rise from 25.00 to 28.00 °C; the starting temperature in Figure 1 must be subtracted."
       },
       "error_types": {
         "A": "wrong formula: power divided by ΔT, time omitted",
-        "C": "misread graph: heater-off time used as the heating duration",
-        "D": "sign or unit error: energy reported in place of energy per kelvin"
+        "B": "sign or unit error: an absolute temperature used where a temperature difference is needed",
+        "C": "misread graph: the final temperature used instead of the rise"
       },
       "takeaway": "Electrical calibration: C = Pt/ΔT, with the heating time read from when the heater was on, not from the clock, and ΔT read between the two plateaus.",
       "sources": [
@@ -722,7 +722,7 @@
       "why_correct": [
         "Passage: every singly charged ion acquires the same kinetic energy eV, so ½mv² = eV gives v = √(2eV/m), and t = L/v = L√(m/2eV). With L and V fixed, t ∝ √m: heavier ions are slower and arrive later.",
         "t(T5) = 30.5 µs × √(1,626/900). Estimate 1,626/900 ≈ 1,600/900 = 16/9, whose square root is 4/3, so t ≈ 30.5 × 4/3 ≈ 40.7 µs; the exact ratio (√1.807 = 1.344) gives 41.0 µs.",
-        "Check from first principles: at 20 kV an ion of 900 Da has v = √(2 × 1.6 × 10⁻¹⁹ × 2 × 10⁴ / (900 × 1.66 × 10⁻²⁷)) ≈ 6.5 × 10⁴ m/s, so a 2.0 m tube is crossed in 2.0/6.5 × 10⁴ ≈ 3.1 × 10⁻⁵ s = 31 µs, consistent with the passage."
+        "Check from first principles: at 20 kV an ion of 900 Da has v = √(2 × 1.60 × 10⁻¹⁹ × 2 × 10⁴ / (900 × 1.66 × 10⁻²⁷)) ≈ 6.5 × 10⁴ m/s, so a 2.0 m tube is crossed in 2.0/6.5 × 10⁴ ≈ 3.1 × 10⁻⁵ s = 31 µs, consistent with the passage."
       ],
       "why_wrong": {
         "A": "17 µs scales the time as 1/m (30.5 × 900/1,626); heavier ions take longer, not less time, and the dependence is on the square root.",
@@ -836,7 +836,7 @@
     },
     {
       "id": "CP-060",
-      "rev": 1,
+      "rev": 2,
       "section": "chem_phys",
       "passage": "CP-P10",
       "discipline": "general chemistry",
@@ -851,26 +851,26 @@
       "difficulty": 4,
       "stem": "In Figure 1 the peak one unit above the monoisotopic peak of T2 has 44% of its intensity. Treating this peak as due to carbon-13 alone, as the investigators did, the number of carbon atoms in T2 is closest to:",
       "options": {
-        "A": "4",
-        "B": "22",
-        "C": "40",
-        "D": "44"
+        "A": "0.4",
+        "B": "4",
+        "C": "22",
+        "D": "40"
       },
-      "answer": "C",
+      "answer": "D",
       "why_correct": [
         "Each carbon atom has a 1.1% chance of being ¹³C (passage). In a molecule with n carbons the chance that exactly one of them is ¹³C is about n × 0.011 when that product is well below 1, so the M+1 peak has about n × 1.1% of the monoisotopic peak's intensity.",
         "0.44 = n × 0.011 → n = 0.44/0.011 = 40 carbon atoms.",
         "Mental math: 1.1% per carbon means 11% per 10 carbons, so 44% corresponds to 40 carbons. The explanation of the method also shows its limit: ¹⁵N (0.37%), ²H and ¹⁷O add to M+1 too, so the true carbon count is a little below this estimate."
       ],
       "why_wrong": {
-        "A": "4 treats the abundance as 11% rather than 1.1% (0.44/0.11); it is a factor-of-ten slip in converting the percentage.",
-        "B": "22 halves the result as though T2 were doubly charged; the isotope ratio does not depend on the ion's charge, and the passage's peaks are singly charged.",
-        "D": "44 treats the carbon-13 abundance as exactly 1%; with the passage's 1.1% the count is 40."
+        "A": "0.4 converts the two percentages inconsistently, 44% as 0.44 but 1.1% as 1.1 (0.44/1.1); both must be converted the same way, and a peptide cannot have a fraction of a carbon atom.",
+        "B": "4 treats the abundance as 11% rather than 1.1% (0.44/0.11); it is a factor-of-ten slip in converting the percentage.",
+        "C": "22 halves the result as though T2 were doubly charged; the isotope ratio does not depend on the ion's charge, and the passage's peaks are singly charged."
       },
       "error_types": {
-        "A": "sign or unit error: percentage misconverted by a factor of ten",
-        "B": "wrong formula: the charge state applied to an isotope ratio",
-        "D": "wrong formula: 1.1% abundance rounded to 1%"
+        "A": "sign or unit error: percentages converted inconsistently",
+        "B": "sign or unit error: percentage misconverted by a factor of ten",
+        "C": "wrong formula: the charge state applied to an isotope ratio"
       },
       "takeaway": "The M+1 peak of an organic molecule is about n × 1.1% of the M peak, where n is the number of carbons, so n ≈ (M+1 intensity, %) / 1.1.",
       "sources": [
@@ -1307,7 +1307,7 @@
       "skill": "2",
       "cars_skill": null,
       "difficulty": 3,
-      "stem": "In a crystal of sodium chloride the centres of neighbouring Na⁺ and Cl⁻ ions are about 0.30 nm apart. Treating each ion as a point charge of magnitude e = 1.6 × 10⁻¹⁹ C and taking k = 9.0 × 10⁹ N·m²/C², the magnitude of the electrostatic force between the two ions is closest to:",
+      "stem": "In a crystal of sodium chloride the centres of neighbouring Na⁺ and Cl⁻ ions are about 0.30 nm apart. Treating each ion as a point charge of magnitude e = 1.60 × 10⁻¹⁹ C and taking k = 9.00 × 10⁹ N·m²/C², the magnitude of the electrostatic force between the two ions is closest to:",
       "options": {
         "A": "2.6 × 10⁻²⁷ N",
         "B": "7.7 × 10⁻¹⁹ N",
@@ -1317,7 +1317,7 @@
       "answer": "C",
       "why_correct": [
         "Coulomb's law: F = k|q₁q₂|/r² with q₁ = q₂ = e and r = 0.30 nm = 3.0 × 10⁻¹⁰ m.",
-        "Numerator: 9.0 × 10⁹ × (1.6 × 10⁻¹⁹)² = 9.0 × 10⁹ × 2.56 × 10⁻³⁸ = 2.3 × 10⁻²⁸ N·m². Denominator: (3.0 × 10⁻¹⁰)² = 9.0 × 10⁻²⁰ m². F = 2.3 × 10⁻²⁸ / 9.0 × 10⁻²⁰ = 2.6 × 10⁻⁹ N.",
+        "Numerator: 9.00 × 10⁹ × (1.60 × 10⁻¹⁹)² = 9.00 × 10⁹ × 2.56 × 10⁻³⁸ = 2.3 × 10⁻²⁸ N·m². Denominator: (3.0 × 10⁻¹⁰)² = 9.0 × 10⁻²⁰ m². F = 2.3 × 10⁻²⁸ / 9.0 × 10⁻²⁰ = 2.6 × 10⁻⁹ N.",
         "Shortcut: the 9.0 in k cancels the 9.0 in r², leaving F = 2.56 × 10⁻³⁸ × 10⁹ / 10⁻²⁰ = 2.56 × 10⁻⁹ N. The force is attractive (opposite charges) and acts along the line joining the ions."
       ],
       "why_wrong": {

@@ -123,7 +123,7 @@ Answer: ____   Confidence (sure / likely / guess): ____   Objection, if any: ___
 
 ### CP-082
 
-With the capacitor charged to 2,000 V, what are the magnitude of the electric field in the 20 µm film between the plates and the work done by that field on an electron that crosses from one plate to the other? (e = 1.6 × 10⁻¹⁹ C)
+With the capacitor charged to 2,000 V, what are the magnitude of the electric field in the 20 µm film between the plates and the work done by that field on an electron that crosses from one plate to the other? (e = 1.60 × 10⁻¹⁹ C)
 
 - **A.** 1.0 × 10⁵ V/m; 3.2 × 10⁻¹⁶ J
 - **B.** 1.0 × 10⁵ V/m; 2.0 × 10³ J
@@ -321,10 +321,10 @@ Answer: ____   Confidence (sure / likely / guess): ____   Objection, if any: ___
 
 At 30 m a diver fills the lungs with 6.0 L of air from the regulator, then holds that breath while rising to 10 m. Treating the gas as ideal at constant temperature and the chest as free to expand, the volume the lung gas would occupy at 10 m is:
 
-- **A.** 3.0 L
-- **B.** 12 L
-- **C.** 18 L
-- **D.** 24 L
+- **A.** 1.5 L
+- **B.** 3.0 L
+- **C.** 6.0 L
+- **D.** 12 L
 
 Answer: ____   Confidence (sure / likely / guess): ____   Objection, if any: ____
 

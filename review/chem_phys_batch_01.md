@@ -2,9 +2,9 @@
 
 Plan: docs/CHEM_PHYS_250.md batch 1 (CP-001 to CP-025, passages CP-P01 to CP-P04); checks in review/chem_phys_batch_01_check.py
 
-25 questions, 4 passages. Answers: 001C 002A 003A 004B 005D 006B 007A 008A 009B 010C 011D 012C 013A 014B 015A 016B 017D 018C 019A 020B 021D 022C 023C 024B 025D
+25 questions, 4 passages. Answers: 001D 002A 003D 004B 005D 006B 007A 008A 009B 010C 011D 012C 013A 014B 015A 016B 017D 018C 019A 020B 021D 022C 023C 024B 025D
 
-Answer letters: A 7, B 7, C 6, D 5
+Answer letters: A 6, B 7, C 5, D 7
 
 ## How this batch is reviewed
 
@@ -14,7 +14,7 @@ An independent blind re-solve (MCAT_SPEC §7): a fresh session answers every ite
 
 In a hypothetical catheter study, investigators measured pressure and blood speed along a 50 mm length of a common carotid artery that contained a short, concentric atherosclerotic plaque. Along the healthy proximal and distal segments the lumen radius was 3.0 mm; within the plaque, which extended from x = 20 mm to x = 30 mm, the radius was 1.5 mm (a 50% reduction in diameter). A Doppler wire recorded the mean and peak systolic blood speeds in the proximal and distal segments (Table 1) but could not be positioned inside the narrowed segment. A pressure wire was then withdrawn slowly from the distal to the proximal end, recording the mean pressure at each position (Figure 1). A stethoscope placed over the plaque detected a bruit (a murmur) that was present only during systole.
 
-For the analysis the investigators treated blood as an incompressible fluid of density 1.06 × 10³ kg/m³ and viscosity 3.0 × 10⁻³ Pa·s, took the vessel as horizontal, and used 1 mmHg = 133 Pa and g = 9.8 m/s². They applied the continuity equation and Bernoulli's equation to the entry of the narrowed segment, Poiseuille's law to the flow along it, and the Reynolds number, N_R = 2ρvr/η, to the onset of turbulence (laminar below about 2000, turbulent above about 3000).
+For the analysis the investigators treated blood as an incompressible fluid of density 1.06 × 10³ kg/m³ and viscosity 3.0 × 10⁻³ Pa·s, took the vessel as horizontal, and used 1 mmHg = 133 Pa and g = 9.8 m/s². They applied the continuity equation and Bernoulli's equation to the entry of the narrowed segment, Poiseuille's law to the flow along it, and the Reynolds number, N_R = 2ρvr/η, to the onset of turbulence (laminar below about 2000, turbulent above about 3,000).
 
 Because the plaque was concentric and the flow steady on average, the pressure wire data were interpreted in three parts: an abrupt fall at the entry of the narrowed segment, a gradual decline along it, and a partial recovery just beyond its exit, where the fast jet slows and loses part of its energy to eddies. After the measurements the segment was dilated with a balloon so that its radius returned to 3.0 mm, and the pressure and Doppler recordings were repeated.
 
@@ -44,11 +44,11 @@ Chart (line): x = Position x (mm); y = Mean pressure (mmHg).
 Based on Table 1, the mean blood speed inside the narrowed segment before dilation was closest to:
 
 - **A.** 0.075 m/s
-- **B.** 0.60 m/s
-- **C.** 1.2 m/s
-- **D.** 4.8 m/s
+- **B.** 0.30 m/s
+- **C.** 0.60 m/s
+- **D.** 1.2 m/s
 
-**Answer: C**
+**Answer: D**
 
 *Worked solution*
 
@@ -59,8 +59,8 @@ Based on Table 1, the mean blood speed inside the narrowed segment before dilati
 *Why the other choices are wrong*
 
 - **A.** 0.075 m/s is 0.30 m/s divided by 4: the speed has been made proportional to the area instead of inversely proportional to it; a narrower tube carries the same flow faster, not slower. *(reversed relationship: speed taken as proportional to area)*
-- **B.** 0.60 m/s doubles the speed because the radius halved, but the area, which is what continuity uses, falls with the square of the radius. *(wrong formula: radius ratio used instead of its square)*
-- **D.** 4.8 m/s multiplies by 2⁴ = 16, the fourth-power dependence that belongs to Poiseuille's law for flow at a fixed pressure difference, not to continuity. *(wrong formula: Poiseuille's r⁴ applied to continuity)*
+- **B.** 0.30 m/s assumes the speed is unchanged through the narrowing, as if less blood flowed through it; continuity requires the same volume flow through every segment, so the speed must rise where the lumen is smaller. *(wrong formula: continuity ignored, speed assumed unchanged)*
+- **C.** 0.60 m/s doubles the speed because the radius halved, but the area, which is what continuity uses, falls with the square of the radius. *(wrong formula: radius ratio used instead of its square)*
 
 *Tags:* chem_phys · physics · FC4 4B · topics: 4B.continuity-bernoulli
 
@@ -70,7 +70,7 @@ Based on Table 1, the mean blood speed inside the narrowed segment before dilati
 
 - OpenStax College Physics 2e, 12.1 Flow Rate and Its Relation to Velocity (2022): A₁v̄₁ = A₂v̄₂; speed is inversely proportional to the square of the tube radius.
 
-*Status:* reviewed · rev 1
+*Status:* reviewed · rev 2
 
 ---
 
@@ -88,7 +88,7 @@ In Figure 1 the mean pressure at the entry of the narrowed segment (x = 20 mm) i
 *Worked solution*
 
 - Read the chart: the pressure falls from 90.0 mmHg (x ≤ 19 mm) to 84.6 mmHg at x = 20 mm, a drop of 5.4 mmHg, which is 5.4 × 133 ≈ 7.2 × 10² Pa.
-- Bernoulli's equation along a horizontal streamline: P₁ + ½ρv₁² = P₂ + ½ρv₂², so P₁ − P₂ = ½ρ(v₂² − v₁²). With v₁ = 0.30 m/s (Table 1) and v₂ = 1.2 m/s (continuity, four times faster), v₂² − v₁² = 1.44 − 0.09 = 1.35 m²/s², and ½ × 1060 × 1.35 ≈ 530 × 1.35 ≈ 7.2 × 10² Pa.
+- Bernoulli's equation along a horizontal streamline: P₁ + ½ρv₁² = P₂ + ½ρv₂², so P₁ − P₂ = ½ρ(v₂² − v₁²). With v₁ = 0.30 m/s (Table 1) and v₂ = 1.2 m/s (continuity, four times faster), v₂² − v₁² = 1.44 − 0.09 = 1.35 m²/s², and ½ × 1,060 × 1.35 ≈ 530 × 1.35 ≈ 7.2 × 10² Pa.
 - Shortcut: v₁² is only one sixteenth of v₂², so the drop is about 15/16 of ½ρv₂² ≈ 0.94 × 760 ≈ 7.2 × 10² Pa. The drop occurs abruptly where the speed changes, which is the signature of a kinetic (Bernoulli) effect rather than a loss that accumulates with length.
 
 *Why the other choices are wrong*
@@ -112,36 +112,36 @@ In Figure 1 the mean pressure at the entry of the narrowed segment (x = 20 mm) i
 
 ### CP-003  ·  ★★★★  ·  Skill 2 Reasoning
 
-Consider the 10 mm segment on its own, with laminar flow and the same pressure difference maintained between its two ends. Compared with the flow through the segment before the plaque formed (radius 3.0 mm), the flow with the plaque in place (radius 1.5 mm) is:
+Consider the 10 mm segment on its own, with laminar flow. For the flow through the segment with the plaque in place (radius 1.5 mm) to equal the flow before the plaque formed (radius 3.0 mm), the pressure difference between its two ends would have to be:
 
-- **A.** 1/16 as large
-- **B.** 1/8 as large
-- **C.** 1/4 as large
-- **D.** 1/2 as large
+- **A.** 2 times as large
+- **B.** 4 times as large
+- **C.** 8 times as large
+- **D.** 16 times as large
 
-**Answer: A**
+**Answer: D**
 
 *Worked solution*
 
-- Poiseuille's law for laminar flow through a tube: Q = πr⁴ΔP/(8ηL). With ΔP, η and L fixed, Q is proportional to r⁴.
-- Halving the radius multiplies the flow by (1/2)⁴ = 1/16.
-- This is why small changes in vessel radius, by plaque or by smooth-muscle tone, have such large effects on flow: a 50% narrowing cuts flow at a given pressure difference by about 94%.
+- Poiseuille's law for laminar flow through a tube: Q = πr⁴ΔP/(8ηL). Rearranged for the pressure difference at a fixed flow, ΔP = 8ηLQ/(πr⁴), so with Q, η and L fixed, ΔP is proportional to 1/r⁴.
+- Halving the radius multiplies 1/r⁴ by 2⁴ = 16, so the same flow needs 16 times the pressure difference. Equivalently, at the original pressure difference the flow would fall to 1/16, and restoring it takes 16 times the driving pressure.
+- This is why a stenosis costs the circulation so much: the heart must raise the pressure drop across the narrowing by the fourth power of the radius ratio to keep perfusion, or the distal flow falls.
 
 *Why the other choices are wrong*
 
-- **B.** 1/8 corresponds to a cubic dependence (r³), which is not the exponent in Poiseuille's law. *(wrong formula: r³ instead of r⁴)*
-- **C.** 1/4 is the change in cross-sectional area (r²); at a fixed pressure difference the flow falls much faster than the area, because the fluid near the walls moves slowly and a narrower tube is wall-dominated. *(wrong formula: area (r²) instead of r⁴)*
-- **D.** 1/2 treats flow as proportional to the radius itself; it is proportional to the fourth power. *(wrong formula: flow taken as proportional to r)*
+- **A.** 2 times treats the pressure difference as proportional to 1/r, as though resistance scaled with the radius itself; it scales with the fourth power. *(wrong formula: resistance taken as proportional to 1/r)*
+- **B.** 4 times uses the change in cross-sectional area (r²); at a fixed flow the pressure drop rises much faster than the area falls, because the fluid near the walls moves slowly and a narrower tube is wall-dominated. *(wrong formula: area (r²) instead of r⁴)*
+- **C.** 8 times corresponds to a cubic dependence (r³), which is not the exponent in Poiseuille's law. *(wrong formula: r³ instead of r⁴)*
 
 *Tags:* chem_phys · physics · FC4 4B · topics: 4B.viscosity-poiseuille
 
-*Takeaway:* At a fixed pressure difference, laminar flow through a tube scales with r⁴, so halving the radius cuts the flow sixteenfold.
+*Takeaway:* At a fixed flow, Poiseuille's law makes the pressure drop scale as 1/r⁴: halving a vessel's radius needs 16 times the pressure difference to keep the same flow.
 
 *Sources*
 
 - OpenStax College Physics 2e, 12.4 Viscosity and Laminar Flow; Poiseuille's Law (2022): Q = (P₂ − P₁)πr⁴/(8ηl), with r raised to the fourth power.
 
-*Status:* reviewed · rev 1
+*Status:* reviewed · rev 2
 
 ---
 
@@ -158,8 +158,8 @@ The bruit heard over the plaque was present only during systole. Which of the fo
 
 *Worked solution*
 
-- Governing principle: N_R = 2ρvr/η. In a tube the flow is laminar below about 2000 and turbulent above about 3000; between those values it is unstable.
-- In the narrowed segment, at mean flow v = 1.2 m/s and r = 1.5 mm: N_R = 2 × 1060 × 1.2 × 1.5 × 10⁻³ / 3.0 × 10⁻³ ≈ 1.3 × 10³ (laminar). At peak systole the speed is four times the proximal peak, 4 × 0.75 = 3.0 m/s, so N_R ≈ 2 × 1060 × 3.0 × 1.5 × 10⁻³ / 3.0 × 10⁻³ ≈ 3.2 × 10³, above the turbulent threshold. In the proximal segment even the peak value (v = 0.75 m/s, r = 3.0 mm) is only about 1.6 × 10³.
+- Governing principle: N_R = 2ρvr/η. In a tube the flow is laminar below about 2,000 and turbulent above about 3,000; between those values it is unstable.
+- In the narrowed segment, at mean flow v = 1.2 m/s and r = 1.5 mm: N_R = 2 × 1,060 × 1.2 × 1.5 × 10⁻³ / 3.0 × 10⁻³ ≈ 1.3 × 10³ (laminar). At peak systole the speed is four times the proximal peak, 4 × 0.75 = 3.0 m/s, so N_R ≈ 2 × 1,060 × 3.0 × 1.5 × 10⁻³ / 3.0 × 10⁻³ ≈ 3.2 × 10³, above the turbulent threshold. In the proximal segment even the peak value (v = 0.75 m/s, r = 3.0 mm) is only about 1.6 × 10³.
 - Turbulent flow is noisy: the same physics produces Korotkoff sounds under a blood-pressure cuff and the murmurs of narrowed valves. Since the Reynolds number scales with speed, the threshold is crossed only at the systolic peak, so the bruit comes and goes with each heartbeat.
 
 *Why the other choices are wrong*
@@ -444,9 +444,9 @@ To test whether the inhibitor binds reversibly, the enzyme was incubated with 20
 | 20 | 60 | 30 |
 | 40 | 80 | 48 |
 | 200 | 109 | 92 |
-| 2000 | 119 | 117 |
+| 2,000 | 119 | 117 |
 
-*Alt text:* Table with six rows of peptide concentration and two rate columns in nanomoles per minute. At 5 micromolar: 24 without inhibitor, 9 with. At 10: 40 and 17. At 20: 60 and 30. At 40: 80 and 48. At 200: 109 and 92. At 2000: 119 and 117.
+*Alt text:* Table with six rows of peptide concentration and two rate columns in nanomoles per minute. At 5 micromolar: 24 without inhibitor, 9 with. At 10: 40 and 17. At 20: 60 and 30. At 40: 80 and 48. At 200: 109 and 92. At 2,000: 119 and 117.
 
 *Source:* Hypothetical experiment written for this app. Michaelis–Menten kinetics, Km and Lineweaver–Burk intercepts from Biology LibreTexts, Biochemistry Free For All (Ahern, Rajagopal, Tan), 4.1 Basic Principles of Catalysis; competitive, non-competitive, uncompetitive and irreversible inhibition from the same book, 4.2 Control of Enzymatic Activity; cofactors such as Mg²⁺ from OpenStax Biology 2e, 6.5 Enzymes (2018); the Mg²⁺–ATP complex as the true substrate of ATP-using enzymes (dissociation constant about 0.1 mmol/L) from Berg, Tymoczko and Stryer, Biochemistry, 5th ed. (2002), section 9.4. Table values were generated from Vmax = 120 nmol/min, Km = 20 µmol/L and an apparent Km of 60 µmol/L (review/chem_phys_batch_01_check.py).
 
@@ -458,16 +458,16 @@ From the uninhibited data in Table 1, the kinase's Km and Vmax are closest to:
 
 - **A.** Km = 20 µmol/L, Vmax = 60 nmol/min
 - **B.** Km = 60 µmol/L, Vmax = 120 nmol/min
-- **C.** Km = 2000 µmol/L, Vmax = 119 nmol/min
+- **C.** Km = 2,000 µmol/L, Vmax = 119 nmol/min
 - **D.** Km = 20 µmol/L, Vmax = 120 nmol/min
 
 **Answer: D**
 
 *Worked solution*
 
-- Vmax is the rate the enzyme approaches when the substrate saturates it. In Table 1 the rate rises from 109 nmol/min at 200 µmol/L to 119 at 2000 µmol/L, a tenfold increase in [S] for almost no gain, so the plateau is at about 120 nmol/min.
+- Vmax is the rate the enzyme approaches when the substrate saturates it. In Table 1 the rate rises from 109 nmol/min at 200 µmol/L to 119 at 2,000 µmol/L, a tenfold increase in [S] for almost no gain, so the plateau is at about 120 nmol/min.
 - Km is the substrate concentration at which v₀ = Vmax/2 = 60 nmol/min. The table gives exactly 60 nmol/min at [S] = 20 µmol/L, so Km = 20 µmol/L.
-- Check with the Michaelis–Menten equation at 40 µmol/L: 120 × 40/(20 + 40) = 80 nmol/min, as tabulated; and at 2000 µmol/L: 120 × 2000/2020 ≈ 119.
+- Check with the Michaelis–Menten equation at 40 µmol/L: 120 × 40/(20 + 40) = 80 nmol/min, as tabulated; and at 2,000 µmol/L: 120 × 2,000/2,020 ≈ 119.
 
 *Why the other choices are wrong*
 
@@ -538,7 +538,7 @@ The inhibitor's effect on Km and Vmax fits a competitive model, in which the app
 
 - Passage: with 20 µmol/L inhibitor the apparent Km was 60 µmol/L and Vmax was unchanged. From the uninhibited column of Table 1, Km = 20 µmol/L (the rate there, 60 nmol/min, is half of the 120 nmol/min plateau).
 - Competitive inhibition: Km,app = Km(1 + [I]/Ki). So 60 = 20 × (1 + 20/Ki), which gives 1 + 20/Ki = 3, 20/Ki = 2 and Ki = 10 µmol/L.
-- Shortcut: the apparent Km tripled, so [I]/Ki = 2 and Ki is half the inhibitor concentration. A Ki below the concentration tested means most of the free enzyme carries inhibitor at 20 µmol/L, yet Vmax is still reached at saturating substrate because the peptide displaces it (Table 1: 117 against 119 nmol/min at 2000 µmol/L).
+- Shortcut: the apparent Km tripled, so [I]/Ki = 2 and Ki is half the inhibitor concentration. A Ki below the concentration tested means most of the free enzyme carries inhibitor at 20 µmol/L, yet Vmax is still reached at saturating substrate because the peptide displaces it (Table 1: 117 against 119 nmol/min at 2,000 µmol/L).
 
 *Why the other choices are wrong*
 
@@ -635,9 +635,9 @@ After dialysis, the inhibitor-treated enzyme showed 85% of the activity of untre
 
 Positron emission tomography (PET) most often uses fluorine-18 attached to a glucose analogue, ¹⁸F-fluorodeoxyglucose (FDG), which accumulates in tissues that take up glucose rapidly. Fluorine-18 (Z = 9, A = 18) decays with a half-life of 110 minutes, mainly by positron emission; the positron travels about a millimetre in tissue, slows, and annihilates with an electron. The rest energy of an electron (and of a positron) is 511 keV. The scanner's ring of detectors registers only pairs of photons that arrive at the same moment at two detectors, and reconstructs the line along which the annihilation occurred.
 
-In a hypothetical morning at a PET centre, a vial of FDG was delivered from the cyclotron at 08:00 and its activity measured in a dose calibrator at four times while it waited for patients (Table 1). A patient's prescribed dose was to be drawn from the vial so that the activity injected would be close to 250 MBq, and the volume drawn was adjusted for the time of injection. A second vial from the same batch, calibrated at 1200 MBq at 08:00, was reserved for an afternoon patient injected at 15:20.
+In a hypothetical morning at a PET centre, a vial of FDG was delivered from the cyclotron at 08:00 and its activity measured in a dose calibrator at four times while it waited for patients (Table 1). A patient's prescribed dose was to be drawn from the vial so that the activity injected would be close to 250 MBq, and the volume drawn was adjusted for the time of injection. A second vial from the same batch, calibrated at 1,200 MBq at 08:00, was reserved for an afternoon patient injected at 15:20.
 
-Constants used by the centre: Planck's constant h = 6.63 × 10⁻³⁴ J·s, speed of light c = 3.00 × 10⁸ m/s, 1 eV = 1.60 × 10⁻¹⁹ J (so that hc = 1240 eV·nm), ln 2 = 0.693, and 1 MBq = 10⁶ decays per second.
+Constants used by the centre: Planck's constant h = 6.63 × 10⁻³⁴ J·s, speed of light c = 3.00 × 10⁸ m/s, 1 eV = 1.60 × 10⁻¹⁹ J (so that hc = 1,240 eV·nm), ln 2 = 0.693, and 1 MBq = 10⁶ decays per second.
 
 **Table 1. Activity of the first FDG vial measured in the dose calibrator.**
 
@@ -667,19 +667,19 @@ The afternoon patient's 250 MBq dose was to be drawn from the second vial. The t
 
 *Worked solution*
 
-- Table 1 confirms the half-life stated in the passage: the first vial halves every 110 min (800 → 400 → 200 → 100 MBq). The second vial, 1200 MBq at 08:00, follows the same steps: 600 MBq at 09:50, 300 MBq at 11:40, 150 MBq at 13:30 and 75 MBq at 15:20.
+- Table 1 confirms the half-life stated in the passage: the first vial halves every 110 min (800 → 400 → 200 → 100 MBq). The second vial, 1,200 MBq at 08:00, follows the same steps: 600 MBq at 09:50, 300 MBq at 11:40, 150 MBq at 13:30 and 75 MBq at 15:20.
 - 250 MBq lies between 300 MBq (11:40) and 150 MBq (13:30), so the activity crossed 250 MBq between those two times, and 12:10 is the only choice in that interval.
-- Estimate of where: 250/300 = 5/6 ≈ 0.83 and (½)^(1/4) ≈ 0.84, so the crossing came about a quarter of a half-life (about 28 min) after 11:40, near 12:08. By 15:20 only 1200/16 = 75 MBq remained, so the planned injection could not be drawn from this vial.
+- Estimate of where: 250/300 = 5/6 ≈ 0.83 and (½)^(1/4) ≈ 0.84, so the crossing came about a quarter of a half-life (about 28 min) after 11:40, near 12:08. By 15:20 only 1,200/16 = 75 MBq remained, so the planned injection could not be drawn from this vial.
 
 *Why the other choices are wrong*
 
-- **A.** 11:05 is when the first vial (400 MBq at 09:50, 200 MBq at 11:40) passed 250 MBq; the afternoon dose was to come from the second vial, calibrated at 1200 MBq. *(misread graph: the first vial's activities used for the second vial)*
+- **A.** 11:05 is when the first vial (400 MBq at 09:50, 200 MBq at 11:40) passed 250 MBq; the afternoon dose was to come from the second vial, calibrated at 1,200 MBq. *(misread graph: the first vial's activities used for the second vial)*
 - **C.** 13:30 is the first time in Table 1 at which the second vial's activity (150 MBq) is already below 250 MBq; the activity falls continuously and was still 300 MBq at 11:40, so the crossing came before 13:30. *(misread graph: the first tabulated time below the threshold taken as the crossing)*
 - **D.** 15:20 is the planned injection time; the passage reserves the vial for that patient, but by then four half-lives had passed and only 75 MBq remained. *(true but irrelevant: the planned time, not the time the activity crossed 250 MBq)*
 
 *Tags:* chem_phys · general chemistry · FC4 4E · topics: 4E.radioactive-decay
 
-*Takeaway:* Step the activity down by half at each half-life and bracket the target: 1200 MBq is 300 after two half-lives and 150 after three, so it passes 250 MBq a little after the second.
+*Takeaway:* Step the activity down by half at each half-life and bracket the target: 1,200 MBq is 300 after two half-lives and 150 after three, so it passes 250 MBq a little after the second.
 
 *Sources*
 
@@ -776,18 +776,18 @@ The wavelength of each annihilation photon, and the region of the electromagneti
 *Worked solution*
 
 - Each photon carries 511 keV, the rest energy of one electron (passage). E = hf = hc/λ, so λ = hc/E.
-- With hc = 1240 eV·nm: λ = 1240 eV·nm / 511 000 eV = 2.43 × 10⁻³ nm = 2.4 × 10⁻¹² m (2.4 pm). The same result follows from λ = (6.63 × 10⁻³⁴ × 3.00 × 10⁸)/(511 × 10³ × 1.60 × 10⁻¹⁹) = 1.99 × 10⁻²⁵/8.18 × 10⁻¹⁴ ≈ 2.4 × 10⁻¹² m.
+- With hc = 1,240 eV·nm: λ = 1,240 eV·nm / 511 000 eV = 2.43 × 10⁻³ nm = 2.4 × 10⁻¹² m (2.4 pm). The same result follows from λ = (6.63 × 10⁻³⁴ × 3.00 × 10⁸)/(511 × 10³ × 1.60 × 10⁻¹⁹) = 1.99 × 10⁻²⁵/8.18 × 10⁻¹⁴ ≈ 2.4 × 10⁻¹² m.
 - Picometre wavelengths and MeV-scale energies are the gamma-ray end of the spectrum; the hardest X-rays overlap this region, and the two are distinguished by origin (nuclear or annihilation photons are called gamma rays).
 
 *Why the other choices are wrong*
 
 - **B.** 4.9 × 10⁻¹² m corresponds to 255 keV, as if the 511 keV were shared between the two photons; each photon carries the full rest energy of one particle. *(wrong formula: the energy halved between the photons)*
-- **C.** 2.4 × 10⁻⁹ m comes from 1240/511 with the energy read as 511 eV instead of 511 keV; the factor of 1000 moves the answer from gamma rays to soft X-rays. *(sign or unit error: keV read as eV)*
+- **C.** 2.4 × 10⁻⁹ m comes from 1,240/511 with the energy read as 511 eV instead of 511 keV; the factor of 1,000 moves the answer from gamma rays to soft X-rays. *(sign or unit error: keV read as eV)*
 - **D.** 5.1 × 10⁻⁷ m (510 nm, green light) treats the number 511 as a wavelength in nanometres; visible photons carry only 2–3 eV, a hundred-thousandth of the energy here. *(sign or unit error: an energy treated as a wavelength)*
 
 *Tags:* chem_phys · physics · FC4 4D · topics: 4D.em-radiation
 
-*Takeaway:* λ = hc/E with hc = 1240 eV·nm; a 511 keV photon has λ ≈ 2.4 pm, in the gamma-ray region.
+*Takeaway:* λ = hc/E with hc = 1,240 eV·nm; a 511 keV photon has λ ≈ 2.4 pm, in the gamma-ray region.
 
 *Sources*
 

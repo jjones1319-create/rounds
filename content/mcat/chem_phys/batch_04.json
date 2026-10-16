@@ -864,7 +864,7 @@
       "skill": "2",
       "cars_skill": null,
       "difficulty": 4,
-      "stem": "With the capacitor charged to 2,000 V, what are the magnitude of the electric field in the 20 µm film between the plates and the work done by that field on an electron that crosses from one plate to the other? (e = 1.6 × 10⁻¹⁹ C)",
+      "stem": "With the capacitor charged to 2,000 V, what are the magnitude of the electric field in the 20 µm film between the plates and the work done by that field on an electron that crosses from one plate to the other? (e = 1.60 × 10⁻¹⁹ C)",
       "options": {
         "A": "1.0 × 10⁵ V/m; 3.2 × 10⁻¹⁶ J",
         "B": "1.0 × 10⁵ V/m; 2.0 × 10³ J",
@@ -874,13 +874,13 @@
       "answer": "C",
       "why_correct": [
         "Passage: \"the field between the plates is uniform,\" so E = V/d = 2,000 V / (20 × 10⁻⁶ m) = 2.0 × 10³ / 2.0 × 10⁻⁵ = 1.0 × 10⁸ V/m (100 V per micrometre, below the film's rating of several hundred V/µm).",
-        "The work done by the field on a charge moved through a potential difference V is W = qV, independent of the path and of the plate separation: W = 1.6 × 10⁻¹⁹ C × 2,000 V = 3.2 × 10⁻¹⁶ J, which is 2,000 eV.",
-        "Check the units: V/m = N/C, and (N/C) × C × m = N·m = J; W = eEd = 1.6 × 10⁻¹⁹ × 1.0 × 10⁸ × 2.0 × 10⁻⁵ = 3.2 × 10⁻¹⁶ J, the same number."
+        "The work done by the field on a charge moved through a potential difference V is W = qV, independent of the path and of the plate separation: W = 1.60 × 10⁻¹⁹ C × 2,000 V = 3.2 × 10⁻¹⁶ J, which is 2,000 eV.",
+        "Check the units: V/m = N/C, and (N/C) × C × m = N·m = J; W = eEd = 1.60 × 10⁻¹⁹ × 1.0 × 10⁸ × 2.0 × 10⁻⁵ = 3.2 × 10⁻¹⁶ J, the same number."
       ],
       "why_wrong": {
         "A": "1.0 × 10⁵ V/m divides by 0.020 m, treating 20 µm as 20 mm; the work is right but the field is a thousand times too small.",
         "B": "Both values are wrong: the field uses 20 mm for the film thickness, and 2.0 × 10³ J is the work on a full coulomb of charge rather than on one electron.",
-        "D": "2.0 × 10³ J would be the work on one coulomb of charge (W = qV with q = 1 C); an electron carries 1.6 × 10⁻¹⁹ C. It also exceeds the 200 J stored in the whole capacitor."
+        "D": "2.0 × 10³ J would be the work on one coulomb of charge (W = qV with q = 1 C); an electron carries 1.60 × 10⁻¹⁹ C. It also exceeds the 200 J stored in the whole capacitor."
       },
       "error_types": {
         "A": "sign or unit error: µm read as mm",
@@ -1148,7 +1148,7 @@
       },
       "answer": "A",
       "why_correct": [
-        "An acid–base extraction sorts compounds by converting the acidic one into a salt. The equilibrium RCOOH + HCO₃⁻ ⇌ RCOO⁻ + H₂CO₃ lies to the right by about 10^(6.4 − 3.5) = 10^2.9, nearly a thousand to one, because the carboxylic acid (pKa 3.5) is a much stronger acid than carbonic acid (pKa 6.4). The carboxylate is ionic, so it dissolves in water and not in ether.",
+        "An acid–base extraction sorts compounds by converting the acidic one into a salt. The equilibrium RCOOH + HCO₃⁻ ⇌ RCOO⁻ + H₂CO₃ lies to the right by about 10^(6.4 − 3.5) = 10^2.9, nearly a thousand to one, because the carboxylic acid (pKa 3.5) is a much stronger acid than carbonic acid (pKa 6.4 at 25 °C; the apparent value in plasma at 37 °C is about 6.1). The carboxylate is ionic, so it dissolves in water and not in ether.",
         "The carbonic acid formed decomposes to CO₂ and water, which is the gas the passage mentions; bubbling is the sign that an acid strong enough to protonate bicarbonate is present. Neutral impurities have no proton to give up, so they stay in the ether.",
         "Acidifying the aqueous layer with HCl reverses the equilibrium and precipitates the neutral acid, which is how the product was recovered."
       ],
@@ -1263,7 +1263,7 @@
     },
     {
       "id": "CP-091",
-      "rev": 1,
+      "rev": 2,
       "section": "chem_phys",
       "passage": "CP-P16",
       "discipline": "general chemistry",
@@ -1277,26 +1277,26 @@
       "difficulty": 4,
       "stem": "At 30 m a diver fills the lungs with 6.0 L of air from the regulator, then holds that breath while rising to 10 m. Treating the gas as ideal at constant temperature and the chest as free to expand, the volume the lung gas would occupy at 10 m is:",
       "options": {
-        "A": "3.0 L",
-        "B": "12 L",
-        "C": "18 L",
-        "D": "24 L"
+        "A": "1.5 L",
+        "B": "3.0 L",
+        "C": "6.0 L",
+        "D": "12 L"
       },
-      "answer": "B",
+      "answer": "D",
       "why_correct": [
         "Boyle's law at constant n and T: P₁V₁ = P₂V₂. The pressures must be absolute: 4.0 atm at 30 m and 2.0 atm at 10 m (Table 1).",
         "V₂ = V₁ × P₁/P₂ = 6.0 L × 4.0/2.0 = 12 L, double the starting volume although the diver is still 10 m down. This is the breath-hold hazard the passage describes for Diver 4: the lungs cannot hold twice their volume, so gas must be exhaled continuously during ascent.",
         "Mental check: halving the absolute pressure doubles the volume."
       ],
       "why_wrong": {
-        "A": "3.0 L inverts the ratio (P₂/P₁); rising lowers the pressure, so the gas expands rather than contracts.",
-        "C": "18 L uses the gauge pressures 3.0 and 1.0 atm (the water pressure alone); Boyle's law needs absolute pressures, which include the atmosphere above the sea.",
-        "D": "24 L is the volume at the surface (4.0/1.0), not at 10 m."
+        "A": "1.5 L inverts the pressure ratio and uses the surface pressure as well (6.0 L × 1.0/4.0); rising to 10 m halves the absolute pressure, so the volume doubles.",
+        "B": "3.0 L inverts the ratio (P₂/P₁); rising lowers the pressure, so the gas expands rather than contracts.",
+        "C": "6.0 L assumes the volume is unchanged, as though the lung gas were incompressible; a gas obeys Boyle's law, and the passage's Diver 4 was injured because it does."
       },
       "error_types": {
-        "A": "reversed relationship: pressure ratio inverted",
-        "C": "wrong formula: gauge pressures used in Boyle's law",
-        "D": "misread graph: the surface row used instead of 10 m"
+        "A": "reversed relationship and misread graph: ratio inverted and the surface row used",
+        "B": "reversed relationship: pressure ratio inverted",
+        "C": "wrong formula: Boyle's law ignored, volume held fixed"
       },
       "takeaway": "Boyle's law uses absolute pressures: from 4 atm to 2 atm a held breath doubles in volume, long before the diver reaches the surface.",
       "sources": [

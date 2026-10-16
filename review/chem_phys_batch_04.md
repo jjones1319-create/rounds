@@ -2,9 +2,9 @@
 
 Plan: docs/CHEM_PHYS_250.md batch 4 (CP-076 to CP-100, passages CP-P13 to CP-P16); checks in review/chem_phys_batch_04_check.py
 
-25 questions, 4 passages. Answers: 076C 077B 078D 079D 080A 081B 082C 083D 084B 085A 086B 087D 088A 089C 090C 091B 092C 093A 094B 095B 096D 097C 098A 099D 100A
+25 questions, 4 passages. Answers: 076C 077B 078D 079D 080A 081B 082C 083D 084B 085A 086B 087D 088A 089C 090C 091D 092C 093A 094B 095B 096D 097C 098A 099D 100A
 
-Answer letters: A 6, B 7, C 6, D 6
+Answer letters: A 6, B 6, C 6, D 7
 
 ## How this batch is reviewed
 
@@ -279,7 +279,7 @@ Using Equation 1 and Table 1, the energy stored in the capacitor when it is full
 
 ### CP-082  ·  ★★★★  ·  Skill 2 Reasoning
 
-With the capacitor charged to 2,000 V, what are the magnitude of the electric field in the 20 µm film between the plates and the work done by that field on an electron that crosses from one plate to the other? (e = 1.6 × 10⁻¹⁹ C)
+With the capacitor charged to 2,000 V, what are the magnitude of the electric field in the 20 µm film between the plates and the work done by that field on an electron that crosses from one plate to the other? (e = 1.60 × 10⁻¹⁹ C)
 
 - **A.** 1.0 × 10⁵ V/m; 3.2 × 10⁻¹⁶ J
 - **B.** 1.0 × 10⁵ V/m; 2.0 × 10³ J
@@ -291,14 +291,14 @@ With the capacitor charged to 2,000 V, what are the magnitude of the electric fi
 *Worked solution*
 
 - Passage: "the field between the plates is uniform," so E = V/d = 2,000 V / (20 × 10⁻⁶ m) = 2.0 × 10³ / 2.0 × 10⁻⁵ = 1.0 × 10⁸ V/m (100 V per micrometre, below the film's rating of several hundred V/µm).
-- The work done by the field on a charge moved through a potential difference V is W = qV, independent of the path and of the plate separation: W = 1.6 × 10⁻¹⁹ C × 2,000 V = 3.2 × 10⁻¹⁶ J, which is 2,000 eV.
-- Check the units: V/m = N/C, and (N/C) × C × m = N·m = J; W = eEd = 1.6 × 10⁻¹⁹ × 1.0 × 10⁸ × 2.0 × 10⁻⁵ = 3.2 × 10⁻¹⁶ J, the same number.
+- The work done by the field on a charge moved through a potential difference V is W = qV, independent of the path and of the plate separation: W = 1.60 × 10⁻¹⁹ C × 2,000 V = 3.2 × 10⁻¹⁶ J, which is 2,000 eV.
+- Check the units: V/m = N/C, and (N/C) × C × m = N·m = J; W = eEd = 1.60 × 10⁻¹⁹ × 1.0 × 10⁸ × 2.0 × 10⁻⁵ = 3.2 × 10⁻¹⁶ J, the same number.
 
 *Why the other choices are wrong*
 
 - **A.** 1.0 × 10⁵ V/m divides by 0.020 m, treating 20 µm as 20 mm; the work is right but the field is a thousand times too small. *(sign or unit error: µm read as mm)*
 - **B.** Both values are wrong: the field uses 20 mm for the film thickness, and 2.0 × 10³ J is the work on a full coulomb of charge rather than on one electron. *(sign or unit error and wrong formula: µm read as mm, and q = 1 C)*
-- **D.** 2.0 × 10³ J would be the work on one coulomb of charge (W = qV with q = 1 C); an electron carries 1.6 × 10⁻¹⁹ C. It also exceeds the 200 J stored in the whole capacitor. *(wrong formula: q = 1 C instead of the electron's charge)*
+- **D.** 2.0 × 10³ J would be the work on one coulomb of charge (W = qV with q = 1 C); an electron carries 1.60 × 10⁻¹⁹ C. It also exceeds the 200 J stored in the whole capacitor. *(wrong formula: q = 1 C instead of the electron's charge)*
 
 *Tags:* chem_phys · physics · FC4 4C · topics: 4C.electric-field-potential, 4C.capacitance
 
@@ -559,7 +559,7 @@ Why did shaking the ether solution with aqueous sodium bicarbonate move the aspi
 
 *Worked solution*
 
-- An acid–base extraction sorts compounds by converting the acidic one into a salt. The equilibrium RCOOH + HCO₃⁻ ⇌ RCOO⁻ + H₂CO₃ lies to the right by about 10^(6.4 − 3.5) = 10^2.9, nearly a thousand to one, because the carboxylic acid (pKa 3.5) is a much stronger acid than carbonic acid (pKa 6.4). The carboxylate is ionic, so it dissolves in water and not in ether.
+- An acid–base extraction sorts compounds by converting the acidic one into a salt. The equilibrium RCOOH + HCO₃⁻ ⇌ RCOO⁻ + H₂CO₃ lies to the right by about 10^(6.4 − 3.5) = 10^2.9, nearly a thousand to one, because the carboxylic acid (pKa 3.5) is a much stronger acid than carbonic acid (pKa 6.4 at 25 °C; the apparent value in plasma at 37 °C is about 6.1). The carboxylate is ionic, so it dissolves in water and not in ether.
 - The carbonic acid formed decomposes to CO₂ and water, which is the gas the passage mentions; bubbling is the sign that an acid strong enough to protonate bicarbonate is present. Neutral impurities have no proton to give up, so they stay in the ether.
 - Acidifying the aqueous layer with HCl reverses the equilibrium and precipitates the neutral acid, which is how the product was recovered.
 
@@ -695,12 +695,12 @@ A diver at 30 m breathes an enriched-air mixture of 32% O₂ and 68% N₂ instea
 
 At 30 m a diver fills the lungs with 6.0 L of air from the regulator, then holds that breath while rising to 10 m. Treating the gas as ideal at constant temperature and the chest as free to expand, the volume the lung gas would occupy at 10 m is:
 
-- **A.** 3.0 L
-- **B.** 12 L
-- **C.** 18 L
-- **D.** 24 L
+- **A.** 1.5 L
+- **B.** 3.0 L
+- **C.** 6.0 L
+- **D.** 12 L
 
-**Answer: B**
+**Answer: D**
 
 *Worked solution*
 
@@ -710,9 +710,9 @@ At 30 m a diver fills the lungs with 6.0 L of air from the regulator, then holds
 
 *Why the other choices are wrong*
 
-- **A.** 3.0 L inverts the ratio (P₂/P₁); rising lowers the pressure, so the gas expands rather than contracts. *(reversed relationship: pressure ratio inverted)*
-- **C.** 18 L uses the gauge pressures 3.0 and 1.0 atm (the water pressure alone); Boyle's law needs absolute pressures, which include the atmosphere above the sea. *(wrong formula: gauge pressures used in Boyle's law)*
-- **D.** 24 L is the volume at the surface (4.0/1.0), not at 10 m. *(misread graph: the surface row used instead of 10 m)*
+- **A.** 1.5 L inverts the pressure ratio and uses the surface pressure as well (6.0 L × 1.0/4.0); rising to 10 m halves the absolute pressure, so the volume doubles. *(reversed relationship and misread graph: ratio inverted and the surface row used)*
+- **B.** 3.0 L inverts the ratio (P₂/P₁); rising lowers the pressure, so the gas expands rather than contracts. *(reversed relationship: pressure ratio inverted)*
+- **C.** 6.0 L assumes the volume is unchanged, as though the lung gas were incompressible; a gas obeys Boyle's law, and the passage's Diver 4 was injured because it does. *(wrong formula: Boyle's law ignored, volume held fixed)*
 
 *Tags:* chem_phys · general chemistry · FC4 4B · topics: 4B.ideal-gas
 
@@ -723,7 +723,7 @@ At 30 m a diver fills the lungs with 6.0 L of air from the regulator, then holds
 - OpenStax Chemistry 2e, 9.2 Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law (2019): P₁V₁ = P₂V₂ at constant n and T; at 33 feet the pressure is 2 ATA and air is compressed to half its volume.
 - OpenStax College Physics 2e, 11.4 Variation of Pressure with Depth in a Fluid (2022): total pressure at depth is the fluid's pressure plus atmospheric pressure.
 
-*Status:* reviewed · rev 1
+*Status:* reviewed · rev 2
 
 ---
 

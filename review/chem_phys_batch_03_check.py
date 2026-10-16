@@ -72,8 +72,9 @@ check("CP-051 bar per 50 g (kJ)", 22.0 * 50, 1100, 1e-9)
 check("CP-051 kcal per bar", 1100 / 4.184, 263, 0.005)
 # CP-055 distractors
 check("CP-055 distractor A P/ΔT (kJ/K)", P_heater / dT_elec / 1000, 0.037, 0.01)
-check("CP-055 distractor C uses 360 s (kJ/K)", P_heater * 360 / dT_elec / 1000, 13.2, 0.001)
-check("CP-055 distractor D energy (kJ)", P_heater * (t_off - t_on) / 1000, 33.0, 1e-9)
+check("CP-055 distractor B energy over final temperature in kelvin (kJ/K)", P_heater * (t_off - t_on) / 1000 / (T[480] + 273.15), 0.11, 0.01)
+check("CP-055 distractor C energy over final temperature in °C (kJ/K)", P_heater * (t_off - t_on) / 1000 / T[480], 1.2, 0.02)
+check("CP-055 energy delivered (kJ)", P_heater * (t_off - t_on) / 1000, 33.0, 1e-9)
 # Table 2 Atwater sum and the bomb comparison
 rows2 = figure("CP-P09", "tab2")["data"]["rows"]
 atwater = sum(num(r[1]) * num(r[2]) for r in rows2)
@@ -109,8 +110,8 @@ check("CP-057 distractor B ∝ 1/√m (µs)", 30.5 * math.sqrt(900 / 1626), 23, 
 check("CP-057 distractor D ∝ m (µs)", 30.5 * 1626 / 900, 55, 0.02)
 check("CP-057 speed of m/z 900 (m/s)", math.sqrt(2 * e * V / (900 * u)), 6.5e4, 0.01)
 check("CP-060 carbons from 44% M+1 at 1.1%", 0.44 / 0.011, 40, 1e-9)
-check("CP-060 distractor A (abundance as 11%)", 0.44 / 0.11, 4, 1e-9)
-check("CP-060 distractor D (abundance as 1%)", 0.44 / 0.01, 44, 1e-9)
+check("CP-060 distractor A (percentages converted inconsistently)", 0.44 / 1.1, 0.4, 1e-9)
+check("CP-060 distractor B (abundance as 11%)", 0.44 / 0.11, 4, 1e-9)
 same("CP-060 1.1% lies in the CIAAW interval 0.0096-0.0116", 0.0096 <= 0.011 <= 0.0116, True)
 spec = {lab.split()[0]: v for lab, v in figure("CP-P10", "fig1")["data"]["series"][0]["points"]}
 check("P10 Figure 1 M+1 of T2 is 44% of M", spec["862.4"] / spec["861.4"] * 100, 44, 1e-9)

@@ -6,7 +6,7 @@
 
 In a hypothetical catheter study, investigators measured pressure and blood speed along a 50 mm length of a common carotid artery that contained a short, concentric atherosclerotic plaque. Along the healthy proximal and distal segments the lumen radius was 3.0 mm; within the plaque, which extended from x = 20 mm to x = 30 mm, the radius was 1.5 mm (a 50% reduction in diameter). A Doppler wire recorded the mean and peak systolic blood speeds in the proximal and distal segments (Table 1) but could not be positioned inside the narrowed segment. A pressure wire was then withdrawn slowly from the distal to the proximal end, recording the mean pressure at each position (Figure 1). A stethoscope placed over the plaque detected a bruit (a murmur) that was present only during systole.
 
-For the analysis the investigators treated blood as an incompressible fluid of density 1.06 × 10³ kg/m³ and viscosity 3.0 × 10⁻³ Pa·s, took the vessel as horizontal, and used 1 mmHg = 133 Pa and g = 9.8 m/s². They applied the continuity equation and Bernoulli's equation to the entry of the narrowed segment, Poiseuille's law to the flow along it, and the Reynolds number, N_R = 2ρvr/η, to the onset of turbulence (laminar below about 2000, turbulent above about 3000).
+For the analysis the investigators treated blood as an incompressible fluid of density 1.06 × 10³ kg/m³ and viscosity 3.0 × 10⁻³ Pa·s, took the vessel as horizontal, and used 1 mmHg = 133 Pa and g = 9.8 m/s². They applied the continuity equation and Bernoulli's equation to the entry of the narrowed segment, Poiseuille's law to the flow along it, and the Reynolds number, N_R = 2ρvr/η, to the onset of turbulence (laminar below about 2000, turbulent above about 3,000).
 
 Because the plaque was concentric and the flow steady on average, the pressure wire data were interpreted in three parts: an abrupt fall at the entry of the narrowed segment, a gradual decline along it, and a partial recovery just beyond its exit, where the fast jet slows and loses part of its energy to eddies. After the measurements the segment was dilated with a balloon so that its radius returned to 3.0 mm, and the pressure and Doppler recordings were repeated.
 
@@ -32,9 +32,9 @@ Chart (line): x = Position x (mm); y = Mean pressure (mmHg).
 Based on Table 1, the mean blood speed inside the narrowed segment before dilation was closest to:
 
 - **A.** 0.075 m/s
-- **B.** 0.60 m/s
-- **C.** 1.2 m/s
-- **D.** 4.8 m/s
+- **B.** 0.30 m/s
+- **C.** 0.60 m/s
+- **D.** 1.2 m/s
 
 Answer: ____   Confidence (sure / likely / guess): ____   Objection, if any: ____
 
@@ -55,12 +55,12 @@ Answer: ____   Confidence (sure / likely / guess): ____   Objection, if any: ___
 
 ### CP-003
 
-Consider the 10 mm segment on its own, with laminar flow and the same pressure difference maintained between its two ends. Compared with the flow through the segment before the plaque formed (radius 3.0 mm), the flow with the plaque in place (radius 1.5 mm) is:
+Consider the 10 mm segment on its own, with laminar flow. For the flow through the segment with the plaque in place (radius 1.5 mm) to equal the flow before the plaque formed (radius 3.0 mm), the pressure difference between its two ends would have to be:
 
-- **A.** 1/16 as large
-- **B.** 1/8 as large
-- **C.** 1/4 as large
-- **D.** 1/2 as large
+- **A.** 2 times as large
+- **B.** 4 times as large
+- **C.** 8 times as large
+- **D.** 16 times as large
 
 Answer: ____   Confidence (sure / likely / guess): ____   Objection, if any: ____
 
@@ -199,9 +199,9 @@ To test whether the inhibitor binds reversibly, the enzyme was incubated with 20
 | 20 | 60 | 30 |
 | 40 | 80 | 48 |
 | 200 | 109 | 92 |
-| 2000 | 119 | 117 |
+| 2,000 | 119 | 117 |
 
-*Alt text:* Table with six rows of peptide concentration and two rate columns in nanomoles per minute. At 5 micromolar: 24 without inhibitor, 9 with. At 10: 40 and 17. At 20: 60 and 30. At 40: 80 and 48. At 200: 109 and 92. At 2000: 119 and 117.
+*Alt text:* Table with six rows of peptide concentration and two rate columns in nanomoles per minute. At 5 micromolar: 24 without inhibitor, 9 with. At 10: 40 and 17. At 20: 60 and 30. At 40: 80 and 48. At 200: 109 and 92. At 2,000: 119 and 117.
 
 ### CP-011
 
@@ -209,7 +209,7 @@ From the uninhibited data in Table 1, the kinase's Km and Vmax are closest to:
 
 - **A.** Km = 20 µmol/L, Vmax = 60 nmol/min
 - **B.** Km = 60 µmol/L, Vmax = 120 nmol/min
-- **C.** Km = 2000 µmol/L, Vmax = 119 nmol/min
+- **C.** Km = 2,000 µmol/L, Vmax = 119 nmol/min
 - **D.** Km = 20 µmol/L, Vmax = 120 nmol/min
 
 Answer: ____   Confidence (sure / likely / guess): ____   Objection, if any: ____
@@ -272,9 +272,9 @@ Answer: ____   Confidence (sure / likely / guess): ____   Objection, if any: ___
 
 Positron emission tomography (PET) most often uses fluorine-18 attached to a glucose analogue, ¹⁸F-fluorodeoxyglucose (FDG), which accumulates in tissues that take up glucose rapidly. Fluorine-18 (Z = 9, A = 18) decays with a half-life of 110 minutes, mainly by positron emission; the positron travels about a millimetre in tissue, slows, and annihilates with an electron. The rest energy of an electron (and of a positron) is 511 keV. The scanner's ring of detectors registers only pairs of photons that arrive at the same moment at two detectors, and reconstructs the line along which the annihilation occurred.
 
-In a hypothetical morning at a PET centre, a vial of FDG was delivered from the cyclotron at 08:00 and its activity measured in a dose calibrator at four times while it waited for patients (Table 1). A patient's prescribed dose was to be drawn from the vial so that the activity injected would be close to 250 MBq, and the volume drawn was adjusted for the time of injection. A second vial from the same batch, calibrated at 1200 MBq at 08:00, was reserved for an afternoon patient injected at 15:20.
+In a hypothetical morning at a PET centre, a vial of FDG was delivered from the cyclotron at 08:00 and its activity measured in a dose calibrator at four times while it waited for patients (Table 1). A patient's prescribed dose was to be drawn from the vial so that the activity injected would be close to 250 MBq, and the volume drawn was adjusted for the time of injection. A second vial from the same batch, calibrated at 1,200 MBq at 08:00, was reserved for an afternoon patient injected at 15:20.
 
-Constants used by the centre: Planck's constant h = 6.63 × 10⁻³⁴ J·s, speed of light c = 3.00 × 10⁸ m/s, 1 eV = 1.60 × 10⁻¹⁹ J (so that hc = 1240 eV·nm), ln 2 = 0.693, and 1 MBq = 10⁶ decays per second.
+Constants used by the centre: Planck's constant h = 6.63 × 10⁻³⁴ J·s, speed of light c = 3.00 × 10⁸ m/s, 1 eV = 1.60 × 10⁻¹⁹ J (so that hc = 1,240 eV·nm), ln 2 = 0.693, and 1 MBq = 10⁶ decays per second.
 
 **Table 1. Activity of the first FDG vial measured in the dose calibrator.**
 

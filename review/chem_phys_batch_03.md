@@ -2,9 +2,9 @@
 
 Plan: docs/CHEM_PHYS_250.md batch 3 (CP-051 to CP-075, passages CP-P09 to CP-P12); checks in review/chem_phys_batch_03_check.py
 
-25 questions, 4 passages. Answers: 051B 052C 053A 054D 055B 056C 057C 058A 059B 060C 061A 062B 063D 064B 065C 066B 067A 068D 069D 070C 071C 072A 073D 074B 075A
+25 questions, 4 passages. Answers: 051B 052C 053A 054D 055D 056C 057C 058A 059B 060D 061A 062B 063D 064B 065C 066B 067A 068D 069D 070C 071C 072A 073D 074B 075A
 
-Answer letters: A 6, B 7, C 7, D 5
+Answer letters: A 6, B 6, C 6, D 7
 
 ## How this batch is reviewed
 
@@ -199,11 +199,11 @@ The gross energy measured in the bomb exceeded the Atwater estimate from Table 2
 Based on Figure 1 and the heater power stated in the passage, the heat capacity of the calorimeter assembly is closest to:
 
 - **A.** 0.037 kJ/K
-- **B.** 11 kJ/K
-- **C.** 13 kJ/K
-- **D.** 33 kJ/K
+- **B.** 0.11 kJ/K
+- **C.** 1.2 kJ/K
+- **D.** 11 kJ/K
 
-**Answer: B**
+**Answer: D**
 
 *Worked solution*
 
@@ -214,8 +214,8 @@ Based on Figure 1 and the heater power stated in the passage, the heat capacity 
 *Why the other choices are wrong*
 
 - **A.** 0.037 kJ/K divides the power (110 W) by ΔT without multiplying by the 300 s the heater ran; it has units of W/K, a rate, not a heat capacity. *(wrong formula: power divided by ΔT, time omitted)*
-- **C.** 13 kJ/K uses 360 s, the clock time when the heater was switched off, instead of the 300 s it was on (it started at 60 s): 110 × 360 / 3.00 = 13.2 kJ/K. *(misread graph: heater-off time used as the heating duration)*
-- **D.** 33 kJ is the energy delivered; a heat capacity divides this by the temperature rise, which was 3.00 K, not 1 K. *(sign or unit error: energy reported in place of energy per kelvin)*
+- **B.** 0.11 kJ/K divides the 33.0 kJ by the final temperature expressed in kelvin (about 301 K) instead of by the temperature rise; a heat capacity relates energy to a change in temperature, and a difference of 3.00 °C is 3.00 K. *(sign or unit error: an absolute temperature used where a temperature difference is needed)*
+- **C.** 1.2 kJ/K divides the 33.0 kJ by the final reading, 28.00 °C, instead of by the rise from 25.00 to 28.00 °C; the starting temperature in Figure 1 must be subtracted. *(misread graph: the final temperature used instead of the rise)*
 
 *Tags:* chem_phys · physics · FC5 5E · topics: 5E.calorimetry-heat-transfer, 4A.energy
 
@@ -226,7 +226,7 @@ Based on Figure 1 and the heater power stated in the passage, the heat capacity 
 - OpenStax Chemistry 2e, 5.1 Energy Basics (2019): heat capacity C = q/ΔT in J/°C (equivalently J/K); the watt as a joule per second.
 - OpenStax Chemistry 2e, 5.2 Calorimetry (2019): a bomb calorimeter's heat capacity is determined by calibration before the sample is burned.
 
-*Status:* reviewed · rev 1
+*Status:* reviewed · rev 2
 
 ---
 
@@ -329,7 +329,7 @@ Singly charged ions of m/z 900 reached the detector 30.5 µs after the laser pul
 
 - Passage: every singly charged ion acquires the same kinetic energy eV, so ½mv² = eV gives v = √(2eV/m), and t = L/v = L√(m/2eV). With L and V fixed, t ∝ √m: heavier ions are slower and arrive later.
 - t(T5) = 30.5 µs × √(1,626/900). Estimate 1,626/900 ≈ 1,600/900 = 16/9, whose square root is 4/3, so t ≈ 30.5 × 4/3 ≈ 40.7 µs; the exact ratio (√1.807 = 1.344) gives 41.0 µs.
-- Check from first principles: at 20 kV an ion of 900 Da has v = √(2 × 1.6 × 10⁻¹⁹ × 2 × 10⁴ / (900 × 1.66 × 10⁻²⁷)) ≈ 6.5 × 10⁴ m/s, so a 2.0 m tube is crossed in 2.0/6.5 × 10⁴ ≈ 3.1 × 10⁻⁵ s = 31 µs, consistent with the passage.
+- Check from first principles: at 20 kV an ion of 900 Da has v = √(2 × 1.60 × 10⁻¹⁹ × 2 × 10⁴ / (900 × 1.66 × 10⁻²⁷)) ≈ 6.5 × 10⁴ m/s, so a 2.0 m tube is crossed in 2.0/6.5 × 10⁴ ≈ 3.1 × 10⁻⁵ s = 31 µs, consistent with the passage.
 
 *Why the other choices are wrong*
 
@@ -427,12 +427,12 @@ In Table 2 the difference between consecutive y ions equals the mass of one resi
 
 In Figure 1 the peak one unit above the monoisotopic peak of T2 has 44% of its intensity. Treating this peak as due to carbon-13 alone, as the investigators did, the number of carbon atoms in T2 is closest to:
 
-- **A.** 4
-- **B.** 22
-- **C.** 40
-- **D.** 44
+- **A.** 0.4
+- **B.** 4
+- **C.** 22
+- **D.** 40
 
-**Answer: C**
+**Answer: D**
 
 *Worked solution*
 
@@ -442,9 +442,9 @@ In Figure 1 the peak one unit above the monoisotopic peak of T2 has 44% of its i
 
 *Why the other choices are wrong*
 
-- **A.** 4 treats the abundance as 11% rather than 1.1% (0.44/0.11); it is a factor-of-ten slip in converting the percentage. *(sign or unit error: percentage misconverted by a factor of ten)*
-- **B.** 22 halves the result as though T2 were doubly charged; the isotope ratio does not depend on the ion's charge, and the passage's peaks are singly charged. *(wrong formula: the charge state applied to an isotope ratio)*
-- **D.** 44 treats the carbon-13 abundance as exactly 1%; with the passage's 1.1% the count is 40. *(wrong formula: 1.1% abundance rounded to 1%)*
+- **A.** 0.4 converts the two percentages inconsistently, 44% as 0.44 but 1.1% as 1.1 (0.44/1.1); both must be converted the same way, and a peptide cannot have a fraction of a carbon atom. *(sign or unit error: percentages converted inconsistently)*
+- **B.** 4 treats the abundance as 11% rather than 1.1% (0.44/0.11); it is a factor-of-ten slip in converting the percentage. *(sign or unit error: percentage misconverted by a factor of ten)*
+- **C.** 22 halves the result as though T2 were doubly charged; the isotope ratio does not depend on the ion's charge, and the passage's peaks are singly charged. *(wrong formula: the charge state applied to an isotope ratio)*
 
 *Tags:* chem_phys · general chemistry · FC4 4E · topics: 4E.nucleus-isotopes, 4E.mass-spectrometry
 
@@ -455,7 +455,7 @@ In Figure 1 the peak one unit above the monoisotopic peak of T2 has 44% of its i
 - IUPAC CIAAW, Carbon: isotopic abundances (2009): ¹³C amount fraction interval 0.0096–0.0116, so 1.1% is a representative value.
 - OpenStax Organic Chemistry, 12.2 Interpreting Mass Spectra (2023): the M+1 peak arises from molecules containing a ¹³C atom, with natural abundance about 1.1%.
 
-*Status:* reviewed · rev 1
+*Status:* reviewed · rev 2
 
 ---
 
@@ -833,7 +833,7 @@ To test whether dissolved oxygen in a sample lowers the strip's current reading,
 
 ### CP-070  ·  ★★★  ·  Skill 2 Reasoning
 
-In a crystal of sodium chloride the centres of neighbouring Na⁺ and Cl⁻ ions are about 0.30 nm apart. Treating each ion as a point charge of magnitude e = 1.6 × 10⁻¹⁹ C and taking k = 9.0 × 10⁹ N·m²/C², the magnitude of the electrostatic force between the two ions is closest to:
+In a crystal of sodium chloride the centres of neighbouring Na⁺ and Cl⁻ ions are about 0.30 nm apart. Treating each ion as a point charge of magnitude e = 1.60 × 10⁻¹⁹ C and taking k = 9.00 × 10⁹ N·m²/C², the magnitude of the electrostatic force between the two ions is closest to:
 
 - **A.** 2.6 × 10⁻²⁷ N
 - **B.** 7.7 × 10⁻¹⁹ N
@@ -845,7 +845,7 @@ In a crystal of sodium chloride the centres of neighbouring Na⁺ and Cl⁻ ions
 *Worked solution*
 
 - Coulomb's law: F = k|q₁q₂|/r² with q₁ = q₂ = e and r = 0.30 nm = 3.0 × 10⁻¹⁰ m.
-- Numerator: 9.0 × 10⁹ × (1.6 × 10⁻¹⁹)² = 9.0 × 10⁹ × 2.56 × 10⁻³⁸ = 2.3 × 10⁻²⁸ N·m². Denominator: (3.0 × 10⁻¹⁰)² = 9.0 × 10⁻²⁰ m². F = 2.3 × 10⁻²⁸ / 9.0 × 10⁻²⁰ = 2.6 × 10⁻⁹ N.
+- Numerator: 9.00 × 10⁹ × (1.60 × 10⁻¹⁹)² = 9.00 × 10⁹ × 2.56 × 10⁻³⁸ = 2.3 × 10⁻²⁸ N·m². Denominator: (3.0 × 10⁻¹⁰)² = 9.0 × 10⁻²⁰ m². F = 2.3 × 10⁻²⁸ / 9.0 × 10⁻²⁰ = 2.6 × 10⁻⁹ N.
 - Shortcut: the 9.0 in k cancels the 9.0 in r², leaving F = 2.56 × 10⁻³⁸ × 10⁹ / 10⁻²⁰ = 2.56 × 10⁻⁹ N. The force is attractive (opposite charges) and acts along the line joining the ions.
 
 *Why the other choices are wrong*
