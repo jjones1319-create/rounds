@@ -6,7 +6,9 @@ Write the next question block: 8 new questions for the question bank, then publi
 If arguments were given ($ARGUMENTS), treat them as topic or system preferences for this block.
 
 1. Read CLAUDE.md and all of docs/board_question_generator_spec.md before doing anything.
-   The new block number is one more than the highest block in questions/ (Block N); IDs are BN-Q01 to BN-Q08.
+   The new block number is one more than the highest block in questions/ (Block N), skipping any block
+   reserved in docs/PEDS_BLUEPRINT.md (Blocks 4–8 belong to the pediatrics track and are written only with
+   /peds-pair); so the next general block is Block 9 until the pediatric blocks are done. IDs are BN-Q01 to BN-Q08.
 2. Pick 8 topics from the coverage gaps in spec §7. Don't repeat any topic in the §9 log.
    Show me the 8 topics with planned difficulty, answer letter, and the guideline you'll
    verify each against. Wait for my OK.

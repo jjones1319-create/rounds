@@ -12,6 +12,8 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
 
 ## Docs to read before related work
 - Board questions: `docs/board_question_generator_spec.md` · MCAT questions: `docs/MCAT_SPEC.md` (rules, blueprint, schema, review)
+- Pediatric board questions: `docs/PEDS_BLUEPRINT.md` (40 planned questions for Blocks 4–8, written two at a time with
+  `/peds-pair`, each pair re-solved blind in a fresh conversation with `/peds-blind`; packets from `tools/board_review_packet.py`)
 - MCAT section guides ("What's tested"): `docs/MCAT_GUIDES_SPEC.md` · MCAT features: `docs/PLAN_MCAT.md` (phases M0–M5)
 - 3D anatomy: `docs/PLAN_3D.md` · Public-site rules: `docs/PUBLIC_RELEASE.md` · Owner's prompts: `docs/PROMPTS.md`
 
@@ -114,6 +116,10 @@ Work on one track at a time and finish its current phase before switching. Repor
 - Track B, MCAT: `docs/PLAN_MCAT.md`. M0–M4 are done; M5 is ongoing growth (passages and discretes toward the AAMC
   mix, coverage report first).
 - Track C, content: new board blocks (`/new-board-block`, boards spec) and MCAT blocks (MCAT spec).
+  Pediatrics track: `docs/PEDS_BLUEPRINT.md` reserves Blocks 4–8 (`B4-Q01`…`B8-Q08`; `/new-board-block` skips them). Loop per
+  pair: new conversation `/peds-pair` (write two, verify, check script, packets) → new conversation `/peds-blind` (blind
+  re-solve, compare, fix or pass, owner's OK, commit "Add pediatric pair NN: <IDs>", push). Pediatric questions use the SYS
+  label "Pediatrics" in `build.py` (one Systems chip and one Questions heading in the app); `system` holds the NBME wording.
   Chem/Phys: `docs/CHEM_PHYS_250.md` is the approved blueprint (250 questions, 40 passages, 10 batches, ids CP-001…/CP-P01…);
   write batches in order, update its status columns and changelog. Per batch: `content/mcat/chem_phys/batch_NN.json`,
   `review/chem_phys_batch_NN_check.py` (every number re-derived, RDKit for structures), `py tools/review_packet.py` for the

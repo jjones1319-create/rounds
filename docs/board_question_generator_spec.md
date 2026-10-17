@@ -1,6 +1,6 @@
 # Board Question Generator — Master Spec
 
-**Version:** 1.3 · **Created:** 2026-10-04 · **Updated:** 2026-10-10 · **Blocks produced so far:** 3 (24 questions)
+**Version:** 1.4 · **Created:** 2026-10-04 · **Updated:** 2026-10-16 · **Blocks produced so far:** 3 (24 questions); Blocks 4–8 reserved for the pediatrics track (`docs/PEDS_BLUEPRINT.md`)
 
 This file is the single source of truth for generating board-prep question blocks (and, later, the app). Upload it at the start of any new session and say something like:
 
@@ -19,7 +19,7 @@ Claude should read the whole spec, follow every rule in §2, and return (1) the 
 | Main task tested | "Most appropriate next step in management" (about 70%); also diagnosis, best initial/most accurate test, and prevention/screening |
 | Difficulty floor | ★★★ (see §3). Never easier. |
 | Calibration anchor | Her sample question (20-year-old woman, NSAIDs plus bulimia, hematemesis after repeated vomiting, tachycardia, Hb 10, answer EGD) = ★★★. Do **not** reproduce it; it belongs to a commercial QBank. |
-| Real-exam pacing | Step 2 CK uses 60-minute blocks of up to 40 questions (about 90 seconds each). Confirm at usmle.org before relying on this for app timing. |
+| Real-exam pacing | Step 2 CK exams on or after May 7, 2026 run sixteen 30-minute blocks of up to 20 questions; before that date, eight 60-minute blocks of up to 40 (usmle.org, checked 2026-10-16). About 90 seconds per question either way. |
 
 ---
 
@@ -55,7 +55,7 @@ Claude should read the whole spec, follow every rule in §2, and return (1) the 
 
 - **Length:** 150–280 words before the stem.
 - **Clues:** the decisive clue is present but not highlighted; include 1–2 realistic red herrings.
-- **Approved stems:** "Which of the following is the most appropriate next step in management?" · "…most likely diagnosis?" · "…most appropriate initial/most accurate test?" · "In addition to [X], which of the following is the most appropriate next step?"
+- **Approved stems:** "Which of the following is the most appropriate next step in management?" · "…most likely diagnosis?" · "…most appropriate initial/most accurate test?" · "In addition to [X], which of the following is the most appropriate next step?" · For mechanism items (pediatrics track; NBME "Applying Foundational Science Concepts"): "Which of the following is the most likely mechanism of this patient's [finding]?" or "Which of the following best explains these findings?", with options that are short pathophysiologic phrases.
 - **Style:** generic drug names, NBME-style phrasing, no eponyms without description, temperature in °C with °F.
 
 ---
@@ -97,7 +97,9 @@ Also rotate disciplines: internal medicine, surgery, pediatrics, OB/GYN, psychia
 
 **Covered so far (Blocks 1–3):** cardiology, OB/GYN (ectopic; preeclampsia/magnesium toxicity), endocrine, GI/peds surgery, toxicology (acetaminophen; lithium), hematology, ID/neuro, renal, psychiatry/nutrition, surgery (volvulus), respiratory, musculoskeletal (peds), skin, male reproductive, ethics/legal, biostatistics, preventive screening (lung cancer), geriatrics (postoperative delirium, Beers), breast (palpable mass), neurology (acute stroke/thrombolysis), rheumatology/ophthalmology (giant cell arteritis), trauma (ATLS hemorrhagic shock), pharmacology adverse effects (drug interaction).
 
-**Not yet covered after Block 3:** preventive screening beyond lung (USPSTF: breast, colon, AAA, cervical), geriatrics beyond delirium (falls, incontinence), neurology beyond stroke (seizure, headache), ophthalmology proper (angle-closure glaucoma, retinal detachment), ENT, allergy/immunology (anaphylaxis, hereditary angioedema), nephrology beyond electrolytes (glomerular disease, AKI), obstetrics beyond preeclampsia (labor, postpartum hemorrhage), pediatrics beyond MSK (vaccines, development), patient safety/quality, pulmonology beyond effusion (asthma/COPD exacerbation), oncology emergencies. Prioritize these in Block 4.
+**Pediatrics track (Blocks 4–8, B4-Q01 to B8-Q08):** 40 pediatric questions planned in `docs/PEDS_BLUEPRINT.md` (NBME Pediatrics Subject Examination weightings; every ID assigned there) and written two at a time with `/peds-pair`, each pair gated by an independent blind re-solve in a fresh conversation (`/peds-blind`, packets from `tools/board_review_packet.py`). These block numbers are reserved; `/new-board-block` skips them. Pediatric questions use the SYS label "Pediatrics" in `build.py`.
+
+**Not yet covered after Block 3 (general track; applies to Block 9, the first block after the reserved pediatric blocks):** preventive screening beyond lung (USPSTF: breast, colon, AAA, cervical), geriatrics beyond delirium (falls, incontinence), neurology beyond stroke (seizure, headache), ophthalmology proper (angle-closure glaucoma, retinal detachment), ENT, allergy/immunology (anaphylaxis, hereditary angioedema), nephrology beyond electrolytes (glomerular disease, AKI), obstetrics beyond preeclampsia (labor, postpartum hemorrhage), patient safety/quality, pulmonology beyond effusion (asthma/COPD exacerbation), oncology emergencies. Pediatric development and the pediatric topics are handled by the pediatrics track; vaccines are tested only on points the CDC and AAP schedules share (see the blueprint). Prioritize the rest in Block 9.
 
 Check §9 before writing; do not repeat a topic unless deliberately testing a different decision point.
 
@@ -239,6 +241,7 @@ Block 1 answer distribution: A 1, B 1, C 2, D 2, E 2. Block 2: A 2, B 2, C 1, D 
 | 1.1 | 2026-10-05 | Block 2 delivered inside the Rounds web app (8 questions: psych/nutrition, surgery, respiratory, MSK, skin, male reproductive, ethics, biostatistics). App gained front/back body views, a dermatome layer, brain and heart models, an A–Z index, and identification quizzes. All verified sources listed in §9. |
 | 1.2 | 2026-10-10 | Block 3 delivered in the app (8 questions: preventive screening, geriatrics, breast, neurology, obstetrics, rheumatology, trauma, pharmacology/toxicology). Verification notes: the AHA/ASA published a 2026 acute ischemic stroke guideline (January 2026) that replaces the 2019 update; ATLS 11th edition launched in 2025 (its shock chapter was not readable online, so B3-Q07 cites the 10th edition and the EAST guideline, whose positive-FAST rule is unchanged). Questions now carry `distractor_error_types` and `verified_on` in `questions/questions3.py`. App now serves real 3D anatomy (body, brain, heart) from GitHub Pages. §7 gap list refreshed for Block 4. |
 | 1.3 | 2026-10-10 | §2 rule 7 tightened per the owner: never take questions from any website or prep source; official sample questions may be read only for structure, style, and difficulty, never copied, paraphrased, or adapted. |
+| 1.4 | 2026-10-16 | Pediatrics track set up (`/peds-setup`): `docs/PEDS_BLUEPRINT.md` reserves Blocks 4–8 (B4-Q01 to B8-Q08) for 40 pediatric questions written two at a time (`/peds-pair`) and gated by an independent blind re-solve (`/peds-blind`); `tools/board_review_packet.py` renders key and blind packets from `questions/questionsN.py`. §1 pacing updated for the May 7, 2026 Step 2 CK format (sixteen 30-minute blocks of up to 20 questions); §4 adds the mechanism lead-in; §7 moves the general gap list to Block 9. No questions written. |
 
 ---
 
