@@ -8,12 +8,14 @@ sys.path.insert(0, str(ROOT / "questions"))
 from questions import QUESTIONS as B1
 from questions2 import QUESTIONS2 as B2
 from questions3 import QUESTIONS3 as B3
-QUESTIONS = B1 + B2 + B3  # append new blocks here, in order
+from questions4 import QUESTIONS4 as B4  # pediatrics track (docs/PEDS_BLUEPRINT.md), written two at a time
+QUESTIONS = B1 + B2 + B3 + B4  # append new blocks here, in order
 
 # Short system label shown in the app for each question ID. Add new IDs here.
 SYS = {"B1-Q01":"Cardiology","B1-Q02":"OB/GYN","B1-Q03":"Endocrine","B1-Q04":"Gastrointestinal","B1-Q05":"Toxicology","B1-Q06":"Hematology","B1-Q07":"Infectious disease","B1-Q08":"Renal",
        "B2-Q01":"Psychiatry","B2-Q02":"Surgery","B2-Q03":"Respiratory","B2-Q04":"Musculoskeletal","B2-Q05":"Dermatology","B2-Q06":"Male reproductive","B2-Q07":"Ethics & law","B2-Q08":"Biostatistics",
-       "B3-Q01":"Preventive medicine","B3-Q02":"Geriatrics","B3-Q03":"Breast","B3-Q04":"Neurology","B3-Q05":"OB/GYN","B3-Q06":"Rheumatology","B3-Q07":"Trauma","B3-Q08":"Pharmacology"}
+       "B3-Q01":"Preventive medicine","B3-Q02":"Geriatrics","B3-Q03":"Breast","B3-Q04":"Neurology","B3-Q05":"OB/GYN","B3-Q06":"Rheumatology","B3-Q07":"Trauma","B3-Q08":"Pharmacology",
+       "B4-Q01":"Pediatrics","B4-Q02":"Pediatrics"}
 
 def h(s):  # question text uses ReportLab-style tags; convert to HTML
     return s.replace("<super>","<sup>").replace("</super>","</sup>")

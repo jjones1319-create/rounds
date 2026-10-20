@@ -99,6 +99,8 @@ Also rotate disciplines: internal medicine, surgery, pediatrics, OB/GYN, psychia
 
 **Pediatrics track (Blocks 4–8, B4-Q01 to B8-Q08):** 40 pediatric questions planned in `docs/PEDS_BLUEPRINT.md` (NBME Pediatrics Subject Examination weightings; every ID assigned there) and written two at a time with `/peds-pair`, each pair gated by an independent blind re-solve in a fresh conversation (`/peds-blind`, packets from `tools/board_review_packet.py`). These block numbers are reserved; `/new-board-block` skips them. Pediatric questions use the SYS label "Pediatrics" in `build.py`.
 
+**Pediatrics track covered so far:** fever in a well-appearing 14-day-old, 8–21-day evaluation (B4-Q01, multisystem, ED); suspected intussusception, ultrasonography before enema reduction (B4-Q02, GI, ED).
+
 **Not yet covered after Block 3 (general track; applies to Block 9, the first block after the reserved pediatric blocks):** preventive screening beyond lung (USPSTF: breast, colon, AAA, cervical), geriatrics beyond delirium (falls, incontinence), neurology beyond stroke (seizure, headache), ophthalmology proper (angle-closure glaucoma, retinal detachment), ENT, allergy/immunology (anaphylaxis, hereditary angioedema), nephrology beyond electrolytes (glomerular disease, AKI), obstetrics beyond preeclampsia (labor, postpartum hemorrhage), patient safety/quality, pulmonology beyond effusion (asthma/COPD exacerbation), oncology emergencies. Pediatric development and the pediatric topics are handled by the pediatrics track; vaccines are tested only on points the CDC and AAP schedules share (see the blueprint). Prioritize the rest in Block 9.
 
 Check §9 before writing; do not repeat a topic unless deliberately testing a different decision point.
@@ -214,7 +216,10 @@ Check §9 before writing; do not repeat a topic unless deliberately testing a di
 | B3-Q07 | Blunt trauma, transient responder with positive FAST: laparotomy with blood products | Multisystem / Trauma | D | ★★★★★ | ATLS 10th ed. (2018); EAST blunt abdominal trauma PMG (2002); PROPPR, JAMA (2015) | 2026-10-10 |
 | B3-Q08 | Chronic lithium toxicity after an ACE inhibitor: EXTRIP dialysis criteria | Pharmacology / Toxicology | D | ★★★★ | EXTRIP lithium recommendations, CJASN (2015); FDA lithium label (2018) | 2026-10-10 |
 
-Block 1 answer distribution: A 1, B 1, C 2, D 2, E 2. Block 2: A 2, B 2, C 1, D 1, E 2. Block 3: A 2, B 2, C 1, D 2, E 1.
+| B4-Q01 | Fever in a well-appearing 14-day-old: urine, blood and CSF studies, parenteral antibiotics and admission at 8–21 days | Multisystem / Pediatrics | D | ★★★ | AAP febrile infants 8–60 days CPG, Pediatrics (2021) | 2026-10-17 |
+| B4-Q02 | Suspected intussusception in an 8-month-old: ultrasonography before enema reduction | Gastrointestinal / Pediatrics | B | ★★★ | ACR Appropriateness Criteria Abdominal Pain-Child, JACR (2026); ACR–SPR pediatric contrast-enema parameter (2026); APSA systematic review, J Pediatr Surg (2021) | 2026-10-17 |
+
+Block 1 answer distribution: A 1, B 1, C 2, D 2, E 2. Block 2: A 2, B 2, C 1, D 1, E 2. Block 3: A 2, B 2, C 1, D 2, E 1. Block 4 (pediatrics, pair 1 of 4 so far): A 0, B 1, C 0, D 1, E 0.
 
 ---
 
@@ -242,6 +247,7 @@ Block 1 answer distribution: A 1, B 1, C 2, D 2, E 2. Block 2: A 2, B 2, C 1, D 
 | 1.2 | 2026-10-10 | Block 3 delivered in the app (8 questions: preventive screening, geriatrics, breast, neurology, obstetrics, rheumatology, trauma, pharmacology/toxicology). Verification notes: the AHA/ASA published a 2026 acute ischemic stroke guideline (January 2026) that replaces the 2019 update; ATLS 11th edition launched in 2025 (its shock chapter was not readable online, so B3-Q07 cites the 10th edition and the EAST guideline, whose positive-FAST rule is unchanged). Questions now carry `distractor_error_types` and `verified_on` in `questions/questions3.py`. App now serves real 3D anatomy (body, brain, heart) from GitHub Pages. §7 gap list refreshed for Block 4. |
 | 1.3 | 2026-10-10 | §2 rule 7 tightened per the owner: never take questions from any website or prep source; official sample questions may be read only for structure, style, and difficulty, never copied, paraphrased, or adapted. |
 | 1.4 | 2026-10-16 | Pediatrics track set up (`/peds-setup`): `docs/PEDS_BLUEPRINT.md` reserves Blocks 4–8 (B4-Q01 to B8-Q08) for 40 pediatric questions written two at a time (`/peds-pair`) and gated by an independent blind re-solve (`/peds-blind`); `tools/board_review_packet.py` renders key and blind packets from `questions/questionsN.py`. §1 pacing updated for the May 7, 2026 Step 2 CK format (sixteen 30-minute blocks of up to 20 questions); §4 adds the mechanism lead-in; §7 moves the general gap list to Block 9. No questions written. |
+| 1.5 | 2026-10-20 | Pediatric pair 1 delivered (B4-Q01 fever in a well-appearing 14-day-old, D, ★★★; B4-Q02 suspected intussusception in an 8-month-old, B, ★★★): first questions in `questions/questions4.py`, both passed the independent blind re-solve in one round (answers agreed, no objection held). B4-Q02 was re-rated from ★★★★ to ★★★ at review under §3 (classic findings lead to the standard first test, as in B1-Q04; no stem detail flips the usual answer). Both carry `status: reviewed` and `reviewed_by: "independent blind re-solve"`. The app now holds 26 board questions. |
 
 ---
 
