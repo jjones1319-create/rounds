@@ -91,7 +91,7 @@ ask before anything public or irreversible (pushing, deleting files, migrating s
   whichever exam is selected (`Store.settings()`). Which guide groups are expanded is in `rounds.guide.v1`.
 
 ## Current state (2026-10-11)
-- Boards: 26 questions (Blocks 1–3 and pediatric pair 1, B4-Q01–B4-Q02, in Block 4). Anatomy: 2D body (front/back, 8 layers incl. dermatomes), brain, heart,
+- Boards: 28 questions (Blocks 1–3 and pediatric pairs 1–2, B4-Q01–B4-Q04, in Block 4). Anatomy: 2D body (front/back, 8 layers incl. dermatomes), brain, heart,
   254-entry index; 3D body (seven lazy-loaded layers, 7.8 MB gzipped), 3D brain (real-MRI cortex, deep brain, circle of
   Willis, cranial nerves) and 3D heart (chambers, valves, coronaries, cut-open view). Live at
   https://jjones1319-create.github.io/rounds/ and confirmed smooth on her phone.
